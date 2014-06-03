@@ -1,4 +1,4 @@
 gwpy.github.io
 ==============
 
-Homepage for the GWpy project
+This repository contains the GWpy homepage: https://gwpy.github.io
