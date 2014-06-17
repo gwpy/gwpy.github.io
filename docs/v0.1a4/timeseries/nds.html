@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fetching a TimeSeries using NDS &mdash; GWpy 0.1a4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
+    <link rel="up" title="The TimeSeries" href="index.html" />
+    <link rel="next" title="Reading publicly-available GW data" href="public-data.html" />
+    <link rel="prev" title="Reading a TimeSeries from GWF files" href="gwf.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a href="../index.html"
+     class="dropdown-toggle"
+     data-toggle="dropdown">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+    ><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">What should I do first?</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <tt class="docutils literal"><span class="pre">Channel</span></tt></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <tt class="docutils literal"><span class="pre">Spectrum</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="statevector.html">The <tt class="docutils literal"><span class="pre">StateTimeSeries</span></tt> and <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Fetching a <tt class="docutils literal"><span class="pre">TimeSeries</span></tt> using NDS</a><ul>
+<li><a class="reference internal" href="#available-servers">Available servers</a></li>
+<li><a class="reference internal" href="#fetching-timeseries">Fetching <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
+<li><a class="reference internal" href="#kerberos-authentication">Kerberos authentication</a><ul>
+<li><a class="reference internal" href="#kerberos-keytabs">Kerberos keytabs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/timeseries/nds.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="fetching-a-timeseries-using-nds">
+<h1>Fetching a <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> using NDS<a class="headerlink" href="#fetching-a-timeseries-using-nds" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client.html">Network Data Server</a> protocol, developed by the LIGO Scientific Collaboration, offers methods to remotely fetch data stored on disk, allowing users to download data to their laptops, or other machines.</p>
+<div class="section" id="available-servers">
+<h2>Available servers<a class="headerlink" href="#available-servers" title="Permalink to this headline">¶</a></h2>
+<p>The LIGO Data Grid operates the following NDS servers, with authenticated access for collaboration members:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">nds.ligo.caltech.edu</span></tt></td>
+<td>General access to the majority of available data</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">nds.ligo-la.caltech.edu</span></tt></td>
+<td>Lower-latency access to data from the LIGO Livingston Observatory</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">nds.ligo-wa.caltech.edu</span></tt></td>
+<td>Lower-latency access to data from the LIGO Hanford Observatory</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fetching-timeseries">
+<h2>Fetching <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt><a class="headerlink" href="#fetching-timeseries" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Fetching data via NDS requires the <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client.html"><tt class="docutils literal"><span class="pre">nds2-client</span></tt></a> package (including SWIG bindings for Python) to be installed on your system.</p>
+</div>
+<p>Data for a given <a class="reference internal" href="../detector/channel.html#gwpy.detector.channel.Channel" title="gwpy.detector.channel.Channel"><tt class="xref py py-class docutils literal"><span class="pre">Channel</span></tt></a> can be fetched from NDS using the <tt class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch()</span></tt> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;L1:PSL-ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="mi">1067042880</span><span class="p">,</span> <span class="mi">1067042912</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where the arguments are a channel name, and GPS start and end times.
+Optionally, the NDS server to use can be specified using the <tt class="docutils literal"><span class="pre">host</span></tt> and <tt class="docutils literal"><span class="pre">port</span></tt> keyword arguments; if these are not given, GWpy will cycle through a logically-ordered list of hosts, starting the from host server for the relevant observatory.</p>
+</div>
+<div class="section" id="kerberos-authentication">
+<h2>Kerberos authentication<a class="headerlink" href="#kerberos-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Access to the authenticated NDS2 protocol services (all apart from <tt class="docutils literal"><span class="pre">nds40</span></tt>) require a valid and active kerberos ticket.
+On all Unix-based operating systems, the <tt class="docutils literal"><span class="pre">kinit</span></tt> command-line tool provided by the KRB5 package is the standard method of generating or renewing such a ticket.
+If this utility is available on your system, the <tt class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch()</span></tt> method will call it if connecting to the NDS server fails due to an authentication error, as in the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;L1:PSL-ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="mi">1067042880</span><span class="p">,</span> <span class="mi">1067042912</span><span class="p">)</span>
+<span class="go">error detail: SASL(-1): generic failure: GSSAPI Error: Unspecified GSS failure.  Minor code may provide more information (Credentials cache file &#39;/tmp/krb5cc_5308&#39; not found)</span>
+
+<span class="go">Error authenticating against nds.ligo-la.caltech.edu</span>
+<span class="go">Please provide username for the LIGO.ORG kerberos realm: albert.einstein</span>
+<span class="go">Password for albert.einstein@LIGO.ORG:</span>
+<span class="go">Kerberos ticket generated for albert.einstein@LIGO.ORG</span>
+</pre></div>
+</div>
+<p>where the user has been prompted for both their LIGO.ORG username and password, in order to generate a ticket.</p>
+<div class="section" id="kerberos-keytabs">
+<h3>Kerberos keytabs<a class="headerlink" href="#kerberos-keytabs" title="Permalink to this headline">¶</a></h3>
+<p>Users can generate a kerberos keytab file to enable password-less tickets using the <tt class="xref py py-obj docutils literal"><span class="pre">ktutil</span></tt> tool:</p>
+<p>Run <tt class="xref py py-obj docutils literal"><span class="pre">ktutil</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ktutil
+</pre></div>
+</div>
+<p>At the <tt class="docutils literal"><span class="pre">ktutil:</span></tt> prompt enter:</p>
+<div class="highlight-python"><div class="highlight"><pre>addent -password -p albert.einstein@LIGO.ORG -k 1 -e des3-cbc-sha1
+</pre></div>
+</div>
+<p>and enter your password when prompted.
+At the next prompt enter <tt class="docutils literal"><span class="pre">wkt</span></tt> followed by the name of the kerberos keytab to write to, and then quit:</p>
+<div class="highlight-python"><div class="highlight"><pre>wkt albert.einstein.keytab
+quit
+</pre></div>
+</div>
+<p>Users should store the location of this file in the <tt class="docutils literal"><span class="pre">KRB5_KTNAME</span></tt> environment variable, enabling <tt class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch()</span></tt> to locate and utilise the keytab for seamless authentication.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotting in GWpy (gwpy.plotter) &mdash; GWpy 0.1a4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
+    <link rel="next" title="Plotting API" href="api.html" />
+    <link rel="prev" title="Tabular data" href="../table/index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a href="../index.html"
+     class="dropdown-toggle"
+     data-toggle="dropdown">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+    ><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">What should I do first?</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <tt class="docutils literal"><span class="pre">Channel</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">The <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <tt class="docutils literal"><span class="pre">Spectrum</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <tt class="docutils literal"><span class="pre">StateTimeSeries</span></tt> and <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a><ul>
+<li><a class="reference internal" href="#plotting-data">Plotting data</a></li>
+<li><a class="reference internal" href="#plot-types">Plot types</a></li>
+<li><a class="reference internal" href="#class-reference">Class reference</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/plotter/index.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="plotting-in-gwpy-gwpy-plotter">
+<h1>Plotting in GWpy (<tt class="xref py py-obj docutils literal"><span class="pre">gwpy.plotter</span></tt>)<a class="headerlink" href="#plotting-in-gwpy-gwpy-plotter" title="Permalink to this headline">¶</a></h1>
+<p>Visualisation of the data produced by gravitational-wave detectors is
+obviously a key part of understanding their sensitivity, and studying the
+potential gravitational-wave signals they record.
+The <tt class="xref py py-mod docutils literal"><span class="pre">gwpy.plotter</span></tt> module provides a number of plot classes, each
+representing display of a corresponding data type.</p>
+<div class="section" id="plotting-data">
+<h2>Plotting data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
+<p>The majority of core data objects in GWpy come with a built-in <tt class="xref py py-meth docutils literal"><span class="pre">plot()</span></tt>
+method, allowing quick display of a single data set, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../plotter/index-1.py">Source code</a>, <a class="reference external" href="../plotter/index-1.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/index-1.png" src="../_images/index-1.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Users can also import the relevant plotting <tt class="xref py py-obj docutils literal"><span class="pre">class</span></tt> objects and generate
+more complicated plots manually:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">TimeSeriesPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plot2</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../plotter/index-2.py">Source code</a>, <a class="reference external" href="../plotter/index-2.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/index-2.png" src="../_images/index-2.png" />
+</div>
+</div>
+<div class="section" id="plot-types">
+<h2>Plot types<a class="headerlink" href="#plot-types" title="Permalink to this headline">¶</a></h2>
+<p>The following diagram displays the available Plot objects and their
+inheritance from <a class="reference internal" href="api.html#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-class docutils literal"><span class="pre">Plot</span></tt></a>.</p>
+<p class="graphviz">
+<img src="../_images/inheritance-a04cfed3b0ecca3ef3f94133e664b536ca61e60a.png" alt="Inheritance diagram of core, timeseries, spectrum, spectrogram, table, filter" usemap="#inheritance0025e4d236" class="inheritance"/>
+<map id="inheritance0025e4d236" name="inheritance0025e4d236">
+<area shape="rect" id="node1" title="An extension of the core matplotlib :class:`~matplotlib.axes.Axes`." alt="" coords="192,92,286,107"/>
+<area shape="rect" id="node8" title="Custom `Axes` for a :class:`~gwpy.plotter.SpectrumPlot`." alt="" coords="3,136,147,151"/>
+<area shape="rect" id="node11" title="Custom `Axes` for a :class:`~gwpy.plotter.TimeSeriesPlot`." alt="" coords="162,136,315,151"/>
+<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="285,47,372,63"/>
+<area shape="rect" id="node3" title="An extension of the core matplotlib :class:`~matplotlib.figure.Figure`." alt="" coords="480,92,569,107"/>
+<area shape="rect" id="node5" title="A `Plot` class for visualising transfer functions." alt="" coords="330,136,435,151"/>
+<area shape="rect" id="node7" title="`Figure` for displaying a :class:`~gwpy.timeseries.core.TimeSeries`." alt="" coords="450,136,599,151"/>
+<area shape="rect" id="node9" title="`Figure` for displaying a :class:`~gwpy.spectrum.core.Spectrum`." alt="" coords="613,136,753,151"/>
+<area shape="rect" id="node12" title="`Figure` for displaying a :class:`~glue.ligolw.table.Table`." alt="" coords="619,180,746,196"/>
+<area shape="rect" id="node4" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="432,47,525,63"/>
+<area shape="rect" id="node6" title="`Figure` for displaying a :class:`~gwpy.spectrogram.core.Spectrogram`." alt="" coords="444,180,605,196"/>
+<area shape="rect" id="node10" title="Custom `Axes` for an :class:`~gwpy.plotter.EventTablePlot`." alt="" coords="173,180,305,196"/>
+<area shape="rect" id="node13" title="Abstract base class for someone who renders into a" alt="" coords="359,3,448,19"/>
+</map>
+</p>
+</div>
+<div class="section" id="class-reference">
+<h2>Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>A full reference of the above plotting <tt class="xref py py-obj docutils literal"><span class="pre">class</span></tt> objects can be found <a class="reference internal" href="api.html"><em>here</em></a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
