@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The Spectrogram &mdash; GWpy 0.1a4 documentation</title>
+    <title>The Spectrogram &mdash; GWpy 0.1a7 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,12 +18,13 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a4',
+        VERSION:     '0.1a7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -33,9 +34,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
-    <link rel="next" title="Data-quality segments" href="../segments/index.html" />
-    <link rel="prev" title="The Spectrum" href="../spectrum/index.html" />
+    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
+    <link rel="next" title="Filtering frequency-domain data" href="../spectrum/filtering.html" />
+    <link rel="prev" title="Filtering frequency-domain data" href="../spectrum/filtering.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -123,6 +124,7 @@
 <li><a class="reference internal" href="#">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a><ul>
 <li><a class="reference internal" href="#calculating-a-spectrogram-from-a-timeseries">Calculating a <tt class="docutils literal"><span class="pre">Spectrogram</span></tt> from a <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
 <li><a class="reference internal" href="#plotting-a-spectrogram">Plotting a <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
+<li><a class="reference internal" href="#spectrogram-applications"><tt class="docutils literal"><span class="pre">Spectrogram</span></tt> applications</a></li>
 <li><a class="reference internal" href="#spectrogram-reference"><tt class="docutils literal"><span class="pre">Spectrogram</span></tt> reference</a></li>
 </ul>
 </li>
@@ -232,11 +234,19 @@ We can extend the previous time-series example to include a plot:</p>
 <img alt="../_images/spectrogram_plot.png" src="../_images/spectrogram_plot.png" />
 </div>
 </div>
+<div class="section" id="spectrogram-applications">
+<h2><a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> applications<a class="headerlink" href="#spectrogram-applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/filtering.html">Filtering frequency-domain data</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="spectrogram-reference">
 <h2><a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> reference<a class="headerlink" href="#spectrogram-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="gwpy.spectrogram.Spectrogram">
-<em class="property">class </em><tt class="descclassname">gwpy.spectrogram.</tt><tt class="descname">Spectrogram</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.spectrogram.</tt><tt class="descname">Spectrogram</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">gwpy.data.Array2D</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.spectrogram</span> <span class="kn">import</span> <span class="n">Spectrogram</span>
 </pre></div>
@@ -271,7 +281,7 @@ amplitude.</p>
 <blockquote>
 <div><p>Name for this Spectrum</p>
 </div></blockquote>
-<p><strong>unit</strong> : <tt class="xref py py-obj docutils literal"><span class="pre">Unit</span></tt>, optional</p>
+<p><strong>unit</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Unit.html#astropy.units.Unit" title="(in Astropy v0.4.1)"><tt class="xref py py-obj docutils literal"><span class="pre">Unit</span></tt></a>, optional</p>
 <blockquote>
 <div><p>The units of the data</p>
 </div></blockquote>
@@ -425,7 +435,7 @@ amplitude.</p>
 <td>Returns True if any of the elements of <tt class="xref py py-obj docutils literal"><span class="pre">a</span></tt> evaluate to True.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.append" title="gwpy.spectrogram.Spectrogram.append"><tt class="xref py py-obj docutils literal"><span class="pre">append</span></tt></a>(other[,&nbsp;gap,&nbsp;inplace,&nbsp;pad,&nbsp;resize])</td>
-<td>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> onto the end of the current one.</td>
+<td>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto the end of the current one.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.argmax" title="gwpy.spectrogram.Spectrogram.argmax"><tt class="xref py py-obj docutils literal"><span class="pre">argmax</span></tt></a>([axis,&nbsp;out])</td>
 <td>Return indices of the maximum values along the given axis.</td>
@@ -464,7 +474,7 @@ amplitude.</p>
 <td>Return a copy of the array.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.crop" title="gwpy.spectrogram.Spectrogram.crop"><tt class="xref py py-obj docutils literal"><span class="pre">crop</span></tt></a>([start,&nbsp;end,&nbsp;copy])</td>
-<td>Crop this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> to the given GPS <tt class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></tt> <tt class="xref py py-obj docutils literal"><span class="pre">Segment</span></tt>.</td>
+<td>Crop this <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> to the given GPS <tt class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></tt> <tt class="xref py py-obj docutils literal"><span class="pre">Segment</span></tt>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.cumprod" title="gwpy.spectrogram.Spectrogram.cumprod"><tt class="xref py py-obj docutils literal"><span class="pre">cumprod</span></tt></a>([axis,&nbsp;dtype,&nbsp;out])</td>
 <td>Return the cumulative product of the elements along the given axis.</td>
@@ -488,13 +498,13 @@ amplitude.</p>
 <td>Fill the array with a scalar value.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.filter" title="gwpy.spectrogram.Spectrogram.filter"><tt class="xref py py-obj docutils literal"><span class="pre">filter</span></tt></a>(*filt,&nbsp;**kwargs)</td>
-<td>Apply the given <tt class="xref py py-obj docutils literal"><span class="pre">Filter</span></tt> to this <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></td>
+<td>Apply the given filter to this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.flatten" title="gwpy.spectrogram.Spectrogram.flatten"><tt class="xref py py-obj docutils literal"><span class="pre">flatten</span></tt></a>([order])</td>
 <td>Return a copy of the array collapsed into one dimension.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.from_hdf5" title="gwpy.spectrogram.Spectrogram.from_hdf5"><tt class="xref py py-obj docutils literal"><span class="pre">from_hdf5</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>Read a <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> from the given HDF file.</td>
+<td>Read a <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> from the given HDF file.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.from_spectra" title="gwpy.spectrogram.Spectrogram.from_spectra"><tt class="xref py py-obj docutils literal"><span class="pre">from_spectra</span></tt></a>(*spectra,&nbsp;**kwargs)</td>
 <td>Build a new <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> from a list of spectra.</td>
@@ -542,7 +552,7 @@ amplitude.</p>
 <td>Plot the data for this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.prepend" title="gwpy.spectrogram.Spectrogram.prepend"><tt class="xref py py-obj docutils literal"><span class="pre">prepend</span></tt></a>(other[,&nbsp;gap,&nbsp;inplace,&nbsp;pad])</td>
-<td>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> onto the start of the current one.</td>
+<td>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto the start of the current one.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.prod" title="gwpy.spectrogram.Spectrogram.prod"><tt class="xref py py-obj docutils literal"><span class="pre">prod</span></tt></a>([axis,&nbsp;dtype,&nbsp;out])</td>
 <td>Return the product of the array elements over the given axis</td>
@@ -565,7 +575,7 @@ amplitude.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.repeat" title="gwpy.spectrogram.Spectrogram.repeat"><tt class="xref py py-obj docutils literal"><span class="pre">repeat</span></tt></a>(repeats[,&nbsp;axis])</td>
 <td>Repeat elements of an array.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.resample" title="gwpy.spectrogram.Spectrogram.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.resample" title="gwpy.spectrogram.Spectrogram.resample"><tt class="xref py py-obj docutils literal"><span class="pre">resample</span></tt></a>(rate[,&nbsp;window])</td>
 <td>Resample this Array2D to a new rate</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.reshape" title="gwpy.spectrogram.Spectrogram.reshape"><tt class="xref py py-obj docutils literal"><span class="pre">reshape</span></tt></a>(shape[,&nbsp;order])</td>
@@ -605,7 +615,7 @@ amplitude.</p>
 <td>Return an array formed from the elements of <tt class="xref py py-obj docutils literal"><span class="pre">a</span></tt> at the given indices.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.to_hdf5" title="gwpy.spectrogram.Spectrogram.to_hdf5"><tt class="xref py py-obj docutils literal"><span class="pre">to_hdf5</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>Convert this <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> to a <tt class="xref py py-class docutils literal"><span class="pre">h5py.Dataset</span></tt>.</td>
+<td>Convert this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> to a <tt class="xref py py-class docutils literal"><span class="pre">h5py.Dataset</span></tt>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.tofile" title="gwpy.spectrogram.Spectrogram.tofile"><tt class="xref py py-obj docutils literal"><span class="pre">tofile</span></tt></a>(fid[,&nbsp;sep,&nbsp;format])</td>
 <td>Write array to a file as text or binary (default).</td>
@@ -623,7 +633,7 @@ amplitude.</p>
 <td>Returns a view of the array with axes transposed.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.update" title="gwpy.spectrogram.Spectrogram.update"><tt class="xref py py-obj docutils literal"><span class="pre">update</span></tt></a>(other[,&nbsp;inplace])</td>
-<td>Update this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> by appending new data from an other and dropping the same amount of data off the start.</td>
+<td>Update this <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> by appending new data from an other and dropping the same amount of data off the start.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.spectrogram.Spectrogram.var" title="gwpy.spectrogram.Spectrogram.var"><tt class="xref py py-obj docutils literal"><span class="pre">var</span></tt></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof])</td>
 <td>Returns the variance of the array elements, along given axis.</td>
@@ -789,7 +799,7 @@ return an integer equal to the data attribute.</p>
 <tt class="descname">df</tt><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Frequency spacing of this <tt class="xref py py-obj docutils literal"><span class="pre">Spectogram</span></tt></p>
 <p>This attributes is recorded as a
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.3.2)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> object, assuming a
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.4.1)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> object, assuming a
 unit of &#8216;Hertz&#8217;.</p>
 </dd></dl>
 
@@ -852,7 +862,7 @@ unit of &#8216;Hertz&#8217;.</p>
 <tt class="descname">f0</tt><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.f0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starting frequency for this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a></p>
 <p>This attributes is recorded as a
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.3.2)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> object, assuming a
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.4.1)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a> object, assuming a
 unit of &#8216;Hertz&#8217;.</p>
 </dd></dl>
 
@@ -1179,7 +1189,7 @@ position in the next row.  As such, the strides for the array <tt class="xref py
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.core.Unit.html#astropy.units.core.Unit" title="(in Astropy v0.3.2)"><tt class="xref py py-class docutils literal"><span class="pre">Unit</span></tt></a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">Unit</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -1266,8 +1276,8 @@ position in the next row.  As such, the strides for the array <tt class="xref py
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.append">
-<tt class="descname">append</tt><big>(</big><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0.0</em>, <em>resize=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/timeseries/common.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> onto the end of the current one.</p>
+<tt class="descname">append</tt><big>(</big><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0.0</em>, <em>resize=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/timeseries/common.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto the end of the current one.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1571,7 +1581,7 @@ a view to self.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.copy">
-<tt class="descname">copy</tt><big>(</big><em>order='C'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.copy" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">copy</tt><big>(</big><em>order='C'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of the array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1622,8 +1632,8 @@ arguments.)</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.crop">
-<tt class="descname">crop</tt><big>(</big><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/timeseries/common.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.crop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crop this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> to the given GPS <tt class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></tt>
+<tt class="descname">crop</tt><big>(</big><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/timeseries/common.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.crop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop this <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> to the given GPS <tt class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></tt>
 <tt class="xref py py-obj docutils literal"><span class="pre">Segment</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1789,8 +1799,11 @@ pickle.loads or numpy.loads will convert the string back to an array.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.filter">
-<tt class="descname">filter</tt><big>(</big><em>*filt</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply the given <tt class="xref py py-obj docutils literal"><span class="pre">Filter</span></tt> to this <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></p>
+<tt class="descname">filter</tt><big>(</big><em>*filt</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the given filter to this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</p>
+<p>Recognised filter arguments are converted into the standard
+<tt class="docutils literal"><span class="pre">(numerator,</span> <span class="pre">denominator)</span></tt> representation before being applied
+to this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1799,22 +1812,23 @@ pickle.loads or numpy.loads will convert the string back to an array.</p>
 <blockquote>
 <div><p>one of:</p>
 <ul class="simple">
-<li>a single <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.lti.html#scipy.signal.lti" title="(in SciPy v0.14.0)"><tt class="xref py py-class docutils literal"><span class="pre">scipy.signal.lti</span></tt></a> filter</li>
-<li>(numerator, denominator) polynomials</li>
-<li>(zeros, poles, gain)</li>
-<li>(A, B, C, D) &#8216;state-space&#8217; representation</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.lti.html#scipy.signal.lti" title="(in SciPy v0.14.0)"><tt class="xref py py-class docutils literal"><span class="pre">scipy.signal.lti</span></tt></a></li>
+<li><tt class="docutils literal"><span class="pre">(numerator,</span> <span class="pre">denominator)</span></tt> polynomials</li>
+<li><tt class="docutils literal"><span class="pre">(zeros,</span> <span class="pre">poles,</span> <span class="pre">gain)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">C,</span> <span class="pre">D)</span></tt> &#8216;state-space&#8217; representation</li>
 </ul>
-</div></blockquote>
-<p><strong>inplace</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">bool</span></tt></a>, optional, default: <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a></p>
-<blockquote>
-<div><p>apply the filter directly on these data, without making a
-copy, default: <a class="reference external" href="http://docs.python.org/library/constants.html#False" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">False</span></tt></a></p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fspectrum</strong> : <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a></p>
+<blockquote>
+<div><p>the filtered version of the input <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
 <blockquote class="last">
-<div><p>the filtered version of the input <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></p>
+<div><p>If <tt class="docutils literal"><span class="pre">filt</span></tt> arguments cannot be interpreted properly</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1823,9 +1837,19 @@ copy, default: <a class="reference external" href="http://docs.python.org/librar
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v0.14.0)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a></dt>
-<dd>for details on filtering and representations</dd>
+<dt><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.zpk2tf.html#scipy.signal.zpk2tf" title="(in SciPy v0.14.0)"><tt class="xref py py-obj docutils literal"><span class="pre">scipy.signal.zpk2tf</span></tt></a></dt>
+<dd>for details on converting <tt class="docutils literal"><span class="pre">(zeros,</span> <span class="pre">poles,</span> <span class="pre">gain)</span></tt> into transfer function format</dd>
+<dt><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.ss2tf.html#scipy.signal.ss2tf" title="(in SciPy v0.14.0)"><tt class="xref py py-obj docutils literal"><span class="pre">scipy.signal.ss2tf</span></tt></a></dt>
+<dd>for details on converting <tt class="docutils literal"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">C,</span> <span class="pre">D)</span></tt> to transfer function format</dd>
+<dt><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.freqs.html#scipy.signal.freqs" title="(in SciPy v0.14.0)"><tt class="xref py py-obj docutils literal"><span class="pre">scipy.signal.freqs</span></tt></a></dt>
+<dd>for details on the filtering calculation</dd>
 </dl>
+</div>
+<p class="rubric">Examples</p>
+<p>To apply a zpk filter with a pole at 0 Hz, a zero at 100 Hz and
+a gain of 25:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -1872,10 +1896,10 @@ The default is &#8216;C&#8217;.</p>
 </div>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.from_hdf5">
-<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array.py#L436"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.from_hdf5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read a <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> from the given HDF file.</p>
+<tt class="descname">from_hdf5</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array.py#L436"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> from the given HDF file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1900,7 +1924,7 @@ The default is &#8216;C&#8217;.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.spectrogram.Spectrogram.from_spectra">
-<em class="property">classmethod </em><tt class="descname">from_spectra</tt><big>(</big><em>*spectra</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.from_spectra" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_spectra</tt><big>(</big><em>*spectra</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.from_spectra" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> from a list of spectra.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1910,7 +1934,7 @@ The default is &#8216;C&#8217;.</p>
 <blockquote>
 <div><p>any number of <tt class="xref py py-class docutils literal"><span class="pre">Spectrum</span></tt> series</p>
 </div></blockquote>
-<p><strong>dt</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.3.2)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>, optional</p>
+<p><strong>dt</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v0.4.1)"><tt class="xref py py-class docutils literal"><span class="pre">Quantity</span></tt></a>, optional</p>
 <blockquote>
 <div><p>stride between given spectra</p>
 </div></blockquote>
@@ -1980,13 +2004,13 @@ array for our view:</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.is_compatible">
-<tt class="descname">is_compatible</tt><big>(</big><em>other</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.is_compatible" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">is_compatible</tt><big>(</big><em>other</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.is_compatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether metadata attributes for self and other match.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.is_contiguous">
-<tt class="descname">is_contiguous</tt><big>(</big><em>other</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/timeseries/common.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.is_contiguous" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">is_contiguous</tt><big>(</big><em>other</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/timeseries/common.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.is_contiguous" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether other is contiguous with self.</p>
 </dd></dl>
 
@@ -2098,7 +2122,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.max">
-<tt class="descname">max</tt><big>(</big><em>axis=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array2d.py#L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.max" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">max</tt><big>(</big><em>axis=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array2d.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the maximum along a given axis.</p>
 <p>Refer to <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.amax.html#numpy.amax" title="(in NumPy v1.8)"><tt class="xref py py-obj docutils literal"><span class="pre">numpy.amax</span></tt></a> for full documentation.</p>
 <div class="admonition seealso">
@@ -2112,7 +2136,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.mean">
-<tt class="descname">mean</tt><big>(</big><em>axis=None</em>, <em>dtype=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array2d.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.mean" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">mean</tt><big>(</big><em>axis=None</em>, <em>dtype=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array2d.py#L320"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the average of the array elements along given axis.</p>
 <p>Refer to <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean" title="(in NumPy v1.8)"><tt class="xref py py-obj docutils literal"><span class="pre">numpy.mean</span></tt></a> for full documentation.</p>
 <div class="admonition seealso">
@@ -2126,7 +2150,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.median">
-<tt class="descname">median</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array2d.py#L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.median" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">median</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array2d.py#L329"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.median" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the median along the specified axis.</p>
 <p>Returns the median of the array elements.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2212,7 +2236,7 @@ odd.  When N is even, it is the average of the two middle values of
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.min">
-<tt class="descname">min</tt><big>(</big><em>axis=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array2d.py#L312"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.min" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">min</tt><big>(</big><em>axis=None</em>, <em>out=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array2d.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.min" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the minimum along a given axis.</p>
 <p>Refer to <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.amin.html#numpy.amin" title="(in NumPy v1.8)"><tt class="xref py py-obj docutils literal"><span class="pre">numpy.amin</span></tt></a> for full documentation.</p>
 <div class="admonition seealso">
@@ -2352,7 +2376,7 @@ specified.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.percentile">
-<tt class="descname">percentile</tt><big>(</big><em>percentile</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.percentile" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">percentile</tt><big>(</big><em>percentile</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.percentile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate a given spectral percentile for this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2377,14 +2401,14 @@ specified.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.plot">
-<tt class="descname">plot</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the data for this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.prepend">
-<tt class="descname">prepend</tt><big>(</big><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0.0</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/timeseries/common.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.prepend" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> onto the start of the current one.</p>
+<tt class="descname">prepend</tt><big>(</big><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0.0</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/timeseries/common.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.prepend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect another <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto the start of the current one.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2470,7 +2494,7 @@ and this one. One of</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.ratio">
-<tt class="descname">ratio</tt><big>(</big><em>operand</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.ratio" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">ratio</tt><big>(</big><em>operand</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the ratio of this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> against a
 reference.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2561,7 +2585,7 @@ in this Spectrogram</li>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.resample">
-<tt class="descname">resample</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array2d.py#L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.resample" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">resample</tt><big>(</big><em>rate</em>, <em>window=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array2d.py#L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample this Array2D to a new rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2995,8 +3019,8 @@ structured array:</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.to_hdf5">
-<tt class="descname">to_hdf5</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/data/array.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.to_hdf5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert this <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> to a <tt class="xref py py-class docutils literal"><span class="pre">h5py.Dataset</span></tt>.</p>
+<tt class="descname">to_hdf5</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/data/array.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a> to a <tt class="xref py py-class docutils literal"><span class="pre">h5py.Dataset</span></tt>.</p>
 <p>This allows writing to an HDF5-format file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3228,8 +3252,8 @@ intended simply as a &#8220;convenience&#8221; alternative to the tuple form)</l
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.update">
-<tt class="descname">update</tt><big>(</big><em>other</em>, <em>inplace=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/timeseries/common.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> by appending new data from an other
+<tt class="descname">update</tt><big>(</big><em>other</em>, <em>inplace=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/timeseries/common.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update this <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> by appending new data from an other
 and dropping the same amount of data off the start.</p>
 </dd></dl>
 
@@ -3249,7 +3273,7 @@ and dropping the same amount of data off the start.</p>
 
 <dl class="method">
 <dt id="gwpy.spectrogram.Spectrogram.variance">
-<tt class="descname">variance</tt><big>(</big><em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/spectrogram/core.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.variance" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">variance</tt><big>(</big><em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/spectrogram/core.py#L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.spectrogram.Spectrogram.variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the <tt class="xref py py-obj docutils literal"><span class="pre">SpectralVariance</span></tt> of this <a class="reference internal" href="#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

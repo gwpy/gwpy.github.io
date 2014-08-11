@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Data-quality segments &mdash; GWpy 0.1a4 documentation</title>
+    <title>Data-quality segments &mdash; GWpy 0.1a7 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,12 +18,13 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a4',
+        VERSION:     '0.1a7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -33,9 +34,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
     <link rel="next" title="Generating data-quality flags by thresholding" href="thresholding.html" />
-    <link rel="prev" title="The Spectrogram" href="../spectrogram/index.html" />
+    <link rel="prev" title="Filtering frequency-domain data" href="../spectrum/filtering.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -203,7 +204,7 @@ The segment database is the primary access point for users to study data-quality
 <p>The <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a> object comes with a direct link to the segment database, through the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query"><tt class="xref py py-meth docutils literal"><span class="pre">DataQualityFlag.query()</span></tt></a> classmethod:</p>
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><tt class="descclassname">DataQualityFlag.</tt><tt class="descname">query</tt><big>(</big><em>flag</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L300"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><tt class="descclassname">DataQualityFlag.</tt><tt class="descname">query</tt><big>(</big><em>flag</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L300"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Query the segment database for the given flag.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -282,7 +283,7 @@ This method is what is actually called by the <a class="reference internal" href
 </table>
 <dl class="class">
 <dt id="gwpy.segments.DataQualityFlag">
-<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">DataQualityFlag</tt><big>(</big><em>name=None</em>, <em>active=None</em>, <em>valid=None</em>, <em>label=None</em>, <em>category=None</em>, <em>description=None</em>, <em>isgood=True</em>, <em>padding=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">DataQualityFlag</tt><big>(</big><em>name=None</em>, <em>active=None</em>, <em>valid=None</em>, <em>label=None</em>, <em>category=None</em>, <em>description=None</em>, <em>isgood=True</em>, <em>padding=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">DataQualityFlag</span>
 </pre></div>
@@ -602,7 +603,7 @@ accurate dataset for its valid segments than any previous.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.coalesce">
-<tt class="descname">coalesce</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L493"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.coalesce" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">coalesce</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L493"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.coalesce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coalesce the segments for this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a>.</p>
 <p>This method calls the
 <tt class="xref py py-meth docutils literal"><span class="pre">coalesce()</span></tt> method of the
@@ -627,7 +628,7 @@ underlying <a class="reference internal" href="#gwpy.segments.DataQualityFlag.ac
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.contract">
-<tt class="descname">contract</tt><big>(</big><em>x</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.contract" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">contract</tt><big>(</big><em>x</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.contract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><tt class="xref py py-obj docutils literal"><span class="pre">active</span></tt></a> <tt class="xref py py-obj docutils literal"><span class="pre">Segments</span></tt> by <tt class="docutils literal"><span class="pre">x</span></tt> seconds.</p>
 <p>This method adds <tt class="docutils literal"><span class="pre">x</span></tt> to each segment&#8217;s lower bound, and subtracts
 <tt class="docutils literal"><span class="pre">x</span></tt> from the upper bound.</p>
@@ -649,7 +650,7 @@ in place.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.copy">
-<tt class="descname">copy</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L531"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.copy" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L531"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build an exact copy of this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -667,13 +668,13 @@ in place.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.segments.DataQualityFlag.from_veto_def">
-<em class="property">classmethod </em><tt class="descname">from_veto_def</tt><big>(</big><em>veto</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.from_veto_def" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_veto_def</tt><big>(</big><em>veto</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.from_veto_def" title="Permalink to this definition">¶</a></dt>
 <dd><p>Define a new <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a> from a <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue/doc/glue.ligolw.lsctables.VetoDef.-class.html" title="Epydoc crossreference"><tt class="xref py py-class docutils literal"></tt></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.plot">
-<tt class="descname">plot</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L550"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L550"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -699,7 +700,7 @@ in place.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.populate">
-<tt class="descname">populate</tt><big>(</big><em>source='https://segdb.ligo.caltech.edu'</em>, <em>segments=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.populate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">populate</tt><big>(</big><em>source='https://segdb.ligo.caltech.edu'</em>, <em>segments=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.populate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the segment database for this flag&#8217;s active segments.</p>
 <p>This method assumes all of the metadata for each flag have been
 filled. Minimally, the following attributes must be filled</p>
@@ -753,7 +754,7 @@ existing valid segments for this flag will be used.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.protract">
-<tt class="descname">protract</tt><big>(</big><em>x</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L457"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.protract" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">protract</tt><big>(</big><em>x</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L457"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.protract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Protract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><tt class="xref py py-obj docutils literal"><span class="pre">active</span></tt></a> <tt class="xref py py-obj docutils literal"><span class="pre">Segments</span></tt> by <tt class="docutils literal"><span class="pre">x</span></tt> seconds.</p>
 <p>This method subtracts <tt class="docutils literal"><span class="pre">x</span></tt> from each segment&#8217;s lower bound,
 and adds <tt class="docutils literal"><span class="pre">x</span></tt> to the upper bound, while maintaining that each
@@ -776,7 +777,7 @@ in place.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.segments.DataQualityFlag.query">
-<em class="property">classmethod </em><tt class="descname">query</tt><big>(</big><em>flag</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">query</tt><big>(</big><em>flag</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the segment database for the given flag.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -904,7 +905,7 @@ The available built-in formats are:</p>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityFlag.round">
-<tt class="descname">round</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.round" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">round</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.round" title="Permalink to this definition">¶</a></dt>
 <dd><p>Round this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></tt></a> to integer segments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -965,7 +966,7 @@ padded out to the enclosing integer boundaries.</p>
 
 <dl class="class">
 <dt id="gwpy.segments.DataQualityDict">
-<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">DataQualityDict</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L673"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">DataQualityDict</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L673"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/collections.html#collections.OrderedDict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.OrderedDict</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">DataQualityDict</span>
 </pre></div>
@@ -1061,7 +1062,7 @@ its elements retain the order in which they were inserted.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.segments.DataQualityDict.from_veto_definer_file">
-<em class="property">classmethod </em><tt class="descname">from_veto_definer_file</tt><big>(</big><em>fp</em>, <em>start=None</em>, <em>end=None</em>, <em>ifo=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L807"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.from_veto_definer_file" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_veto_definer_file</tt><big>(</big><em>fp</em>, <em>start=None</em>, <em>end=None</em>, <em>ifo=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L807"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.from_veto_definer_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><tt class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></tt></a> from a LIGO_LW XML VetoDefinerTable.</p>
 </dd></dl>
 
@@ -1123,7 +1124,7 @@ is raised.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.DataQualityDict.populate">
-<tt class="descname">populate</tt><big>(</big><em>source='https://segdb.ligo.caltech.edu'</em>, <em>segments=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L844"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.populate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">populate</tt><big>(</big><em>source='https://segdb.ligo.caltech.edu'</em>, <em>segments=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L844"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.populate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the segment database for each flag&#8217;s active segments.</p>
 <p>This method assumes all of the metadata for each flag have been
 filled. Minimally, the following attributes must be filled</p>
@@ -1177,7 +1178,7 @@ existing valid segments for flags will be used.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.segments.DataQualityDict.query">
-<em class="property">classmethod </em><tt class="descname">query</tt><big>(</big><em>flags</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/flag.py#L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">query</tt><big>(</big><em>flags</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/flag.py#L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the segment database for a set of <tt class="xref py py-obj docutils literal"><span class="pre">DataQualityFlags</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1322,7 +1323,7 @@ In either case, this is followed by: for k, v in F.items(): D[k] = v</p>
 
 <dl class="class">
 <dt id="gwpy.segments.Segment">
-<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">Segment</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/segments.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.Segment" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">Segment</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/segments.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.Segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue/doc/glue.__segments.segment-class.html" title="Epydoc crossreference"><tt class="xref py py-class docutils literal"><span class="pre">glue.__segments.segment</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">Segment</span>
 </pre></div>
@@ -1479,7 +1480,7 @@ elements in it).</p>
 
 <dl class="class">
 <dt id="gwpy.segments.SegmentList">
-<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">SegmentList</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/segments.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">SegmentList</tt><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/segments.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue/doc/glue.__segments.segmentlist-class.html" title="Epydoc crossreference"><tt class="xref py py-class docutils literal"><span class="pre">glue.__segments.segmentlist</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">SegmentList</span>
 </pre></div>
@@ -1591,7 +1592,7 @@ arithmetic operators.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.SegmentList.coalesce">
-<tt class="descname">coalesce</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/segments.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">coalesce</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/segments.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n).</p>
 </dd></dl>
 
@@ -1810,7 +1811,7 @@ cmp(x, y) -&gt; -1, 0, 1</p>
 
 <dl class="class">
 <dt id="gwpy.segments.SegmentListDict">
-<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">SegmentListDict</tt><big>(</big><em>*args</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/segments/segments.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentListDict" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.segments.</tt><tt class="descname">SegmentListDict</tt><big>(</big><em>*args</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/segments/segments.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentListDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue/doc/glue.segments.segmentlistdict-class.html" title="Epydoc crossreference"><tt class="xref py py-class docutils literal"><span class="pre">glue.segments.segmentlistdict</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">SegmentListDict</span>
 </pre></div>

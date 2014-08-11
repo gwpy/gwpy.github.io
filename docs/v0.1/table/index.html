@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tabular data &mdash; GWpy 0.1a4 documentation</title>
+    <title>Tabular data &mdash; GWpy 0.1a7 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,12 +18,13 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a4',
+        VERSION:     '0.1a7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -33,7 +34,7 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
     <link rel="next" title="Plotting in GWpy (gwpy.plotter)" href="../plotter/index.html" />
     <link rel="prev" title="The StateTimeSeries and StateVector" href="../timeseries/statevector.html" />
 <meta charset='utf-8'>
@@ -55,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -124,6 +125,7 @@
 <li><a class="reference internal" href="#the-ligo-lw-xml-format">The <tt class="docutils literal"><span class="pre">LIGO_LW</span></tt> XML format</a></li>
 <li><a class="reference internal" href="#reading-ligo-lw-files">Reading <tt class="docutils literal"><span class="pre">LIGO_LW</span></tt> files</a></li>
 <li><a class="reference internal" href="#plotting-event-triggers">Plotting event triggers</a></li>
+<li><a class="reference internal" href="#plotting-event-tiles">Plotting event tiles</a></li>
 <li><a class="reference internal" href="#class-reference">Class reference</a></li>
 </ul>
 </li>
@@ -175,7 +177,8 @@ the other core data classes.
 For example, you can read a table of single-interferometer burst events as
 follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table.lsctables</span> <span class="kn">import</span> <span class="n">SnglBurstTable</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;../data/H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;../gwpy/tests/data/&#39;</span>
+<span class="go">                                 &#39;H1-LDAS_STRAIN-968654552-10.xml.gz&#39;)</span>
 </pre></div>
 </div>
 <p>For full details, check out the <tt class="xref py py-meth docutils literal"><span class="pre">read()</span></tt> documentation.</p>
@@ -202,7 +205,28 @@ number of classes.</p>
 <div class="line"><br /></div>
 </div>
 <p>These code snippets are part of the GWpy example on
-<a class="reference external" href="../examples/gw_ex_plot_event_triggers">plotting event triggers</a>.</p>
+<a class="reference internal" href="../examples/gw_ex_plot_event_triggers.html"><em>plotting event triggers</em></a>.</p>
+</div>
+<div class="section" id="plotting-event-tiles">
+<h2>Plotting event tiles<a class="headerlink" href="#plotting-event-tiles" title="Permalink to this headline">¶</a></h2>
+<p>Many types of event triggers define a 2-dimensional tile, for example in time and frequency.
+These tiles can be plotted in a similar manner to simple triggers.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">&#39;time&#39;</span><span class="p">,</span> <span class="s">&#39;central_freq&#39;</span><span class="p">,</span> <span class="s">&#39;duration&#39;</span><span class="p">,</span> <span class="s">&#39;bandwidth&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;snr&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">968654552</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654552</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;LIGO Hanford Observatory event triggers for GW100916&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Signal-to-noise ratio&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/gw_ex_plot_event_tiles.py">Source code</a>, <a class="reference external" href="../../examples/gw_ex_plot_event_tiles.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/gw_ex_plot_event_tiles1.png" src="../_images/gw_ex_plot_event_tiles1.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="class-reference">
 <h2>Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
@@ -371,7 +395,7 @@ number of classes.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.CoincDefTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_definer_coinc_def_id_class object at 0x109404130&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincDefTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_definer_coinc_def_id_class object at 0x108ba5248&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincDefTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -566,7 +590,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.CoincTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_event_coinc_event_id_class object at 0x1094041d8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_event_coinc_event_id_class object at 0x108ba52f0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -750,7 +774,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.CoincInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -977,7 +1001,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.CoincRingdownTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1382,7 +1406,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ExperimentSummaryTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_summary_experiment_summ_id_class object at 0x1093d7c58&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentSummaryTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_summary_experiment_summ_id_class object at 0x108b73a60&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentSummaryTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1617,7 +1641,7 @@ are not performed with injections.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ExperimentTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_experiment_id_class object at 0x1093d7be8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_experiment_id_class object at 0x108b739f0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1818,7 +1842,7 @@ If an entry already exists with these, will just return that id.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.FilterTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.filter_filter_id_class object at 0x1093d7ec0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.filter_filter_id_class object at 0x108b73fd8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1834,7 +1858,7 @@ If an entry already exists with these, will just return that id.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.FilterTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2053,7 +2077,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.GDSTriggerTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.gds_trigger_event_id_class object at 0x1091ed788&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.gds_trigger_event_id_class object at 0x108b73b08&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2069,7 +2093,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.GDSTriggerTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2294,7 +2318,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2359,7 +2383,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2396,7 +2420,7 @@ This value will be rounded up to the nearest sample if needed.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2713,7 +2737,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.multi_inspiral_event_id_class object at 0x1091ed5c8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.multi_inspiral_event_id_class object at 0x108b73c90&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2729,7 +2753,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2794,7 +2818,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2993,7 +3017,7 @@ row in the table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3219,7 +3243,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ProcessTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.process_process_id_class object at 0x1093d7408&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.process_process_id_class object at 0x10c0c1750&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3242,7 +3266,7 @@ program string equals the given program.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.ProcessTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3826,7 +3850,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SearchSummVarsTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.search_summvars_search_summvar_id_class object at 0x1093d7b40&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SearchSummVarsTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.search_summvars_search_summvar_id_class object at 0x108b73948&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SearchSummVarsTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3999,7 +4023,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimBurstTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_burst_simulation_id_class object at 0x1091ed4e8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_burst_simulation_id_class object at 0x108b73da8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4193,7 +4217,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_inspiral_simulation_id_class object at 0x1091ed590&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_inspiral_simulation_id_class object at 0x108b73d00&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4403,7 +4427,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimRingdownTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_ringdown_simulation_id_class object at 0x1093d7d00&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_ringdown_simulation_id_class object at 0x108b73e18&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4633,7 +4657,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglBurstTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_burst_event_id_class object at 0x1091ed750&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_burst_event_id_class object at 0x10e0c64b0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4649,7 +4673,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -4714,7 +4738,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4844,7 +4868,7 @@ table
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5161,7 +5185,7 @@ seglist</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_inspiral_event_id_class object at 0x1091ed6e0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_inspiral_event_id_class object at 0x108b73b78&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5177,7 +5201,7 @@ seglist</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5242,7 +5266,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5364,7 +5388,7 @@ a new table and fill it.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5619,7 +5643,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_ringdown_event_id_class object at 0x1091ed638&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_ringdown_event_id_class object at 0x108b73c20&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5635,7 +5659,7 @@ that lie within a given seglist.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5700,7 +5724,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/rate.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5742,7 +5766,7 @@ This value will be rounded up to the nearest sample if needed.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5953,7 +5977,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.StochasticTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochasticTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochasticTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6164,7 +6188,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.StochSummTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochSummTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochSummTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6383,7 +6407,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SummValueTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_value_summ_value_id_class object at 0x1093d7da8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_value_summ_value_id_class object at 0x108b73ec0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6399,7 +6423,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SummValueTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6618,7 +6642,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_segment_id_class object at 0x1093d7ef8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_segment_id_class object at 0x108ba5050&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6634,7 +6658,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SegmentTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6856,7 +6880,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentSumTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_summary_segment_sum_id_class object at 0x1093d7fd8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_summary_segment_sum_id_class object at 0x108ba5130&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6882,7 +6906,7 @@ contains the segments as they appear in the table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SegmentSumTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -7098,7 +7122,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentDefTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_definer_segment_def_id_class object at 0x1093d7f30&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentDefTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_definer_segment_def_id_class object at 0x10e0c6050&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentDefTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7266,7 +7290,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SummMimeTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_mime_summ_mime_id_class object at 0x1094042f0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_mime_summ_mime_id_class object at 0x108ba5408&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7282,7 +7306,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SummMimeTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -7656,7 +7680,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.TimeSlideTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.time_slide_time_slide_id_class object at 0x1094040c0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.TimeSlideTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.time_slide_time_slide_id_class object at 0x108ba51d8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.TimeSlideTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7885,7 +7909,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.VetoDefTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a4/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.VetoDefTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.VetoDefTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>GWpy Example: plotting a TimeSeries &mdash; GWpy 0.1a7 documentation</title>
+    <title>Filtering frequency-domain data &mdash; GWpy 0.1a7 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -35,6 +35,9 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
+    <link rel="up" title="The Spectrogram" href="../spectrogram/index.html" />
+    <link rel="next" title="Data-quality segments" href="../segments/index.html" />
+    <link rel="prev" title="The Spectrogram" href="../spectrogram/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -61,7 +64,7 @@
           <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             
-                <li><a href="index.html">Examples</a></li>
+                <li><a href="../examples/index.html">Examples</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -74,12 +77,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">How do I install GWpy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">What should I do first?</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <tt class="docutils literal"><span class="pre">Channel</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">The <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <tt class="docutils literal"><span class="pre">Spectrum</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The <tt class="docutils literal"><span class="pre">Spectrum</span></tt></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../spectrogram/index.html">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
 </ul>
 <ul>
@@ -119,15 +122,11 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">GWpy Example: plotting a <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a><ul>
-<li><a class="reference internal" href="#problem">Problem</a></li>
-<li><a class="reference internal" href="#solution">Solution</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Filtering frequency-domain data</a></li>
 </ul>
 
 <div id="sourcelink">
-  <a href="../_sources/examples/gw_ex_plot_timeseries.txt"
+  <a href="../_sources/spectrum/filtering.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../search.html" method="get">
@@ -141,46 +140,31 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="gwpy-example-plotting-a-timeseries">
-<h1>GWpy Example: plotting a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a><a class="headerlink" href="#gwpy-example-plotting-a-timeseries" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
-<p>I would like to study the gravitational wave strain time-series around
-the time of an interesting simulated signal during the last science run
-(S6).
-For this we can use a set of data public available
-<a class="reference external" href="http://www.ligo.org/science/GW100916/">here</a>.</p>
-</div>
-<div class="section" id="solution">
-<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
-<p>Since the data we are interested in are public, we can download the data
-as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://www.ligo.org/science/GW100916/L-strain_hp30-968654552-10.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>and can format them into a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> using <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.8)"><tt class="xref py py-obj docutils literal"><span class="pre">numpy</span></tt></a>, and by
-supplying our own metadata (which is all documented on the website):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">asarray</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">968654552</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16384</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s">&#39;strain&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we can make a plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;LIGO Livingston Observatory data for GW100916&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Gravitational-wave strain amplitude&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../../examples/gw_ex_plot_timeseries.py">Source code</a>, <a class="reference external" href="../../examples/gw_ex_plot_timeseries.png">png</a>)</p>
-<div class="figure">
-<img alt="../_images/gw_ex_plot_timeseries.png" src="../_images/gw_ex_plot_timeseries.png" />
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
+  <div class="section" id="filtering-frequency-domain-data">
+<h1>Filtering frequency-domain data<a class="headerlink" href="#filtering-frequency-domain-data" title="Permalink to this headline">¶</a></h1>
+<p>Frequency-domain data (a <a class="reference internal" href="index.html#gwpy.spectrum.Spectrum" title="gwpy.spectrum.Spectrum"><tt class="xref py py-class docutils literal"><span class="pre">Spectrum</span></tt></a> or a <a class="reference internal" href="../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></tt></a>) can be filtered using an arbitrary filter using the <tt class="xref py py-meth docutils literal"><span class="pre">filter()</span></tt> methods of those objects:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="index.html#gwpy.spectrum.Spectrum.filter" title="gwpy.spectrum.Spectrum.filter"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrum.filter</span></tt></a>(*filt,&nbsp;**kwargs)</td>
+<td>Apply the given filter to this <a class="reference internal" href="index.html#gwpy.spectrum.Spectrum" title="gwpy.spectrum.Spectrum"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../spectrogram/index.html#gwpy.spectrogram.Spectrogram.filter" title="gwpy.spectrogram.Spectrogram.filter"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram.filter</span></tt></a>(*filt,&nbsp;**kwargs)</td>
+<td>Apply the given filter to this <a class="reference internal" href="../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 

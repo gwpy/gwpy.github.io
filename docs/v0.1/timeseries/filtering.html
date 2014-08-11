@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Filtering a TimeSeries &mdash; GWpy 0.1a4 documentation</title>
+    <title>Filtering a TimeSeries &mdash; GWpy 0.1a7 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,12 +18,13 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a4',
+        VERSION:     '0.1a7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -33,7 +34,7 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a4 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
     <link rel="up" title="The TimeSeries" href="index.html" />
     <link rel="next" title="The StateTimeSeries and StateVector" href="statevector.html" />
     <link rel="prev" title="Reading publicly-available GW data" href="public-data.html" />
@@ -56,7 +57,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a4</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -123,6 +124,7 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Filtering a <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a><ul>
 <li><a class="reference internal" href="#bandpassing">Bandpassing</a></li>
+<li><a class="reference internal" href="#general-filtering">General filtering</a></li>
 </ul>
 </li>
 </ul>
@@ -143,27 +145,42 @@
     <div class="col-md-9">
       
   <div class="section" id="filtering-a-timeseries">
-<h1>Filtering a <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt><a class="headerlink" href="#filtering-a-timeseries" title="Permalink to this headline">¶</a></h1>
+<h1>Filtering a <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a><a class="headerlink" href="#filtering-a-timeseries" title="Permalink to this headline">¶</a></h1>
 <p>Much of the real-time control system of the LIGO interferometers is handled by monitoring and filtering time-series data.
 Additionally, in gravitational-wave analysis, the interesting frequency bands for a given search can be a sub-set of the full bandwidth of the instruments.
 In both cases it is required to apply time-domain filters to some data in order to extract the most useful information.</p>
 <div class="section" id="bandpassing">
 <h2>Bandpassing<a class="headerlink" href="#bandpassing" title="Permalink to this headline">¶</a></h2>
-<p>The following methods of the <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> provide functionality for band-passing data:</p>
+<p>The following methods of the <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> provide functionality for band-passing data:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.lowpass</span></tt>(*args,&nbsp;**kwargs)</td>
-<td>Filter this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> with a Butterworth low-pass filter.</td>
+<tr class="row-odd"><td><a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.lowpass</span></tt></a>(frequency[,&nbsp;numtaps,&nbsp;window])</td>
+<td>Filter this <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> with a Butterworth low-pass filter.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.highpass</span></tt>(*args,&nbsp;**kwargs)</td>
-<td>Filter this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> with a Butterworth high-pass filter.</td>
+<tr class="row-even"><td><a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.highpass</span></tt></a>(frequency[,&nbsp;numtaps,&nbsp;window])</td>
+<td>Filter this <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> with a Butterworth high-pass filter.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.bandpass</span></tt>(*args,&nbsp;**kwargs)</td>
-<td>Filter this <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></tt> by applying both low- and high-pass filters.</td>
+<tr class="row-odd"><td><a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries.bandpass" title="gwpy.timeseries.TimeSeries.bandpass"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.bandpass</span></tt></a>(flow,&nbsp;fhigh[,&nbsp;lowtaps,&nbsp;...])</td>
+<td>Filter this <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> by applying both low- and high-pass filters.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="general-filtering">
+<h2>General filtering<a class="headerlink" href="#general-filtering" title="Permalink to this headline">¶</a></h2>
+<p>While the above methods provide an easy way to remove unwanted frequency information, the <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><tt class="xref py py-meth docutils literal"><span class="pre">filter()</span></tt></a> method provides a way to apply a generic filter to any <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> data:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries.filter</span></tt></a>(*filt)</td>
+<td>Apply the given filter to this <a class="reference internal" href="index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a>.</td>
 </tr>
 </tbody>
 </table>
