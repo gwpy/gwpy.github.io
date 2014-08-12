@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Visualising filters (BodePlot) &mdash; GWpy 0.1a7 documentation</title>
+    <title>Visualising filters (BodePlot) &mdash; GWpy 0.1a9 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a7',
+        VERSION:     '0.1a9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,7 +34,10 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1a9 documentation" href="../index.html" />
+    <link rel="up" title="Plotting in GWpy (gwpy.plotter)" href="index.html" />
+    <link rel="next" title="Plotting API" href="api.html" />
+    <link rel="prev" title="Plotting in GWpy (gwpy.plotter)" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -54,7 +57,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a9</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -86,8 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <tt class="docutils literal"><span class="pre">StateTimeSeries</span></tt> and <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
 </ul>
 <ul class="simple">
 </ul>
@@ -138,17 +141,23 @@
     <div class="col-md-9">
       
   <div class="section" id="visualising-filters-bodeplot">
-<h1>Visualising filters (<tt class="xref py py-class docutils literal"><span class="pre">BodePlot</span></tt>)<a class="headerlink" href="#visualising-filters-bodeplot" title="Permalink to this headline">¶</a></h1>
-<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <tt class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></tt> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass applied to a signal recorded at 256 Hertz:</p>
+<h1>Visualising filters (<a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><tt class="xref py py-class docutils literal"><span class="pre">BodePlot</span></tt></a>)<a class="headerlink" href="#visualising-filters-bodeplot" title="Permalink to this headline">¶</a></h1>
+<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><tt class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></tt></a> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass filter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">highpass</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">),</span> <span class="n">btype</span><span class="o">=</span><span class="s">&#39;highpass&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">highpass</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">highpass</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">signal</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="n">btype</span><span class="o">=</span><span class="s">&#39;highpass&#39;</span><span class="p">,</span>
+<span class="go">                             analog=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">highpass</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;10\,Hz high-pass filter&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../plotter/filter-1.py">Source code</a>, <a class="reference external" href="../plotter/filter-1.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/gw_ex_bode_plot.py">Source code</a>, <a class="reference external" href="../../examples/gw_ex_bode_plot.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/filter-1.png" src="../_images/filter-1.png" />
+<img alt="../_images/gw_ex_bode_plot.png" src="../_images/gw_ex_bode_plot.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
 

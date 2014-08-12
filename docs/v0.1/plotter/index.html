@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting in GWpy (gwpy.plotter) &mdash; GWpy 0.1a7 documentation</title>
+    <title>Plotting in GWpy (gwpy.plotter) &mdash; GWpy 0.1a9 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a7',
+        VERSION:     '0.1a9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,9 +34,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
-    <link rel="next" title="Plotting API" href="api.html" />
-    <link rel="prev" title="Tabular data" href="../table/index.html" />
+    <link rel="top" title="GWpy 0.1a9 documentation" href="../index.html" />
+    <link rel="next" title="Visualising filters (BodePlot)" href="filter.html" />
+    <link rel="prev" title="Data table histograms" href="../table/histogram.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a9</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -189,23 +189,29 @@ more complicated plots manually:</p>
 <p>The following diagram displays the available Plot objects and their
 inheritance from <a class="reference internal" href="api.html#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-class docutils literal"><span class="pre">Plot</span></tt></a>.</p>
 <p class="graphviz">
-<img src="../_images/inheritance-bb9caadcd3765d974039a3bc8c663728105b2968.png" alt="Inheritance diagram of core, timeseries, spectrum, spectrogram, table, filter" usemap="#inheritance0025e4d236" class="inheritance"/>
+<img src="../_images/inheritance-a04cfed3b0ecca3ef3f94133e664b536ca61e60a.png" alt="Inheritance diagram of core, timeseries, spectrum, spectrogram, table, filter" usemap="#inheritance0025e4d236" class="inheritance"/>
 <map id="inheritance0025e4d236" name="inheritance0025e4d236">
-<area shape="rect" id="node1" title="An extension of the core matplotlib :class:`~matplotlib.axes.Axes`." alt="" coords="195,93,290,109"/>
-<area shape="rect" id="node8" title="Custom `Axes` for a :class:`~gwpy.plotter.SpectrumPlot`." alt="" coords="3,138,150,154"/>
-<area shape="rect" id="node11" title="Custom `Axes` for a :class:`~gwpy.plotter.TimeSeriesPlot`." alt="" coords="165,138,320,154"/>
-<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="254,48,342,64"/>
-<area shape="rect" id="node3" title="An extension of the core matplotlib :class:`~matplotlib.figure.Figure`." alt="" coords="416,93,506,109"/>
-<area shape="rect" id="node5" title="A `Plot` class for visualising transfer functions." alt="" coords="335,138,442,154"/>
-<area shape="rect" id="node7" title="`Figure` for displaying a :class:`~gwpy.timeseries.core.TimeSeries`." alt="" coords="457,138,609,154"/>
-<area shape="rect" id="node9" title="`Figure` for displaying a :class:`~gwpy.spectrum.core.Spectrum`." alt="" coords="623,138,765,154"/>
-<area shape="rect" id="node4" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="385,48,479,64"/>
-<area shape="rect" id="node6" title="`Figure` for displaying a :class:`~gwpy.spectrogram.core.Spectrogram`." alt="" coords="387,183,551,199"/>
-<area shape="rect" id="node12" title="`Figure` for displaying a :class:`~glue.ligolw.table.Table`." alt="" coords="566,183,695,199"/>
-<area shape="rect" id="node10" title="Custom `Axes` for an :class:`~gwpy.plotter.EventTablePlot`." alt="" coords="175,183,310,199"/>
-<area shape="rect" id="node13" title="Abstract base class for someone who renders into a" alt="" coords="320,3,410,19"/>
+<area shape="rect" id="node1" title="An extension of the core matplotlib :class:`~matplotlib.axes.Axes`." alt="" coords="192,92,286,107"/>
+<area shape="rect" id="node8" title="Custom `Axes` for a :class:`~gwpy.plotter.SpectrumPlot`." alt="" coords="3,136,147,151"/>
+<area shape="rect" id="node11" title="Custom `Axes` for a :class:`~gwpy.plotter.TimeSeriesPlot`." alt="" coords="162,136,315,151"/>
+<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="285,47,372,63"/>
+<area shape="rect" id="node3" title="An extension of the core matplotlib :class:`~matplotlib.figure.Figure`." alt="" coords="480,92,569,107"/>
+<area shape="rect" id="node5" title="A `Plot` class for visualising transfer functions." alt="" coords="330,136,435,151"/>
+<area shape="rect" id="node7" title="`Figure` for displaying a :class:`~gwpy.timeseries.core.TimeSeries`." alt="" coords="450,136,599,151"/>
+<area shape="rect" id="node9" title="`Figure` for displaying a :class:`~gwpy.spectrum.core.Spectrum`." alt="" coords="613,136,753,151"/>
+<area shape="rect" id="node12" title="`Figure` for displaying a :class:`~glue.ligolw.table.Table`." alt="" coords="619,180,746,196"/>
+<area shape="rect" id="node4" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="432,47,525,63"/>
+<area shape="rect" id="node6" title="`Figure` for displaying a :class:`~gwpy.spectrogram.core.Spectrogram`." alt="" coords="444,180,605,196"/>
+<area shape="rect" id="node10" title="Custom `Axes` for an :class:`~gwpy.plotter.EventTablePlot`." alt="" coords="173,180,305,196"/>
+<area shape="rect" id="node13" title="Abstract base class for someone who renders into a" alt="" coords="359,3,448,19"/>
 </map>
 </p>
+<p>The following pages outline specific applications of some of the specialist plot types</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Visualising filters (<tt class="docutils literal"><span class="pre">BodePlot</span></tt>)</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="class-reference">
 <h2>Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>

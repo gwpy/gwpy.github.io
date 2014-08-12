@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Worked examples &mdash; GWpy 0.1a9 documentation</title>
+    <title>Data table histograms &mdash; GWpy 0.1a9 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -35,6 +35,9 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="top" title="GWpy 0.1a9 documentation" href="../index.html" />
+    <link rel="up" title="Tabular data" href="index.html" />
+    <link rel="next" title="Plotting in GWpy (gwpy.plotter)" href="../plotter/index.html" />
+    <link rel="prev" title="Calculating event trigger rate" href="rate.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -61,7 +64,7 @@
           <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             
-                <li><a href="#">Examples</a></li>
+                <li><a href="../examples/index.html">Examples</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -82,9 +85,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <tt class="docutils literal"><span class="pre">StateTimeSeries</span></tt> and <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tabular data</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
@@ -119,11 +122,11 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Worked examples</a></li>
+<li><a class="reference internal" href="#">Data table histograms</a></li>
 </ul>
 
 <div id="sourcelink">
-  <a href="../_sources/examples/index.txt"
+  <a href="../_sources/table/histogram.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../search.html" method="get">
@@ -137,30 +140,29 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="worked-examples">
-<h1>Worked examples<a class="headerlink" href="#worked-examples" title="Permalink to this headline">¶</a></h1>
-<p>GWpy is package with a set of worked examples, providing step-by-step tutorials on how to use the GWpy package to study data from gravitational-wave detectors.</p>
-<p>The examples are provided in the <tt class="docutils literal"><span class="pre">examples/</span></tt> directory of the git repository, as <tt class="docutils literal"><span class="pre">.py</span></tt> files, runnable from your console, e.g.:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>examples
-python gw_ex_plot_timeseries.py
+  <div class="section" id="data-table-histograms">
+<h1>Data table histograms<a class="headerlink" href="#data-table-histograms" title="Permalink to this headline">¶</a></h1>
+<p>One can easily generate a histogram of a tabular data using the :meth`hist` instance method.
+For example, as defined for the <tt class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></tt>:</p>
+<p>Following the worked example on <a class="reference internal" href="../examples/gw_ex_plot_event_histogram.html"><em>plotting an event table histogram</em></a> we can study the cumulative distribution of event signal-to-noise ratio:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table.lsctables</span> <span class="kn">import</span> <span class="n">SnglBurstTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;../gwpy/tests/data/&#39;</span>
+<span class="go">                                 &#39;H1-LDAS_STRAIN-968654552-10.xml.gz&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s">&#39;snr&#39;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">10.</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logbins</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="go">                       histtype=&#39;stepfilled&#39;, cumulative=-1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Signal-to-noise ratio (SNR)&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Rate [Hz]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;LHO event triggers for GW100916&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="../install.html">the installation instructions</a> for details on how to clone the repository.</p>
-<p><strong>Simple examples</strong></p>
-<p>The following examples outline a</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_timeseries.html">GWpy Example: plotting a <tt class="docutils literal"><span class="pre">TimeSeries</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_compare_spectra.html">GWpy Example: comparing a channel&#8217;s <tt class="docutils literal"><span class="pre">Spectrum</span></tt> between two times</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_spectrogram.html">GWpy Example: plotting a <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_median_spectrogram.html">GWpy Example: plotting a whitened <tt class="docutils literal"><span class="pre">Spectrogram</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_statevector.html">GWpy Example: plotting a <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_transfer_function.html">GWpy Example: measuring a transfer function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gw_ex_plot_event_triggers.html">GWpy Example: plotting event triggers</a></li>
-</ul>
+<p>(<a class="reference external" href="../../examples/gw_ex_plot_event_histogram.py">Source code</a>, <a class="reference external" href="../../examples/gw_ex_plot_event_histogram.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/gw_ex_plot_event_histogram1.png" src="../_images/gw_ex_plot_event_histogram1.png" />
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Here we have given <tt class="docutils literal"><span class="pre">cumulative=-1</span></tt> in order to generate an inverse cumulative histogram (each value of SNR counts the rate of events with that SNR and above).</p>
 </div>
 </div>
 

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tabular data &mdash; GWpy 0.1a7 documentation</title>
+    <title>Tabular data &mdash; GWpy 0.1a9 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a7',
+        VERSION:     '0.1a9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -34,8 +34,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a7 documentation" href="../index.html" />
-    <link rel="next" title="Plotting in GWpy (gwpy.plotter)" href="../plotter/index.html" />
+    <link rel="top" title="GWpy 0.1a9 documentation" href="../index.html" />
+    <link rel="next" title="Calculating event trigger rate" href="rate.html" />
     <link rel="prev" title="The StateTimeSeries and StateVector" href="../timeseries/statevector.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a7</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1a9</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -126,6 +126,7 @@
 <li><a class="reference internal" href="#reading-ligo-lw-files">Reading <tt class="docutils literal"><span class="pre">LIGO_LW</span></tt> files</a></li>
 <li><a class="reference internal" href="#plotting-event-triggers">Plotting event triggers</a></li>
 <li><a class="reference internal" href="#plotting-event-tiles">Plotting event tiles</a></li>
+<li><a class="reference internal" href="#table-applications">Table applications</a></li>
 <li><a class="reference internal" href="#class-reference">Class reference</a></li>
 </ul>
 </li>
@@ -224,8 +225,16 @@ These tiles can be plotted in a similar manner to simple triggers.</p>
 <div class="figure">
 <img alt="../_images/gw_ex_plot_event_tiles1.png" src="../_images/gw_ex_plot_event_tiles1.png" />
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
+</div>
+<div class="section" id="table-applications">
+<h2>Table applications<a class="headerlink" href="#table-applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rate.html">Calculating event trigger rate</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="histogram.html">Data table histograms</a></li>
+</ul>
 </div>
 </div>
 <div class="section" id="class-reference">
@@ -395,7 +404,7 @@ These tiles can be plotted in a similar manner to simple triggers.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.CoincDefTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_definer_coinc_def_id_class object at 0x108ba5248&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincDefTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_definer_coinc_def_id_class object at 0x112507fa0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincDefTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -590,7 +599,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.CoincTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_event_coinc_event_id_class object at 0x108ba52f0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.coinc_event_coinc_event_id_class object at 0x112536088&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.CoincTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -742,10 +751,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="gwpy.table.lsctables.CoincInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable.hist" title="gwpy.table.lsctables.CoincInspiralTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="gwpy.table.lsctables.CoincInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable.read" title="gwpy.table.lsctables.CoincInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable.read" title="gwpy.table.lsctables.CoincInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.CoincInspiralTable" title="gwpy.table.lsctables.CoincInspiralTable"><tt class="xref py py-obj docutils literal"><span class="pre">CoincInspiralTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -773,8 +785,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.CoincInspiralTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincInspiralTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.CoincInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -814,7 +854,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -969,10 +1009,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="gwpy.table.lsctables.CoincRingdownTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable.hist" title="gwpy.table.lsctables.CoincRingdownTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="gwpy.table.lsctables.CoincRingdownTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable.read" title="gwpy.table.lsctables.CoincRingdownTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable.read" title="gwpy.table.lsctables.CoincRingdownTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.CoincRingdownTable" title="gwpy.table.lsctables.CoincRingdownTable"><tt class="xref py py-obj docutils literal"><span class="pre">CoincRingdownTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -1000,8 +1043,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.CoincRingdownTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincRingdownTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.CoincRingdownTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.CoincRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1041,7 +1112,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -1406,7 +1477,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ExperimentSummaryTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_summary_experiment_summ_id_class object at 0x108b73a60&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentSummaryTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_summary_experiment_summ_id_class object at 0x1125077f8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentSummaryTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1641,7 +1712,7 @@ are not performed with injections.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ExperimentTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_experiment_id_class object at 0x108b739f0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.experiment_experiment_id_class object at 0x112507788&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ExperimentTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1826,10 +1897,13 @@ If an entry already exists with these, will just return that id.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.FilterTable.plot" title="gwpy.table.lsctables.FilterTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.FilterTable.hist" title="gwpy.table.lsctables.FilterTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.FilterTable.plot" title="gwpy.table.lsctables.FilterTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.FilterTable.read" title="gwpy.table.lsctables.FilterTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.FilterTable.read" title="gwpy.table.lsctables.FilterTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.FilterTable" title="gwpy.table.lsctables.FilterTable"><tt class="xref py py-obj docutils literal"><span class="pre">FilterTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -1842,7 +1916,7 @@ If an entry already exists with these, will just return that id.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.FilterTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.filter_filter_id_class object at 0x108b73fd8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.filter_filter_id_class object at 0x112507d70&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1857,8 +1931,36 @@ If an entry already exists with these, will just return that id.</p>
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.FilterTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.FilterTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.FilterTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1898,7 +2000,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -2056,10 +2158,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="gwpy.table.lsctables.GDSTriggerTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable.hist" title="gwpy.table.lsctables.GDSTriggerTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="gwpy.table.lsctables.GDSTriggerTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable.read" title="gwpy.table.lsctables.GDSTriggerTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable.read" title="gwpy.table.lsctables.GDSTriggerTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.GDSTriggerTable" title="gwpy.table.lsctables.GDSTriggerTable"><tt class="xref py py-obj docutils literal"><span class="pre">GDSTriggerTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -2077,7 +2182,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.GDSTriggerTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.gds_trigger_event_id_class object at 0x108b73b08&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.gds_trigger_event_id_class object at 0x1125078a0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2092,8 +2197,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.GDSTriggerTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.GDSTriggerTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.GDSTriggerTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2133,7 +2266,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -2291,10 +2424,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.event_rate" title="gwpy.table.lsctables.MultiBurstTable.event_rate"><tt class="xref py py-obj docutils literal"><span class="pre">event_rate</span></tt></a>(stride[,&nbsp;start,&nbsp;end,&nbsp;timecolumn])</td>
 <td>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="gwpy.table.lsctables.MultiBurstTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.hist" title="gwpy.table.lsctables.MultiBurstTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="gwpy.table.lsctables.MultiBurstTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.read" title="gwpy.table.lsctables.MultiBurstTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable.read" title="gwpy.table.lsctables.MultiBurstTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.MultiBurstTable" title="gwpy.table.lsctables.MultiBurstTable"><tt class="xref py py-obj docutils literal"><span class="pre">MultiBurstTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -2318,7 +2454,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2383,7 +2519,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2419,8 +2555,36 @@ This value will be rounded up to the nearest sample if needed.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.MultiBurstTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.MultiBurstTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiBurstTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2460,7 +2624,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -2705,16 +2869,19 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.getstat" title="gwpy.table.lsctables.MultiInspiralTable.getstat"><tt class="xref py py-obj docutils literal"><span class="pre">getstat</span></tt></a>()</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="gwpy.table.lsctables.MultiInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.hist" title="gwpy.table.lsctables.MultiInspiralTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="gwpy.table.lsctables.MultiInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.read" title="gwpy.table.lsctables.MultiInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.read" title="gwpy.table.lsctables.MultiInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable" title="gwpy.table.lsctables.MultiInspiralTable"><tt class="xref py py-obj docutils literal"><span class="pre">MultiInspiralTable</span></tt></a>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.veto" title="gwpy.table.lsctables.MultiInspiralTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.veto" title="gwpy.table.lsctables.MultiInspiralTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.vetoed" title="gwpy.table.lsctables.MultiInspiralTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.MultiInspiralTable.vetoed" title="gwpy.table.lsctables.MultiInspiralTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
 <td>Return the inverse of what veto returns, i.e., return the triggers that lie within a given seglist.</td>
 </tr>
 </tbody>
@@ -2737,7 +2904,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.multi_inspiral_event_id_class object at 0x108b73c90&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.multi_inspiral_event_id_class object at 0x112507a28&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2753,7 +2920,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2818,7 +2985,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3016,8 +3183,36 @@ row in the table.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.MultiInspiralTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.MultiInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.MultiInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3057,7 +3252,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -3227,10 +3422,13 @@ that lie within a given seglist.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.get_ids_by_program" title="gwpy.table.lsctables.ProcessTable.get_ids_by_program"><tt class="xref py py-obj docutils literal"><span class="pre">get_ids_by_program</span></tt></a>(program)</td>
 <td>Return a set containing the process IDs from rows whose program string equals the given program.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.plot" title="gwpy.table.lsctables.ProcessTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.hist" title="gwpy.table.lsctables.ProcessTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.plot" title="gwpy.table.lsctables.ProcessTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.read" title="gwpy.table.lsctables.ProcessTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.ProcessTable.read" title="gwpy.table.lsctables.ProcessTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.ProcessTable" title="gwpy.table.lsctables.ProcessTable"><tt class="xref py py-obj docutils literal"><span class="pre">ProcessTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -3243,7 +3441,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.ProcessTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.process_process_id_class object at 0x10c0c1750&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.process_process_id_class object at 0x1124f0f68&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3265,8 +3463,36 @@ program string equals the given program.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.ProcessTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.ProcessTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.ProcessTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3306,7 +3532,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -3850,7 +4076,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SearchSummVarsTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.search_summvars_search_summvar_id_class object at 0x108b73948&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SearchSummVarsTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.search_summvars_search_summvar_id_class object at 0x1125076e0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SearchSummVarsTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4023,7 +4249,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimBurstTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_burst_simulation_id_class object at 0x108b73da8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_burst_simulation_id_class object at 0x112507b40&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4217,7 +4443,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_inspiral_simulation_id_class object at 0x108b73d00&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_inspiral_simulation_id_class object at 0x112507a98&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4427,7 +4653,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SimRingdownTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_ringdown_simulation_id_class object at 0x108b73e18&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sim_ringdown_simulation_id_class object at 0x112507bb0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SimRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4582,10 +4808,10 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="gwpy.table.lsctables.SnglBurstTable.binned_event_rates"><tt class="xref py py-obj docutils literal"><span class="pre">binned_event_rates</span></tt></a>(stride,&nbsp;column,&nbsp;bins[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="rate.html#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="gwpy.table.lsctables.SnglBurstTable.binned_event_rates"><tt class="xref py py-obj docutils literal"><span class="pre">binned_event_rates</span></tt></a>(stride,&nbsp;column,&nbsp;bins[,&nbsp;...])</td>
 <td>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over a number of bins.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.event_rate" title="gwpy.table.lsctables.SnglBurstTable.event_rate"><tt class="xref py py-obj docutils literal"><span class="pre">event_rate</span></tt></a>(stride[,&nbsp;start,&nbsp;end,&nbsp;timecolumn])</td>
+<tr class="row-even"><td><a class="reference internal" href="rate.html#gwpy.table.lsctables.SnglBurstTable.event_rate" title="gwpy.table.lsctables.SnglBurstTable.event_rate"><tt class="xref py py-obj docutils literal"><span class="pre">event_rate</span></tt></a>(stride[,&nbsp;start,&nbsp;end,&nbsp;timecolumn])</td>
 <td>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.get_band" title="gwpy.table.lsctables.SnglBurstTable.get_band"><tt class="xref py py-obj docutils literal"><span class="pre">get_band</span></tt></a>()</td>
@@ -4624,22 +4850,25 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.get_z" title="gwpy.table.lsctables.SnglBurstTable.get_z"><tt class="xref py py-obj docutils literal"><span class="pre">get_z</span></tt></a>()</td>
 <td>&#64;returns: the Z (Omega-Pipeline energy) of each row in the</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="gwpy.table.lsctables.SnglBurstTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.hist" title="gwpy.table.lsctables.SnglBurstTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="gwpy.table.lsctables.SnglBurstTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.read" title="gwpy.table.lsctables.SnglBurstTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.read" title="gwpy.table.lsctables.SnglBurstTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable" title="gwpy.table.lsctables.SnglBurstTable"><tt class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></tt></a>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.veto" title="gwpy.table.lsctables.SnglBurstTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.veto" title="gwpy.table.lsctables.SnglBurstTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
 <td>&#64;returns: those rows of the table that don&#8217;t lie within a</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.veto_seglistdict" title="gwpy.table.lsctables.SnglBurstTable.veto_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">veto_seglistdict</span></tt></a>(seglistdict)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.veto_seglistdict" title="gwpy.table.lsctables.SnglBurstTable.veto_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">veto_seglistdict</span></tt></a>(seglistdict)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.vetoed" title="gwpy.table.lsctables.SnglBurstTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.vetoed" title="gwpy.table.lsctables.SnglBurstTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
 <td>&#64;returns: those rows of the table that lie within a given</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.vetoed_seglistdict" title="gwpy.table.lsctables.SnglBurstTable.vetoed_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed_seglistdict</span></tt></a>(seglistdict)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglBurstTable.vetoed_seglistdict" title="gwpy.table.lsctables.SnglBurstTable.vetoed_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed_seglistdict</span></tt></a>(seglistdict)</td>
 <td></td>
 </tr>
 </tbody>
@@ -4657,7 +4886,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglBurstTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_burst_event_id_class object at 0x10e0c64b0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_burst_event_id_class object at 0x1125078d8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4673,7 +4902,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -4738,7 +4967,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4867,8 +5096,36 @@ table
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.SnglBurstTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SnglBurstTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglBurstTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4908,7 +5165,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -5146,28 +5403,31 @@ seglist</p>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.getslide" title="gwpy.table.lsctables.SnglInspiralTable.getslide"><tt class="xref py py-obj docutils literal"><span class="pre">getslide</span></tt></a>(slide_num)</td>
 <td>Return the triggers with a specific slide number.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.ifocut" title="gwpy.table.lsctables.SnglInspiralTable.ifocut"><tt class="xref py py-obj docutils literal"><span class="pre">ifocut</span></tt></a>(ifo[,&nbsp;inplace])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.hist" title="gwpy.table.lsctables.SnglInspiralTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.ifocut" title="gwpy.table.lsctables.SnglInspiralTable.ifocut"><tt class="xref py py-obj docutils literal"><span class="pre">ifocut</span></tt></a>(ifo[,&nbsp;inplace])</td>
 <td>Return a SnglInspiralTable with rows from self having IFO equal to the given ifo.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="gwpy.table.lsctables.SnglInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="gwpy.table.lsctables.SnglInspiralTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.read" title="gwpy.table.lsctables.SnglInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.read" title="gwpy.table.lsctables.SnglInspiralTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable" title="gwpy.table.lsctables.SnglInspiralTable"><tt class="xref py py-obj docutils literal"><span class="pre">SnglInspiralTable</span></tt></a>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.updateKeyMapping" title="gwpy.table.lsctables.SnglInspiralTable.updateKeyMapping"><tt class="xref py py-obj docutils literal"><span class="pre">updateKeyMapping</span></tt></a>(mapping)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.updateKeyMapping" title="gwpy.table.lsctables.SnglInspiralTable.updateKeyMapping"><tt class="xref py py-obj docutils literal"><span class="pre">updateKeyMapping</span></tt></a>(mapping)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.veto" title="gwpy.table.lsctables.SnglInspiralTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.veto" title="gwpy.table.lsctables.SnglInspiralTable.veto"><tt class="xref py py-obj docutils literal"><span class="pre">veto</span></tt></a>(seglist)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.veto_seglistdict" title="gwpy.table.lsctables.SnglInspiralTable.veto_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">veto_seglistdict</span></tt></a>(seglistdict)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.veto_seglistdict" title="gwpy.table.lsctables.SnglInspiralTable.veto_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">veto_seglistdict</span></tt></a>(seglistdict)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.vetoed" title="gwpy.table.lsctables.SnglInspiralTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.vetoed" title="gwpy.table.lsctables.SnglInspiralTable.vetoed"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed</span></tt></a>(seglist)</td>
 <td>Return the inverse of what veto returns, i.e., return the triggers that lie within a given seglist.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.vetoed_seglistdict" title="gwpy.table.lsctables.SnglInspiralTable.vetoed_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed_seglistdict</span></tt></a>(seglistdict)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglInspiralTable.vetoed_seglistdict" title="gwpy.table.lsctables.SnglInspiralTable.vetoed_seglistdict"><tt class="xref py py-obj docutils literal"><span class="pre">vetoed_seglistdict</span></tt></a>(seglistdict)</td>
 <td></td>
 </tr>
 </tbody>
@@ -5185,7 +5445,7 @@ seglist</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_inspiral_event_id_class object at 0x108b73b78&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_inspiral_event_id_class object at 0x112507910&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5201,7 +5461,7 @@ seglist</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5266,7 +5526,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5379,6 +5639,34 @@ This value will be rounded up to the nearest sample if needed.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.SnglInspiralTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.ifocut">
 <tt class="descname">ifocut</tt><big>(</big><em>ifo</em>, <em>inplace=False</em><big>)</big><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.ifocut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a SnglInspiralTable with rows from self having IFO equal
@@ -5388,7 +5676,7 @@ a new table and fill it.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglInspiralTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglInspiralTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5428,7 +5716,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -5622,10 +5910,13 @@ that lie within a given seglist.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.get_start" title="gwpy.table.lsctables.SnglRingdownTable.get_start"><tt class="xref py py-obj docutils literal"><span class="pre">get_start</span></tt></a>()</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="gwpy.table.lsctables.SnglRingdownTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.hist" title="gwpy.table.lsctables.SnglRingdownTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="gwpy.table.lsctables.SnglRingdownTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.read" title="gwpy.table.lsctables.SnglRingdownTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable.read" title="gwpy.table.lsctables.SnglRingdownTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SnglRingdownTable" title="gwpy.table.lsctables.SnglRingdownTable"><tt class="xref py py-obj docutils literal"><span class="pre">SnglRingdownTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -5643,7 +5934,7 @@ that lie within a given seglist.</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_ringdown_event_id_class object at 0x108b73c20&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.sngl_ringdown_event_id_class object at 0x1125079b8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -5659,7 +5950,7 @@ that lie within a given seglist.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.binned_event_rates">
-<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">binned_event_rates</tt><big>(</big><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5724,7 +6015,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.event_rate">
-<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">event_rate</tt><big>(</big><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/rate.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> for this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5765,8 +6056,36 @@ This value will be rounded up to the nearest sample if needed.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.SnglRingdownTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SnglRingdownTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SnglRingdownTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5806,7 +6125,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -5955,10 +6274,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochasticTable.plot" title="gwpy.table.lsctables.StochasticTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochasticTable.hist" title="gwpy.table.lsctables.StochasticTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.StochasticTable.plot" title="gwpy.table.lsctables.StochasticTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.StochasticTable.read" title="gwpy.table.lsctables.StochasticTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochasticTable.read" title="gwpy.table.lsctables.StochasticTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.StochasticTable" title="gwpy.table.lsctables.StochasticTable"><tt class="xref py py-obj docutils literal"><span class="pre">StochasticTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -5976,8 +6298,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.StochasticTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochasticTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.StochasticTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochasticTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochasticTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6017,7 +6367,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -6166,10 +6516,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochSummTable.plot" title="gwpy.table.lsctables.StochSummTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochSummTable.hist" title="gwpy.table.lsctables.StochSummTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.StochSummTable.plot" title="gwpy.table.lsctables.StochSummTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.StochSummTable.read" title="gwpy.table.lsctables.StochSummTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.StochSummTable.read" title="gwpy.table.lsctables.StochSummTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.StochSummTable" title="gwpy.table.lsctables.StochSummTable"><tt class="xref py py-obj docutils literal"><span class="pre">StochSummTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -6187,8 +6540,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.StochSummTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochSummTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.StochSummTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochSummTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.StochSummTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6228,7 +6609,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -6386,10 +6767,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummValueTable.plot" title="gwpy.table.lsctables.SummValueTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummValueTable.hist" title="gwpy.table.lsctables.SummValueTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SummValueTable.plot" title="gwpy.table.lsctables.SummValueTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SummValueTable.read" title="gwpy.table.lsctables.SummValueTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummValueTable.read" title="gwpy.table.lsctables.SummValueTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SummValueTable" title="gwpy.table.lsctables.SummValueTable"><tt class="xref py py-obj docutils literal"><span class="pre">SummValueTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -6407,7 +6791,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SummValueTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_value_summ_value_id_class object at 0x108b73ec0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_value_summ_value_id_class object at 0x112507c58&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6422,8 +6806,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.SummValueTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SummValueTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummValueTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6463,7 +6875,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -6621,10 +7033,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentTable.plot" title="gwpy.table.lsctables.SegmentTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentTable.hist" title="gwpy.table.lsctables.SegmentTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentTable.plot" title="gwpy.table.lsctables.SegmentTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentTable.read" title="gwpy.table.lsctables.SegmentTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentTable.read" title="gwpy.table.lsctables.SegmentTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SegmentTable" title="gwpy.table.lsctables.SegmentTable"><tt class="xref py py-obj docutils literal"><span class="pre">SegmentTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -6642,7 +7057,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_segment_id_class object at 0x108ba5050&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_segment_id_class object at 0x112507da8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6657,8 +7072,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.SegmentTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SegmentTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6698,7 +7141,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -6859,10 +7302,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.get" title="gwpy.table.lsctables.SegmentSumTable.get"><tt class="xref py py-obj docutils literal"><span class="pre">get</span></tt></a>([segment_def_id])</td>
 <td>Return a segmentlist object describing the times spanned by the segments carrying the given segment_def_id.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="gwpy.table.lsctables.SegmentSumTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.hist" title="gwpy.table.lsctables.SegmentSumTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="gwpy.table.lsctables.SegmentSumTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.read" title="gwpy.table.lsctables.SegmentSumTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable.read" title="gwpy.table.lsctables.SegmentSumTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SegmentSumTable" title="gwpy.table.lsctables.SegmentSumTable"><tt class="xref py py-obj docutils literal"><span class="pre">SegmentSumTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -6880,7 +7326,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentSumTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_summary_segment_sum_id_class object at 0x108ba5130&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_summary_segment_sum_id_class object at 0x112507e88&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -6905,8 +7351,36 @@ contains the segments as they appear in the table.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.lsctables.SegmentSumTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SegmentSumTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SegmentSumTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6946,7 +7420,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -7122,7 +7596,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SegmentDefTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_definer_segment_def_id_class object at 0x10e0c6050&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentDefTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.segment_definer_segment_def_id_class object at 0x112507de0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SegmentDefTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7274,10 +7748,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable.plot" title="gwpy.table.lsctables.SummMimeTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable.hist" title="gwpy.table.lsctables.SummMimeTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable.plot" title="gwpy.table.lsctables.SummMimeTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable.read" title="gwpy.table.lsctables.SummMimeTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable.read" title="gwpy.table.lsctables.SummMimeTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.SummMimeTable" title="gwpy.table.lsctables.SummMimeTable"><tt class="xref py py-obj docutils literal"><span class="pre">SummMimeTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -7290,7 +7767,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.SummMimeTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_mime_summ_mime_id_class object at 0x108ba5408&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.summ_mime_summ_mime_id_class object at 0x1125361a0&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7305,8 +7782,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.SummMimeTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.SummMimeTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.SummMimeTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -7346,7 +7851,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
@@ -7680,7 +8185,7 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <dl class="attribute">
 <dt id="gwpy.table.lsctables.TimeSlideTable.next_id">
-<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.time_slide_time_slide_id_class object at 0x108ba51d8&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.TimeSlideTable.next_id" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">next_id</tt><em class="property"> = &lt;glue.ligolw.ilwd.time_slide_time_slide_id_class object at 0x112507f30&gt;</em><a class="headerlink" href="#gwpy.table.lsctables.TimeSlideTable.next_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -7882,10 +8387,13 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable.plot" title="gwpy.table.lsctables.VetoDefTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable.hist" title="gwpy.table.lsctables.VetoDefTable.hist"><tt class="xref py py-obj docutils literal"><span class="pre">hist</span></tt></a>(column,&nbsp;**kwargs)</td>
+<td>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable.plot" title="gwpy.table.lsctables.VetoDefTable.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable.read" title="gwpy.table.lsctables.VetoDefTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable.read" title="gwpy.table.lsctables.VetoDefTable.read"><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.table.lsctables.VetoDefTable" title="gwpy.table.lsctables.VetoDefTable"><tt class="xref py py-obj docutils literal"><span class="pre">VetoDefTable</span></tt></a>.</td>
 </tr>
 </tbody>
@@ -7908,8 +8416,36 @@ when reading from <tt class="docutils literal"><span class="pre">LIGO_LW</span><
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
+<dt id="gwpy.table.lsctables.VetoDefTable.hist">
+<tt class="descname">hist</tt><big>(</big><em>column</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.VetoDefTable.hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a <tt class="xref py py-obj docutils literal"><span class="pre">HistogrmaPlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<blockquote>
+<div><p>name of the column over which to histogram data</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> :</p>
+<blockquote>
+<div><p>any other arguments applicable to the <tt class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">HistogramPlot</span></tt></p>
+<blockquote class="last">
+<div><p>new plot displaying a histogram of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.lsctables.VetoDefTable.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a7/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.VetoDefTable.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1a9/gwpy/table/lsctables.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.lsctables.VetoDefTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <tt class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></tt> of this <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -7949,7 +8485,7 @@ the <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>plot</strong> : <a class="reference internal" href="../plotter/api.html#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><tt class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></tt></a></p>
 <blockquote class="last">
 <div><p>new plot for displaying tabular data.</p>
 </div></blockquote>
