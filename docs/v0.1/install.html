@@ -5,12 +5,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing GWpy &mdash; GWpy 0.1a9 documentation</title>
+    <title>Installing GWpy &mdash; GWpy 0.1b1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.0.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="_static/gwpy-sphinx.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1a9',
+        VERSION:     '0.1b1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,12 +29,12 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a9 documentation" href="index.html" />
+    <link rel="top" title="GWpy 0.1b1 documentation" href="index.html" />
     <link rel="next" title="Getting started" href="getting_started.html" />
     <link rel="prev" title="What is GWpy?" href="overview.html" />
 <meta charset='utf-8'>
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a9</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -67,13 +67,17 @@
             
             
               <li class="dropdown globaltoc-container">
-  <a href="index.html"
-     class="dropdown-toggle"
-     data-toggle="dropdown">Contents <b class="caret"></b></a>
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Contents <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
-    ><ul class="current">
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">What is GWpy?</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">How do I install GWpy?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#available-installations">Available installations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">What should I do first?</a></li>
 </ul>
 <ul>
@@ -90,6 +94,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="plotter/index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">GWpy examples</a></li>
 </ul>
 <ul class="simple">
 </ul>
@@ -122,13 +130,14 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Installing GWpy</a><ul>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#installing-with-pip">Installing with pip</a></li>
-<li><a class="reference internal" href="#installing-the-latest-development-version">Installing the latest development version</a></li>
-<li><a class="reference internal" href="#cloning-the-repository">Cloning the repository</a></li>
-<li><a class="reference internal" href="#available-installations">Available installations</a></li>
+<li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#pip">Pip</a></li>
+<li><a class="reference internal" href="#github">GitHub</a></li>
+<li><a class="reference internal" href="#source">Source</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#available-installations">Available installations</a></li>
 </ul>
 
 <div id="sourcelink">
@@ -148,9 +157,27 @@
       
   <div class="section" id="installing-gwpy">
 <h1>Installing GWpy<a class="headerlink" href="#installing-gwpy" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p><strong>Build dependencies</strong></p>
+<p>GWpy can be installed on the following platforms</p>
+<ul class="simple">
+<li><a class="reference internal" href="#mac-os-x"><em>Mac OS X</em></a></li>
+<li><a class="reference internal" href="#linux"><em>Linux</em></a></li>
+</ul>
+<div class="section" id="mac-os-x">
+<span id="id1"></span><h2>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h2>
+<p>The recommended way to install GWpy on Mac OS X is to install the dependencies via <a class="reference external" href="https://www.macports.org">MacPorts</a>.</p>
+<p><a class="reference external" href="https://www.macports.org/install.php">Follow these instructions</a> to install the MacPorts package on your Mac, then execute the following command to install the required dependencies for GWpy:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo port install python27 python_select py27-numpy py27-scipy py27-matplotlib +latex +dvipng texlive-latex-extra py27-astropy glue
+sudo port <span class="k">select</span> --set python python27
+</pre></div>
+</div>
+<p>You can also run the following to install a number of optional dependencies - packages that, when present, enhance the functionality of GWpy:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo port install py27-ipython nds2-client kerberos5 py27-pykerberos py27-h5py lal lalframe
+</pre></div>
+</div>
+<p>Once you have at least the required dependencies installed, you can <a class="reference internal" href="#install-pip"><em>install GWpy using pip</em></a>.</p>
+</div>
+<div class="section" id="linux">
+<span id="id2"></span><h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p>The GWpy package has the following build-time dependencies (i.e. required for installation):</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue.html">glue</a></li>
@@ -160,20 +187,18 @@
 <li><a class="reference external" href="http://matplotlib.org">Matplotlib</a> &gt;= 1.3.0</li>
 <li><a class="reference external" href="http://astropy.org">Astropy</a> &gt;= 0.3</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/glue.html">GLUE</a> package isn&#8217;t available through PyPI, meaning you will have to install it manually from the link.</p>
-</div>
-<p><strong>Runtime dependencies</strong></p>
-<p>Additionally, in order for much of the code to import and run properly, users are required to have the following packages:</p>
+<p>You should install these packages on your system using the instructions provided by their authors.</p>
+<p>You can also install the following optional dependencies - packages that, when present, enhance the functionality of GWpy:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/lalsuite.html">lal</a> and <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/lalsuite.html">lalframe</a> (same URL)</li>
 <li><a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client.html">NDS2</a> (including SWIG-wrappings for python)</li>
 </ul>
+<p>Once you have at least the required dependencies installed, you can <a class="reference internal" href="#install-pip"><em>install GWpy using pip</em></a>.</p>
 </div>
-<div class="section" id="installing-with-pip">
-<h2>Installing with pip<a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">¶</a></h2>
-<p>The easiest way to install GWpy is to use <a class="reference external" href="https://pip.pypa.io/en/latest/index.html">pip</a>:</p>
+<div class="section" id="pip">
+<span id="install-pip"></span><h2>Pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to install GWpy is to use <a class="reference external" href="https://pip.pypa.io/en/latest/index.html">pip</a>. You can install pip very easily with MacPorts and most linux-based package managers.</p>
+<p>Once you have pip installed:</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install --pre --user gwpy
 </pre></div>
 </div>
@@ -193,8 +218,8 @@ For either operating system, python will automatically know about these director
 <p class="last">GWpy is still under major version <tt class="docutils literal"><span class="pre">0</span></tt>, meaning a completely stable state has no been reached. Until that time, backwards-incompatible changes may be made without much warning, but developers will strive to keep these events to a minimum.</p>
 </div>
 </div>
-<div class="section" id="installing-the-latest-development-version">
-<h2>Installing the latest development version<a class="headerlink" href="#installing-the-latest-development-version" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="github">
+<h2>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
 <p>Any user can install the latest development version of GWpy by directing <tt class="docutils literal"><span class="pre">pip</span></tt> to the GWpy GitHub repository:</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install --user git+https://github.com/gwpy/gwpy
 </pre></div>
@@ -204,8 +229,8 @@ For either operating system, python will automatically know about these director
 <p class="last">The latest developments are not guaranteed to be free of bugs, and so you should only install from GitHub if you really need to.</p>
 </div>
 </div>
-<div class="section" id="cloning-the-repository">
-<h2>Cloning the repository<a class="headerlink" href="#cloning-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="source">
+<h2>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
 <p>The source code for GWpy is under <tt class="docutils literal"><span class="pre">git</span></tt> version control, hosted by <a class="reference external" href="http://github.com">http://github.com</a>.
 You can clone the repository from the Terminal as follows:</p>
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/gwpy/gwpy.git
@@ -234,15 +259,15 @@ setenv LC_ALL en_US.UTF-8
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="available-installations">
-<h2>Available installations<a class="headerlink" href="#available-installations" title="Permalink to this headline">¶</a></h2>
+<h1>Available installations<a class="headerlink" href="#available-installations" title="Permalink to this headline">¶</a></h1>
 <p>If you are a member of the LIGO Scientific Collaboration, both the GWpy and astropy packages are installed on all shared computing centres.</p>
 <p>If you use the <tt class="docutils literal"><span class="pre">bash</span></tt> shell, you can source the following script to set up the environment for the GWpy package</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">source</span> /home/detchar/opt/gwpysoft/etc/gwpy-user-env.sh
 </pre></div>
 </div>
 <p>If anyone wants to write an equivalent shell script for the <tt class="docutils literal"><span class="pre">csh</span></tt> shell, please e-mail it to <a class="reference external" href="mailto:duncan&#46;macleod&#37;&#52;&#48;ligo&#46;org">Duncan</a>.</p>
-</div>
 </div>
 
 

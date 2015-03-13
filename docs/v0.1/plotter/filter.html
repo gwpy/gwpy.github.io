@@ -5,12 +5,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Visualising filters (BodePlot) &mdash; GWpy 0.1a9 documentation</title>
+    <title>Visualising filters (BodePlot) &mdash; GWpy 0.1b1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1a9',
+        VERSION:     '0.1b1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,12 +29,12 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1a9 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1b1 documentation" href="../index.html" />
     <link rel="up" title="Plotting in GWpy (gwpy.plotter)" href="index.html" />
     <link rel="next" title="Plotting API" href="api.html" />
     <link rel="prev" title="Plotting in GWpy (gwpy.plotter)" href="index.html" />
@@ -57,7 +57,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1a9</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -68,13 +68,17 @@
             
             
               <li class="dropdown globaltoc-container">
-  <a href="../index.html"
-     class="dropdown-toggle"
-     data-toggle="dropdown">Contents <b class="caret"></b></a>
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
-    ><ul>
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">What should I do first?</a></li>
 </ul>
 <ul>
@@ -91,6 +95,10 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Plotting in GWpy (<tt class="docutils literal"><span class="pre">gwpy.plotter</span></tt>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
 </ul>
 <ul class="simple">
 </ul>
@@ -142,19 +150,10 @@
       
   <div class="section" id="visualising-filters-bodeplot">
 <h1>Visualising filters (<a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><tt class="xref py py-class docutils literal"><span class="pre">BodePlot</span></tt></a>)<a class="headerlink" href="#visualising-filters-bodeplot" title="Permalink to this headline">¶</a></h1>
-<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><tt class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></tt></a> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass filter:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">highpass</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">signal</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="n">btype</span><span class="o">=</span><span class="s">&#39;highpass&#39;</span><span class="p">,</span>
-<span class="go">                             analog=True)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">highpass</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;10\,Hz high-pass filter&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../../examples/gw_ex_bode_plot.py">Source code</a>, <a class="reference external" href="../../examples/gw_ex_bode_plot.png">png</a>)</p>
+<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><tt class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></tt></a> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass filter (from the <a class="reference internal" href="../examples/miscellaneous/bode_plot.html"><em>Bode plot example</em></a>:</p>
+<p>(<a class="reference external" href="../../examples/miscellaneous/bode_plot.py">Source code</a>, <a class="reference external" href="../../examples/miscellaneous/bode_plot.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/gw_ex_bode_plot.png" src="../_images/gw_ex_bode_plot.png" />
+<img alt="../_images/bode_plot1.png" src="../_images/bode_plot1.png" />
 </div>
 <div class="line-block">
 <div class="line"><br /></div>

@@ -101,7 +101,7 @@
             var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
             var navOuterHeight = $('#navbar').height();
 
-            return (this.top = 0);
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin);
           }
         , bottom: function () {
             // add 25 because the footer height doesn't seem to be enough
@@ -138,8 +138,12 @@
       $localLi.first().after('<li class="divider"></li>');
     }
 
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
+    // Manually add dropdown.
+    // Appears unnecessary as of:
+    //   https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/90
+    // Remove next time around...
+    // a.dropdown-toggle class needed in globaltoc.html
+    //$('.dropdown-toggle').dropdown();
 
     // Patch tables.
     patchTables();
@@ -161,4 +165,4 @@
     var $srcLink = $(".nav #sourcelink");
     $srcLink.parent().html($srcLink.html());
   });
-}($jqTheme || window.jQuery));
+}(window.$jqTheme || window.jQuery));
