@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting segments for a StateVector &mdash; GWpy 0.1b3 documentation</title>
+    <title>Calculating the time-dependent coherence between two channels &mdash; GWpy 0.1b3 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -35,9 +35,9 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="top" title="GWpy 0.1b3 documentation" href="../../index.html" />
-    <link rel="up" title="TimeSeries examples" href="index.html" />
-    <link rel="next" title="Spectrum examples" href="../spectrum/index.html" />
-    <link rel="prev" title="Plotting public LIGO data" href="public.html" />
+    <link rel="up" title="Spectrogram examples" href="index.html" />
+    <link rel="next" title="Plotting a Spectrogram" href="plot.html" />
+    <link rel="prev" title="Spectrogram examples" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -127,11 +127,11 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Plotting segments for a <tt class="docutils literal"><span class="pre">StateVector</span></tt></a></li>
+<li><a class="reference internal" href="#">Calculating the time-dependent coherence between two channels</a></li>
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/timeseries/statevector.txt"
+  <a href="../../_sources/examples/spectrogram/coherence.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -145,45 +145,46 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="plotting-segments-for-a-statevector">
-<h1>Plotting segments for a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><tt class="xref py py-obj docutils literal"><span class="pre">StateVector</span></tt></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
-<p>I would like to examine the state of the internal seismic isolation system supporting the Fabry-Perot mirror at the end of the Y-arm at LHO, in order to investigate a noise source.</p>
-<p>These data are private to the LIGO Scientific Collaboration and the Virgo Collaboration, but collaboration members can use the NDS2 service to download data.
-First, we can import the <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><tt class="xref py py-obj docutils literal"><span class="pre">StateVector</span></tt></a> class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
+  <div class="section" id="calculating-the-time-dependent-coherence-between-two-channels">
+<h1>Calculating the time-dependent coherence between two channels<a class="headerlink" href="#calculating-the-time-dependent-coherence-between-two-channels" title="Permalink to this headline">¶</a></h1>
+<p>The standard coherence calculation outputs a frequency series
+(<a class="reference internal" href="../../spectrum/index.html#gwpy.spectrum.Spectrum" title="gwpy.spectrum.Spectrum"><tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt></a>) giving a time-averaged measure of coherence.</p>
+<p>The <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> method <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="gwpy.timeseries.TimeSeries.coherence_spectrogram"><tt class="xref py py-meth docutils literal"><span class="pre">coherence_spectrogram()</span></tt></a> performs the
+same coherence calculation every <tt class="docutils literal"><span class="pre">stride</span></tt>, giving a time-varying coherence
+measure.</p>
+<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>
 </pre></div>
 </div>
-<p>Next, we define which bits we want to use, and can then
-<a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.fetch" title="gwpy.timeseries.StateVector.fetch"><tt class="xref py py-meth docutils literal"><span class="pre">fetch()</span></tt></a> the data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bits</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Summary state&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;State 1 damped&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Stage 1 isolated&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Stage 2 damped&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Stage 2 isolated&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Master switch ON&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Stage 1 WatchDog OK&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s">&#39;Stage 2 WatchDog OK&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="s">&#39;May 22 2014 14:00&#39;</span><span class="p">,</span> <span class="s">&#39;May 22 2014 15:00&#39;</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">)</span>
+<p>and then fetch both data sets:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">fetch</span><span class="p">([</span><span class="s">&#39;L1:LSC-SRCL_IN1_DQ&#39;</span><span class="p">,</span> <span class="s">&#39;L1:LSC-CARM_IN1_DQ&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                            <span class="s">&#39;Feb 13 2015&#39;</span><span class="p">,</span> <span class="s">&#39;Feb 13 2015 00:15&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For this example, we wish to <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><tt class="xref py py-meth docutils literal"><span class="pre">resample()</span></tt></a> the data to a
-much lower rate, to make visualising the state much easier:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<p>We can then use the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="gwpy.timeseries.TimeSeries.coherence_spectrogram"><tt class="xref py py-meth docutils literal"><span class="pre">coherence_spectrogram()</span></tt></a> method
+of one <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></a> to calcululate the time-varying coherence with
+respect to the other, using a 0.5-second FFT length, with a
+0.45-second (90%) overlap, with a 8-second stride:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">coh</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;L1:LSC-SRCL_IN1_DQ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coherence_spectrogram</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">data</span><span class="p">[</span><span class="s">&#39;L1:LSC-CARM_IN1_DQ&#39;</span><span class="p">],</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we make a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><tt class="xref py py-meth docutils literal"><span class="pre">plot()</span></tt></a>, passing <tt class="xref py py-obj docutils literal"><span class="pre">insetlabels=True</span></tt> to
-display the bit names inside the axes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;LLO ETMX internal seismic isolation state&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">add_bitmask</span><span class="p">(</span><span class="s">&#39;0b11101110&#39;</span><span class="p">)</span>
+<p>Finally, we can <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><tt class="xref py py-meth docutils literal"><span class="pre">plot()</span></tt></a> the
+resulting data</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">coh</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Coherence between SRCL and CARM for L1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="s">&#39;both&#39;</span><span class="p">,</span> <span class="s">&#39;both&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;Coherence&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/timeseries/statevector.py">Source code</a>, <a class="reference external" href="../../../examples/timeseries/statevector.png">png</a>)</p>
+<p>(<a class="reference external" href="../../../examples/spectrogram/coherence.py">Source code</a>, <a class="reference external" href="../../../examples/spectrogram/coherence.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/statevector.png" src="../../_images/statevector.png" />
+<img alt="../../_images/coherence.png" src="../../_images/coherence.png" />
 </div>
 </div>
 

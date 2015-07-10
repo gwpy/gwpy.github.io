@@ -5,12 +5,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting API &mdash; GWpy 0.1b1 documentation</title>
+    <title>Plotting API &mdash; GWpy 0.1b3 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.1.0/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.0.0/css/bootstrap-theme.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1b1',
+        VERSION:     '0.1b3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,12 +29,12 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1b1 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1b3 documentation" href="../index.html" />
     <link rel="up" title="Plotting in GWpy (gwpy.plotter)" href="index.html" />
     <link rel="next" title="Command line plotting with GWpy" href="../cli/index.html" />
     <link rel="prev" title="Visualising filters (BodePlot)" href="filter.html" />
@@ -57,7 +57,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1b1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -68,14 +68,11 @@
             
             
               <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="../index.html">Contents <b class="caret"></b></a>
+  <a href="../index.html"
+     class="dropdown-toggle"
+     data-toggle="dropdown">Contents <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+    ><ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
@@ -165,7 +162,7 @@
 <td>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.sourceforge.net/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.4.3)"><tt class="xref py py-class docutils literal"><span class="pre">Figure</span></tt></a>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></tt></a></td>
-<td><tt class="xref py py-obj docutils literal"><span class="pre">Figure</span></tt> for displaying a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt>.</td>
+<td><tt class="xref py py-obj docutils literal"><span class="pre">Figure</span></tt> for displaying a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.SpectrumPlot" title="gwpy.plotter.SpectrumPlot"><tt class="xref py py-obj docutils literal"><span class="pre">SpectrumPlot</span></tt></a></td>
 <td><tt class="xref py py-obj docutils literal"><span class="pre">Figure</span></tt> for displaying a <tt class="xref py py-class docutils literal"><span class="pre">Spectrum</span></tt>.</td>
@@ -213,7 +210,7 @@
 <p>Each of the below classes represents a figure object; for brevity inherited methods and attributes are not documented here, please follow links to the parent classes for documentation of available methods and attributes.</p>
 <dl class="class">
 <dt id="gwpy.plotter.Plot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">Plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">Plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://matplotlib.sourceforge.net/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.4.3)"><tt class="xref py py-class docutils literal"><span class="pre">matplotlib.figure.Figure</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">Plot</span>
 </pre></div>
@@ -290,7 +287,7 @@ interactive mode.</p>
 <td>Add a subplot.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Plot.add_timeseries" title="gwpy.plotter.Plot.add_timeseries"><tt class="xref py py-obj docutils literal"><span class="pre">add_timeseries</span></tt></a>(artist,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Add a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> trace to this plot</td>
+<td>Add a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> trace to this plot</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.Plot.close" title="gwpy.plotter.Plot.close"><tt class="xref py py-obj docutils literal"><span class="pre">close</span></tt></a>()</td>
 <td>Close the plot and release its memory.</td>
@@ -311,7 +308,7 @@ interactive mode.</p>
 <td>Get the x-axis range [<em>left</em>, <em>right</em>]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.Plot.get_xscale" title="gwpy.plotter.Plot.get_xscale"><tt class="xref py py-obj docutils literal"><span class="pre">get_xscale</span></tt></a>(figure,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Return the xaxis scale string: linear, log, symlog</td>
+<td>Return the xaxis scale string: linear, log, logit, symlog</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Plot.get_ylabel" title="gwpy.plotter.Plot.get_ylabel"><tt class="xref py py-obj docutils literal"><span class="pre">get_ylabel</span></tt></a>(figure,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Get the ylabel text string.</td>
@@ -320,7 +317,7 @@ interactive mode.</p>
 <td>Get the y-axis range [<em>bottom</em>, <em>top</em>]</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Plot.get_yscale" title="gwpy.plotter.Plot.get_yscale"><tt class="xref py py-obj docutils literal"><span class="pre">get_yscale</span></tt></a>(figure,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Return the yaxis scale string: linear, log, symlog</td>
+<td>Return the yaxis scale string: linear, log, logit, symlog</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.Plot.html_map" title="gwpy.plotter.Plot.html_map"><tt class="xref py py-obj docutils literal"><span class="pre">html_map</span></tt></a>(figure,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Create an HTML map for some data contained in these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></td>
@@ -406,7 +403,7 @@ interactive mode.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_array">
-<tt class="descname">add_array</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L663"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_array" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_array</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L683"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">Array</span></tt> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -445,7 +442,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_colorbar">
-<tt class="descname">add_colorbar</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_colorbar" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_colorbar</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_colorbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a colorbar to the current <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -509,7 +506,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_dataqualityflag">
-<tt class="descname">add_dataqualityflag</tt><big>(</big><em>flag</em>, <em>projection=None</em>, <em>ax=None</em>, <em>newax=False</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L697"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_dataqualityflag</tt><big>(</big><em>flag</em>, <em>projection=None</em>, <em>ax=None</em>, <em>newax=False</em>, <em>sharex=None</em>, <em>sharey=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L719"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">DataQualityFlag</span></tt> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -527,7 +524,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_image">
-<tt class="descname">add_image</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_image" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_image</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L576"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a 2-D image to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -553,7 +550,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_legend">
-<tt class="descname">add_legend</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_legend" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_legend</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L744"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_legend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a legend to this <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-obj docutils literal"><span class="pre">Plot</span></tt></a> on the most favourable <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></p>
 <p>All non-keyword <tt class="xref py py-obj docutils literal"><span class="pre">args</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">kwargs</span></tt> are passed directly to the
 <a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html#matplotlib.axes.Axes.legend" title="(in Matplotlib v1.4.3)"><tt class="xref py py-meth docutils literal"><span class="pre">legend()</span></tt></a> generator</p>
@@ -573,7 +570,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_line">
-<tt class="descname">add_line</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_line" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_line</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L517"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a line to the current plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -620,7 +617,7 @@ the axes <a class="reference external" href="http://matplotlib.sourceforge.net/a
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_scatter">
-<tt class="descname">add_scatter</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L528"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_scatter" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_scatter</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L546"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_scatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a set or points to the current plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -668,7 +665,7 @@ scatter layer</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_spectrogram">
-<tt class="descname">add_spectrogram</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L634"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrogram" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_spectrogram</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L653"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></tt> trace to
 this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -711,7 +708,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_spectrum">
-<tt class="descname">add_spectrum</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L606"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrum" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_spectrum</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L625"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">Spectrum</span></tt> trace to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -753,7 +750,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_subplot">
-<tt class="descname">add_subplot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_subplot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_subplot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_subplot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a subplot.  Examples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
@@ -774,7 +771,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 <em>projection</em>, which chooses a projection type for the axes.
 (For backward compatibility, <em>polar=True</em> may also be
 provided, which is equivalent to <em>projection=&#8217;polar&#8217;</em>). Valid
-values for <em>projection</em> are: [&#8216;aitoff&#8217;, &#8216;hammer&#8217;, &#8216;lambert&#8217;, &#8216;mollweide&#8217;, &#8216;polar&#8217;, &#8216;rectilinear&#8217;].  Some of
+values for <em>projection</em> are: [u&#8217;aitoff&#8217;, u&#8217;hammer&#8217;, u&#8217;lambert&#8217;, u&#8217;mollweide&#8217;, u&#8217;polar&#8217;, u&#8217;rectilinear&#8217;].  Some of
 these projections
 support additional <em>kwargs</em>, which may be provided to
 <tt class="xref py py-meth docutils literal"><span class="pre">add_axes()</span></tt>.</p>
@@ -782,6 +779,11 @@ support additional <em>kwargs</em>, which may be provided to
 <p>If the figure already has a subplot with key (<em>args</em>,
 <em>kwargs</em>) then it will simply make that subplot current and
 return it.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-meth docutils literal"><span class="pre">subplot()</span></tt> for an
+explanation of the args.</p>
+</div>
 <p>The following kwargs are supported:</p>
 <blockquote>
 <div>adjustable: [ &#8216;box&#8217; | &#8216;datalim&#8217; | &#8216;box-forced&#8217;]         
@@ -806,7 +808,6 @@ figure: unknown
 frame_on: [ <em>True</em> | <em>False</em> ]         
 gid: an id string         
 label: string or anything printable with &#8216;%s&#8217; conversion.         
-lod: [True | False]         
 navigate: [ <em>True</em> | <em>False</em> ]         
 navigate_mode: unknown
 path_effects: unknown
@@ -824,14 +825,14 @@ xbound: unknown
 xlabel: unknown
 xlim: length 2 sequence of floats         
 xmargin: unknown
-xscale: [&#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;]
+xscale: [u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;]
 xticklabels: sequence of strings
 xticks: sequence of floats         
 ybound: unknown
 ylabel: unknown
 ylim: length 2 sequence of floats         
 ymargin: unknown
-yscale: [&#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;]
+yscale: [u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;]
 yticklabels: sequence of strings
 yticks: sequence of floats
 zorder: any number</div></blockquote>
@@ -839,13 +840,13 @@ zorder: any number</div></blockquote>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_timeseries">
-<tt class="descname">add_timeseries</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L578"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_timeseries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> trace to this plot</p>
+<tt class="descname">add_timeseries</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L596"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_timeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> trace to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>timeseries</strong> : <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>timeseries</strong> : <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a></p>
 <blockquote>
 <div><p>the TimeSeries to display</p>
 </div></blockquote>
@@ -881,19 +882,19 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.close">
-<tt class="descname">close</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.close" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close the plot and release its memory.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_auto_refresh">
-<tt class="descname">get_auto_refresh</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_auto_refresh" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_auto_refresh</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_auto_refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return this <a href="#id5"><span class="problematic" id="id6">`</span></a>Plot`s auto-refresh setting</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_axes">
-<tt class="descname">get_axes</tt><big>(</big><em>projection=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_axes" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_axes</tt><big>(</big><em>projection=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_axes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find all <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a>, optionally matching the given projection</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -911,7 +912,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_title">
-<tt class="descname">get_title</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L800"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_title" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_title</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L823"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an axes title.</p>
 <p>Get one of the three available axes titles. The available titles
 are positioned above the axes in the center, flush with the left
@@ -938,43 +939,43 @@ edge, and flush with the right edge.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xlabel">
-<tt class="descname">get_xlabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L772"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlabel" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_xlabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L795"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the xlabel text string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xlim">
-<tt class="descname">get_xlim</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L744"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_xlim</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L767"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the x-axis range [<em>left</em>, <em>right</em>]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xscale">
-<tt class="descname">get_xscale</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L814"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xscale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the xaxis scale string: linear, log, symlog</p>
+<tt class="descname">get_xscale</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L837"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the xaxis scale string: linear, log, logit, symlog</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_ylabel">
-<tt class="descname">get_ylabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L786"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylabel" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_ylabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L809"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the ylabel text string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_ylim">
-<tt class="descname">get_ylim</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_ylim</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L781"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the y-axis range [<em>bottom</em>, <em>top</em>]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_yscale">
-<tt class="descname">get_yscale</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L839"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_yscale" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the yaxis scale string: linear, log, symlog</p>
+<tt class="descname">get_yscale</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L862"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_yscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the yaxis scale string: linear, log, logit, symlog</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.html_map">
-<tt class="descname">html_map</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.html_map" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">html_map</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L887"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.html_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an HTML map for some data contained in these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1026,13 +1027,13 @@ default: <a class="reference external" href="http://docs.python.org/library/cons
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.refresh">
-<tt class="descname">refresh</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.refresh" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">refresh</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refresh the current figure</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.save">
-<tt class="descname">save</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.save" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">save</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L141"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the figure to disk.</p>
 <p>All <tt class="xref py py-obj docutils literal"><span class="pre">args</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">kwargs</span></tt> are passed directly to the savefig
 method of the underlying <a class="reference external" href="http://matplotlib.sourceforge.net/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.4.3)"><tt class="xref py py-obj docutils literal"><span class="pre">matplotlib.figure.Figure</span></tt></a>
@@ -1041,7 +1042,7 @@ self.fig.savefig(<a href="#id7"><span class="problematic" id="id8">*</span></a>a
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_auto_refresh">
-<tt class="descname">set_auto_refresh</tt><big>(</big><em>b</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_auto_refresh" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_auto_refresh</tt><big>(</big><em>b</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_auto_refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set this <a href="#id11"><span class="problematic" id="id12">`</span></a>Plot`s auto-refresh setting</p>
 <p>With auto_refresh set to <a class="reference external" href="http://docs.python.org/library/constants.html#True" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">True</span></tt></a>, all modifications of the underlying
 <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a> will trigger the plot to be re-drawn</p>
@@ -1057,7 +1058,7 @@ self.fig.savefig(<a href="#id7"><span class="problematic" id="id8">*</span></a>a
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_title">
-<tt class="descname">set_title</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_title" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_title</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a title for the axes.</p>
 <p>Set one of the three available axes titles. The available titles
 are positioned above the axes in the center, flush with the left
@@ -1075,6 +1076,7 @@ edge, and flush with the right edge.</p>
 <div><p>A dictionary controlling the appearance of the title text,
 the default <tt class="xref py py-obj docutils literal"><span class="pre">fontdict</span></tt> is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;fontsize&#39;</span><span class="p">:</span> <span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;axes.titlesize&#39;</span><span class="p">],</span>
+ <span class="s">&#39;fontweight&#39;</span> <span class="p">:</span> <span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;axes.titleweight&#39;</span><span class="p">],</span>
  <span class="s">&#39;verticalalignment&#39;</span><span class="p">:</span> <span class="s">&#39;baseline&#39;</span><span class="p">,</span>
  <span class="s">&#39;horizontalalignment&#39;</span><span class="p">:</span> <span class="n">loc</span><span class="p">}</span>
 </pre></div>
@@ -1093,9 +1095,12 @@ the default <tt class="xref py py-obj docutils literal"><span class="pre">fontdi
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>Other keyword arguments are text properties, see</strong> :</p>
-<p><strong>:class:`~matplotlib.text.Text` for a list of valid text</strong> :</p>
-<p class="last"><strong>properties.</strong> :</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>kwargs</strong> : text properties</p>
+<blockquote class="last">
+<div><p>Other keyword arguments are text properties, see
+<a class="reference external" href="http://matplotlib.sourceforge.net/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.4.3)"><tt class="xref py py-class docutils literal"><span class="pre">Text</span></tt></a> for a list of valid text
+properties.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -1104,7 +1109,7 @@ the default <tt class="xref py py-obj docutils literal"><span class="pre">fontdi
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xlabel">
-<tt class="descname">set_xlabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlabel" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xlabel</tt><big>(</big><em>figure</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the label for the xaxis.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1137,7 +1142,7 @@ the default <tt class="xref py py-obj docutils literal"><span class="pre">fontdi
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xlim">
-<tt class="descname">set_xlim</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xlim</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre>set_xlim(self, *args, **kwargs):
 </pre></div>
@@ -1179,13 +1184,13 @@ present is on the right.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xscale">
-<tt class="descname">set_xscale</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xscale" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xscale</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">set_xscale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Set the scaling of the x-axis: &#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;</p>
-<p>ACCEPTS: [&#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;]</p>
+<p>Set the scaling of the x-axis: u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;</p>
+<p>ACCEPTS: [u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;]</p>
 <dl class="docutils">
 <dt>Different kwargs are accepted, depending on the scale:</dt>
 <dd><p class="first">&#8216;linear&#8217;</p>
@@ -1204,6 +1209,14 @@ scale: <tt class="docutils literal"><span class="pre">[2,</span> <span class="pr
 <p class="last">will place 8 logarithmically spaced minor ticks between
 each major tick.</p>
 </dd>
+</dl>
+</div></blockquote>
+<p>&#8216;logit&#8217;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><em>nonpos</em>: [&#8216;mask&#8217; | &#8216;clip&#8217; ]</dt>
+<dd>values beyond ]0, 1[ can be masked as invalid, or clipped to a number
+very close to 0 or 1</dd>
 </dl>
 </div></blockquote>
 <p>&#8216;symlog&#8217;</p>
@@ -1237,7 +1250,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_ylabel">
-<tt class="descname">set_ylabel</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylabel" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_ylabel</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the label for the yaxis</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1270,7 +1283,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_ylim">
-<tt class="descname">set_ylim</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_ylim</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre>set_ylim(self, *args, **kwargs):
 </pre></div>
@@ -1312,13 +1325,13 @@ surface, 0 m, is at the top.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_yscale">
-<tt class="descname">set_yscale</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_yscale" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_yscale</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/decorators.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_yscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">set_yscale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Set the scaling of the y-axis: &#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;</p>
-<p>ACCEPTS: [&#8216;linear&#8217; | &#8216;log&#8217; | &#8216;symlog&#8217;]</p>
+<p>Set the scaling of the y-axis: u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;</p>
+<p>ACCEPTS: [u&#8217;linear&#8217; | u&#8217;log&#8217; | u&#8217;logit&#8217; | u&#8217;symlog&#8217;]</p>
 <dl class="docutils">
 <dt>Different kwargs are accepted, depending on the scale:</dt>
 <dd><p class="first">&#8216;linear&#8217;</p>
@@ -1337,6 +1350,14 @@ scale: <tt class="docutils literal"><span class="pre">[2,</span> <span class="pr
 <p class="last">will place 8 logarithmically spaced minor ticks between
 each major tick.</p>
 </dd>
+</dl>
+</div></blockquote>
+<p>&#8216;logit&#8217;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><em>nonpos</em>: [&#8216;mask&#8217; | &#8216;clip&#8217; ]</dt>
+<dd>values beyond ]0, 1[ can be masked as invalid, or clipped to a number
+very close to 0 or 1</dd>
 </dl>
 </div></blockquote>
 <p>&#8216;symlog&#8217;</p>
@@ -1370,7 +1391,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.show">
-<tt class="descname">show</tt><big>(</big><em>block=None</em>, <em>warn=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/core.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.show" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">show</tt><big>(</big><em>block=None</em>, <em>warn=True</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/core.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the current figure (if possible)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1404,19 +1425,19 @@ the <a class="reference external" href="http://matplotlib.sourceforge.net/api/fi
 
 <dl class="class">
 <dt id="gwpy.plotter.TimeSeriesPlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">TimeSeriesPlot</tt><big>(</big><em>*series</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">TimeSeriesPlot</tt><big>(</big><em>*series</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.Plot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">TimeSeriesPlot</span>
 </pre></div>
 </div>
-<p><tt class="xref py py-obj docutils literal"><span class="pre">Figure</span></tt> for displaying a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt>.</p>
+<p><tt class="xref py py-obj docutils literal"><span class="pre">Figure</span></tt> for displaying a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*series</strong> : <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt></p>
 <blockquote>
-<div><p>any number of <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> to
+<div><p>any number of <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> to
 display on the plot</p>
 </div></blockquote>
 <p><strong>**kwargs</strong> :</p>
@@ -1471,7 +1492,7 @@ display on the plot</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.add_state_segments">
-<tt class="descname">add_state_segments</tt><big>(</big><em>segments</em>, <em>ax=None</em>, <em>height=0.20000000000000001</em>, <em>pad=0.10000000000000001</em>, <em>location='bottom'</em>, <em>plotargs={}</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_state_segments" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_state_segments</tt><big>(</big><em>segments</em>, <em>ax=None</em>, <em>height=0.2</em>, <em>pad=0.1</em>, <em>location='bottom'</em>, <em>plotargs={}</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_state_segments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></tt> to this <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><tt class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></tt></a> indicating state
 information about the main Axes data.</p>
 <p>By default, segments are displayed in a thin horizontal set of Axes
@@ -1502,17 +1523,17 @@ about this Plot</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.add_timeseries">
-<tt class="descname">add_timeseries</tt><big>(</big><em>timeseries</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_timeseries" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_timeseries</tt><big>(</big><em>timeseries</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_timeseries" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.get_epoch">
-<tt class="descname">get_epoch</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L389"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.get_epoch" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_epoch</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L388"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.get_epoch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.set_epoch">
-<tt class="descname">set_epoch</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.set_epoch" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_epoch</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.set_epoch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the GPS epoch of this plot</p>
 </dd></dl>
 
@@ -1520,7 +1541,7 @@ about this Plot</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.SpectrumPlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrumPlot</tt><big>(</big><em>*series</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L233"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrumPlot</tt><big>(</big><em>*series</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.Plot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SpectrumPlot</span>
 </pre></div>
@@ -1530,7 +1551,7 @@ about this Plot</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.SpectrogramPlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrogramPlot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrogram.py#L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrogramPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrogramPlot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrogram.py#L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrogramPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.TimeSeriesPlot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SpectrogramPlot</span>
 </pre></div>
@@ -1540,7 +1561,7 @@ about this Plot</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.SegmentPlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SegmentPlot</tt><big>(</big><em>*flags</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SegmentPlot</tt><big>(</big><em>*flags</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L444"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.TimeSeriesPlot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SegmentPlot</span>
 </pre></div>
@@ -1587,13 +1608,13 @@ names from getting squeezed off the end of a standard figure</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.SegmentPlot.add_bitmask">
-<tt class="descname">add_bitmask</tt><big>(</big><em>mask</em>, <em>ax=None</em>, <em>width=0.20000000000000001</em>, <em>pad=0.10000000000000001</em>, <em>visible=True</em>, <em>axes_class=&lt;class 'gwpy.plotter.segments.SegmentAxes'&gt;</em>, <em>topdown=False</em>, <em>**plotargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L476"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_bitmask" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_bitmask</tt><big>(</big><em>mask</em>, <em>ax=None</em>, <em>width=0.2</em>, <em>pad=0.1</em>, <em>visible=True</em>, <em>axes_class=&lt;class 'gwpy.plotter.segments.SegmentAxes'&gt;</em>, <em>topdown=False</em>, <em>**plotargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L512"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_bitmask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a state-word bitmask on a new set of Axes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentPlot.add_dataqualityflag">
-<tt class="descname">add_dataqualityflag</tt><big>(</big><em>flag</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_dataqualityflag</tt><big>(</big><em>flag</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L503"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <tt class="xref py py-class docutils literal"><span class="pre">DataQualityFlag</span></tt> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1613,7 +1634,7 @@ names from getting squeezed off the end of a standard figure</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.EventTablePlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">EventTablePlot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">EventTablePlot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.TimeSeriesPlot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">EventTablePlot</span>
 </pre></div>
@@ -1687,7 +1708,7 @@ the core <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plo
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.EventTablePlot.add_table">
-<tt class="descname">add_table</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_table" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_table</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a LIGO_LW Table to this Plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1749,7 +1770,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTablePlot.add_tiles">
-<tt class="descname">add_tiles</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_tiles" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_tiles</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_tiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a LIGO_LW Table to this Plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1826,7 +1847,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="class">
 <dt id="gwpy.plotter.BodePlot">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">BodePlot</tt><big>(</big><em>*filters</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/filter.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">BodePlot</tt><big>(</big><em>*filters</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/filter.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.Plot</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
 </pre></div>
@@ -1927,7 +1948,7 @@ phase of the input transfer function(s) respectively.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.BodePlot.add_filter">
-<tt class="descname">add_filter</tt><big>(</big><em>filter_</em>, <em>frequencies=None</em>, <em>dB=True</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/filter.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_filter" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_filter</tt><big>(</big><em>filter_</em>, <em>frequencies=None</em>, <em>dB=True</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/filter.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a linear time-invariant filter to this BodePlot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1973,7 +1994,7 @@ amplitude.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.BodePlot.add_spectrum">
-<tt class="descname">add_spectrum</tt><big>(</big><em>spectrum</em>, <em>dB=True</em>, <em>power=False</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/filter.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_spectrum" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_spectrum</tt><big>(</big><em>spectrum</em>, <em>dB=True</em>, <em>power=False</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/filter.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the magnitude and phase of a complex-valued Spectrum</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2020,8 +2041,8 @@ so <tt class="docutils literal"><span class="pre">dB</span> <span class="pre">=<
 <p>Each of the below classes represents a set of axes on which data are displayed; for brevity inherited methods and attributes are not documented here, please follow links to the parent classes for documentation of available methods and attributes.</p>
 <dl class="class">
 <dt id="gwpy.plotter.Axes">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">Axes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/axes.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.4.3)"><tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></tt></a></p>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">Axes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/axes.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes._axes.Axes</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">Axes</span>
 </pre></div>
 </div>
@@ -2048,7 +2069,7 @@ is the name of the <a class="reference internal" href="#gwpy.plotter.Axes" title
 <td>Display the y-axis with a logarithmic scale</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Axes.projection" title="gwpy.plotter.Axes.projection"><tt class="xref py py-obj docutils literal"><span class="pre">projection</span></tt></a></td>
-<td>str(object) -&gt; string</td>
+<td>str(object=&#8217;&#8216;) -&gt; string</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.Axes.xlabel" title="gwpy.plotter.Axes.xlabel"><tt class="xref py py-obj docutils literal"><span class="pre">xlabel</span></tt></a></td>
 <td>Label for the x-axis</td>
@@ -2175,12 +2196,12 @@ is the name of the <a class="reference internal" href="#gwpy.plotter.Axes" title
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.Axes.add_label_unit">
-<tt class="descname">add_label_unit</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/axes.py#L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.add_label_unit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_label_unit</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/axes.py#L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.add_label_unit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Axes.html_map">
-<tt class="descname">html_map</tt><big>(</big><em>imagefile</em>, <em>data=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/axes.py#L228"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.html_map" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">html_map</tt><big>(</big><em>imagefile</em>, <em>data=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/axes.py#L228"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.html_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an HTML map for some data contained in these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2232,7 +2253,7 @@ default: <a class="reference external" href="http://docs.python.org/library/cons
 
 <dl class="method">
 <dt id="gwpy.plotter.Axes.resize">
-<tt class="descname">resize</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/axes.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.resize" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">resize</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/axes.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the axes position with:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span>
 </pre></div>
@@ -2248,7 +2269,7 @@ second which is the starting point for <tt class="xref py py-meth docutils liter
 
 <dl class="class">
 <dt id="gwpy.plotter.TimeSeriesAxes">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">TimeSeriesAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">TimeSeriesAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.Axes</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">TimeSeriesAxes</span>
 </pre></div>
@@ -2265,7 +2286,7 @@ second which is the starting point for <tt class="xref py py-meth docutils liter
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes.name" title="gwpy.plotter.TimeSeriesAxes.name"><tt class="xref py py-obj docutils literal"><span class="pre">name</span></tt></a></td>
-<td>str(object) -&gt; string</td>
+<td>str(object=&#8217;&#8216;) -&gt; string</td>
 </tr>
 </tbody>
 </table>
@@ -2295,7 +2316,7 @@ second which is the starting point for <tt class="xref py py-meth docutils liter
 <td>Plot a <tt class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></tt> onto</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries" title="gwpy.plotter.TimeSeriesAxes.plot_timeseries"><tt class="xref py py-obj docutils literal"><span class="pre">plot_timeseries</span></tt></a>(artist,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Plot a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> onto these</td>
+<td>Plot a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> onto these</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm" title="gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm"><tt class="xref py py-obj docutils literal"><span class="pre">plot_timeseries_mmm</span></tt></a>(artist,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Plot a <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto these axes, with (min, max) shaded</td>
@@ -2325,30 +2346,30 @@ second which is the starting point for <tt class="xref py py-meth docutils liter
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.auto_gps_label">
-<tt class="descname">auto_gps_label</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_label" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">auto_gps_label</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_label" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.auto_gps_scale">
-<tt class="descname">auto_gps_scale</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_scale" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">auto_gps_scale</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automagically set the GPS scale for the time-axis of this plot
 based on the current view limits</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.draw">
-<tt class="descname">draw</tt><big>(</big><em>artist</em>, <em>renderer</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.draw" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">draw</tt><big>(</big><em>artist</em>, <em>renderer</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw everything (plot lines, axes, labels)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.get_epoch">
-<tt class="descname">get_epoch</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.get_epoch" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_epoch</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.get_epoch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot">
-<tt class="descname">plot</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these Axes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2356,7 +2377,7 @@ based on the current view limits</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>args</strong> :</p>
 <blockquote>
-<div><p>a single <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> (or sub-class)
+<div><p>a single <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> (or sub-class)
 or standard (x, y) data arrays</p>
 </div></blockquote>
 <p><strong>kwargs</strong> :</p>
@@ -2384,7 +2405,7 @@ or standard (x, y) data arrays</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_spectrogram">
-<tt class="descname">plot_spectrogram</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_spectrogram" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_spectrogram</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <tt class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></tt> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2421,14 +2442,14 @@ these axes</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_timeseries">
-<tt class="descname">plot_timeseries</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot a <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt> onto these
+<tt class="descname">plot_timeseries</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a> onto these
 axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>timeseries</strong> : <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>timeseries</strong> : <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a></p>
 <blockquote>
 <div><p>data to plot</p>
 </div></blockquote>
@@ -2458,7 +2479,7 @@ axes</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm">
-<tt class="descname">plot_timeseries_mmm</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_timeseries_mmm</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> onto these axes, with (min, max) shaded
 regions</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">mean_</span></tt> <tt class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></tt> is plotted normally, while the <tt class="xref py py-obj docutils literal"><span class="pre">min_</span></tt>
@@ -2468,15 +2489,15 @@ with a fill between them and the <a href="#id21"><span class="problematic" id="i
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mean_</strong> : <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mean_</strong> : <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a></p>
 <blockquote>
 <div><p>data to plot normally</p>
 </div></blockquote>
-<p><strong>min_</strong> : <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></p>
+<p><strong>min_</strong> : <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a></p>
 <blockquote>
 <div><p>first data set to shade to <a href="#id23"><span class="problematic" id="id24">mean_</span></a></p>
 </div></blockquote>
-<p><strong>max_</strong> : <tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></p>
+<p><strong>max_</strong> : <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><tt class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></tt></a></p>
 <blockquote>
 <div><p>second data set to shade to <a href="#id25"><span class="problematic" id="id26">mean_</span></a></p>
 </div></blockquote>
@@ -2508,12 +2529,12 @@ with a fill between them and the <a href="#id21"><span class="problematic" id="i
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.set_epoch">
-<tt class="descname">set_epoch</tt><big>(</big><em>epoch</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_epoch" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_epoch</tt><big>(</big><em>epoch</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_epoch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.set_xlim">
-<tt class="descname">set_xlim</tt><big>(</big><em>left=None</em>, <em>right=None</em>, <em>emit=True</em>, <em>auto=False</em>, <em>**kw</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xlim</tt><big>(</big><em>left=None</em>, <em>right=None</em>, <em>emit=True</em>, <em>auto=False</em>, <em>**kw</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre>set_xlim(self, *args, **kwargs):
 </pre></div>
@@ -2555,14 +2576,14 @@ present is on the right.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.set_xscale">
-<tt class="descname">set_xscale</tt><big>(</big><em>scale</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/timeseries.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xscale" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xscale</tt><big>(</big><em>scale</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/timeseries.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xscale" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="gwpy.plotter.SpectrumAxes">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrumAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SpectrumAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.Axes</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SpectrumAxes</span>
 </pre></div>
@@ -2576,7 +2597,7 @@ present is on the right.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.SpectrumAxes.name" title="gwpy.plotter.SpectrumAxes.name"><tt class="xref py py-obj docutils literal"><span class="pre">name</span></tt></a></td>
-<td>str(object) -&gt; string</td>
+<td>str(object=&#8217;&#8216;) -&gt; string</td>
 </tr>
 </tbody>
 </table>
@@ -2610,7 +2631,7 @@ present is on the right.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.SpectrumAxes.plot">
-<tt class="descname">plot</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these Axes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2646,7 +2667,7 @@ or standard (x, y) data arrays</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SpectrumAxes.plot_spectrum">
-<tt class="descname">plot_spectrum</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_spectrum" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_spectrum</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <tt class="xref py py-class docutils literal"><span class="pre">Spectrum</span></tt> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2682,7 +2703,7 @@ or standard (x, y) data arrays</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SpectrumAxes.plot_spectrum_mmm">
-<tt class="descname">plot_spectrum_mmm</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_spectrum_mmm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_spectrum_mmm</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_spectrum_mmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> onto these axes, with (min, max) shaded
 regions</p>
 <p>The <tt class="xref py py-obj docutils literal"><span class="pre">mean_</span></tt> <tt class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></tt> is plotted normally, while the <tt class="xref py py-obj docutils literal"><span class="pre">min_</span></tt>
@@ -2737,7 +2758,7 @@ opaque</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SpectrumAxes.plot_variance">
-<tt class="descname">plot_variance</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/spectrum.py#L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_variance" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_variance</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/spectrum.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrumAxes.plot_variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <tt class="xref py py-class docutils literal"><span class="pre">SpectralVariance</span></tt> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2776,7 +2797,7 @@ these axes</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.SegmentAxes">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SegmentAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">SegmentAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes" title="gwpy.plotter.TimeSeriesAxes"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.TimeSeriesAxes</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SegmentAxes</span>
 </pre></div>
@@ -2820,7 +2841,7 @@ names from getting squeezed off the end of a standard figure</p>
 <td>Move the y-axis tick labels inside the axes</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.name" title="gwpy.plotter.SegmentAxes.name"><tt class="xref py py-obj docutils literal"><span class="pre">name</span></tt></a></td>
-<td>str(object) -&gt; string</td>
+<td>str(object=&#8217;&#8216;) -&gt; string</td>
 </tr>
 </tbody>
 </table>
@@ -2837,8 +2858,14 @@ names from getting squeezed off the end of a standard figure</p>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.draw" title="gwpy.plotter.SegmentAxes.draw"><tt class="xref py py-obj docutils literal"><span class="pre">draw</span></tt></a>(artist,&nbsp;renderer,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Draw everything (plot lines, axes, labels)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="gwpy.plotter.SegmentAxes.get_insetlabels"><tt class="xref py py-obj docutils literal"><span class="pre">get_insetlabels</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.get_collections" title="gwpy.plotter.SegmentAxes.get_collections"><tt class="xref py py-obj docutils literal"><span class="pre">get_collections</span></tt></a>([ignore])</td>
+<td>Return the collections matching the given <tt class="xref py py-obj docutils literal"><span class="pre">_ignore</span></tt> value</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="gwpy.plotter.SegmentAxes.get_insetlabels"><tt class="xref py py-obj docutils literal"><span class="pre">get_insetlabels</span></tt></a>()</td>
 <td>Move the y-axis tick labels inside the axes</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.get_next_y" title="gwpy.plotter.SegmentAxes.get_next_y"><tt class="xref py py-obj docutils literal"><span class="pre">get_next_y</span></tt></a>()</td>
+<td>Find the next y-axis value at which a segment list can be placed</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.SegmentAxes.plot" title="gwpy.plotter.SegmentAxes.plot"><tt class="xref py py-obj docutils literal"><span class="pre">plot</span></tt></a>(*args,&nbsp;**kwargs)</td>
 <td>Plot data onto these axes</td>
@@ -2878,7 +2905,7 @@ names from getting squeezed off the end of a standard figure</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="staticmethod">
 <dt id="gwpy.plotter.SegmentAxes.build_segment">
-<em class="property">static </em><tt class="descname">build_segment</tt><big>(</big><em>segment</em>, <em>y</em>, <em>height=0.80000000000000004</em>, <em>valign='center'</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L328"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.build_segment" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descname">build_segment</tt><big>(</big><em>segment</em>, <em>y</em>, <em>height=0.8</em>, <em>valign='center'</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.build_segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a <a class="reference external" href="http://matplotlib.sourceforge.net/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.4.3)"><tt class="xref py py-class docutils literal"><span class="pre">Rectangle</span></tt></a> to display
 a single <a class="reference internal" href="../segments/index.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><tt class="xref py py-class docutils literal"><span class="pre">Segment</span></tt></a></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2921,19 +2948,52 @@ a single <a class="reference internal" href="../segments/index.html#gwpy.segment
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.draw">
-<tt class="descname">draw</tt><big>(</big><em>artist</em>, <em>renderer</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L388"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.draw" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">draw</tt><big>(</big><em>artist</em>, <em>renderer</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#gwpy.plotter.SegmentAxes.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw everything (plot lines, axes, labels)</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.plotter.SegmentAxes.get_collections">
+<tt class="descname">get_collections</tt><big>(</big><em>ignore=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L393"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_collections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the collections matching the given <tt class="xref py py-obj docutils literal"><span class="pre">_ignore</span></tt> value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ignore</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">bool</span></tt></a>, or <a class="reference external" href="http://docs.python.org/library/constants.html#None" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">None</span></tt></a></p>
+<blockquote>
+<div><p>value of <tt class="xref py py-obj docutils literal"><span class="pre">_ignore</span></tt> to match</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>collections</strong> : <a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">list</span></tt></a></p>
+<blockquote class="last">
+<div><p>if <tt class="xref py py-obj docutils literal"><span class="pre">ignore=None</span></tt>, simply returns all collections, otherwise
+returns those collections matching the <tt class="xref py py-obj docutils literal"><span class="pre">ignore</span></tt> parameter</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.get_insetlabels">
-<tt class="descname">get_insetlabels</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_insetlabels</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L416"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the y-axis tick labels inside the axes</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.plotter.SegmentAxes.get_next_y">
+<tt class="descname">get_next_y</tt><big>(</big><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_next_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the next y-axis value at which a segment list can be placed</p>
+<p>This method simply counts the number of independent segmentlists or
+flags that have been plotted onto these axes.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2976,7 +3036,7 @@ a single <a class="reference internal" href="../segments/index.html#gwpy.segment
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_dqdict">
-<tt class="descname">plot_dqdict</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqdict" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_dqdict</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqdict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../segments/index.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><tt class="xref py py-class docutils literal"><span class="pre">DataQualityDict</span></tt></a> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3022,7 +3082,7 @@ dict of keyword arguments to pass to
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_dqflag">
-<tt class="descname">plot_dqflag</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqflag" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_dqflag</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../segments/index.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><tt class="xref py py-class docutils literal"><span class="pre">DataQualityFlag</span></tt></a>
 onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3066,7 +3126,7 @@ dict of keyword arguments to pass to
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_segmentlist">
-<tt class="descname">plot_segmentlist</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlist" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_segmentlist</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../segments/index.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><tt class="xref py py-class docutils literal"><span class="pre">SegmentList</span></tt></a> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3109,7 +3169,7 @@ to work for hatched rectangles</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_segmentlistdict">
-<tt class="descname">plot_segmentlistdict</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlistdict" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_segmentlistdict</tt><big>(</big><em>artist</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlistdict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../segments/index.html#gwpy.segments.SegmentListDict" title="gwpy.segments.SegmentListDict"><tt class="xref py py-class docutils literal"><span class="pre">SegmentListDict</span></tt></a> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3144,12 +3204,12 @@ each segmentlist</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.set_insetlabels">
-<tt class="descname">set_insetlabels</tt><big>(</big><em>inset=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L377"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_insetlabels" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_insetlabels</tt><big>(</big><em>inset=None</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L413"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_insetlabels" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.set_xlim">
-<tt class="descname">set_xlim</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/segments.py#L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_xlim</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/segments.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-python"><div class="highlight"><pre>set_xlim(self, *args, **kwargs):
 </pre></div>
@@ -3193,7 +3253,7 @@ present is on the right.</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.EventTableAxes">
-<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">EventTableAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">gwpy.plotter.</tt><tt class="descname">EventTableAxes</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes" title="gwpy.plotter.TimeSeriesAxes"><tt class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.TimeSeriesAxes</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">EventTableAxes</span>
 </pre></div>
@@ -3211,7 +3271,7 @@ rest of the <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.EventTableAxes.name" title="gwpy.plotter.EventTableAxes.name"><tt class="xref py py-obj docutils literal"><span class="pre">name</span></tt></a></td>
-<td>str(object) -&gt; string</td>
+<td>str(object=&#8217;&#8216;) -&gt; string</td>
 </tr>
 </tbody>
 </table>
@@ -3245,7 +3305,7 @@ rest of the <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.add_loudest">
-<tt class="descname">add_loudest</tt><big>(</big><em>table</em>, <em>rank</em>, <em>x</em>, <em>y</em>, <em>*columns</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.add_loudest" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">add_loudest</tt><big>(</big><em>table</em>, <em>rank</em>, <em>x</em>, <em>y</em>, <em>*columns</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.add_loudest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the loudest event according to some rank.</p>
 <p>The loudest event is displayed as a gold star at its
 position given by the values in columns <tt class="docutils literal"><span class="pre">x</span></tt>, and <tt class="docutils literal"><span class="pre">y</span></tt>,
@@ -3294,7 +3354,7 @@ event</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.plot">
-<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3319,7 +3379,7 @@ or anything valid for
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.plot_table">
-<tt class="descname">plot_table</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>size_by=None</em>, <em>size_by_log=None</em>, <em>size_range=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_table" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_table</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>size_by=None</em>, <em>size_by_log=None</em>, <em>size_range=None</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a LIGO_LW-format event <tt class="xref py py-obj docutils literal"><span class="pre">Table</span></tt> onto these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><tt class="xref py py-obj docutils literal"><span class="pre">Axes</span></tt></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3357,7 +3417,7 @@ or anything valid for
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.plot_tiles">
-<tt class="descname">plot_tiles</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>edgecolors='face'</em>, <em>linewidth=0.80000000000000004</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b1/gwpy/plotter/table.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_tiles" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">plot_tiles</tt><big>(</big><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>edgecolors='face'</em>, <em>linewidth=0.8</em>, <em>**kwargs</em><big>)</big><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v0.1b3/gwpy/plotter/table.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_tiles" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
