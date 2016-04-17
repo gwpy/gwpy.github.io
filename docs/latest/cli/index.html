@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command line plotting with GWpy &mdash; GWpy 0.1b4.dev231 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1b4.dev231',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1b4.dev231 documentation" href="../index.html" />
+    <link rel="next" title="Time series plots" href="timeseries.html" />
+    <link rel="prev" title="Plotting API" href="../plotter/api.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev231</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Accessing interferometer data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../plotter/api.html" title="Previous Chapter: Plotting API"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting API</span>
+    </a>
+  </li>
+  <li>
+    <a href="timeseries.html" title="Next Chapter: Time series plots"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Time series plot... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Command line plotting with GWpy</a><ul>
+<li><a class="reference internal" href="#specify-input-data">Specify input data</a></li>
+<li><a class="reference internal" href="#prefiltering-data">Prefiltering data</a></li>
+<li><a class="reference internal" href="#titles-lables-and-legends">Titles, lables, and legends</a></li>
+<li><a class="reference internal" href="#interactive-mode">Interactive mode</a></li>
+<li><a class="reference internal" href="#customizing-individual-plots">Customizing individual plots</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/cli/index.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="command-line-plotting-with-gwpy">
+<h1>Command line plotting with GWpy<a class="headerlink" href="#command-line-plotting-with-gwpy" title="Permalink to this headline">¶</a></h1>
+<p>LigoDV-web (<a class="reference external" href="https://ldvw.ligo.caltech.edu">https://ldvw.ligo.caltech.edu</a>) is a web based tool for viewing LIGO
+data.  With the availability of GWpy we have undergone a transformation from
+using our own plotting functions to using GWpy.  Since ldvw is written in Java
+the most effective way to do this was to develop a command line program to
+generate each of the plots.  This program is now part of the GWpy distribution
+and can be used on any machine with GWpy installed including Condor compute nodes.</p>
+<p>The general form of the command is:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>gwpy-plot ACTION REQUIRED-ARGUMENTS or --help <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Where ACTION is the name of the plot to make.  If you run the script without any agruments it will list
+the actions.</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ gwpy-plot
+usage: gwpy-plot <span class="o">[</span>-h<span class="o">]</span>
+                 <span class="o">{</span>timeseries,coherence,spectrum,spectrogram,coherencegram<span class="o">}</span> ...
+gwpy-plot: error: too few arguments
+</pre></div>
+</div>
+<p>To see the available options for any action add the action keyword.  For example:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ gwpy-plot timeseries
+usage: gwpy-plot timeseries <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-s SILENT<span class="o">]</span> --chan CHAN <span class="o">[</span>CHAN ...<span class="o">]</span>
+                            --start START <span class="o">[</span>START ...<span class="o">]</span> <span class="o">[</span>--duration DURATION<span class="o">]</span>
+                            <span class="o">[</span>-c FRAMECACHE<span class="o">]</span> <span class="o">[</span>--highpass HIGHPASS<span class="o">]</span> <span class="o">[</span>--logx<span class="o">]</span>
+                            <span class="o">[</span>--xmin XMIN<span class="o">]</span> <span class="o">[</span>--xmax XMAX<span class="o">]</span> <span class="o">[</span>-g GEOMETRY<span class="o">]</span>
+                            <span class="o">[</span>--interactive<span class="o">]</span> <span class="o">[</span>--logy<span class="o">]</span> <span class="o">[</span>--title TITLE<span class="o">]</span>
+                            <span class="o">[</span>--suptitle SUPTITLE<span class="o">]</span> <span class="o">[</span>--xlabel XLABEL<span class="o">]</span>
+                            <span class="o">[</span>--ylabel YLABEL<span class="o">]</span> <span class="o">[</span>--out OUT<span class="o">]</span>
+                            <span class="o">[</span>--legend <span class="o">[</span>LEGEND <span class="o">[</span>LEGEND ...<span class="o">]]]</span> <span class="o">[</span>--nolegend<span class="o">]</span>
+                            <span class="o">[</span>--nogrid<span class="o">]</span> <span class="o">[</span>--ymin YMIN<span class="o">]</span> <span class="o">[</span>--ymax YMAX<span class="o">]</span>
+</pre></div>
+</div>
+<p>A <code class="docutils literal"><span class="pre">-h</span></code> or <code class="docutils literal"><span class="pre">--help</span></code> after the action will provide an explanation of each option.  Since most
+options are shared among several actions we will discuss them in groups.</p>
+<p>The program tries to choose reasonable defaults so the only required arguments for most plots are
+one channel and one start time, some plots like coherence require two channels.  For example:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>gwpy-plot timeseries --chan L1:OAF-CAL_DARM_DQ --start 1102766651
+</pre></div>
+</div>
+<p>Will produce a image file called gwpy.png in the current directory that looks like:</p>
+<img alt="sample time series no parameters specified" class="align-center" src="../cli_examples/cli-01.png" />
+<p>To generate that image several assumptions were made such as using 10 sec of data from a default
+NDS2 server, scaling the plot to
+the full range on both X and Y axes, using standard labeling and output went to a generic file in
+the current directory.  All of this is customizable, plus we can use log scaling or high pass filter the
+data before plotting.</p>
+<p>The options for each action vary but many are common.</p>
+<div class="section" id="specify-input-data">
+<h2>Specify input data<a class="headerlink" href="#specify-input-data" title="Permalink to this headline">¶</a></h2>
+<p>The line plots: time series, spectrum, and coherence accept multiple channels and multiple times,
+while the image plots:
+spectrogram and coherence-spectrogram accept only one (spectrogram) or two (coherence-spectrogram)
+channel(s) and one time.</p>
+<p><strong>Channels</strong> are specified using their full name and it is case sensitive.
+Use the <code class="docutils literal"><span class="pre">--chan</span></code> argument followed by the channel name as many times as needed</p>
+<p><strong>Start times</strong> are specified in GPS seconds.  Use the <code class="docutils literal"><span class="pre">--start</span></code> argument followed by the start time
+as many times as needed.</p>
+<p><strong>Duration</strong> is specified in seconds using the <code class="docutils literal"><span class="pre">--duration</span></code> keyword.  There is only
+one duration and it applies to all channels and all start times.</p>
+<p>By default all data is pulled from an appropriate NDS2 server using GWpy&#8217;s algorithm to decide which
+servers to try, in what order.  You can use the <code class="docutils literal"><span class="pre">-c</span></code> or <code class="docutils literal"><span class="pre">--framecache</span></code> argument to
+specify a LAL style frame cache if you prefer to get the data from .gwf frame files.</p>
+</div>
+<div class="section" id="prefiltering-data">
+<h2>Prefiltering data<a class="headerlink" href="#prefiltering-data" title="Permalink to this headline">¶</a></h2>
+<p>Data may be high pass filtered with a Butterworth window before any processing or plotting is done.
+The <code class="docutils literal"><span class="pre">--highpass</span> <span class="pre">&lt;cutoff</span> <span class="pre">frequency</span> <span class="pre">(Hz)&gt;</span></code> pair specifies the filter.</p>
+</div>
+<div class="section" id="titles-lables-and-legends">
+<h2>Titles, lables, and legends<a class="headerlink" href="#titles-lables-and-legends" title="Permalink to this headline">¶</a></h2>
+<p>The figure below is a spectrum that was generated with the command line:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span>gwpy-plot spectrum --chan L1:OAF-CAL_DARM_DQ --start <span class="m">1102766451</span> <span class="m">1102766651</span> --out spectrum.png
+</pre></div>
+</div>
+<img alt="sample spectrum" class="align-center" src="../cli_examples/cli-02.png" />
+<p>The top line is called the <strong>super title</strong> and is overridden with the <code class="docutils literal"><span class="pre">--suptitle</span></code> directive followed
+by the new supertitle which may be plain text or LaTex.  There can be only 1 supertitle and it is one
+line only.  Be sure to put quotes (&#8221; or &#8216;) around any string with spaces or special characters.</p>
+<p>The line below that is called the <strong>title</strong> and is overridden with the <code class="docutils literal"><span class="pre">--title</span></code> directive followed by
+the new title.  There can be multiple titles limited only by space available on the image.</p>
+<p>The <strong>X-axis</strong> and the <strong>Y-axis</strong> labels are set with the <code class="docutils literal"><span class="pre">--xlabel</span></code> and <code class="docutils literal"><span class="pre">-ylabel</span></code> argument.</p>
+<p>The <strong>legends</strong> only appear by default when more than one dataset is plotted.  The text for each legend
+can be set with the <code class="docutils literal"><span class="pre">--legend</span></code> argument, one for each dataset.  The <code class="docutils literal"><span class="pre">--nolegend</span></code> argument turns
+off all legends.</p>
+<p>The <strong>gridlines</strong> are shown by default.  To remove them from the plot use the <code class="docutils literal"><span class="pre">--nogrid</span></code> argument.</p>
+</div>
+<div class="section" id="interactive-mode">
+<h2>Interactive mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">--interactive</span></code> argument uses the matplotlib/pyplot show function to display an image and allow
+simple manipulations such as zoom, pan, and comfigure subplots.  There is also a save function.  gwpy-plot
+will also save the image generated. Interactive mode is described in detail in the <a class="reference internal" href="interactive.html#interactive"><span class="std std-ref">Interactive mode</span></a>
+section.</p>
+</div>
+<div class="section" id="customizing-individual-plots">
+<h2>Customizing individual plots<a class="headerlink" href="#customizing-individual-plots" title="Permalink to this headline">¶</a></h2>
+<p>Individual plots may have different default behavior and different arguments.  This section
+discussed options that behave the same for all plots.  See the appropriate section below for the
+remainder of the arguments for each plot.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time series plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrum.html">Spectrum plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coherence.html">Coherence plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrogram.html">Spectrogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coherencegram.html">Coherence-spectrogram or coherencegram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">Interactive mode</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

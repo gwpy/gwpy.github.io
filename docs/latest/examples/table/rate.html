@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Calculating (and plotting) event rate versus time &mdash; GWpy 0.1b4.dev231 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1b4.dev231',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1b4.dev231 documentation" href="../../index.html" />
+    <link rel="up" title="LIGO_LW data examples" href="index.html" />
+    <link rel="next" title="Plotting an event table in a scatter" href="scatter.html" />
+    <link rel="prev" title="Plotting event rate for specific column bins" href="rate_binned.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev231</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Accessing interferometer data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="rate_binned.html" title="Previous Chapter: Plotting event rate for specific column bins"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting event r...</span>
+    </a>
+  </li>
+  <li>
+    <a href="scatter.html" title="Next Chapter: Plotting an event table in a scatter"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting an even... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Calculating (and plotting) event rate versus time</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/table/rate.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="calculating-and-plotting-event-rate-versus-time">
+<h1>Calculating (and plotting) event rate versus time<a class="headerlink" href="#calculating-and-plotting-event-rate-versus-time" title="Permalink to this headline">¶</a></h1>
+<p>I would like to study the rate at which event triggers are generated by the
+<code class="xref py py-obj docutils literal"><span class="pre">ExcessPower</span></code> gravitational-wave burst detection algorithm, over a small
+stretch of data.</p>
+<p>The data from which these events were generated are a simulation of Gaussian noise
+with the Advanced LIGO design spectrum, and so don&#8217;t actually contain any real
+gravitational waves, but will help tune the algorithm to improve detection of
+future, real signals.</p>
+<p>First, import the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable" title="gwpy.table.lsctables.SnglBurstTable"><code class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.table.lsctables</span> <span class="kn">import</span> <span class="n">SnglBurstTable</span>
+</pre></div>
+</div>
+<p>and read a table of (simulated) events:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;../../gwpy/tests/data/&#39;</span>
+                             <span class="s1">&#39;H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can calculate the rate of events (in Hertz) using the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable.event_rate" title="gwpy.table.lsctables.SnglBurstTable.event_rate"><code class="xref py py-meth docutils literal"><span class="pre">event_rate()</span></code></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">event_rate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">968654552</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654562</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable.event_rate" title="gwpy.table.lsctables.SnglBurstTable.event_rate"><code class="xref py py-meth docutils literal"><span class="pre">event_rate()</span></code></a> method has returned a <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>, so we can display this using the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method of that object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Event rate [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO Hanford Observatory event rate for GW100916&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../../examples/table/rate.py">Source code</a>, <a class="reference external" href="../../../examples/table/rate.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/rate.png" src="../../_images/rate.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

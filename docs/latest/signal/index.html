@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Signal processing &mdash; GWpy 0.1b4.dev231 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1b4.dev231',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1b4.dev231 documentation" href="../index.html" />
+    <link rel="next" title="Data-quality segments" href="../segments/index.html" />
+    <link rel="prev" title="Accessing interferometer data" href="../timeseries/index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev231</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Accessing interferometer data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../timeseries/index.html" title="Previous Chapter: Accessing interferometer data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Accessing interf...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../segments/index.html" title="Next Chapter: Data-quality segments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data-quality seg... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Signal processing</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/signal/index.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="signal-processing">
+<span id="id1"></span><h1>Signal processing<a class="headerlink" href="#signal-processing" title="Permalink to this headline">¶</a></h1>
+<p>Oftentimes a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> is not the most informative way to look at data from a gravitational-wave interferometer.
+GWpy provides convenient wrappers around some of the most common signal-processing methods.</p>
+<p><strong>Time-domain filtering:</strong></p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal"><span class="pre">highpass</span></code></a>(frequency[,&nbsp;gpass,&nbsp;gstop,&nbsp;stop])</td>
+<td>Filter this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a Butterworth high-pass filter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><code class="xref py py-obj docutils literal"><span class="pre">lowpass</span></code></a>(frequency[,&nbsp;gpass,&nbsp;gstop,&nbsp;stop])</td>
+<td>Filter this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.bandpass" title="gwpy.timeseries.TimeSeries.bandpass"><code class="xref py py-obj docutils literal"><span class="pre">bandpass</span></code></a>(flow,&nbsp;fhigh[,&nbsp;gpass,&nbsp;gstop,&nbsp;stops])</td>
+<td>Filter this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> by applying low- and high-pass filters.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal"><span class="pre">zpk</span></code></a>(zeros,&nbsp;poles,&nbsp;gain[,&nbsp;digital,&nbsp;unit])</td>
+<td>Filter this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Frequency-domain transforms:</strong></p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal"><span class="pre">psd</span></code></a>([fftlength,&nbsp;overlap,&nbsp;method])</td>
+<td>Calculate the PSD <code class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></code> for this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal"><span class="pre">asd</span></code></a>([fftlength,&nbsp;overlap,&nbsp;method])</td>
+<td>Calculate the ASD <code class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></code> of this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram</span></code></a>(stride[,&nbsp;fftlength,&nbsp;overlap,&nbsp;...])</td>
+<td>Calculate the average power spectrogram of this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> using the specified average spectrum method.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.q_transform" title="gwpy.timeseries.TimeSeries.q_transform"><code class="xref py py-obj docutils literal"><span class="pre">q_transform</span></code></a>([qrange,&nbsp;frange,&nbsp;gps,&nbsp;search,&nbsp;...])</td>
+<td>Scan a <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> using a multi-Q transform</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="gwpy.timeseries.TimeSeries.rayleigh_spectrum"><code class="xref py py-obj docutils literal"><span class="pre">rayleigh_spectrum</span></code></a>([fftlength,&nbsp;overlap])</td>
+<td>Calculate the Rayleigh <code class="xref py py-obj docutils literal"><span class="pre">Spectrum</span></code> for this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">rayleigh_spectrogram</span></code></a>(stride[,&nbsp;fftlength,&nbsp;...])</td>
+<td>Calculate the Rayleigh statistic spectrogram of this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-channel correlations:</strong></p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.coherence" title="gwpy.timeseries.TimeSeries.coherence"><code class="xref py py-obj docutils literal"><span class="pre">coherence</span></code></a>(other[,&nbsp;fftlength,&nbsp;overlap,&nbsp;window])</td>
+<td>Calculate the frequency-coherence between this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and another.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="gwpy.timeseries.TimeSeries.coherence_spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">coherence_spectrogram</span></code></a>(other,&nbsp;stride[,&nbsp;...])</td>
+<td>Calculate the coherence spectrogram between this <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and other.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<p>(<a class="reference external" href="../signal/index-1.py">Source code</a>, <a class="reference external" href="../signal/index-1.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/index-11.png" src="../_images/index-11.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>For more examples like this, see <a class="reference external" href="http://docs.python.org/distutils/examples.html#examples" title="(in Python v2.7)"><span>Examples</span></a>.</p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

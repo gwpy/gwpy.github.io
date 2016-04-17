@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotting segments for a StateVector &mdash; GWpy 0.1b4.dev231 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1b4.dev231',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1b4.dev231 documentation" href="../../index.html" />
+    <link rel="up" title="TimeSeries examples" href="index.html" />
+    <link rel="next" title="Whitening a TimeSeries" href="whiten.html" />
+    <link rel="prev" title="Generate the Q-transform of a TimeSeries" href="qscan.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev231</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Accessing interferometer data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="qscan.html" title="Previous Chapter: Generate the Q-transform of a TimeSeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Generate the Q-t...</span>
+    </a>
+  </li>
+  <li>
+    <a href="whiten.html" title="Next Chapter: Whitening a TimeSeries"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Whitening a Time... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Plotting segments for a <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/timeseries/statevector.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="plotting-segments-for-a-statevector">
+<h1>Plotting segments for a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
+<p>I would like to examine the state of the internal seismic isolation system supporting the Fabry-Perot mirror at the end of the Y-arm at LHO, in order to investigate a noise source.</p>
+<p>These data are private to the LIGO Scientific Collaboration and the Virgo Collaboration, but collaboration members can use the NDS2 service to download data.</p>
+<p>First, we can import the <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
+</pre></div>
+</div>
+<p>Next, we define which bits we want to use, and can then
+<a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.get" title="gwpy.timeseries.StateVector.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Summary state&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;State 1 damped&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stage 1 isolated&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stage 2 damped&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stage 2 isolated&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Master switch ON&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stage 1 WatchDog OK&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stage 2 WatchDog OK&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 14:00&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 15:00&#39;</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For this example, we wish to <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-meth docutils literal"><span class="pre">resample()</span></code></a> the data to a
+much lower rate, to make visualising the state much easier:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we make a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a>, passing <code class="xref py py-obj docutils literal"><span class="pre">insetlabels=True</span></code> to
+display the bit names inside the axes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LLO ETMX internal seismic isolation state&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_bitmask</span><span class="p">(</span><span class="s1">&#39;0b11101110&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../../examples/timeseries/statevector.py">Source code</a>, <a class="reference external" href="../../../examples/timeseries/statevector.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/statevector.png" src="../../_images/statevector.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

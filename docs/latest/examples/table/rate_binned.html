@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plotting event rate for specific column bins &mdash; GWpy 0.1b4.dev231 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1b4.dev231',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="top" title="GWpy 0.1b4.dev231 documentation" href="../../index.html" />
+    <link rel="up" title="LIGO_LW data examples" href="index.html" />
+    <link rel="next" title="Calculating (and plotting) event rate versus time" href="rate.html" />
+    <link rel="prev" title="Plotting an event histogram" href="histogram.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev231</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Accessing interferometer data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+<ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="histogram.html" title="Previous Chapter: Plotting an event histogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting an even...</span>
+    </a>
+  </li>
+  <li>
+    <a href="rate.html" title="Next Chapter: Calculating (and plotting) event rate versus time"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating (and... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Plotting event rate for specific column bins</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/table/rate_binned.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="plotting-event-rate-for-specific-column-bins">
+<h1>Plotting event rate for specific column bins<a class="headerlink" href="#plotting-event-rate-for-specific-column-bins" title="Permalink to this headline">¶</a></h1>
+<p>I would like to study the rate at which event triggers are generated by the
+<code class="xref py py-obj docutils literal"><span class="pre">ExcessPower</span></code> gravitational-wave burst detection algorithm, over a small
+stretch of data, binned by various thresholds on signal-to-noise ratio (SNR).</p>
+<p>The data from which these events were generated are a simulation of Gaussian noise
+with the Advanced LIGO design spectrum, and so don&#8217;t actually contain any real
+gravitational waves, but will help tune the algorithm to improve detection of
+future, real signals.</p>
+<p>First, we import the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable" title="gwpy.table.lsctables.SnglBurstTable"><code class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></code></a> and read the events</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.table.lsctables</span> <span class="kn">import</span> <span class="n">SnglBurstTable</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;../../gwpy/tests/data/H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can use the <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">~SnglBurstTable.binned_event_rates</tt>)</p>
+latex exited with error
+[stdout]
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&amp;-line parsing enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2005/12/01&gt;
+Babel &lt;v3.8h&gt; and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo))
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+(/usr/share/texmf/tex/latex/ucs/utf8x.def))
+(/usr/share/texmf/tex/latex/ucs/ucs.sty
+(/usr/share/texmf/tex/latex/ucs/data/uni-global.def))
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?&#8217; option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texmf/tex/latex/amscls/amsthm.sty)
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty))
+
+! LaTeX Error: File `anyfontsize.sty&#8217; not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+&lt;read *&gt; 
+         
+l.9 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</div>
+ method to calculated the event rate in a number of bins of SNR.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">rates</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">binned_event_rates</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">operator</span><span class="o">=</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span>
+                                  <span class="n">start</span><span class="o">=</span><span class="mi">968654552</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654562</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The list <code class="xref py py-obj docutils literal"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">8]</span></code> and operator <code class="xref py py-obj docutils literal"><span class="pre">&gt;=</span></code> specifies SNR tresholds of
+2, 3, 5, and 8.</p>
+</div>
+<p>Finally, we can make a plot:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">rates</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Event rate [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO Hanford Observatory event rate for GW100916&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../../examples/table/rate_binned.py">Source code</a>, <a class="reference external" href="../../../examples/table/rate_binned.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/rate_binned.png" src="../../_images/rate_binned.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
