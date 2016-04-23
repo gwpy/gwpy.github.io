@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting in GWpy (gwpy.plotter) &mdash; GWpy 0.1b4.dev242 documentation</title>
+    <title>Plotting in GWpy (gwpy.plotter) &mdash; GWpy 0.1b4.dev266 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1b4.dev242',
+        VERSION:     '0.1b4.dev266',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,9 +33,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1b4.dev242 documentation" href="../index.html" />
+    <link rel="top" title="GWpy 0.1b4.dev266 documentation" href="../index.html" />
     <link rel="next" title="Visualising filters (BodePlot)" href="filter.html" />
-    <link rel="prev" title="The StateTimeSeries and StateVector" href="../timeseries/statevector.html" />
+    <link rel="prev" title="The Spectrogram" href="../spectrogram/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -55,7 +55,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev242</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.1b4.dev266</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -85,6 +85,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
@@ -102,7 +106,7 @@
               
                 
   <li>
-    <a href="../timeseries/statevector.html" title="Previous Chapter: The StateTimeSeries and StateVector"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The StateTimeSer...</span>
+    <a href="../spectrogram/index.html" title="Previous Chapter: The Spectrogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The Spectrogram</span>
     </a>
   </li>
   <li>
@@ -201,21 +205,21 @@ more complicated plots manually:</p>
 <h2>Plot types<a class="headerlink" href="#plot-types" title="Permalink to this headline">¶</a></h2>
 <p>The following diagram displays the available Plot objects and their
 inheritance from <a class="reference internal" href="api.html#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-class docutils literal"><span class="pre">Plot</span></code></a>.</p>
-<img src="../_images/inheritance-61a18c561833e8f04995c14f171042f5ff970e3d.png" alt="Inheritance diagram of core, timeseries, spectrum, spectrogram, table, filter" usemap="#inheritance0025e4d236" class="inheritance"/>
-<map id="inheritance0025e4d236" name="inheritance0025e4d236">
-<area shape="rect" id="node1" title="An extension of the core matplotlib :class:`~matplotlib.axes.Axes`." alt="" coords="112,45,207,59"/>
-<area shape="rect" id="node12" title="Custom `Axes` for a :class:`~gwpy.plotter.SpectrumPlot`." alt="" coords="3,86,151,101"/>
-<area shape="rect" id="node17" title="Custom `Axes` for a :class:`~gwpy.plotter.TimeSeriesPlot`." alt="" coords="164,86,319,101"/>
-<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="105,3,214,18"/>
-<area shape="rect" id="node4" title="An extension of the core matplotlib :class:`~matplotlib.figure.Figure`." alt="" coords="556,86,648,101"/>
-<area shape="rect" id="node7" title="A `Plot` class for visualising transfer functions." alt="" coords="323,127,432,142"/>
-<area shape="rect" id="node10" title="`Figure` for displaying a :class:`~gwpy.timeseries.TimeSeries`." alt="" coords="445,127,598,142"/>
-<area shape="rect" id="node14" title="`Figure` for displaying a :class:`~gwpy.spectrum.core.Spectrum`." alt="" coords="611,127,754,142"/>
-<area shape="rect" id="node19" title="`Figure` for displaying a :class:`~glue.ligolw.table.Table`." alt="" coords="616,168,750,183"/>
-<area shape="rect" id="node5" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="555,45,649,59"/>
-<area shape="rect" id="node9" title="`Figure` for displaying a :class:`~gwpy.spectrogram.Spectrogram`." alt="" coords="437,168,603,183"/>
-<area shape="rect" id="node16" title="Custom `Axes` for an :class:`~gwpy.plotter.EventTablePlot`." alt="" coords="173,127,310,142"/>
-<area shape="rect" id="node25" title="Abstract base class for someone who renders into a" alt="" coords="556,3,648,18"/>
+<img src="../_images/inheritance-0e3246818c42b4536bf3214acf026bc56cc3d57e.png" alt="Inheritance diagram of core, timeseries, frequencyseries, spectrogram, table, filter" usemap="#inheritance9b2cddea7b" class="inheritance"/>
+<map id="inheritance9b2cddea7b" name="inheritance9b2cddea7b">
+<area shape="rect" id="node1" title="An extension of the core matplotlib :class:`~matplotlib.axes.Axes`." alt="" coords="118,36,195,48"/>
+<area shape="rect" id="node9" title="Custom `Axes` for a :class:`~gwpy.plotter.FrequencySeriesPlot`." alt="" coords="2,69,160,81"/>
+<area shape="rect" id="node21" title="Custom `Axes` for a :class:`~gwpy.plotter.TimeSeriesPlot`." alt="" coords="170,69,295,81"/>
+<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="113,3,201,15"/>
+<area shape="rect" id="node4" title="An extension of the core matplotlib :class:`~matplotlib.figure.Figure`." alt="" coords="484,69,557,81"/>
+<area shape="rect" id="node7" title="A `Plot` class for visualising transfer functions." alt="" coords="298,103,387,115"/>
+<area shape="rect" id="node11" title="`Figure` for displaying a `~gwpy.frequencyseries.FrequencySeries`" alt="" coords="397,103,551,115"/>
+<area shape="rect" id="node18" title="`Figure` for displaying a :class:`~gwpy.timeseries.TimeSeries`." alt="" coords="583,103,706,115"/>
+<area shape="rect" id="node23" title="`Figure` for displaying a :class:`~glue.ligolw.table.Table`." alt="" coords="513,136,621,148"/>
+<area shape="rect" id="node5" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="483,36,558,48"/>
+<area shape="rect" id="node17" title="`Figure` for displaying a :class:`~gwpy.spectrogram.Spectrogram`." alt="" coords="631,136,766,148"/>
+<area shape="rect" id="node20" title="Custom `Axes` for an :class:`~gwpy.plotter.EventTablePlot`." alt="" coords="177,103,288,115"/>
+<area shape="rect" id="node29" title="Abstract base class for someone who renders into a" alt="" coords="483,3,558,15"/>
 </map>
 <p>The following pages outline specific applications of some of the specialist plot types</p>
 <div class="toctree-wrapper compound">
