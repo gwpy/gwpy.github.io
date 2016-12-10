@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting segments for a StateVector &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting segments for a StateVector &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,8 +33,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="TimeSeries examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Whitening a TimeSeries" href="whiten.html" />
     <link rel="prev" title="Generate the Q-transform of a TimeSeries" href="qscan.html" />
 <meta charset='utf-8'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="qscan.html" title="Previous Chapter: Generate the Q-transform of a TimeSeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Generate the Q-t...</span>
+    <a href="qscan.html" title="Previous Chapter: Generate the Q-transform of a TimeSeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Generate the ...</span>
     </a>
   </li>
   <li>
-    <a href="whiten.html" title="Next Chapter: Whitening a TimeSeries"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Whitening a Time... &raquo;</span>
+    <a href="whiten.html" title="Next Chapter: Whitening a TimeSeries"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Whitening a T... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/timeseries/statevector.txt"
+  <a href="../../_sources/examples/timeseries/statevector.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -158,15 +156,15 @@
     <div class="col-md-9 content">
       
   <div class="section" id="plotting-segments-for-a-statevector">
-<h1>Plotting segments for a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
+<h1>Plotting segments for a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
 <p>I would like to examine the state of the internal seismic isolation system supporting the Fabry-Perot mirror at the end of the Y-arm at LHO, in order to investigate a noise source.</p>
 <p>These data are private to the LIGO Scientific Collaboration and the Virgo Collaboration, but collaboration members can use the NDS2 service to download data.</p>
-<p>First, we can import the <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> class:</p>
+<p>First, we can import the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> class:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
 </pre></div>
 </div>
 <p>Next, we define which bits we want to use, and can then
-<a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.get" title="gwpy.timeseries.StateVector.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.get" title="gwpy.timeseries.StateVector.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Summary state&#39;</span><span class="p">,</span>
     <span class="s1">&#39;State 1 damped&#39;</span><span class="p">,</span>
@@ -181,12 +179,12 @@
 <span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 14:00&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 15:00&#39;</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For this example, we wish to <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-meth docutils literal"><span class="pre">resample()</span></code></a> the data to a
+<p>For this example, we wish to <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-meth docutils literal"><span class="pre">resample()</span></code></a> the data to a
 much lower rate, to make visualising the state much easier:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we make a <a class="reference internal" href="../../timeseries/statevector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a>, passing <code class="xref py py-obj docutils literal"><span class="pre">insetlabels=True</span></code> to
+<p>Finally, we make a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a>, passing <code class="xref py py-obj docutils literal"><span class="pre">insetlabels=True</span></code> to
 display the bit names inside the axes:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LLO ETMX internal seismic isolation state&#39;</span><span class="p">)</span>
@@ -194,9 +192,9 @@ display the bit names inside the axes:</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/timeseries/statevector.py">Source code</a>, <a class="reference external" href="../../../examples/timeseries/statevector.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/timeseries/statevector-4.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/statevector.png" src="../../_images/statevector.png" />
+<img alt="../../_images/statevector-4.png" src="../../_images/statevector-4.png" />
 </div>
 </div>
 
@@ -213,7 +211,7 @@ display the bit names inside the axes:</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting an event histogram &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting an event histogram &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,8 +33,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="LIGO_LW data examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plotting event rate for specific column bins" href="rate_binned.html" />
     <link rel="prev" title="LIGO_LW data examples" href="index.html" />
 <meta charset='utf-8'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: LIGO_LW data examples"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; LIGO_LW data exa...</span>
+    <a href="index.html" title="Previous Chapter: LIGO_LW data examples"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; LIGO_LW data ...</span>
     </a>
   </li>
   <li>
-    <a href="rate_binned.html" title="Next Chapter: Plotting event rate for specific column bins"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting event r... &raquo;</span>
+    <a href="rate_binned.html" title="Next Chapter: Plotting event rate for specific column bins"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting even... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/table/histogram.txt"
+  <a href="../../_sources/examples/table/histogram.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -166,25 +164,21 @@ over a small stretch of data.</p>
 noise with the Advanced LIGO design spectrum, and so don&#8217;t actually contain
 any real gravitational waves, but will help tune the algorithm to improve
 detection of future, real signals.</p>
-<p>First, we import the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable" title="gwpy.table.lsctables.SnglBurstTable"><code class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></code></a>, an XML-based data holder for single-detector (&#8216;Sngl&#8217;) gravitational-wave burst-like events:</p>
+<p>First, we import the <a class="reference internal" href="../../api/gwpy.table.lsctables.SnglBurstTable.html#gwpy.table.lsctables.SnglBurstTable" title="gwpy.table.lsctables.SnglBurstTable"><code class="xref py py-obj docutils literal"><span class="pre">SnglBurstTable</span></code></a>, an XML-based data holder for single-detector (&#8216;Sngl&#8217;) gravitational-wave burst-like events:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.table.lsctables</span> <span class="kn">import</span> <span class="n">SnglBurstTable</span>
 </pre></div>
 </div>
-<p>We can read a set of events using the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable.read" title="gwpy.table.lsctables.SnglBurstTable.read"><code class="xref py py-meth docutils literal"><span class="pre">read()</span></code></a> method:</p>
+<p>We can read a set of events using the <a class="reference internal" href="../../api/gwpy.table.lsctables.SnglBurstTable.html#gwpy.table.lsctables.SnglBurstTable.read" title="gwpy.table.lsctables.SnglBurstTable.read"><code class="xref py py-meth docutils literal"><span class="pre">read()</span></code></a> method:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">SnglBurstTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;../../gwpy/tests/data/H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and can generate a new <code class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></code> using the <a class="reference internal" href="../../table/index.html#gwpy.table.lsctables.SnglBurstTable.hist" title="gwpy.table.lsctables.SnglBurstTable.hist"><code class="xref py py-meth docutils literal"><span class="pre">hist()</span></code></a> instance method</p>
+<p>and can generate a new <code class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></code> using the <a class="reference internal" href="../../api/gwpy.table.lsctables.SnglBurstTable.html#gwpy.table.lsctables.SnglBurstTable.hist" title="gwpy.table.lsctables.SnglBurstTable.hist"><code class="xref py py-meth docutils literal"><span class="pre">hist()</span></code></a> instance method</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;snr&#39;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">10.</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logbins</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Signal-to-noise ratio (SNR)&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rate [Hz]&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LHO event triggers for GW100916&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
-<p>(<a class="reference external" href="../../../examples/table/histogram.py">Source code</a>, <a class="reference external" href="../../../examples/table/histogram.png">png</a>)</p>
-<div class="figure">
-<img alt="../../_images/histogram.png" src="../../_images/histogram.png" />
 </div>
 </div>
 
@@ -201,7 +195,7 @@ detection of future, real signals.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

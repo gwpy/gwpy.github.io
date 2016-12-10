@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting an over-dense, short-duration Spectrogram &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting an over-dense, short-duration Spectrogram &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,8 +33,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="Spectrogram examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LIGO_LW data examples" href="../table/index.html" />
     <link rel="prev" title="Plotting a Spectrogram of the Rayleigh statistic" href="rayleigh.html" />
 <meta charset='utf-8'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="rayleigh.html" title="Previous Chapter: Plotting a Spectrogram of the Rayleigh statistic"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting a Spect...</span>
+    <a href="rayleigh.html" title="Previous Chapter: Plotting a Spectrogram of the Rayleigh statistic"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting a Sp...</span>
     </a>
   </li>
   <li>
-    <a href="../table/index.html" title="Next Chapter: LIGO_LW data examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">LIGO_LW data exa... &raquo;</span>
+    <a href="../table/index.html" title="Next Chapter: LIGO_LW data examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">LIGO_LW data ... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/spectrogram/spectrogram2.txt"
+  <a href="../../_sources/examples/spectrogram/spectrogram2.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -159,43 +157,56 @@
       
   <div class="section" id="plotting-an-over-dense-short-duration-spectrogram">
 <h1>Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code><a class="headerlink" href="#plotting-an-over-dense-short-duration-spectrogram" title="Permalink to this headline">¶</a></h1>
-<p>The normal <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram</span></code></a> method uses non-overlapping intervals
+<p>The normal <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram</span></code></a> method uses non-overlapping intervals
 to calculate discrete PSDs for each stride. This is fine for long-duration
 data, but give poor resolution when studying short-duration phenomena.</p>
-<p>The <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram2</span></code></a> method allows for highly-overlapping FFT
-calculations to over-sample the frequency content of the input <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>
+<p>The <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram2</span></code></a> method allows for highly-overlapping FFT
+calculations to over-sample the frequency content of the input <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>
 to produce a much more feature-rich output.</p>
-<p>As with the other <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> examples, we import the
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> class, and <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data, but in this
-example we only need 5 seconds of datam,</p>
+<p>To demonstrate this, we can download some data associated with the
+gravitational-wave event GW510914:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s1">&#39;L1:OAF-CAL_DARM_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 28 2015 06:02:05&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 28 2015 06:02:10&#39;</span><span class="p">)</span>
+<span class="n">lho</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259458</span><span class="p">,</span> <span class="mi">1126259467</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now we can call the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram2</span></code></a> method of <code class="xref py py-obj docutils literal"><span class="pre">gwdata</span></code> to
-calculate our over-dense <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">specgram</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">spectrogram2</span><span class="p">(</span><span class="n">fftlength</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mf">0.14</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<p>and can <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-meth docutils literal"><span class="pre">highpass()</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-meth docutils literal"><span class="pre">whiten()</span></code></a>
+the remove low-frequency noise and try and enhance low-amplitude signals
+across the middle of the frequency band:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">hp</span> <span class="o">=</span> <span class="n">lho</span><span class="o">.</span><span class="n">highpass</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">white</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">whiten</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">1126259460</span><span class="p">,</span> <span class="mi">1126259465</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To whiten the <code class="xref py py-obj docutils literal"><span class="pre">specgram</span></code> we can use the <code class="xref py py-meth docutils literal"><span class="pre">ratio()</span></code> method
-to divide by the overall median:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">medratio</span> <span class="o">=</span> <span class="n">specgram</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We chose to <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.crop" title="gwpy.timeseries.TimeSeries.crop"><code class="xref py py-meth docutils literal"><span class="pre">crop()</span></code></a> out the leading and trailing 2
+seconds of the the whitened data series here to remove any filtering
+artefacts that may have been introduced.</p>
+</div>
+<p>Now we can call the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram2</span></code></a> method of <code class="xref py py-obj docutils literal"><span class="pre">gwdata</span></code> to
+calculate our over-dense <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a>, using a
+1/16-second FFT length and high overlap:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">specgram</span> <span class="o">=</span> <span class="n">white</span><span class="o">.</span><span class="n">spectrogram2</span><span class="p">(</span><span class="n">fftlength</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">16.</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">15</span><span class="o">/</span><span class="mf">256.</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, we make a plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">medratio</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">8192</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Amplitude relative to median&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;L1 $h(t)$ with noise interference&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">specgram</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain data around GW150914&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="mf">1126259462.427</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1126259462.427</span><span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1126259462.427</span><span class="o">+.</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/spectrogram/spectrogram2.py">Source code</a>, <a class="reference external" href="../../../examples/spectrogram/spectrogram2.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/spectrogram/spectrogram2-4.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/spectrogram2.png" src="../../_images/spectrogram2.png" />
+<img alt="../../_images/spectrogram2-4.png" src="../../_images/spectrogram2-4.png" />
 </div>
+<p>Here we can see the trace of a high-mass binary black hole system,
+referred to as GW150914.
+For more details on this signal, please see
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.116.061102">Abbott et al. (2016)</a>
+(the joint LSC-Virgo publication announcing this detection).</p>
 </div>
 
 
@@ -211,7 +222,7 @@ to divide by the overall median:</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting a transfer function &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting a transfer function &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,10 +33,10 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="FrequencySeries examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Calculating and plotting a SpectralVariance histogram" href="variance.html" />
-    <link rel="prev" title="Plotting a Rayleigh-statistic Spectum" href="rayleigh.html" />
+    <link rel="prev" title="Calculating the coherence between two channels" href="coherence.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="rayleigh.html" title="Previous Chapter: Plotting a Rayleigh-statistic Spectum"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting a Rayle...</span>
+    <a href="coherence.html" title="Previous Chapter: Calculating the coherence between two channels"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Calculating t...</span>
     </a>
   </li>
   <li>
-    <a href="variance.html" title="Next Chapter: Calculating and plotting a SpectralVariance histogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating and ... &raquo;</span>
+    <a href="variance.html" title="Next Chapter: Calculating and plotting a SpectralVariance histogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating a... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/frequencyseries/transfer_function.txt"
+  <a href="../../_sources/examples/frequencyseries/transfer_function.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -163,9 +161,55 @@
 interferometer to another.</p>
 <p>Specifically, it is interesting to measure the amplitude transfer of
 ground motion through the HEPI system.</p>
-<p>(<a class="reference external" href="../../../examples/frequencyseries/transfer_function.py">Source code</a>, <a class="reference external" href="../../../examples/frequencyseries/transfer_function.png">png</a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Before anything else, we import the objects we will need:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.time</span> <span class="kn">import</span> <span class="n">tconvert</span>
+<span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>
+<span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
+</pre></div>
+</div>
+<p>and set the times of our query, and the channels we want:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">tconvert</span><span class="p">(</span><span class="s1">&#39;May 27 2014 04:00&#39;</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1800</span>
+<span class="n">gndchannel</span> <span class="o">=</span> <span class="s1">&#39;L1:ISI-GND_STS_ITMY_Z_DQ&#39;</span>
+<span class="n">hpichannel</span> <span class="o">=</span> <span class="s1">&#39;L1:HPI-ITMY_BLND_L4C_Z_IN1_DQ&#39;</span>
+</pre></div>
+</div>
+<p>We can call the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> method of the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a>
+to retrieve all data in a single operation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="n">gndchannel</span><span class="p">,</span> <span class="n">hpichannel</span><span class="p">],</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">gnd</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">gndchannel</span><span class="p">]</span>
+<span class="n">hpi</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">hpichannel</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Next, we can call the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.average_fft" title="gwpy.timeseries.TimeSeries.average_fft"><code class="xref py py-meth docutils literal"><span class="pre">average_fft()</span></code></a> method to calculate
+an averages, complex-valued FFT for each <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gndfft</span> <span class="o">=</span> <span class="n">gnd</span><span class="o">.</span><span class="n">average_fft</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;hamming&#39;</span><span class="p">)</span>
+<span class="n">hpifft</span> <span class="o">=</span> <span class="n">hpi</span><span class="o">.</span><span class="n">average_fft</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;hamming&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can divide one by the other to get the transfer function
+(up to the lower Nyquist)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">gndfft</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">hpifft</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="n">hpifft</span><span class="p">[:</span><span class="n">size</span><span class="p">]</span> <span class="o">/</span> <span class="n">gndfft</span><span class="p">[:</span><span class="n">size</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../plotter/api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><code class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></code></a> knows how to separate a complex-valued
+<a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> into magnitude and phase:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s1">r&#39;L1 ITMY ground $\rightarrow$ HPI transfer function&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">55</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/frequencyseries/transfer_function-7.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/transfer_function.png" src="../../_images/transfer_function.png" />
+<img alt="../../_images/transfer_function-7.png" src="../../_images/transfer_function-7.png" />
 </div>
 </div>
 
@@ -182,7 +226,7 @@ ground motion through the HEPI system.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

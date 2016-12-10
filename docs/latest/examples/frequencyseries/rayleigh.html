@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting a Rayleigh-statistic Spectum &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting a Rayleigh-statistic Spectum &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,9 +33,9 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="FrequencySeries examples" href="index.html" />
-    <link rel="next" title="Plotting a transfer function" href="transfer_function.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Calculating the coherence between two channels" href="coherence.html" />
     <link rel="prev" title="Calculating and plotting a FrequencySeries" href="hoff.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="hoff.html" title="Previous Chapter: Calculating and plotting a FrequencySeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Calculating and ...</span>
+    <a href="hoff.html" title="Previous Chapter: Calculating and plotting a FrequencySeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Calculating a...</span>
     </a>
   </li>
   <li>
-    <a href="transfer_function.html" title="Next Chapter: Plotting a transfer function"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting a trans... &raquo;</span>
+    <a href="coherence.html" title="Next Chapter: Calculating the coherence between two channels"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating t... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/frequencyseries/rayleigh.txt"
+  <a href="../../_sources/examples/frequencyseries/rayleigh.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -159,31 +157,49 @@
       
   <div class="section" id="plotting-a-rayleigh-statistic-spectum">
 <h1>Plotting a Rayleigh-statistic <code class="xref py py-obj docutils literal"><span class="pre">Spectum</span></code><a class="headerlink" href="#plotting-a-rayleigh-statistic-spectum" title="Permalink to this headline">¶</a></h1>
-<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>In LIGO the &#8216;Rayleigh&#8217; statistic is a calculation of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_variation">coefficient of variation</a> of the
+power spectral density (PSD) of a given set of data.
+It is used to measure the &#8216;Gaussianity&#8217; of those data, where a value of 1
+indicates Gaussian behaviour, less than 1 indicates coherent variations,
+and greater than 1 indicates incoherent variation.
+It is a useful measure of the quality of the strain data being generated
+and recorded at a LIGO site.</p>
+<p>To demonstate, we can download some public LIGO data from the sixth science
+run (S6) for the H1 interferometer:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s1">&#39;H1:LDAS-STRAIN,rds&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
+<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
+    <span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 07:00&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 07:10&#39;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next, we can calculate a Rayleigh statistic <a class="reference internal" href="../../spectrum/index.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> using the
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="gwpy.timeseries.TimeSeries.rayleigh_spectrum"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrum()</span></code></a> method of the
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a 2-second FFT and 1-second overlap (50%):</p>
+<p>Next, we can calculate a Rayleigh statistic <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> using the
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="gwpy.timeseries.TimeSeries.rayleigh_spectrum"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrum()</span></code></a> method of the
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a 2-second FFT and 1-second overlap (50%):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">rayleigh</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">rayleigh_spectrum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and can make a plot using the <a class="reference internal" href="../../spectrum/index.html#gwpy.frequencyseries.FrequencySeries.plot" title="gwpy.frequencyseries.FrequencySeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">rayleigh</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rayleigh statistic&#39;</span><span class="p">)</span>
+<p>For easy comparison, we can calculate the spectral sensitivity ASD of the
+strain data and plot both on the same figure:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">asd</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">asd</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_frequencyseries</span><span class="p">(</span><span class="n">rayleigh</span><span class="p">,</span> <span class="n">newax</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-23</span><span class="p">,</span> <span class="mf">5e-21</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">r&#39;[strain/\rtHz]&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rayleigh statistic&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/frequencyseries/rayleigh.py">Source code</a>, <a class="reference external" href="../../../examples/frequencyseries/rayleigh.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/frequencyseries/rayleigh-3.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/rayleigh.png" src="../../_images/rayleigh.png" />
+<img alt="../../_images/rayleigh-3.png" src="../../_images/rayleigh-3.png" />
 </div>
+<p>So, we see sharp dips at certain frequencies associated with &#8216;lines&#8217; in
+spectrum where noise at a fixed frequency is very coherent (e.g. harmonics
+of the 60Hz mains power supply), and bumps in specific frequency bands
+where the interferometer noise is non-stationary.</p>
 </div>
 
 
@@ -199,7 +215,7 @@
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

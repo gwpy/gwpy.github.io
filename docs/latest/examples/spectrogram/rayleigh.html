@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting a Spectrogram of the Rayleigh statistic &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Plotting a Spectrogram of the Rayleigh statistic &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,8 +33,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="Spectrogram examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plotting an over-dense, short-duration Spectrogram" href="spectrogram2.html" />
     <link rel="prev" title="Plotting a whitened Spectrogram" href="ratio.html" />
 <meta charset='utf-8'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="ratio.html" title="Previous Chapter: Plotting a whitened Spectrogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting a white...</span>
+    <a href="ratio.html" title="Previous Chapter: Plotting a whitened Spectrogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting a wh...</span>
     </a>
   </li>
   <li>
-    <a href="spectrogram2.html" title="Next Chapter: Plotting an over-dense, short-duration Spectrogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting an over... &raquo;</span>
+    <a href="spectrogram2.html" title="Next Chapter: Plotting an over-dense, short-duration Spectrogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting an o... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/spectrogram/rayleigh.txt"
+  <a href="../../_sources/examples/spectrogram/rayleigh.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -158,22 +156,22 @@
     <div class="col-md-9 content">
       
   <div class="section" id="plotting-a-spectrogram-of-the-rayleigh-statistic">
-<h1>Plotting a <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> of the Rayleigh statistic<a class="headerlink" href="#plotting-a-spectrogram-of-the-rayleigh-statistic" title="Permalink to this headline">¶</a></h1>
+<h1>Plotting a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> of the Rayleigh statistic<a class="headerlink" href="#plotting-a-spectrogram-of-the-rayleigh-statistic" title="Permalink to this headline">¶</a></h1>
 <p>I would like to study the gravitational wave strain spectrogram around the time of an interesting simulated signal during the last science run (S6).</p>
-<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s1">&#39;H1:LDAS-STRAIN,rds&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
+    <span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next, we can calculate a Rayleigh statistic <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> using the
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrogram()</span></code></a> method of the #
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and a 5-second stride with a 2-second FFT and
+<p>Next, we can calculate a Rayleigh statistic <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> using the
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrogram()</span></code></a> method of the #
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and a 5-second stride with a 2-second FFT and
 1-second overlap (50%):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">rayleigh</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">rayleigh_spectrogram</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and can make a plot using the <a class="reference internal" href="../../spectrogram/index.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method</p>
+<p>and can make a plot using the <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">rayleigh</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
@@ -181,9 +179,9 @@
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/spectrogram/rayleigh.py">Source code</a>, <a class="reference external" href="../../../examples/spectrogram/rayleigh.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/spectrogram/rayleigh-3.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/rayleigh1.png" src="../../_images/rayleigh1.png" />
+<img alt="../../_images/rayleigh-31.png" src="../../_images/rayleigh-31.png" />
 </div>
 </div>
 
@@ -200,7 +198,7 @@
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

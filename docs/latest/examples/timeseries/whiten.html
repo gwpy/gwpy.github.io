@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Whitening a TimeSeries &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Whitening a TimeSeries &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,9 +33,9 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="TimeSeries examples" href="index.html" />
-    <link rel="next" title="FrequencySeries examples" href="../frequencyseries/index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Signal processing examples" href="../signal/index.html" />
     <link rel="prev" title="Plotting segments for a StateVector" href="statevector.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="statevector.html" title="Previous Chapter: Plotting segments for a StateVector"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting segment...</span>
+    <a href="statevector.html" title="Previous Chapter: Plotting segments for a StateVector"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Plotting segm...</span>
     </a>
   </li>
   <li>
-    <a href="../frequencyseries/index.html" title="Next Chapter: FrequencySeries examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">FrequencySeries ... &raquo;</span>
+    <a href="../signal/index.html" title="Next Chapter: Signal processing examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Signal proces... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/timeseries/whiten.txt"
+  <a href="../../_sources/examples/timeseries/whiten.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -158,7 +156,7 @@
     <div class="col-md-9 content">
       
   <div class="section" id="whitening-a-timeseries">
-<h1>Whitening a <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#whitening-a-timeseries" title="Permalink to this headline">¶</a></h1>
+<h1>Whitening a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#whitening-a-timeseries" title="Permalink to this headline">¶</a></h1>
 <p>Most data recorded from a gravitational-wave interferometer carry information
 across a wide band of frequencies, typically up to a few kiloHertz, but
 often it is the case that the low-frequency amplitude dwarfs that of the
@@ -168,17 +166,17 @@ frequencies so that excess power at any frequency is more obvious.</p>
 <p>We demonstrate below with an auxiliary signal recording transmitted power
 in one of the interferometer arms, which recorded two large glitches with
 a frequency of around 5-50Hz.</p>
-<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;H1:ASC-Y_TR_A_NSUM_OUT_DQ&#39;</span><span class="p">,</span> <span class="mi">1123084670</span><span class="p">,</span> <span class="mi">1123084800</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, we can <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal"><span class="pre">whiten</span></code></a> the data to enhance the higher-frequency
+<p>Now, we can <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal"><span class="pre">whiten</span></code></a> the data to enhance the higher-frequency
 content</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">white</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">whiten</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and can <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a> both the original and whitened data</p>
+<p>and can <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a> both the original and whitened data</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">epoch</span> <span class="o">=</span> <span class="mf">1123084687.570</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-arm power [counts]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -191,12 +189,12 @@ content</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here we see two large spikes that are completely undetected in the raw
-<a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>, but are very obvious in the whitened data.</p>
-<p>(<a class="reference external" href="../../../examples/timeseries/whiten.py">Source code</a>, <a class="reference external" href="../../../examples/timeseries/whiten.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/timeseries/whiten-3.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/whiten.png" src="../../_images/whiten.png" />
+<img alt="../../_images/whiten-3.png" src="../../_images/whiten-3.png" />
 </div>
+<p>Here we see two large spikes that are completely undetected in the raw
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>, but are very obvious in the whitened data.</p>
 </div>
 
 
@@ -212,7 +210,7 @@ content</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

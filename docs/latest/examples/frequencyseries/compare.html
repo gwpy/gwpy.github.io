@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Comparing the same Channel at different times &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Comparing the same Channel at different times &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,10 +33,10 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="FrequencySeries examples" href="index.html" />
-    <link rel="next" title="Calculating and plotting a FrequencySeries" href="hoff.html" />
-    <link rel="prev" title="Calculating the coherence between two channels" href="coherence.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spectrogram examples" href="../spectrogram/index.html" />
+    <link rel="prev" title="Calculating and plotting a SpectralVariance histogram" href="variance.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="coherence.html" title="Previous Chapter: Calculating the coherence between two channels"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Calculating the ...</span>
+    <a href="variance.html" title="Previous Chapter: Calculating and plotting a SpectralVariance histogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Calculating a...</span>
     </a>
   </li>
   <li>
-    <a href="hoff.html" title="Next Chapter: Calculating and plotting a FrequencySeries"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating and ... &raquo;</span>
+    <a href="../spectrogram/index.html" title="Next Chapter: Spectrogram examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Spectrogram e... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/frequencyseries/compare.txt"
+  <a href="../../_sources/examples/frequencyseries/compare.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -163,7 +161,7 @@
 known &#8216;good&#8217; time - where the spectrum is what we expect it to be - and a
 known &#8216;bad&#8217; time - where some excess noise appeared and the spectrum
 changed appreciably.</p>
-<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 </pre></div>
 </div>
@@ -173,17 +171,17 @@ changed appreciably.</p>
 <span class="n">duration</span> <span class="o">=</span> <span class="mi">120</span>
 </pre></div>
 </div>
-<p>Next we <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>Next we <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gooddata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;L1:PSL-ISS_PDB_OUT_DQ&#39;</span><span class="p">,</span> <span class="n">goodtime</span><span class="p">,</span> <span class="n">goodtime</span><span class="o">+</span><span class="n">duration</span><span class="p">)</span>
 <span class="n">baddata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;L1:PSL-ISS_PDB_OUT_DQ&#39;</span><span class="p">,</span> <span class="n">badtime</span><span class="p">,</span> <span class="n">badtime</span><span class="o">+</span><span class="n">duration</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and calculate an <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal"><span class="pre">amplitude</span> <span class="pre">spectral</span> <span class="pre">density</span> <span class="pre">(ASD)</span></code></a> using a 4-second Fourier transform with a 2-second overlap:</p>
+<p>and calculate an <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal"><span class="pre">amplitude</span> <span class="pre">spectral</span> <span class="pre">density</span> <span class="pre">(ASD)</span></code></a> using a 4-second Fourier transform with a 2-second overlap:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">goodasd</span> <span class="o">=</span> <span class="n">gooddata</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">badasd</span> <span class="o">=</span> <span class="n">baddata</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Lastly, we make a plot of the data by <code class="xref py py-obj docutils literal"><span class="pre">plotting</span></code> one <a class="reference internal" href="../../spectrum/index.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>, and then adding the second:</p>
+<p>Lastly, we make a plot of the data by <code class="xref py py-obj docutils literal"><span class="pre">plotting</span></code> one <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>, and then adding the second:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">badasd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Noisy data&#39;</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">goodasd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Clean data&#39;</span><span class="p">)</span>
@@ -195,9 +193,9 @@ changed appreciably.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/frequencyseries/compare.py">Source code</a>, <a class="reference external" href="../../../examples/frequencyseries/compare.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/frequencyseries/compare-5.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/compare.png" src="../../_images/compare.png" />
+<img alt="../../_images/compare-5.png" src="../../_images/compare-5.png" />
 </div>
 </div>
 
@@ -214,7 +212,7 @@ changed appreciably.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

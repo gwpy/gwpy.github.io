@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Filtering a TimeSeries with a ZPK filter &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Filtering a TimeSeries with a ZPK filter &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
@@ -33,8 +33,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../../index.html" />
-    <link rel="up" title="TimeSeries examples" href="index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Plotting public LIGO data" href="public.html" />
     <link rel="prev" title="Comparing seismic trends between LIGO sites" href="blrms.html" />
 <meta charset='utf-8'>
@@ -97,8 +97,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="blrms.html" title="Previous Chapter: Comparing seismic trends between LIGO sites"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Comparing seismi...</span>
+    <a href="blrms.html" title="Previous Chapter: Comparing seismic trends between LIGO sites"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Comparing sei...</span>
     </a>
   </li>
   <li>
-    <a href="public.html" title="Next Chapter: Plotting public LIGO data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting public ... &raquo;</span>
+    <a href="public.html" title="Next Chapter: Plotting public LIGO data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Plotting publ... &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/timeseries/filter.txt"
+  <a href="../../_sources/examples/timeseries/filter.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -158,21 +156,21 @@
     <div class="col-md-9 content">
       
   <div class="section" id="filtering-a-timeseries-with-a-zpk-filter">
-<h1>Filtering a <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a ZPK filter<a class="headerlink" href="#filtering-a-timeseries-with-a-zpk-filter" title="Permalink to this headline">¶</a></h1>
+<h1>Filtering a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with a ZPK filter<a class="headerlink" href="#filtering-a-timeseries-with-a-zpk-filter" title="Permalink to this headline">¶</a></h1>
 <p>Several data streams read from the LIGO detectors are whitened before being
 recorded to prevent numerical errors when using single-precision data
 storage.
 In this example we read such <a class="reference internal" href="../../detector/channel.html#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">channel</span></code></a> and undo the
 whitening to show the physical content of these data.</p>
-<p>First, we import the <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">white</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="s1">&#39;L1:OAF-CAL_DARM_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;March 2 2015 12:00&#39;</span><span class="p">,</span> <span class="s1">&#39;March 2 2015 12:30&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, we can re-calibrate these data into displacement units by first applying
-a <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal"><span class="pre">highpass</span></code></a> filter to remove the low-frequency noise,
-and then applying our de-whitening filter in <a class="reference internal" href="../../timeseries/index.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal"><span class="pre">ZPK</span></code></a> format
+a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal"><span class="pre">highpass</span></code></a> filter to remove the low-frequency noise,
+and then applying our de-whitening filter in <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal"><span class="pre">ZPK</span></code></a> format
 with five zeros at 100 Hz and five poles at 1 Hz (giving an overall DC
 gain of 10 <sup>-10</sup>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">hp</span> <span class="o">=</span> <span class="n">white</span><span class="o">.</span><span class="n">highpass</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -180,7 +178,7 @@ gain of 10 <sup>-10</sup>:</p>
 </pre></div>
 </div>
 <p>We can visualise the impact of the whitening by calculating the ASD
-<a class="reference internal" href="../../spectrum/index.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> before and after the filter,</p>
+<a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> before and after the filter,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">whiteasd</span> <span class="o">=</span> <span class="n">white</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">dispasd</span> <span class="o">=</span> <span class="n">displacement</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -190,10 +188,14 @@ gain of 10 <sup>-10</sup>:</p>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">FrequencySeriesPlot</span><span class="p">(</span><span class="n">whiteasd</span><span class="p">,</span> <span class="n">dispasd</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>(<a class="reference external" href="../../examples/timeseries/filter-4.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/filter-4.png" src="../../_images/filter-4.png" />
+</div>
 <p>Here we have passed the two
-<a class="reference internal" href="../../spectrum/index.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">spectra</span></code></a> in order,
+<a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">spectra</span></code></a> in order,
 then <code class="xref py py-obj docutils literal"><span class="pre">sep=True</span></code> to display them on separate Axes, <code class="xref py py-obj docutils literal"><span class="pre">sharex=True</span></code> to tie
-the <a class="reference external" href="http://matplotlib.sourceforge.net/api/axis_api.html#matplotlib.axis.XAxis" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">XAxis</span></code></a> of each of the <a class="reference internal" href="../../plotter/api.html#gwpy.plotter.FrequencySeriesAxes" title="gwpy.plotter.FrequencySeriesAxes"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeriesAxes</span></code></a>
+the <a class="reference external" href="http://matplotlib.org/api/axis_api.html#matplotlib.axis.XAxis" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">XAxis</span></code></a> of each of the <a class="reference internal" href="../../plotter/api.html#gwpy.plotter.FrequencySeriesAxes" title="gwpy.plotter.FrequencySeriesAxes"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeriesAxes</span></code></a>
 together, and <code class="xref py py-obj docutils literal"><span class="pre">label=None</span></code> to remove any unwanted legends.</p>
 <p>Finally, we prettify our plot with some limits, and some labels:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;ASD [whitened]&#39;</span><span class="p">)</span>
@@ -204,9 +206,9 @@ together, and <code class="xref py py-obj docutils literal"><span class="pre">la
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../../examples/timeseries/filter.py">Source code</a>, <a class="reference external" href="../../../examples/timeseries/filter.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/timeseries/filter-5.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/filter.png" src="../../_images/filter.png" />
+<img alt="../../_images/filter-5.png" src="../../_images/filter-5.png" />
 </div>
 </div>
 
@@ -223,7 +225,7 @@ together, and <code class="xref py py-obj docutils literal"><span class="pre">la
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>

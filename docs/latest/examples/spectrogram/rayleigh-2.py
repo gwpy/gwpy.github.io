@@ -1,0 +1,1 @@
+rayleigh = gwdata.rayleigh_spectrogram(5, fftlength=2, overlap=1)

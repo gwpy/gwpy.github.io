@@ -5,22 +5,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Generating data-quality flags by thresholding &mdash; GWpy 0.1+32.g7045b5d documentation</title>
+    <title>Generating data-quality flags by thresholding &#8212; GWpy 0.1+177.g792bb52 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="//gwpy.github.io/css/gwpy.css" type="text/css" />
     <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+32.g7045b5d',
+        VERSION:     '0.1+177.g792bb52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/gwpy_https.js"></script>
@@ -33,9 +33,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="GWpy 0.1+32.g7045b5d documentation" href="../index.html" />
-    <link rel="up" title="Data-quality segments" href="index.html" />
-    <link rel="next" title="The StateTimeSeries and StateVector" href="../timeseries/statevector.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DataQualityFlag" href="../api/gwpy.segments.DataQualityFlag.html" />
     <link rel="prev" title="Data-quality segments" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -97,8 +97,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
 </ul>
-<ul class="simple">
-</ul>
 </ul>
 </li>
               
@@ -107,11 +105,11 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: Data-quality segments"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Data-quality seg...</span>
+    <a href="index.html" title="Previous Chapter: Data-quality segments"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Data-quality ...</span>
     </a>
   </li>
   <li>
-    <a href="../timeseries/statevector.html" title="Next Chapter: The StateTimeSeries and StateVector"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The StateTimeSer... &raquo;</span>
+    <a href="../api/gwpy.segments.DataQualityFlag.html" title="Next Chapter: DataQualityFlag"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">DataQualityFlag &raquo;</span>
     </a>
   </li>
               
@@ -143,7 +141,7 @@
 </ul>
 
 <div id="sourcelink">
-  <a href="../_sources/segments/thresholding.txt"
+  <a href="../_sources/segments/thresholding.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../search.html" method="get">
@@ -162,7 +160,7 @@
 <p>The first- and second-generation ground-based laser interferometer gravitational-wave detectors are subject to a large variety of linear noise sources, in which noise in control signals can couple directly into the gravitational-wave readout.
 If the coupling between an auxiliary signal and the gravitational-wave signal can be detected, noise in the auxiliary signal can be flagged by recording times when the time-series signal exceeded a nominal range.</p>
 <p>These times can then be recorded as GPS [start, stop) segments, and applied to any analysis of gravitational-wave data as a veto.</p>
-<p>In GWpy, a <a class="reference internal" href="index.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> can be generated from any <a class="reference internal" href="../timeseries/index.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> by applying a simple mathematical operator:</p>
+<p>In GWpy, a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> can be generated from any <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> by applying a simple mathematical operator:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seisdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;L1:HPI-BS_BLRMS_Z_3_10&#39;</span><span class="p">,</span> <span class="mi">1064534416</span><span class="p">,</span> <span class="mi">1064538016</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seisdata</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;nm/s&#39;</span>
@@ -181,8 +179,8 @@ If the coupling between an auxiliary signal and the gravitational-wave signal ca
 <span class="go">                 comment=&#39;L1:HPI-BS_BLRMS_Z_3_10 &gt; 400 nm / s&#39;)&gt;</span>
 </pre></div>
 </div>
-<p>In this worked example, times of ground-motion above 400 nm/s in the 1-3 Hz band, as recorded by a seismometer, are recorded as a <a class="reference internal" href="index.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>.
-The keyword arguments given to the <a class="reference internal" href="../timeseries/statevector.html#gwpy.timeseries.StateTimeSeries.to_dqflag" title="gwpy.timeseries.StateTimeSeries.to_dqflag"><code class="xref py py-meth docutils literal"><span class="pre">to_dqflag()</span></code></a> method give the flag a sensible name, using the standard naming convention, and make sure the segments are rounded outwards to integer start and stop times.</p>
+<p>In this worked example, times of ground-motion above 400 nm/s in the 1-3 Hz band, as recorded by a seismometer, are recorded as a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>.
+The keyword arguments given to the <a class="reference internal" href="../api/gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries.to_dqflag" title="gwpy.timeseries.StateTimeSeries.to_dqflag"><code class="xref py py-meth docutils literal"><span class="pre">to_dqflag()</span></code></a> method give the flag a sensible name, using the standard naming convention, and make sure the segments are rounded outwards to integer start and stop times.</p>
 </div>
 
 
@@ -198,7 +196,7 @@ The keyword arguments given to the <a class="reference internal" href="../timese
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
     </p>
   </div>
 </footer>
