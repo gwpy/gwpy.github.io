@@ -1,0 +1,5 @@
+plot = alldata.plot()
+ax = plot.gca()
+ax.set_ylabel('Power [W]')
+ax.set_title('Available vs requested input power for H1')
+plot.show()

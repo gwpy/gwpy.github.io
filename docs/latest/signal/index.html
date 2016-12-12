@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Signal processing &#8212; GWpy 0.1+177.g792bb52 documentation</title>
+    <title>Signal processing &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+177.g792bb52',
+        VERSION:     '0.1+183.gafb41d4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -195,7 +195,7 @@ Available methods include:</p>
 </tr>
 </tbody>
 </table>
-<p>For a worked example of how to filter LIGO data to discover a gravitational-wave signal, see the <a class="reference internal" href="../examples/signal/gw150914.html"><span class="doc">GW150914 example</span></a>.</p>
+<p>For a worked example of how to filter LIGO data to discover a gravitational-wave signal, see the example <a class="reference internal" href="../examples/signal/gw150914.html#example-signal-gw150914"><span class="std std-ref">Filtering a TimeSeries to detect gravitational waves</span></a>.</p>
 </div>
 <div class="section" id="frequency-domain-filtering">
 <h2>Frequency-domain filtering<a class="headerlink" href="#frequency-domain-filtering" title="Permalink to this headline">¶</a></h2>
@@ -227,6 +227,7 @@ Available methods include:</p>
 </tr>
 </tbody>
 </table>
+<p>For a worked example of how to load data and calculate the Amplitude Spectral Density <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>, see the example <a class="reference internal" href="../examples/frequencyseries/hoff.html#example-frequencyseries-hoff"><span class="std std-ref">Calculating and plotting a FrequencySeries</span></a>.</p>
 </div>
 <div class="section" id="filter-design">
 <h2>Filter design<a class="headerlink" href="#filter-design" title="Permalink to this headline">¶</a></h2>
@@ -249,51 +250,13 @@ Available methods include:</p>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.signal.notch" title="gwpy.signal.notch"><code class="xref py py-obj docutils literal"><span class="pre">notch</span></code></a></td>
 <td>Design a ZPK notch filter for the given frequency and sampling rate</td>
 </tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.contatenate_zpks</span></code></td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<p>Each of these will return filter coefficients that can be pass directly into <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal"><span class="pre">zpk</span></code></a> (default for analogue filters) or <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal"><span class="pre">filter</span></code></a> (default for digital filters).</p>
-<p>For example, you can easily create, view, and apply a band-pass filter to some gravitational-wave data by combining the above methods.</p>
-<p>We start by loading some data</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we can design and examine a bandpass filter to zone in on data between 40Hz nd 500Hz &#8211; the main band of interest for a higher-mass binary black hole system (for example):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.signal</span> <span class="kn">import</span> <span class="n">bandpass</span>
-<span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">bandpass</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">,</span>
-                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;40-1000\,Hz bandpass filter&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../signal/index-2.png">png</a>)</p>
-<div class="figure">
-<img alt="../_images/index-21.png" src="../_images/index-21.png" />
-</div>
-<p>Next we can apply that filter to the <code class="xref py py-obj docutils literal"><span class="pre">data</span></code> and look at the before-and-after <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">TimeSeriesPlot</span>
-<span class="n">bp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">1126259446</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1126259446</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">1126259446</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1126259446</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">bp</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../signal/index-3.png">png</a>)</p>
-<div class="figure">
-<img alt="../_images/index-3.png" src="../_images/index-3.png" />
-</div>
-<p>and can verify that the new <code class="xref py py-obj docutils literal"><span class="pre">bp</span></code> series has the right spectral content:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">asd</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">bpasd</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">asd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">add_frequencyseries</span><span class="p">(</span><span class="n">bpasd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;bandpass&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../signal/index-4.png">png</a>)</p>
-<div class="figure">
-<img alt="../_images/index-4.png" src="../_images/index-4.png" />
-</div>
+<p>Each of these will return filter coefficients that can be passed directly into <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal"><span class="pre">zpk</span></code></a> (default for analogue filters) or <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal"><span class="pre">filter</span></code></a> (default for digital filters).</p>
+<p>For a worked example of how to filter LIGO data to discover a gravitational-wave signal, see the example <a class="reference internal" href="../examples/signal/gw150914.html#example-signal-gw150914"><span class="std std-ref">Filtering a TimeSeries to detect gravitational waves</span></a>.</p>
 <p><strong>Cross-channel correlations:</strong></p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -309,8 +272,7 @@ Available methods include:</p>
 </tr>
 </tbody>
 </table>
-<p>For example:</p>
-<p>For more examples like this, see <a class="reference external" href="https://docs.python.org/2/distutils/examples.html#examples" title="(in Python v2.7)"><span>Examples</span></a>.</p>
+<p>For a worked example of how to compare channels like this, see the example <a class="reference internal" href="../examples/frequencyseries/coherence.html#example-frequencyseries-coherence"><span class="std std-ref">Calculating the coherence between two channels</span></a>.</p>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
@@ -340,7 +302,7 @@ Available methods include:</p>
 </table>
 <dl class="method">
 <dt id="gwpy.signal.bandpass">
-<code class="descclassname">signal.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/792bb529b31912c8471dda4b807617361cadd130/gwpy/signal/filter_design.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.bandpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">signal.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/signal/filter_design.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.bandpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a band-pass filter for the given cutoff frequencies</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -405,15 +367,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-6.png">png</a>)</p>
+<p>(<a class="reference external" href="../signal/index-2.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-6.png" src="../_images/index-6.png" />
+<img alt="../_images/index-21.png" src="../_images/index-21.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.lowpass">
-<code class="descclassname">signal.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/792bb529b31912c8471dda4b807617361cadd130/gwpy/signal/filter_design.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.lowpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">signal.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/signal/filter_design.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.lowpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a low-pass filter for the given cutoff frequency</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -474,15 +436,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-8.png">png</a>)</p>
+<p>(<a class="reference external" href="../signal/index-4.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-8.png" src="../_images/index-8.png" />
+<img alt="../_images/index-4.png" src="../_images/index-4.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.highpass">
-<code class="descclassname">signal.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/792bb529b31912c8471dda4b807617361cadd130/gwpy/signal/filter_design.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.highpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">signal.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/signal/filter_design.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.highpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a high-pass filter for the given cutoff frequency</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -543,15 +505,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-10.png">png</a>)</p>
+<p>(<a class="reference external" href="../signal/index-6.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-10.png" src="../_images/index-10.png" />
+<img alt="../_images/index-6.png" src="../_images/index-6.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.notch">
-<code class="descclassname">signal.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/792bb529b31912c8471dda4b807617361cadd130/gwpy/signal/filter_design.py#L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.notch" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">signal.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/signal/filter_design.py#L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.notch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a ZPK notch filter for the given frequency and sampling rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -606,15 +568,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-12.png">png</a>)</p>
+<p>(<a class="reference external" href="../signal/index-8.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-12.png" src="../_images/index-12.png" />
+<img alt="../_images/index-8.png" src="../_images/index-8.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.concatenate_zpks">
-<code class="descclassname">signal.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><em>*zpks</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/792bb529b31912c8471dda4b807617361cadd130/gwpy/signal/filter_design.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">signal.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><em>*zpks</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/signal/filter_design.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate a list of zero-pole-gain (ZPK) filters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -654,9 +616,9 @@ containing an array of zeros, an array of poles, and a gain <a class="reference 
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-13.png">png</a>)</p>
+<p>(<a class="reference external" href="../signal/index-9.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-13.png" src="../_images/index-13.png" />
+<img alt="../_images/index-9.png" src="../_images/index-9.png" />
 </div>
 </dd></dl>
 

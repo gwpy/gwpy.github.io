@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Accessing interferometer data &#8212; GWpy 0.1+177.g792bb52 documentation</title>
+    <title>Accessing interferometer data &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+177.g792bb52',
+        VERSION:     '0.1+183.gafb41d4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -202,14 +202,23 @@ Science Center (LOSC)</td>
 </table>
 <div class="section" id="public">
 <h3>Public<a class="headerlink" href="#public" title="Permalink to this headline">¶</a></h3>
-<p>For example, to fetch 32 seconds of strain data around event <a class="reference external" href="http://dx.doi.org/10.1103/PhysRevLett.116.061102">GW150914</a>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+<p>For example, to fetch 32 seconds of strain data around event <a class="reference external" href="http://dx.doi.org/10.1103/PhysRevLett.116.061102">GW150914</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here the <code class="docutils literal"><span class="pre">'L1'</span></code> refers to the <a class="reference external" href="https://www.ligo.caltech.edu/LA">LIGO Livingston Observatory</a> (<code class="docutils literal"><span class="pre">'H1'</span></code> would be the <a class="reference external" href="https://www.ligo.caltech.edu/WA">LIGO Hanford Observatory</a>), and the two 10-digit numbers are GPS times (for more details on GPS timing, see <a class="reference internal" href="../time/index.html#time"><span class="std std-ref">Times and timestamps</span></a>). You could just as easily use a more readable format:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:50:29&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:51:01&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>Now that you have the data, making a plot is as easy as calling the <code class="xref py py-meth docutils literal"><span class="pre">Plot()</span></code> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/index-2.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/index-22.png" src="../_images/index-22.png" />
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -218,7 +227,8 @@ Science Center (LOSC)</td>
 </div>
 <div class="section" id="ligo-org">
 <h3>LIGO.ORG<a class="headerlink" href="#ligo-org" title="Permalink to this headline">¶</a></h3>
-<p>If you have LIGO.ORG credentials, meaning you&#8217;re a member of the LIGO Scientific Collaboration or the Virgo Collaboration, you need to specify the exact name of the <a class="reference internal" href="../detector/channel.html#channel"><span class="std std-ref">channel</span></a> you want:</p>
+<p>If you have LIGO.ORG credentials, meaning you&#8217;re a member of the LIGO Scientific Collaboration or the Virgo Collaboration, you need to specify the exact name of the <a class="reference internal" href="../detector/channel.html#channel"><span class="std std-ref">channel</span></a> you want.
+For Advanced LIGO the calibrated strain channel is called <code class="docutils literal"><span class="pre">GDS-CALIB_STRAIN</span></code>, so to fetch H1 strain data for the same period as above:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -227,7 +237,7 @@ Science Center (LOSC)</td>
 </pre></div>
 </div>
 <p>you&#8217;ll get back one hour of data from the vertical-ground-motion seismometer located near the ITMY vacuum enclosure at LIGO Livingston.</p>
-<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.get</span></code></a> method tries direct file access (using <code class="xref py py-obj docutils literal"><span class="pre">glue.datafind</span></code> for file discovery) first, then falls back to using the Network Data Server (NDS2) for remote access. If you want to manually use NDS2 for remote access you can instead use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch" title="gwpy.timeseries.TimeSeries.fetch"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.fetch</span></code></a> method.</p>
+<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.get()</span></code></a> method tries direct file access (using <code class="xref py py-mod docutils literal"><span class="pre">glue.datafind</span></code> for file discovery) first, then falls back to using the Network Data Server (NDS2) for remote access. If you want to manually use NDS2 for remote access you can instead use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch" title="gwpy.timeseries.TimeSeries.fetch"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch()</span></code></a> method.</p>
 </div>
 </div>
 <div class="section" id="local-data-access">
@@ -239,67 +249,74 @@ Science Center (LOSC)</td>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The input options to <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.read</span></code></a> depend on what format the source data are in, please refer to the function documentation for details and examples</p>
+<p class="last">The input options to <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.read</span></code></a> depend on what format the source data are in, but the first argument will always be the path of the file to read. Please refer to the function documentation for details and examples</p>
 </div>
-<p>If you are on the LIGO Data Grid, but you don&#8217;t know where the files are, you can use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.find" title="gwpy.timeseries.TimeSeries.find"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.find</span></code></a> method to automatically locate and read data for a given channel:</p>
+<p>If you are on the LIGO Data Grid, but you don&#8217;t know where the files are, you can use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.find" title="gwpy.timeseries.TimeSeries.find"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.find()</span></code></a> method to automatically locate and read data for a given channel:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;L1:ISI-GND_STS_ITMY_Z_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;Jan 1 2016&#39;</span><span class="p">,</span> <span class="s1">&#39;Jan 1 2016 01:00&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>This method will search through all available data to find the correct files to read, so this may take a while. If you know the frametype - the tag associated with files containing your data, you can pass that to significantly speed up the search:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;L1:ISI-GND_STS_ITMY_Z_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;Jan 1 2016&#39;</span><span class="p">,</span> <span class="s1">&#39;Jan 1 2016 01:00&#39;</span><span class="p">,</span> <span class="n">frametype</span><span class="o">=</span><span class="s1">&#39;L1_R&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Passing <code class="docutils literal"><span class="pre">frametype</span></code> will help most for accessing auxiliary data, rather than calibrated strain.</p>
+<p>Data recorded by LIGO are identified by a frametype tag, which identifies which data are contained in a given <code class="docutils literal"><span class="pre">gwf</span></code> file.
+The following table is an incomplete, but probably OK, reference to which frametype you want to use for auxiliary data access:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Frametype</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">H1_R</span></code></td>
+<td>All auxiliary channels, stored at the native sampling rate</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">H1_T</span></code></td>
+<td>Second trends of all channels, including <code class="docutils literal"><span class="pre">.mean</span></code>, <code class="docutils literal"><span class="pre">.min</span></code>, and <code class="docutils literal"><span class="pre">.max</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">H1_M</span></code></td>
+<td>Minute trends of all channels, including <code class="docutils literal"><span class="pre">.mean</span></code>, <code class="docutils literal"><span class="pre">.min</span></code>, and <code class="docutils literal"><span class="pre">.max</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The above frametypes refer to the <code class="docutils literal"><span class="pre">H1</span></code> (LIGO-Hanford) instrument, the same are available for LIGO-Livingston by substituting the <code class="docutils literal"><span class="pre">L1</span></code> prefix.</p>
 </div>
 <div class="section" id="accessing-data-for-multiple-channels-at-once">
 <h2>Accessing data for multiple channels at once<a class="headerlink" href="#accessing-data-for-multiple-channels-at-once" title="Permalink to this headline">¶</a></h2>
 <p>Because typically each <code class="docutils literal"><span class="pre">gwf</span></code> file contains data for a large number of channels, it is inefficient to ask for data for each channel in turn, since that would meaning opening, decoding, and closing each file every time.
-Instead you can read all of the data you want in a single step, using the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> object, either for remote access:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeriesDict</span>
-<span class="n">alldata</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">fetch</span><span class="p">([</span><span class="s1">&#39;H1:ISI-GND_STS_ITMX_X_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;H1:SUS-ITMX_L2_WIT_L_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 1 09:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 1 09:15&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>or from <code class="docutils literal"><span class="pre">gwf</span></code> files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alldata</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s1">&#39;H1:PSL-PWR_PMC_TRANS_OUT16&#39;</span><span class="p">,</span><span class="s1">&#39;H1:IMC-PWR_IN_OUT16&#39;</span><span class="p">],</span> <span class="s1">&#39;Feb 1 00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 1 02:00&#39;</span><span class="p">)</span>  <span class="c1"># fetch the data via NDS</span>
+Instead you can read all of the data you want in a single step, using the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>
+<span class="n">alldata</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s1">&#39;H1:PSL-PWR_PMC_TRANS_OUT16&#39;</span><span class="p">,</span><span class="s1">&#39;H1:IMC-PWR_IN_OUT16&#39;</span><span class="p">],</span> <span class="s1">&#39;Feb 1 00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 1 02:00&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>[These two channels represent the power generated by the Pre-Stabilized Laser at the input to interferometer, and the power actually entering the Input Mode Cleaner.]</p>
 </div>
 <div class="section" id="plotting-a-timeseries">
 <h2>Plotting a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#plotting-a-timeseries" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> object comes with its own <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method, which will quickly construct a <code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code>.
-In the following example, we download ten seconds of gravitational-wave strain data from the LIGO Hanford Observatory, and display it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>  <span class="c1"># load the class</span>
-<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>  <span class="c1"># fetch data from LOSC</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c1"># make a plot</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>  <span class="c1"># extract the Axes object</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gravitational-wave amplitude [strain]&#39;</span><span class="p">)</span>  <span class="c1"># set the label for the Y-axis</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO Hanford Observatory data&#39;</span><span class="p">)</span>  <span class="c1"># set the title</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># show me the plot</span>
+<p>As we have seem above, the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> object comes with its own <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method, which will quickly construct a <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code></a>.
+The same is true of the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a>, so we can extend the above snippet to plot multiple channels:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">alldata</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power [W]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Available vs requested input power for H1&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../timeseries/index-1.png">png</a>)</p>
+<p>(<a class="reference external" href="../timeseries/index-4.png">png</a>)</p>
 <div class="figure">
-<img alt="../_images/index-11.png" src="../_images/index-11.png" />
+<img alt="../_images/index-41.png" src="../_images/index-41.png" />
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>And similarly for the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> (using <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.plot" title="gwpy.timeseries.TimeSeriesDict.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>  <span class="c1"># load the class</span>
-<span class="n">alldata</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s1">&#39;H1:PSL-PWR_PMC_TRANS_OUT16&#39;</span><span class="p">,</span><span class="s1">&#39;H1:IMC-PWR_IN_OUT16&#39;</span><span class="p">],</span> <span class="s1">&#39;Feb 1 00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 1 02:00&#39;</span><span class="p">)</span>  <span class="c1"># fetch the data via NDS</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">alldata</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c1"># make a plot</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>  <span class="c1"># extract the Axes object</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power [W]&#39;</span><span class="p">)</span>  <span class="c1"># set the label for the Y-axis</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Available vs requested input power for H1&#39;</span><span class="p">)</span>  <span class="c1"># set the title</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># show me the plot</span>
-</pre></div>
-</div>
-<p>(<a class="reference external" href="../timeseries/index-2.png">png</a>)</p>
-<div class="figure">
-<img alt="../_images/index-22.png" src="../_images/index-22.png" />
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p class="rubric">What&#8217;s next</p>
+<p>The next documentation topic is <a class="reference internal" href="../signal/index.html#signal-processing"><span class="std std-ref">Signal processing</span></a>.</p>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<p>The above documentation references the following objects:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -313,7 +330,7 @@ In the following example, we download ten seconds of gravitational-wave strain d
 <td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> objects</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesList.html#gwpy.timeseries.TimeSeriesList" title="gwpy.timeseries.TimeSeriesList"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesList</span></code></a></td>
-<td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> objects</td>
+<td>Fancy list representing a list of <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></td>
 </tr>
 </tbody>
 </table>

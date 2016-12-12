@@ -1,2 +1,2 @@
-from gwpy.timeseries import TimeSeries
-data = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
+from gwpy.signal import bandpass
+zpk = bandpass(100, 1000, 4096)

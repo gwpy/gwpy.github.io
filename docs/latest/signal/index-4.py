@@ -1,5 +1,3 @@
-asd = data.asd(8, 4)
-bpasd = bp.asd(8, 4)
-plot = asd.plot(label='raw')
-plot.add_frequencyseries(bpasd, label='bandpass')
+from gwpy.plotter import BodePlot
+plot = BodePlot(zpk, sample_rate=4096)
 plot.show()

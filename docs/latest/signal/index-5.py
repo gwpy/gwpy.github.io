@@ -1,2 +1,2 @@
-from gwpy.signal import bandpass
-zpk = bandpass(100, 1000, 4096)
+from gwpy.signal import highpass
+zpk = highpass(100, 4096)
