@@ -18,12 +18,12 @@ It is a useful measure of the quality of the strain data being generated
 and recorded at a LIGO site.
 
 
-
 To demonstate, we can download some public LIGO data from the sixth science
 run (S6) for the H1 interferometer:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
@@ -32,18 +32,17 @@ run (S6) for the H1 interferometer:
        'H1', 'September 16 2010 07:00', 'September 16 2010 07:10',
        verbose=True)
 
-
 Next, we can calculate a Rayleigh statistic `FrequencySeries` using the 
 :meth:`~gwpy.timeseries.TimeSeries.rayleigh_spectrum` method of the
 `~gwpy.timeseries.TimeSeries` with a 2-second FFT and 1-second overlap (50%):
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    rayleigh = gwdata.rayleigh_spectrum(2, 1)
-
 
 For easy comparison, we can calculate the spectral sensitivity ASD of the
 strain data and plot both on the same figure:
@@ -62,7 +61,6 @@ strain data and plot both on the same figure:
    plot.axes[0].set_ylabel(r'[strain/\rtHz]')
    plot.axes[1].set_ylabel('Rayleigh statistic')
    plot.show()
-
 
 So, we see sharp dips at certain frequencies associated with 'lines' in
 spectrum where noise at a fixed frequency is very coherent (e.g. harmonics

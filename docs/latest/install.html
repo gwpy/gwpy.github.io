@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing GWpy &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
+    <title>Installing GWpy &#8212; GWpy 0.2+52.g410a9f3 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1+183.gafb41d4',
+        VERSION:     '0.2+52.g410a9f3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -91,8 +91,15 @@
 <li class="toctree-l1"><a class="reference internal" href="spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="table/index.html">Tabular data</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="time/index.html">Times and timestamps</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">GWpy examples</a></li>
@@ -143,6 +150,7 @@
 <li><a class="reference internal" href="#pip">Pip</a></li>
 <li><a class="reference internal" href="#github">GitHub</a></li>
 <li><a class="reference internal" href="#source">Source</a></li>
+<li><a class="reference internal" href="#virtualenv">Virtualenv</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#available-installations">Available installations</a></li>
@@ -179,7 +187,7 @@ sudo port <span class="k">select</span> --set python python27
 </pre></div>
 </div>
 <p>You can also run the following to install a number of optional dependencies - packages that, when present, enhance the functionality of GWpy:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo port install py27-ipython nds2-client kerberos5 py27-pykerberos py27-h5py lal lalframe
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo port install py27-ipython nds2-client kerberos5 py27-pykerberos py27-h5py py27-lal py27-ldas-tools-framecpp
 </pre></div>
 </div>
 <p>Once you have at least the required dependencies installed, you can <a class="reference internal" href="#install-pip"><span class="std std-ref">install GWpy using pip</span></a>.</p>
@@ -267,6 +275,17 @@ pip install .
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="virtualenv">
+<h2>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
+<p>The GWpy group provides a <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a> helper called <a class="reference external" href="https://github.com/gwpy/gwpysoft/">GWpySoft</a> to simplify installing GWpy and its dependencies as part of a stand-alone virtualenv installation.
+To install using this solution you just need to clone the repo and run the <code class="xref py py-obj docutils literal"><span class="pre">gwpysoft-init</span></code> script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/gwpy/gwpysoft
+$ <span class="nb">cd</span> gwpysoft
+$ ./gwpysoft-init ~/opt/gwpysoft ./packages.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">~/opt/gwpysoft</span></code> argument is the target directory for the <code class="xref py py-obj docutils literal"><span class="pre">virtualenv</span></code> and can be replaced with anything you like, similarly <code class="docutils literal"><span class="pre">./packages.txt</span></code> contains the list of packages to install in the pip requirements.txt format.</p>
 </div>
 </div>
 <div class="section" id="available-installations">

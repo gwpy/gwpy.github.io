@@ -17,17 +17,16 @@ module to design a digital filter to cut out low and high frequency noise, as
 well as notch out fixed frequencies polluted by known artefacts.
 
 
-
 First we download the raw strain data from the LOSC public archive:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
-
 
 Next we can design a zero-pole-gain filter to remove the extranious noise.
 
@@ -37,12 +36,12 @@ high frequency content
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    from gwpy.signal import filter_design
    bp = filter_design.bandpass(50, 250, data.sample_rate)
-
 
 Now we want to combine the bandpass with a series of
 :meth:`~gwpy.signal.filter_design.notch` filters, so we create those
@@ -50,22 +49,22 @@ for the first three harmonics of the 60 Hz AC mains power:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    notches = [filter_design.notch(line, data.sample_rate) for
               line in (60, 120, 180)]
 
-
 and concatenate each of our filters together to create a single ZPK:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    zpk = filter_design.concatenate_zpks(bp, *notches)
-
 
 Now, we can apply our combined filter to the data, using `filtfilt=True`
 to filter both backwards and forwards to preserve the correct phase
@@ -73,11 +72,11 @@ at all frequencies
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    b = data.filter(zpk, filtfilt=True)
-
 
 .. note::
 
@@ -109,7 +108,6 @@ adding some code to prettify the figure:
        transform=plot.axes[1].transAxes, ha='right')
    plot.show()
 
-
 We see now a spike around 16 seconds into the data, so let's zoom into
 that time by using :meth:`~TimeSeries.crop` and :meth:`~TimeSeries.plot`:
 
@@ -123,7 +121,6 @@ that time by using :meth:`~TimeSeries.crop` and :meth:`~TimeSeries.plot`:
    plot.set_ylabel('Amplitude [strain]')
    plot.set_epoch(1126259462.427)
    plot.show()
-
 
 Congratulations, you have succesfully filtered LIGO data to uncover the
 first ever directly-detected gravitational wave signal, GW150914!

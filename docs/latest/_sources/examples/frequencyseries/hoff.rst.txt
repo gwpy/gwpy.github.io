@@ -12,7 +12,6 @@ the GW150914 gravitational-wave detection; we can use these to calculate
 and display the spectral sensitivity of each of the detectors at that time.
 
 
-
 In order to generate a `FrequencySeries` we need to import the
 `~gwpy.timeseries.TimeSeries` and use
 :meth:`~gwpy.timeseries.TimeSeries.fetch_open_data` to download the strain
@@ -20,6 +19,7 @@ records:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
@@ -27,18 +27,17 @@ records:
    lho = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
    llo = TimeSeries.fetch_open_data('L1', 1126259446, 1126259478)
 
-
 We can then call the :meth:`~gwpy.timeseries.TimeSeries.asd` method to
 calculated the amplitude spectral density for each
 `~gwpy.timeseries.TimeSeries`:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    lhoasd = lho.asd(4, 2)
    lloasd = llo.asd(4, 2)
-
 
 We can then :meth:`~FrequencySeries.plot` the spectra
 

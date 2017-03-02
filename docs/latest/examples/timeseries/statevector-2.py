@@ -8,5 +8,4 @@ bits = [
     'Stage 1 WatchDog OK',
     'Stage 2 WatchDog OK',
 ]
-
 data = StateVector.get('L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ', 'May 22 2014 14:00', 'May 22 2014 15:00', bits=bits)

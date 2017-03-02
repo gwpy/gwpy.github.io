@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Accessing interferometer data &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
+    <title>Accessing interferometer data &#8212; GWpy 0.2+52.g410a9f3 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+183.gafb41d4',
+        VERSION:     '0.2+52.g410a9f3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -91,8 +91,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -145,6 +152,7 @@
 </li>
 <li><a class="reference internal" href="#local-data-access">Local data access</a></li>
 <li><a class="reference internal" href="#accessing-data-for-multiple-channels-at-once">Accessing data for multiple channels at once</a></li>
+<li><a class="reference internal" href="#reading-writing-timeseries-data">Reading/writing <code class="docutils literal"><span class="pre">TimeSeries</span></code> data</a></li>
 <li><a class="reference internal" href="#plotting-a-timeseries">Plotting a <code class="docutils literal"><span class="pre">TimeSeries</span></code></a></li>
 <li><a class="reference internal" href="#reference-api">Reference/API</a></li>
 </ul>
@@ -242,7 +250,7 @@ For Advanced LIGO the calibrated strain channel is called <code class="docutils 
 </div>
 <div class="section" id="local-data-access">
 <h2>Local data access<a class="headerlink" href="#local-data-access" title="Permalink to this headline">¶</a></h2>
-<p>If you have direct access to one or more files of data, either on the LIGO Data Grid (where the <code class="docutils literal"><span class="pre">gwf</span></code> files are stored) or you have some files of your own, you can use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.read</span></code></a> method:</p>
+<p>If you have direct access to one or more files of data, either on the LIGO Data Grid (where the observatory data are stored) or you have some files of your own, you can use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.read</span></code></a> method:</p>
 <p>This method is an example of the unified input/output system provided by <a class="reference external" href="https://astropy.org">astropy</a>, so should respond in the same way whether you give it a <code class="docutils literal"><span class="pre">gwf</span></code> file, or an <code class="xref py py-obj docutils literal"><span class="pre">''hdf5''</span></code> file, or a simple <code class="xref py py-obj docutils literal"><span class="pre">''txt''</span></code> file.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;mydata.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:GDS-CALIB_STRAIN&#39;</span><span class="p">)</span>
 </pre></div>
@@ -264,8 +272,8 @@ For Advanced LIGO the calibrated strain channel is called <code class="docutils 
 The following table is an incomplete, but probably OK, reference to which frametype you want to use for auxiliary data access:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="89%" />
+<col width="16%" />
+<col width="84%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Frametype</th>
@@ -282,6 +290,9 @@ The following table is an incomplete, but probably OK, reference to which framet
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">H1_M</span></code></td>
 <td>Minute trends of all channels, including <code class="docutils literal"><span class="pre">.mean</span></code>, <code class="docutils literal"><span class="pre">.min</span></code>, and <code class="docutils literal"><span class="pre">.max</span></code></td>
 </tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">H1_HOFT_C00</span></code></td>
+<td>Strain <em>h(t)</em> and metadata generated using the real-time calibration pipeline</td>
+</tr>
 </tbody>
 </table>
 <p>The above frametypes refer to the <code class="docutils literal"><span class="pre">H1</span></code> (LIGO-Hanford) instrument, the same are available for LIGO-Livingston by substituting the <code class="docutils literal"><span class="pre">L1</span></code> prefix.</p>
@@ -295,6 +306,31 @@ Instead you can read all of the data you want in a single step, using the <a cla
 </pre></div>
 </div>
 <p>[These two channels represent the power generated by the Pre-Stabilized Laser at the input to interferometer, and the power actually entering the Input Mode Cleaner.]</p>
+</div>
+<div class="section" id="reading-writing-timeseries-data">
+<h2>Reading/writing <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> data<a class="headerlink" href="#reading-writing-timeseries-data" title="Permalink to this headline">¶</a></h2>
+<p>The documentation above describes how to access interferometer data stored in GWF-format files.
+However, GWpy allows you to read and write <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> data in any of a number of file formats using the
+<a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.read()</span></code></a> and <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.write()</span></code></a> methods.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The method documentation for <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.read()</span></code></a> and <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.write()</span></code></a> includes a list of built-in file formats for storage of <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> data.</p>
+</div>
+<p>For example, you can load data from the LOSC and store it in a local HDF5 file as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;l1-losc-data.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">l1-losc-data.hdf5</span></code> file will then be written with a single dataset at the bottom level called <code class="docutils literal"><span class="pre">strain</span></code>, which can then be re-read using</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;l1-losc-data.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly these data can be written to a GWF file, simply by naming the output file with the <code class="xref py py-obj docutils literal"><span class="pre">gwf</span></code> extension:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;l1-losc-data.gwf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Reading/writing with HDF5 files requires the <a class="reference external" href="http://www.h5py.org/">h5py</a> package, and reading/writing with GWF files requires one of the frame libraries to be installed, either <a class="reference external" href="https://wiki.ligo.org/DASWG/LALSuite">lalframe</a> or <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/index.html">FrameCPP</a>.</p>
 </div>
 <div class="section" id="plotting-a-timeseries">
 <h2>Plotting a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#plotting-a-timeseries" title="Permalink to this headline">¶</a></h2>

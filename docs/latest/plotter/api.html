@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting API &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
+    <title>Plotting API &#8212; GWpy 0.2+52.g410a9f3 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+183.gafb41d4',
+        VERSION:     '0.2+52.g410a9f3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -90,9 +90,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -161,7 +168,7 @@
       
   <div class="section" id="plotting-api">
 <h1>Plotting API<a class="headerlink" href="#plotting-api" title="Permalink to this headline">¶</a></h1>
-<p>This document provides a reference for the following <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> objects:</p>
+<p>This document provides a reference for the following <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> objects:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -169,7 +176,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-obj docutils literal"><span class="pre">Plot</span></code></a></td>
-<td>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a>.</td>
+<td>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code></a></td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>.</td>
@@ -191,7 +198,7 @@
 </tr>
 </tbody>
 </table>
-<p>and the following <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> objects:</p>
+<p>and the following <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> objects:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -199,7 +206,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></td>
-<td>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a>.</td>
+<td>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a>.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes" title="gwpy.plotter.TimeSeriesAxes"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesAxes</span></code></a></td>
 <td>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for a <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-class docutils literal"><span class="pre">TimeSeriesPlot</span></code></a>.</td>
@@ -211,7 +218,7 @@
 <td>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for a <a class="reference internal" href="#gwpy.plotter.SegmentPlot" title="gwpy.plotter.SegmentPlot"><code class="xref py py-obj docutils literal"><span class="pre">SegmentPlot</span></code></a>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.plotter.EventTableAxes" title="gwpy.plotter.EventTableAxes"><code class="xref py py-obj docutils literal"><span class="pre">EventTableAxes</span></code></a></td>
-<td>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for an <a class="reference internal" href="#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><code class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></code></a>.</td>
+<td>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for an ~gwpy.plotter.EventTablePlot`.</td>
 </tr>
 </tbody>
 </table>
@@ -220,15 +227,15 @@
 <p>Each of the below classes represents a figure object; for brevity inherited methods and attributes are not documented here, please follow links to the parent classes for documentation of available methods and attributes.</p>
 <dl class="class">
 <dt id="gwpy.plotter.Plot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">Plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a></p>
-<p>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a>.</p>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">Plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a></p>
+<p>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a>.</p>
 <p>The <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-obj docutils literal"><span class="pre">Plot</span></code></a> provides a number of methods to simplify generating
 figures from GWpy data objects, and modifying them on-the-fly in
 interactive mode.</p>
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_array">
-<code class="descname">add_array</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_array" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_array</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="xref py py-class docutils literal"><span class="pre">Array</span></code> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -255,7 +262,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Artist</strong> : <a class="reference external" href="http://matplotlib.org/api/artist_api.html#matplotlib.artist.Artist" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Artist</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Artist</strong> : <code class="xref py py-class docutils literal"><span class="pre">Artist</span></code></p>
 <blockquote class="last">
 <div><p>the layer return from the relevant plotting function</p>
 </div></blockquote>
@@ -267,7 +274,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_colorbar">
-<code class="descname">add_colorbar</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_colorbar" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_colorbar</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_colorbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a colorbar to the current <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -277,7 +284,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 <blockquote>
 <div><p>collection against which to map the colouring</p>
 </div></blockquote>
-<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a></p>
+<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a></p>
 <blockquote>
 <div><p>axes from which to steal space for the colour-bar</p>
 </div></blockquote>
@@ -315,13 +322,13 @@ guarantee that the axes will be the same size</p>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>other keyword arguments to be passed to the
-<a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">colorbar()</span></code></a> generator</p>
+<a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">colorbar()</span></code></a> generator</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Colorbar</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar.Colorbar" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Colorbar</span></code></a> added to this plot</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar.Colorbar" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Colorbar</span></code></a> added to this plot</p>
 </div></blockquote>
 </td>
 </tr>
@@ -331,7 +338,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_dataqualityflag">
-<code class="descname">add_dataqualityflag</code><span class="sig-paren">(</span><em>flag</em>, <em>projection=None</em>, <em>ax=None</em>, <em>newax=False</em>, <em>sharex=None</em>, <em>sharey=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L732"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_dataqualityflag</code><span class="sig-paren">(</span><em>flag</em>, <em>projection=None</em>, <em>ax=None</em>, <em>newax=False</em>, <em>sharex=None</em>, <em>sharey=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L732"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="xref py py-class docutils literal"><span class="pre">DataQualityFlag</span></code> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -349,7 +356,7 @@ guarantee that the axes will be the same size</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_frequencyseries">
-<code class="descname">add_frequencyseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_frequencyseries" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_frequencyseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_frequencyseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> trace to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -381,7 +388,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -391,24 +398,24 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_image">
-<code class="descname">add_image</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_image" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_image</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a 2-D image to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.11)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.12)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a></p>
 <blockquote>
 <div><p>2-D array of data for the image</p>
 </div></blockquote>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>other keyword arguments are passed to the
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.imshow" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.imshow()</span></code></a> function</p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.imshow.html#matplotlib.axes.Axes.imshow" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.imshow()</span></code></a> function</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>image</strong> : <a class="reference external" href="http://matplotlib.org/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">AxesImage</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>image</strong> : <a class="reference external" href="http://matplotlib.org/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">AxesImage</span></code></a></p>
 </td>
 </tr>
 </tbody>
@@ -417,17 +424,17 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_legend">
-<code class="descname">add_legend</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L757"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_legend" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_legend</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L757"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_legend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a legend to this <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-obj docutils literal"><span class="pre">Plot</span></code></a> on the most favourable <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></p>
 <p>All non-keyword <code class="xref py py-obj docutils literal"><span class="pre">args</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">kwargs</span></code> are passed directly to the
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.legend" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">legend()</span></code></a> generator</p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">legend()</span></code></a> generator</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Legend</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/legend_api.html#matplotlib.legend.Legend" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Legend</span></code></a> for this plot</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/legend_api.html#matplotlib.legend.Legend" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Legend</span></code></a> for this plot</p>
 </div></blockquote>
 </td>
 </tr>
@@ -437,7 +444,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_line">
-<code class="descname">add_line</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_line" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_line</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a line to the current plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -468,13 +475,13 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>additional keyword arguments passed directly on to
-the axes <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method.</p>
+the axes <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -484,7 +491,7 @@ the axes <a class="reference external" href="http://matplotlib.org/api/axes_api.
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_scatter">
-<code class="descname">add_scatter</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_scatter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_scatter</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_scatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a set or points to the current plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -515,13 +522,13 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 <p><strong>**kwargs.</strong></p>
 <blockquote>
 <div><p>other keyword arguments passed to the
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.scatter" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.scatter()</span></code></a> function</p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.scatter.html#matplotlib.axes.Axes.scatter" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.scatter()</span></code></a> function</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Collection</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a> for this
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a> for this
 scatter layer</p>
 </div></blockquote>
 </td>
@@ -532,7 +539,7 @@ scatter layer</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_spectrogram">
-<code class="descname">add_spectrogram</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L666"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_spectrogram</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L666"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code> trace to
 this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -565,7 +572,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -575,7 +582,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_subplot">
-<code class="descname">add_subplot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_subplot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_subplot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_subplot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a subplot.  Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
@@ -592,7 +599,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em>kwargs</em> are legal <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> kwargs plus
+<p><em>kwargs</em> are legal <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> kwargs plus
 <em>projection</em>, which chooses a projection type for the axes.
 (For backward compatibility, <em>polar=True</em> may also be
 provided, which is equivalent to <em>projection=&#8217;polar&#8217;</em>). Valid
@@ -600,7 +607,7 @@ values for <em>projection</em> are: [u&#8217;aitoff&#8217;, u&#8217;hammer&#8217
 these projections
 support additional <em>kwargs</em>, which may be provided to
 <code class="xref py py-meth docutils literal"><span class="pre">add_axes()</span></code>.</p>
-<p>The <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> instance will be returned.</p>
+<p>The <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> instance will be returned.</p>
 <p>If the figure already has a subplot with key (<em>args</em>,
 <em>kwargs</em>) then it will simply make that subplot current and
 return it.</p>
@@ -620,13 +627,13 @@ aspect: unknown
 autoscale_on: unknown
 autoscalex_on: unknown
 autoscaley_on: unknown
-axes: an <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> instance 
+axes: an <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> instance 
 axes_locator: unknown
-axis_bgcolor: any matplotlib color - see <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.colors" title="(in Matplotlib v1.5.3)"><code class="xref py py-func docutils literal"><span class="pre">colors()</span></code></a> 
+axis_bgcolor: any matplotlib color - see <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.colors" title="(in Matplotlib v2.0.0)"><code class="xref py py-func docutils literal"><span class="pre">colors()</span></code></a> 
 axisbelow: [ <em>True</em> | <em>False</em> ] 
-clip_box: a <a class="reference external" href="http://matplotlib.org/devel/transformations.html#matplotlib.transforms.Bbox" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.transforms.Bbox</span></code></a> instance 
+clip_box: a <a class="reference external" href="http://matplotlib.org/api/transformations.html#matplotlib.transforms.Bbox" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.transforms.Bbox</span></code></a> instance 
 clip_on: [True | False] 
-clip_path: [ (<a class="reference external" href="http://matplotlib.org/api/path_api.html#matplotlib.path.Path" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Path</span></code></a>, <a class="reference external" href="http://matplotlib.org/devel/transformations.html#matplotlib.transforms.Transform" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Transform</span></code></a>) | <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Patch" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Patch</span></code></a> | None ] 
+clip_path: [ (<a class="reference external" href="http://matplotlib.org/api/path_api.html#matplotlib.path.Path" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Path</span></code></a>, <a class="reference external" href="http://matplotlib.org/api/transformations.html#matplotlib.transforms.Transform" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Transform</span></code></a>) | <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Patch" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Patch</span></code></a> | None ] 
 color_cycle: unknown
 contains: a callable function 
 figure: unknown
@@ -643,7 +650,7 @@ rasterized: [True | False | None]
 sketch_params: unknown
 snap: unknown
 title: unknown
-transform: <a class="reference external" href="http://matplotlib.org/devel/transformations.html#matplotlib.transforms.Transform" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Transform</span></code></a> instance 
+transform: <a class="reference external" href="http://matplotlib.org/api/transformations.html#matplotlib.transforms.Transform" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Transform</span></code></a> instance 
 url: a url string 
 visible: [True | False] 
 xbound: unknown
@@ -665,7 +672,7 @@ zorder: any number</div></blockquote>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.add_timeseries">
-<code class="descname">add_timeseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L608"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_timeseries" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_timeseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L608"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.add_timeseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> trace to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -697,7 +704,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -707,19 +714,19 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close the plot and release its memory.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_auto_refresh">
-<code class="descname">get_auto_refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_auto_refresh" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_auto_refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_auto_refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return this <a href="#id1"><span class="problematic" id="id2">`</span></a>Plot`s auto-refresh setting</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_axes">
-<code class="descname">get_axes</code><span class="sig-paren">(</span><em>projection=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L315"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_axes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_axes</code><span class="sig-paren">(</span><em>projection=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L315"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_axes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find all <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a>, optionally matching the given projection</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -737,7 +744,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_title">
-<code class="descname">get_title</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L836"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_title" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_title</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L836"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an axes title.</p>
 <p>Get one of the three available axes titles. The available titles
 are positioned above the axes in the center, flush with the left
@@ -764,49 +771,49 @@ edge, and flush with the right edge.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xlabel">
-<code class="descname">get_xlabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L808"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlabel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_xlabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L808"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the xlabel text string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xlim">
-<code class="descname">get_xlim</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L780"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_xlim</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L780"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the x-axis range [<em>left</em>, <em>right</em>]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_xscale">
-<code class="descname">get_xscale</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L850"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xscale" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_xscale</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L850"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_xscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the xaxis scale string: linear, log, logit, symlog</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_ylabel">
-<code class="descname">get_ylabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L822"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylabel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_ylabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L822"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the ylabel text string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_ylim">
-<code class="descname">get_ylim</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L794"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_ylim</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L794"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_ylim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the y-axis range [<em>bottom</em>, <em>top</em>]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.get_yscale">
-<code class="descname">get_yscale</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L875"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_yscale" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_yscale</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L875"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.get_yscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the yaxis scale string: linear, log, logit, symlog</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.html_map">
-<code class="descname">html_map</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L900"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.html_map" title="Permalink to this definition">¶</a></dt>
+<code class="descname">html_map</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L900"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.html_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an HTML map for some data contained in these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : <a class="reference external" href="http://matplotlib.org/api/artist_api.html#matplotlib.artist.Artist" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">array-like</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : <code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">array-like</span></code></p>
 <blockquote>
 <div><p>data to map, one of an <code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code> already drawn on these axes (
 via <code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code> or <code class="xref py py-meth docutils literal"><span class="pre">scatter()</span></code>, for example) or a data set</p>
@@ -864,22 +871,22 @@ default: <a class="reference external" href="https://docs.python.org/2/library/c
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.refresh">
-<code class="descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.refresh" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refresh the current figure</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the figure to disk.</p>
 <p>All <code class="xref py py-obj docutils literal"><span class="pre">args</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">kwargs</span></code> are passed directly to the savefig
-method of the underlying <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a>
+method of the underlying <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a>
 self.fig.savefig(<a href="#id3"><span class="problematic" id="id4">*</span></a>args, <a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_auto_refresh">
-<code class="descname">set_auto_refresh</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_auto_refresh" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_auto_refresh</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_auto_refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set this <a href="#id7"><span class="problematic" id="id8">`</span></a>Plot`s auto-refresh setting</p>
 <p>With auto_refresh set to <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a>, all modifications of the underlying
 <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> will trigger the plot to be re-drawn</p>
@@ -895,7 +902,7 @@ self.fig.savefig(<a href="#id3"><span class="problematic" id="id4">*</span></a>a
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_title">
-<code class="descname">set_title</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_title" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_title</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a title for the axes.</p>
 <p>Set one of the three available axes titles. The available titles
 are positioned above the axes in the center, flush with the left
@@ -925,7 +932,7 @@ the default <code class="xref py py-obj docutils literal"><span class="pre">font
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>text</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>text</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></p>
 <blockquote>
 <div><p>The matplotlib text instance representing the title</p>
 </div></blockquote>
@@ -935,7 +942,7 @@ the default <code class="xref py py-obj docutils literal"><span class="pre">font
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>kwargs</strong> : text properties</p>
 <blockquote class="last">
 <div><p>Other keyword arguments are text properties, see
-<a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a> for a list of valid text
+<a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a> for a list of valid text
 properties.</p>
 </div></blockquote>
 </td>
@@ -946,7 +953,7 @@ properties.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xlabel">
-<code class="descname">set_xlabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlabel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_xlabel</code><span class="sig-paren">(</span><em>figure</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the label for the xaxis.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -963,7 +970,7 @@ properties.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last"><strong>kwargs</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Text</span></code></a> properties</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last"><strong>kwargs</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Text</span></code></a> properties</p>
 </td>
 </tr>
 </tbody>
@@ -979,7 +986,7 @@ properties.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xlim">
-<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_xlim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </pre></div>
@@ -1021,7 +1028,7 @@ present is on the right.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_xscale">
-<code class="descname">set_xscale</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xscale" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_xscale</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_xscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_xscale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
@@ -1087,7 +1094,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_ylabel">
-<code class="descname">set_ylabel</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylabel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_ylabel</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylabel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the label for the yaxis</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1104,7 +1111,7 @@ the logarithmic range.</dd>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last"><strong>kwargs</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Text</span></code></a> properties</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last"><strong>kwargs</strong> : <a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Text</span></code></a> properties</p>
 </td>
 </tr>
 </tbody>
@@ -1120,7 +1127,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_ylim">
-<code class="descname">set_ylim</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_ylim</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_ylim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_ylim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </pre></div>
@@ -1162,7 +1169,7 @@ surface, 0 m, is at the top.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.set_yscale">
-<code class="descname">set_yscale</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_yscale" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_yscale</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/decorators.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.set_yscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_yscale</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
@@ -1228,7 +1235,7 @@ the logarithmic range.</dd>
 
 <dl class="method">
 <dt id="gwpy.plotter.Plot.show">
-<code class="descname">show</code><span class="sig-paren">(</span><em>block=None</em>, <em>warn=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/core.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.show" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show</code><span class="sig-paren">(</span><em>block=None</em>, <em>warn=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/core.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Plot.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the current figure (if possible)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1254,8 +1261,8 @@ figure.</p>
 <p class="rubric">Notes</p>
 <p>If blocking is employed, this method calls the
 <code class="xref py py-meth docutils literal"><span class="pre">pyplot.show</span></code> function, otherwise
-the <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.show" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">show()</span></code></a> method of this
-<a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code></a> is used.</p>
+the <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.show" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">show()</span></code></a> method of this
+<a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code></a> is used.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1292,7 +1299,7 @@ the <a class="reference external" href="http://matplotlib.org/api/figure_api.htm
 
 <dl class="class">
 <dt id="gwpy.plotter.TimeSeriesPlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">TimeSeriesPlot</code><span class="sig-paren">(</span><em>*series</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">TimeSeriesPlot</code><span class="sig-paren">(</span><em>*series</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.core.Plot</span></code></p>
 <p><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1315,7 +1322,7 @@ display on the plot</p>
 </table>
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.add_state_segments">
-<code class="descname">add_state_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>ax=None</em>, <em>height=0.2</em>, <em>pad=0.1</em>, <em>location='bottom'</em>, <em>plotargs={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_state_segments" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_state_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>ax=None</em>, <em>height=0.2</em>, <em>pad=0.1</em>, <em>location='bottom'</em>, <em>plotargs={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.add_state_segments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code> to this <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code></a> indicating state
 information about the main Axes data.</p>
 <p>By default, segments are displayed in a thin horizontal set of Axes
@@ -1352,7 +1359,7 @@ about this Plot</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesPlot.set_epoch">
-<code class="descname">set_epoch</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.set_epoch" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_epoch</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesPlot.set_epoch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the GPS epoch of this plot</p>
 </dd></dl>
 
@@ -1360,21 +1367,21 @@ about this Plot</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.FrequencySeriesPlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">FrequencySeriesPlot</code><span class="sig-paren">(</span><em>*series</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">FrequencySeriesPlot</code><span class="sig-paren">(</span><em>*series</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.core.Plot</span></code></p>
 <p><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="gwpy.plotter.SpectrogramPlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SpectrogramPlot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/spectrogram.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrogramPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SpectrogramPlot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/spectrogram.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SpectrogramPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.timeseries.TimeSeriesPlot</span></code></p>
 <p><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code></a>.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="gwpy.plotter.SegmentPlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SegmentPlot</code><span class="sig-paren">(</span><em>*flags</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L468"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SegmentPlot</code><span class="sig-paren">(</span><em>*flags</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L468"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.timeseries.TimeSeriesPlot</span></code></p>
 <p><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1401,13 +1408,13 @@ names from getting squeezed off the end of a standard figure</p>
 </table>
 <dl class="method">
 <dt id="gwpy.plotter.SegmentPlot.add_bitmask">
-<code class="descname">add_bitmask</code><span class="sig-paren">(</span><em>mask</em>, <em>ax=None</em>, <em>width=0.2</em>, <em>pad=0.1</em>, <em>visible=True</em>, <em>axes_class=&lt;class 'gwpy.plotter.segments.SegmentAxes'&gt;</em>, <em>topdown=False</em>, <em>**plotargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L536"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_bitmask" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_bitmask</code><span class="sig-paren">(</span><em>mask</em>, <em>ax=None</em>, <em>width=0.2</em>, <em>pad=0.1</em>, <em>visible=True</em>, <em>axes_class=&lt;class 'gwpy.plotter.segments.SegmentAxes'&gt;</em>, <em>topdown=False</em>, <em>**plotargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L536"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_bitmask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a state-word bitmask on a new set of Axes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentPlot.add_dataqualityflag">
-<code class="descname">add_dataqualityflag</code><span class="sig-paren">(</span><em>flag</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L527"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_dataqualityflag</code><span class="sig-paren">(</span><em>flag</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L527"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentPlot.add_dataqualityflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a <code class="xref py py-class docutils literal"><span class="pre">DataQualityFlag</span></code> to this plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1427,7 +1434,7 @@ names from getting squeezed off the end of a standard figure</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.EventTablePlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">EventTablePlot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L331"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">EventTablePlot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.timeseries.TimeSeriesPlot</span></code>, <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.frequencyseries.FrequencySeriesPlot</span></code>, <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.core.Plot</span></code></p>
 <p><code class="xref py py-obj docutils literal"><span class="pre">Figure</span></code> for displaying a <code class="xref py py-class docutils literal"><span class="pre">Table</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1482,7 +1489,7 @@ allowing easy formatting of GPS times, while if the x-column ends with
 the core <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-class docutils literal"><span class="pre">Plot</span></code></a>.</p>
 <dl class="method">
 <dt id="gwpy.plotter.EventTablePlot.add_table">
-<code class="descname">add_table</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L463"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_table" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_table</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L617"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a LIGO_LW Table to this Plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1525,7 +1532,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scatter</strong> : <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scatter</strong> : <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a></p>
 <blockquote class="last">
 <div><p>the displayed collection for this <code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></p>
 </div></blockquote>
@@ -1544,7 +1551,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTablePlot.add_tiles">
-<code class="descname">add_tiles</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L510"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_tiles" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_tiles</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>color=None</em>, <em>anchor='center'</em>, <em>projection='triggers'</em>, <em>ax=None</em>, <em>newax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L664"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTablePlot.add_tiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a LIGO_LW Table to this Plot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1600,7 +1607,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scatter</strong> : <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scatter</strong> : <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.Collection" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Collection</span></code></a></p>
 <blockquote class="last">
 <div><p>the displayed collection for this <code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></p>
 </div></blockquote>
@@ -1621,7 +1628,7 @@ appropriate axes are found, new <a class="reference internal" href="#gwpy.plotte
 
 <dl class="class">
 <dt id="gwpy.plotter.BodePlot">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">BodePlot</code><span class="sig-paren">(</span><em>*filters</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/filter.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">BodePlot</code><span class="sig-paren">(</span><em>*filters</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/filter.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.core.Plot</span></code></p>
 <p>A <a class="reference internal" href="#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-obj docutils literal"><span class="pre">Plot</span></code></a> class for visualising transfer functions.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1647,7 +1654,7 @@ a transfer function</p>
 </li>
 </ul>
 </div></blockquote>
-<p><strong>frequencies</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.11)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a>, optional</p>
+<p><strong>frequencies</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.12)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a>, optional</p>
 <blockquote>
 <div><p>list of frequencies (in Hertz) at which to plot</p>
 </div></blockquote>
@@ -1675,7 +1682,7 @@ phase of the input transfer function(s) respectively.</p>
 </table>
 <dl class="method">
 <dt id="gwpy.plotter.BodePlot.add_filter">
-<code class="descname">add_filter</code><span class="sig-paren">(</span><em>filter_</em>, <em>frequencies=None</em>, <em>dB=True</em>, <em>analog=False</em>, <em>sample_rate=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/filter.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_filter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_filter</code><span class="sig-paren">(</span><em>filter_</em>, <em>frequencies=None</em>, <em>dB=True</em>, <em>analog=False</em>, <em>sample_rate=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/filter.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a linear time-invariant filter to this BodePlot</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1693,7 +1700,7 @@ phase of the input transfer function(s) respectively.</p>
 </ul>
 </div></blockquote>
 </div></blockquote>
-<p><strong>frequencies</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.11)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a>, optional</p>
+<p><strong>frequencies</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.12)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a>, optional</p>
 <blockquote>
 <div><p>list of frequencies (in Hertz) at which to plot</p>
 </div></blockquote>
@@ -1705,11 +1712,11 @@ amplitude.</p>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments accepted by
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mag, phase</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a> of <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">lines</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mag, phase</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a> of <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">lines</span></code></a></p>
 <blockquote class="last">
 <div><p>the lines drawn for the magnitude and phase of the filter.</p>
 </div></blockquote>
@@ -1721,7 +1728,7 @@ amplitude.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.BodePlot.add_frequencyseries">
-<code class="descname">add_frequencyseries</code><span class="sig-paren">(</span><em>spectrum</em>, <em>dB=True</em>, <em>power=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/filter.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_frequencyseries" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_frequencyseries</code><span class="sig-paren">(</span><em>spectrum</em>, <em>dB=True</em>, <em>power=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/filter.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.BodePlot.add_frequencyseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the magnitude and phase of a complex-valued <code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1746,11 +1753,11 @@ so <code class="docutils literal"><span class="pre">dB</span> <span class="pre">
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments accepted by
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mag, phase</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a> of <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">lines</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mag, phase</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a> of <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">lines</span></code></a></p>
 <blockquote class="last">
 <div><p>the lines drawn for the magnitude and phase of the filter.</p>
 </div></blockquote>
@@ -1780,9 +1787,9 @@ so <code class="docutils literal"><span class="pre">dB</span> <span class="pre">
 <p>Each of the below classes represents a set of axes on which data are displayed; for brevity inherited methods and attributes are not documented here, please follow links to the parent classes for documentation of available methods and attributes.</p>
 <dl class="class">
 <dt id="gwpy.plotter.Axes">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">Axes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/axes.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">Axes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/axes.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">matplotlib.axes._axes.Axes</span></code></p>
-<p>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a>.</p>
+<p>An extension of the core matplotlib <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a>.</p>
 <p>These custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> provide only some simpler attribute accessors.</p>
 <p class="rubric">Notes</p>
 <p>A new set of <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> should be constructed via:</p>
@@ -1793,13 +1800,13 @@ so <code class="docutils literal"><span class="pre">dB</span> <span class="pre">
 is the name of the <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> you want to add.</p>
 <dl class="method">
 <dt id="gwpy.plotter.Axes.html_map">
-<code class="descname">html_map</code><span class="sig-paren">(</span><em>imagefile</em>, <em>data=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/axes.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.html_map" title="Permalink to this definition">¶</a></dt>
+<code class="descname">html_map</code><span class="sig-paren">(</span><em>imagefile</em>, <em>data=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/axes.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.html_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an HTML map for some data contained in these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : <a class="reference external" href="http://matplotlib.org/api/artist_api.html#matplotlib.artist.Artist" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">array-like</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : <code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">array-like</span></code></p>
 <blockquote>
 <div><p>data to map, one of an <code class="xref py py-obj docutils literal"><span class="pre">Artist</span></code> already drawn on these axes (
 via <code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code> or <code class="xref py py-meth docutils literal"><span class="pre">scatter()</span></code>, for example) or a data set</p>
@@ -1873,13 +1880,13 @@ default: <a class="reference external" href="https://docs.python.org/2/library/c
 
 <dl class="method">
 <dt id="gwpy.plotter.Axes.resize">
-<code class="descname">resize</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/axes.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/axes.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.Axes.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the axes position with:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>in relative 0,1 coords, or <em>pos</em> can be a
-<a class="reference external" href="http://matplotlib.org/devel/transformations.html#matplotlib.transforms.Bbox" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Bbox</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/transformations.html#matplotlib.transforms.Bbox" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Bbox</span></code></a></p>
 <p>There are two position variables: one which is ultimately
 used, but which may be modified by <code class="xref py py-meth docutils literal"><span class="pre">apply_aspect()</span></code>, and a
 second which is the starting point for <code class="xref py py-meth docutils literal"><span class="pre">apply_aspect()</span></code>.</p>
@@ -1893,7 +1900,7 @@ second which is the starting point for <code class="xref py py-meth docutils lit
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1921,7 +1928,7 @@ second which is the starting point for <code class="xref py py-meth docutils lit
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -1945,12 +1952,12 @@ second which is the starting point for <code class="xref py py-meth docutils lit
 
 <dl class="class">
 <dt id="gwpy.plotter.TimeSeriesAxes">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">TimeSeriesAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">TimeSeriesAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.axes.Axes</span></code></p>
 <p>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for a <a class="reference internal" href="#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-class docutils literal"><span class="pre">TimeSeriesPlot</span></code></a>.</p>
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.auto_gps_scale">
-<code class="descname">auto_gps_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_scale" title="Permalink to this definition">¶</a></dt>
+<code class="descname">auto_gps_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.auto_gps_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automagically set the GPS scale for the time-axis of this plot
 based on the current view limits</p>
 </dd></dl>
@@ -1963,7 +1970,7 @@ based on the current view limits</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these Axes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1982,7 +1989,7 @@ or standard (x, y) data arrays</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1991,7 +1998,7 @@ or standard (x, y) data arrays</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -1999,7 +2006,7 @@ or standard (x, y) data arrays</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_spectrogram">
-<code class="descname">plot_spectrogram</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_spectrogram</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2019,7 +2026,7 @@ these axes</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2028,7 +2035,7 @@ these axes</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2036,7 +2043,7 @@ these axes</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_timeseries">
-<code class="descname">plot_timeseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_timeseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> onto these
 axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2056,7 +2063,7 @@ axes</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2065,7 +2072,7 @@ axes</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2073,7 +2080,7 @@ axes</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm">
-<code class="descname">plot_timeseries_mmm</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_timeseries_mmm</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.plot_timeseries_mmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> onto these axes, with (min, max) shaded
 regions</p>
 <p>The <code class="xref py py-obj docutils literal"><span class="pre">mean_</span></code> <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> is plotted normally, while the <code class="xref py py-obj docutils literal"><span class="pre">min_</span></code>
@@ -2115,7 +2122,7 @@ with a fill between them and the <a href="#id17"><span class="problematic" id="i
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2123,7 +2130,7 @@ with a fill between them and the <a href="#id17"><span class="problematic" id="i
 
 <dl class="method">
 <dt id="gwpy.plotter.TimeSeriesAxes.set_xlim">
-<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>left=None</em>, <em>right=None</em>, <em>emit=True</em>, <em>auto=False</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/timeseries.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>left=None</em>, <em>right=None</em>, <em>emit=True</em>, <em>auto=False</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/timeseries.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.TimeSeriesAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_xlim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </pre></div>
@@ -2167,12 +2174,12 @@ present is on the right.</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.FrequencySeriesAxes">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">FrequencySeriesAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">FrequencySeriesAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.axes.Axes</span></code></p>
 <p>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for a <a class="reference internal" href="#gwpy.plotter.FrequencySeriesPlot" title="gwpy.plotter.FrequencySeriesPlot"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeriesPlot</span></code></a>.</p>
 <dl class="method">
 <dt id="gwpy.plotter.FrequencySeriesAxes.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these Axes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2191,7 +2198,7 @@ present is on the right.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2200,7 +2207,7 @@ present is on the right.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2208,7 +2215,7 @@ present is on the right.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries">
-<code class="descname">plot_frequencyseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_frequencyseries</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeries</span></code></a> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2227,7 +2234,7 @@ present is on the right.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-class docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2236,7 +2243,7 @@ present is on the right.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2244,7 +2251,7 @@ present is on the right.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries_mmm">
-<code class="descname">plot_frequencyseries_mmm</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries_mmm" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_frequencyseries_mmm</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries_mmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code> onto these axes, with (min, max) shaded
 regions</p>
 <p>The <code class="xref py py-obj docutils literal"><span class="pre">mean_</span></code> <code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code> is plotted normally, while the <code class="xref py py-obj docutils literal"><span class="pre">min_</span></code>
@@ -2291,7 +2298,7 @@ opaque</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2299,7 +2306,7 @@ opaque</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.FrequencySeriesAxes.plot_variance">
-<code class="descname">plot_variance</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/frequencyseries.py#L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_variance" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_variance</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/frequencyseries.py#L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.FrequencySeriesAxes.plot_variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.frequencyseries.SpectralVariance.html#gwpy.frequencyseries.SpectralVariance" title="gwpy.frequencyseries.SpectralVariance"><code class="xref py py-class docutils literal"><span class="pre">SpectralVariance</span></code></a> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2328,7 +2335,7 @@ these axes</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.pcolormesh" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.pcolormesh()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.pcolormesh.html#matplotlib.axes.Axes.pcolormesh" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.pcolormesh()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2338,7 +2345,7 @@ these axes</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.SegmentAxes">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SegmentAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">SegmentAxes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.timeseries.TimeSeriesAxes</span></code></p>
 <p>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for a <a class="reference internal" href="#gwpy.plotter.SegmentPlot" title="gwpy.plotter.SegmentPlot"><code class="xref py py-obj docutils literal"><span class="pre">SegmentPlot</span></code></a>.</p>
 <p>This <a class="reference internal" href="#gwpy.plotter.SegmentAxes" title="gwpy.plotter.SegmentAxes"><code class="xref py py-obj docutils literal"><span class="pre">SegmentAxes</span></code></a> provides custom methods for displaying any of</p>
@@ -2370,8 +2377,8 @@ names from getting squeezed off the end of a standard figure</p>
 </div>
 <dl class="staticmethod">
 <dt id="gwpy.plotter.SegmentAxes.build_segment">
-<em class="property">static </em><code class="descname">build_segment</code><span class="sig-paren">(</span><em>segment</em>, <em>y</em>, <em>height=0.8</em>, <em>valign='center'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.build_segment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> to display
+<em class="property">static </em><code class="descname">build_segment</code><span class="sig-paren">(</span><em>segment</em>, <em>y</em>, <em>height=0.8</em>, <em>valign='center'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.build_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> to display
 a single <a class="reference internal" href="../api/gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2397,11 +2404,11 @@ a single <a class="reference internal" href="../api/gwpy.segments.Segment.html#g
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments acceptable for
-<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>box</strong> : <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>box</strong> : <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 <blockquote class="last">
 <div><p>rectangle patch for segment display</p>
 </div></blockquote>
@@ -2419,7 +2426,7 @@ a single <a class="reference internal" href="../api/gwpy.segments.Segment.html#g
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.get_collections">
-<code class="descname">get_collections</code><span class="sig-paren">(</span><em>ignore=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_collections" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_collections</code><span class="sig-paren">(</span><em>ignore=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_collections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the collections matching the given <code class="xref py py-obj docutils literal"><span class="pre">_ignore</span></code> value</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2444,13 +2451,13 @@ returns those collections matching the <code class="xref py py-obj docutils lite
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.get_insetlabels">
-<code class="descname">get_insetlabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_insetlabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_insetlabels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move the y-axis tick labels inside the axes</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.get_next_y">
-<code class="descname">get_next_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_next_y" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_next_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.get_next_y" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the next y-axis value at which a segment list can be placed</p>
 <p>This method simply counts the number of independent segmentlists or
 flags that have been plotted onto these axes.</p>
@@ -2464,7 +2471,7 @@ flags that have been plotted onto these axes.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2491,7 +2498,7 @@ flags that have been plotted onto these axes.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Line2D</p>
 <blockquote class="last">
-<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
+<div><p>the <a class="reference external" href="http://matplotlib.org/api/lines_api.html#matplotlib.lines.Line2D" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Line2D</span></code></a> for this line layer</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2500,7 +2507,7 @@ flags that have been plotted onto these axes.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
+<dt><a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.axes.Axes.plot()</span></code></a></dt>
 <dd>for a full description of acceptable <code class="docutils literal"><span class="pre">*args`</span> <span class="pre">and</span> <span class="pre">``**kwargs</span></code></dd>
 </dl>
 </div>
@@ -2508,7 +2515,7 @@ flags that have been plotted onto these axes.</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_dqdict">
-<code class="descname">plot_dqdict</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqdict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_dqdict</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqdict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2538,13 +2545,13 @@ dict of keyword arguments to pass to
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments acceptable for
-<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>collection</strong> : <code class="xref py py-obj docutils literal"><span class="pre">PatchCollection</span></code></p>
 <blockquote class="last">
-<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
+<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2554,7 +2561,7 @@ dict of keyword arguments to pass to
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_dqflag">
-<code class="descname">plot_dqflag</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqflag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_dqflag</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_dqflag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>
 onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2582,13 +2589,13 @@ dict of keyword arguments to pass to
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments acceptable for
-<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>collection</strong> : <code class="xref py py-obj docutils literal"><span class="pre">PatchCollection</span></code></p>
 <blockquote class="last">
-<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
+<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2598,7 +2605,7 @@ dict of keyword arguments to pass to
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_segmentlist">
-<code class="descname">plot_segmentlist</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlist" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_segmentlist</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a> onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2615,7 +2622,7 @@ dict of keyword arguments to pass to
 <p><strong>collection</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a></p>
 <blockquote>
 <div><p>add all patches as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">PatchCollection</span></code></a>, doesn&#8217;t seem
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">PatchCollection</span></code></a>, doesn&#8217;t seem
 to work for hatched rectangles</p>
 </div></blockquote>
 <p><strong>label</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
@@ -2625,13 +2632,13 @@ to work for hatched rectangles</p>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments acceptable for
-<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>collection</strong> : <code class="xref py py-obj docutils literal"><span class="pre">PatchCollection</span></code></p>
 <blockquote class="last">
-<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
+<div><p>list of <a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a> patches</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2641,7 +2648,7 @@ to work for hatched rectangles</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.plot_segmentlistdict">
-<code class="descname">plot_segmentlistdict</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlistdict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_segmentlistdict</code><span class="sig-paren">(</span><em>artist</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.plot_segmentlistdict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a <a class="reference internal" href="../api/gwpy.segments.SegmentListDict.html#gwpy.segments.SegmentListDict" title="gwpy.segments.SegmentListDict"><code class="xref py py-obj docutils literal"><span class="pre">SegmentListDict</span></code></a> onto
 these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2659,7 +2666,7 @@ these axes</p>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other keyword arguments acceptable for
-<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v1.5.3)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/patches_api.html#matplotlib.patches.Rectangle" title="(in Matplotlib v2.0.0)"><code class="xref py py-obj docutils literal"><span class="pre">Rectangle</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -2676,7 +2683,7 @@ each segmentlist</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.SegmentAxes.set_xlim">
-<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/segments.py#L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_xlim</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/segments.py#L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.SegmentAxes.set_xlim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call signature:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">set_xlim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </pre></div>
@@ -2720,16 +2727,15 @@ present is on the right.</p>
 
 <dl class="class">
 <dt id="gwpy.plotter.EventTableAxes">
-<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">EventTableAxes</code><span class="sig-paren">(</span><em>fig</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.plotter.</code><code class="descname">EventTableAxes</code><span class="sig-paren">(</span><em>fig</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.plotter.timeseries.TimeSeriesAxes</span></code></p>
-<p>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for an <a class="reference internal" href="#gwpy.plotter.EventTablePlot" title="gwpy.plotter.EventTablePlot"><code class="xref py py-class docutils literal"><span class="pre">EventTablePlot</span></code></a>.</p>
-<p>The <a class="reference internal" href="#gwpy.plotter.EventTableAxes" title="gwpy.plotter.EventTableAxes"><code class="xref py py-obj docutils literal"><span class="pre">EventTableAxes</span></code></a> inherit from
-<a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes" title="gwpy.plotter.TimeSeriesAxes"><code class="xref py py-class docutils literal"><span class="pre">TimeSeriesAxes</span></code></a> as a convenience to
-optionally displaying a time-column. That choice has no effect on the
-rest of the <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> functionality.</p>
+<p>Custom <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for an ~gwpy.plotter.EventTablePlot`.</p>
+<p>The <a class="reference internal" href="#gwpy.plotter.EventTableAxes" title="gwpy.plotter.EventTableAxes"><code class="xref py py-obj docutils literal"><span class="pre">EventTableAxes</span></code></a> inherit from ~gwpy.plotter.TimeSeriesAxes`
+as a convenience to optionally displaying a time-column.
+That choice has no effect on the rest of the <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> functionality.</p>
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.add_loudest">
-<code class="descname">add_loudest</code><span class="sig-paren">(</span><em>table</em>, <em>rank</em>, <em>x</em>, <em>y</em>, <em>*columns</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.add_loudest" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_loudest</code><span class="sig-paren">(</span><em>table</em>, <em>rank</em>, <em>x</em>, <em>y</em>, <em>*columns</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.add_loudest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the loudest event according to some rank.</p>
 <p>The loudest event is displayed as a gold star at its
 position given by the values in columns <code class="docutils literal"><span class="pre">x</span></code>, and <code class="docutils literal"><span class="pre">y</span></code>,
@@ -2738,10 +2744,9 @@ and those values are displayed in a text box.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>table</strong> : <code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>table</strong> : <code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></p>
 <blockquote>
-<div><p>LIGO_LW-format XML event table in which to find the loudest
-event</p>
+<div><p>event table in which to find the loudest event</p>
 </div></blockquote>
 <p><strong>rank</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <blockquote>
@@ -2762,7 +2767,7 @@ event</p>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other arguments applicable to
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.text" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">text()</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.text.html#matplotlib.axes.Axes.text" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">text()</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -2778,7 +2783,7 @@ event</p>
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot data onto these axes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2786,14 +2791,13 @@ event</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*args</strong></p>
 <blockquote>
-<div><p>a single <code class="xref py py-class docutils literal"><span class="pre">Table</span></code> (or sub-class)
-or anything valid for
-<code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code>.</p>
+<div><p>a single ~astropy.tableTable` (or sub-class)
+or anything valid for <a class="reference internal" href="#gwpy.plotter.TimeSeriesAxes.plot" title="gwpy.plotter.TimeSeriesAxes.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
 </div></blockquote>
 <p><strong>**kwargs</strong></p>
 <blockquote class="last">
 <div><p>keyword arguments applicable to
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -2803,15 +2807,15 @@ or anything valid for
 
 <dl class="method">
 <dt id="gwpy.plotter.EventTableAxes.plot_table">
-<code class="descname">plot_table</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>size_by=None</em>, <em>size_by_log=None</em>, <em>size_range=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/plotter/table.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_table" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_table</code><span class="sig-paren">(</span><em>table</em>, <em>x</em>, <em>y</em>, <em>color=None</em>, <em>edgecolor='none'</em>, <em>size_by=None</em>, <em>size_by_log=None</em>, <em>size_range=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/plotter/table.py#L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.plotter.EventTableAxes.plot_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a LIGO_LW-format event <code class="xref py py-obj docutils literal"><span class="pre">Table</span></code> onto these <a class="reference internal" href="#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>table</strong> : <code class="xref py py-class docutils literal"><span class="pre">Table</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>table</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.3)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>, <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <blockquote>
-<div><p>LIGO_LW-format XML event <code class="xref py py-obj docutils literal"><span class="pre">Table</span></code> to display</p>
+<div><p>data table to plot</p>
 </div></blockquote>
 <p><strong>x</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <blockquote>
@@ -2821,14 +2825,14 @@ or anything valid for
 <blockquote>
 <div><p>name of column to display on the Y-axis</p>
 </div></blockquote>
-<p><strong>c</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<p><strong>color</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
 <blockquote>
 <div><p>name of column by which to colour the data</p>
 </div></blockquote>
 <p><strong>**kwargs</strong></p>
 <blockquote>
 <div><p>any other arguments applicable to
-<a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.scatter" title="(in Matplotlib v1.5.3)"><code class="xref py py-meth docutils literal"><span class="pre">scatter()</span></code></a></p>
+<a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.scatter.html#matplotlib.axes.Axes.scatter" title="(in Matplotlib v2.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">scatter()</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>

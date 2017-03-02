@@ -20,36 +20,35 @@ Common-Arm motion (CARM).
 
 
 
-
 First, we import the `TimeSeriesDict`
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import TimeSeriesDict
 
-
 and then :meth:`~TimeSeriesDict.get` both data sets:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    data = TimeSeriesDict.get(['L1:LSC-SRCL_IN1_DQ', 'L1:LSC-CARM_IN1_DQ'],
                               'Feb 13 2015', 'Feb 13 2015 00:15', allow_tape=True)
 
-
 We can then calculate the :meth:`~TimeSeries.coherence` of one
 `TimeSeries` with respect to the other, using an 8-second Fourier
 transform length, with a 4-second (50%) overlap:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    coh = data['L1:LSC-SRCL_IN1_DQ'].coherence(data['L1:LSC-CARM_IN1_DQ'], 8, 4)
-
 
 Finally, we can :meth:`~gwpy.frequencyseries.FrequencySeries.plot` the resulting data:
 

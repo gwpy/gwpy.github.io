@@ -11,10 +11,10 @@ On Feb 13 2015 there was a massive earthquake in the Atlantic Ocean, that
 should have had an impact on LIGO operations, I'd like to find out.
 
 
-
 First: we import the objects we need, one for getting the data:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
@@ -23,11 +23,11 @@ First: we import the objects we need, one for getting the data:
 and one for plotting the data:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    from gwpy.plotter import TimeSeriesPlot
-
 
 Next we define the channels we want, namely the 0.03Hz-1Hz ground motion
 band-limited RMS channels (1-second average trends).
@@ -35,6 +35,7 @@ We do this using string-replacement so we can substitute the interferometer
 prefix easily when we need to:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
@@ -44,11 +45,11 @@ prefix easily when we need to:
        '%s:ISI-BS_ST1_SENSCOR_GND_STS_Z_BLRMS_30M_100M.mean,s-trend',
    ]
 
-
 At last we can :meth:`~TimeSeriesDict.get` 12 hours of data for each
 interferometer:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
@@ -56,7 +57,6 @@ interferometer:
                             'Feb 13 2015 16:00', 'Feb 14 2015 04:00', verbose=True)
    llo = TimeSeriesDict.get([c % 'L1' for c in channels],
                             'Feb 13 2015 16:00', 'Feb 14 2015 04:00', verbose=True)
-
 
 Next we can plot the data, with a separate `~gwpy.plotter.Axes` for each
 instrument:
@@ -75,7 +75,6 @@ instrument:
              ha='center', va='center')
    plot.axes[0].set_title('Magnitude 7.1 earthquake impact on LIGO', fontsize=24)
    plot.show()
-
 
 Here we have also customised the output by manually setting the legend
 entries, putting the interferometer label on the right-hand side, setting

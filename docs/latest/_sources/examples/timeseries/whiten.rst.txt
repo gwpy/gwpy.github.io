@@ -20,26 +20,25 @@ in one of the interferometer arms, which recorded two large glitches with
 a frequency of around 5-50Hz.
 
 
-
 First, we import the `TimeSeries` and :meth:`~TimeSeries.get` the data:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.get('H1:ASC-Y_TR_A_NSUM_OUT_DQ', 1123084670, 1123084800)
 
-
 Now, we can `~TimeSeries.whiten` the data to enhance the higher-frequency
 content
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    white = data.whiten(4, 2)
-
 
 and can `~TimeSeries.plot` both the original and whitened data
 
@@ -57,7 +56,6 @@ and can `~TimeSeries.plot` both the original and whitened data
    plot.axes[0].set_xlim(epoch-8, epoch+8)
    plot.axes[1].set_xlim(epoch-8, epoch+8)
    plot.show()
-
 
 Here we see two large spikes that are completely undetected in the raw
 `TimeSeries`, but are very obvious in the whitened data.

@@ -18,18 +18,17 @@ which frequencies sit at which amplitude _most_ of the time, but also
 highlighting excursions from normal behaviour.
 
 
-
 To demonstate this, we can load some data from the LIGO Livingston
 intereferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import TimeSeries
    llo = TimeSeries.fetch_open_data('L1', 1135136228, 1135140324, verbose=True)
-
 
 We can then call the :meth:`~gwpy.timeseries.TimeSeries.spectral_variance`
 method of the ``llo`` `~gwpy.timeseries.TimeSeries` by calculating an ASD
@@ -38,12 +37,12 @@ at each ASD value:
 
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    variance = llo.spectral_variance(5, fftlength=2, overlap=1, log=True,
                                     low=1e-24, high=1e-19, nbins=100)
-
 
 We can then :meth:`~SpectralVariance.plot` the `SpectralVariance`
 
@@ -61,7 +60,6 @@ We can then :meth:`~SpectralVariance.plot` the `SpectralVariance`
    ax.set_ylabel(r'[strain/\rtHz]')
    ax.set_title('LIGO-Livingston sensitivity variance')
    plot.show()
-
 
 From this we see that in general the sensitivity varies a few parts in 
 10 :sup:`-23`, while many of the lines (narrow-band peaks in the spectrum)

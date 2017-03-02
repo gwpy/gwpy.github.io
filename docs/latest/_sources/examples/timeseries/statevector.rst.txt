@@ -12,20 +12,21 @@ I would like to examine the state of the internal seismic isolation system suppo
 These data are private to the LIGO Scientific Collaboration and the Virgo Collaboration, but collaboration members can use the NDS2 service to download data.
 
 
-
 First, we can import the `StateVector` class:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import StateVector
 
-
 Next, we define which bits we want to use, and can then
 :meth:`~StateVector.get` the data:
 
+
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
@@ -39,19 +40,17 @@ Next, we define which bits we want to use, and can then
        'Stage 1 WatchDog OK',
        'Stage 2 WatchDog OK',
    ]
-
    data = StateVector.get('L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ', 'May 22 2014 14:00', 'May 22 2014 15:00', bits=bits)
-
 
 For this example, we wish to :meth:`~StateVector.resample` the data to a
 much lower rate, to make visualising the state much easier:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    data = data.resample(16)
-
 
 Finally, we make a :meth:`~StateVector.plot`, passing `insetlabels=True` to
 display the bit names inside the axes:

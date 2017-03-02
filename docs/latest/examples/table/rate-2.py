@@ -1,2 +1,1 @@
-events = SnglBurstTable.read('../../gwpy/tests/data/'
-                             'H1-LDAS_STRAIN-968654552-10.xml.gz')
+rate = events.event_rate(1, start=968654552, end=968654562)

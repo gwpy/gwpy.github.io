@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SegmentList &#8212; GWpy 0.1+183.gafb41d4 documentation</title>
+    <title>SegmentList &#8212; GWpy 0.2+52.g410a9f3 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1+183.gafb41d4',
+        VERSION:     '0.2+52.g410a9f3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -91,8 +91,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -159,7 +166,7 @@
 <h1>SegmentList<a class="headerlink" href="#segmentlist" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.segments.SegmentList">
-<em class="property">class </em><code class="descclassname">gwpy.segments.</code><code class="descname">SegmentList</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/segments/segments.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.segments.</code><code class="descname">SegmentList</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/segments/segments.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">glue.__segments.segmentlist</span></code></p>
 <p>The <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a> class defines a list of <a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a>, and is an
 extension of the built-in list class.  This class provides
@@ -255,7 +262,7 @@ arithmetic operators.</p>
 <td>L.sort(cmp=None, key=None, reverse=False) &#8211; stable sort <em>IN PLACE</em>;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.SegmentList.write" title="gwpy.segments.SegmentList.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(data,&nbsp;\*args,&nbsp;\*\*kwargs)</td>
-<td>Write out data</td>
+<td>Write out data.</td>
 </tr>
 </tbody>
 </table>
@@ -268,7 +275,7 @@ arithmetic operators.</p>
 
 <dl class="method">
 <dt id="gwpy.segments.SegmentList.coalesce">
-<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/segments/segments.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/segments/segments.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n).</p>
 </dd></dl>
 
@@ -446,8 +453,8 @@ cmp(x, y) -&gt; -1, 0, 1</p>
 <dl class="method">
 <dt id="gwpy.segments.SegmentList.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>data</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write out data</p>
-<p>The arguments passed to this method depend on the format</p>
+<dd><p>Write out data.</p>
+<p>The arguments passed to this method depend on the format.</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -485,7 +492,7 @@ cmp(x, y) -&gt; -1, 0, 1</p>
 
 <dl class="method">
 <dt>
-<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/afb41d48e75f5fb5c97f48eb191e432f7c4ba8e3/gwpy/segments/segments.py#L89"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/410a9f3a9ade045ae75dbc525f43b2fc15cafb4c/gwpy/segments/segments.py#L89"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n).</p>
 </dd></dl>
 
@@ -572,8 +579,8 @@ The available built-in formats are:</p>
 <dl class="method">
 <dt>
 <code class="descname">write</code><span class="sig-paren">(</span><em>data</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
-<dd><p>Write out data</p>
-<p>The arguments passed to this method depend on the format</p>
+<dd><p>Write out data.</p>
+<p>The arguments passed to this method depend on the format.</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>

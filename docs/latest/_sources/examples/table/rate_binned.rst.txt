@@ -2,7 +2,7 @@
 
 .. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
 
-.. currentmodule:: gwpy.table.lsctables
+.. currentmodule:: gwpy.table
 
 Plotting event rate for specific column bins
 ############################################
@@ -17,21 +17,30 @@ gravitational waves, but will help tune the algorithm to improve detection of
 future, real signals.
 
 
-
-
-First, we import the `SnglBurstTable` and read the events
+First, we import the `EventTable` object and read in a set of events from
+a LIGO_LW-format XML file containing a
+:class:`sngl_burst <glue.ligolw.lsctables.SnglBurstTable>` table
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
-   from gwpy.table.lsctables import SnglBurstTable
-   events = SnglBurstTable.read('../../gwpy/tests/data/H1-LDAS_STRAIN-968654552-10.xml.gz')
+   from gwpy.table import EventTable
+   events = EventTable.read(
+       '../../gwpy/tests/data/H1-LDAS_STRAIN-968654552-10.xml.gz',
+       format='ligolw.sngl_burst', columns=['time', 'snr'])
 
+.. note::
 
-Now we can use the :math:`~SnglBurstTable.binned_event_rates` method to calculated the event rate in a number of bins of SNR.
+   Here we manually specify the `columns` to read in order to optimise
+   the `read()` operation to parse only the data we actually need.
+
+Now we can use the :meth:`~EventTable.binned_event_rates` method to
+calculate the event rate in a number of bins of SNR.
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 

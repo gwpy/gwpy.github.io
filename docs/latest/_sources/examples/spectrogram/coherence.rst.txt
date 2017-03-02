@@ -17,25 +17,24 @@ measure.
 
 
 
-
 First, we import the `TimeSeriesDict`
 
 .. plot::
+   :nofigs:
    :include-source:
    :context: reset
 
    from gwpy.timeseries import TimeSeriesDict
 
-
 and then :meth:`~TimeSeriesDict.get` both data sets:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    data = TimeSeriesDict.get(['L1:LSC-SRCL_IN1_DQ', 'L1:LSC-CARM_IN1_DQ'],
                               'Feb 13 2015', 'Feb 13 2015 00:15')
-
 
 We can then use the :meth:`~TimeSeries.coherence_spectrogram` method
 of one `TimeSeries` to calcululate the time-varying coherence with
@@ -43,12 +42,12 @@ respect to the other, using a 0.5-second FFT length, with a
 0.45-second (90%) overlap, with a 8-second stride:
 
 .. plot::
+   :nofigs:
    :include-source:
    :context:
 
    coh = data['L1:LSC-SRCL_IN1_DQ'].coherence_spectrogram(
        data['L1:LSC-CARM_IN1_DQ'], 8, 0.5, 0.45)
-
 
 Finally, we can :meth:`~gwpy.spectrogram.Spectrogram.plot` the
 resulting data

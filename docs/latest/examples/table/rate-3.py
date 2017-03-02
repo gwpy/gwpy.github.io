@@ -1,1 +1,5 @@
-rate = events.event_rate(1, start=968654552, end=968654562)
+plot = rate.plot()
+plot.set_xlim(968654552, 968654562)
+plot.set_ylabel('Event rate [Hz]')
+plot.set_title('LIGO Hanford Observatory event rate for GW100916')
+plot.show()
