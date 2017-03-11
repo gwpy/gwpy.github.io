@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reading and writing time-domain data &#8212; GWpy 0.2+88.g8249b2d documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 0.2+111.g17ed407 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2+88.g8249b2d',
+        VERSION:     '0.2+111.g17ed407',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -242,6 +242,10 @@ Those formats are:</p>
 </pre></div>
 </div>
 <p>The above command will separate the input list of 4 file paths into two sets of 2 files, combining the results into a single <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> before returning.</p>
+<p>The <code class="docutils literal"><span class="pre">start</span></code> and <code class="docutils literal"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-GW100916-968654552-1.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">968654552.5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654553</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Additionally, the following keyword arguments can be passed to manipulate the data on-the-fly when reading:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -309,6 +313,10 @@ samples per second</td>
 <h3>Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>To read <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> or <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> data held in HDF5 files pass the filename (or filenames) or the source, and the path of the data inside the HDF5 file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-GW100916-968654552-1.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with GWF, the <code class="docutils literal"><span class="pre">start</span></code> and <code class="docutils literal"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-GW100916-968654552-1.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">968654552.5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654553</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
