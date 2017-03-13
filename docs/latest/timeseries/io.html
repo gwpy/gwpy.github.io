@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reading and writing time-domain data &#8212; GWpy 0.2+140.g4117f7e documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 0.2+141.gca2037b documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2+140.g4117f7e',
+        VERSION:     '0.2+141.gca2037b',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -180,8 +180,8 @@
       </div>
     <div class="col-md-9 content">
       
-  <span class="target" id="timeseries-io"></span><div class="section" id="reading-and-writing-time-domain-data">
-<h1>Reading and writing time-domain data<a class="headerlink" href="#reading-and-writing-time-domain-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="reading-and-writing-time-domain-data">
+<span id="gwpy-timeseries-io"></span><h1>Reading and writing time-domain data<a class="headerlink" href="#reading-and-writing-time-domain-data" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> object includes <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> methods to enable reading from and writing to files respectively.
 For example, to read from an ASCII file containing time and amplitude columns:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.txt&#39;</span><span class="p">)</span>
@@ -191,12 +191,12 @@ For example, to read from an ASCII file containing time and amplitude columns:</
 <p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> methods take different arguments and keywords based on the input/output file format, see the following sections for details on reading/writing for each of the built-in formats.
 Those formats are:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#timeseries-io-ascii"><span class="std std-ref">ASCII</span></a></li>
-<li><a class="reference internal" href="#timeseries-io-gwf"><span class="std std-ref">Gravitational-wave frames (GWF)</span></a></li>
-<li><a class="reference internal" href="#timeseries-io-hdf5"><span class="std std-ref">HDF5</span></a></li>
+<li><a class="reference internal" href="#gwpy-timeseries-io-ascii"><span class="std std-ref">ASCII</span></a></li>
+<li><a class="reference internal" href="#gwpy-timeseries-io-gwf"><span class="std std-ref">Gravitational-wave frames (GWF)</span></a></li>
+<li><a class="reference internal" href="#gwpy-timeseries-io-hdf5"><span class="std std-ref">HDF5</span></a></li>
 </ul>
 <div class="section" id="ascii">
-<span id="timeseries-io-ascii"></span><h2>ASCII<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h2>
+<span id="gwpy-timeseries-io-ascii"></span><h2>ASCII<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h2>
 <p>GWpy supports writing <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> (and <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>) data to ASCII in a two-column <code class="docutils literal"><span class="pre">time</span></code> and <code class="docutils literal"><span class="pre">amplitude</span></code> format.</p>
 <div class="section" id="reading">
 <h3>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h3>
@@ -216,7 +216,7 @@ Those formats are:</p>
 </div>
 </div>
 <div class="section" id="gravitational-wave-frames-gwf">
-<span id="timeseries-io-gwf"></span><h2>Gravitational-wave frames (GWF)<a class="headerlink" href="#gravitational-wave-frames-gwf" title="Permalink to this headline">¶</a></h2>
+<span id="gwpy-timeseries-io-gwf"></span><h2>Gravitational-wave frames (GWF)<a class="headerlink" href="#gravitational-wave-frames-gwf" title="Permalink to this headline">¶</a></h2>
 <p><strong>Additional dependencies:</strong>  <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal"><span class="pre">LDAStools.frameCPP</span></code></a> or <a class="reference external" href="https://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal"><span class="pre">lalframe</span></code></a></p>
 <p>The raw observatory data are archived in <code class="docutils literal"><span class="pre">.gwf</span></code> files, a custom binary format that efficiently stores the time streams and all necessary metadata, for more details about this particular data format, take a look at the specification document <a class="reference external" href="https://dcc.ligo.org/LIGO-T970130/public">LIGO-T970130</a>.</p>
 <div class="section" id="id1">
@@ -302,7 +302,7 @@ samples per second</td>
 </div>
 </div>
 <div class="section" id="hdf5">
-<span id="timeseries-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
+<span id="gwpy-timeseries-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
 <p><strong>Additional dependencies:</strong> <a class="reference external" href="http://docs.h5py.org/en/latest/"><code class="xref py py-obj docutils literal"><span class="pre">h5py</span></code></a></p>
 <p>GWpy allows storing data in HDF5 format files, using a custom specification for storage of metadata.</p>
 <div class="admonition warning">

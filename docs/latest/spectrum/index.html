@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The FrequencySeries &#8212; GWpy 0.2+140.g4117f7e documentation</title>
+    <title>The FrequencySeries &#8212; GWpy 0.2+141.gca2037b documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2+140.g4117f7e',
+        VERSION:     '0.2+141.gca2037b',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -169,7 +169,7 @@
     <div class="col-md-9 content">
       
   <div class="section" id="the-frequencyseries">
-<h1>The <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeries</span></code></a><a class="headerlink" href="#the-frequencyseries" title="Permalink to this headline">¶</a></h1>
+<span id="gwpy-frequencyseries"></span><h1>The <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeries</span></code></a><a class="headerlink" href="#the-frequencyseries" title="Permalink to this headline">¶</a></h1>
 <p>While gravitational-wave detectors are time-domain instruments, their sensitivity is frequency dependent and so is often measured as a power-spectral-density over the range of interesting gravitational-wave frequencies (~10-10,000 Hz).
 Additionally, the auxiliary <a class="reference external" href="../detector/channel">channels</a> used to sense and control instrumental operations each have their own frequency-domain characteristics, contributing to the overall sensitivity spectrum.</p>
 <p>The <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeries</span></code></a> object is used to represent any frequency series, including the power-spectral (and amplitude-spectral) density series describing instrument performance.</p>
@@ -228,7 +228,7 @@ Additionally, the auxiliary <a class="reference external" href="../detector/chan
 </tr>
 </tbody>
 </table>
-<p>In this example we expand the <span class="xref std std-ref">previous example</span>, by calculating the amplitude-spectral density of the gravitational-wave strain data from LHO:</p>
+<p>In this example we expand upon plotting a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>, by calculating the amplitude-spectral density of the gravitational-wave strain data from LHO:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 <span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
 <span class="n">spectrum</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -237,7 +237,7 @@ Additionally, the auxiliary <a class="reference external" href="../detector/chan
 <p>where the result is an average spectrum calculated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Welch_method">Welch method</a>.</p>
 </div>
 <div class="section" id="plotting-a-frequencyseries">
-<h2>Plotting a <code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code><a class="headerlink" href="#plotting-a-frequencyseries" title="Permalink to this headline">¶</a></h2>
+<span id="gwpy-frequencyseries-plot"></span><h2>Plotting a <code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code><a class="headerlink" href="#plotting-a-frequencyseries" title="Permalink to this headline">¶</a></h2>
 <p>Similary to the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>, the <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> object comes with its own <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries.plot" title="gwpy.frequencyseries.FrequencySeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method, which will quickly construct a <a class="reference internal" href="../plotter/api.html#gwpy.plotter.FrequencySeriesPlot" title="gwpy.plotter.FrequencySeriesPlot"><code class="xref py py-class docutils literal"><span class="pre">FrequencySeriesPlot</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
