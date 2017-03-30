@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Segment &#8212; GWpy 0.3 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SegmentList" href="gwpy.segments.SegmentList.html" />
+    <link rel="prev" title="DataQualityDict" href="gwpy.segments.DataQualityDict.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="gwpy.segments.DataQualityDict.html" title="Previous Chapter: DataQualityDict"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; DataQualityDict</span>
+    </a>
+  </li>
+  <li>
+    <a href="gwpy.segments.SegmentList.html" title="Next Chapter: SegmentList"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">SegmentList &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Segment</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/api/gwpy.segments.Segment.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="segment">
+<h1>Segment<a class="headerlink" href="#segment" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gwpy.segments.Segment">
+<em class="property">class </em><code class="descclassname">gwpy.segments.</code><code class="descname">Segment</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c0af060e8e58da7dfb204eb41433a38016f50389/gwpy/segments/segments.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.segments.Segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">glue.__segments.segment</span></code></p>
+<p>The <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> class defines objects that represent a range of values.
+A <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> has a start and an end, and is taken to represent the
+range of values in the semi-open interval [start, end).  Some
+limited arithmetic operations are possible with <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a>, but
+because the set of (single) <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a> is not closed under the
+sensible definitions of the standard arithmetic operations, the
+behaviour of the arithmetic operators on <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a> may not be as you
+would expect.  For general arithmetic on <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a>, use <a class="reference internal" href="gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a>
+objects.  The methods for this class exist mostly for purpose of
+simplifying the implementation of the <a class="reference internal" href="gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a> class.</p>
+<p>The <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> class is a subclass of the tuple built-in class
+provided by Python.  This means <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a> are immutable &#8212; you
+cannot modify a <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> object after creating it, to change the
+boundaries of a <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> you must create a new <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> object with
+the desired boundaries.  Like tuples, <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segments</span></code></a> can be used as
+dictionary keys, and like tuples the comparison used to find a
+<a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> in the dictionary is done by value not by ID.  And, like
+tuples, a <a class="reference internal" href="#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal"><span class="pre">Segment</span></code></a> can be created from any sequence-like object by
+passing it to the constructor (the sequence must have exactly two
+elements in it).</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; `Segment`(0, 10) &amp; `Segment`(5, 15)
+`Segment`(5, 10)
+&gt;&gt;&gt; `Segment`(0, 10) | `Segment`(5, 15)
+`Segment`(0, 15)
+&gt;&gt;&gt; `Segment`(0, 10) - `Segment`(5, 15)
+`Segment`(0, 5)
+&gt;&gt;&gt; `Segment`(0, 10) &lt; `Segment`(5, 15)
+True
+&gt;&gt;&gt; `Segment`(1, 2) in `Segment`(0, 10)
+True
+&gt;&gt;&gt; `Segment`(1, 11) in `Segment`(0, 10)
+False
+&gt;&gt;&gt; `Segment`(0, 1)
+`Segment`(0, 1)
+&gt;&gt;&gt; `Segment`(1, 0)
+`Segment`(0, 1)
+&gt;&gt;&gt; bool(`Segment`(0, 1))
+True
+&gt;&gt;&gt; bool(`Segment`(0, 0))
+False
+&gt;&gt;&gt; `Segment`(&quot;AAA Towing&quot;, &quot;York University&quot;) &amp; `Segment`(&quot;Pool&quot;, &quot;Zoo&quot;)
+`Segment`(&#39;Pool&#39;, &#39;York University&#39;)
+&gt;&gt;&gt; x = [0, 1]  # a list
+&gt;&gt;&gt; `Segment`(x)
+`Segment`(0, 1)
+&gt;&gt;&gt; y = `Segment`(0, 1)
+&gt;&gt;&gt; y == x
+True
+&gt;&gt;&gt; y is x
+False
+&gt;&gt;&gt; z = {x: [&quot;/path/to/file1&quot;, &quot;/path/to/file2&quot;]}
+&gt;&gt;&gt; y in z
+True
+&gt;&gt;&gt; z[y]
+[&#39;/path/to/file1&#39;, &#39;/path/to/file2&#39;]
+</pre></div>
+</div>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.Segment.end" title="gwpy.segments.Segment.end"><code class="xref py py-obj docutils literal"><span class="pre">end</span></code></a></td>
+<td>The GPS end time of this segment</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.segments.Segment.start" title="gwpy.segments.Segment.start"><code class="xref py py-obj docutils literal"><span class="pre">start</span></code></a></td>
+<td>The GPS start time of this segment</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.Segment.contract" title="gwpy.segments.Segment.contract"><code class="xref py py-obj docutils literal"><span class="pre">contract</span></code></a></td>
+<td>Return a new segment whose bounds are given by adding x to the segment&#8217;s lower bound and subtracting x from the segment&#8217;s upper bound.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.segments.Segment.count" title="gwpy.segments.Segment.count"><code class="xref py py-obj docutils literal"><span class="pre">count</span></code></a>(...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.Segment.disjoint" title="gwpy.segments.Segment.disjoint"><code class="xref py py-obj docutils literal"><span class="pre">disjoint</span></code></a></td>
+<td>Returns &gt;0 if self covers an interval above other&#8217;s interval, &lt;0 if self covers an interval below other&#8217;s, or 0 if the two intervals are not disjoint (intersect or touch).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.segments.Segment.index" title="gwpy.segments.Segment.index"><code class="xref py py-obj docutils literal"><span class="pre">index</span></code></a>((value,&nbsp;[start,&nbsp;...)</td>
+<td>Raises ValueError if the value is not present.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.Segment.intersects" title="gwpy.segments.Segment.intersects"><code class="xref py py-obj docutils literal"><span class="pre">intersects</span></code></a></td>
+<td>Return True if the intersection of self and other is not a null segment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.segments.Segment.protract" title="gwpy.segments.Segment.protract"><code class="xref py py-obj docutils literal"><span class="pre">protract</span></code></a></td>
+<td>Return a new segment whose bounds are given by subtracting x from the segment&#8217;s lower bound and adding x to the segment&#8217;s upper bound.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.segments.Segment.shift" title="gwpy.segments.Segment.shift"><code class="xref py py-obj docutils literal"><span class="pre">shift</span></code></a></td>
+<td>Return a new segment whose bounds are given by adding x to the segment&#8217;s upper and lower bounds.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="gwpy.segments.Segment.end">
+<code class="descname">end</code><a class="headerlink" href="#gwpy.segments.Segment.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GPS end time of this segment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gwpy.segments.Segment.start">
+<code class="descname">start</code><a class="headerlink" href="#gwpy.segments.Segment.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GPS start time of this segment</p>
+</dd></dl>
+
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="gwpy.segments.Segment.contract">
+<code class="descname">contract</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.Segment.contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new segment whose bounds are given by adding x to the segment&#8217;s lower bound and subtracting x from the segment&#8217;s upper bound.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.count">
+<code class="descname">count</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span> &rarr; integer -- return number of occurrences of value<a class="headerlink" href="#gwpy.segments.Segment.count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.disjoint">
+<code class="descname">disjoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.Segment.disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns &gt;0 if self covers an interval above other&#8217;s interval, &lt;0 if self covers an interval below other&#8217;s, or 0 if the two intervals are not disjoint (intersect or touch).  A return value of 0 indicates the two segments would coalesce.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.index">
+<code class="descname">index</code><span class="sig-paren">(</span><em>value</em><span class="optional">[</span>, <em>start</em><span class="optional">[</span>, <em>stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &rarr; integer -- return first index of value.<a class="headerlink" href="#gwpy.segments.Segment.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.intersects">
+<code class="descname">intersects</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.Segment.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the intersection of self and other is not a null segment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.protract">
+<code class="descname">protract</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.Segment.protract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new segment whose bounds are given by subtracting x from the segment&#8217;s lower bound and adding x to the segment&#8217;s upper bound.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.segments.Segment.shift">
+<code class="descname">shift</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.Segment.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new segment whose bounds are given by adding x to the segment&#8217;s upper and lower bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">end</code></dt>
+<dd><p>The GPS end time of this segment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">start</code></dt>
+<dd><p>The GPS start time of this segment</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

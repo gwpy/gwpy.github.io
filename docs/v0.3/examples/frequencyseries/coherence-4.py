@@ -1,0 +1,8 @@
+plot = coh.plot(figsize=[12, 6], label=None)
+ax = plot.gca()
+ax.set_yscale('linear')
+ax.set_xlabel('Frequency [Hz]')
+ax.set_ylabel('Coherence')
+ax.set_title('Coherence between SRCL and CARM for L1')
+ax.grid(True, 'both', 'both')
+plot.show()
