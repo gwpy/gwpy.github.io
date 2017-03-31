@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.3 documentation</title>
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.3+13.gb83fa3f documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3',
+        VERSION:     '0.3+13.gb83fa3f',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -166,6 +166,11 @@
 <li><a class="reference internal" href="#id7">Writing</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#gwf">GWF</a><ul>
+<li><a class="reference internal" href="#id8">Reading</a></li>
+<li><a class="reference internal" href="#id9">Writing</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#available-file-formats">Available file formats</a></li>
 </ul>
 </li>
@@ -190,10 +195,10 @@
 <span id="gwpy-table-io"></span><h1>Reading and writing <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> and <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> objects<a class="headerlink" href="#reading-and-writing-table-and-eventtable-objects" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This document complements the upstream Astropy documentation on reading/writing <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.3)"><code class="xref py py-class docutils literal"><span class="pre">Table</span></code></a> objects, please refer to <a class="reference external" href="http://docs.astropy.org/en/stable/table/io.html">http://docs.astropy.org/en/stable/table/io.html</a>.</p>
+<p class="last">This document complements the upstream Astropy documentation on reading/writing <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.3.1)"><code class="xref py py-class docutils literal"><span class="pre">Table</span></code></a> objects, please refer to <a class="reference external" href="http://docs.astropy.org/en/stable/table/io.html">http://docs.astropy.org/en/stable/table/io.html</a>.</p>
 </div>
 <p>Astropy provides an excellent unified input/output system for the
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.3)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> object, and GWpy extends upon that to include common
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v1.3.1)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> object, and GWpy extends upon that to include common
 gravitational-wave file types, as well as providing event-specific
 input/output registrations for event data.
 In the most general case you can read a table of data as follows:</p>
@@ -207,6 +212,7 @@ In the most general case you can read a table of data as follows:</p>
 <li><a class="reference internal" href="#gwpy-table-io-ascii-cwb"><span class="std std-ref">Coherence WaveBurst ASCII (aka EVENTS.txt)</span></a></li>
 <li><a class="reference internal" href="#gwpy-table-io-root"><span class="std std-ref">ROOT</span></a></li>
 <li><a class="reference internal" href="#gwpy-table-io-pycbc-live"><span class="std std-ref">PyCBC Live (HDF5)</span></a></li>
+<li><a class="reference internal" href="#gwpy-table-io-gwf"><span class="std std-ref">GWF</span></a></li>
 </ul>
 <p>Each of the sub-sections below outlines how to read and write in these file formats, include the custom keyword arguments to pass to <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-meth docutils literal"><span class="pre">EventTable.read()</span></code></a> and <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write"><code class="xref py py-meth docutils literal"><span class="pre">EventTable.write()</span></code></a>.</p>
 <div class="section" id="ligo-lw-xml">
@@ -433,7 +439,7 @@ The analysis uses the ROOT framework for most data products, but also produces A
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;EVENTS.txt&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.cwb&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v1.3)"><code class="xref py py-func docutils literal"><span class="pre">astropy.io.ascii.read()</span></code></a> documentation for full details on keyword arguments when reading <code class="docutils literal"><span class="pre">ascii.cwb</span></code> files.</p>
+<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v1.3.1)"><code class="xref py py-func docutils literal"><span class="pre">astropy.io.ascii.read()</span></code></a> documentation for full details on keyword arguments when reading <code class="docutils literal"><span class="pre">ascii.cwb</span></code> files.</p>
 </div>
 <div class="section" id="id2">
 <h3>Writing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -502,6 +508,41 @@ Supported processed columns are:</p>
 <p>Writing tables in PyCBC Live HDF5 format is not supported at this time.</p>
 </div>
 </div>
+<div class="section" id="gwf">
+<span id="gwpy-table-io-gwf"></span><h2>GWF<a class="headerlink" href="#gwf" title="Permalink to this headline">¶</a></h2>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal"><span class="pre">LDAStools.frameCPP</span></code></a></p>
+<p>The Gravitational-Wave Frame file format supports tabular data via <code class="docutils literal"><span class="pre">FrEvent</span></code> structures, which allow storage of arbitrary event information.</p>
+<div class="section" id="id8">
+<h3>Reading<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>To read an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal"><span class="pre">GWF</span></code>-format file, specify the filename and the <code class="docutils literal"><span class="pre">name</span></code> of the FrEvent structures to read:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;events.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;my-event-name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;events.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;my-event-name&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>All <code class="docutils literal"><span class="pre">FrEvent</span></code> structures contain the following columns, any other columns are use-specific:</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+Column name      Description (from</p>
+<blockquote>
+<div><a class="reference external" href="https://dcc.ligo.org/LIGO-T970130/public">LIGO-T970130</a>)</div></blockquote>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+<code class="docutils literal"><span class="pre">time</span></code>         Reference time of event, as defined by the search algorithm
+<code class="docutils literal"><span class="pre">amplitude</span></code>    Continuous output amplitude returned by event
+<code class="docutils literal"><span class="pre">probability</span></code>  Likelihood estimate of event, if available (probability = -1 if</p>
+<blockquote>
+<div>cannot be estimated)</div></blockquote>
+<p><code class="docutils literal"><span class="pre">timeBefore</span></code>   Signal duration before reference time (seconds)
+<code class="docutils literal"><span class="pre">timeAfter</span></code>    Signal duration after reference time (seconds)
+<code class="docutils literal"><span class="pre">comment</span></code>      Descriptor of event
+&#8212;&#8212;&#8212;&#8212;&#8212;  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+</div>
+<div class="section" id="id9">
+<h3>Writing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Writing tables in GWF format is not supported at this time.</p>
+</div>
+</div>
 <div class="section" id="available-file-formats">
 <h2>Available file formats<a class="headerlink" href="#available-file-formats" title="Permalink to this headline">¶</a></h2>
 <p>For a full list of available file formats, see the documentation for the <a class="reference internal" href="#gwpy.table.Table.read" title="gwpy.table.Table.read"><code class="xref py py-obj docutils literal"><span class="pre">Table.read</span></code></a> method:</p>
@@ -518,7 +559,7 @@ using syntax such as:</p>
 </pre></div>
 </div>
 <p>The arguments and keywords (other than <code class="docutils literal"><span class="pre">format</span></code>) provided to this function are
-passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v1.3)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
+passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v1.3.1)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -575,7 +616,7 @@ passed through to the underlying data reader (e.g. <a class="reference external"
 </tr>
 <tr class="row-even"><td>ascii.cwb</td>
 <td>Yes</td>
-<td>No</td>
+<td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
@@ -705,289 +746,295 @@ passed through to the underlying data reader (e.g. <a class="reference external"
 <td>Yes</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>hdf5</td>
+<tr class="row-even"><td>gwf</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>hdf5</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.coinc_definer</td>
+<tr class="row-even"><td>ligolw.coinc_definer</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.coinc_event</td>
+<tr class="row-odd"><td>ligolw.coinc_event</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.coinc_event_map</td>
+<tr class="row-even"><td>ligolw.coinc_event_map</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.coinc_inspiral</td>
+<tr class="row-odd"><td>ligolw.coinc_inspiral</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.coinc_ringdown</td>
+<tr class="row-even"><td>ligolw.coinc_ringdown</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.dq_list</td>
+<tr class="row-odd"><td>ligolw.dq_list</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.experiment</td>
+<tr class="row-even"><td>ligolw.experiment</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.experiment_map</td>
+<tr class="row-odd"><td>ligolw.experiment_map</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.experiment_summary</td>
+<tr class="row-even"><td>ligolw.experiment_summary</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.external_trigger</td>
+<tr class="row-odd"><td>ligolw.external_trigger</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.filter</td>
+<tr class="row-even"><td>ligolw.filter</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.gds_trigger</td>
+<tr class="row-odd"><td>ligolw.gds_trigger</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.lfn</td>
+<tr class="row-even"><td>ligolw.lfn</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.ligolw_mon</td>
+<tr class="row-odd"><td>ligolw.ligolw_mon</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.multi_burst</td>
+<tr class="row-even"><td>ligolw.multi_burst</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.multi_inspiral</td>
+<tr class="row-odd"><td>ligolw.multi_inspiral</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.process</td>
+<tr class="row-even"><td>ligolw.process</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.process_params</td>
+<tr class="row-odd"><td>ligolw.process_params</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.search_summary</td>
+<tr class="row-even"><td>ligolw.search_summary</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.search_summvars</td>
+<tr class="row-odd"><td>ligolw.search_summvars</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.segment</td>
+<tr class="row-even"><td>ligolw.segment</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.segment_definer</td>
+<tr class="row-odd"><td>ligolw.segment_definer</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.segment_summary</td>
+<tr class="row-even"><td>ligolw.segment_summary</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.sim_burst</td>
+<tr class="row-odd"><td>ligolw.sim_burst</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.sim_inspiral</td>
+<tr class="row-even"><td>ligolw.sim_inspiral</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.sim_inst_params</td>
+<tr class="row-odd"><td>ligolw.sim_inst_params</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.sim_ringdown</td>
+<tr class="row-even"><td>ligolw.sim_ringdown</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.sngl_burst</td>
+<tr class="row-odd"><td>ligolw.sngl_burst</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.sngl_inspiral</td>
+<tr class="row-even"><td>ligolw.sngl_inspiral</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.sngl_ringdown</td>
+<tr class="row-odd"><td>ligolw.sngl_ringdown</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.stochastic</td>
+<tr class="row-even"><td>ligolw.stochastic</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.stochsumm</td>
+<tr class="row-odd"><td>ligolw.stochsumm</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.summ_mime</td>
+<tr class="row-even"><td>ligolw.summ_mime</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.summ_value</td>
+<tr class="row-odd"><td>ligolw.summ_value</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.time_slide</td>
+<tr class="row-even"><td>ligolw.time_slide</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>ligolw.time_slide_segment_map</td>
+<tr class="row-odd"><td>ligolw.time_slide_segment_map</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>ligolw.veto_definer</td>
+<tr class="row-even"><td>ligolw.veto_definer</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>root</td>
+<tr class="row-odd"><td>root</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>votable</td>
+<tr class="row-even"><td>votable</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>aastex</td>
+<tr class="row-odd"><td>aastex</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>cds</td>
+<tr class="row-even"><td>cds</td>
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>csv</td>
+<tr class="row-odd"><td>csv</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>daophot</td>
+<tr class="row-even"><td>daophot</td>
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>html</td>
+<tr class="row-odd"><td>html</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>ipac</td>
+<tr class="row-even"><td>ipac</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>latex</td>
+<tr class="row-odd"><td>latex</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-odd"><td>rdb</td>
+<tr class="row-even"><td>rdb</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
