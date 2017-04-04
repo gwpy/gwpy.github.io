@@ -1,0 +1,5 @@
+plot = lhoasd.plot(color='#ee0000', label='LIGO-Hanford')
+plot.add_frequencyseries(lloasd, color='#4ba6ff', label='LIGO-Livingston')
+plot.set_xlim(10, 2000)
+plot.set_ylim(5e-24, 1e-21)
+plot.show()

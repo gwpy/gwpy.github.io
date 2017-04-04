@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Time-domain data &#8212; GWpy 0.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TimeSeries" href="../api/gwpy.timeseries.TimeSeries.html" />
+    <link rel="prev" title="Installing GWpy" href="../install.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../install.html" title="Previous Chapter: Installing GWpy"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Installing GWpy</span>
+    </a>
+  </li>
+  <li>
+    <a href="../api/gwpy.timeseries.TimeSeries.html" title="Next Chapter: TimeSeries"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">TimeSeries &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Time-domain data</a><ul>
+<li><a class="reference internal" href="#the-timeseries">The <code class="docutils literal"><span class="pre">TimeSeries</span></code></a></li>
+<li><a class="reference internal" href="#associated-classes">Associated classes</a></li>
+<li><a class="reference internal" href="#reading-writing-time-domain-data">Reading/writing time-domain data</a></li>
+<li><a class="reference internal" href="#plotting-time-domain-data">Plotting time-domain data</a></li>
+<li><a class="reference internal" href="#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/timeseries/index.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="time-domain-data">
+<span id="gwpy-timeseries"></span><h1>Time-domain data<a class="headerlink" href="#time-domain-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-timeseries">
+<h2>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#the-timeseries" title="Permalink to this headline">¶</a></h2>
+<p>Gravitational-wave detectors are time-domain instruments, attempting to record gravitational-wave amplitude as a differential change in the lengths of each of the interferometer arms.
+The primary output of these detectors is a single time-stream of gravitational-wave strain.</p>
+<p>Alongside these data, thousands of auxiliary instrumental control and error signals and environmental monitors are recorded in real-time and archived for off-line study.</p>
+<p>GWpy provides the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> object as a way of representing these and similar time-domain data.
+The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> is built from the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.12)"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code></a>, and so many of the methods and applications of this object should be familiar to <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.12)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a> users.</p>
+<p>For example, to create a simple <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> filled with <code class="xref py py-mod docutils literal"><span class="pre">random</span></code> data:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">TimeSeries([ 0.59442285, 0.61979421, 0.62968915,...,  0.98309223,</span>
+<span class="go">             0.94513298, 0.1826175 ]</span>
+<span class="go">           unit: Unit(dimensionless),</span>
+<span class="go">           t0: 0.0 s,</span>
+<span class="go">           dt: 1.0 s,</span>
+<span class="go">           name: None,</span>
+<span class="go">           channel: None)</span>
+</pre></div>
+</div>
+<p>Here we see the random data we have created, as well as the associated metadata common to any time-domain data:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.unit" title="gwpy.timeseries.TimeSeries.unit"><code class="xref py py-obj docutils literal"><span class="pre">unit</span></code></a></td>
+<td>The physical unit of these data</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.t0" title="gwpy.timeseries.TimeSeries.t0"><code class="xref py py-obj docutils literal"><span class="pre">t0</span></code></a></td>
+<td>X-axis coordinate of the first data point</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.dt" title="gwpy.timeseries.TimeSeries.dt"><code class="xref py py-obj docutils literal"><span class="pre">dt</span></code></a></td>
+<td>X-axis sample separation</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.name" title="gwpy.timeseries.TimeSeries.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>Name for this data set</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.channel" title="gwpy.timeseries.TimeSeries.channel"><code class="xref py py-obj docutils literal"><span class="pre">channel</span></code></a></td>
+<td>Instrumental channel associated with these data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="associated-classes">
+<h2>Associated classes<a class="headerlink" href="#associated-classes" title="Permalink to this headline">¶</a></h2>
+<p>Alongside the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> class, <code class="xref py py-obj docutils literal"><span class="pre">gwpy.timeseries</span></code> module provides a small set of related classes for handling bit-vector data, and collections of data:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></td>
+<td>A time-domain data array</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></td>
+<td>Binary array representing good/bad state determinations of some data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a></td>
+<td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> objects</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.StateVectorDict.html#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></td>
+<td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> objects</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reading-writing-time-domain-data">
+<h2>Reading/writing time-domain data<a class="headerlink" href="#reading-writing-time-domain-data" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="remote-access.html">Remote data access</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote-access.html#open-data-releases">Open data releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access.html#restricted-full-data-archives">Restricted full data archives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldg.html">Data-discovery on the LIGO Data Grid</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldg.html#data-discovery">Data discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldg.html#frametypes">Frametypes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Reading and writing time-domain data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io.html#ascii">ASCII</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#gravitational-wave-frames-gwf">Gravitational-wave frames (GWF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#hdf5">HDF5</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="plotting-time-domain-data">
+<h2>Plotting time-domain data<a class="headerlink" href="#plotting-time-domain-data" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">Plotting time-domain data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plotting-one-timeseries">Plotting one <code class="docutils literal"><span class="pre">TimeSeries</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plotting-multiple-timeseries-together">Plotting multiple <code class="docutils literal"><span class="pre">TimeSeries</span></code> together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html#plotting-a-statevector">Plotting a <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<p>The above documentation references the following objects:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></td>
+<td>A time-domain data array</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a></td>
+<td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> objects</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesList.html#gwpy.timeseries.TimeSeriesList" title="gwpy.timeseries.TimeSeriesList"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesList</span></code></a></td>
+<td>Fancy list representing a list of <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></td>
+<td>Binary array representing good/bad state determinations of some data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.StateVectorDict.html#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></td>
+<td>Ordered key-value mapping of named <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> objects</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></code></a></td>
+<td>Boolean array representing a good/bad state determination</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
