@@ -1,5 +1,5 @@
 plot = rayleigh.plot(norm='log', vmin=0.25, vmax=4)
 plot.set_yscale('log')
 plot.set_ylim(40, 4000)
-plot.add_colorbar(label=r'Rayleigh statistic')
+plot.add_colorbar(cmap='BrBG_r', label=r'Rayleigh statistic')
 plot.show()

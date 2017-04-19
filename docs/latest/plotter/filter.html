@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Visualising filters (BodePlot) &#8212; GWpy 0.3+13.gb83fa3f documentation</title>
+    <title>Visualising filters (BodePlot) &#8212; GWpy 0.4+50.g2736caa documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3+13.gb83fa3f',
+        VERSION:     '0.4+50.g2736caa',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -75,8 +75,8 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing GWpy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html#available-installations">Available installations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
@@ -164,13 +164,17 @@
       
   <div class="section" id="visualising-filters-bodeplot">
 <span id="gwpy-plotter-bode"></span><h1>Visualising filters (<a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><code class="xref py py-class docutils literal"><span class="pre">BodePlot</span></code></a>)<a class="headerlink" href="#visualising-filters-bodeplot" title="Permalink to this headline">¶</a></h1>
-<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><code class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></code></a> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass filter (from the <span class="xref doc">Bode plot example</span>:</p>
+<p>Any time-domain or Fourier-domain filters can be visualised using the Bode plot, showing the magnitude (in decibels) and phase (in degress) response of a linear time-invariant filter. The <a class="reference internal" href="api.html#gwpy.plotter.BodePlot" title="gwpy.plotter.BodePlot"><code class="xref py py-obj docutils literal"><span class="pre">BodePlot</span></code></a> allows for simple display of these responses for any filter, for example a 10 Hertz high-pass filter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.signal</span> <span class="kn">import</span> <span class="n">bandpass</span>
 <span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">BodePlot</span>
 <span class="n">zpk</span> <span class="o">=</span> <span class="n">bandpass</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;40-1000\,Hz bandpass filter&#39;</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">zpk</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;40-1000\,Hz bandpass filter&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+<p>(<a class="reference external" href="../plotter/filter-1.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/filter-1.png" src="../_images/filter-1.png" />
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
