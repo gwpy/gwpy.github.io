@@ -1,5 +1,1 @@
-plot = medratio.plot(norm='log', vmin=0.1, vmax=10)
-plot.set_yscale('log')
-plot.set_ylim(40, 4096)
-plot.add_colorbar(cmap='Spectral_r', label='Amplitude relative to median')
-plot.show()
+normalised = specgram.ratio('median')

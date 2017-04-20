@@ -1,1 +1,1 @@
-coh = data['L1:LSC-SRCL_IN1_DQ'].coherence(data['L1:LSC-CARM_IN1_DQ'], 8, 4)
+coh = hoft.coherence(acc, fftlength=2, overlap=1)
