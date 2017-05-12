@@ -1,0 +1,1 @@
+white = data.whiten(4, 2)

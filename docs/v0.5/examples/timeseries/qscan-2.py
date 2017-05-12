@@ -1,0 +1,1 @@
+qspecgram = data.q_transform()
