@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. Calculating the SNR associated with a given astrophysical signal model &#8212; GWpy 0.5 documentation</title>
+    <title>7. Calculating the SNR associated with a given astrophysical signal model &#8212; GWpy 0.5.1+35.g8bf7dc0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.5',
+        VERSION:     '0.5.1+35.g8bf7dc0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -169,7 +169,7 @@ extract a signal from the noise using basic signal-processing techniques.</p>
 <p>However, an actual astrophysical search algorithm detects signals by
 calculating the signal-to-noise ratio (SNR) of data for each in a large bank
 of signal models, known as templates.</p>
-<p>Using <a href="#id5"><span class="problematic" id="id6">|pycbc|_</span></a> (the actual search code), we can do that.</p>
+<p>Using <a href="#id3"><span class="problematic" id="id4">|pycbc|_</span></a> (the actual search code), we can do that.</p>
 <p>First, as always, we fetch some of the public data from the LIGO Open
 Science Center</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
@@ -192,7 +192,7 @@ of the data), then <a class="reference internal" href="../../api/gwpy.timeseries
 <p>In order to calculate signal-to-noise ratio, we need a signal model
 against which to compare our data.
 For this we import <code class="xref py py-func docutils literal"><span class="pre">get_fd_waveform()</span></code> and generate a
-template <a class="reference external" href="https://ligo-cbc.github.io/pycbc/latest/html/pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="(in PyCBC v1.7.1)"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>:</p>
+template <a class="reference external" href="https://ligo-cbc.github.io/pycbc/latest/html/pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="(in PyCBC vNone)"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="kn">import</span> <span class="n">get_fd_waveform</span>
 <span class="n">hp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_fd_waveform</span><span class="p">(</span><span class="n">approximant</span><span class="o">=</span><span class="s2">&quot;IMRPhenomD&quot;</span><span class="p">,</span> <span class="n">mass1</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
                         <span class="n">f_lower</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">f_final</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">psd</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -201,7 +201,7 @@ template <a class="reference external" href="https://ligo-cbc.github.io/pycbc/la
 <p>At this point we are ready to calculate the SNR, so we import the
 <code class="xref py py-func docutils literal"><span class="pre">matched_filter()</span></code> method, and pass it our template,
 the data, and the PSD, using the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.to_pycbc" title="gwpy.timeseries.TimeSeries.to_pycbc"><code class="xref py py-meth docutils literal"><span class="pre">to_pycbc()</span></code></a> methods of
-the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a href="#id1"><span class="problematic" id="id2">`</span></a>~gwpy.frequencyseries.FrequencySeries objects:</p>
+the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">pycbc.filter</span> <span class="kn">import</span> <span class="n">matched_filter</span>
 <span class="n">snr</span> <span class="o">=</span> <span class="n">matched_filter</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">zoom</span><span class="o">.</span><span class="n">to_pycbc</span><span class="p">(),</span> <span class="n">psd</span><span class="o">=</span><span class="n">psd</span><span class="o">.</span><span class="n">to_pycbc</span><span class="p">(),</span>
