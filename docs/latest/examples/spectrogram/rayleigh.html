@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5. Plotting a Spectrogram of the Rayleigh statistic &#8212; GWpy 0.5.1+77.g712315e documentation</title>
+    <title>5. Plotting a Spectrogram of the Rayleigh statistic &#8212; GWpy 0.5.1+334.g705485ae documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.5.1+77.g712315e',
+        VERSION:     '0.5.1+334.g705485ae',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -164,15 +164,20 @@
       
   <div class="section" id="plotting-a-spectrogram-of-the-rayleigh-statistic">
 <span id="gwpy-example-spectrogram-rayleigh"></span><h1>5. Plotting a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> of the Rayleigh statistic<a class="headerlink" href="#plotting-a-spectrogram-of-the-rayleigh-statistic" title="Permalink to this headline">¶</a></h1>
-<p>I would like to study the gravitational wave strain spectrogram around the time of an interesting simulated signal during the last science run (S6).</p>
-<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
+<p>As described in <a class="reference internal" href="../frequencyseries/rayleigh.html#gwpy-example-frequencyseries-rayleigh"><span class="std std-ref">Plotting a Rayleigh-statistic Spectum</span></a>, the Rayleigh
+statistic can be used to study non-Gaussianity in a timeseries.
+We can study the time variance of these features by plotting a
+time-frequency spectrogram where we calculate the Rayleigh statistic for
+each time bin.</p>
+<p>To demonstate this, we can load some data from the LIGO Livingston
+intereferometer around the time of the GW151226 gravitational wave detection:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
+<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec 26 2015 03:37&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Dec 26 2015 03:47&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Next, we can calculate a Rayleigh statistic <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> using the
-<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrogram()</span></code></a> method of the #
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">rayleigh_spectrogram()</span></code></a> method of the
 <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and a 5-second stride with a 2-second FFT and
 1-second overlap (50%):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">rayleigh</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">rayleigh_spectrogram</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -180,9 +185,11 @@
 </div>
 <p>and can make a plot using the <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">rayleigh</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BrBG_r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">r&#39;Rayleigh statistic&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sensitivity of LIGO-Livingston around GW151226&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rayleigh statistic&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

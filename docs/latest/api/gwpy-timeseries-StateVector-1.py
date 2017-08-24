@@ -15,5 +15,5 @@ plt.show()
 # Plot the function over the complex plane:
 
 xx = x + 1j * x[:, np.newaxis]
-plt.imshow(np.abs(xx), extent=[-10, 10, -10, 10])
+plt.imshow(np.abs(xx), extent=[-10, 10, -10, 10], cmap='gray')
 plt.show()

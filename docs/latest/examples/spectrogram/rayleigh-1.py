@@ -1,3 +1,3 @@
 from gwpy.timeseries import TimeSeries
-gwdata = TimeSeries.get(
-    'H1:LDAS-STRAIN', 'September 16 2010 06:40', 'September 16 2010 06:50')
+gwdata = TimeSeries.fetch_open_data('L1', 'Dec 26 2015 03:37',
+                                    'Dec 26 2015 03:47', verbose=True)

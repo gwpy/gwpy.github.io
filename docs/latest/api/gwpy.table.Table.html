@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table &#8212; GWpy 0.5.1+77.g712315e documentation</title>
+    <title>Table &#8212; GWpy 0.5.1+334.g705485ae documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5.1+77.g712315e',
+        VERSION:     '0.5.1+334.g705485ae',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -174,7 +174,7 @@
 enhancement provided by the <a class="reference internal" href="#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> class is the ability to easily modify
 the structure of the table by adding or removing columns, or adding new
 rows of data.  In addition table and column metadata are fully supported.</p>
-<p><a class="reference internal" href="#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> differs from <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.nddata.NDData.html#astropy.nddata.NDData" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">NDData</span></code></a> by the assumption that the
+<p><a class="reference internal" href="#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> differs from <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.nddata.NDData.html#astropy.nddata.NDData" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">NDData</span></code></a> by the assumption that the
 input data consists of columns of homogeneous data, where each column
 has a unique identifier and may contain additional metadata such as the
 data unit, format, and description.</p>
@@ -193,11 +193,11 @@ data unit, format, and description.</p>
 </div></blockquote>
 <p><strong>names</strong> : list, optional</p>
 <blockquote>
-<div><p>Specify column names</p>
+<div><p>Specify column names.</p>
 </div></blockquote>
 <p><strong>dtype</strong> : list, optional</p>
 <blockquote>
-<div><p>Specify column data types</p>
+<div><p>Specify column data types.</p>
 </div></blockquote>
 <p><strong>meta</strong> : dict, optional</p>
 <blockquote>
@@ -205,19 +205,19 @@ data unit, format, and description.</p>
 </div></blockquote>
 <p><strong>copy</strong> : bool, optional</p>
 <blockquote>
-<div><p>Copy the input data (default=True).</p>
+<div><p>Copy the input data. Default is True.</p>
 </div></blockquote>
 <p><strong>rows</strong> : numpy ndarray, list of lists, optional</p>
 <blockquote>
-<div><p>Row-oriented data for table instead of <code class="docutils literal"><span class="pre">data</span></code> argument</p>
+<div><p>Row-oriented data for table instead of <code class="docutils literal"><span class="pre">data</span></code> argument.</p>
 </div></blockquote>
 <p><strong>copy_indices</strong> : bool, optional</p>
 <blockquote>
-<div><p>Copy any indices in the input data (default=True)</p>
+<div><p>Copy any indices in the input data. Default is True.</p>
 </div></blockquote>
 <p><strong>**kwargs</strong> : dict, optional</p>
 <blockquote>
-<div><p>Additional keyword args when converting table-like object</p>
+<div><p>Additional keyword args when converting table-like object.</p>
 </div></blockquote>
 <p><strong>.. note::</strong></p>
 <blockquote>
@@ -250,7 +250,7 @@ data unit, format, and description.</p>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.Table.has_mixin_columns" title="gwpy.table.Table.has_mixin_columns"><code class="xref py py-obj docutils literal"><span class="pre">has_mixin_columns</span></code></a></td>
-<td>True if table has any mixin columns (defined as columns that are not Column</td>
+<td>True if table has any mixin columns (defined as columns that are not Column subclasses).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.table.Table.iloc" title="gwpy.table.Table.iloc"><code class="xref py py-obj docutils literal"><span class="pre">iloc</span></code></a></td>
 <td>Return a TableILoc object that can be used for retrieving indexed rows in the order they appear in the index.</td>
@@ -282,10 +282,10 @@ data unit, format, and description.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.Table.add_column" title="gwpy.table.Table.add_column"><code class="xref py py-obj docutils literal"><span class="pre">add_column</span></code></a>(col[,&nbsp;index,&nbsp;rename_duplicate])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.Table.add_column" title="gwpy.table.Table.add_column"><code class="xref py py-obj docutils literal"><span class="pre">add_column</span></code></a>(col[,&nbsp;index,&nbsp;name,&nbsp;rename_duplicate])</td>
 <td>Add a new Column object <code class="docutils literal"><span class="pre">col</span></code> to the table.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.Table.add_columns" title="gwpy.table.Table.add_columns"><code class="xref py py-obj docutils literal"><span class="pre">add_columns</span></code></a>(cols[,&nbsp;indexes,&nbsp;copy,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.Table.add_columns" title="gwpy.table.Table.add_columns"><code class="xref py py-obj docutils literal"><span class="pre">add_columns</span></code></a>(cols[,&nbsp;indexes,&nbsp;names,&nbsp;copy,&nbsp;...])</td>
 <td>Add a list of new Column objects <code class="docutils literal"><span class="pre">cols</span></code> to the table.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.Table.add_index" title="gwpy.table.Table.add_index"><code class="xref py py-obj docutils literal"><span class="pre">add_index</span></code></a>(colnames[,&nbsp;engine,&nbsp;unique])</td>
@@ -417,7 +417,7 @@ data unit, format, and description.</p>
 <dt id="gwpy.table.Table.has_mixin_columns">
 <code class="descname">has_mixin_columns</code><a class="headerlink" href="#gwpy.table.Table.has_mixin_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>True if table has any mixin columns (defined as columns that are not Column
-subclasses)</p>
+subclasses).</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -465,7 +465,7 @@ and iloc work only with single-column indices.</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.table.Table.add_column">
-<code class="descname">add_column</code><span class="sig-paren">(</span><em>col</em>, <em>index=None</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.add_column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_column</code><span class="sig-paren">(</span><em>col</em>, <em>index=None</em>, <em>name=None</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.add_column" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a new Column object <code class="docutils literal"><span class="pre">col</span></code> to the table.  If <code class="docutils literal"><span class="pre">index</span></code>
 is supplied then insert column before <code class="docutils literal"><span class="pre">index</span></code> position
 in the list of columns, otherwise append column to the end
@@ -480,11 +480,15 @@ of the list.</p>
 </div></blockquote>
 <p><strong>index</strong> : int or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Insert column before this position or at end (default)</p>
+<div><p>Insert column before this position or at end (default).</p>
+</div></blockquote>
+<p><strong>name</strong> : str</p>
+<blockquote>
+<div><p>Column name</p>
 </div></blockquote>
 <p><strong>rename_duplicate</strong> : bool</p>
 <blockquote class="last">
-<div><p>Uniquify column name if it already exist (default=False)</p>
+<div><p>Uniquify column name if it already exist. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -536,12 +540,27 @@ before the given index:</p>
 <span class="go">  3 0.3 1.3</span>
 </pre></div>
 </div>
+<p>Add an unnamed column or mixin object in the table using a default name
+or by specifying an explicit name with <code class="docutils literal"><span class="pre">name</span></code>. Name can also be overridden:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_c</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_c</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_b</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go"> a   b  col2  c   d</span>
+<span class="go">--- --- ---- --- ---</span>
+<span class="go">  1 0.1    x   x 1.1</span>
+<span class="go">  2 0.2    y   y 1.2</span>
+</pre></div>
+</div>
 <p>To add several columns use add_columns.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.table.Table.add_columns">
-<code class="descname">add_columns</code><span class="sig-paren">(</span><em>cols</em>, <em>indexes=None</em>, <em>copy=True</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.add_columns" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_columns</code><span class="sig-paren">(</span><em>cols</em>, <em>indexes=None</em>, <em>names=None</em>, <em>copy=True</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.add_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a list of new Column objects <code class="docutils literal"><span class="pre">cols</span></code> to the table.  If a
 corresponding list of <code class="docutils literal"><span class="pre">indexes</span></code> is supplied then insert column
 before each <code class="docutils literal"><span class="pre">index</span></code> position in the <em>original</em> list of columns,
@@ -556,16 +575,20 @@ otherwise append columns to the end of the list.</p>
 </div></blockquote>
 <p><strong>indexes</strong> : list of ints or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Insert column before this position or at end (default)</p>
+<div><p>Insert column before this position or at end (default).</p>
+</div></blockquote>
+<p><strong>names</strong> : list of str</p>
+<blockquote>
+<div><p>Column names</p>
 </div></blockquote>
 <p><strong>copy</strong> : bool</p>
 <blockquote>
-<div><p>Make a copy of the new columns (default=True)</p>
+<div><p>Make a copy of the new columns. Default is True.</p>
 </div></blockquote>
 <p><strong>rename_duplicate</strong> : bool</p>
 <blockquote class="last">
-<div><p>Uniquify new column names if they duplicate the existing ones
-(default=False)</p>
+<div><p>Uniquify new column names if they duplicate the existing ones.
+Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -621,6 +644,20 @@ the columns are inserted before the given position:</p>
 <span class="go">  3 0.3 1.3  z</span>
 </pre></div>
 </div>
+<p>Add unnamed columns or mixin objects in the table using default names
+or by specifying explicit names with <code class="docutils literal"><span class="pre">names</span></code>. Names can also be overridden:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_a</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_b</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_columns</span><span class="p">([</span><span class="n">col_a</span><span class="p">,</span> <span class="n">col_b</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_columns</span><span class="p">([</span><span class="n">col_a</span><span class="p">,</span> <span class="n">col_b</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">col0  b   c   d</span>
+<span class="go">---- --- --- ---</span>
+<span class="go">   x   u   x   u</span>
+<span class="go">   y   v   y   v</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -643,9 +680,9 @@ primary table index.</p>
 FastBST, and FastRBT. If the supplied argument is None (by
 default), use SortedArray.</p>
 </div></blockquote>
-<p><strong>unique</strong> : bool (defaults to False)</p>
+<p><strong>unique</strong> : bool</p>
 <blockquote class="last">
-<div><p>Whether the values of the index must be unique</p>
+<div><p>Whether the values of the index must be unique. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1161,7 +1198,7 @@ Keep columns &#8216;a&#8217; and &#8216;c&#8217; of the table:</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -1171,7 +1208,7 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1206,7 +1243,7 @@ applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -1216,11 +1253,11 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 <p><strong>html</strong> : bool</p>
 <blockquote>
-<div><p>Format the output as an HTML table (default=False)</p>
+<div><p>Format the output as an HTML table. Default is False.</p>
 </div></blockquote>
 <p><strong>tableid</strong> : str or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
@@ -1239,13 +1276,13 @@ columns.</p>
 <p><strong>tableclass</strong> : str or list of str or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
 <div><p>CSS classes for the table; only used if html is set.  Default is
-none</p>
+None.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lines</strong> : list</p>
 <blockquote class="last">
-<div><p>Formatted table as a list of strings</p>
+<div><p>Formatted table as a list of strings.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1271,15 +1308,15 @@ applied.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_lines</strong> : int</p>
 <blockquote>
-<div><p>Maximum number of lines in table output</p>
+<div><p>Maximum number of lines in table output.</p>
 </div></blockquote>
 <p><strong>max_width</strong> : int or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Maximum character width of output</p>
+<div><p>Maximum character width of output.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -1289,7 +1326,7 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 <p><strong>align</strong> : str or list or tuple or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote class="last">
@@ -1318,7 +1355,7 @@ using syntax such as:</p>
 </pre></div>
 </div>
 <p>The arguments and keywords (other than <code class="docutils literal"><span class="pre">format</span></code>) provided to this function are
-passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
+passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2150,7 +2187,7 @@ This allows in-browser searching &amp; sorting.</p>
 </div></blockquote>
 <p><strong>jskwargs</strong> : dict</p>
 <blockquote>
-<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
+<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
 <code class="docutils literal"><span class="pre">{'use_local_files':</span> <span class="pre">True}</span></code> which means that the JavaScript
 libraries will be served from local copies.</p>
 </div></blockquote>
@@ -2212,7 +2249,7 @@ for the list of classes.</p>
 </div></blockquote>
 <p><strong>css</strong> : string</p>
 <blockquote>
-<div><p>A valid CSS string declaring the formatting for the table. Default
+<div><p>A valid CSS string declaring the formatting for the table. Defaults
 to <code class="docutils literal"><span class="pre">astropy.table.jsviewer.DEFAULT_CSS_NB</span></code>.</p>
 </div></blockquote>
 <p><strong>display_length</strong> : int, optional</p>
@@ -2323,7 +2360,7 @@ using syntax such as:</p>
 </pre></div>
 </div>
 <p>The arguments and keywords (other than <code class="docutils literal"><span class="pre">format</span></code>) provided to this function are
-passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.write.html#astropy.io.ascii.write" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>).</p>
+passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.write.html#astropy.io.ascii.write" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>).</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2885,14 +2922,14 @@ property.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>new_unit</strong> : str or <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>new_unit</strong> : str or <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance</p>
 <blockquote>
 <div><p>The unit to convert to.</p>
 </div></blockquote>
 <p><strong>equivalencies</strong> : list of equivalence pairs, optional</p>
 <blockquote>
 <div><p>A list of equivalence pairs to try if the unit are not
-directly convertible.  See <a class="reference external" href="http://docs.astropy.org/en/stable/units/equivalencies.html#unit-equivalencies" title="(in Astropy v2.0)"><span>Equivalencies</span></a>.</p>
+directly convertible.  See <a class="reference external" href="http://docs.astropy.org/en/stable/units/equivalencies.html#unit-equivalencies" title="(in Astropy v2.0.1)"><span>Equivalencies</span></a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2949,9 +2986,9 @@ reference.  Default is True.</p>
 
 <dl class="method">
 <dt id="gwpy.table.Table.Column.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>obj</em>, <em>values</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.Column.insert" title="Permalink to this definition">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>obj</em>, <em>values</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.Column.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert values before the given indices in the column and return
-a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a> object.</p>
+a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a> object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2967,9 +3004,15 @@ inserted.</p>
 from that of quantity, <code class="docutils literal"><span class="pre">values</span></code> is converted to the matching type.
 <code class="docutils literal"><span class="pre">values</span></code> should be shaped so that it can be broadcast appropriately</p>
 </div></blockquote>
+<p><strong>axis</strong> : int, optional</p>
+<blockquote>
+<div><p>Axis along which to insert <code class="docutils literal"><span class="pre">values</span></code>.  If <code class="docutils literal"><span class="pre">axis</span></code> is None then
+the column array is flattened before insertion.  Default is 0,
+which will insert a row.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a></p>
 <blockquote class="last">
 <div><p>A copy of column with <code class="docutils literal"><span class="pre">values</span></code> and <code class="docutils literal"><span class="pre">mask</span></code> inserted.  Note that the
 insertion does not occur in-place: a new column is returned.</p>
@@ -3002,15 +3045,15 @@ insertion does not occur in-place: a new column is returned.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_lines</strong> : int</p>
 <blockquote>
-<div><p>Maximum number of lines in table output</p>
+<div><p>Maximum number of lines in table output.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3044,19 +3087,19 @@ there is no line limit applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include column name (default=True)</p>
+<div><p>Include column name. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include column dtype (default=False)</p>
+<div><p>Include column dtype. Default is False.</p>
 </div></blockquote>
 <p><strong>html</strong> : bool</p>
 <blockquote>
-<div><p>Format the output as an HTML table (default=False)</p>
+<div><p>Format the output as an HTML table. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3090,15 +3133,15 @@ there is no line limit applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include column name (default=True)</p>
+<div><p>Include column name. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include column dtype (default=True)</p>
+<div><p>Include column dtype. Default is True.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3109,32 +3152,32 @@ there is no line limit applied.</p>
 <dl class="attribute">
 <dt id="gwpy.table.Table.Column.quantity">
 <code class="descname">quantity</code><a class="headerlink" href="#gwpy.table.Table.Column.quantity" title="Permalink to this definition">¶</a></dt>
-<dd><p>A view of this table column as a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object with
+<dd><p>A view of this table column as a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object with
 units given by the Column&#8217;s <a class="reference internal" href="#gwpy.table.Table.Column.unit" title="gwpy.table.Table.Column.unit"><code class="xref py py-obj docutils literal"><span class="pre">unit</span></code></a> parameter.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.table.Table.Column.to">
 <code class="descname">to</code><span class="sig-paren">(</span><em>unit</em>, <em>equivalencies=[]</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.Column.to" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts this table column to a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object with
+<dd><p>Converts this table column to a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object with
 the requested units.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unit</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Unit.html#astropy.units.Unit" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Unit</span></code></a> or str</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unit</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Unit.html#astropy.units.Unit" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Unit</span></code></a> or str</p>
 <blockquote>
 <div><p>The unit to convert to (i.e., a valid argument to the
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity.to" title="(in Astropy v2.0)"><code class="xref py py-meth docutils literal"><span class="pre">astropy.units.Quantity.to()</span></code></a> method).</p>
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity.to" title="(in Astropy v2.0.1)"><code class="xref py py-meth docutils literal"><span class="pre">astropy.units.Quantity.to()</span></code></a> method).</p>
 </div></blockquote>
 <p><strong>equivalencies</strong> : list of equivalence pairs, optional</p>
 <blockquote>
 <div><p>Equivalencies to use for this conversion.  See
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity.to" title="(in Astropy v2.0)"><code class="xref py py-meth docutils literal"><span class="pre">astropy.units.Quantity.to()</span></code></a> for more details.</p>
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity.to" title="(in Astropy v2.0.1)"><code class="xref py py-meth docutils literal"><span class="pre">astropy.units.Quantity.to()</span></code></a> for more details.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>quantity</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>quantity</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a></p>
 <blockquote class="last">
 <div><p>A quantity object with the contents of this column in the units
 <code class="docutils literal"><span class="pre">unit</span></code>.</p>
@@ -3149,7 +3192,7 @@ the requested units.</p>
 <dt id="gwpy.table.Table.Column.unit">
 <code class="descname">unit</code><a class="headerlink" href="#gwpy.table.Table.Column.unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>The unit associated with this column.  May be a string or a
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance.</p>
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance.</p>
 <p>Setting the <code class="docutils literal"><span class="pre">unit</span></code> property does not change the values of the
 data.  To perform a unit conversion, use <code class="docutils literal"><span class="pre">convert_unit_to</span></code>.</p>
 </dd></dl>
@@ -3265,14 +3308,14 @@ property.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>new_unit</strong> : str or <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>new_unit</strong> : str or <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units.UnitBase</span></code></a> instance</p>
 <blockquote>
 <div><p>The unit to convert to.</p>
 </div></blockquote>
 <p><strong>equivalencies</strong> : list of equivalence pairs, optional</p>
 <blockquote>
 <div><p>A list of equivalence pairs to try if the unit are not
-directly convertible.  See <a class="reference external" href="http://docs.astropy.org/en/stable/units/equivalencies.html#unit-equivalencies" title="(in Astropy v2.0)"><span>Equivalencies</span></a>.</p>
+directly convertible.  See <a class="reference external" href="http://docs.astropy.org/en/stable/units/equivalencies.html#unit-equivalencies" title="(in Astropy v2.0.1)"><span>Equivalencies</span></a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3356,9 +3399,9 @@ instead.</p>
 
 <dl class="method">
 <dt id="gwpy.table.Table.MaskedColumn.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>obj</em>, <em>values</em>, <em>mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.MaskedColumn.insert" title="Permalink to this definition">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>obj</em>, <em>values</em>, <em>mask=None</em>, <em>axis=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.MaskedColumn.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert values along the given axis before the given indices and return
-a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.MaskedColumn.html#astropy.table.MaskedColumn" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">MaskedColumn</span></code></a> object.</p>
+a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.MaskedColumn.html#astropy.table.MaskedColumn" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">MaskedColumn</span></code></a> object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3378,9 +3421,15 @@ from that of quantity, <code class="docutils literal"><span class="pre">values</
 <blockquote>
 <div><p>Mask value(s) to insert.  If not supplied then False is used.</p>
 </div></blockquote>
+<p><strong>axis</strong> : int, optional</p>
+<blockquote>
+<div><p>Axis along which to insert <code class="docutils literal"><span class="pre">values</span></code>.  If <code class="docutils literal"><span class="pre">axis</span></code> is None then
+the column array is flattened before insertion.  Default is 0,
+which will insert a row.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.MaskedColumn.html#astropy.table.MaskedColumn" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">MaskedColumn</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.MaskedColumn.html#astropy.table.MaskedColumn" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">MaskedColumn</span></code></a></p>
 <blockquote class="last">
 <div><p>A copy of column with <code class="docutils literal"><span class="pre">values</span></code> and <code class="docutils literal"><span class="pre">mask</span></code> inserted.  Note that the
 insertion does not occur in-place: a new masked column is returned.</p>
@@ -3413,15 +3462,15 @@ insertion does not occur in-place: a new masked column is returned.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_lines</strong> : int</p>
 <blockquote>
-<div><p>Maximum number of lines in table output</p>
+<div><p>Maximum number of lines in table output.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3455,19 +3504,19 @@ there is no line limit applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include column name (default=True)</p>
+<div><p>Include column name. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include column dtype (default=False)</p>
+<div><p>Include column dtype. Default is False.</p>
 </div></blockquote>
 <p><strong>html</strong> : bool</p>
 <blockquote>
-<div><p>Format the output as an HTML table (default=False)</p>
+<div><p>Format the output as an HTML table. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3501,15 +3550,15 @@ there is no line limit applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include column name (default=True)</p>
+<div><p>Include column name. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for unit (default=False)</p>
+<div><p>Include a header row for unit. Default is False.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include column dtype (default=True)</p>
+<div><p>Include column dtype. Default is True.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3563,19 +3612,6 @@ method is slow and its use is discouraged when possible.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="gwpy.table.Table.Row.data">
-<code class="descname">data</code><a class="headerlink" href="#gwpy.table.Table.Row.data" title="Permalink to this definition">¶</a></dt>
-<dd><div class="deprecated">
-<p><span class="versionmodified">Deprecated since version 0.4: </span>The data function is deprecated and may be removed in a future version.
-    Use <code class="xref py py-attr docutils literal"><span class="pre">Row.as_void</span></code> instead.</p>
-</div>
-<p>Returns a <em>read-only</em> copy of the row values in the form of np.void or
-np.ma.mvoid objects.  This corresponds to the object types returned for
-row indexing of a pure numpy structured array or masked array. This
-method is slow and its use is deprecated.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -3601,11 +3637,59 @@ includes a dict, list of (key, val) tuples or [key, val] lists, etc.</p>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="gwpy.table.Table.TableColumns.isinstance">
+<code class="descname">isinstance</code><span class="sig-paren">(</span><em>cls</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.TableColumns.isinstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of columns which are instances of the specified classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cls</strong> : class or tuple of classes</p>
+<blockquote>
+<div><p>Column class (including mixin) or tuple of Column classes.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>col_list</strong> : list of Columns</p>
+<blockquote class="last">
+<div><p>List of Column objects which are instances of given classes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.table.Table.TableColumns.not_isinstance">
+<code class="descname">not_isinstance</code><span class="sig-paren">(</span><em>cls</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table.TableColumns.not_isinstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of columns which are not instances of the specified classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cls</strong> : class or tuple of classes</p>
+<blockquote>
+<div><p>Column class (including mixin) or tuple of Column classes.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>col_list</strong> : list of Columns</p>
+<blockquote class="last">
+<div><p>List of Column objects which are not instances of given classes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descclassname">Table.</code><code class="descname">add_column</code><span class="sig-paren">(</span><em>col</em>, <em>index=None</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span></dt>
+<code class="descclassname">Table.</code><code class="descname">add_column</code><span class="sig-paren">(</span><em>col</em>, <em>index=None</em>, <em>name=None</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span></dt>
 <dd><p>Add a new Column object <code class="docutils literal"><span class="pre">col</span></code> to the table.  If <code class="docutils literal"><span class="pre">index</span></code>
 is supplied then insert column before <code class="docutils literal"><span class="pre">index</span></code> position
 in the list of columns, otherwise append column to the end
@@ -3620,11 +3704,15 @@ of the list.</p>
 </div></blockquote>
 <p><strong>index</strong> : int or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Insert column before this position or at end (default)</p>
+<div><p>Insert column before this position or at end (default).</p>
+</div></blockquote>
+<p><strong>name</strong> : str</p>
+<blockquote>
+<div><p>Column name</p>
 </div></blockquote>
 <p><strong>rename_duplicate</strong> : bool</p>
 <blockquote class="last">
-<div><p>Uniquify column name if it already exist (default=False)</p>
+<div><p>Uniquify column name if it already exist. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3676,12 +3764,27 @@ before the given index:</p>
 <span class="go">  3 0.3 1.3</span>
 </pre></div>
 </div>
+<p>Add an unnamed column or mixin object in the table using a default name
+or by specifying an explicit name with <code class="docutils literal"><span class="pre">name</span></code>. Name can also be overridden:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_c</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_c</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_b</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">col_b</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go"> a   b  col2  c   d</span>
+<span class="go">--- --- ---- --- ---</span>
+<span class="go">  1 0.1    x   x 1.1</span>
+<span class="go">  2 0.2    y   y 1.2</span>
+</pre></div>
+</div>
 <p>To add several columns use add_columns.</p>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descclassname">Table.</code><code class="descname">add_columns</code><span class="sig-paren">(</span><em>cols</em>, <em>indexes=None</em>, <em>copy=True</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span></dt>
+<code class="descclassname">Table.</code><code class="descname">add_columns</code><span class="sig-paren">(</span><em>cols</em>, <em>indexes=None</em>, <em>names=None</em>, <em>copy=True</em>, <em>rename_duplicate=False</em><span class="sig-paren">)</span></dt>
 <dd><p>Add a list of new Column objects <code class="docutils literal"><span class="pre">cols</span></code> to the table.  If a
 corresponding list of <code class="docutils literal"><span class="pre">indexes</span></code> is supplied then insert column
 before each <code class="docutils literal"><span class="pre">index</span></code> position in the <em>original</em> list of columns,
@@ -3696,16 +3799,20 @@ otherwise append columns to the end of the list.</p>
 </div></blockquote>
 <p><strong>indexes</strong> : list of ints or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Insert column before this position or at end (default)</p>
+<div><p>Insert column before this position or at end (default).</p>
+</div></blockquote>
+<p><strong>names</strong> : list of str</p>
+<blockquote>
+<div><p>Column names</p>
 </div></blockquote>
 <p><strong>copy</strong> : bool</p>
 <blockquote>
-<div><p>Make a copy of the new columns (default=True)</p>
+<div><p>Make a copy of the new columns. Default is True.</p>
 </div></blockquote>
 <p><strong>rename_duplicate</strong> : bool</p>
 <blockquote class="last">
-<div><p>Uniquify new column names if they duplicate the existing ones
-(default=False)</p>
+<div><p>Uniquify new column names if they duplicate the existing ones.
+Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3761,6 +3868,20 @@ the columns are inserted before the given position:</p>
 <span class="go">  3 0.3 1.3  z</span>
 </pre></div>
 </div>
+<p>Add unnamed columns or mixin objects in the table using default names
+or by specifying explicit names with <code class="docutils literal"><span class="pre">names</span></code>. Names can also be overridden:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_a</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_b</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_columns</span><span class="p">([</span><span class="n">col_a</span><span class="p">,</span> <span class="n">col_b</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_columns</span><span class="p">([</span><span class="n">col_a</span><span class="p">,</span> <span class="n">col_b</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">col0  b   c   d</span>
+<span class="go">---- --- --- ---</span>
+<span class="go">   x   u   x   u</span>
+<span class="go">   y   v   y   v</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -3783,9 +3904,9 @@ primary table index.</p>
 FastBST, and FastRBT. If the supplied argument is None (by
 default), use SortedArray.</p>
 </div></blockquote>
-<p><strong>unique</strong> : bool (defaults to False)</p>
+<p><strong>unique</strong> : bool</p>
 <blockquote class="last">
-<div><p>Whether the values of the index must be unique</p>
+<div><p>Whether the values of the index must be unique. Default is False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -4088,7 +4209,7 @@ according to <code class="docutils literal"><span class="pre">keys</span></code>
 <dt>
 <code class="descclassname">Table.</code><code class="descname">has_mixin_columns</code></dt>
 <dd><p>True if table has any mixin columns (defined as columns that are not Column
-subclasses)</p>
+subclasses).</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -4325,7 +4446,7 @@ and iloc work only with single-column indices.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -4335,7 +4456,7 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote class="last">
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -4370,7 +4491,7 @@ applied.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -4380,11 +4501,11 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 <p><strong>html</strong> : bool</p>
 <blockquote>
-<div><p>Format the output as an HTML table (default=False)</p>
+<div><p>Format the output as an HTML table. Default is False.</p>
 </div></blockquote>
 <p><strong>tableid</strong> : str or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
@@ -4403,13 +4524,13 @@ columns.</p>
 <p><strong>tableclass</strong> : str or list of str or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
 <div><p>CSS classes for the table; only used if html is set.  Default is
-none</p>
+None.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lines</strong> : list</p>
 <blockquote class="last">
-<div><p>Formatted table as a list of strings</p>
+<div><p>Formatted table as a list of strings.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -4435,15 +4556,15 @@ applied.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_lines</strong> : int</p>
 <blockquote>
-<div><p>Maximum number of lines in table output</p>
+<div><p>Maximum number of lines in table output.</p>
 </div></blockquote>
 <p><strong>max_width</strong> : int or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote>
-<div><p>Maximum character width of output</p>
+<div><p>Maximum character width of output.</p>
 </div></blockquote>
 <p><strong>show_name</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column names (default=True)</p>
+<div><p>Include a header row for column names. Default is True.</p>
 </div></blockquote>
 <p><strong>show_unit</strong> : bool</p>
 <blockquote>
@@ -4453,7 +4574,7 @@ for the unit.</p>
 </div></blockquote>
 <p><strong>show_dtype</strong> : bool</p>
 <blockquote>
-<div><p>Include a header row for column dtypes (default=True)</p>
+<div><p>Include a header row for column dtypes. Default is True.</p>
 </div></blockquote>
 <p><strong>align</strong> : str or list or tuple or <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 <blockquote class="last">
@@ -4482,7 +4603,7 @@ using syntax such as:</p>
 </pre></div>
 </div>
 <p>The arguments and keywords (other than <code class="docutils literal"><span class="pre">format</span></code>) provided to this function are
-passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
+passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>).</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5314,7 +5435,7 @@ This allows in-browser searching &amp; sorting.</p>
 </div></blockquote>
 <p><strong>jskwargs</strong> : dict</p>
 <blockquote>
-<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
+<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
 <code class="docutils literal"><span class="pre">{'use_local_files':</span> <span class="pre">True}</span></code> which means that the JavaScript
 libraries will be served from local copies.</p>
 </div></blockquote>
@@ -5376,7 +5497,7 @@ for the list of classes.</p>
 </div></blockquote>
 <p><strong>css</strong> : string</p>
 <blockquote>
-<div><p>A valid CSS string declaring the formatting for the table. Default
+<div><p>A valid CSS string declaring the formatting for the table. Defaults
 to <code class="docutils literal"><span class="pre">astropy.table.jsviewer.DEFAULT_CSS_NB</span></code>.</p>
 </div></blockquote>
 <p><strong>display_length</strong> : int, optional</p>
@@ -5487,7 +5608,7 @@ using syntax such as:</p>
 </pre></div>
 </div>
 <p>The arguments and keywords (other than <code class="docutils literal"><span class="pre">format</span></code>) provided to this function are
-passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.write.html#astropy.io.ascii.write" title="(in Astropy v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>).</p>
+passed through to the underlying data reader (e.g. <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.io.ascii.write.html#astropy.io.ascii.write" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>).</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
