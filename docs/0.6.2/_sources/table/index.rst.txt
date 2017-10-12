@@ -1,0 +1,84 @@
+.. currentmodule:: gwpy.table
+
+.. _gwpy-table:
+
+############
+Tabular data
+############
+
+Alongside the :ref:`timeseries <gwpy-timeseries>` data produced continuously at the
+laboratories, a number of different sets of tabular data are generated, typically
+recording significant noise transients (glitches) or gravitational-wave events found
+in the data.
+
+============================
+The `Table` and `EventTable`
+============================
+
+GWpy provides two classes for handling tabular data.
+
+.. autosummary::
+   :nosignatures:
+
+   gwpy.table.Table
+   gwpy.table.EventTable
+
+.. note::
+
+   The `Table` is just an import of the
+   :mod:`astropy.table.Table <astropy.table>`, provided for
+   import convenience, see the Astropy documentation for full details on
+   that (excellent) object).
+
+The `EventTable` extends the functionality of the regular
+`~astropy.table.Table` with multi-file input routines, and utilities for
+processing and plotting tables of events that contain GPS timestamps.
+
+See the :any:`astropy-table` documentation for examples of how to create custom tables, and much more.
+The only thing to change if you want to use the `EventTable` instead of the basic `Table` is the import::
+
+    >>> from gwpy.table import EventTable
+
+
+============================
+Reading/writing tabular data
+============================
+
+.. toctree::
+   :maxdepth: 2
+
+   io.rst
+
+=====================
+Plotting tabular data
+=====================
+
+.. toctree::
+   :maxdepth: 2
+
+   plot.rst
+
+=========================
+`EventTable` applications
+=========================
+
+.. toctree::
+   :titlesonly:
+
+   rate
+   histogram
+
+===============
+Class reference
+===============
+
+.. currentmodule:: gwpy.table
+
+This reference includes the following `class` entries:
+
+.. autosummary::
+   :toctree: ../api/
+   :nosignatures:
+
+   Table
+   EventTable

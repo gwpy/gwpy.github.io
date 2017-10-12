@@ -1,0 +1,12 @@
+asd = gwdata.asd(2, 1)
+plot = asd.plot(figsize=(8, 6))
+plot.add_frequencyseries(rayleigh, newax=True, sharex=plot.axes[0])
+asdax, rayax = plot.axes
+asdax.set_xlabel('')
+asdax.set_xlim(30, 1500)
+asdax.set_ylim(5e-24, 1e-21)
+asdax.set_ylabel(r'[strain/\rtHz]')
+rayax.set_ylim(0, 2)
+rayax.set_ylabel('Rayleigh statistic')
+asdax.set_title('Sensitivity of LIGO-Livingston around GW151226', fontsize=20)
+plot.show()
