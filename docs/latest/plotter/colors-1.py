@@ -1,8 +1,8 @@
 from __future__ import division
 import numpy
-from matplotlib import pyplot
+from matplotlib import (pyplot, rcParams)
 from matplotlib.colors import to_hex
-from gwpy.plotter import rcParams
+from gwpy.plotter import colors
 
 rcParams.update({
     'text.usetex': False,
@@ -25,7 +25,6 @@ ax.axis('off')
 
 for j, name in enumerate(sorted(names)):
     c = str(to_hex(name))
-    print(name, c)
     v_offset = -(j / len(names))
     ax.plot(th, .1*numpy.sin(th) + v_offset, color=c)
     ax.annotate("{!r}".format(name), (0, v_offset), xytext=(-1.5, 0),
