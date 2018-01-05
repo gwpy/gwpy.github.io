@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Generating an inspiral range timeseries &#8212; GWpy 0.6.2+522.g090901ea documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gwpy-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.2+522.g090901ea',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Miscellaneous examples" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Miscellaneous examples"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Miscellaneous...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">1. Generating an inspiral range timeseries</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/miscellaneous/range-timeseries.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="generating-an-inspiral-range-timeseries">
+<span id="gwpy-example-miscellaneous-range-timeseries"></span><h1>1. Generating an inspiral range timeseries<a class="headerlink" href="#generating-an-inspiral-range-timeseries" title="Permalink to this headline">¶</a></h1>
+<p>The standard metric of the sensitivity of a gravitational-wave detector
+is the distance to which a canonical binary neutron star (BNS) inspiral
+(with two 1.4 solar mass components) would be detected with a
+signal-to-noise ratio (SNR) of 8.</p>
+<p>We can estimate using <a class="reference internal" href="../../api/gwpy.astro.inspiral_range.html#gwpy.astro.inspiral_range" title="gwpy.astro.inspiral_range"><code class="xref py py-func docutils literal"><span class="pre">gwpy.astro.inspiral_range()</span></code></a> after calculating
+the power-spectral density (PSD) of the strain readout for a detector, and
+can plot the variation over time by looping over a power spectral density
+<a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code></a>.</p>
+<p>First, we need to load some data, for this we can use the
+<a class="reference external" href="https://losc.ligo.org">LOSC</a> public data around the GW150914 event:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126257414</span><span class="p">,</span> <span class="mi">1126261510</span><span class="p">)</span>
+<span class="n">l1</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126257414</span><span class="p">,</span> <span class="mi">1126261510</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and then calculating the PSD spectrogram:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h1spec</span> <span class="o">=</span> <span class="n">h1</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">l1spec</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To calculate the inspiral range variation, we need to create a
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a> in which to store the values, then
+loop over each PSD bin in the spectrogram, calculating the
+<a class="reference internal" href="../../api/gwpy.astro.inspiral_range.html#gwpy.astro.inspiral_range" title="gwpy.astro.inspiral_range"><code class="xref py py-func docutils literal"><span class="pre">gwpy.astro.inspiral_range()</span></code></a> for each one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">gwpy.astro</span> <span class="kn">import</span> <span class="n">inspiral_range</span>
+<span class="n">h1range</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h1spec</span><span class="p">)),</span>
+                     <span class="n">dt</span><span class="o">=</span><span class="n">h1spec</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="n">h1spec</span><span class="o">.</span><span class="n">t0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Mpc&#39;</span><span class="p">)</span>
+<span class="n">l1range</span> <span class="o">=</span> <span class="n">h1range</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h1range</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">h1range</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">inspiral_range</span><span class="p">(</span><span class="n">h1spec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fmin</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">l1range</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">inspiral_range</span><span class="p">(</span><span class="n">l1spec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fmin</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now easily plot the timeseries to see the variation in LIGO
+sensitivity over the hour or so including GW150914:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plotter.colors</span> <span class="kn">import</span> <span class="n">GW_OBSERVATORY_COLORS</span> <span class="k">as</span> <span class="n">GWO_COLORS</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">h1range</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;LIGO-Hanford&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GWO_COLORS</span><span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">l1range</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LIGO-Livingston&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GWO_COLORS</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Angle-averaged sensitive distance [Mpc]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO sensitivity to BNS around GW150914&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="mi">1126259462</span><span class="p">)</span>  <span class="c1"># &lt;- set 0 on plot to GW150914</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/miscellaneous/range-timeseries-4.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/range-timeseries-4.png" src="../../_images/range-timeseries-4.png" />
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

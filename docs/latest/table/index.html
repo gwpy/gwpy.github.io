@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tabular data &#8212; GWpy 0.5.1+345.gc5ab0f36 documentation</title>
+    <title>Tabular data &#8212; GWpy 0.6.2+522.g090901ea documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5.1+345.gc5ab0f36',
+        VERSION:     '0.6.2+522.g090901ea',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -100,6 +100,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -146,9 +147,9 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Tabular data</a><ul>
 <li><a class="reference internal" href="#the-table-and-eventtable">The <code class="docutils literal"><span class="pre">Table</span></code> and <code class="docutils literal"><span class="pre">EventTable</span></code></a></li>
-<li><a class="reference internal" href="#reading-writing-tabular-data">Reading/writing tabular data</a></li>
-<li><a class="reference internal" href="#plotting-tabular-data">Plotting tabular data</a></li>
-<li><a class="reference internal" href="#eventtable-applications"><code class="docutils literal"><span class="pre">EventTable</span></code> applications</a></li>
+<li><a class="reference internal" href="#reading-writing-tables">Reading/writing tables</a></li>
+<li><a class="reference internal" href="#using-tables">Using tables</a></li>
+<li><a class="reference internal" href="#plotting-tables">Plotting tables</a></li>
 <li><a class="reference internal" href="#class-reference">Class reference</a></li>
 </ul>
 </li>
@@ -195,21 +196,21 @@ in the data.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> is just an import of the
-<a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#module-astropy.table" title="(in Astropy v2.0.1)"><code class="xref py py-mod docutils literal"><span class="pre">astropy.table.Table</span></code></a>, provided for
+<a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#module-astropy.table" title="(in Astropy v2.0.3)"><code class="xref py py-mod docutils literal"><span class="pre">astropy.table.Table</span></code></a>, provided for
 import convenience, see the Astropy documentation for full details on
 that (excellent) object).</p>
 </div>
 <p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> extends the functionality of the regular
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> with multi-file input routines, and utilities for
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> with multi-file input routines, and utilities for
 processing and plotting tables of events that contain GPS timestamps.</p>
-<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#astropy-table" title="(in Astropy v2.0.1)"><code class="docutils literal"><span class="pre">Data</span> <span class="pre">Tables</span> <span class="pre">(astropy.table)</span></code></a> documentation for examples of how to create custom tables, and much more.
+<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#astropy-table" title="(in Astropy v2.0.3)"><code class="docutils literal"><span class="pre">Data</span> <span class="pre">Tables</span> <span class="pre">(astropy.table)</span></code></a> documentation for examples of how to create custom tables, and much more.
 The only thing to change if you want to use the <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> instead of the basic <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> is the import:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="k">import</span> <span class="n">EventTable</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="reading-writing-tabular-data">
-<h2>Reading/writing tabular data<a class="headerlink" href="#reading-writing-tabular-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reading-writing-tables">
+<h2>Reading/writing tables<a class="headerlink" href="#reading-writing-tables" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="io.html">Reading and writing <code class="docutils literal"><span class="pre">Table</span></code> and <code class="docutils literal"><span class="pre">EventTable</span></code> objects</a><ul>
@@ -225,8 +226,17 @@ The only thing to change if you want to use the <a class="reference internal" hr
 </ul>
 </div>
 </div>
-<div class="section" id="plotting-tabular-data">
-<h2>Plotting tabular data<a class="headerlink" href="#plotting-tabular-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-tables">
+<h2>Using tables<a class="headerlink" href="#using-tables" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rate.html">Calculating event trigger rate</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="plotting-tables">
+<h2>Plotting tables<a class="headerlink" href="#plotting-tables" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="plot.html">Plotting tabular data</a><ul>
@@ -234,14 +244,6 @@ The only thing to change if you want to use the <a class="reference internal" hr
 <li class="toctree-l2"><a class="reference internal" href="plot.html#plotting-event-tiles">Plotting event tiles</a></li>
 </ul>
 </li>
-</ul>
-</div>
-</div>
-<div class="section" id="eventtable-applications">
-<h2><a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> applications<a class="headerlink" href="#eventtable-applications" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="rate.html">Calculating event trigger rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="histogram.html">Data table histograms</a></li>
 </ul>
 </div>

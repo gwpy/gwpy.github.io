@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>EventTable &#8212; GWpy 0.5.1+345.gc5ab0f36 documentation</title>
+    <title>EventTable &#8212; GWpy 0.6.2+522.g090901ea documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5.1+345.gc5ab0f36',
+        VERSION:     '0.6.2+522.g090901ea',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -100,6 +100,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -166,10 +167,10 @@
 <h1>EventTable<a class="headerlink" href="#eventtable" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.table.EventTable">
-<em class="property">class </em><code class="descclassname">gwpy.table.</code><code class="descname">EventTable</code><span class="sig-paren">(</span><em>data=None</em>, <em>masked=None</em>, <em>names=None</em>, <em>dtype=None</em>, <em>meta=None</em>, <em>copy=True</em>, <em>rows=None</em>, <em>copy_indices=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.table.</code><code class="descname">EventTable</code><span class="sig-paren">(</span><em>data=None</em>, <em>masked=None</em>, <em>names=None</em>, <em>dtype=None</em>, <em>meta=None</em>, <em>copy=True</em>, <em>rows=None</em>, <em>copy_indices=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">astropy.table.table.Table</span></code></p>
 <p>A container for a table of events</p>
-<p>This differs from the basic <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> in two ways</p>
+<p>This differs from the basic <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> in two ways</p>
 <ul class="simple">
 <li>GW-specific file formats are registered to use with
 <a class="reference internal" href="#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal"><span class="pre">EventTable.read</span></code></a> and <a class="reference internal" href="#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write"><code class="xref py py-obj docutils literal"><span class="pre">EventTable.write</span></code></a></li>
@@ -181,7 +182,7 @@ specifically time segments)</li>
 <p class="first admonition-title">See also</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Table</span></code></a></dt>
+<dt><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Table</span></code></a></dt>
 <dd>for details on parameters for creating an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></dd>
 </dl>
 </div></blockquote>
@@ -272,11 +273,17 @@ specifically time segments)</li>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.EventTable.event_rate" title="gwpy.table.EventTable.event_rate"><code class="xref py py-obj docutils literal"><span class="pre">event_rate</span></code></a>(stride[,&nbsp;start,&nbsp;end,&nbsp;timecolumn])</td>
 <td>Calculate the rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.EventTable.field" title="gwpy.table.EventTable.field"><code class="xref py py-obj docutils literal"><span class="pre">field</span></code></a>(item)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.EventTable.fetch" title="gwpy.table.EventTable.fetch"><code class="xref py py-obj docutils literal"><span class="pre">fetch</span></code></a>(format_,&nbsp;\*args,&nbsp;\*\*kwargs)</td>
+<td>Fetch a table of events from a database</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.EventTable.field" title="gwpy.table.EventTable.field"><code class="xref py py-obj docutils literal"><span class="pre">field</span></code></a>(item)</td>
 <td>Return column[item] for recarray compatibility.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.EventTable.filled" title="gwpy.table.EventTable.filled"><code class="xref py py-obj docutils literal"><span class="pre">filled</span></code></a>([fill_value])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.table.EventTable.filled" title="gwpy.table.EventTable.filled"><code class="xref py py-obj docutils literal"><span class="pre">filled</span></code></a>([fill_value])</td>
 <td>Return a copy of self, with masked values filled.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter"><code class="xref py py-obj docutils literal"><span class="pre">filter</span></code></a>(\*column_filters)</td>
+<td>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.table.EventTable.from_pandas" title="gwpy.table.EventTable.from_pandas"><code class="xref py py-obj docutils literal"><span class="pre">from_pandas</span></code></a>(dataframe)</td>
 <td>Create a <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> from a <code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code> instance</td>
@@ -782,7 +789,7 @@ byte order of all columns (if any are non-native).</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.binned_event_rates">
-<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L325"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -819,7 +826,7 @@ against the bin value and returns a boolean.</li>
 is ignored.</p>
 </div>
 </div></blockquote>
-<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
 <div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</p>
 </div></blockquote>
@@ -926,7 +933,7 @@ Otherwise, use the same data array</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.event_rate">
-<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L291"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -936,13 +943,13 @@ Otherwise, use the same data array</p>
 <blockquote>
 <div><p>size (seconds) of each time bin</p>
 </div></blockquote>
-<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
-<div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 </div></blockquote>
-<p><strong>end</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>end</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
-<div><p>GPS end time of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>.
+<div><p>GPS end time of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.
 This value will be rounded up to the nearest sample if needed.</p>
 </div></blockquote>
 <p><strong>timecolumn</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional, default: <code class="docutils literal"><span class="pre">time</span></code></p>
@@ -951,7 +958,7 @@ This value will be rounded up to the nearest sample if needed.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 <blockquote class="last">
 <div><p>a <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> of events per second (Hz)</p>
 </div></blockquote>
@@ -959,6 +966,88 @@ This value will be rounded up to the nearest sample if needed.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="gwpy.table.EventTable.fetch">
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch a table of events from a database</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>format</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">Engine</span></code></p>
+<blockquote>
+<div><p>the format of the remote data, see _Notes_ for a list of
+registered formats, OR an SQL database <code class="xref py py-obj docutils literal"><span class="pre">Engine</span></code> object</p>
+</div></blockquote>
+<p><strong>*args</strong></p>
+<blockquote>
+<div><p>all other positional arguments are specific to the
+data format, see below for basic usage</p>
+</div></blockquote>
+<p><strong>columns</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>the columns to fetch from the database table, defaults to all</p>
+</div></blockquote>
+<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, or <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>one or more column filters with which to downselect the
+returned table rows as they as read, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5'</span></code>;
+multiple selections should be connected by &#8216; &amp;&amp; &#8216;, or given as
+a <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5</span> <span class="pre">&amp;&amp;</span> <span class="pre">frequency</span> <span class="pre">&lt;</span> <span class="pre">1000'</span></code> or
+<code class="docutils literal"><span class="pre">['snr</span> <span class="pre">&gt;</span> <span class="pre">5',</span> <span class="pre">'frequency</span> <span class="pre">&lt;</span> <span class="pre">1000']</span></code></p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote>
+<div><p>all other positional arguments are specific to the
+data format, see the online documentation for more details</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>table</strong> : <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
+<blockquote class="last">
+<div><p>a table of events recovered from the remote database</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The available named formats are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Basic usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gravityspy</td>
+<td><code class="docutils literal"><span class="pre">fetch('gravityspy',</span> <span class="pre">tablename)</span></code></td>
+</tr>
+<tr class="row-odd"><td>hacr</td>
+<td><code class="docutils literal"><span class="pre">fetch('hacr',</span> <span class="pre">channel,</span> <span class="pre">gpsstart,</span> <span class="pre">gpstop)</span></code></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="k">import</span> <span class="n">EventTable</span>
+</pre></div>
+</div>
+<p>To download a table of all blip glitches from the Gravity Spy database:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">EventTable</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;gravityspy&#39;</span><span class="p">,</span> <span class="s1">&#39;glitches&#39;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="s1">&#39;Label=Blip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To download a table from any SQL-type server</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sqlalchemy.engine</span> <span class="k">import</span> <span class="n">create_engine</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">EventTable</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="s1">&#39;mytable&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -996,6 +1085,47 @@ in the entire table.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.table.EventTable.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L450"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
+<p>Multiple column filters can be given, and will be applied
+concurrently</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_filter</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a></p>
+<blockquote>
+<div><p>a column slice filter definition, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, or
+a filter tuple definition, e.g. <code class="docutils literal"><span class="pre">('snr',</span> <span class="pre">&lt;my_func&gt;,</span> <span class="pre">&lt;arg&gt;)</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>table</strong> : <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
+<blockquote class="last">
+<div><p>a new table with only those rows matching the filters</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>See <a class="reference internal" href="../table/filter.html#gwpy-table-filter"><span class="std std-ref">Filtering tables</span></a> for more details on using filter tuples</p>
+<p class="rubric">Examples</p>
+<p>To filter an existing <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> (<code class="docutils literal"><span class="pre">table</span></code>) to include only
+rows with <code class="docutils literal"><span class="pre">snr</span></code> greater than <code class="xref py py-obj docutils literal"><span class="pre">10</span></code>, and <code class="docutils literal"><span class="pre">frequency</span></code> less than
+<code class="xref py py-obj docutils literal"><span class="pre">1000</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;snr&gt;10&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&lt;1000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Custom operations can be defined using filter tuple definitions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table.filters</span> <span class="k">import</span> <span class="n">in_segmentlist</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="n">my_table</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">in_segmentlist</span><span class="p">,</span> <span class="n">segs</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.table.EventTable.from_pandas">
 <code class="descname">from_pandas</code><span class="sig-paren">(</span><em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.EventTable.from_pandas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> from a <code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code> instance</p>
@@ -1021,10 +1151,10 @@ in the entire table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.get_column">
-<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.get_column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.get_column" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the <a class="reference internal" href="#gwpy.table.EventTable.Column" title="gwpy.table.EventTable.Column"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a> with the given name</p>
 <p>This method is provided only for compatibility with the
-<code class="xref py py-class docutils literal"><span class="pre">glue.ligolw.table.Table</span></code>.</p>
+<a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw.table.Table-class.html" title="glue.ligolw.table.Table class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">glue.ligolw.table.Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1035,7 +1165,7 @@ in the entire table.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Column</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Column</span></code></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>KeyError</strong></p>
@@ -1086,7 +1216,7 @@ according to <code class="docutils literal"><span class="pre">keys</span></code>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.hist">
-<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.hist" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.hist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a <code class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1423,7 +1553,7 @@ None.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L410"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L387"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an <code class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1534,13 +1664,13 @@ columns.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.table.EventTable.read">
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.read" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data into an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, <code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
 <blockquote>
 <div><p>file or list of files from which to read events</p>
 </div></blockquote>
@@ -1564,7 +1694,11 @@ a <code class="xref py py-obj docutils literal"><span class="pre">list</span></c
 </div></blockquote>
 <p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: 1</p>
 <blockquote>
-<div><p>number of CPUs to use for parallel file reading</p>
+<div><p>number of CPUs to use for parallel reading of multiple files</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></p>
 </div></blockquote>
 <p><strong>.. note::</strong></p>
 <blockquote>
@@ -1588,10 +1722,10 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="49%" />
-<col width="9%" />
-<col width="12%" />
-<col width="30%" />
+<col width="41%" />
+<col width="11%" />
+<col width="14%" />
+<col width="35%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Format</th>
@@ -1621,30 +1755,10 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>ligolw.multi_burst</td>
+<tr class="row-even"><td>ligolw</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.multi_inspiral</td>
 <td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_burst</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_inspiral</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_ringdown</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
 </tr>
 <tr class="row-odd"><td>root</td>
 <td>Yes</td>
@@ -2010,7 +2124,7 @@ This allows in-browser searching &amp; sorting.</p>
 </div></blockquote>
 <p><strong>jskwargs</strong> : dict</p>
 <blockquote>
-<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
+<div><p>Passed to the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
 <code class="docutils literal"><span class="pre">{'use_local_files':</span> <span class="pre">True}</span></code> which means that the JavaScript
 libraries will be served from local copies.</p>
 </div></blockquote>
@@ -2172,7 +2286,7 @@ primary index of the Table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this table to a file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2212,10 +2326,10 @@ underlying writer method for the given format</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="49%" />
-<col width="9%" />
-<col width="12%" />
-<col width="30%" />
+<col width="21%" />
+<col width="14%" />
+<col width="18%" />
+<col width="46%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Format</th>
@@ -2230,30 +2344,10 @@ underlying writer method for the given format</p>
 <td>Yes</td>
 <td>No</td>
 </tr>
-<tr class="row-odd"><td>ligolw.multi_burst</td>
+<tr class="row-odd"><td>ligolw</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.multi_inspiral</td>
 <td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_burst</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_inspiral</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_ringdown</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
 </tr>
 <tr class="row-even"><td>root</td>
 <td>Yes</td>
@@ -2266,13 +2360,13 @@ underlying writer method for the given format</p>
 
 <dl class="attribute">
 <dt id="gwpy.table.EventTable.Column">
-<code class="descname">Column</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.Column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Column</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.Column" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">EventColumn</span></code></p>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L325"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L306"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> over
 a number of bins.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2309,7 +2403,7 @@ against the bin value and returns a boolean.</li>
 is ignored.</p>
 </div>
 </div></blockquote>
-<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
 <div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</p>
 </div></blockquote>
@@ -2337,7 +2431,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L291"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn='time'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L267"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2347,13 +2441,13 @@ rate of events per second (Hz) for each of the bins.</p>
 <blockquote>
 <div><p>size (seconds) of each time bin</p>
 </div></blockquote>
-<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
-<div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<div><p>GPS start epoch of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 </div></blockquote>
-<p><strong>end</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
+<p><strong>end</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="../time/index.html#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, optional</p>
 <blockquote>
-<div><p>GPS end time of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a>.
+<div><p>GPS end time of rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.
 This value will be rounded up to the nearest sample if needed.</p>
 </div></blockquote>
 <p><strong>timecolumn</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional, default: <code class="docutils literal"><span class="pre">time</span></code></p>
@@ -2362,7 +2456,7 @@ This value will be rounded up to the nearest sample if needed.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 <blockquote class="last">
 <div><p>a <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> of events per second (Hz)</p>
 </div></blockquote>
@@ -2373,8 +2467,8 @@ This value will be rounded up to the nearest sample if needed.</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="gwpy.table.EventTable.fetch">
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch" title="Permalink to this definition">¶</a></dt>
+<dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L176"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Fetch a table of events from a database</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2455,8 +2549,8 @@ data format, see the online documentation for more details</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gwpy.table.EventTable.filter">
-<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L473"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.filter" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L450"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <p>Multiple column filters can be given, and will be applied
 concurrently</p>
@@ -2464,9 +2558,10 @@ concurrently</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_filter</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_filter</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a></p>
 <blockquote>
-<div><p>a column slice filter definition, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">10</span></code></p>
+<div><p>a column slice filter definition, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, or
+a filter tuple definition, e.g. <code class="docutils literal"><span class="pre">('snr',</span> <span class="pre">&lt;my_func&gt;,</span> <span class="pre">&lt;arg&gt;)</span></code></p>
 </div></blockquote>
 </td>
 </tr>
@@ -2478,14 +2573,28 @@ concurrently</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>See <a class="reference internal" href="../table/filter.html#gwpy-table-filter"><span class="std std-ref">Filtering tables</span></a> for more details on using filter tuples</p>
+<p class="rubric">Examples</p>
+<p>To filter an existing <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> (<code class="docutils literal"><span class="pre">table</span></code>) to include only
+rows with <code class="docutils literal"><span class="pre">snr</span></code> greater than <code class="xref py py-obj docutils literal"><span class="pre">10</span></code>, and <code class="docutils literal"><span class="pre">frequency</span></code> less than
+<code class="xref py py-obj docutils literal"><span class="pre">1000</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;snr&gt;10&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&lt;1000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Custom operations can be defined using filter tuple definitions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table.filters</span> <span class="k">import</span> <span class="n">in_segmentlist</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="n">my_table</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">in_segmentlist</span><span class="p">,</span> <span class="n">segs</span><span class="p">))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L267"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L243"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Return the <a class="reference internal" href="#gwpy.table.EventTable.Column" title="gwpy.table.EventTable.Column"><code class="xref py py-obj docutils literal"><span class="pre">Column</span></code></a> with the given name</p>
 <p>This method is provided only for compatibility with the
-<code class="xref py py-class docutils literal"><span class="pre">glue.ligolw.table.Table</span></code>.</p>
+<a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw.table.Table-class.html" title="glue.ligolw.table.Table class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">glue.ligolw.table.Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2496,7 +2605,7 @@ concurrently</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Column</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>column</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table.Column</span></code></a></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>KeyError</strong></p>
@@ -2511,7 +2620,7 @@ concurrently</p>
 
 <dl class="method">
 <dt>
-<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L454"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L431"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Generate a <code class="xref py py-obj docutils literal"><span class="pre">HistogramPlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2539,7 +2648,7 @@ concurrently</p>
 
 <dl class="method">
 <dt>
-<code class="descname">plot</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L410"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L387"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Generate an <code class="xref py py-obj docutils literal"><span class="pre">EventTablePlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2598,13 +2707,13 @@ the <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" 
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L108"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, <code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
 <blockquote>
 <div><p>file or list of files from which to read events</p>
 </div></blockquote>
@@ -2628,7 +2737,11 @@ a <code class="xref py py-obj docutils literal"><span class="pre">list</span></c
 </div></blockquote>
 <p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: 1</p>
 <blockquote>
-<div><p>number of CPUs to use for parallel file reading</p>
+<div><p>number of CPUs to use for parallel reading of multiple files</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></p>
 </div></blockquote>
 <p><strong>.. note::</strong></p>
 <blockquote>
@@ -2652,10 +2765,10 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="49%" />
-<col width="9%" />
-<col width="12%" />
-<col width="30%" />
+<col width="41%" />
+<col width="11%" />
+<col width="14%" />
+<col width="35%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Format</th>
@@ -2685,30 +2798,10 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 <td>No</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>ligolw.multi_burst</td>
+<tr class="row-even"><td>ligolw</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.multi_inspiral</td>
 <td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_burst</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_inspiral</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_ringdown</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
 </tr>
 <tr class="row-odd"><td>root</td>
 <td>Yes</td>
@@ -2731,7 +2824,7 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 
 <dl class="method">
 <dt>
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/c5ab0f3662ddecdf76e99c1d89fd26b296020a7a/gwpy/table/table.py#L170"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/090901ea02387224a062d19f17dc9fbcd62a2a40/gwpy/table/table.py#L146"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Write this table to a file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2771,10 +2864,10 @@ underlying writer method for the given format</p>
 <p>The available built-in formats are:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="49%" />
-<col width="9%" />
-<col width="12%" />
-<col width="30%" />
+<col width="21%" />
+<col width="14%" />
+<col width="18%" />
+<col width="46%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Format</th>
@@ -2789,30 +2882,10 @@ underlying writer method for the given format</p>
 <td>Yes</td>
 <td>No</td>
 </tr>
-<tr class="row-odd"><td>ligolw.multi_burst</td>
+<tr class="row-odd"><td>ligolw</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.multi_inspiral</td>
 <td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_burst</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-even"><td>ligolw.sngl_inspiral</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="row-odd"><td>ligolw.sngl_ringdown</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
 </tr>
 <tr class="row-even"><td>root</td>
 <td>Yes</td>

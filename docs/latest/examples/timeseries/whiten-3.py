@@ -1,10 +1,6 @@
-epoch = 1123084687.570
 plot = data.plot()
-plot.axes[0].set_ylabel('Y-arm power [counts]', fontsize=16)
 plot.add_timeseries(white, newax=True, sharex=plot.axes[0])
+plot.axes[0].set_xlabel('')
+plot.axes[0].set_ylabel('Y-arm power [counts]', fontsize=16)
 plot.axes[1].set_ylabel('Whitened amplitude', fontsize=16)
-plot.axes[0].set_epoch(epoch)
-plot.axes[1].set_epoch(epoch)
-plot.axes[0].set_xlim(epoch-8, epoch+8)
-plot.axes[1].set_xlim(epoch-8, epoch+8)
 plot.show()

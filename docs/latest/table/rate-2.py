@@ -1,4 +1,4 @@
-rates = events.binned_event_rates(1, 'snr', [2, 3, 5, 8], operator='>=', start=968654552, end=968654562)
+rates = events.binned_event_rates(1, 'snr', [2, 3, 5, 8], operator='>=', start=968654552, end=968654562, timecolumn='peak')
 plot = rates.plot()
 ax = plot.gca()
 ax.set_ylabel('Event rate [Hz]')

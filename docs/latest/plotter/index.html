@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plotting in GWpy (gwpy.plotter) &#8212; GWpy 0.5.1+345.gc5ab0f36 documentation</title>
+    <title>Plotting in GWpy (gwpy.plotter) &#8212; GWpy 0.6.2+522.g090901ea documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5.1+345.gc5ab0f36',
+        VERSION:     '0.6.2+522.g090901ea',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualising filters (BodePlot)" href="filter.html" />
+    <link rel="next" title="The Gravitational-Wave Observatory colour scheme" href="colors.html" />
     <link rel="prev" title="EventTable" href="../api/gwpy.table.EventTable.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -56,7 +56,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -100,6 +100,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -116,7 +117,7 @@
     </a>
   </li>
   <li>
-    <a href="filter.html" title="Next Chapter: Visualising filters (BodePlot)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Visualising f... &raquo;</span>
+    <a href="colors.html" title="Next Chapter: The Gravitational-Wave Observatory colour scheme"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The Gravitati... &raquo;</span>
     </a>
   </li>
               
@@ -145,7 +146,8 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a><ul>
-<li><a class="reference internal" href="#plotting-data">Plotting data</a></li>
+<li><a class="reference internal" href="#basic-plotting">Basic plotting</a></li>
+<li><a class="reference internal" href="#plot-applications">Plot applications</a></li>
 <li><a class="reference internal" href="#plot-types">Plot types</a></li>
 <li><a class="reference internal" href="#class-reference">Class reference</a></li>
 </ul>
@@ -174,13 +176,13 @@ obviously a key part of understanding their sensitivity, and studying the
 potential gravitational-wave signals they record.
 The <code class="xref py py-mod docutils literal"><span class="pre">gwpy.plotter</span></code> module provides a number of plot classes, each
 representing display of a corresponding data type.</p>
-<div class="section" id="plotting-data">
-<h2>Plotting data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
-<p>The majority of core data objects in GWpy come with a built-in <code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code>
+<div class="section" id="basic-plotting">
+<h2>Basic plotting<a class="headerlink" href="#basic-plotting" title="Permalink to this headline">¶</a></h2>
+<p>The majority of core data objects in GWpy come with a built-in <code class="xref py py-obj docutils literal"><span class="pre">plot()</span></code>
 method, allowing quick display of a single data set, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h1</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259457</span><span class="p">,</span> <span class="mi">1126259467</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">h1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -193,13 +195,14 @@ method, allowing quick display of a single data set, for example:</p>
 </div>
 <p>Users can also import the relevant plotting <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> objects and generate
 more complicated plots manually:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259457</span><span class="p">,</span> <span class="mi">1126259467</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="k">import</span> <span class="n">TimeSeriesPlot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">plot2</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gwpy:ligo-hanford&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gwpy:ligo-livingston&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Strain noise&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../plotter/index-2.png">png</a>)</p>
@@ -207,32 +210,35 @@ more complicated plots manually:</p>
 <img alt="../_images/index-2.png" src="../_images/index-2.png" />
 </div>
 </div>
+<div class="section" id="plot-applications">
+<h2>Plot applications<a class="headerlink" href="#plot-applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">The Gravitational-Wave Observatory colour scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Visualising filters (<code class="docutils literal"><span class="pre">BodePlot</span></code>)</a></li>
+</ul>
+</div>
+</div>
 <div class="section" id="plot-types">
 <h2>Plot types<a class="headerlink" href="#plot-types" title="Permalink to this headline">¶</a></h2>
 <p>The following diagram displays the available Plot objects and their
 inheritance from <a class="reference internal" href="api.html#gwpy.plotter.Plot" title="gwpy.plotter.Plot"><code class="xref py py-class docutils literal"><span class="pre">Plot</span></code></a>.</p>
-<img src="../_images/inheritance-1cacedda4b4f70ef0bf26e89618df370ca1406d6.png" alt="Inheritance diagram of core, timeseries, frequencyseries, spectrogram, table, filter" usemap="#inheritance9b2cddea7b" class="inheritance"/>
+<img src="../_images/inheritance-02e9a3778a4ce811a7e0080e22b1079c128fd478.png" alt="Inheritance diagram of core, timeseries, frequencyseries, spectrogram, table, filter" usemap="#inheritance9b2cddea7b" class="inheritance"/>
 <map id="inheritance9b2cddea7b" name="inheritance9b2cddea7b">
-<area shape="rect" id="node1" title="An extension of the core matplotlib `~matplotlib.axes.Axes`." alt="" coords="123,38,202,50"/>
+<area shape="rect" id="node1" title="An extension of the core matplotlib `~matplotlib.axes.Axes`." alt="" coords="123,38,201,50"/>
 <area shape="rect" id="node6" title="Custom `Axes` for a `~gwpy.plotter.FrequencySeriesPlot`." alt="" coords="2,74,164,86"/>
-<area shape="rect" id="node11" title="Custom `Axes` for a `~gwpy.plotter.TimeSeriesPlot`." alt="" coords="177,74,307,86"/>
-<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="116,3,209,15"/>
-<area shape="rect" id="node3" title="An extension of the core matplotlib `~matplotlib.figure.Figure`" alt="" coords="502,74,576,86"/>
+<area shape="rect" id="node11" title="Custom `Axes` for a `~gwpy.plotter.TimeSeriesPlot`." alt="" coords="176,74,306,86"/>
+<area shape="rect" id="node2" title="The :class:`Axes` contains most of the figure elements:" alt="" coords="116,3,208,15"/>
+<area shape="rect" id="node3" title="An extension of the core matplotlib `~matplotlib.figure.Figure`" alt="" coords="452,74,527,86"/>
 <area shape="rect" id="node5" title="A `Plot` class for visualising transfer functions" alt="" coords="309,109,399,121"/>
-<area shape="rect" id="node7" title="`Figure` for displaying a `~gwpy.frequencyseries.FrequencySeries`" alt="" coords="411,109,569,121"/>
-<area shape="rect" id="node12" title="`Figure` for displaying a `~gwpy.table.EventTable`" alt="" coords="505,145,614,157"/>
-<area shape="rect" id="node9" title="`Figure` for displaying a `~gwpy.timeseries.TimeSeries`." alt="" coords="605,109,732,121"/>
-<area shape="rect" id="node4" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="499,38,579,50"/>
-<area shape="rect" id="node8" title="`Figure` for displaying a `~gwpy.spectrogram.Spectrogram`." alt="" coords="626,145,765,157"/>
-<area shape="rect" id="node10" title="Custom `Axes` for an ~gwpy.plotter.EventTablePlot`." alt="" coords="186,109,297,121"/>
-<area shape="rect" id="node13" title="Abstract base class for someone who renders into a" alt="" coords="501,3,577,15"/>
+<area shape="rect" id="node7" title="`Figure` for displaying a `~gwpy.frequencyseries.FrequencySeries`" alt="" coords="410,109,568,121"/>
+<area shape="rect" id="node9" title="`Figure` for displaying a `~gwpy.timeseries.TimeSeries`." alt="" coords="580,109,707,121"/>
+<area shape="rect" id="node4" title="The Figure instance supports callbacks through a *callbacks*" alt="" coords="450,38,529,50"/>
+<area shape="rect" id="node8" title="`Figure` for displaying a `~gwpy.spectrogram.Spectrogram`." alt="" coords="506,144,645,156"/>
+<area shape="rect" id="node12" title="`Figure` for displaying a `~gwpy.table.EventTable`" alt="" coords="657,144,765,156"/>
+<area shape="rect" id="node10" title="Custom `Axes` for an ~gwpy.plotter.EventTablePlot`." alt="" coords="185,109,297,121"/>
+<area shape="rect" id="node13" title="Abstract base class for someone who renders into a" alt="" coords="451,3,527,15"/>
 </map>
-<p>The following pages outline specific applications of some of the specialist plot types</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="filter.html">Visualising filters (<code class="docutils literal"><span class="pre">BodePlot</span></code>)</a></li>
-</ul>
-</div>
 </div>
 <div class="section" id="class-reference">
 <h2>Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>

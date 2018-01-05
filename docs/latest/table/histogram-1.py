@@ -1,5 +1,5 @@
 from gwpy.table import EventTable
-events = EventTable.read('H1-LDAS_STRAIN-968654552-10.xml.gz', format='ligolw.sngl_burst', columns=['snr'])
+events = EventTable.read('H1-LDAS_STRAIN-968654552-10.xml.gz', tablename='sngl_burst', columns=['snr'])
 plot = events.hist('snr', weights=1/10., logbins=True, bins=50, histtype='stepfilled')
 ax = plot.gca()
 ax.set_xlabel('Signal-to-noise ratio (SNR)')

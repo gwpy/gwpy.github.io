@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>FFT routines for GWpy &#8212; GWpy 0.5.1+345.gc5ab0f36 documentation</title>
+    <title>FFT routines for GWpy &#8212; GWpy 0.6.2+522.g090901ea documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5.1+345.gc5ab0f36',
+        VERSION:     '0.6.2+522.g090901ea',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -54,7 +54,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -98,6 +98,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
@@ -134,7 +135,14 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">FFT routines for GWpy</a></li>
+<li><a class="reference internal" href="#">FFT routines for GWpy</a><ul>
+<li><a class="reference internal" href="#notes">Notes</a><ul>
+<li><a class="reference internal" href="#pycbc-methods">PyCBC methods</a></li>
+<li><a class="reference internal" href="#lal-methods">LAL methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 <div id="sourcelink">
@@ -156,45 +164,165 @@
 <span id="gwpy-signal-fft"></span><h1>FFT routines for GWpy<a class="headerlink" href="#fft-routines-for-gwpy" title="Permalink to this headline">¶</a></h1>
 <p>The Fourier transform (and the associated digital FFT algorithm) is the most
 common way of investigating the frequency-domain content of a time-domain signal.
-GWpy provides wrappers of average spectrum methods from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></code></a>, and <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal"><span class="pre">lal</span></code></a> to simplify calculating a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> from a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</p>
-<p>The <code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft</span></code> sub-package provides the following PSD averaging methods:</p>
-<table border="1" class="longtable docutils">
+GWpy provides wrappers of average spectrum methods from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v1.0.0)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal"><span class="pre">lal</span></code></a>, and <a class="reference external" href="https://ligo-cbc.github.io/pycbc/latest/html/pycbc.psd.html#module-pycbc.psd" title="(in PyCBC v1.9.0)"><code class="xref py py-mod docutils literal"><span class="pre">pycbc.psd</span></code></a> to simplify calculating a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> from a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>.</p>
+<p>The <code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft</span></code> sub-package provides the following FFT averaging methods:</p>
+<table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col width="40%" />
+<col width="60%" />
 </colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method name</th>
+<th class="head">Function</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.signal.fft.scipy.welch.html#gwpy.signal.fft.scipy.welch" title="gwpy.signal.fft.scipy.welch"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.scipy.welch</span></code></a></td>
-<td>Calculate a PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using Welch&#8217;s method.</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'pycbc_welch'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.welch</span></code></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.signal.fft.scipy.bartlett.html#gwpy.signal.fft.scipy.bartlett" title="gwpy.signal.fft.scipy.bartlett"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.scipy.bartlett</span></code></a></td>
-<td>Calculate a PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using Bartlett&#8217;s method</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'pycbc_bartlett'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.bartlett</span></code></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.signal.fft.lal.welch.html#gwpy.signal.fft.lal.welch" title="gwpy.signal.fft.lal.welch"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.welch</span></code></a></td>
-<td>Calculate an PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using Welch&#8217;s method</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'pycbc_median'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.median</span></code></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.signal.fft.lal.bartlett.html#gwpy.signal.fft.lal.bartlett" title="gwpy.signal.fft.lal.bartlett"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.bartlett</span></code></a></td>
-<td>Calculate an PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using Bartlett&#8217;s method</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'pycbc_median_mean'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.median_mean</span></code></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.signal.fft.lal.median.html#gwpy.signal.fft.lal.median" title="gwpy.signal.fft.lal.median"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.median</span></code></a></td>
-<td>Calculate a PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using a median average method</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'lal_welch'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.welch</span></code></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.signal.fft.lal.median_mean.html#gwpy.signal.fft.lal.median_mean" title="gwpy.signal.fft.lal.median_mean"><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.median_mean</span></code></a></td>
-<td>Calculate a PSD of this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> using a median-mean average method</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'lal_bartlett'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.bartlett</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'lal_median'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.median</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'lal_median_mean'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.lal.median_mean</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'scipy_welch'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.scipy.welch</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'scipy_bartlett'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.scipy.bartlett</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>Each of these can be specified by passing the function name as the <code class="docutils literal"><span class="pre">method</span></code> keyword argument to any of the relevant <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> instance methods, e.g:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">psd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">psd</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;welch&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psd</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">psd</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pycbc_welch&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>Additionally, short versions the following registrations map to the first registered instance of that name in the registry:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method name</th>
+<th class="head">Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'welch'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.welch</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'bartlett'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.bartlett</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'median'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.median</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'median_mean'</span></code></td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">gwpy.signal.fft.pycbc.median_mean</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The simple names (e.g. <code class="docutils literal"><span class="pre">'welch'</span></code>) are mapped at runtime, meaning if
+you don&#8217;t have <a class="reference external" href="https://ligo-cbc.github.io/pycbc/latest/html/pycbc.html#module-pycbc" title="(in PyCBC v1.9.0)"><code class="xref py py-obj docutils literal"><span class="pre">pycbc</span></code></a> on your system, the registrations will map to
+<a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal"><span class="pre">lal</span></code></a> or <code class="xref py py-obj docutils literal"><span class="pre">scipy</span></code> instead. These are provided only for convenience, so
+if you want to be able to reproduce your results on any system,
+use the full API-specific name when using <code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.psd()</span></code>
+and friends.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Since <code class="xref py py-obj docutils literal"><span class="pre">welch</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">bartlett</span></code> are defined in both the <code class="xref py py-obj docutils literal"><span class="pre">scipy</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">lal</span></code>
-sub-modules, the LAL versions are registered as <code class="docutils literal"><span class="pre">'lal-welch'</span></code> and
-<code class="docutils literal"><span class="pre">'lal-bartlett'</span></code>, so to use them, pass <code class="docutils literal"><span class="pre">method='lal-welch'</span></code> to the
-relevant <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> method.</p>
+<p>You can check which FFT library will be used via the
+<code class="xref py py-func docutils literal"><span class="pre">gwpy.signal.fft.get_default_fft_api()</span></code> method, e.g:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.signal.fft</span> <span class="k">import</span> <span class="n">get_default_fft_api</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_default_fft_api</span><span class="p">()</span>
+<span class="go">&#39;pycbc&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pycbc-methods">
+<h3>PyCBC methods<a class="headerlink" href="#pycbc-methods" title="Permalink to this headline">¶</a></h3>
+<p>Each of the <code class="xref py py-obj docutils literal"><span class="pre">pycbc_</span></code> FFT methods accepts the following keyword arguments:
+o</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="12%" />
+<col width="31%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyword</th>
+<th class="head">Default</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">scheme</span></code></td>
+<td><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></td>
+<td><a class="reference external" href="https://ligo-cbc.github.io/pycbc/latest/html/pycbc.html#pycbc.scheme.Scheme" title="(in PyCBC v1.9.0)"><code class="xref py py-obj docutils literal"><span class="pre">pycbc.scheme.Scheme</span></code></a></td>
+<td>processing scheme in which
+to execute FFT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lal-methods">
+<h3>LAL methods<a class="headerlink" href="#lal-methods" title="Permalink to this headline">¶</a></h3>
+<p>Each of the <code class="xref py py-obj docutils literal"><span class="pre">lal_</span></code> FFT methods accepts the following keyword arguments:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="24%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyword</th>
+<th class="head">Default</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">window</span></code></td>
+<td><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">tuple</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+<td>time-doman window definition see
+<code class="xref py py-func docutils literal"><span class="pre">gwpy.signal.fft.lal.generate_window()</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">plan</span></code></td>
+<td><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></td>
+<td><a href="#id1"><span class="problematic" id="id2">:lal:`REAL8FFTPlan`</span></a>
+or similar</td>
+<td>plan to use when processing FFT, see
+<code class="xref py py-func docutils literal"><span class="pre">gwpy.signal.fft.lal.generate_fft_plan()</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 

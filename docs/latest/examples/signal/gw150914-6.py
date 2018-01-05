@@ -2,7 +2,7 @@ from gwpy.plotter import TimeSeriesPlot
 plot = TimeSeriesPlot(
     data.crop(*data.span.contract(1)),
     b.crop(*b.span.contract(1)),
-    figsize=[12, 8], sep=True, sharex=True)
+    figsize=[12, 8], sep=True, sharex=True, color='gwpy:ligo-hanford')
 plot.axes[0].set_title('LIGO-Hanford strain data around GW150914')
 plot.axes[0].text(
     1.0, 1.0, 'Unfiltered data',
