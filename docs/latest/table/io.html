@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.6.2+535.ga29f2456 documentation</title>
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.6.2+584.g8d6324e2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.6.2+535.ga29f2456',
+        VERSION:     '0.6.2+584.g8d6324e2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -298,7 +298,7 @@ These &#8216;columns&#8217; can be requested directly, providing the <a class="r
 </div>
 </div>
 <p>By default, the returned <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal"><span class="pre">Table</span></code></a> or <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a> uses the dtypes returned by the <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal"><span class="pre">glue.ligolw</span></code></a> library, and functions therein, which often end up as <code class="xref py py-obj docutils literal"><span class="pre">numpy.object_</span></code> arrays in the table.
-To force all columns to have real <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.13)"><code class="xref py py-obj docutils literal"><span class="pre">numpy</span></code></a> data types, use the <code class="docutils literal"><span class="pre">use_numpy_dtypes=True</span></code> keyword, which will cast (known) custom object types to a standard <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.13)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, e.g:</p>
+To force all columns to have real <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy</span></code></a> data types, use the <code class="docutils literal"><span class="pre">use_numpy_dtypes=True</span></code> keyword, which will cast (known) custom object types to a standard <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, e.g:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;peak&#39;</span><span class="p">],</span> <span class="n">ligolw_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;peak_time&#39;</span><span class="p">,</span> <span class="s1">&#39;peak_time_ns&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;peak&#39;</span><span class="p">]))</span>
 <span class="go">&lt;type &#39;lal.LIGOTimeGPS&#39;&gt;</span>
@@ -950,7 +950,7 @@ name (e.g. <code class="docutils literal"><span class="pre">ascii.aastex</span><
 <p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal"><span class="pre">EventTable.read</span></code></a> method can understand <em>all</em> of the above file formats (auto-identify is <strong>not</strong> inherited), and the following:</p>
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descclassname">EventTable.</code><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a29f2456739d69248c356e88b122a12a1fde0a5f/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descclassname">EventTable.</code><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/8d6324e22fc3e4fc264bc20e3d50f0d0e887bcc0/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
