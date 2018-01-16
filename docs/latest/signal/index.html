@@ -5,29 +5,29 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Signal processing &#8212; GWpy 0.6.2+600.g521ca74c documentation</title>
+    <title>Signal processing &#8212; GWpy 0.6.2+614.g9046c880 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.6.2+600.g521ca74c',
+        VERSION:     '0.6.2+614.g9046c880',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
         SOURCELINK_SUFFIX: '.txt'
       };
     </script>
-    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data-quality segments" href="../segments/index.html" />
+    <link rel="next" title="FFT routines for GWpy" href="fft.html" />
     <link rel="prev" title="StateTimeSeries" href="../api/gwpy.timeseries.StateTimeSeries.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -117,7 +117,7 @@
     </a>
   </li>
   <li>
-    <a href="../segments/index.html" title="Next Chapter: Data-quality segments"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data-quality ... &raquo;</span>
+    <a href="fft.html" title="Next Chapter: FFT routines for GWpy"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">FFT routines ... &raquo;</span>
     </a>
   </li>
               
@@ -150,10 +150,7 @@
 <li><a class="reference internal" href="#time-domain-filtering">Time-domain filtering</a></li>
 <li><a class="reference internal" href="#frequency-domain-filtering">Frequency-domain filtering</a></li>
 <li><a class="reference internal" href="#filter-design">Filter design</a></li>
-<li><a class="reference internal" href="#reference-api">Reference/API</a><ul>
-<li><a class="reference internal" href="#gwpy-signal-filter-design"><code class="docutils literal"><span class="pre">gwpy.signal.filter_design</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#reference-api">Reference/API</a></li>
 </ul>
 </li>
 </ul>
@@ -179,6 +176,8 @@
 GWpy provides a suite of functions to simplify and extend the excellent digital signal processing suite in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v1.0.0)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></code></a>.</p>
 <div class="section" id="fourier-methods">
 <h2>Fourier methods<a class="headerlink" href="#fourier-methods" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
 <p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> object comes with a number of Fourier methods to calculate a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> or <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> by calculating and averaging FFTs.</p>
 <p>See <a class="reference internal" href="fft.html#gwpy-signal-fft"><span class="std std-ref">FFT routines for GWpy</span></a> for more details.</p>
 </div>
@@ -294,11 +293,9 @@ Available methods include:</p>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="gwpy-signal-filter-design">
-<h3><code class="xref py py-mod docutils literal"><span class="pre">gwpy.signal.filter_design</span></code><a class="headerlink" href="#gwpy-signal-filter-design" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="gwpy.signal.filter_design.bandpass">
-<code class="descclassname">filter_design.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/signal/filter_design.py#L387"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.bandpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/signal/filter_design.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.bandpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a band-pass filter for the given cutoff frequencies</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -371,7 +368,7 @@ are given in the Z-domain in units of radians/sample.</p>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.lowpass">
-<code class="descclassname">filter_design.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/signal/filter_design.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.lowpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/signal/filter_design.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.lowpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a low-pass filter for the given cutoff frequency</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -440,7 +437,7 @@ are given in the Z-domain in units of radians/sample.</p>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.highpass">
-<code class="descclassname">filter_design.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/signal/filter_design.py#L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.highpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/signal/filter_design.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.highpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a high-pass filter for the given cutoff frequency</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -509,7 +506,7 @@ are given in the Z-domain in units of radians/sample.</p>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.notch">
-<code class="descclassname">filter_design.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/signal/filter_design.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.notch" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/signal/filter_design.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.notch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a ZPK notch filter for the given frequency and sampling rate</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -572,7 +569,7 @@ are given in the Z-domain in units of radians/sample.</p>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.concatenate_zpks">
-<code class="descclassname">filter_design.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><em>*zpks</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/signal/filter_design.py#L519"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><em>*zpks</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/signal/filter_design.py#L522"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate a list of zero-pole-gain (ZPK) filters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -622,7 +619,6 @@ containing an array of zeros, an array of poles, and a gain <a class="reference 
 </div>
 </dd></dl>
 
-</div>
 </div>
 </div>
 

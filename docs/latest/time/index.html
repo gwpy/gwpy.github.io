@@ -5,29 +5,29 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Times and timestamps &#8212; GWpy 0.6.2+600.g521ca74c documentation</title>
+    <title>Times and timestamps &#8212; GWpy 0.6.2+614.g9046c880 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/gwpy-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.6.2+600.g521ca74c',
+        VERSION:     '0.6.2+614.g9046c880',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
         SOURCELINK_SUFFIX: '.txt'
       };
     </script>
-    <script type="text/javascript" src="../_static/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -173,46 +173,13 @@
 <div class="section" id="gps-time">
 <h2>GPS time<a class="headerlink" href="#gps-time" title="Permalink to this headline">¶</a></h2>
 <p>All gravitational-wave data are recorded with timestamps in the GPS time system (recording the absolute number of seconds since the start of the GPS epoch at midnight on January 6th 1980).</p>
-<p>The LIGO Scientific Collaboration stores such GPS times with nanosecond precision using the <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-class docutils literal"><span class="pre">LIGOTimeGPS</span></code></a> object.</p>
+<p>The LIGO Scientific Collaboration stores such GPS times with nanosecond precision using the <code class="xref py py-obj docutils literal"><span class="pre">ligotimegps</span></code> object.</p>
 </div>
 <div class="section" id="time-conversions">
 <h2>Time conversions<a class="headerlink" href="#time-conversions" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://astropy.org">astropy</a> package provides the excellent <a class="reference external" href="http://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a> object to allow easy conversion between this format and a number of other formats.
+<p><a class="reference external" href="http://astropy.org">Astropy</a> provides the excellent <a class="reference external" href="http://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a> object to allow easy conversion between this format and a number of other formats.
 For convenience, this object is available in GWpy as <code class="docutils literal"><span class="pre">gwpy.time.Time</span></code>.</p>
-<p>On top of that, GWpy provides three simple methods to simplify converting between GPS times and Python-standard <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">datetime.datetime</span></code></a> objects, namely:</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.time.tconvert" title="gwpy.time.tconvert"><code class="xref py py-obj docutils literal"><span class="pre">tconvert</span></code></a>([gpsordate])</td>
-<td>Convert GPS times to ISO-format date-times and vice-versa.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a>(t,&nbsp;\*args,&nbsp;\*\*kwargs)</td>
-<td>Convert any input date/time into a <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.time.from_gps" title="gwpy.time.from_gps"><code class="xref py py-obj docutils literal"><span class="pre">from_gps</span></code></a>(gps)</td>
-<td>Convert a GPS time into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<p>This reference contains the following <code class="xref py py-obj docutils literal"><span class="pre">class</span></code> entries:</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a></td>
-<td>::tagLIGOTimeGPS</td>
-</tr>
-</tbody>
-</table>
-<p>and the following <code class="xref py py-obj docutils literal"><span class="pre">function</span></code> entries:</p>
+<p>On top of that, GWpy provides three simple methods to simplify converting between GPS times and Python-standard <a class="reference external" href="https://docs.python.org/2/library/datetime.html#module-datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code></a> objects, namely:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -223,68 +190,19 @@ For convenience, this object is available in GWpy as <code class="docutils liter
 <td>Convert GPS times to ISO-format date-times and vice-versa.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a></td>
-<td>Convert any input date/time into a <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>.</td>
+<td>Convert any input date/time into a <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.time.from_gps" title="gwpy.time.from_gps"><code class="xref py py-obj docutils literal"><span class="pre">from_gps</span></code></a></td>
-<td>Convert a GPS time into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a></td>
+<td>Convert a GPS time into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>.</td>
 </tr>
 </tbody>
 </table>
-<dl class="class">
-<dt id="gwpy.time.LIGOTimeGPS">
-<em class="property">class </em><code class="descclassname">gwpy.time.</code><code class="descname">LIGOTimeGPS</code><a class="headerlink" href="#gwpy.time.LIGOTimeGPS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">SwigPyObject</span></code></p>
-<p>::tagLIGOTimeGPS</p>
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.acquire">
-<code class="descname">acquire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.acquire" title="Permalink to this definition">¶</a></dt>
-<dd><p>acquires ownership of the pointer</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.append">
-<code class="descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>appends another &#8216;this&#8217; object</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.disown">
-<code class="descname">disown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.disown" title="Permalink to this definition">¶</a></dt>
-<dd><p>releases ownership of the pointer</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="gwpy.time.LIGOTimeGPS.gpsNanoSeconds">
-<code class="descname">gpsNanoSeconds</code><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.gpsNanoSeconds" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="gwpy.time.LIGOTimeGPS.gpsSeconds">
-<code class="descname">gpsSeconds</code><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.gpsSeconds" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.next">
-<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.next" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the next &#8216;this&#8217; object</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.ns">
-<code class="descname">ns</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; INT8<a class="headerlink" href="#gwpy.time.LIGOTimeGPS.ns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="gwpy.time.LIGOTimeGPS.own">
-<code class="descname">own</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.time.LIGOTimeGPS.own" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns/sets ownership of the pointer</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="method">
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="gwpy.time.tconvert">
-<code class="descclassname">time.</code><code class="descname">tconvert</code><span class="sig-paren">(</span><em>gpsordate='now'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/time/_tconvert.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.tconvert" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">gwpy.time.</code><code class="descname">tconvert</code><span class="sig-paren">(</span><em>gpsordate='now'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/time/_tconvert.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.tconvert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert GPS times to ISO-format date-times and vice-versa.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -296,7 +214,7 @@ For convenience, this object is available in GWpy as <code class="docutils liter
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>date</strong> : <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a> or <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>date</strong> : <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a> or <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></p>
 <blockquote class="last">
 <div><p>converted gps or date</p>
 </div></blockquote>
@@ -305,10 +223,9 @@ For convenience, this object is available in GWpy as <code class="docutils liter
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>If the input object is a <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a> or <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>,
-it will get converted from GPS format into a
-<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>, otherwise the input will be converted
-into <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>.</p>
+<p>If the input object is a <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a> or <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, it will get
+converted from GPS format into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>, otherwise
+the input will be converted into <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>.</p>
 <p class="rubric">Examples</p>
 <p>Integers and floats are automatically converted from GPS to
 <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>:</p>
@@ -319,13 +236,13 @@ into <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.tim
 <span class="go">datetime.datetime(2015, 9, 14, 9, 50, 45, 391000)</span>
 </pre></div>
 </div>
-<p>while strings are automatically converted to <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>:</p>
+<p>while strings are automatically converted to <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_gps</span><span class="p">(</span><span class="s1">&#39;Sep 14 2015 09:50:45.391&#39;</span><span class="p">)</span>
 <span class="go">LIGOTimeGPS(1126259462, 391000000)</span>
 </pre></div>
 </div>
 <p>Additionally, a few special-case words as supported, which all return
-<a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>:</p>
+<code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tconvert</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tconvert</span><span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tconvert</span><span class="p">(</span><span class="s1">&#39;tomorrow&#39;</span><span class="p">)</span>
@@ -334,21 +251,20 @@ into <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.tim
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="function">
 <dt id="gwpy.time.to_gps">
-<code class="descclassname">time.</code><code class="descname">to_gps</code><span class="sig-paren">(</span><em>t</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/time/_tconvert.py#L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.to_gps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert any input date/time into a <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>.</p>
-<p>Any input object that can be cast as a
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a> (with <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> going through the
-<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) are acceptable.</p>
+<code class="descclassname">gwpy.time.</code><code class="descname">to_gps</code><span class="sig-paren">(</span><em>t</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/time/_tconvert.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.to_gps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any input date/time into a <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>.</p>
+<p>Any input object that can be cast as a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a>
+(with <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> going through the <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) are acceptable.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <blockquote>
 <div><p>the input time, any object that can be converted into a
-<a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a>, or <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>,
+<code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a>, or <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code></a>,
 is acceptable.</p>
 </div></blockquote>
 <p><strong>*args, **kwargs</strong></p>
@@ -357,7 +273,7 @@ is acceptable.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gps</strong> : <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gps</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></p>
 <blockquote>
 <div><p>the number of GPS seconds (non-integer) since the start of the
 epoch (January 6 1980).</p>
@@ -371,7 +287,7 @@ epoch (January 6 1980).</p>
 <p><strong>ValueError</strong></p>
 <blockquote class="last">
 <div><p>if the input cannot be cast as a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v2.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">Time</span></code></a> or
-<a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>.</p>
+<code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -396,15 +312,15 @@ epoch (January 6 1980).</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="function">
 <dt id="gwpy.time.from_gps">
-<code class="descclassname">time.</code><code class="descname">from_gps</code><span class="sig-paren">(</span><em>gps</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/521ca74ca61ef5c3714fc1143211bad6b3313c33/gwpy/time/_tconvert.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.from_gps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a GPS time into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a></p>
+<code class="descclassname">gwpy.time.</code><code class="descname">from_gps</code><span class="sig-paren">(</span><em>gps</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/time/_tconvert.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.time.from_gps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a GPS time into a <a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gps</strong> : <a class="reference internal" href="#gwpy.time.LIGOTimeGPS" title="gwpy.time.LIGOTimeGPS"><code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gps</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>GPS time to convert</p>
 </div></blockquote>
