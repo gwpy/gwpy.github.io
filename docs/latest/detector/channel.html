@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The Channel &#8212; GWpy 0.6.2+614.g9046c880 documentation</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>The Channel &#8212; GWpy 0.6.2+643.g46e10d86 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.6.2+614.g9046c880',
+        VERSION:     '0.6.2+643.g46e10d86',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -30,7 +24,7 @@
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -43,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -146,7 +140,7 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">The <code class="docutils literal"><span class="pre">Channel</span></code></a><ul>
-<li><a class="reference internal" href="#what-is-a-channel">What is a &#8216;channel&#8217;?</a></li>
+<li><a class="reference internal" href="#what-is-a-channel">What is a ‘channel’?</a></li>
 <li><a class="reference internal" href="#the-ligo-channel-information-system-https-cis-ligo-org">The LIGO Channel Information System (https://cis.ligo.org)</a></li>
 <li><a class="reference internal" href="#the-channellist">The <code class="docutils literal"><span class="pre">ChannelList</span></code></a></li>
 <li><a class="reference internal" href="#class-reference">Class reference</a></li>
@@ -175,13 +169,13 @@
 </pre></div>
 </div>
 <div class="section" id="what-is-a-channel">
-<h2>What is a &#8216;channel&#8217;?<a class="headerlink" href="#what-is-a-channel" title="Permalink to this headline">¶</a></h2>
+<h2>What is a ‘channel’?<a class="headerlink" href="#what-is-a-channel" title="Permalink to this headline">¶</a></h2>
 <p>Each of the laser-interferometer gravitational-wave detectors record thousands of different data streams capturing a single instrumental error or control signal, or the output of an environmental sensor.
-These data streams are known as &#8216;channels&#8217;, and are named according to a convention that describes its source in the instrument, and the signal it records, for example:</p>
+These data streams are known as ‘channels’, and are named according to a convention that describes its source in the instrument, and the signal it records, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">L1</span><span class="p">:</span><span class="n">PSS</span><span class="o">-</span><span class="n">ISS_PDB_OUT_DQ</span>
 </pre></div>
 </div>
-<p>describes the output signal (<code class="docutils literal"><span class="pre">OUT</span></code>) from photodiode-B (<code class="docutils literal"><span class="pre">PDB</span></code>) inside the Intensity Stabilisation System (<code class="docutils literal"><span class="pre">ISS</span></code>) of the Pre-Stabilised Laser (<code class="docutils literal"><span class="pre">PSL</span></code>) powering the <code class="docutils literal"><span class="pre">L1</span></code> instrument, hosted at the LIGO Livingston Observatory. The <code class="docutils literal"><span class="pre">DQ</span></code> suffix indicates that this channel was recorded in data files for offline study (many more &#8216;test point&#8217; channels are used only in real-time, and are never recorded).</p>
+<p>describes the output signal (<code class="docutils literal"><span class="pre">OUT</span></code>) from photodiode-B (<code class="docutils literal"><span class="pre">PDB</span></code>) inside the Intensity Stabilisation System (<code class="docutils literal"><span class="pre">ISS</span></code>) of the Pre-Stabilised Laser (<code class="docutils literal"><span class="pre">PSL</span></code>) powering the <code class="docutils literal"><span class="pre">L1</span></code> instrument, hosted at the LIGO Livingston Observatory. The <code class="docutils literal"><span class="pre">DQ</span></code> suffix indicates that this channel was recorded in data files for offline study (many more ‘test point’ channels are used only in real-time, and are never recorded).</p>
 <p>A simple representation of this physical signal is provided by the <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-class docutils literal"><span class="pre">Channel</span></code></a> object:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.detector</span> <span class="k">import</span> <span class="n">Channel</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">signal</span> <span class="o">=</span> <span class="n">Channel</span><span class="p">(</span><span class="s1">&#39;L1:PSL-ISS_PDB_OUT_DQ&#39;</span><span class="p">)</span>
@@ -265,7 +259,7 @@ The <a class="reference internal" href="#gwpy.detector.Channel.query" title="gwp
 </table>
 <dl class="class">
 <dt id="gwpy.detector.Channel">
-<em class="property">class </em><code class="descclassname">gwpy.detector.</code><code class="descname">Channel</code><span class="sig-paren">(</span><em>name</em>, <em>sample_rate=None</em>, <em>unit=None</em>, <em>frequency_range=None</em>, <em>safe=None</em>, <em>type=None</em>, <em>dtype=None</em>, <em>frametype=None</em>, <em>model=None</em>, <em>url=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.detector.</code><code class="descname">Channel</code><span class="sig-paren">(</span><em>name</em>, <em>sample_rate=None</em>, <em>unit=None</em>, <em>frequency_range=None</em>, <em>safe=None</em>, <em>type=None</em>, <em>dtype=None</em>, <em>frametype=None</em>, <em>model=None</em>, <em>url=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Representation of a laser-interferometer data channel.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -292,7 +286,7 @@ will be copied over.</p>
 </div></blockquote>
 <p><strong>safe</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
 <blockquote>
-<div><p>is this channel &#8216;safe&#8217; to use as a witness of non-gravitational-wave
+<div><p>is this channel ‘safe’ to use as a witness of non-gravitational-wave
 noise in the interferometer</p>
 </div></blockquote>
 <p><strong>dtype</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, optional</p>
@@ -317,7 +311,7 @@ data recorded in the LIGO Channel Information System
 (<a class="reference external" href="https://cis.ligo.org">https://cis.ligo.org</a>) for which a query interface is provided.</p>
 <dl class="method">
 <dt id="gwpy.detector.Channel.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L580"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L580"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a copy of this channel</p>
 </dd></dl>
 
@@ -337,7 +331,7 @@ data recorded in the LIGO Channel Information System
 
 <dl class="method">
 <dt id="gwpy.detector.Channel.find_frametype">
-<code class="descname">find_frametype</code><span class="sig-paren">(</span><em>gpstime=None</em>, <em>frametype_match=None</em>, <em>host=None</em>, <em>port=None</em>, <em>return_all=False</em>, <em>allow_tape=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.find_frametype" title="Permalink to this definition">¶</a></dt>
+<code class="descname">find_frametype</code><span class="sig-paren">(</span><em>gpstime=None</em>, <em>frametype_match=None</em>, <em>host=None</em>, <em>port=None</em>, <em>return_all=False</em>, <em>allow_tape=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.find_frametype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the containing frametype(s) for this <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">Channel</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -404,7 +398,7 @@ returned</p>
 
 <dl class="classmethod">
 <dt id="gwpy.detector.Channel.from_nds2">
-<em class="property">classmethod </em><code class="descname">from_nds2</code><span class="sig-paren">(</span><em>nds2channel</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L464"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.from_nds2" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_nds2</code><span class="sig-paren">(</span><em>nds2channel</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L464"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.from_nds2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a new channel using an existing nds2.channel object</p>
 </dd></dl>
 
@@ -441,7 +435,7 @@ returned</p>
 <code class="descname">name</code><a class="headerlink" href="#gwpy.detector.Channel.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of this channel.</p>
 <p>This should follow the naming convention, with the following
-format: &#8216;IFO:SYSTEM-SUBSYSTEM_SIGNAL&#8217;</p>
+format: ‘IFO:SYSTEM-SUBSYSTEM_SIGNAL’</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -467,7 +461,7 @@ format: &#8216;IFO:SYSTEM-SUBSYSTEM_SIGNAL&#8217;</p>
 
 <dl class="classmethod">
 <dt id="gwpy.detector.Channel.parse_channel_name">
-<em class="property">classmethod </em><code class="descname">parse_channel_name</code><span class="sig-paren">(</span><em>name</em>, <em>strict=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.parse_channel_name" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">parse_channel_name</code><span class="sig-paren">(</span><em>name</em>, <em>strict=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.parse_channel_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decompose a channel name string into its components</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -495,7 +489,7 @@ default <a class="reference external" href="https://docs.python.org/2/library/co
 <li><code class="xref py py-obj docutils literal"><span class="pre">'trend'</span></code>: the trend type</li>
 <li><code class="xref py py-obj docutils literal"><span class="pre">'ndstype'</span></code>: the NDS2 channel suffix</li>
 </ul>
-<p>Any optional keys that aren&#8217;t found will return a value of <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
+<p>Any optional keys that aren’t found will return a value of <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -531,7 +525,7 @@ default <a class="reference external" href="https://docs.python.org/2/library/co
 
 <dl class="classmethod">
 <dt id="gwpy.detector.Channel.query">
-<em class="property">classmethod </em><code class="descname">query</code><span class="sig-paren">(</span><em>name</em>, <em>use_kerberos=None</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query</code><span class="sig-paren">(</span><em>name</em>, <em>use_kerberos=None</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the LIGO Channel Information System for the <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">Channel</span></code></a>
 matching the given name</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -568,7 +562,7 @@ its entry in the CIS</p>
 
 <dl class="classmethod">
 <dt id="gwpy.detector.Channel.query_nds2">
-<em class="property">classmethod </em><code class="descname">query_nds2</code><span class="sig-paren">(</span><em>name</em>, <em>host=None</em>, <em>port=None</em>, <em>connection=None</em>, <em>type=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.query_nds2" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query_nds2</code><span class="sig-paren">(</span><em>name</em>, <em>host=None</em>, <em>port=None</em>, <em>connection=None</em>, <em>type=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.Channel.query_nds2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query an NDS server for channel information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -620,7 +614,7 @@ its entry in the CIS</p>
 <dl class="attribute">
 <dt id="gwpy.detector.Channel.safe">
 <code class="descname">safe</code><a class="headerlink" href="#gwpy.detector.Channel.safe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether this channel is &#8216;safe&#8217; to use as a noise witness</p>
+<dd><p>Whether this channel is ‘safe’ to use as a noise witness</p>
 <p>Any channel that records part or all of a GW signal as it
 interacts with the interferometer is not safe to use as a noise
 witness</p>
@@ -718,7 +712,7 @@ channel has not been determined</p>
 <dd><p>DAQ data type for this channel.</p>
 <p>Valid values for this field are restricted to those understood
 by the NDS2 client sofware, namely:</p>
-<p>&#8216;m-trend&#8217;, &#8216;online&#8217;, &#8216;raw&#8217;, &#8216;reduced&#8217;, &#8216;s-trend&#8217;, &#8216;static&#8217;, &#8216;test-pt&#8217;</p>
+<p>‘m-trend’, ‘online’, ‘raw’, ‘reduced’, ‘s-trend’, ‘static’, ‘test-pt’</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -761,29 +755,29 @@ by the NDS2 client sofware, namely:</p>
 
 <dl class="class">
 <dt id="gwpy.detector.ChannelList">
-<em class="property">class </em><code class="descclassname">gwpy.detector.</code><code class="descname">ChannelList</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L618"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.detector.</code><code class="descname">ChannelList</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L618"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">list</span></code></p>
 <p>A <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">channels</span></code></a>, with parsing utilities.</p>
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.append">
 <code class="descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.append(object) &#8211; append object to end</p>
+<dd><p>L.append(object) – append object to end</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.count">
-<code class="descname">count</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span> &rarr; integer -- return number of occurrences of value<a class="headerlink" href="#gwpy.detector.ChannelList.count" title="Permalink to this definition">¶</a></dt>
+<code class="descname">count</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span> &#x2192; integer -- return number of occurrences of value<a class="headerlink" href="#gwpy.detector.ChannelList.count" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.extend">
 <code class="descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.extend" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.extend(iterable) &#8211; extend list by appending elements from the iterable</p>
+<dd><p>L.extend(iterable) – extend list by appending elements from the iterable</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.find">
-<code class="descname">find</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.find" title="Permalink to this definition">¶</a></dt>
+<code class="descname">find</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">Channel</span></code></a> with a specific name in this <a class="reference internal" href="#gwpy.detector.ChannelList" title="gwpy.detector.ChannelList"><code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -821,25 +815,25 @@ whose <a class="reference internal" href="#gwpy.detector.Channel.name" title="gw
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.index">
-<code class="descname">index</code><span class="sig-paren">(</span><em>value</em><span class="optional">[</span>, <em>start</em><span class="optional">[</span>, <em>stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &rarr; integer -- return first index of value.<a class="headerlink" href="#gwpy.detector.ChannelList.index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">index</code><span class="sig-paren">(</span><em>value</em><span class="optional">[</span>, <em>start</em><span class="optional">[</span>, <em>stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; integer -- return first index of value.<a class="headerlink" href="#gwpy.detector.ChannelList.index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raises ValueError if the value is not present.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.insert">
 <code class="descname">insert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.insert(index, object) &#8211; insert object before index</p>
+<dd><p>L.insert(index, object) – insert object before index</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><span class="optional">[</span><em>index</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; item -- remove and return item at index (default last).<a class="headerlink" href="#gwpy.detector.ChannelList.pop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop</code><span class="sig-paren">(</span><span class="optional">[</span><em>index</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; item -- remove and return item at index (default last).<a class="headerlink" href="#gwpy.detector.ChannelList.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raises IndexError if list is empty or index is out of range.</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="gwpy.detector.ChannelList.query">
-<em class="property">classmethod </em><code class="descname">query</code><span class="sig-paren">(</span><em>name</em>, <em>use_kerberos=None</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L761"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query</code><span class="sig-paren">(</span><em>name</em>, <em>use_kerberos=None</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L761"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the LIGO Channel Information System a <a class="reference internal" href="#gwpy.detector.ChannelList" title="gwpy.detector.ChannelList"><code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -874,7 +868,7 @@ default: <a class="reference external" href="https://docs.python.org/2/library/c
 
 <dl class="classmethod">
 <dt id="gwpy.detector.ChannelList.query_nds2">
-<em class="property">classmethod </em><code class="descname">query_nds2</code><span class="sig-paren">(</span><em>names</em>, <em>host=None</em>, <em>port=None</em>, <em>connection=None</em>, <em>type=127</em>, <em>unique=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L787"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query_nds2" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query_nds2</code><span class="sig-paren">(</span><em>names</em>, <em>host=None</em>, <em>port=None</em>, <em>connection=None</em>, <em>type=127</em>, <em>unique=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L787"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query_nds2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query an NDS server for channel information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -931,7 +925,7 @@ is given</p>
 
 <dl class="classmethod">
 <dt id="gwpy.detector.ChannelList.query_nds2_availability">
-<em class="property">classmethod </em><code class="descname">query_nds2_availability</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L830"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query_nds2_availability" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query_nds2_availability</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L830"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.query_nds2_availability" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query for when data are available for these channels in NDS2</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -978,7 +972,7 @@ created based on <code class="docutils literal"><span class="pre">host</span></c
 
 <dl class="classmethod">
 <dt id="gwpy.detector.ChannelList.read">
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L629"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.read" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L629"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a <a class="reference internal" href="#gwpy.detector.ChannelList" title="gwpy.detector.ChannelList"><code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code></a> from a file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1026,19 +1020,19 @@ created based on <code class="docutils literal"><span class="pre">host</span></c
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.remove">
 <code class="descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.remove(value) &#8211; remove first occurrence of value.
+<dd><p>L.remove(value) – remove first occurrence of value.
 Raises ValueError if the value is not present.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.reverse">
 <code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.reverse() &#8211; reverse <em>IN PLACE</em></p>
+<dd><p>L.reverse() – reverse <em>IN PLACE</em></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.sieve">
-<code class="descname">sieve</code><span class="sig-paren">(</span><em>name=None</em>, <em>sample_rate=None</em>, <em>sample_range=None</em>, <em>exact_match=False</em>, <em>**others</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L708"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.sieve" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sieve</code><span class="sig-paren">(</span><em>name=None</em>, <em>sample_rate=None</em>, <em>sample_range=None</em>, <em>exact_match=False</em>, <em>**others</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L708"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.sieve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find all <a class="reference internal" href="#gwpy.detector.Channel" title="gwpy.detector.Channel"><code class="xref py py-obj docutils literal"><span class="pre">Channels</span></code></a> in this list matching the
 specified criteria.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1077,13 +1071,13 @@ specified criteria.</p>
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.sort">
 <code class="descname">sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.detector.ChannelList.sort" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.sort(cmp=None, key=None, reverse=False) &#8211; stable sort <em>IN PLACE</em>;
+<dd><p>L.sort(cmp=None, key=None, reverse=False) – stable sort <em>IN PLACE</em>;
 cmp(x, y) -&gt; -1, 0, 1</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.detector.ChannelList.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9046c8807c46ea4150225897b58b710f44927e4d/gwpy/detector/channel.py#L642"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/46e10d8662bf9f3f561d8620f321855608d262a4/gwpy/detector/channel.py#L642"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.detector.ChannelList.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a <a class="reference internal" href="#gwpy.detector.ChannelList" title="gwpy.detector.ChannelList"><code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code></a> to a file</p>
 <p class="rubric">Notes</p>
 <p>The available built-in formats are:</p>
@@ -1134,7 +1128,7 @@ cmp(x, y) -&gt; -1, 0, 1</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
 </footer>

@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Reading/writing segments and flags &#8212; GWpy 0.6.2+614.g9046c880 documentation</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Reading/writing segments and flags &#8212; GWpy 0.6.2+643.g46e10d86 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.6.2+614.g9046c880',
+        VERSION:     '0.6.2+643.g46e10d86',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -30,7 +24,7 @@
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -43,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -185,7 +179,7 @@
   <div class="section" id="reading-writing-segments-and-flags">
 <span id="gwpy-segments-io"></span><h1>Reading/writing segments and flags<a class="headerlink" href="#reading-writing-segments-and-flags" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a>, <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>, and <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a> objects each include <code class="xref py py-meth docutils literal"><span class="pre">read()</span></code> and <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> methods to enable reading from and writing to a number of different file formats for segment-like objects.
-As with other classes in GWpy, the <code class="docutils literal"><span class="pre">format</span></code> keyword argument can be used to manually specify the input or output format, if the file extension isn&#8217;t obvious enough.</p>
+As with other classes in GWpy, the <code class="docutils literal"><span class="pre">format</span></code> keyword argument can be used to manually specify the input or output format, if the file extension isn’t obvious enough.</p>
 <p>The <code class="xref py py-meth docutils literal"><span class="pre">read()</span></code> and <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> methods take different arguments and keywords based on the input/output file format, see the following sections for details on reading/writing for each of the built-in formats. Those formats are:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#gwpy-segments-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a></li>
@@ -238,7 +232,7 @@ produced by gravitational-wave searches.</p>
 <span class="go">                description=None)</span>
 </pre></div>
 </div>
-<p>This indicates a single &#8216;known&#8217; segment starting at GPS time 1000000000, with two active segments.</p>
+<p>This indicates a single ‘known’ segment starting at GPS time 1000000000, with two active segments.</p>
 <p><strong>These results are simulated, and do not actually indicate operating times of the LIGO-Livingston observatory.</strong></p>
 <p>The <code class="docutils literal"><span class="pre">coalesce=True</span></code> keyword argument can be used to combine overlapping segments into a single, longer segment.</p>
 </div>
@@ -272,7 +266,7 @@ produced by gravitational-wave searches.</p>
 </div>
 <div class="section" id="hdf5">
 <span id="gwpy-segments-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
-<p>GWpy uses HDF5 Groups to store a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>, with each of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-attr docutils literal"><span class="pre">known</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal"><span class="pre">active</span></code></a> segment lists stored in a Dataset, and extra metadata stored in the Group&#8217;s attributes.</p>
+<p>GWpy uses HDF5 Groups to store a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>, with each of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-attr docutils literal"><span class="pre">known</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal"><span class="pre">active</span></code></a> segment lists stored in a Dataset, and extra metadata stored in the Group’s attributes.</p>
 <div class="section" id="id1">
 <h3>Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>To read a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> from an <code class="docutils literal"><span class="pre">HDF5</span></code>-format file:</p>
@@ -338,7 +332,7 @@ produced by gravitational-wave searches.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
 </footer>
