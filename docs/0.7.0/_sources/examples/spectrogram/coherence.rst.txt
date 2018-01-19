@@ -1,0 +1,71 @@
+.. _gwpy-example-spectrogram-coherence:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+.. currentmodule:: gwpy.timeseries
+
+Calculating the time-dependent coherence between two channels
+#############################################################
+
+The standard coherence calculation outputs a frequency series
+(`~gwpy.frequencyseries.FrequencySeries`) giving a time-averaged measure
+of coherence. See :ref:`gwpy-example-frequencyseries-coherence` for an
+example.
+
+The `TimeSeries` method :meth:`~TimeSeries.coherence_spectrogram` performs the
+same coherence calculation every ``stride``, giving a time-varying coherence
+measure.
+
+
+
+First, we import the `TimeSeriesDict`
+
+.. plot::
+   :nofigs:
+   :include-source:
+   :context: reset
+
+   from gwpy.timeseries import TimeSeriesDict
+
+and then :meth:`~TimeSeriesDict.get` the data for the strain output
+(``H1:GDS-CALIB_STRAIN``) and the PSL periscope accelerometer
+(``H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ``):
+
+.. plot::
+   :nofigs:
+   :include-source:
+   :context:
+
+   data = TimeSeriesDict.get(['H1:GDS-CALIB_STRAIN',
+                              'H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ'],
+                              1126260017, 1126260617)
+   hoft = data['H1:GDS-CALIB_STRAIN']
+   acc = data['H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ']
+
+We can then calculate the :meth:`~TimeSeries.coherence` of one
+`TimeSeries` with respect to the other, using an 2-second Fourier
+transform length, with a 1-second (50%) overlap:
+
+.. plot::
+   :nofigs:
+   :include-source:
+   :context:
+
+   coh = hoft.coherence_spectrogram(acc, 10, fftlength=.5, overlap=.25)
+
+Finally, we can :meth:`~gwpy.spectrogram.Spectrogram.plot` the
+resulting data
+
+.. plot::
+   :include-source:
+   :context:
+
+   plot = coh.plot()
+   ax = plot.gca()
+   ax.set_ylabel('Frequency [Hz]')
+   ax.set_yscale('log')
+   ax.set_ylim(10, 8000)
+   ax.set_title('Coherence between PSL periscope motion and LIGO-Hanford strain data')
+   ax.grid(True, 'both', 'both')
+   plot.add_colorbar(label='Coherence', clim=[0, 1], cmap='plasma')
+   plot.show()

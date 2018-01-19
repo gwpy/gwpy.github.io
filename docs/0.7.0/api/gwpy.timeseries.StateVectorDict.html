@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>StateVectorDict &#8212; GWpy 0.7.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Remote data access" href="../timeseries/remote-access.html" />
+    <link rel="prev" title="TimeSeriesDict" href="gwpy.timeseries.TimeSeriesDict.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.7.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="gwpy.timeseries.TimeSeriesDict.html" title="Previous Chapter: TimeSeriesDict"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; TimeSeriesDict</span>
+    </a>
+  </li>
+  <li>
+    <a href="../timeseries/remote-access.html" title="Next Chapter: Remote data access"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Remote data a... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">StateVectorDict</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/api/gwpy.timeseries.StateVectorDict.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="statevectordict">
+<h1>StateVectorDict<a class="headerlink" href="#statevectordict" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gwpy.timeseries.StateVectorDict">
+<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">StateVectorDict</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/statevector.py#L863"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.timeseries.core.TimeSeriesBaseDict</span></code></p>
+<p>Ordered key-value mapping of named <a class="reference internal" href="gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> objects</p>
+<p>This object is designed to hold data for many different sources (channels)
+for a single time span.</p>
+<p>The main entry points for this object are the
+<a class="reference internal" href="#gwpy.timeseries.StateVectorDict.read" title="gwpy.timeseries.StateVectorDict.read"><code class="xref py py-meth docutils literal"><span class="pre">read()</span></code></a> and <a class="reference internal" href="#gwpy.timeseries.StateVectorDict.fetch" title="gwpy.timeseries.StateVectorDict.fetch"><code class="xref py py-meth docutils literal"><span class="pre">fetch()</span></code></a>
+data access methods.</p>
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.append" title="gwpy.timeseries.StateVectorDict.append"><code class="xref py py-obj docutils literal"><span class="pre">append</span></code></a>(other[,&nbsp;copy])</td>
+<td>Append the dict <code class="docutils literal"><span class="pre">other</span></code> to this one</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.clear" title="gwpy.timeseries.StateVectorDict.clear"><code class="xref py py-obj docutils literal"><span class="pre">clear</span></code></a>(()&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Remove&nbsp;all&nbsp;items&nbsp;from&nbsp;od.)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.copy" title="gwpy.timeseries.StateVectorDict.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>()</td>
+<td>Return a copy of this dict with each value copied to new memory</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.crop" title="gwpy.timeseries.StateVectorDict.crop"><code class="xref py py-obj docutils literal"><span class="pre">crop</span></code></a>([start,&nbsp;end,&nbsp;copy])</td>
+<td>Crop each entry of this <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.fetch" title="gwpy.timeseries.StateVectorDict.fetch"><code class="xref py py-obj docutils literal"><span class="pre">fetch</span></code></a>(channels,&nbsp;start,&nbsp;end[,&nbsp;host,&nbsp;port,&nbsp;…])</td>
+<td>Fetch data from NDS for a number of channels.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.find" title="gwpy.timeseries.StateVectorDict.find"><code class="xref py py-obj docutils literal"><span class="pre">find</span></code></a>(channels,&nbsp;start,&nbsp;end[,&nbsp;frametype,&nbsp;…])</td>
+<td>Find and read data from frames for a number of channels.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.fromkeys" title="gwpy.timeseries.StateVectorDict.fromkeys"><code class="xref py py-obj docutils literal"><span class="pre">fromkeys</span></code></a>((S[,&nbsp;…)</td>
+<td>If not specified, the value defaults to None.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.get" title="gwpy.timeseries.StateVectorDict.get"><code class="xref py py-obj docutils literal"><span class="pre">get</span></code></a>(channels,&nbsp;start,&nbsp;end[,&nbsp;pad,&nbsp;dtype,&nbsp;…])</td>
+<td>Retrieve data for multiple channels from frames or NDS</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.has_key" title="gwpy.timeseries.StateVectorDict.has_key"><code class="xref py py-obj docutils literal"><span class="pre">has_key</span></code></a>((k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.items" title="gwpy.timeseries.StateVectorDict.items"><code class="xref py py-obj docutils literal"><span class="pre">items</span></code></a>(()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;(key,&nbsp;value)&nbsp;pairs&nbsp;in&nbsp;od)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.iteritems" title="gwpy.timeseries.StateVectorDict.iteritems"><code class="xref py py-obj docutils literal"><span class="pre">iteritems</span></code></a>()</td>
+<td>od.iteritems -&gt; an iterator over the (key, value) pairs in od</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.iterkeys" title="gwpy.timeseries.StateVectorDict.iterkeys"><code class="xref py py-obj docutils literal"><span class="pre">iterkeys</span></code></a>(()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;keys&nbsp;in&nbsp;od)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.itervalues" title="gwpy.timeseries.StateVectorDict.itervalues"><code class="xref py py-obj docutils literal"><span class="pre">itervalues</span></code></a>()</td>
+<td>od.itervalues -&gt; an iterator over the values in od</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.keys" title="gwpy.timeseries.StateVectorDict.keys"><code class="xref py py-obj docutils literal"><span class="pre">keys</span></code></a>(()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;keys&nbsp;in&nbsp;od)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.plot" title="gwpy.timeseries.StateVectorDict.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>([label])</td>
+<td>Plot the data for this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.pop" title="gwpy.timeseries.StateVectorDict.pop"><code class="xref py py-obj docutils literal"><span class="pre">pop</span></code></a>((k[,d])&nbsp;-&gt;&nbsp;v,&nbsp;…)</td>
+<td>value.  If key is not found, d is returned if given, otherwise KeyError</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.popitem" title="gwpy.timeseries.StateVectorDict.popitem"><code class="xref py py-obj docutils literal"><span class="pre">popitem</span></code></a>(()&nbsp;-&gt;&nbsp;(k,&nbsp;v),&nbsp;…)</td>
+<td>Pairs are returned in LIFO order if last is true or FIFO order if false.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.prepend" title="gwpy.timeseries.StateVectorDict.prepend"><code class="xref py py-obj docutils literal"><span class="pre">prepend</span></code></a>(other,&nbsp;**kwargs)</td>
+<td>Prepend the dict <code class="docutils literal"><span class="pre">other</span></code> to this one</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.read" title="gwpy.timeseries.StateVectorDict.read"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>(source,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Read data for multiple bit vector channels into a <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.resample" title="gwpy.timeseries.StateVectorDict.resample"><code class="xref py py-obj docutils literal"><span class="pre">resample</span></code></a>(rate,&nbsp;**kwargs)</td>
+<td>Resample items in this dict.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.setdefault" title="gwpy.timeseries.StateVectorDict.setdefault"><code class="xref py py-obj docutils literal"><span class="pre">setdefault</span></code></a>((k[,d])&nbsp;-&gt;&nbsp;od.get(k,d),&nbsp;…)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.update" title="gwpy.timeseries.StateVectorDict.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(([E,&nbsp;…)</td>
+<td>If E present and has a .keys() method, does:     for k in E: D[k] = E[k]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.values" title="gwpy.timeseries.StateVectorDict.values"><code class="xref py py-obj docutils literal"><span class="pre">values</span></code></a>(()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;values&nbsp;in&nbsp;od)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.viewitems" title="gwpy.timeseries.StateVectorDict.viewitems"><code class="xref py py-obj docutils literal"><span class="pre">viewitems</span></code></a>(…)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.viewkeys" title="gwpy.timeseries.StateVectorDict.viewkeys"><code class="xref py py-obj docutils literal"><span class="pre">viewkeys</span></code></a>(…)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.viewvalues" title="gwpy.timeseries.StateVectorDict.viewvalues"><code class="xref py py-obj docutils literal"><span class="pre">viewvalues</span></code></a>(…)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVectorDict.write" title="gwpy.timeseries.StateVectorDict.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(target,&nbsp;*args,&nbsp;**kwargs)</td>
+<td>Write this <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> to a file</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>other</em>, <em>copy=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L884"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append the dict <code class="docutils literal"><span class="pre">other</span></code> to this one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>the container to append to this one</p>
+</div></blockquote>
+<p><strong>copy</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> copy data from <code class="docutils literal"><span class="pre">other</span></code> before storing, only
+affects those keys in <code class="docutils literal"><span class="pre">other</span></code> that aren’t in <code class="docutils literal"><span class="pre">self</span></code></p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote class="last">
+<div><p>other keyword arguments to send to <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.append" title="gwpy.timeseries.TimeSeries.append"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.append</span></code></a></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.append" title="gwpy.timeseries.TimeSeries.append"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.append</span></code></a></dt>
+<dd>for details of the underlying series append operation</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None.  Remove all items from od.<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L876"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of this dict with each value copied to new memory</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.crop">
+<code class="descname">crop</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L940"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.crop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop each entry of this <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a></p>
+<p>This method calls the <a class="reference internal" href="#gwpy.timeseries.StateVectorDict.crop" title="gwpy.timeseries.StateVectorDict.crop"><code class="xref py py-meth docutils literal"><span class="pre">crop()</span></code></a> method of all entries and
+modifies this dict in place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>GPS start time of required data,
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote class="last">
+<div><p>GPS end time of required data, defaults to end of data found;
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.crop" title="gwpy.timeseries.TimeSeries.crop"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.crop</span></code></a></dt>
+<dd>for more details</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.fetch">
+<code class="descname">fetch</code><span class="sig-paren">(</span><em>channels</em>, <em>start</em>, <em>end</em>, <em>host=None</em>, <em>port=None</em>, <em>verify=False</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>pad=None</em>, <em>allow_tape=None</em>, <em>type=None</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L986"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch data from NDS for a number of channels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>channels</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+<blockquote>
+<div><p>required data channels.</p>
+</div></blockquote>
+<p><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>GPS start time of required data,
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>GPS end time of required data, defaults to end of data found;
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>host</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>URL of NDS server to use, if blank will try any server
+(in a relatively sensible order) to get the data</p>
+</div></blockquote>
+<p><strong>port</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional</p>
+<blockquote>
+<div><p>port number for NDS server query, must be given with <code class="xref py py-obj docutils literal"><span class="pre">host</span></code>.</p>
+</div></blockquote>
+<p><strong>verify</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a></p>
+<blockquote>
+<div><p>check channels exist in database before asking for data</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>print verbose output about NDS progress.</p>
+</div></blockquote>
+<p><strong>connection</strong> : <code class="xref py py-obj docutils literal"><span class="pre">nds2.connection</span></code>, optional</p>
+<blockquote>
+<div><p>open NDS connection to use.</p>
+</div></blockquote>
+<p><strong>allow_tape</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>allow data access from slow tapes. If <code class="xref py py-obj docutils literal"><span class="pre">host</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">connection</span></code> is
+given, the default is to do whatever the server default is,
+otherwise servers will be searched in logical order allowing tape
+access if necessary to retrieve the data</p>
+</div></blockquote>
+<p><strong>type</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>NDS2 channel type integer or string name.</p>
+</div></blockquote>
+<p><strong>dtype</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a>, or <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a></p>
+<blockquote>
+<div><p>numeric data type for returned data, e.g. <code class="xref py py-obj docutils literal"><span class="pre">numpy.float</span></code>, or
+<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code>) pairs</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : <code class="xref py py-class docutils literal"><span class="pre">TimeSeriesBaseDict</span></code></p>
+<blockquote class="last">
+<div><p>a new <code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict</span></code> of (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a>) pairs fetched
+from NDS.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>channels</em>, <em>start</em>, <em>end</em>, <em>frametype=None</em>, <em>frametype_match=None</em>, <em>pad=None</em>, <em>dtype=None</em>, <em>nproc=1</em>, <em>verbose=False</em>, <em>allow_tape=True</em>, <em>observatory=None</em>, <em>**readargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L1110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find and read data from frames for a number of channels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>channels</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+<blockquote>
+<div><p>required data channels.</p>
+</div></blockquote>
+<p><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>GPS start time of required data,
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>GPS end time of required data, defaults to end of data found;
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>frametype</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>name of frametype in which this channel is stored, by default
+will search for all required frame types</p>
+</div></blockquote>
+<p><strong>frametype_match</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>regular expression to use for frametype matching</p>
+</div></blockquote>
+<p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>value with which to fill gaps in the source data, defaults to
+‘don’t fill gaps’</p>
+</div></blockquote>
+<p><strong>dtype</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a>, or <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a></p>
+<blockquote>
+<div><p>numeric data type for returned data, e.g. <code class="xref py py-obj docutils literal"><span class="pre">numpy.float</span></code>, or
+<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code>) pairs</p>
+</div></blockquote>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: <code class="xref py py-obj docutils literal"><span class="pre">1</span></code></p>
+<blockquote>
+<div><p>number of parallel processes to use, serial process by
+default.</p>
+</div></blockquote>
+<p><strong>allow_tape</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a></p>
+<blockquote>
+<div><p>allow reading from frame files on (slow) magnetic tape</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>print verbose output about NDS progress.</p>
+</div></blockquote>
+<p><strong>**readargs</strong></p>
+<blockquote class="last">
+<div><p>any other keyword arguments to be passed to <a class="reference internal" href="#gwpy.timeseries.StateVectorDict.read" title="gwpy.timeseries.StateVectorDict.read"><code class="xref py py-obj docutils literal"><span class="pre">read()</span></code></a></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.fromkeys">
+<code class="descname">fromkeys</code><span class="sig-paren">(</span><em>S</em><span class="optional">[</span>, <em>v</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; New ordered dictionary with keys from S.<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.fromkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>If not specified, the value defaults to None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>channels</em>, <em>start</em>, <em>end</em>, <em>pad=None</em>, <em>dtype=None</em>, <em>verbose=False</em>, <em>allow_tape=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L1215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve data for multiple channels from frames or NDS</p>
+<p>This method dynamically accesses either frames on disk, or a
+remote NDS2 server to find and return data for the given interval</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>channels</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+<blockquote>
+<div><p>required data channels.</p>
+</div></blockquote>
+<p><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>GPS start time of required data,
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>GPS end time of required data, defaults to end of data found;
+any input parseable by <a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-obj docutils literal"><span class="pre">to_gps</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>frametype</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>name of frametype in which this channel is stored, by default
+will search for all required frame types</p>
+</div></blockquote>
+<p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>value with which to fill gaps in the source data, only used if
+gap is not given, or <code class="xref py py-obj docutils literal"><span class="pre">gap='pad'</span></code> is given</p>
+</div></blockquote>
+<p><strong>dtype</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.dtype</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a>, or <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a></p>
+<blockquote>
+<div><p>numeric data type for returned data, e.g. <code class="xref py py-obj docutils literal"><span class="pre">numpy.float</span></code>, or
+<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code>) pairs</p>
+</div></blockquote>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: <code class="xref py py-obj docutils literal"><span class="pre">1</span></code></p>
+<blockquote>
+<div><p>number of parallel processes to use, serial process by
+default.</p>
+</div></blockquote>
+<p><strong>allow_tape</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a></p>
+<blockquote>
+<div><p>allow the use of frames that are held on tape, default is <a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">None</span></code></a>
+to attempt to allow the <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch" title="gwpy.timeseries.TimeSeries.fetch"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.fetch</span></code></a> method to
+intelligently select a server that doesn’t use tapes for
+data storage (doesn’t always work), but to eventually allow
+retrieving data from tape if required</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>print verbose output about NDS progress.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote class="last">
+<div><p>other keyword arguments to pass to either
+<code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict.find</span></code> (for direct GWF file access) or
+<code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict.fetch</span></code> for remote NDS2 access</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.has_key">
+<code class="descname">has_key</code><span class="sig-paren">(</span><em>k</em><span class="sig-paren">)</span> &#x2192; True if D has a key k, else False<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of (key, value) pairs in od<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.iteritems">
+<code class="descname">iteritems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd><p>od.iteritems -&gt; an iterator over the (key, value) pairs in od</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.iterkeys">
+<code class="descname">iterkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an iterator over the keys in od<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.itervalues">
+<code class="descname">itervalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>od.itervalues -&gt; an iterator over the values in od</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of keys in od<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>label='key'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L1311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data for this <code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>labelling system to use, or fixed label for all elements
+Special values include</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">'key'</span></code>: use the key of the <code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesBaseDict</span></code>,</li>
+<li><code class="docutils literal"><span class="pre">'name'</span></code>: use the <code class="xref py py-attr docutils literal"><span class="pre">name</span></code> of each element</li>
+</ul>
+<p>If anything else, that fixed label will be used for all lines.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote class="last">
+<div><p>all other keyword arguments are passed to the plotter as
+appropriate</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.pop">
+<code class="descname">pop</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; v, remove specified key and return the corresponding<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>value.  If key is not found, d is returned if given, otherwise KeyError
+is raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.popitem">
+<code class="descname">popitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; (k, v), return and remove a (key, value) pair.<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.popitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pairs are returned in LIFO order if last is true or FIFO order if false.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.prepend">
+<code class="descname">prepend</code><span class="sig-paren">(</span><em>other</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L913"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.prepend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepend the dict <code class="docutils literal"><span class="pre">other</span></code> to this one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>the container to prepend to this one</p>
+</div></blockquote>
+<p><strong>copy</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if <a class="reference external" href="https://docs.python.org/2/library/constants.html#True" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> copy data from <code class="docutils literal"><span class="pre">other</span></code> before storing, only
+affects those keys in <code class="docutils literal"><span class="pre">other</span></code> that aren’t in <code class="docutils literal"><span class="pre">self</span></code></p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote class="last">
+<div><p>other keyword arguments to send to <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.prepend" title="gwpy.timeseries.TimeSeries.prepend"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.prepend</span></code></a></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.prepend" title="gwpy.timeseries.TimeSeries.prepend"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries.prepend</span></code></a></dt>
+<dd>for details of the underlying series prepend operation</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="gwpy.timeseries.StateVectorDict.read">
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/statevector.py#L868"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data for multiple bit vector channels into a <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
+<blockquote>
+<div><p>a single file path <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, or a <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a> containing
+a contiguous list of files.</p>
+</div></blockquote>
+<p><strong>channels</strong> : <code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+<blockquote>
+<div><p>a list of channels to read from the source.</p>
+</div></blockquote>
+<p><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> optional</p>
+<blockquote>
+<div><p>GPS start time of required data, anything parseable by
+<a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-meth docutils literal"><span class="pre">to_gps()</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>GPS end time of required data, anything parseable by
+<a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-meth docutils literal"><span class="pre">to_gps()</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>bits</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">lists</span></code>, <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a>, optional</p>
+<blockquote>
+<div><p>the ordered list of interesting bit lists for each channel,
+or a <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) pairs</p>
+</div></blockquote>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</div></blockquote>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: <code class="docutils literal"><span class="pre">1</span></code></p>
+<blockquote>
+<div><p>number of parallel processes to use, serial process by
+default.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Parallel frame reading, via the <code class="docutils literal"><span class="pre">nproc</span></code> keyword argument,
+is only available when giving a <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a> of
+frames, or using the <code class="docutils literal"><span class="pre">format='cache'</span></code> keyword argument.</p>
+</div>
+</div></blockquote>
+<p><strong>gap</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>how to handle gaps in the cache, one of</p>
+<ul class="simple">
+<li>‘ignore’: do nothing, let the undelying reader method handle it</li>
+<li>‘warn’: do nothing except print a warning to the screen</li>
+<li>‘raise’: raise an exception upon finding a gap (default)</li>
+<li>‘pad’: insert a value to fill the gaps</li>
+</ul>
+</div></blockquote>
+<p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>value with which to fill gaps in the source data, only used if
+gap is not given, or <code class="xref py py-obj docutils literal"><span class="pre">gap='pad'</span></code> is given</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>statevectordict</strong> : <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></p>
+<blockquote class="last">
+<div><p>a <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <a class="reference internal" href="gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>) pairs. The keys
+are guaranteed to be the ordered list <code class="xref py py-obj docutils literal"><span class="pre">channels</span></code> as given.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="12%" />
+<col width="15%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Read</th>
+<th class="head">Write</th>
+<th class="head">Auto-identify</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>gwf.framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf.lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>hdf5</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.resample">
+<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L965"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample items in this dict.</p>
+<p>This operation over-writes items inplace.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>either a <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (channel, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>) pairs for key-wise
+resampling, or a single float/int to resample all items.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote class="last">
+<div><p>other keyword arguments to pass to each item’s resampling
+method.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.setdefault">
+<code class="descname">setdefault</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; od.get(k,d), also set od[k]=d if k not in od<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="optional">[</span><em>E</em>, <span class="optional">]</span><em>**F</em><span class="sig-paren">)</span> &#x2192; None.  Update D from mapping/iterable E and F.<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
+If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
+In either case, this is followed by: for k, v in F.items(): D[k] = v</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.values">
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of values in od<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.viewitems">
+<code class="descname">viewitems</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on od's items<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.viewitems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.viewkeys">
+<code class="descname">viewkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on od's keys<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.viewkeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.viewvalues">
+<code class="descname">viewvalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an object providing a view on od's values<a class="headerlink" href="#gwpy.timeseries.StateVectorDict.viewvalues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.StateVectorDict.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/core.py#L853"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> to a file</p>
+<p>Arguments and keywords depend on the output format, see the
+online documentation for full details for each format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>target</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>output filename</p>
+</div></blockquote>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote class="last">
+<div><p>output format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="12%" />
+<col width="15%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Read</th>
+<th class="head">Write</th>
+<th class="head">Auto-identify</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>gwf.framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf.lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>hdf5</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gwpy.timeseries.StateVectorDict.EntryClass">
+<code class="descname">EntryClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/statevector.py#L353"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVectorDict.EntryClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-class docutils literal"><span class="pre">StateVector</span></code></a></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/bba71af93283b55563a4faab3c4b20cfe4812890/gwpy/timeseries/statevector.py#L868"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Read data for multiple bit vector channels into a <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
+<blockquote>
+<div><p>a single file path <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, or a <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a> containing
+a contiguous list of files.</p>
+</div></blockquote>
+<p><strong>channels</strong> : <code class="xref py py-obj docutils literal"><span class="pre">ChannelList</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code></p>
+<blockquote>
+<div><p>a list of channels to read from the source.</p>
+</div></blockquote>
+<p><strong>start</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> optional</p>
+<blockquote>
+<div><p>GPS start time of required data, anything parseable by
+<a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-meth docutils literal"><span class="pre">to_gps()</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>end</strong> : <code class="xref py py-obj docutils literal"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>GPS end time of required data, anything parseable by
+<a class="reference internal" href="../time/index.html#gwpy.time.to_gps" title="gwpy.time.to_gps"><code class="xref py py-meth docutils literal"><span class="pre">to_gps()</span></code></a> is fine</p>
+</div></blockquote>
+<p><strong>bits</strong> : <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">lists</span></code>, <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a>, optional</p>
+<blockquote>
+<div><p>the ordered list of interesting bit lists for each channel,
+or a <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>) pairs</p>
+</div></blockquote>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</div></blockquote>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: <code class="docutils literal"><span class="pre">1</span></code></p>
+<blockquote>
+<div><p>number of parallel processes to use, serial process by
+default.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Parallel frame reading, via the <code class="docutils literal"><span class="pre">nproc</span></code> keyword argument,
+is only available when giving a <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a> of
+frames, or using the <code class="docutils literal"><span class="pre">format='cache'</span></code> keyword argument.</p>
+</div>
+</div></blockquote>
+<p><strong>gap</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>how to handle gaps in the cache, one of</p>
+<ul class="simple">
+<li>‘ignore’: do nothing, let the undelying reader method handle it</li>
+<li>‘warn’: do nothing except print a warning to the screen</li>
+<li>‘raise’: raise an exception upon finding a gap (default)</li>
+<li>‘pad’: insert a value to fill the gaps</li>
+</ul>
+</div></blockquote>
+<p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>value with which to fill gaps in the source data, only used if
+gap is not given, or <code class="xref py py-obj docutils literal"><span class="pre">gap='pad'</span></code> is given</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>statevectordict</strong> : <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a></p>
+<blockquote class="last">
+<div><p>a <a class="reference internal" href="#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal"><span class="pre">StateVectorDict</span></code></a> of (<code class="xref py py-obj docutils literal"><span class="pre">channel</span></code>, <a class="reference internal" href="gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>) pairs. The keys
+are guaranteed to be the ordered list <code class="xref py py-obj docutils literal"><span class="pre">channels</span></code> as given.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="12%" />
+<col width="15%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Read</th>
+<th class="head">Write</th>
+<th class="head">Auto-identify</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>gwf.framecpp</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>gwf.lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>hdf5</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>lalframe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
