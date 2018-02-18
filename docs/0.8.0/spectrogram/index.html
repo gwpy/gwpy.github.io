@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The Spectrogram &#8212; GWpy 0.8.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spectrogram" href="../api/gwpy.spectrogram.Spectrogram.html" />
+    <link rel="prev" title="SpectralVariance" href="../api/gwpy.frequencyseries.SpectralVariance.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../api/gwpy.frequencyseries.SpectralVariance.html" title="Previous Chapter: SpectralVariance"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; SpectralVariance</span>
+    </a>
+  </li>
+  <li>
+    <a href="../api/gwpy.spectrogram.Spectrogram.html" title="Next Chapter: Spectrogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Spectrogram &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a><ul>
+<li><a class="reference internal" href="#calculating-a-spectrogram-from-a-timeseries">Calculating a <code class="docutils literal"><span class="pre">Spectrogram</span></code> from a <code class="docutils literal"><span class="pre">TimeSeries</span></code></a></li>
+<li><a class="reference internal" href="#plotting-a-spectrogram">Plotting a <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+<li><a class="reference internal" href="#spectrogram-applications"><code class="docutils literal"><span class="pre">Spectrogram</span></code> applications</a></li>
+<li><a class="reference internal" href="#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/spectrogram/index.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="the-spectrogram">
+<span id="gwpy-spectrogram"></span><h1>The <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a><a class="headerlink" href="#the-spectrogram" title="Permalink to this headline">¶</a></h1>
+<p>While the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> allows us to study how the amplitude of a signal changes over time, and the <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> allows us to study how that amplitude changes over frequency, the time-frequency <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> allows us to track the evolution of the <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a> over over time.</p>
+<p>This object is a 2-dimensional array, essentially a stacked set of spectra, one per unit time.</p>
+<p>As always, a <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> can be generated from any abitrary data sequence, but here the required metadata are a combination of those required for the <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code> and <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">specgram</span> <span class="o">=</span> <span class="n">Spectrogram</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)),</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">1000000000</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">f0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">specgram</span><span class="p">)</span>
+<span class="go">Spectrogram([[ 0.58030742  0.94586261  0.79559404 ...,  0.25253688  0.61626489</span>
+<span class="go">               0.22785403]</span>
+<span class="go">             [ 0.95930736  0.93154594  0.13234058 ...,  0.13920997  0.94432426</span>
+<span class="go">               0.29442085]</span>
+<span class="go">             [ 0.66572174  0.77702177  0.8900096  ...,  0.18828231  0.81440898</span>
+<span class="go">               0.97455031]</span>
+<span class="go">             ...,</span>
+<span class="go">             [ 0.46696636  0.72475187  0.17941277 ...,  0.19095158  0.83843501</span>
+<span class="go">               0.92154324]</span>
+<span class="go">             [ 0.81492468  0.01945053  0.77665596 ...,  0.73642962  0.78723728</span>
+<span class="go">               0.20995951]</span>
+<span class="go">             [ 0.35161785  0.79137264  0.50710421 ...,  0.39068193  0.61551753</span>
+<span class="go">               0.74846848]],</span>
+<span class="go">            name: None,</span>
+<span class="go">            unit: None,</span>
+<span class="go">            epoch: 2011-09-14 01:46:59.000,</span>
+<span class="go">            dt: 1 s,</span>
+<span class="go">            f0: 0 Hz,</span>
+<span class="go">            df: 1 Hz,</span>
+<span class="go">            logf: False)</span>
+</pre></div>
+</div>
+<p>The full set of metadata that can be provided is as follows:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td>Name for this data set</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unit</span></code></td>
+<td>The physical unit of these data</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.epoch" title="gwpy.spectrogram.Spectrogram.epoch"><code class="xref py py-obj docutils literal"><span class="pre">epoch</span></code></a></td>
+<td>Starting GPS epoch for this <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.dt" title="gwpy.spectrogram.Spectrogram.dt"><code class="xref py py-obj docutils literal"><span class="pre">dt</span></code></a></td>
+<td>Time-spacing for this <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.f0" title="gwpy.spectrogram.Spectrogram.f0"><code class="xref py py-obj docutils literal"><span class="pre">f0</span></code></a></td>
+<td>Starting frequency for this <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.df" title="gwpy.spectrogram.Spectrogram.df"><code class="xref py py-obj docutils literal"><span class="pre">df</span></code></a></td>
+<td>Frequency spacing of this <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="calculating-a-spectrogram-from-a-timeseries">
+<h2>Calculating a <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> from a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#calculating-a-spectrogram-from-a-timeseries" title="Permalink to this headline">¶</a></h2>
+<p>The time-frequency <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> of a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> can be calculated using the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">spectrogram()</span></code></a>.
+We can extend previous examples of plotting a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> with calculation of a <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> with a 20-second stride:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
+<span class="n">specgram</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plotting-a-spectrogram">
+<span id="gwpy-spectrogram-plot"></span><h2>Plotting a <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a><a class="headerlink" href="#plotting-a-spectrogram" title="Permalink to this headline">¶</a></h2>
+<p>Like the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal"><span class="pre">FrequencySeries</span></code></a>, the <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> has a convenient <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method, allowing us to view the data.
+We can extend the previous time-series example to include a plot:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="n">gwdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;September 16 2010 06:40&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;September 16 2010 06:50&#39;</span><span class="p">)</span>
+<span class="n">specgram</span> <span class="o">=</span> <span class="n">gwdata</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">specgram</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">1e-23</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1e-19</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;GW strain ASD [strain/$\sqrt{\mathrm{Hz}}$]&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../spectrogram/spectrogram_plot.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/spectrogram_plot.png" src="../_images/spectrogram_plot.png" />
+</div>
+</div>
+<div class="section" id="spectrogram-applications">
+<h2><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> applications<a class="headerlink" href="#spectrogram-applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/filtering.html">Filtering frequency-domain data</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+<td>A 2D array holding a spectrogram of time-frequency data</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
