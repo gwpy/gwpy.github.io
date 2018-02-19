@@ -1,0 +1,6 @@
+plot = data.plot()
+plot.add_timeseries(white, newax=True, sharex=plot.axes[0])
+plot.axes[0].set_xlabel('')
+plot.axes[0].set_ylabel('Y-arm power [counts]', fontsize=16)
+plot.axes[1].set_ylabel('Whitened amplitude', fontsize=16)
+plot.show()

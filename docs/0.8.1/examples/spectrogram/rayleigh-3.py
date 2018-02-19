@@ -1,0 +1,7 @@
+plot = rayleigh.plot(norm='log', vmin=0.25, vmax=4)
+ax = plot.gca()
+ax.set_yscale('log')
+ax.set_ylim(30, 1500)
+ax.set_title('Sensitivity of LIGO-Livingston around GW151226')
+plot.add_colorbar(cmap='coolwarm', label='Rayleigh statistic')
+plot.show()
