@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.7.0+131.gcce0b9e6 documentation</title>
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.8.1+46.g8effb090 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.7.0+131.gcce0b9e6',
+        VERSION:     '0.8.1+46.g8effb090',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.7.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -313,7 +313,7 @@ To force all columns to have real <a class="reference external" href="https://do
 </pre></div>
 </div>
 <p>Because <code class="docutils literal"><span class="pre">LIGO_LW</span></code> isn’t the only scheme of XML, the <code class="docutils literal"><span class="pre">format</span></code> keyword is required for all <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table.write" title="gwpy.table.Table.write"><code class="xref py py-obj docutils literal"><span class="pre">Table.write()</span></code></a> operations.</p>
-<p>If the target file already exists, an <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.IOError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">IOError</span></code></a> will be raised, use <code class="docutils literal"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>If the target file already exists, an <code class="xref py py-class docutils literal"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
 <p>To write a table to an existing file, use <code class="docutils literal"><span class="pre">append=True</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ligolw&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -354,7 +354,7 @@ The analysis uses the ROOT framework for most data products, but also produces A
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal"><span class="pre">treename=None</span></code> is given (default), a single tree will be read if only one exists in the file, otherwise a <code class="xref py py-obj docutils literal"><span class="pre">ValueError</span></code> will be raised.</p>
+<p>If <code class="docutils literal"><span class="pre">treename=None</span></code> is given (default), a single tree will be read if only one exists in the file, otherwise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">ValueError</span></code></a> will be raised.</p>
 <p>To specify the branches to read, use the <code class="docutils literal"><span class="pre">branches</span></code> keyword argument:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">,</span> <span class="n">branches</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">])</span>
 </pre></div>
@@ -378,7 +378,7 @@ The analysis uses the ROOT framework for most data products, but also produces A
 <div class="section" id="pycbc-live-hdf5">
 <span id="gwpy-table-io-pycbc-live"></span><h2>PyCBC Live (HDF5)<a class="headerlink" href="#pycbc-live-hdf5" title="Permalink to this headline">¶</a></h2>
 <p><strong>Additional dependencies:</strong> <a class="reference external" href="http://docs.h5py.org/en/latest/"><code class="xref py py-obj docutils literal"><span class="pre">h5py</span></code></a></p>
-<p>PyCBC Live is a low-latency search for gravitational waves from compact binary coalescences, built from the <a class="reference external" href="https://ligo-cbc.github.io/"><a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#module-pycbc" title="(in PyCBC v1.9.1)"><code class="xref py py-obj docutils literal"><span class="pre">pycbc</span></code></a></a> analysis package.
+<p>PyCBC Live is a low-latency search for gravitational waves from compact binary coalescences, built from the <a class="reference external" href="https://ligo-cbc.github.io/"><a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#module-pycbc" title="(in PyCBC v1.9.2)"><code class="xref py py-obj docutils literal"><span class="pre">pycbc</span></code></a></a> analysis package.
 This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users only) in HDF5 format, containing tables of events; each column in the table is recorded as a separate HDF5 Dataset.</p>
 <div class="section" id="id6">
 <h3>Reading<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
@@ -398,7 +398,7 @@ Supported processed columns are:</p>
 </ul>
 <p>These can be specified without having to specify any of the input columns.</p>
 <p>Additionally, PyCBC HDF5 table Groups include extra datasets that aren’t part of the table, e.g. <code class="docutils literal"><span class="pre">'psd'</span></code>.
-These can be included in the returned <code class="xref py py-obj docutils literal"><span class="pre">EventTable.meta</span></code> <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> via the keyword <code class="docutils literal"><span class="pre">extended_metadata=True</span></code> (default), or excluded with <code class="docutils literal"><span class="pre">extended_metadata=False</span></code>).</p>
+These can be included in the returned <code class="xref py py-obj docutils literal"><span class="pre">EventTable.meta</span></code> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> via the keyword <code class="docutils literal"><span class="pre">extended_metadata=True</span></code> (default), or excluded with <code class="docutils literal"><span class="pre">extended_metadata=False</span></code>).</p>
 </div>
 <div class="section" id="id7">
 <h3>Writing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
@@ -948,13 +948,13 @@ name (e.g. <code class="docutils literal"><span class="pre">ascii.aastex</span><
 <p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal"><span class="pre">EventTable.read</span></code></a> method can understand <em>all</em> of the above file formats (auto-identify is <strong>not</strong> inherited), and the following:</p>
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descclassname">EventTable.</code><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/cce0b9e6c26ad16f644bc069beb8c455cae91e5c/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descclassname">EventTable.</code><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/8effb0901921a9df0ae94011dc55c4fae3ddc55b/gwpy/table/table.py#L81"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal"><span class="pre">EventTable</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/glue/glue.lal.Cache-class.html" title="glue.lal.Cache class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal"><span class="pre">Cache</span></code></a></p>
 <blockquote>
 <div><p>file or list of files from which to read events</p>
 </div></blockquote>
@@ -963,31 +963,31 @@ name (e.g. <code class="docutils literal"><span class="pre">ascii.aastex</span><
 <div><p>other positional arguments will be passed directly to the
 underlying reader method for the given format</p>
 </div></blockquote>
-<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, optional</p>
 <blockquote>
 <div><p>the format of the given source files; if not given, an attempt
 will be made to automatically identify the format</p>
 </div></blockquote>
-<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, or <code class="xref py py-obj docutils literal"><span class="pre">list</span></code> of <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>, or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <blockquote>
 <div><p>one or more column filters with which to downselect the
 returned table rows as they as read, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5'</span></code>;
 multiple selections should be connected by ‘ &amp;&amp; ‘, or given as
-a <code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5</span> <span class="pre">&amp;&amp;</span> <span class="pre">frequency</span> <span class="pre">&lt;</span> <span class="pre">1000'</span></code> or
+a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a>, e.g. <code class="docutils literal"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5</span> <span class="pre">&amp;&amp;</span> <span class="pre">frequency</span> <span class="pre">&lt;</span> <span class="pre">1000'</span></code> or
 <code class="docutils literal"><span class="pre">['snr</span> <span class="pre">&gt;</span> <span class="pre">5',</span> <span class="pre">'frequency</span> <span class="pre">&lt;</span> <span class="pre">1000']</span></code></p>
 </div></blockquote>
-<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: 1</p>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>, optional, default: 1</p>
 <blockquote>
 <div><p>number of CPUs to use for parallel reading of multiple files</p>
 </div></blockquote>
-<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">bool</span></code></a>, optional</p>
 <blockquote>
-<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/2/library/constants.html#False" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></p>
+<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">False</span></code></a></p>
 </div></blockquote>
 <p><strong>.. note::</strong></p>
 <blockquote>
 <div><p>Keyword arguments other than those listed here may be required
-depending on the <a class="reference external" href="https://docs.python.org/2/library/functions.html#format" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></p>
+depending on the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -999,7 +999,7 @@ depending on the <a class="reference external" href="https://docs.python.org/2/l
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>astropy.io.registry.IORegistryError</strong></p>
 <blockquote class="last">
-<div><p>if the <a class="reference external" href="https://docs.python.org/2/library/functions.html#format" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a> cannot be automatically identified</p>
+<div><p>if the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a> cannot be automatically identified</p>
 </div></blockquote>
 </td>
 </tr>

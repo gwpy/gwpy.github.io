@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Reading and writing time-domain data &#8212; GWpy 0.7.0+131.gcce0b9e6 documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 0.8.1+46.g8effb090 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.7.0+131.gcce0b9e6',
+        VERSION:     '0.8.1+46.g8effb090',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.7.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -266,12 +266,12 @@ Those formats are:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">resample</span></code></td>
-<td><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
 <td>resample the data to a different number of
 samples per second</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">dtype</span></code></td>
-<td><a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
 <td>cast the input data to a different data type</td>
 </tr>
 </tbody>
@@ -288,7 +288,7 @@ samples per second</td>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-GW100916-968654552-1.gwf&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>In this case the <code class="docutils literal"><span class="pre">resample</span></code> and <code class="docutils literal"><span class="pre">dtype</span></code> keywords can be given as a single value used for all data channels, or a <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> mapping an argument for each data channel name:</p>
+<p>In this case the <code class="docutils literal"><span class="pre">resample</span></code> and <code class="docutils literal"><span class="pre">dtype</span></code> keywords can be given as a single value used for all data channels, or a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a> mapping an argument for each data channel name:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-GW100916-968654552-1.gwf&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">],</span>
 <span class="gp">... </span>                           <span class="n">resample</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;H1:LDAS-STRAIN&#39;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">})</span>
 </pre></div>
@@ -338,7 +338,7 @@ samples per second</td>
 </pre></div>
 </div>
 <p>The output argument (<code class="docutils literal"><span class="pre">'output.hdf'</span></code>) can be a file path, an open <code class="xref py py-obj docutils literal"><span class="pre">h5py.File</span></code> object, or a <code class="xref py py-obj docutils literal"><span class="pre">h5py.Group</span></code> object, to append data to an existing file.</p>
-<p>If the target file already exists, an <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.IOError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">IOError</span></code></a> will be raised, use <code class="docutils literal"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>If the target file already exists, an <code class="xref py py-class docutils literal"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
 <p>To write a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> to an existing file, use <code class="docutils literal"><span class="pre">append=True</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.hdf&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
