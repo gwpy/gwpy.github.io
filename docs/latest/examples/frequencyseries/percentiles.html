@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>1. Plotting a Spectrogram &#8212; GWpy 0.8.1+96.g1d8f8dcf documentation</title>
+    <title>3. Plotting an averaged ASD with percentiles. &#8212; GWpy 0.8.1+96.g1d8f8dcf documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
@@ -29,8 +29,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Plotting a normalised Spectrogram" href="ratio.html" />
-    <link rel="prev" title="Spectrogram examples" href="index.html" />
+    <link rel="next" title="4. Calculating the coherence between two channels" href="coherence.html" />
+    <link rel="prev" title="2. Calculating and plotting a SpectralVariance histogram" href="variance.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -111,11 +111,11 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: Spectrogram examples"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Spectrogram e...</span>
+    <a href="variance.html" title="Previous Chapter: 2. Calculating and plotting a SpectralVariance histogram"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Calculatin...</span>
     </a>
   </li>
   <li>
-    <a href="ratio.html" title="Next Chapter: 2. Plotting a normalised Spectrogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Plotting a... &raquo;</span>
+    <a href="coherence.html" title="Next Chapter: 4. Calculating the coherence between two channels"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Calculatin... &raquo;</span>
     </a>
   </li>
               
@@ -143,11 +143,11 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">1. Plotting a <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+<li><a class="reference internal" href="#">3. Plotting an averaged ASD with percentiles.</a></li>
 </ul>
 
 <div id="sourcelink">
-  <a href="../../_sources/examples/spectrogram/plot.rst.txt"
+  <a href="../../_sources/examples/frequencyseries/percentiles.rst.txt"
      rel="nofollow">Source</a>
 </div>
 <form action="../../search.html" method="get">
@@ -161,53 +161,59 @@
       </div>
     <div class="col-md-9 content">
       
-  <div class="section" id="plotting-a-spectrogram">
-<span id="gwpy-example-spectrogram-plot"></span><h1>1. Plotting a <code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code><a class="headerlink" href="#plotting-a-spectrogram" title="Permalink to this headline">¶</a></h1>
-<p>One of the most useful methods of visualising gravitational-wave data is to
-use a spectrogram, highlighting the frequency-domain content of some data
-over a number of time steps.</p>
-<p>For this example we can use the public data around the GW150914 detection.</p>
-<p>First, we import the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> and call
-<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch_open_data()</span></code></a> the download the strain
-data for the LIGO-Hanford interferometer</p>
+  <div class="section" id="plotting-an-averaged-asd-with-percentiles">
+<span id="gwpy-example-frequencyseries-percentiles"></span><h1>3. Plotting an averaged ASD with percentiles.<a class="headerlink" href="#plotting-an-averaged-asd-with-percentiles" title="Permalink to this headline">¶</a></h1>
+<p>As we have seen in <a class="reference internal" href="hoff.html#gwpy-example-frequencyseries-hoff"><span class="std std-ref">Calculating and plotting a FrequencySeries</span></a>, the Amplitude
+Spectral Density (ASD) is a key indicator of frequency-domain sensitivity for
+a gravitational-wave detector.</p>
+<p>However, the ASD doesn’t allow you to see how much the sensitivity varies
+over time.
+One tool for that is the <a class="reference internal" href="../../spectrogram/index.html#gwpy-spectrogram"><span class="std std-ref">spectrogram</span></a>, while another
+is simply to show percentiles of a number of ASD measurements.</p>
+<p>In this example we calculate the median ASD over 2048-seconds surrounding
+the GW178017 event, and also the 5th and 95th percentiles of the ASD, and
+plot them on a single figure.</p>
+<p>First, as always, we get the data using <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.fetch_open_data()</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
-    <span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:45&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:55&#39;</span><span class="p">)</span>
+<span class="n">hoft</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1187007040</span><span class="p">,</span> <span class="mi">1187009088</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s1">&#39;C00&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next, we can calculate a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> using the
-<code class="xref py py-meth docutils literal"><span class="pre">spectrogram()</span></code> method of the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> over a 2-second stride
-with a 1-second FFT and # .5-second overlap (50%):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">specgram</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<p>Next we calculate a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code></a> by calculating
+a number of ASDs, using the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-meth docutils literal"><span class="pre">spectrogram2()</span></code></a>
+method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sg</span> <span class="o">=</span> <span class="n">hoft</span><span class="o">.</span><span class="n">spectrogram2</span><span class="p">(</span><span class="n">fftlength</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.spectrogram()</span></code></a> returns a Power Spectral Density (PSD)
-<a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> by default, so we use the <code class="docutils literal"><span class="pre">**</span> <span class="pre">(1/2.)</span></code>
-to convert this into a (more familiar) Amplitude Spectral Density.</p>
+<p>From this we can trivially extract the median, 5th and 95th percentiles:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">min_</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">max_</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span>
+</pre></div>
 </div>
-<p>Finally, we can make a plot using the
-<a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">specgram</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">5e-24</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1e-19</span><span class="p">)</span>
+<p>Finally, we can make plot, using
+<a class="reference internal" href="../../plotter/api.html#gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries_mmm" title="gwpy.plotter.FrequencySeriesAxes.plot_frequencyseries_mmm"><code class="xref py py-meth docutils literal"><span class="pre">plot_frequencyseries_mmm()</span></code></a> to
+display the 5th and 95th percentiles as a shaded region around the median:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">FrequencySeriesPlot</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">FrequencySeriesPlot</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_spectrum_mmm</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">min_</span><span class="o">=</span><span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="o">=</span><span class="n">max_</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gwpy:ligo-hanford&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span>
-    <span class="n">label</span><span class="o">=</span><span class="s1">r&#39;Gravitational-wave amplitude [strain/$\sqrt{\mathrm{Hz}}$]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">3e-24</span><span class="p">,</span> <span class="mf">2e-20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">r&#39;Strain noise [1/\rtHz]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain noise variation around GW170817&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../examples/spectrogram/plot-3.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/frequencyseries/percentiles-4.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/plot-3.png" src="../../_images/plot-3.png" />
+<img alt="../../_images/percentiles-4.png" src="../../_images/percentiles-4.png" />
 </div>
-<p>This shows the relative stability of the interferometer sensitivity over
-the ten-minute span. Despite there being a gravitational-wave signal in the
-data, the resolution (and dynamic range) of the spectrogram make it
-impossible to see. The <a class="reference internal" href="ratio.html#gwpy-example-spectrogram-ratio"><span class="std std-ref">next example</span></a>
-shows you how to normalise a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a> to better
-see features in the most sensitive frequency band.</p>
+<p>Now we can see that the ASD varies by factors of a few across most of the
+frequency band, with notable exceptions, e.g. around the 60-Hz power line
+harmonics (60 Hz, 120 Hz, 180 Hz, …) where the noise is very stable.</p>
 </div>
 
 

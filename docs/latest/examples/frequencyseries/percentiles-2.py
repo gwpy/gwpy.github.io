@@ -1,0 +1,1 @@
+sg = hoft.spectrogram2(fftlength=4, overlap=2) ** (1/2.)
