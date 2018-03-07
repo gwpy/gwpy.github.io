@@ -1,7 +1,7 @@
 from gwpy.plotter import FrequencySeriesPlot
 plot = FrequencySeriesPlot()
 ax = plot.gca()
-ax.plot_spectrum_mmm(median, min_=min_, max_=max_, color='gwpy:ligo-hanford')
+ax.plot_mmm(median, min_=min_, max_=max_, color='gwpy:ligo-hanford')
 ax.set_xscale('log')
 ax.set_yscale('log')
 ax.set_xlim(10, 1500)
