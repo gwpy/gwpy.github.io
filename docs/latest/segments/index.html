@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Data-quality segments &#8212; GWpy 0.8.1+133.ge5393ec9 documentation</title>
+    <title>Data-quality segments &#8212; GWpy 0.8.1+141.g2ff69382 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.8.1+133.ge5393ec9',
+        VERSION:     '0.8.1+141.g2ff69382',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -145,6 +145,14 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Data-quality segments</a><ul>
 <li><a class="reference internal" href="#the-dataqualityflag">The <code class="docutils literal"><span class="pre">DataQualityFlag</span></code></a></li>
+<li><a class="reference internal" href="#combining-dataqualityflags">Combining <code class="docutils literal"><span class="pre">DataQualityFlag</span></code>s</a><ul>
+<li><a class="reference internal" href="#intersection">Intersection (<code class="docutils literal"><span class="pre">&amp;</span></code>)</a></li>
+<li><a class="reference internal" href="#union">Union (<code class="docutils literal"><span class="pre">|</span></code>)</a></li>
+<li><a class="reference internal" href="#subtraction">Subtraction (<code class="docutils literal"><span class="pre">-</span></code>)</a></li>
+<li><a class="reference internal" href="#addition">Addition (<code class="docutils literal"><span class="pre">+</span></code>)</a></li>
+<li><a class="reference internal" href="#inversion">Inversion (<code class="docutils literal"><span class="pre">~</span></code>)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#the-dataqualitydict">The <code class="docutils literal"><span class="pre">DataQualityDict</span></code></a></li>
 <li><a class="reference internal" href="#working-with-segments">Working with segments</a><ul>
 </ul>
@@ -220,6 +228,90 @@ Conversely, high seismic noise around the observatory buildings is recorded in a
 </tbody>
 </table>
 <p>By convention, the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name"><code class="xref py py-attr docutils literal"><span class="pre">name</span></code></a> is typically constructed of three colon-separated components: the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.ifo" title="gwpy.segments.DataQualityFlag.ifo"><code class="xref py py-attr docutils literal"><span class="pre">ifo</span></code></a>, <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.tag" title="gwpy.segments.DataQualityFlag.tag"><code class="xref py py-attr docutils literal"><span class="pre">tag</span></code></a>, and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.version" title="gwpy.segments.DataQualityFlag.version"><code class="xref py py-attr docutils literal"><span class="pre">version</span></code></a>, e.g. <code class="docutils literal"><span class="pre">L1:DMT-ANALYSIS_READY:1</span></code>.</p>
+</div>
+<div class="section" id="combining-dataqualityflags">
+<h2>Combining <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>s<a class="headerlink" href="#combining-dataqualityflags" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>s can be combined in a number of ways, using the standard python operators, e.g. <code class="xref py py-obj docutils literal"><span class="pre">&amp;</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">|</span></code>.</p>
+<div class="section" id="intersection">
+<h3>Intersection (<code class="docutils literal"><span class="pre">&amp;</span></code>)<a class="headerlink" href="#intersection" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>returns the intersection of both the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal"><span class="pre">known</span></code></a> and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="p">(</span><span class="n">known</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)],</span> <span class="n">active</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="p">(</span><span class="n">known</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)],</span> <span class="n">active</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 12)],</span>
+<span class="go">                 active=[[3 ... 5)</span>
+<span class="go">                         [10 ... 12)],</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+<p>This new flag represents times when both <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> were known and
+when both were active.</p>
+</div>
+<div class="section" id="union">
+<h3>Union (<code class="docutils literal"><span class="pre">|</span></code>)<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>returns the intersection of both the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal"><span class="pre">known</span></code></a> and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">              known=[[0 ... 15)],</span>
+<span class="go">              active=[[1 ... 7)</span>
+<span class="go">                      [10 ... 12)],</span>
+<span class="go">              description=None)&gt;</span>
+</pre></div>
+</div>
+<p>This new flag represents times when either <code class="docutils literal"><span class="pre">a</span></code> or <code class="docutils literal"><span class="pre">b</span></code> were known and when
+either was active.</p>
+</div>
+<div class="section" id="subtraction">
+<h3>Subtraction (<code class="docutils literal"><span class="pre">-</span></code>)<a class="headerlink" href="#subtraction" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>returns the union of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal"><span class="pre">known</span></code></a> segments, and the difference
+of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal"><span class="pre">active</span></code></a> segment lists, e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 12)],</span>
+<span class="go">                 active=[[1 ... 3)],</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+<p>The new flag represents times when both <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> were <em>known</em>, but only <code class="docutils literal"><span class="pre">a</span></code> was active.</p>
+</div>
+<div class="section" id="addition">
+<h3>Addition (<code class="docutils literal"><span class="pre">+</span></code>)<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>This operation is the same as <span class="xref std std-ref">gwpy-segments-union</span>.</p>
+</div>
+<div class="section" id="inversion">
+<h3>Inversion (<code class="docutils literal"><span class="pre">~</span></code>)<a class="headerlink" href="#inversion" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">~</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>returns the same <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal"><span class="pre">known</span></code></a> segments, and the inverse <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 15)],</span>
+<span class="go">                 active=[[0 ... 1)</span>
+<span class="go">                         [12 ... 15)],</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+<p>The new flag represents times when the state of <code class="docutils literal"><span class="pre">a</span></code> was known, but it was not active.</p>
+</div>
 </div>
 <div class="section" id="the-dataqualitydict">
 <h2>The <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a><a class="headerlink" href="#the-dataqualitydict" title="Permalink to this headline">¶</a></h2>
