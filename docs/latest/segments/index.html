@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Data-quality segments &#8212; GWpy 0.8.1+161.g807f588d documentation</title>
+    <title>Data-quality segments &#8212; GWpy 0.8.1+187.g71717991 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.8.1+161.g807f588d',
+        VERSION:     '0.8.1+187.g71717991',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -151,6 +151,7 @@
 <li><a class="reference internal" href="#subtraction">Subtraction (<code class="docutils literal"><span class="pre">-</span></code>)</a></li>
 <li><a class="reference internal" href="#addition">Addition (<code class="docutils literal"><span class="pre">+</span></code>)</a></li>
 <li><a class="reference internal" href="#inversion">Inversion (<code class="docutils literal"><span class="pre">~</span></code>)</a></li>
+<li><a class="reference internal" href="#exclusive-or">Exclusive OR (<code class="docutils literal"><span class="pre">^</span></code>)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-dataqualitydict">The <code class="docutils literal"><span class="pre">DataQualityDict</span></code></a></li>
@@ -311,6 +312,23 @@ of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.
 </pre></div>
 </div>
 <p>The new flag represents times when the state of <code class="docutils literal"><span class="pre">a</span></code> was known, but it was not active.</p>
+</div>
+<div class="section" id="exclusive-or">
+<h3>Exclusive OR (<code class="docutils literal"><span class="pre">^</span></code>)<a class="headerlink" href="#exclusive-or" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>returns the intersection of <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal"><span class="pre">known</span></code></a> segments and the exclusive OR of <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">             known=[[0 ... 5)</span>
+<span class="go">                    [10 ... 12)],</span>
+<span class="go">             active=[[1 ... 3)</span>
+<span class="go">                     [5 ... 7)],</span>
+<span class="go">             description=None)&gt;</span>
+</pre></div>
+</div>
+<p>The new flag represents times when the state of both <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> are known, but exactly one of the flags was active.</p>
 </div>
 </div>
 <div class="section" id="the-dataqualitydict">
