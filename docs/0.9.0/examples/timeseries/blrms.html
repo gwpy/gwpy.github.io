@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Comparing seismic trends between LIGO sites &#8212; GWpy 0.9.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5. Plotting segments for a StateVector" href="statevector.html" />
+    <link rel="prev" title="3. Whitening a TimeSeries" href="whiten.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="whiten.html" title="Previous Chapter: 3. Whitening a TimeSeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. Whitening ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="statevector.html" title="Next Chapter: 5. Plotting segments for a StateVector"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Plotting s... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">4. Comparing seismic trends between LIGO sites</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/timeseries/blrms.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="comparing-seismic-trends-between-ligo-sites">
+<span id="gwpy-example-timeseries-blrms"></span><h1>4. Comparing seismic trends between LIGO sites<a class="headerlink" href="#comparing-seismic-trends-between-ligo-sites" title="Permalink to this headline">¶</a></h1>
+<p>On Feb 13 2015 there was a massive earthquake in the Atlantic Ocean, that
+should have had an impact on LIGO operations, I’d like to find out.</p>
+<p>First: we import the objects we need, one for getting the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>
+</pre></div>
+</div>
+<p>and one for plotting the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">TimeSeriesPlot</span>
+</pre></div>
+</div>
+<p>Next we define the channels we want, namely the 0.03Hz-1Hz ground motion
+band-limited RMS channels (1-second average trends).
+We do this using string-replacement so we can substitute the interferometer
+prefix easily when we need to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">channels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:ISI-BS_ST1_SENSCOR_GND_STS_X_BLRMS_30M_100M.mean,s-trend&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:ISI-BS_ST1_SENSCOR_GND_STS_Y_BLRMS_30M_100M.mean,s-trend&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:ISI-BS_ST1_SENSCOR_GND_STS_Z_BLRMS_30M_100M.mean,s-trend&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>At last we can <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> 12 hours of data for each
+interferometer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">lho</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="n">c</span> <span class="o">%</span> <span class="s1">&#39;H1&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">],</span>
+                         <span class="s1">&#39;Feb 13 2015 16:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 14 2015 04:00&#39;</span><span class="p">)</span>
+<span class="n">llo</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="n">c</span> <span class="o">%</span> <span class="s1">&#39;L1&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">],</span>
+                         <span class="s1">&#39;Feb 13 2015 16:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb 14 2015 04:00&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next we can plot the data, with a separate <a class="reference internal" href="../../plotter/api.html#gwpy.plotter.Axes" title="gwpy.plotter.Axes"><code class="xref py py-obj docutils literal"><span class="pre">Axes</span></code></a> for each
+instrument:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">(</span><span class="n">lho</span><span class="p">,</span> <span class="n">llo</span><span class="p">)</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">axes</span>
+<span class="k">for</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;Hanford&#39;</span><span class="p">,</span> <span class="s1">&#39;Livingston&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$1-3$\,Hz motion [nm/s]&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Magnitude 7.1 earthquake impact on LIGO&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/timeseries/blrms-5.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/blrms-5.png" src="../../_images/blrms-5.png" />
+</div>
+<p>Here we have also customised the output by manually setting the legend
+entries, putting the interferometer label on the right-hand side, setting
+a logarithmic y-axis scale, adding a shared y-axis label on the left-hand
+side, and setting a title.</p>
+<p>As we can see, the earthquake had a huge impact on the observatories, severly
+imparing operations for several hours.</p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

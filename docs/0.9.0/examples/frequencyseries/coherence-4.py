@@ -1,0 +1,8 @@
+plot = coh.plot(figsize=[12, 6], label=None)
+ax = plot.gca()
+ax.set_xlabel('Frequency [Hz]')
+ax.set_ylabel('Coherence')
+ax.set_yscale('linear')
+ax.set_ylim(0, 1)
+ax.set_title('Coherence between PSL periscope motion and LIGO-Hanford strain data')
+plot.show()

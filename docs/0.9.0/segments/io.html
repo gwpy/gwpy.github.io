@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Reading/writing segments and flags &#8212; GWpy 0.9.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generating data-quality flags by thresholding" href="thresholding.html" />
+    <link rel="prev" title="The Segment Database" href="dqsegdb.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="dqsegdb.html" title="Previous Chapter: The Segment Database"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The Segment D...</span>
+    </a>
+  </li>
+  <li>
+    <a href="thresholding.html" title="Next Chapter: Generating data-quality flags by thresholding"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Generating da... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Reading/writing segments and flags</a><ul>
+<li><a class="reference internal" href="#ligo-lw-xml"><code class="docutils literal"><span class="pre">LIGO_LW</span></code> XML</a><ul>
+<li><a class="reference internal" href="#reading">Reading</a></li>
+<li><a class="reference internal" href="#writing">Writing</a></li>
+<li><a class="reference internal" href="#dataqualitydict"><code class="docutils literal"><span class="pre">DataQualityDict</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hdf5">HDF5</a><ul>
+<li><a class="reference internal" href="#id1">Reading</a></li>
+<li><a class="reference internal" href="#id2">Writing</a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal"><span class="pre">DataQualityDict</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#json">JSON</a><ul>
+<li><a class="reference internal" href="#id4">Reading</a></li>
+<li><a class="reference internal" href="#id5">Writing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/segments/io.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="reading-writing-segments-and-flags">
+<span id="gwpy-segments-io"></span><h1>Reading/writing segments and flags<a class="headerlink" href="#reading-writing-segments-and-flags" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal"><span class="pre">SegmentList</span></code></a>, <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>, and <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a> objects each include <code class="xref py py-meth docutils literal"><span class="pre">read()</span></code> and <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> methods to enable reading from and writing to a number of different file formats for segment-like objects.
+As with other classes in GWpy, the <code class="docutils literal"><span class="pre">format</span></code> keyword argument can be used to manually specify the input or output format, if the file extension isn’t obvious enough.</p>
+<p>The <code class="xref py py-meth docutils literal"><span class="pre">read()</span></code> and <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> methods take different arguments and keywords based on the input/output file format, see the following sections for details on reading/writing for each of the built-in formats. Those formats are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#gwpy-segments-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a></li>
+<li><a class="reference internal" href="#gwpy-segments-io-hdf5"><span class="std std-ref">HDF5</span></a></li>
+<li><a class="reference internal" href="#gwpy-segments-io-json"><span class="std std-ref">JSON</span></a></li>
+</ul>
+<div class="section" id="ligo-lw-xml">
+<span id="gwpy-segments-io-ligolw"></span><h2><code class="docutils literal"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Permalink to this headline">¶</a></h2>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal"><span class="pre">glue.ligolw</span></code></a></p>
+<p>The LIGO Scientific Collaboration uses a custom scheme of XML in which to
+store tabular data, called the <code class="docutils literal"><span class="pre">LIGO_LW</span></code> scheme.
+Complementing the scheme is a python library - <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal"><span class="pre">glue.ligolw</span></code></a> - which
+allows users to read and write all of the different types of tabular data
+produced by gravitational-wave searches.</p>
+<p>Segments are stored in <code class="docutils literal"><span class="pre">LIGO_LW</span></code> format using a trio of tables:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table name</th>
+<th class="head">Contents</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">segment_definer</span></code></td>
+<td>Definitions for each flag, including names and versions</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">segment_summary</span></code></td>
+<td>Known segments for each flag</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">segment</span></code></td>
+<td>Active segments for each flag</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="reading">
+<h3>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.read" title="gwpy.segments.DataQualityFlag.read"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityFlag.read()</span></code></a> method takes in the file path (or paths) and the name of the flag to read:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;segments.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will parse of each of three tables for references to the given name, returning the metadata and segments as a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>. The result may be something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">DataQualityFlag(&#39;L1:DMT-ANALYSIS_READY:1&#39;,</span>
+<span class="go">                known=[[1000000000 ... 1000000100)],</span>
+<span class="go">                active=[[1000000000 ... 1000000034)</span>
+<span class="go">                        [1000000065 ... 1000000100)],</span>
+<span class="go">                description=None)</span>
+</pre></div>
+</div>
+<p>This indicates a single ‘known’ segment starting at GPS time 1000000000, with two active segments.</p>
+<p><strong>These results are simulated, and do not actually indicate operating times of the LIGO-Livingston observatory.</strong></p>
+<p>The <code class="docutils literal"><span class="pre">coalesce=True</span></code> keyword argument can be used to combine overlapping segments into a single, longer segment.</p>
+</div>
+<div class="section" id="writing">
+<h3>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<p>To write a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> to file in <code class="docutils literal"><span class="pre">LIGO_LW</span></code> format, use the <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> method:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with <a class="reference internal" href="../table/io.html#gwpy-table-io-ligolw"><span class="std std-ref">writing tables</span></a>, if the target file already exists, an <code class="xref py py-class docutils literal"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>To write a table to an existing file, use <code class="docutils literal"><span class="pre">append=True</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.xml&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To replace the segment tables in an existing file, while preserving other tables, use <em>both</em> <code class="docutils literal"><span class="pre">append=True</span></code> and <code class="docutils literal"><span class="pre">overwrite=True</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Extra attributes can be written to the tables via the <code class="docutils literal"><span class="pre">attrs={}</span></code> keyword, all attributes are set for all three of the segment-related tables:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;process_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataqualitydict">
+<h3><a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a><a class="headerlink" href="#dataqualitydict" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a> <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict.read" title="gwpy.segments.DataQualityDict.read"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityDict.read()</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict.write" title="gwpy.segments.DataQualityDict.write"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityDict.write()</span></code></a> methods work in an almost identical manner, taking a list of flag names when reading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdict</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;segments.xml&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;H1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Identical arguments should be used relative to the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.write" title="gwpy.segments.DataQualityFlag.write"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityFlag.write()</span></code></a> method when writing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdict</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hdf5">
+<span id="gwpy-segments-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
+<p>GWpy uses HDF5 Groups to store a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a>, with each of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-attr docutils literal"><span class="pre">known</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal"><span class="pre">active</span></code></a> segment lists stored in a Dataset, and extra metadata stored in the Group’s attributes.</p>
+<div class="section" id="id1">
+<h3>Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To read a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> from an <code class="docutils literal"><span class="pre">HDF5</span></code>-format file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;segments.hdf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with reading other classes from HDF5, the <code class="docutils literal"><span class="pre">path</span></code> keyword should be used to specify the name of the HDF5 group that contains the given flag.</p>
+<p>The <code class="docutils literal"><span class="pre">coalesce=True</span></code> keyword can be used to <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.coalesce" title="gwpy.segments.DataQualityFlag.coalesce"><code class="xref py py-meth docutils literal"><span class="pre">coalesce()</span></code></a> the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-attr docutils literal"><span class="pre">known</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal"><span class="pre">active</span></code></a> segment lists before returning - by default the segments will be returned as read from the file.</p>
+</div>
+<div class="section" id="id2">
+<h3>Writing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>To write a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> to an <code class="docutils literal"><span class="pre">HDF5</span></code>-format file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with reading, the <code class="docutils literal"><span class="pre">path</span></code> keyword should be used to specify the name of the HDF5 group to which the given flag should be written.</p>
+<p>Alternatively, an HDF5 group can be passed directly to <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.write" title="gwpy.segments.DataQualityFlag.write"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> when writing multiple objects to the same file.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>As with <code class="docutils literal"><span class="pre">LIGO_LW</span></code> XML, the <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a> <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict.read" title="gwpy.segments.DataQualityDict.read"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityDict.read()</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict.write" title="gwpy.segments.DataQualityDict.write"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityDict.write()</span></code></a> methods work in an almost identical manner, taking a list of flag names when reading:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdict</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;segments.hdf5&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;H1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Identical arguments should be used relative to the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.write" title="gwpy.segments.DataQualityFlag.write"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityFlag.write()</span></code></a> method when writing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdict</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="json">
+<span id="gwpy-segments-io-json"></span><h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://wiki.ligo.org/DASWG/DQSEGDB"><code class="xref py py-obj docutils literal"><span class="pre">dqsegdb</span></code></a> client uses JSON as the intermediate format for returning information during queries.</p>
+<div class="section" id="id4">
+<h3>Reading<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>To read a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> from JSON, simply pass the path of the file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;segments.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.python.org/3/library/json.html#json.load" title="(in Python v3.6)"><code class="xref py py-func docutils literal"><span class="pre">json.load()</span></code></a> for acceptable keyword arguments options.</p>
+</div>
+<div class="section" id="id5">
+<h3>Writing<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>To write a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> to JSON:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-segments.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.python.org/3/library/json.html#json.dump" title="(in Python v3.6)"><code class="xref py py-func docutils literal"><span class="pre">json.dump()</span></code></a> for keyword arguments options.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

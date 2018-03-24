@@ -1,0 +1,7 @@
+plot = rates.plot(label='name')
+ax = plot.gca()
+ax.set_xlim(968654552, 968654562)
+ax.set_ylabel('Event rate [Hz]')
+ax.set_title('LIGO Hanford Observatory event rate for HW100916')
+ax.legend()
+plot.show()
