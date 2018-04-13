@@ -15,5 +15,5 @@ amp, phase = data.demodulate(331.3, stride=60)
 # and phase of the calibration line:
 
 from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(amp, phase, sep=True)
+plot = TimeSeriesPlot(amp, phase, sep=True, sharex=True)
 plot.show()

@@ -1,20 +1,19 @@
-from numpy.random import normal
-from scipy.signal import gausspulse
+# Demodulation is useful when trying to examine steady sinusoidal
+# signals we know to be contained within data. For instance,
+# we can download some data from LOSC to look at trends of the
+# amplitude and phase of Livingston's calibration line at 331.3 Hz:
+
 from gwpy.timeseries import TimeSeries
+data = TimeSeries.fetch_open_data('L1', 1131350417, 1131357617)
 
-# Generate a `TimeSeries` containing Gaussian noise sampled at 4096 Hz,
-# centred on GPS time 0, with a sine-Gaussian pulse ('glitch') at
-# 500 Hz:
+# We can demodulate the `TimeSeries` at 331.3 Hz with a stride of once
+# per minute:
 
-noise = TimeSeries(normal(loc=1, size=4096*4), sample_rate=4096, epoch=-2)
-glitch = TimeSeries(gausspulse(noise.times.value, fc=500) * 4, sample_rate=4096)
-data = noise + glitch
+amp, phase = data.demodulate(331.3, stride=60)
 
-# Compute and plot the Q-transform of these data:
+# We can then plot these trends to visualize changes in the amplitude
+# and phase of the calibration line:
 
-q = data.q_transform()
-plot = q.plot()
-ax = plot.gca()
-ax.set_xlim(-.2, .2)
-ax.set_epoch(0)
+from gwpy.plotter import TimeSeriesPlot
+plot = TimeSeriesPlot(amp, phase, sep=True, sharex=True)
 plot.show()
