@@ -1,29 +1,14 @@
-# We can prepare one second of Gaussian noise:
+# To see the effect of the Planck-taper window, we can taper a
+# sinusoidal `TimeSeries` at both ends:
 
-from numpy import random
+import numpy
 from gwpy.timeseries import TimeSeries
-noise = TimeSeries(random.normal(scale=.1, size=16384),
-                   sample_rate=16384)
+t = numpy.linspace(0, 1, 2048)
+series = TimeSeries(numpy.cos(10.5*numpy.pi*t), times=t)
+tapered = series.taper()
 
-# Then we can download a simulation of the GW150914 waveform from LOSC:
-
-from astropy.utils.data import get_readable_fileobj
-source = 'https://losc.ligo.org/s/events/GW150914/P150914/'
-url = '%s/fig2-unfiltered-waveform-H.txt' % source
-with get_readable_fileobj(url) as f:
-    signal = TimeSeries.read(f, format='txt').taper()
-signal.t0 = .5 # make sure this intersects with noise time samples
-
-# Note, since this simulation cuts off before a certain time, it is
-# important to taper its ends to zero to avoid ringing artifacts.
-# Since the time samples overlap, we can inject this into our noise data:
-
-data = noise.inject(signal)
-
-# Finally, we can visualize the full process in the time domain:
+# We can plot it to see how the ends now vary smoothly from 0 to 1:
 
 from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(noise, signal, data, sep=True,
-                      sharex=True, sharey=True)
-plot.set_epoch(0)
+plot = TimeSeriesPlot(series, tapered, sep=True, sharex=True)
 plot.show()

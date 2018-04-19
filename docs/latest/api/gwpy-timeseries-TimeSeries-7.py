@@ -1,20 +1,14 @@
-from numpy.random import normal
-from scipy.signal import gausspulse
+# To see the effect of the Planck-taper window, we can taper a
+# sinusoidal `TimeSeries` at both ends:
+
+import numpy
 from gwpy.timeseries import TimeSeries
+t = numpy.linspace(0, 1, 2048)
+series = TimeSeries(numpy.cos(10.5*numpy.pi*t), times=t)
+tapered = series.taper()
 
-# Generate a `TimeSeries` containing Gaussian noise sampled at 4096 Hz,
-# centred on GPS time 0, with a sine-Gaussian pulse ('glitch') at
-# 500 Hz:
+# We can plot it to see how the ends now vary smoothly from 0 to 1:
 
-noise = TimeSeries(normal(loc=1, size=4096*4), sample_rate=4096, epoch=-2)
-glitch = TimeSeries(gausspulse(noise.times.value, fc=500) * 4, sample_rate=4096)
-data = noise + glitch
-
-# Compute and plot the Q-transform of these data:
-
-q = data.q_transform()
-plot = q.plot()
-ax = plot.gca()
-ax.set_xlim(-.2, .2)
-ax.set_epoch(0)
+from gwpy.plotter import TimeSeriesPlot
+plot = TimeSeriesPlot(series, tapered, sep=True, sharex=True)
 plot.show()

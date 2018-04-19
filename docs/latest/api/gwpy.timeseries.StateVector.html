@@ -3,14 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>StateVector &#8212; GWpy 0.8.1+278.g6040ba53 documentation</title>
+    <title>StateVector &#8212; GWpy 0.10.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.8.1+278.g6040ba53',
+        VERSION:     '0.10.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.8.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.10.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -165,7 +165,7 @@
 <h1>StateVector<a class="headerlink" href="#statevector" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.timeseries.StateVector">
-<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">StateVector</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L353"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">StateVector</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L353"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gwpy.timeseries.core.TimeSeriesBase</span></code></p>
 <p>Binary array representing good/bad state determinations of some data.</p>
 <p>Each binary bit represents a single boolean condition, with the
@@ -371,166 +371,169 @@ in place of these if relevant, not alongside</p>
 <tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.getfield" title="gwpy.timeseries.StateVector.getfield"><code class="xref py py-obj docutils literal"><span class="pre">getfield</span></code></a>(dtype[,&nbsp;offset])</td>
 <td>Returns a field of the given array as a certain type.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.insert" title="gwpy.timeseries.StateVector.insert"><code class="xref py py-obj docutils literal"><span class="pre">insert</span></code></a>(obj,&nbsp;values[,&nbsp;axis])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.inject" title="gwpy.timeseries.StateVector.inject"><code class="xref py py-obj docutils literal"><span class="pre">inject</span></code></a>(other)</td>
+<td>Add two compatible <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> along their shared x-axis values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.insert" title="gwpy.timeseries.StateVector.insert"><code class="xref py py-obj docutils literal"><span class="pre">insert</span></code></a>(obj,&nbsp;values[,&nbsp;axis])</td>
 <td>Insert values along the given axis before the given indices and return a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.is_compatible" title="gwpy.timeseries.StateVector.is_compatible"><code class="xref py py-obj docutils literal"><span class="pre">is_compatible</span></code></a>(other)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.is_compatible" title="gwpy.timeseries.StateVector.is_compatible"><code class="xref py py-obj docutils literal"><span class="pre">is_compatible</span></code></a>(other)</td>
 <td>Check whether this series and other have compatible metadata</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.is_contiguous" title="gwpy.timeseries.StateVector.is_contiguous"><code class="xref py py-obj docutils literal"><span class="pre">is_contiguous</span></code></a>(other[,&nbsp;tol])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.is_contiguous" title="gwpy.timeseries.StateVector.is_contiguous"><code class="xref py py-obj docutils literal"><span class="pre">is_contiguous</span></code></a>(other[,&nbsp;tol])</td>
 <td>Check whether other is contiguous with self.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.item" title="gwpy.timeseries.StateVector.item"><code class="xref py py-obj docutils literal"><span class="pre">item</span></code></a>(*args)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.item" title="gwpy.timeseries.StateVector.item"><code class="xref py py-obj docutils literal"><span class="pre">item</span></code></a>(*args)</td>
 <td>Copy an element of an array to a standard Python scalar and return it.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.itemset" title="gwpy.timeseries.StateVector.itemset"><code class="xref py py-obj docutils literal"><span class="pre">itemset</span></code></a>(*args)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.itemset" title="gwpy.timeseries.StateVector.itemset"><code class="xref py py-obj docutils literal"><span class="pre">itemset</span></code></a>(*args)</td>
 <td>Insert scalar into an array (scalar is cast to array’s dtype, if possible)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.max" title="gwpy.timeseries.StateVector.max"><code class="xref py py-obj docutils literal"><span class="pre">max</span></code></a>([axis,&nbsp;out])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.max" title="gwpy.timeseries.StateVector.max"><code class="xref py py-obj docutils literal"><span class="pre">max</span></code></a>([axis,&nbsp;out])</td>
 <td>Return the maximum along a given axis.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.mean" title="gwpy.timeseries.StateVector.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.mean" title="gwpy.timeseries.StateVector.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
 <td>Returns the average of the array elements along given axis.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.median" title="gwpy.timeseries.StateVector.median"><code class="xref py py-obj docutils literal"><span class="pre">median</span></code></a>([axis])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.median" title="gwpy.timeseries.StateVector.median"><code class="xref py py-obj docutils literal"><span class="pre">median</span></code></a>([axis])</td>
 <td>Compute the median along the specified axis.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.min" title="gwpy.timeseries.StateVector.min"><code class="xref py py-obj docutils literal"><span class="pre">min</span></code></a>([axis,&nbsp;out,&nbsp;keepdims])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.min" title="gwpy.timeseries.StateVector.min"><code class="xref py py-obj docutils literal"><span class="pre">min</span></code></a>([axis,&nbsp;out,&nbsp;keepdims])</td>
 <td>Return the minimum along a given axis.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.nansum" title="gwpy.timeseries.StateVector.nansum"><code class="xref py py-obj docutils literal"><span class="pre">nansum</span></code></a>([axis,&nbsp;out,&nbsp;keepdims])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.nansum" title="gwpy.timeseries.StateVector.nansum"><code class="xref py py-obj docutils literal"><span class="pre">nansum</span></code></a>([axis,&nbsp;out,&nbsp;keepdims])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.newbyteorder" title="gwpy.timeseries.StateVector.newbyteorder"><code class="xref py py-obj docutils literal"><span class="pre">newbyteorder</span></code></a>([new_order])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.newbyteorder" title="gwpy.timeseries.StateVector.newbyteorder"><code class="xref py py-obj docutils literal"><span class="pre">newbyteorder</span></code></a>([new_order])</td>
 <td>Return the array with the same data viewed with a different byte order.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.nonzero" title="gwpy.timeseries.StateVector.nonzero"><code class="xref py py-obj docutils literal"><span class="pre">nonzero</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.nonzero" title="gwpy.timeseries.StateVector.nonzero"><code class="xref py py-obj docutils literal"><span class="pre">nonzero</span></code></a>()</td>
 <td>Return the indices of the elements that are non-zero.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.override_unit" title="gwpy.timeseries.StateVector.override_unit"><code class="xref py py-obj docutils literal"><span class="pre">override_unit</span></code></a>(unit[,&nbsp;parse_strict])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.override_unit" title="gwpy.timeseries.StateVector.override_unit"><code class="xref py py-obj docutils literal"><span class="pre">override_unit</span></code></a>(unit[,&nbsp;parse_strict])</td>
 <td>Forcefully reset the unit of these data</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.pad" title="gwpy.timeseries.StateVector.pad"><code class="xref py py-obj docutils literal"><span class="pre">pad</span></code></a>(pad_width,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.pad" title="gwpy.timeseries.StateVector.pad"><code class="xref py py-obj docutils literal"><span class="pre">pad</span></code></a>(pad_width,&nbsp;**kwargs)</td>
 <td>Pad this series to a new size</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.partition" title="gwpy.timeseries.StateVector.partition"><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code></a>(kth[,&nbsp;axis,&nbsp;kind,&nbsp;order])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.partition" title="gwpy.timeseries.StateVector.partition"><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code></a>(kth[,&nbsp;axis,&nbsp;kind,&nbsp;order])</td>
 <td>Rearranges the elements in the array in such a way that value of the element in kth position is in the position it would be in a sorted array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>([format,&nbsp;bits])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>([format,&nbsp;bits])</td>
 <td>Plot the data for this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.prepend" title="gwpy.timeseries.StateVector.prepend"><code class="xref py py-obj docutils literal"><span class="pre">prepend</span></code></a>(other[,&nbsp;gap,&nbsp;inplace,&nbsp;pad,&nbsp;resize])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.prepend" title="gwpy.timeseries.StateVector.prepend"><code class="xref py py-obj docutils literal"><span class="pre">prepend</span></code></a>(other[,&nbsp;gap,&nbsp;inplace,&nbsp;pad,&nbsp;resize])</td>
 <td>Connect another series onto the start of the current one.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.prod" title="gwpy.timeseries.StateVector.prod"><code class="xref py py-obj docutils literal"><span class="pre">prod</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.prod" title="gwpy.timeseries.StateVector.prod"><code class="xref py py-obj docutils literal"><span class="pre">prod</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
 <td>Return the product of the array elements over the given axis</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.ptp" title="gwpy.timeseries.StateVector.ptp"><code class="xref py py-obj docutils literal"><span class="pre">ptp</span></code></a>([axis,&nbsp;out])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.ptp" title="gwpy.timeseries.StateVector.ptp"><code class="xref py py-obj docutils literal"><span class="pre">ptp</span></code></a>([axis,&nbsp;out])</td>
 <td>Peak to peak (maximum - minimum) value along a given axis.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.put" title="gwpy.timeseries.StateVector.put"><code class="xref py py-obj docutils literal"><span class="pre">put</span></code></a>(indices,&nbsp;values[,&nbsp;mode])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.put" title="gwpy.timeseries.StateVector.put"><code class="xref py py-obj docutils literal"><span class="pre">put</span></code></a>(indices,&nbsp;values[,&nbsp;mode])</td>
 <td>Set <code class="docutils literal"><span class="pre">a.flat[n]</span> <span class="pre">=</span> <span class="pre">values[n]</span></code> for all <code class="xref py py-obj docutils literal"><span class="pre">n</span></code> in indices.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.ravel" title="gwpy.timeseries.StateVector.ravel"><code class="xref py py-obj docutils literal"><span class="pre">ravel</span></code></a>([order])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.ravel" title="gwpy.timeseries.StateVector.ravel"><code class="xref py py-obj docutils literal"><span class="pre">ravel</span></code></a>([order])</td>
 <td>Return a flattened array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.read" title="gwpy.timeseries.StateVector.read"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>(source,&nbsp;*args,&nbsp;**kwargs)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.read" title="gwpy.timeseries.StateVector.read"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>(source,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Read data into a <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.repeat" title="gwpy.timeseries.StateVector.repeat"><code class="xref py py-obj docutils literal"><span class="pre">repeat</span></code></a>(repeats[,&nbsp;axis])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.repeat" title="gwpy.timeseries.StateVector.repeat"><code class="xref py py-obj docutils literal"><span class="pre">repeat</span></code></a>(repeats[,&nbsp;axis])</td>
 <td>Repeat elements of an array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-obj docutils literal"><span class="pre">resample</span></code></a>(rate)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-obj docutils literal"><span class="pre">resample</span></code></a>(rate)</td>
 <td>Resample this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> to a new rate</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.reshape" title="gwpy.timeseries.StateVector.reshape"><code class="xref py py-obj docutils literal"><span class="pre">reshape</span></code></a>(shape[,&nbsp;order])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.reshape" title="gwpy.timeseries.StateVector.reshape"><code class="xref py py-obj docutils literal"><span class="pre">reshape</span></code></a>(shape[,&nbsp;order])</td>
 <td>Returns an array containing the same data with a new shape.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.resize" title="gwpy.timeseries.StateVector.resize"><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code></a>(new_shape[,&nbsp;refcheck])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.resize" title="gwpy.timeseries.StateVector.resize"><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code></a>(new_shape[,&nbsp;refcheck])</td>
 <td>Change shape and size of array in-place.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.round" title="gwpy.timeseries.StateVector.round"><code class="xref py py-obj docutils literal"><span class="pre">round</span></code></a>([decimals,&nbsp;out])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.round" title="gwpy.timeseries.StateVector.round"><code class="xref py py-obj docutils literal"><span class="pre">round</span></code></a>([decimals,&nbsp;out])</td>
 <td>Return <code class="xref py py-obj docutils literal"><span class="pre">a</span></code> with each element rounded to the given number of decimals.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.searchsorted" title="gwpy.timeseries.StateVector.searchsorted"><code class="xref py py-obj docutils literal"><span class="pre">searchsorted</span></code></a>(v[,&nbsp;side,&nbsp;sorter])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.searchsorted" title="gwpy.timeseries.StateVector.searchsorted"><code class="xref py py-obj docutils literal"><span class="pre">searchsorted</span></code></a>(v[,&nbsp;side,&nbsp;sorter])</td>
 <td>Find indices where elements of v should be inserted in a to maintain order.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.setfield" title="gwpy.timeseries.StateVector.setfield"><code class="xref py py-obj docutils literal"><span class="pre">setfield</span></code></a>(val,&nbsp;dtype[,&nbsp;offset])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.setfield" title="gwpy.timeseries.StateVector.setfield"><code class="xref py py-obj docutils literal"><span class="pre">setfield</span></code></a>(val,&nbsp;dtype[,&nbsp;offset])</td>
 <td>Put a value into a specified place in a field defined by a data-type.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.setflags" title="gwpy.timeseries.StateVector.setflags"><code class="xref py py-obj docutils literal"><span class="pre">setflags</span></code></a>([write,&nbsp;align,&nbsp;uic])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.setflags" title="gwpy.timeseries.StateVector.setflags"><code class="xref py py-obj docutils literal"><span class="pre">setflags</span></code></a>([write,&nbsp;align,&nbsp;uic])</td>
 <td>Set array flags WRITEABLE, ALIGNED, and UPDATEIFCOPY, respectively.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.shift" title="gwpy.timeseries.StateVector.shift"><code class="xref py py-obj docutils literal"><span class="pre">shift</span></code></a>(delta)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.shift" title="gwpy.timeseries.StateVector.shift"><code class="xref py py-obj docutils literal"><span class="pre">shift</span></code></a>(delta)</td>
 <td>Shift this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> forward in time by <code class="docutils literal"><span class="pre">delta</span></code></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.sort" title="gwpy.timeseries.StateVector.sort"><code class="xref py py-obj docutils literal"><span class="pre">sort</span></code></a>([axis,&nbsp;kind,&nbsp;order])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.sort" title="gwpy.timeseries.StateVector.sort"><code class="xref py py-obj docutils literal"><span class="pre">sort</span></code></a>([axis,&nbsp;kind,&nbsp;order])</td>
 <td>Sort an array, in-place.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.squeeze" title="gwpy.timeseries.StateVector.squeeze"><code class="xref py py-obj docutils literal"><span class="pre">squeeze</span></code></a>([axis])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.squeeze" title="gwpy.timeseries.StateVector.squeeze"><code class="xref py py-obj docutils literal"><span class="pre">squeeze</span></code></a>([axis])</td>
 <td>Remove single-dimensional entries from the shape of <code class="xref py py-obj docutils literal"><span class="pre">a</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.std" title="gwpy.timeseries.StateVector.std"><code class="xref py py-obj docutils literal"><span class="pre">std</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.std" title="gwpy.timeseries.StateVector.std"><code class="xref py py-obj docutils literal"><span class="pre">std</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
 <td>Returns the standard deviation of the array elements along given axis.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.sum" title="gwpy.timeseries.StateVector.sum"><code class="xref py py-obj docutils literal"><span class="pre">sum</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.sum" title="gwpy.timeseries.StateVector.sum"><code class="xref py py-obj docutils literal"><span class="pre">sum</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
 <td>Return the sum of the array elements over the given axis.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.swapaxes" title="gwpy.timeseries.StateVector.swapaxes"><code class="xref py py-obj docutils literal"><span class="pre">swapaxes</span></code></a>(axis1,&nbsp;axis2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.swapaxes" title="gwpy.timeseries.StateVector.swapaxes"><code class="xref py py-obj docutils literal"><span class="pre">swapaxes</span></code></a>(axis1,&nbsp;axis2)</td>
 <td>Return a view of the array with <code class="xref py py-obj docutils literal"><span class="pre">axis1</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">axis2</span></code> interchanged.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.take" title="gwpy.timeseries.StateVector.take"><code class="xref py py-obj docutils literal"><span class="pre">take</span></code></a>(indices[,&nbsp;axis,&nbsp;out,&nbsp;mode])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.take" title="gwpy.timeseries.StateVector.take"><code class="xref py py-obj docutils literal"><span class="pre">take</span></code></a>(indices[,&nbsp;axis,&nbsp;out,&nbsp;mode])</td>
 <td>Return an array formed from the elements of <code class="xref py py-obj docutils literal"><span class="pre">a</span></code> at the given indices.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to" title="gwpy.timeseries.StateVector.to"><code class="xref py py-obj docutils literal"><span class="pre">to</span></code></a>(unit[,&nbsp;equivalencies])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to" title="gwpy.timeseries.StateVector.to"><code class="xref py py-obj docutils literal"><span class="pre">to</span></code></a>(unit[,&nbsp;equivalencies])</td>
 <td>Return a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.0.1)"><code class="xref py py-obj docutils literal"><span class="pre">Quantity</span></code></a> object with the specified unit.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_dqflags" title="gwpy.timeseries.StateVector.to_dqflags"><code class="xref py py-obj docutils literal"><span class="pre">to_dqflags</span></code></a>([bits,&nbsp;minlen,&nbsp;dtype,&nbsp;round])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_dqflags" title="gwpy.timeseries.StateVector.to_dqflags"><code class="xref py py-obj docutils literal"><span class="pre">to_dqflags</span></code></a>([bits,&nbsp;minlen,&nbsp;dtype,&nbsp;round])</td>
 <td>Convert this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> into a <a class="reference internal" href="gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_lal" title="gwpy.timeseries.StateVector.to_lal"><code class="xref py py-obj docutils literal"><span class="pre">to_lal</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_lal" title="gwpy.timeseries.StateVector.to_lal"><code class="xref py py-obj docutils literal"><span class="pre">to_lal</span></code></a>()</td>
 <td>Convert this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> into a LAL TimeSeries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_pycbc" title="gwpy.timeseries.StateVector.to_pycbc"><code class="xref py py-obj docutils literal"><span class="pre">to_pycbc</span></code></a>([copy])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_pycbc" title="gwpy.timeseries.StateVector.to_pycbc"><code class="xref py py-obj docutils literal"><span class="pre">to_pycbc</span></code></a>([copy])</td>
 <td>Convert this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> into a PyCBC</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_value" title="gwpy.timeseries.StateVector.to_value"><code class="xref py py-obj docutils literal"><span class="pre">to_value</span></code></a>([unit,&nbsp;equivalencies])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.to_value" title="gwpy.timeseries.StateVector.to_value"><code class="xref py py-obj docutils literal"><span class="pre">to_value</span></code></a>([unit,&nbsp;equivalencies])</td>
 <td>The numerical value, possibly in a different unit.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tobytes" title="gwpy.timeseries.StateVector.tobytes"><code class="xref py py-obj docutils literal"><span class="pre">tobytes</span></code></a>([order])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tobytes" title="gwpy.timeseries.StateVector.tobytes"><code class="xref py py-obj docutils literal"><span class="pre">tobytes</span></code></a>([order])</td>
 <td>Construct Python bytes containing the raw data bytes in the array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tofile" title="gwpy.timeseries.StateVector.tofile"><code class="xref py py-obj docutils literal"><span class="pre">tofile</span></code></a>(fid[,&nbsp;sep,&nbsp;format])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tofile" title="gwpy.timeseries.StateVector.tofile"><code class="xref py py-obj docutils literal"><span class="pre">tofile</span></code></a>(fid[,&nbsp;sep,&nbsp;format])</td>
 <td>Write array to a file as text or binary (default).</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tolist" title="gwpy.timeseries.StateVector.tolist"><code class="xref py py-obj docutils literal"><span class="pre">tolist</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tolist" title="gwpy.timeseries.StateVector.tolist"><code class="xref py py-obj docutils literal"><span class="pre">tolist</span></code></a>()</td>
 <td>Return the array as a (possibly nested) list.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tostring" title="gwpy.timeseries.StateVector.tostring"><code class="xref py py-obj docutils literal"><span class="pre">tostring</span></code></a>([order])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.tostring" title="gwpy.timeseries.StateVector.tostring"><code class="xref py py-obj docutils literal"><span class="pre">tostring</span></code></a>([order])</td>
 <td>Construct Python bytes containing the raw data bytes in the array.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.trace" title="gwpy.timeseries.StateVector.trace"><code class="xref py py-obj docutils literal"><span class="pre">trace</span></code></a>([offset,&nbsp;axis1,&nbsp;axis2,&nbsp;dtype,&nbsp;out])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.trace" title="gwpy.timeseries.StateVector.trace"><code class="xref py py-obj docutils literal"><span class="pre">trace</span></code></a>([offset,&nbsp;axis1,&nbsp;axis2,&nbsp;dtype,&nbsp;out])</td>
 <td>Return the sum along diagonals of the array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.transpose" title="gwpy.timeseries.StateVector.transpose"><code class="xref py py-obj docutils literal"><span class="pre">transpose</span></code></a>(*axes)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.transpose" title="gwpy.timeseries.StateVector.transpose"><code class="xref py py-obj docutils literal"><span class="pre">transpose</span></code></a>(*axes)</td>
 <td>Returns a view of the array with axes transposed.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.update" title="gwpy.timeseries.StateVector.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(other[,&nbsp;inplace])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.update" title="gwpy.timeseries.StateVector.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(other[,&nbsp;inplace])</td>
 <td>Update this series by appending new data from an other and dropping the same amount of data off the start.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.value_at" title="gwpy.timeseries.StateVector.value_at"><code class="xref py py-obj docutils literal"><span class="pre">value_at</span></code></a>(x)</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.value_at" title="gwpy.timeseries.StateVector.value_at"><code class="xref py py-obj docutils literal"><span class="pre">value_at</span></code></a>(x)</td>
 <td>Return the value of this <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> at the given <code class="xref py py-obj docutils literal"><span class="pre">xindex</span></code> value</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.var" title="gwpy.timeseries.StateVector.var"><code class="xref py py-obj docutils literal"><span class="pre">var</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.var" title="gwpy.timeseries.StateVector.var"><code class="xref py py-obj docutils literal"><span class="pre">var</span></code></a>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
 <td>Returns the variance of the array elements, along given axis.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.view" title="gwpy.timeseries.StateVector.view"><code class="xref py py-obj docutils literal"><span class="pre">view</span></code></a>([dtype,&nbsp;type])</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.view" title="gwpy.timeseries.StateVector.view"><code class="xref py py-obj docutils literal"><span class="pre">view</span></code></a>([dtype,&nbsp;type])</td>
 <td>New view of array with the same data.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.write" title="gwpy.timeseries.StateVector.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(target,&nbsp;*args,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.write" title="gwpy.timeseries.StateVector.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a>(target,&nbsp;*args,&nbsp;**kwargs)</td>
 <td>Write this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> to a file</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.zip" title="gwpy.timeseries.StateVector.zip"><code class="xref py py-obj docutils literal"><span class="pre">zip</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.StateVector.zip" title="gwpy.timeseries.StateVector.zip"><code class="xref py py-obj docutils literal"><span class="pre">zip</span></code></a>()</td>
 <td>Zip the <code class="xref py py-obj docutils literal"><span class="pre">xindex</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">value</span></code> arrays of this <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code></td>
 </tr>
 </tbody>
@@ -538,7 +541,7 @@ in place of these if relevant, not alongside</p>
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.abs">
-<code class="descname">abs</code><span class="sig-paren">(</span><em>x</em>, <em>/</em>, <em>out=None</em>, <em>*</em>, <em>where=True</em>, <em>casting='same_kind'</em>, <em>order='K'</em>, <em>dtype=None</em>, <em>subok=True</em><span class="optional">[</span>, <em>signature</em>, <em>extobj</em><span class="optional">]</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/array.py#L394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.abs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">abs</code><span class="sig-paren">(</span><em>x</em>, <em>/</em>, <em>out=None</em>, <em>*</em>, <em>where=True</em>, <em>casting='same_kind'</em>, <em>order='K'</em>, <em>dtype=None</em>, <em>subok=True</em><span class="optional">[</span>, <em>signature</em>, <em>extobj</em><span class="optional">]</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/array.py#L394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.abs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the absolute value element-wise.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -683,7 +686,7 @@ Transcript written on math.log.
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L566"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.append" title="Permalink to this definition">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L566"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect another series onto the end of the current one.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1005,7 +1008,7 @@ One of max or min must be given.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of the array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1056,7 +1059,7 @@ arguments.)</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.crop">
-<code class="descname">crop</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.crop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">crop</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.crop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crop this series to the given x-axis extent.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1167,7 +1170,7 @@ a future version the read-only restriction will be removed.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.diff">
-<code class="descname">diff</code><span class="sig-paren">(</span><em>n=1</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.diff" title="Permalink to this definition">¶</a></dt>
+<code class="descname">diff</code><span class="sig-paren">(</span><em>n=1</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the n-th order discrete difference along given axis.</p>
 <p>The first order difference is given by <code class="docutils literal"><span class="pre">out[n]</span> <span class="pre">=</span> <span class="pre">a[n+1]</span> <span class="pre">-</span> <span class="pre">a[n]</span></code> along
 the given axis, higher order differences are calculated by using <a class="reference internal" href="#gwpy.timeseries.StateVector.diff" title="gwpy.timeseries.StateVector.diff"><code class="xref py py-obj docutils literal"><span class="pre">diff</span></code></a>
@@ -1255,7 +1258,7 @@ The array can be read back with pickle.load or numpy.load.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.dumps">
-<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/array.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.dumps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/array.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.dumps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the pickle of the array as a string.
 pickle.loads or numpy.loads will convert the string back to an array.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1279,7 +1282,7 @@ pickle.loads or numpy.loads will convert the string back to an array.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.StateVector.fetch">
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>type=127</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L647"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.fetch" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>type=127</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L647"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.fetch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch data from NDS into a <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1339,7 +1342,7 @@ any input parseable by <a class="reference internal" href="../time/index.html#gw
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.fetch_open_data">
-<code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>ifo</em>, <em>start</em>, <em>end</em>, <em>sample_rate=4096</em>, <em>tag=None</em>, <em>version=None</em>, <em>format=None</em>, <em>host='https://losc.ligo.org'</em>, <em>verbose=False</em>, <em>cache=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L366"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.fetch_open_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>ifo</em>, <em>start</em>, <em>end</em>, <em>sample_rate=4096</em>, <em>tag=None</em>, <em>version=None</em>, <em>format=None</em>, <em>host='https://losc.ligo.org'</em>, <em>verbose=False</em>, <em>cache=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L366"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.fetch_open_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch open-access data from the LIGO Open Science Center</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1502,7 +1505,7 @@ To select both data sets and plot a comparison, for example:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.find">
-<code class="descname">find</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>frametype=None</em>, <em>pad=None</em>, <em>dtype=None</em>, <em>nproc=1</em>, <em>verbose=False</em>, <em>**readargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L488"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.find" title="Permalink to this definition">¶</a></dt>
+<code class="descname">find</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>frametype=None</em>, <em>pad=None</em>, <em>dtype=None</em>, <em>nproc=1</em>, <em>verbose=False</em>, <em>**readargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L488"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find and read data from frames for a channel</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1609,13 +1612,13 @@ The default is ‘C’.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.from_lal">
-<code class="descname">from_lal</code><span class="sig-paren">(</span><em>lalts</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L678"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_lal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">from_lal</code><span class="sig-paren">(</span><em>lalts</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L678"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_lal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a new TimeSeries from a LAL TimeSeries of any type.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.from_nds2_buffer">
-<code class="descname">from_nds2_buffer</code><span class="sig-paren">(</span><em>buffer_</em>, <em>**metadata</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L646"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_nds2_buffer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">from_nds2_buffer</code><span class="sig-paren">(</span><em>buffer_</em>, <em>**metadata</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L646"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_nds2_buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a new <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> from an <code class="xref py py-obj docutils literal"><span class="pre">nds2.buffer</span></code> object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1647,7 +1650,7 @@ and the appropriate metadata</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.from_pycbc">
-<code class="descname">from_pycbc</code><span class="sig-paren">(</span><em>pycbcseries</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L716"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_pycbc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">from_pycbc</code><span class="sig-paren">(</span><em>pycbcseries</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L716"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.from_pycbc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a <code class="xref py py-obj docutils literal"><span class="pre">pycbc.types.timeseries.TimeSeries</span></code> into a <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1675,7 +1678,7 @@ and the appropriate metadata</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.StateVector.get">
-<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.get" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get data for this channel from frames or NDS</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1741,7 +1744,7 @@ default.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.get_bit_series">
-<code class="descname">get_bit_series</code><span class="sig-paren">(</span><em>bits=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L495"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.get_bit_series" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_bit_series</code><span class="sig-paren">(</span><em>bits=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L495"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.get_bit_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the <a class="reference internal" href="gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></code></a> for each bit of this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1811,6 +1814,46 @@ array for our view:</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.timeseries.StateVector.inject">
+<code class="descname">inject</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L851"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.inject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add two compatible <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> along their shared x-axis values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code></p>
+<blockquote>
+<div><p>a <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> whose xindex intersects with <code class="xref py py-obj docutils literal"><span class="pre">self.xindex</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code></p>
+<blockquote>
+<div><p>the sum of <code class="xref py py-obj docutils literal"><span class="pre">self</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">other</span></code> along their shared x-axis values</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
+<blockquote class="last">
+<div><p>if <code class="xref py py-obj docutils literal"><span class="pre">self</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">other</span></code> have incompatible units or xindex intervals</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If <code class="xref py py-obj docutils literal"><span class="pre">other.xindex</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">self.xindex</span></code> do not intersect, this method will
+return a copy of <code class="xref py py-obj docutils literal"><span class="pre">self</span></code>. If the series have uniformly offset indices,
+this method will raise a warning.</p>
+<p>If <code class="xref py py-obj docutils literal"><span class="pre">self.xindex</span></code> is an array of timestamps, and if <code class="xref py py-obj docutils literal"><span class="pre">other.xspan</span></code> is
+not a subset of <code class="xref py py-obj docutils literal"><span class="pre">self.xspan</span></code>, then <code class="xref py py-obj docutils literal"><span class="pre">other</span></code> will be cropped before
+being adding to <code class="xref py py-obj docutils literal"><span class="pre">self</span></code>.</p>
+<p>Users who wish to taper or window their <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> should do so before
+passing it to this method. See <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.taper" title="gwpy.timeseries.TimeSeries.taper"><code class="xref py py-meth docutils literal"><span class="pre">TimeSeries.taper()</span></code></a> and
+<code class="xref py py-func docutils literal"><span class="pre">planck()</span></code> for more information.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.timeseries.StateVector.insert">
 <code class="descname">insert</code><span class="sig-paren">(</span><em>obj</em>, <em>values</em>, <em>axis=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.StateVector.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert values along the given axis before the given indices and return
@@ -1871,7 +1914,7 @@ insertion does not occur in-place: a new quantity array is returned.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.is_compatible">
-<code class="descname">is_compatible</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L532"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.is_compatible" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_compatible</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L532"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.is_compatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether this series and other have compatible metadata</p>
 <p>This method tests that the <code class="xref py py-obj docutils literal"><span class="pre">sample</span> <span class="pre">size</span></code>, and the
 <code class="xref py py-obj docutils literal"><span class="pre">unit</span></code> match.</p>
@@ -1879,7 +1922,7 @@ insertion does not occur in-place: a new quantity array is returned.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.is_contiguous">
-<code class="descname">is_contiguous</code><span class="sig-paren">(</span><em>other</em>, <em>tol=3.814697265625e-06</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L495"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.is_contiguous" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_contiguous</code><span class="sig-paren">(</span><em>other</em>, <em>tol=3.814697265625e-06</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L495"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.is_contiguous" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether other is contiguous with self.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2054,7 +2097,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.median">
-<code class="descname">median</code><span class="sig-paren">(</span><em>axis=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/array.py#L398"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.median" title="Permalink to this definition">¶</a></dt>
+<code class="descname">median</code><span class="sig-paren">(</span><em>axis=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/array.py#L398"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.median" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the median along the specified axis.</p>
 <p>Returns the median of the array elements.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2226,7 +2269,7 @@ byte order.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.override_unit">
-<code class="descname">override_unit</code><span class="sig-paren">(</span><em>unit</em>, <em>parse_strict='raise'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/array.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.override_unit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">override_unit</code><span class="sig-paren">(</span><em>unit</em>, <em>parse_strict='raise'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/array.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.override_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forcefully reset the unit of these data</p>
 <p>Use of this method is discouraged in favour of <a class="reference internal" href="#gwpy.timeseries.StateVector.to" title="gwpy.timeseries.StateVector.to"><code class="xref py py-obj docutils literal"><span class="pre">to()</span></code></a>,
 which performs accurate conversions from one unit to another.
@@ -2259,7 +2302,7 @@ raise the underlying exception from <a class="reference external" href="http://d
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.pad">
-<code class="descname">pad</code><span class="sig-paren">(</span><em>pad_width</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L816"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.pad" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pad</code><span class="sig-paren">(</span><em>pad_width</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L816"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pad this series to a new size</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2367,7 +2410,7 @@ they come up in the dtype, to break ties.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>format='segments'</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L748"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>format='segments'</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L748"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the data for this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2417,7 +2460,7 @@ on <code class="docutils literal"><span class="pre">format</span></code>.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.prepend">
-<code class="descname">prepend</code><span class="sig-paren">(</span><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L701"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.prepend" title="Permalink to this definition">¶</a></dt>
+<code class="descname">prepend</code><span class="sig-paren">(</span><em>other</em>, <em>gap='raise'</em>, <em>inplace=True</em>, <em>pad=0</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L701"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.prepend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect another series onto the start of the current one.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2530,7 +2573,7 @@ for arrays that haven’t been sharing their memory!</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.StateVector.read">
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L524"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.read" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L524"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data into a <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2710,7 +2753,7 @@ before any further operations.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.resample">
-<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L798"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.resample" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L798"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> to a new rate</p>
 <p>Because of the nature of a state-vector, downsampling is done
 by taking the logical ‘and’ of all original samples in each new
@@ -3016,7 +3059,7 @@ as the full name.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.shift">
-<code class="descname">shift</code><span class="sig-paren">(</span><em>delta</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L596"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.shift" title="Permalink to this definition">¶</a></dt>
+<code class="descname">shift</code><span class="sig-paren">(</span><em>delta</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L596"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.shift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shift this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> forward in time by <code class="docutils literal"><span class="pre">delta</span></code></p>
 <p>This modifies the series in-place.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3223,7 +3266,7 @@ set globally or within a context.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.to_dqflags">
-<code class="descname">to_dqflags</code><span class="sig-paren">(</span><em>bits=None</em>, <em>minlen=1</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>round=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L609"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_dqflags" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_dqflags</code><span class="sig-paren">(</span><em>bits=None</em>, <em>minlen=1</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>round=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L609"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_dqflags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> into a <a class="reference internal" href="gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a></p>
 <p>The <a class="reference internal" href="gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></code></a> for each bit is converted into a
 <a class="reference internal" href="gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> with the bits combined into a dict.</p>
@@ -3264,13 +3307,13 @@ reprensentations for each bit in this <a class="reference internal" href="#gwpy.
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.to_lal">
-<code class="descname">to_lal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_lal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_lal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_lal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> into a LAL TimeSeries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.to_pycbc">
-<code class="descname">to_pycbc</code><span class="sig-paren">(</span><em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L736"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_pycbc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_pycbc</code><span class="sig-paren">(</span><em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L736"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.to_pycbc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> into a PyCBC
 <code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3459,7 +3502,7 @@ Data items are converted to the nearest compatible Python type.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.tostring">
-<code class="descname">tostring</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/array.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.tostring" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tostring</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/array.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.tostring" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct Python bytes containing the raw data bytes in the array.</p>
 <p>Constructs Python bytes showing a copy of the raw contents of
 data memory. The bytes object can be produced in either ‘C’ or ‘Fortran’,
@@ -3574,7 +3617,7 @@ intended simply as a “convenience” alternative to the tuple form)</li>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L747"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L747"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update this series by appending new data from an other
 and dropping the same amount of data off the start.</p>
 <p>This is a convenience method that just calls <code class="xref py py-obj docutils literal"><span class="pre">append</span></code> with
@@ -3583,7 +3626,7 @@ and dropping the same amount of data off the start.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.value_at">
-<code class="descname">value_at</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.value_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">value_at</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.value_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the value of this <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code> at the given <code class="xref py py-obj docutils literal"><span class="pre">xindex</span></code> value</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3722,7 +3765,7 @@ avoided on arrays defined by slices, transposes, fortran-ordering, etc.:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/core.py#L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/core.py#L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> to a file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3810,7 +3853,7 @@ formats.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.StateVector.zip">
-<code class="descname">zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/types/series.py#L420"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.zip" title="Permalink to this definition">¶</a></dt>
+<code class="descname">zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/types/series.py#L420"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zip the <code class="xref py py-obj docutils literal"><span class="pre">xindex</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">value</span></code> arrays of this <code class="xref py py-obj docutils literal"><span class="pre">Series</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3839,7 +3882,7 @@ series</p>
 
 <dl class="attribute">
 <dt id="gwpy.timeseries.StateVector.DictClass">
-<code class="descname">DictClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L875"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.DictClass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DictClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L875"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.StateVector.DictClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="gwpy.timeseries.StateVectorDict.html#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-class docutils literal"><span class="pre">StateVectorDict</span></code></a></p>
 </dd></dl>
 
@@ -3866,7 +3909,7 @@ binary bits as booleans, for each time point.</p>
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>type=127</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L647"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>type=127</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L647"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Fetch data from NDS into a <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3926,7 +3969,7 @@ any input parseable by <a class="reference internal" href="../time/index.html#gw
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L696"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L696"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Get data for this channel from frames or NDS</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3992,7 +4035,7 @@ default.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">get_bit_series</code><span class="sig-paren">(</span><em>bits=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L495"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">get_bit_series</code><span class="sig-paren">(</span><em>bits=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L495"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Get the <a class="reference internal" href="gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></code></a> for each bit of this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4016,7 +4059,7 @@ default.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">plot</code><span class="sig-paren">(</span><em>format='segments'</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L748"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>format='segments'</em>, <em>bits=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L748"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Plot the data for this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4066,7 +4109,7 @@ on <code class="docutils literal"><span class="pre">format</span></code>.</p>
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L524"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L524"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into a <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4232,7 +4275,7 @@ before any further operations.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L798"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L798"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Resample this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> to a new rate</p>
 <p>Because of the nature of a state-vector, downsampling is done
 by taking the logical ‘and’ of all original samples in each new
@@ -4262,7 +4305,7 @@ or a multiple of the original (when upsampling).</p>
 
 <dl class="method">
 <dt>
-<code class="descname">to_dqflags</code><span class="sig-paren">(</span><em>bits=None</em>, <em>minlen=1</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>round=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/6040ba53b80e7fdf71146a27345837503a96a9a0/gwpy/timeseries/statevector.py#L609"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">to_dqflags</code><span class="sig-paren">(</span><em>bits=None</em>, <em>minlen=1</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>round=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/38d65a9f2f16b7007166919f78084dc6bf014f20/gwpy/timeseries/statevector.py#L609"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Convert this <a class="reference internal" href="#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> into a <a class="reference internal" href="gwpy.segments.DataQualityDict.html#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityDict</span></code></a></p>
 <p>The <a class="reference internal" href="gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">StateTimeSeries</span></code></a> for each bit is converted into a
 <a class="reference internal" href="gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal"><span class="pre">DataQualityFlag</span></code></a> with the bits combined into a dict.</p>

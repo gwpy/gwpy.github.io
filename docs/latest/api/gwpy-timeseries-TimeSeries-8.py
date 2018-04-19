@@ -1,14 +1,19 @@
-# To see the effect of the Planck-taper window, we can taper a
-# sinusoidal `TimeSeries` at both ends:
+# Demodulation is useful when trying to examine steady sinusoidal
+# signals we know to be contained within data. For instance,
+# we can download some data from LOSC to look at trends of the
+# amplitude and phase of Livingston's calibration line at 331.3 Hz:
 
-import numpy
 from gwpy.timeseries import TimeSeries
-t = numpy.linspace(0, 1, 2048)
-series = TimeSeries(numpy.cos(10.5*numpy.pi*t), times=t)
-tapered = series.taper()
+data = TimeSeries.fetch_open_data('L1', 1131350417, 1131357617)
 
-# We can plot it to see how the ends now vary smoothly from 0 to 1:
+# We can demodulate the `TimeSeries` at 331.3 Hz with a stride of once
+# per minute:
+
+amp, phase = data.demodulate(331.3, stride=60)
+
+# We can then plot these trends to visualize changes in the amplitude
+# and phase of the calibration line:
 
 from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(series, tapered, sep=True, sharex=True)
+plot = TimeSeriesPlot(amp, phase, sep=True, sharex=True)
 plot.show()

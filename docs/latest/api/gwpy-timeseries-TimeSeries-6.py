@@ -1,29 +1,20 @@
-# We can prepare one second of Gaussian noise:
-
-from numpy import random
+from numpy.random import normal
+from scipy.signal import gausspulse
 from gwpy.timeseries import TimeSeries
-noise = TimeSeries(random.normal(scale=.1, size=16384),
-                   sample_rate=16384)
 
-# Then we can download a simulation of the GW150914 waveform from LOSC:
+# Generate a `TimeSeries` containing Gaussian noise sampled at 4096 Hz,
+# centred on GPS time 0, with a sine-Gaussian pulse ('glitch') at
+# 500 Hz:
 
-from astropy.utils.data import get_readable_fileobj
-source = 'https://losc.ligo.org/s/events/GW150914/P150914/'
-url = '%s/fig2-unfiltered-waveform-H.txt' % source
-with get_readable_fileobj(url) as f:
-    signal = TimeSeries.read(f, format='txt').taper()
-signal.t0 = .5 # make sure this intersects with noise time samples
+noise = TimeSeries(normal(loc=1, size=4096*4), sample_rate=4096, epoch=-2)
+glitch = TimeSeries(gausspulse(noise.times.value, fc=500) * 4, sample_rate=4096)
+data = noise + glitch
 
-# Note, since this simulation cuts off before a certain time, it is
-# important to taper its ends to zero to avoid ringing artifacts.
-# Since the time samples overlap, we can inject this into our noise data:
+# Compute and plot the Q-transform of these data:
 
-data = noise.inject(signal)
-
-# Finally, we can visualize the full process in the time domain:
-
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(noise, signal, data, sep=True,
-                      sharex=True, sharey=True)
-plot.set_epoch(0)
+q = data.q_transform()
+plot = q.plot()
+ax = plot.gca()
+ax.set_xlim(-.2, .2)
+ax.set_epoch(0)
 plot.show()

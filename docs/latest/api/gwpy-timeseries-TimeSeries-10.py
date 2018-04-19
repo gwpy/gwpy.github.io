@@ -1,21 +1,20 @@
-# We can design an arbitrarily complicated filter using
-# :mod:`gwpy.signal.filter_design`
-
-from gwpy.signal import filter_design
-bp = filter_design.bandpass(50, 250, 4096.)
-notches = [filter_design.notch(f, 4096.) for f in (60, 120, 180)]
-zpk = filter_design.concatenate_zpks(bp, *notches)
-
-# And then can download some data from LOSC to apply it using
-# `TimeSeries.filter`:
-
+from numpy.random import normal
+from scipy.signal import gausspulse
 from gwpy.timeseries import TimeSeries
-data = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
-filtered = data.filter(zpk, filtfilt=True)
 
-# We can plot the original signal, and the filtered version, cutting
-# off either end of the filtered data to remove filter-edge artefacts
+# Generate a `TimeSeries` containing Gaussian noise sampled at 4096 Hz,
+# centred on GPS time 0, with a sine-Gaussian pulse ('glitch') at
+# 500 Hz:
 
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(data, filtered[128:-128], sep=True)
+noise = TimeSeries(normal(loc=1, size=4096*4), sample_rate=4096, epoch=-2)
+glitch = TimeSeries(gausspulse(noise.times.value, fc=500) * 4, sample_rate=4096)
+data = noise + glitch
+
+# Compute and plot the Q-transform of these data:
+
+q = data.q_transform()
+plot = q.plot()
+ax = plot.gca()
+ax.set_xlim(-.2, .2)
+ax.set_epoch(0)
 plot.show()
