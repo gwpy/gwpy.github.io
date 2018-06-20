@@ -1,0 +1,1 @@
+specgram = white.spectrogram2(fftlength=1/16., overlap=15/256.)

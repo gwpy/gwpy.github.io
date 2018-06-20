@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Plotting time-domain data &#8212; GWpy 0.11.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.11.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TimeSeriesList" href="../api/gwpy.timeseries.TimeSeriesList.html" />
+    <link rel="prev" title="Reading and writing time-domain data" href="io.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.11.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="io.html" title="Previous Chapter: Reading and writing time-domain data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Reading and w...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../api/gwpy.timeseries.TimeSeriesList.html" title="Next Chapter: TimeSeriesList"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">TimeSeriesList &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Plotting time-domain data</a><ul>
+<li><a class="reference internal" href="#plotting-one-timeseries">Plotting one <code class="docutils literal"><span class="pre">TimeSeries</span></code></a></li>
+<li><a class="reference internal" href="#plotting-multiple-timeseries-together">Plotting multiple <code class="docutils literal"><span class="pre">TimeSeries</span></code> together</a></li>
+<li><a class="reference internal" href="#plotting-a-statevector">Plotting a <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/timeseries/plot.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="plotting-time-domain-data">
+<span id="gwpy-timeseries-plot"></span><h1>Plotting time-domain data<a class="headerlink" href="#plotting-time-domain-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plotting-one-timeseries">
+<h2>Plotting one <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#plotting-one-timeseries" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> class includes a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method to trivialise visualisation of the contained data.
+Reproducing the example from <a class="reference internal" href="remote-access.html#gwpy-timeseries-remote"><span class="std std-ref">Remote data access</span></a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l1hoft</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:50:29&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:51:01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">l1hoft</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-2.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-2.png" src="../_images/plot-2.png" />
+</div>
+<p>The returned object <code class="xref py py-obj docutils literal"><span class="pre">plot</span></code> is a <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-class docutils literal"><span class="pre">TimeSeriesPlot</span></code></a>, a sub-class of <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v2.2.2)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.figure.Figure</span></code></a> adapted for GPS time-stamped data.
+Customisations of the figure or the underlying <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesAxes" title="gwpy.plotter.TimeSeriesAxes"><code class="xref py py-class docutils literal"><span class="pre">TimeSeriesAxes</span></code></a> can be done using standard <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> methods.
+For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gravitational-wave amplitude [strain]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="mi">1126259462</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Livingston strain data around GW150914&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1126259462</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-3.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-31.png" src="../_images/plot-31.png" />
+</div>
+<p>Here the <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesAxes.set_epoch" title="gwpy.plotter.TimeSeriesAxes.set_epoch"><code class="xref py py-meth docutils literal"><span class="pre">set_epoch()</span></code></a> method is used to reset the reference time for the x-axis.</p>
+</div>
+<div class="section" id="plotting-multiple-timeseries-together">
+<h2>Plotting multiple <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> together<a class="headerlink" href="#plotting-multiple-timeseries-together" title="Permalink to this headline">¶</a></h2>
+<p>Multiple <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> classes can be combined on a figure in a number of different ways, the most obvious is to <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> the first, then add the second on the same axes.
+Reusing the same <code class="docutils literal"><span class="pre">plot</span></code> from above:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h1hoft</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:50:29&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:51:01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h1hoft</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-4.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-4.png" src="../_images/plot-4.png" />
+</div>
+<p>Alternatively, the two <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> could be combined into a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesDict</span></code></a> to use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.plot" title="gwpy.timeseries.TimeSeriesDict.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method from that class:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span><span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l1hoft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span><span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">h1hoft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-5.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-5.png" src="../_images/plot-5.png" />
+</div>
+<p>The third method of achieving the same result is by importing and accessing the <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code></a> object directly:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="k">import</span> <span class="n">TimeSeriesPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">(</span><span class="n">l1hoft</span><span class="p">,</span> <span class="n">h1hoft</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-6.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-6.png" src="../_images/plot-6.png" />
+</div>
+<p>Using the <a class="reference internal" href="../plotter/api.html#gwpy.plotter.TimeSeriesPlot" title="gwpy.plotter.TimeSeriesPlot"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeriesPlot</span></code></a> directly allows for greater customisation.
+The <code class="docutils literal"><span class="pre">sep=True</span></code> keyword argument can be used to plot each <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> on its own axes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">TimeSeriesPlot</span><span class="p">(</span><span class="n">l1hoft</span><span class="p">,</span> <span class="n">h1hoft</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-7.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-7.png" src="../_images/plot-7.png" />
+</div>
+</div>
+<div class="section" id="plotting-a-statevector">
+<h2>Plotting a <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-a-statevector" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> can be trivially plotted in two ways, specified by the <code class="docutils literal"><span class="pre">format</span></code> keyword argument of the <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a> method:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'segments'</span></code></td>
+<td>A bit-wise representation of each bit in the vector (default)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'timeseries'</span></code></td>
+<td>A standard time-series representation</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h1state</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:50:29&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015 09:51:01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">h1state</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/plot-8.png">png</a>)</p>
+<div class="figure">
+<img alt="../_images/plot-8.png" src="../_images/plot-8.png" />
+</div>
+<p>For a <code class="docutils literal"><span class="pre">format='segments'</span></code> display the <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.bits" title="gwpy.timeseries.StateVector.bits"><code class="xref py py-attr docutils literal"><span class="pre">bits</span></code></a> attribute of the <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> is used to identify and label each of the binary bits in the vector.
+Also, the <code class="docutils literal"><span class="pre">insetlabels=True</span></code> keyword was given to display the bit labels inside the axes (otherwise they would be cut off the side of the figure).
+That each of the segment bars is green for the full 32-second duration indicates that each of the statements (e.g. ‘<em>passes cbc CAT1 test</em>’) is true throughout this time interval.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

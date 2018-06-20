@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. Plotting a spectrogram of all open data for 1 day &#8212; GWpy 0.11.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.11.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="1. Generating an inspiral range timeseries" href="range-timeseries.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.11.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html#available-installations-for-the-ligo-scientific-collaboration">Available installations for the LIGO Scientific Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="range-timeseries.html" title="Previous Chapter: 1. Generating an inspiral range timeseries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Generating...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">2. Plotting a spectrogram of all open data for 1 day</a><ul>
+<li><a class="reference internal" href="#getting-the-segments">2.1. Getting the segments</a></li>
+<li><a class="reference internal" href="#working-with-strain-data">2.2. Working with strain data</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../../_sources/examples/miscellaneous/open-data-spectrogram.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="plotting-a-spectrogram-of-all-open-data-for-1-day">
+<span id="gwpy-example-miscellaneous-open-data-spectrogram"></span><h1>2. Plotting a spectrogram of all open data for 1 day<a class="headerlink" href="#plotting-a-spectrogram-of-all-open-data-for-1-day" title="Permalink to this headline">¶</a></h1>
+<p>In order to study interferometer performance, it is common in LIGO to plot
+all of the data for a day, in order to determine trends, and see data-quality
+issues.</p>
+<p>This is done for the LIGO-Virgo detector network, with up-to-date plots
+<a class="reference external" href="https://losc.ligo.org/detector_status/">available from the LIGO Open Science Center</a> (LOSC).</p>
+<p>This example demonstrates how to download data segments from LOSC, then
+use those to build a day-timescale spectrogram plot of LIGO-Hanford strain
+data.</p>
+<div class="section" id="getting-the-segments">
+<h2>2.1. Getting the segments<a class="headerlink" href="#getting-the-segments" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to fetch the Open Data timeline segments from LOSC.
+To do that we can call the <a class="reference internal" href="../../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.fetch_open_data" title="gwpy.segments.DataQualityFlag.fetch_open_data"><code class="xref py py-meth docutils literal"><span class="pre">DataQualityFlag.fetch_open_data()</span></code></a> method
+using <code class="docutils literal"><span class="pre">'H1_DATA'</span></code> as the flag (for an explanation of what this means,
+read up on <a class="reference external" href="https://losc.ligo.org/S6/">The S6 Data Release</a>).</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">DataQualityFlag</span>
+<span class="n">h1segs</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1_DATA&#39;</span><span class="p">,</span>
+                                         <span class="s1">&#39;Sep 16 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 17 2010&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For sanity, lets plot these segments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">splot</span> <span class="o">=</span> <span class="n">h1segs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">splot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/miscellaneous/open-data-spectrogram-2.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/open-data-spectrogram-2.png" src="../../_images/open-data-spectrogram-2.png" />
+</div>
+<p>We see that the LIGO Hanford Observatory detector was operating for the
+majority of the day, with a few outages of ~30 minutes or so.</p>
+<p>We can use the <a class="reference external" href="https://docs.python.org/3/library/functions.html#abs" title="(in Python v3.6)"><code class="xref py py-func docutils literal"><span class="pre">abs()</span></code></a> function to display the total amount of time
+spent taking data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h1segs</span><span class="o">.</span><span class="n">active</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-strain-data">
+<h2>2.2. Working with strain data<a class="headerlink" href="#working-with-strain-data" title="Permalink to this headline">¶</a></h2>
+<p>Now, we can loop through the active segments of <code class="docutils literal"><span class="pre">'H1_DATA'</span></code> and fetch the
+strain <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal"><span class="pre">TimeSeries</span></code></a> for each segment, calculating a
+<a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-class docutils literal"><span class="pre">Spectrogram</span></code></a> for each segment.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="n">spectrograms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">h1segs</span><span class="o">.</span><span class="n">active</span><span class="p">:</span>
+    <span class="n">h1strain</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">specgram</span> <span class="o">=</span> <span class="n">h1strain</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="n">spectrograms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">specgram</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can build a <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plotter</span> <span class="kn">import</span> <span class="n">SpectrogramPlot</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">SpectrogramPlot</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">specgram</span> <span class="ow">in</span> <span class="n">spectrograms</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">specgram</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="s1">&#39;Sep 16 2010&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="s1">&#39;Sep 16 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 17 2010&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain data&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-23</span><span class="p">,</span> <span class="mf">1e-19</span><span class="p">),</span> <span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="s1">r&#39;Strain noise [1/\rtHz]&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add_state_segments</span><span class="p">(</span><span class="n">h1segs</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/miscellaneous/open-data-spectrogram-5.png">png</a>)</p>
+<div class="figure">
+<img alt="../../_images/open-data-spectrogram-5.png" src="../../_images/open-data-spectrogram-5.png" />
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
