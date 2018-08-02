@@ -27,7 +27,7 @@ a LIGO_LW-format XML file containing a
    from gwpy.table import EventTable
    events = EventTable.read(
        'H1-LDAS_STRAIN-968654552-10.xml.gz', tablename='sngl_burst',
-       columns=['time', 'central_freq', 'snr'])
+       columns=['peak', 'central_freq', 'snr'])
 
 .. note::
 
@@ -41,15 +41,12 @@ and (optionally) the colour:
    :include-source:
    :context:
 
-   plot = events.plot('time', 'central_freq', color='snr')
+   plot = events.scatter('peak', 'central_freq', color='snr')
    ax = plot.gca()
    ax.set_yscale('log')
-   ax.set_ylabel('Frequency [Hz]')
-   ax.set_epoch(968654552)
    ax.set_xlim(968654552, 968654552+10)
    ax.set_title('LIGO-Hanford event triggers for HW100916')
-   plot.add_colorbar(clim=[1, 10], cmap='YlGnBu',
-                     label='Signal-to-noise ratio (SNR)')
+   ax.colorbar(clim=[1, 10], cmap='YlGnBu', label='Signal-to-noise ratio (SNR)')
    plot.show()
 
 This shows the central time and frequency of each event trigger (row

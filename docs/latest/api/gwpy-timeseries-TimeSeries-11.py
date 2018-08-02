@@ -9,6 +9,6 @@ tapered = series.taper()
 
 # We can plot it to see how the ends now vary smoothly from 0 to 1:
 
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(series, tapered, sep=True, sharex=True)
+from gwpy.plot import Plot
+plot = Plot(series, tapered, separate=True, sharex=True)
 plot.show()

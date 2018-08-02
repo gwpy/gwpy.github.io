@@ -1,4 +1,4 @@
-plot = TimeSeriesPlot(figsize=[12, 4])
+plot = Plot(figsize=[12, 4])
 ax = plot.gca()
 ax.plot(hfilt, label='LIGO-Hanford', color='gwpy:ligo-hanford')
 ax.plot(lfilt, label='LIGO-Livingston', color='gwpy:ligo-livingston')

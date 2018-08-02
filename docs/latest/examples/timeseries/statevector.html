@@ -2,21 +2,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>5. Plotting segments for a StateVector &#8212; GWpy 0.10.0+46.g3416931c documentation</title>
+    <title>5. Plotting segments for a StateVector &#8212; GWpy 0.10.0+514.gaf033c35 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.10.0+46.g3416931c',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -36,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -79,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../plotter/index.html">Plotting in GWpy (<code class="docutils literal"><span class="pre">gwpy.plotter</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
 </ul>
@@ -143,7 +134,7 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">5. Plotting segments for a <code class="docutils literal"><span class="pre">StateVector</span></code></a></li>
+<li><a class="reference internal" href="#">5. Plotting segments for a <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 
 <div id="sourcelink">
@@ -162,45 +153,41 @@
     <div class="col-md-9 content">
       
   <div class="section" id="plotting-segments-for-a-statevector">
-<span id="gwpy-example-timeseries-statevector"></span><h1>5. Plotting segments for a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
-<p>I would like to examine the state of the internal seismic isolation system supporting the Fabry-Perot mirror at the end of the Y-arm at LHO, in order to investigate a noise source.</p>
-<p>These data are private to the LIGO Scientific Collaboration and the Virgo Collaboration, but collaboration members can use the NDS2 service to download data.</p>
-<p>First, we can import the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal"><span class="pre">StateVector</span></code></a> class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
+<span id="gwpy-example-timeseries-statevector"></span><h1>5. Plotting segments for a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-segments-for-a-statevector" title="Permalink to this headline">¶</a></h1>
+<p>Confident detection of gravitational-wave signals is critically dependent
+on understaind the quality of the data search.
+Alongside the strain _h(t)_ data, <a href="#id3"><span class="problematic" id="id4">|LOSC|_</span></a> also releases a _Data <a href="#id5"><span class="problematic" id="id6">Quality_</span></a>
+:ref`state vector &lt;gwpy-statevector`&gt;.
+We can use this to check on the quality of the data from the LIGO Livingston
+detector around <a class="reference external" href="https://losc.ligo.org/events/GW170817/">GW170817</a>.</p>
+<p>First, we can import the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
 </pre></div>
 </div>
-<p>Next, we define which bits we want to use, and can then
-<a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.get" title="gwpy.timeseries.StateVector.get"><code class="xref py py-meth docutils literal"><span class="pre">get()</span></code></a> the data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;Summary state&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;State 1 damped&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stage 1 isolated&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stage 2 damped&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stage 2 isolated&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Master switch ON&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stage 1 WatchDog OK&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stage 2 WatchDog OK&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;L1:ISI-ETMX_ODC_CHANNEL_OUT_DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 14:00&#39;</span><span class="p">,</span> <span class="s1">&#39;May 22 2014 15:00&#39;</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="n">bits</span><span class="p">)</span>
+<p>and download the state information surrounding GW170817:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1187008882</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1187008882</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span>
+                                   <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s1">&#39;C00&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For this example, we wish to <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.resample" title="gwpy.timeseries.StateVector.resample"><code class="xref py py-meth docutils literal"><span class="pre">resample()</span></code></a> the data to a
-much lower rate, to make visualising the state much easier:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Finally, we make a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal"><span class="pre">plot()</span></code></a>, passing <code class="xref py py-obj docutils literal"><span class="pre">insetlabels=True</span></code> to
+<p>Finally, we make a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a>, passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">insetlabels=True</span></code> to
 display the bit names inside the axes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LLO ETMX internal seismic isolation state&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">add_bitmask</span><span class="p">(</span><span class="s1">&#39;0b11101110&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;seconds&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">1187008882</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1187008882</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Livingston data quality around GW170817&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../examples/timeseries/statevector-4.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/timeseries/statevector-3.png">png</a>)</p>
 <div class="figure">
-<img alt="../../_images/statevector-4.png" src="../../_images/statevector-4.png" />
+<img alt="../../_images/statevector-3.png" src="../../_images/statevector-3.png" />
 </div>
+<p>This plot shows that for a short time exactly overlapping with GW170817
+there was a data quality issue recorded that would negatively impact a
+search for generic gravitational-wave transients (bursts).
+For more details on this _glitch_, and on how it was excised, please see
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.119.161101">Abbott et al. 2017</a>.</p>
 </div>
 
 
@@ -216,7 +203,7 @@ display the bit names inside the axes:</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
     </p>
   </div>
 </footer>

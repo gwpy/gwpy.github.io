@@ -1,3 +1,3 @@
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(l1hoft, h1hoft)
+from gwpy.plot import Plot
+plot = Plot(l1hoft, h1hoft)
 plot.show()

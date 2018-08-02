@@ -8,6 +8,6 @@ zpk = concatenate_zpks(hp, lp)
 
 # Plot the filter:
 
-from gwpy.plotter import BodePlot
+from gwpy.plot import BodePlot
 plot = BodePlot(zpk, sample_rate=4096)
 plot.show()

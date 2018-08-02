@@ -16,6 +16,6 @@ filtered = data.filter(zpk, filtfilt=True)
 # We can plot the original signal, and the filtered version, cutting
 # off either end of the filtered data to remove filter-edge artefacts
 
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(data, filtered[128:-128], sep=True)
+from gwpy.plot import Plot
+plot = Plot(data, filtered[128:-128], separate=True)
 plot.show()

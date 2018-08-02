@@ -1,4 +1,4 @@
-plot = hfilt.plot(figsize=[12, 4], color='gwpy:ligo-hanford')
+plot = hfilt.plot(color='gwpy:ligo-hanford')
 ax = plot.gca()
 ax.set_title('LIGO-Hanford strain data around GW150914')
 ax.set_ylabel('Amplitude [strain]')

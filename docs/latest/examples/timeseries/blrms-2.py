@@ -1,1 +1,1 @@
-from gwpy.plotter import TimeSeriesPlot
+from gwpy.plot import Plot

@@ -1,4 +1,4 @@
-plot = TimeSeriesPlot(lho, llo)
+plot = Plot(lho, llo, figsize=(12, 6), sharex=True)
 ax1, ax2 = plot.axes
 for ifo, ax in zip(('Hanford', 'Livingston'), (ax1, ax2)):
     ax.legend(['X', 'Y', 'Z'])

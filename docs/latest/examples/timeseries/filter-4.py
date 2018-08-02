@@ -1,2 +1,3 @@
-from gwpy.plotter import FrequencySeriesPlot
-plot = FrequencySeriesPlot(whiteasd, dispasd, sep=True, sharex=True, label=None)
+from gwpy.plot import Plot
+plot = Plot(whiteasd, dispasd, separate=True, sharex=True,
+            xscale='log', yscale='log')

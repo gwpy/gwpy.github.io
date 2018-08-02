@@ -1,4 +1,4 @@
-from gwpy.plotter import TimeSeriesPlot
 inj = injfd.ifft()
-plot = TimeSeriesPlot(noise, inj, sep=True, sharex=True, sharey=True)
+plot = Plot(noise, inj, separate=True, sharex=True, sharey=True,
+            figsize=(12, 6))
 plot.show()

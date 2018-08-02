@@ -1,2 +1,2 @@
-plot = TimeSeriesPlot(l1hoft, h1hoft, sep=True)
+plot = Plot(l1hoft, h1hoft, separate=True)
 plot.show()

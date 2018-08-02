@@ -27,7 +27,7 @@ a LIGO_LW-format XML file containing a
    from gwpy.table import EventTable
    events = EventTable.read(
        'H1-LDAS_STRAIN-968654552-10.xml.gz', tablename='sngl_burst',
-       columns=['time', 'central_freq', 'bandwidth', 'duration', 'snr'])
+       columns=['peak', 'central_freq', 'bandwidth', 'duration', 'snr'])
 
 .. note::
 
@@ -41,7 +41,7 @@ the x- and y-axis columns, and the widths in those directions:
    :include-source:
    :context:
 
-   plot = events.plot('time', 'central_freq', 'duration', 'bandwidth',
+   plot = events.tile('peak', 'central_freq', 'duration', 'bandwidth',
                       color='snr')
    ax = plot.gca()
    ax.set_yscale('log')
@@ -49,6 +49,5 @@ the x- and y-axis columns, and the widths in those directions:
    ax.set_epoch(968654552)
    ax.set_xlim(968654552, 968654552+10)
    ax.set_title('LIGO-Hanford event tiles for HW100916')
-   plot.add_colorbar(clim=[1, 8], cmap='YlGnBu',
-                     label='Signal-to-noise ratio (SNR)')
+   ax.colorbar(clim=[1, 8], cmap='YlGnBu', label='Signal-to-noise ratio (SNR)')
    plot.show()

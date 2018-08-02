@@ -7,6 +7,10 @@
 Whitening a `TimeSeries`
 ########################
 
+.. warning::
+
+   This examples requires LIGO.ORG credentials for data access.
+
 Most data recorded from a gravitational-wave interferometer carry information
 across a wide band of frequencies, typically up to a few kiloHertz, but
 often it is the case that the low-frequency amplitude dwarfs that of the
@@ -46,9 +50,8 @@ and can `~TimeSeries.plot` both the original and whitened data
    :include-source:
    :context:
 
-   plot = data.plot()
-   plot.add_timeseries(white, newax=True, sharex=plot.axes[0])
-   plot.axes[0].set_xlabel('')
+   from gwpy.plot import Plot
+   plot = Plot(data, white, separate=True, sharex=True)
    plot.axes[0].set_ylabel('Y-arm power [counts]', fontsize=16)
    plot.axes[1].set_ylabel('Whitened amplitude', fontsize=16)
    plot.show()

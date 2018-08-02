@@ -1,4 +1,4 @@
-from gwpy.plotter import FrequencySeriesPlot
-plot = FrequencySeriesPlot(numpy.abs(noisefd), numpy.abs(injfd), sep=True,
-                           sharex=True, sharey=True)
+from gwpy.plot import Plot
+plot = Plot(numpy.abs(noisefd), numpy.abs(injfd), separate=True,
+            sharex=True, sharey=True, xscale='log', yscale='log')
 plot.show()

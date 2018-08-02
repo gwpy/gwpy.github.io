@@ -14,6 +14,6 @@ amp, phase = data.demodulate(331.3, stride=60)
 # We can then plot these trends to visualize changes in the amplitude
 # and phase of the calibration line:
 
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot(amp, phase, sep=True, sharex=True)
+from gwpy.plot import Plot
+plot = Plot(amp, phase, separate=True, sharex=True)
 plot.show()
