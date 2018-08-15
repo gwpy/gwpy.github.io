@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Plotting in GWpy (gwpy.plot) &#8212; GWpy 0.10.0+530.g5174c49e documentation</title>
+    <title>Plotting in GWpy (gwpy.plot) &#8212; GWpy 0.10.0+537.g7980f763 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
@@ -137,11 +137,12 @@
 <li><a class="reference internal" href="#">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a><ul>
 <li><a class="reference internal" href="#basic-plotting">Basic plotting</a><ul>
 <li><a class="reference internal" href="#basic-plotting-with-pyplot">Basic plotting with <code class="docutils literal notranslate"><span class="pre">pyplot</span></code></a></li>
-<li><a class="reference internal" href="#plot-instance-methods"><code class="docutils literal notranslate"><span class="pre">plot()</span></code> instance methods</a></li>
+<li><a class="reference internal" href="#plot-instance-methods"><code class="docutils literal notranslate"><span class="pre">.plot()</span></code> instance methods</a></li>
 <li><a class="reference internal" href="#multi-data-plots">Multi-data plots</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#plot-customisation">Plot customisation</a></li>
+<li><a class="reference internal" href="#plot-applications">Plot applications</a></li>
 </ul>
 </li>
 </ul>
@@ -184,9 +185,9 @@ to the standard methods available in <a class="reference external" href="https:/
 </div>
 </div>
 <div class="section" id="plot-instance-methods">
-<h3><a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> instance methods<a class="headerlink" href="#plot-instance-methods" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">.plot()</span></code> instance methods<a class="headerlink" href="#plot-instance-methods" title="Permalink to this headline">¶</a></h3>
 <p>Each of the data representations provided by <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy</span></code> also come with a
-<a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> method that provides a figure with improved defaults tailored
+<code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method that provides a figure with improved defaults tailored
 to those data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
@@ -198,12 +199,12 @@ to those data:</p>
 <div class="figure">
 <img alt="../_images/index-2.png" src="../_images/index-2.png" />
 </div>
-<p>The <a class="reference internal" href="../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram.plot" title="gwpy.spectrogram.Spectrogram.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> methods accept any keywords that can be used to create the
+<p>The <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> methods accept any keywords that can be used to create the
 <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v2.2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Figure</span></code></a> and the <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a>,
 and to draw the element itself, e.g:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Strain&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Strain&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gwpy:ligo-livingston&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -224,7 +225,7 @@ By default, a flat set of objects are shown on the same axes:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ldata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="mi">1126259446</span><span class="p">,</span> <span class="mi">1126259478</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.plot</span> <span class="k">import</span> <span class="n">Plot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">hdata</span><span class="p">,</span> <span class="n">ldata</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">hdata</span><span class="p">,</span> <span class="n">ldata</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -234,8 +235,8 @@ By default, a flat set of objects are shown on the same axes:</p>
 </div>
 <p>However, <code class="xref py py-obj docutils literal notranslate"><span class="pre">separate=True</span></code> can be given to show each dataset on a separate
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">Axes</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">hdata</span><span class="p">,</span> <span class="n">ldata</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">separate</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">hdata</span><span class="p">,</span> <span class="n">ldata</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">separate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../plot/index-5.png">png</a>)</p>
@@ -267,6 +268,15 @@ for example.</p>
 <li class="toctree-l2"><a class="reference internal" href="colorbars.html#another-example">Another example</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+<div class="section" id="plot-applications">
+<h2>Plot applications<a class="headerlink" href="#plot-applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">The Gravitational-Wave Observatory colour scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Visualising filters (<code class="docutils literal notranslate"><span class="pre">BodePlot</span></code>)</a></li>
 </ul>
 </div>
 </div>
