@@ -1,4 +1,4 @@
-plot = rate.plot()
+plot = rate.step()
 ax = plot.gca()
 ax.set_xlim(968654552, 968654562)
 ax.set_ylabel('Event rate [Hz]')

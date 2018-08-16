@@ -1,8 +1,7 @@
-plot = Plot(lho, llo, figsize=(12, 6), sharex=True)
+plot = Plot(lho, llo, figsize=(12, 6), sharex=True, yscale='log')
 ax1, ax2 = plot.axes
 for ifo, ax in zip(('Hanford', 'Livingston'), (ax1, ax2)):
     ax.legend(['X', 'Y', 'Z'])
-    ax.set_yscale('log')
     ax.text(1.01, 0.5, ifo, ha='left', va='center', transform=ax.transAxes,
             fontsize=18)
 ax1.set_ylabel('$1-3$\,Hz motion [nm/s]', y=-0.1)
