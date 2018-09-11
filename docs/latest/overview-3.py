@@ -1,6 +1,6 @@
-from gwpy.plotter import TimeSeriesPlot
-plot = TimeSeriesPlot()
-ax = plot.gca()
+from gwpy.plot import Plot
+plot = Plot()
+ax = plot.gca(xscale='auto-gps')
 ax.plot(h1b, color='gwpy:ligo-hanford', label='LIGO-Hanford')
 ax.plot(l1b, color='gwpy:ligo-livingston', label='LIGO-Livingston')
 ax.set_epoch(1126259462.427)
