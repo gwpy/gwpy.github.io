@@ -4,16 +4,13 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>FFT routines for GWpy &#8212; GWpy 0.12.0+78.g08770581 documentation</title>
+    <title>FFT routines for GWpy &#8212; GWpy 0.12.2+258.gec0805db documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
-    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -41,7 +38,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.12.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -86,13 +83,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plotter</span></code>)</a></li>
 </ul>
 </ul>
 </li>
@@ -163,7 +160,7 @@
 <span id="gwpy-signal-fft"></span><h1>FFT routines for GWpy<a class="headerlink" href="#fft-routines-for-gwpy" title="Permalink to this headline">¶</a></h1>
 <p>The Fourier transform (and the associated digital FFT algorithm) is the most
 common way of investigating the frequency-domain content of a time-domain signal.
-GWpy provides wrappers of average spectrum methods from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v1.1.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.signal</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lal</span></code></a>, and <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.psd.html#module-pycbc.psd" title="(in PyCBC)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.psd</span></code></a> to simplify calculating a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> from a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
+GWpy provides wrappers of average spectrum methods from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v1.2.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.signal</span></code></a>, <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lal</span></code></a>, and <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.psd.html#module-pycbc.psd" title="(in PyCBC v1.13.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.psd</span></code></a> to simplify calculating a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> from a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.signal.fft</span></code> sub-package provides the following FFT averaging methods:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -242,7 +239,7 @@ GWpy provides wrappers of average spectrum methods from <a class="reference exte
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The simple names (e.g. <code class="docutils literal notranslate"><span class="pre">'welch'</span></code>) are mapped at runtime, meaning if
-you don’t have <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#module-pycbc" title="(in PyCBC)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc</span></code></a> on your system, the registrations will map to
+you don’t have <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#module-pycbc" title="(in PyCBC v1.13.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc</span></code></a> on your system, the registrations will map to
 <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lal/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lal</span></code></a> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy</span></code> instead. These are provided only for convenience, so
 if you want to be able to reproduce your results on any system,
 use the full API-specific name when using <code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.psd()</span></code>
@@ -281,7 +278,7 @@ o</p>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">scheme</span></code></td>
 <td><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></td>
-<td><a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#pycbc.scheme.Scheme" title="(in PyCBC)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc.scheme.Scheme</span></code></a></td>
+<td><a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.html#pycbc.scheme.Scheme" title="(in PyCBC v1.13.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc.scheme.Scheme</span></code></a></td>
 <td>processing scheme in which
 to execute FFT</td>
 </tr>

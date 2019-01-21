@@ -4,16 +4,13 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Reading and writing time-domain data &#8212; GWpy 0.12.0+78.g08770581 documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 0.12.2+258.gec0805db documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
-    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -41,7 +38,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.12.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.12.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -86,13 +83,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plotter/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plotter</span></code>)</a></li>
 </ul>
 </ul>
 </li>
@@ -151,6 +148,7 @@
 <li><a class="reference internal" href="#id4">Writing</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#hdf5-gwosc">HDF5 (GWOSC)</a></li>
 <li><a class="reference internal" href="#wav">WAV</a><ul>
 <li><a class="reference internal" href="#id5">Reading</a></li>
 <li><a class="reference internal" href="#id6">Writing</a></li>
@@ -242,36 +240,37 @@ Those formats are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-HW100916-968654552-1.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">968654552.5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654553</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Additionally, the following keyword arguments can be passed to manipulate the data on-the-fly when reading:</p>
+<p>Additionally, the following keyword arguments can be used:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="19%" />
-<col width="11%" />
-<col width="70%" />
+<col width="18%" />
+<col width="10%" />
+<col width="10%" />
+<col width="62%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Keyword</th>
 <th class="head">Type</th>
+<th class="head">Default</th>
 <th class="head">Usage</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">resample</span></code></td>
-<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></td>
-<td>resample the data to a different number of
-samples per second</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">scaled</span></code></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></td>
+<td>Apply ADC calibration when reading</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dtype</span></code></td>
-<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></td>
-<td>cast the input data to a different data type</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> of channel types
+(<code class="docutils literal notranslate"><span class="pre">'ADC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Proc'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'Sim'</span></code>) for
+each channel to be read. This option
+optimises the reading operation.</td>
 </tr>
 </tbody>
 </table>
-<p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;HLV-HW100916-968654552-1.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;L1:LDAS-STRAIN&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                       <span class="n">resample</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="reading-multiple-channels">
 <h3>Reading multiple channels<a class="headerlink" href="#reading-multiple-channels" title="Permalink to this headline">¶</a></h3>
@@ -302,6 +301,11 @@ samples per second</td>
 <div class="section" id="hdf5">
 <span id="gwpy-timeseries-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
 <p>GWpy allows storing data in HDF5 format files, using a custom specification for storage of metadata.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To read GWOSC (LOSC) data from HDF5, please see
+<a class="reference internal" href="#gwpy-timeseries-io-hdf5-gwosc"><span class="std std-ref">HDF5 (GWOSC)</span></a>.</p>
+</div>
 <div class="section" id="id3">
 <h3>Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>To read <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> or <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> data held in HDF5 files pass the filename (or filenames) or the source, and the path of the data inside the HDF5 file:</p>
@@ -339,6 +343,21 @@ samples per second</td>
 </div>
 </div>
 </div>
+<div class="section" id="hdf5-gwosc">
+<span id="gwpy-timeseries-io-hdf5-gwosc"></span><h2>HDF5 (GWOSC)<a class="headerlink" href="#hdf5-gwosc" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Gravitational</span> <span class="pre">Wave</span> <span class="pre">Open</span> <span class="pre">Science</span> <span class="pre">Center</span> <span class="pre">(GWOSC)</span></code> write data in HDF5 using a custom schema
+that is incompatible with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5'</span></code>.</p>
+<p>GWpy can read data from GWOSC (LOSC) HDF5 files using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5.losc'</span></code>
+keyword:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H-H1_GWOSC_16KHZ_R1-1187056280-4096.hdf5&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                       <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;hdf5.losc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.read</span></code></a> will return the contents of the
+<code class="docutils literal notranslate"><span class="pre">/strain/Strain</span></code> dataset, while <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector.read" title="gwpy.timeseries.StateVector.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector.read</span></code></a> will return those of
+<code class="docutils literal notranslate"><span class="pre">/quality/simple</span></code>.</p>
+<p>As with regular HDF5, the <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading.</p>
+</div>
 <div class="section" id="wav">
 <span id="gwpy-timeseries-io-wav"></span><h2>WAV<a class="headerlink" href="#wav" title="Permalink to this headline">¶</a></h2>
 <p>Any <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> can be written to / read from a WAV file using <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.read()</span></code></a>:</p>
@@ -352,7 +371,7 @@ samples per second</td>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.1.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.2.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
 </div>
 <div class="section" id="id6">
 <h3>Writing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
@@ -360,7 +379,7 @@ samples per second</td>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.write.html#scipy.io.wavfile.write" title="(in SciPy v1.1.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.write()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.write.html#scipy.io.wavfile.write" title="(in SciPy v1.2.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.write()</span></code></a> for keyword argument options.</p>
 </div>
 </div>
 </div>
