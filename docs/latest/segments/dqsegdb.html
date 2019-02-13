@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The Segment Database &#8212; GWpy 0.12.2+295.gbb82f1cd documentation</title>
+    <title>The Segment Database &#8212; GWpy 0.12.2+313.gc20c0b7b documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
@@ -153,22 +153,39 @@
     <div class="col-md-9 content">
       
   <div class="section" id="the-segment-database">
-<span id="gwpy-segments-dqsegdb"></span><h1>The Segment Database<a class="headerlink" href="#the-segment-database" title="Permalink to this headline">¶</a></h1>
-<p><strong>Additional dependencies</strong>: <a class="reference external" href="http://software.ligo.org/docs/glue/glue-module.html" title="glue module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue</span></code></a>, <a class="reference external" href="https://wiki.ligo.org/DASWG/DQSEGDB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dqsegdb</span></code></a></p>
-<p>The LIGO and Virgo instruments utilise hundreds of data-quality flags to record instrumental state on a daily basis.
-These flags are stored in a joint segment database - a queryable database recording each flag, its valid and active segment lists, and all metadata associated with its generation.
-The segment database is the primary access point for users to study data-quality flags and apply them in any analysis.</p>
-<p>The <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> object includes the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query()</span></code></a> classmethod with which to access segments stored in any segment database:</p>
+<span id="gwpy-segments-dqsegdb2"></span><h1>The Segment Database<a class="headerlink" href="#the-segment-database" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Access to the GW segment database is reserved for members of
+the LIGO-Virgo-KAGRA collaborations.</p>
+</div>
+<p>The LIGO and Virgo instruments utilise hundreds of data-quality flags
+to record instrumental state on a daily basis.
+These flags are stored in a joint segment database - a queryable database
+recording each flag, its valid and active segment lists, and all metadata
+associated with its generation.
+The segment database is the primary access point for users to study
+data-quality flags and apply them in any analysis.</p>
+<p>The <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> object includes the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query()</span></code></a>
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#classmethod" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classmethod</span></code></a> with which to access segments stored in any segment database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="k">import</span> <span class="n">DataQualityFlag</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">segs</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;L1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 14 2015&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 15 2015&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">segs</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;L1:DMT-ANALYSIS_READY:1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                             <span class="s1">&#39;Sep 14 2015&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 15 2015&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The above command will return the complete record for the LIGO-Livingston Observatory (<code class="docutils literal notranslate"><span class="pre">L1</span></code>) observing segments for the day of September 14 2015 (all times should be given in UTC or GPS).</p>
+<p>The above command will return the complete record for the
+LIGO-Livingston Observatory (<code class="docutils literal notranslate"><span class="pre">L1</span></code>) observing segments for the day of
+September 14 2015 (all times should be given in UTC or GPS).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Members of the LIGO Scientific Collaboration or the Virgo Collaboration
-can also go to <a class="reference external" href="https://segments-web.ligo.org">https://segments-web.ligo.org</a> to search for segments
-using their browser.</p>
+<p class="last"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQuality.query()</span></code> calls out to <code class="xref py py-obj docutils literal notranslate"><span class="pre">dqsegdb2</span></code>, see its documentation
+for more information and extra functions you can use to interact with
+the segment database.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Members of LIGO-Virgo-KAGRA can also go to <a class="reference external" href="https://segments-web.ligo.org">https://segments-web.ligo.org</a>
+to search for segments using their browser.</p>
 </div>
 </div>
 

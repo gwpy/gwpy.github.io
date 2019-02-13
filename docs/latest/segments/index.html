@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Data-quality segments &#8212; GWpy 0.12.2+295.gbb82f1cd documentation</title>
+    <title>Data-quality segments &#8212; GWpy 0.12.2+313.gc20c0b7b documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
@@ -135,6 +135,7 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Data-quality segments</a><ul>
+<li><a class="reference internal" href="#the-segment-and-segmentlist">The <code class="docutils literal notranslate"><span class="pre">Segment</span></code> and <code class="docutils literal notranslate"><span class="pre">SegmentList</span></code></a></li>
 <li><a class="reference internal" href="#the-dataqualityflag">The <code class="docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></li>
 <li><a class="reference internal" href="#combining-dataqualityflags">Combining <code class="docutils literal notranslate"><span class="pre">DataQualityFlag</span></code>s</a><ul>
 <li><a class="reference internal" href="#intersection">Intersection (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>)</a></li>
@@ -171,10 +172,21 @@
       
   <div class="section" id="data-quality-segments">
 <span id="gwpy-segments"></span><h1>Data-quality segments<a class="headerlink" href="#data-quality-segments" title="Permalink to this headline">¶</a></h1>
-<p>In order to successfully search data for gravitational-wave signals, precise records of when each observatory was operating, and in a particular configuration, are kept to enable search teams to pick the best data to analyse.</p>
-<p>Time segments are recorded denoting when each observatory was taking science-quality data and when the calibration was nominal, as well as during times of possible problems - electronics glitches or severe weather, for example.</p>
-<p>The international collaboration operates using the GPS time standard (seconds since the GPS epoch of midnight on January 6th 1980), and records such times as semi-open GPS <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code> segments.</p>
-<p>GWpy provides a number of classes for generating and manipulating such segments, inherited most functionality from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.segments</span></code> package.
+<p>In order to successfully search data for gravitational-wave signals, precise
+records of when each observatory was operating, and in which configuration,
+are kept to enable search teams to pick the best data to analyse.</p>
+<p>Time segments are recorded denoting when each observatory was taking
+observation-quality data and when the calibration was nominal, as well as
+during times of possible problems - electronics glitches or severe weather,
+for example.</p>
+<p>The international collaboration operates using the GPS time standard
+(seconds since the GPS epoch of midnight on January 6th 1980), and records
+such times as semi-open GPS <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code> segments.</p>
+<div class="section" id="the-segment-and-segmentlist">
+<h2>The <a class="reference internal" href="../api/gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentList</span></code></a><a class="headerlink" href="#the-segment-and-segmentlist" title="Permalink to this headline">¶</a></h2>
+<p>GWpy provides a number of classes for generating and manipulating such
+segments, enhancing the functionality provided by the (excellent)
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.segments</span></code> package.
 All credits for their usefulness go to the authors of that package.</p>
 <p>These basic objects are as follows:</p>
 <table border="1" class="longtable docutils">
@@ -189,18 +201,25 @@ All credits for their usefulness go to the authors of that package.</p>
 <tr class="row-even"><td><a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></td>
 <td>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="../api/gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.segments.SegmentListDict.html#gwpy.segments.SegmentListDict" title="gwpy.segments.SegmentListDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentListDict</span></code></a></td>
-<td>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> of <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentLists</span></code></a></td>
-</tr>
 </tbody>
 </table>
-<p>While these objects are key to representing core data segments, they are usually applied to analyses of data as a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p>
+<p>While these objects are key to representing core data segments,
+they are usually applied to analyses of data as a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p>
+</div>
 <div class="section" id="the-dataqualityflag">
 <h2>The <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a><a class="headerlink" href="#the-dataqualityflag" title="Permalink to this headline">¶</a></h2>
-<p>A <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> is an annotated set of segments that indicate something about instrumental operation.
-Each flag is defined by applying some algorithm on data and generating a <a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentList</span></code></a> that indicates some good or bad condition has been met during those times.
-For example, the times during which the LIGO interferometers are operating under observing conditions are recorded as the ‘analysis-ready’ flag, which are used by data analysis groups to define periods of data over which to run their pipelines.
-Conversely, high seismic noise around the observatory buildings is recorded in a data-quality flag used by analysis groups to veto periods of analysis as a result of sub-standard data.</p>
+<p>A <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> is an annotated set of segments that indicate something
+about instrumental operation.
+Each flag is defined by applying some algorithm on data and generating a
+<a class="reference internal" href="../api/gwpy.segments.SegmentList.html#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentList</span></code></a> that indicates some good or bad condition has been met
+during those times.
+For example, the times during which the LIGO interferometers are operating
+under observing conditions are recorded as the ‘<em>analysis-ready</em>’ flag, which
+is used by data analysis groups to define periods of data over which to search
+for gravitational-wave signals.
+Conversely, high seismic noise around the observatory buildings is recorded
+in a data-quality flag used by those groups to veto periods of analysis as
+a result of sub-standard data.</p>
 <p>Each <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> has some key attributes:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -219,7 +238,12 @@ Conversely, high seismic noise around the observatory buildings is recorded in a
 </tr>
 </tbody>
 </table>
-<p>By convention, the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> is typically constructed of three colon-separated components: the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.ifo" title="gwpy.segments.DataQualityFlag.ifo"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ifo</span></code></a>, <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.tag" title="gwpy.segments.DataQualityFlag.tag"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tag</span></code></a>, and <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.version" title="gwpy.segments.DataQualityFlag.version"><code class="xref py py-attr docutils literal notranslate"><span class="pre">version</span></code></a>, e.g. <code class="docutils literal notranslate"><span class="pre">L1:DMT-ANALYSIS_READY:1</span></code>.</p>
+<p>By convention, the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> is typically constructed of
+three colon-separated components: the
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.ifo" title="gwpy.segments.DataQualityFlag.ifo"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ifo</span></code></a>,
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.tag" title="gwpy.segments.DataQualityFlag.tag"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tag</span></code></a>, and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.version" title="gwpy.segments.DataQualityFlag.version"><code class="xref py py-attr docutils literal notranslate"><span class="pre">version</span></code></a>,
+e.g. <code class="docutils literal notranslate"><span class="pre">L1:DMT-ANALYSIS_READY:1</span></code>.</p>
 </div>
 <div class="section" id="combining-dataqualityflags">
 <h2>Combining <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>s<a class="headerlink" href="#combining-dataqualityflags" title="Permalink to this headline">¶</a></h2>

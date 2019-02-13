@@ -1,5 +1,9 @@
-qhoft = whoft.q_transform(whiten=False, qrange=(93.1, 93.1))
-plot = qhoft.crop(1172489782.57, 1172489783.57).plot(figsize=[8, 4])
+qhoft = whoft.q_transform(
+    whiten=False,  # already white
+    qrange=(4, 150),  # wider Q-transform range
+    outseg=(1172489782.57, 1172489783.57),  # region of interest
+)
+plot = qhoft.imshow(figsize=[8, 4])
 ax = plot.gca()
 ax.set_xscale('seconds')
 ax.set_yscale('log')
