@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Publishing a release &#8212; GWpy 0.12.2+347.g2f660847 documentation</title>
+    <title>Publishing a release &#8212; GWpy 0.12.2+405.gc7ab56bb documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
@@ -136,14 +136,14 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Publishing a release</a><ul>
 <li><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
-<li><a class="reference internal" href="#distributing-the-new-release-package">Distributing the new release package</a><ul>
-<li><a class="reference internal" href="#debian-rhel">Debian/RHEL</a></li>
-<li><a class="reference internal" href="#macports">Macports</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#linked-updates">Linked updates</a><ul>
 <li><a class="reference internal" href="#pypi">PyPI</a></li>
 <li><a class="reference internal" href="#zenodo">Zenodo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distributing-the-new-release-package">Distributing the new release package</a><ul>
+<li><a class="reference internal" href="#conda">Conda</a></li>
+<li><a class="reference internal" href="#debian-rhel">Debian/RHEL</a></li>
 </ul>
 </li>
 </ul>
@@ -253,30 +253,6 @@ appear on <a class="reference external" href="https://gwpy.github.io/docs/">http
 </li>
 </ol>
 </div>
-<div class="section" id="distributing-the-new-release-package">
-<h2>Distributing the new release package<a class="headerlink" href="#distributing-the-new-release-package" title="Permalink to this headline">¶</a></h2>
-<p>Package distributions for Debian, RHEL, and Macports, is still done manually:</p>
-<div class="section" id="debian-rhel">
-<h3>Debian/RHEL<a class="headerlink" href="#debian-rhel" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Upload the source tarball to software.ligo.org</li>
-<li>Email <a class="reference external" href="mailto:daswg+announce&#37;&#52;&#48;ligo&#46;org">daswg+announce<span>&#64;</span>ligo<span>&#46;</span>org</a> to announce the new release and the presence of the tarball on <a class="reference external" href="http://software.ligo.org">http://software.ligo.org</a>.</li>
-</ul>
-</div>
-<div class="section" id="macports">
-<h3>Macports<a class="headerlink" href="#macports" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Generate an updated <code class="docutils literal notranslate"><span class="pre">Portfile</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python setup.py port
-</pre></div>
-</div>
-</li>
-<li><p class="first">Open a new Pull Request on <a class="reference external" href="https://github.com/macports/macports-ports">https://github.com/macports/macports-ports</a> that
-replaces the old <code class="docutils literal notranslate"><span class="pre">/python/py-gwpy/Portfile</span></code> with this new version.</p>
-</li>
-</ul>
-</div>
-</div>
 <div class="section" id="linked-updates">
 <h2>Linked updates<a class="headerlink" href="#linked-updates" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pypi">
@@ -289,6 +265,25 @@ release tarball to <a class="reference external" href="https://pypi.python.org">
 <h3>Zenodo<a class="headerlink" href="#zenodo" title="Permalink to this headline">¶</a></h3>
 <p>Creating a new release on GitHub will automatically trigger a new DOI on
 <a class="reference external" href="https://zenodo.org">https://zenodo.org</a>.</p>
+</div>
+</div>
+<div class="section" id="distributing-the-new-release-package">
+<h2>Distributing the new release package<a class="headerlink" href="#distributing-the-new-release-package" title="Permalink to this headline">¶</a></h2>
+<p>Package distributions for Conda, Debian, and RHEL are done manually:</p>
+<div class="section" id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
+<p>Once the PyPI upload has completed, the conda-forge bot will automatically
+open a pull request to <a class="reference external" href="https://github.com/conda-forge/gwpy-feedstock.git">conda-forge/gwpy-feedstock</a>.
+Just double-check that the dependencies and tests are up-to-date, then
+merge.</p>
+</div>
+<div class="section" id="debian-rhel">
+<h3>Debian/RHEL<a class="headerlink" href="#debian-rhel" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Upload the source tarball to software.ligo.org</li>
+<li>Open a new request to <a class="reference external" href="https://git.ligo.org/sccb/requests/">sccb/requests</a>
+to announce the new release and request package build and deployment.</li>
+</ul>
 </div>
 </div>
 </div>
