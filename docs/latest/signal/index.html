@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Signal processing &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Signal processing &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
@@ -174,30 +175,30 @@ from <a class="reference external" href="https://docs.scipy.org/doc/scipy/refere
 <p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.signal.spectral</span></code> sub-package provides the following
 PSD estimation averaging methods:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">'bartlett'</span></code> - mean average of non-overlapping periodograms</li>
-<li><code class="docutils literal notranslate"><span class="pre">'median'</span></code> - median average of overlapping periodograms</li>
-<li><code class="docutils literal notranslate"><span class="pre">'welch'</span></code> - mean average of overlapping periodograms</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'bartlett'</span></code> - mean average of non-overlapping periodograms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'median'</span></code> - median average of overlapping periodograms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'welch'</span></code> - mean average of overlapping periodograms</p></li>
 </ul>
 <p>Each of these can be specified by passing the function name as the
 <code class="docutils literal notranslate"><span class="pre">method</span></code> keyword argument to any of the relevant <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 instance methods:</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.psd</span></code></a>([fftlength,&nbsp;overlap,&nbsp;window,&nbsp;…])</td>
-<td>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.psd</span></code></a>([fftlength, overlap, window, …])</p></td>
+<td><p>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a>([fftlength,&nbsp;overlap,&nbsp;window,&nbsp;…])</td>
-<td>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a>([fftlength, overlap, window, …])</p></td>
+<td><p>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram</span></code></a>(stride[,&nbsp;fftlength,&nbsp;…])</td>
-<td>Calculate the average power spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the specified average spectrum method.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram</span></code></a>(stride[, fftlength, …])</p></td>
+<td><p>Calculate the average power spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the specified average spectrum method.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram2</span></code></a>(fftlength[,&nbsp;…])</td>
-<td>Calculate the non-averaged power <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram2" title="gwpy.timeseries.TimeSeries.spectrogram2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram2</span></code></a>(fftlength[, …])</p></td>
+<td><p>Calculate the non-averaged power <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -213,29 +214,29 @@ estimation method used.</p>
 <h2>Time-domain filtering<a class="headerlink" href="#time-domain-filtering" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object comes with a number of instance methods that should make filtering data trivial for a number of common use cases.
 Available methods include:</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.highpass</span></code></a></td>
-<td>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a high-pass filter.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.highpass</span></code></a></p></td>
+<td><p>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a high-pass filter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.lowpass</span></code></a></td>
-<td>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.lowpass</span></code></a></p></td>
+<td><p>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.bandpass" title="gwpy.timeseries.TimeSeries.bandpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.bandpass</span></code></a></td>
-<td>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a band-pass filter.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.bandpass" title="gwpy.timeseries.TimeSeries.bandpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.bandpass</span></code></a></p></td>
+<td><p>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a band-pass filter.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.zpk</span></code></a></td>
-<td>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.zpk</span></code></a></p></td>
+<td><p>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.whiten</span></code></a></td>
-<td>Whiten this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using inverse spectrum truncation</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.whiten</span></code></a></p></td>
+<td><p>Whiten this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using inverse spectrum truncation</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.filter</span></code></a></td>
-<td>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an IIR or FIR filter</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.filter</span></code></a></p></td>
+<td><p>Filter this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an IIR or FIR filter</p></td>
 </tr>
 </tbody>
 </table>
@@ -246,29 +247,29 @@ Available methods include:</p>
 <h2>Frequency-domain filtering<a class="headerlink" href="#frequency-domain-filtering" title="Permalink to this headline">¶</a></h2>
 <p>Additionally, the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object includes a number of instance methods to generate frequency-domain information for some data.
 Available methods include:</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.psd</span></code></a></td>
-<td>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.psd</span></code></a></p></td>
+<td><p>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a></td>
-<td>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a></p></td>
+<td><p>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram</span></code></a></td>
-<td>Calculate the average power spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the specified average spectrum method.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.spectrogram</span></code></a></p></td>
+<td><p>Calculate the average power spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the specified average spectrum method.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.q_transform" title="gwpy.timeseries.TimeSeries.q_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.q_transform</span></code></a></td>
-<td>Scan a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an interpolated high-resolution spectrogram</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.q_transform" title="gwpy.timeseries.TimeSeries.q_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.q_transform</span></code></a></p></td>
+<td><p>Scan a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an interpolated high-resolution spectrogram</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="gwpy.timeseries.TimeSeries.rayleigh_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.rayleigh_spectrum</span></code></a></td>
-<td>Calculate the Rayleigh <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="gwpy.timeseries.TimeSeries.rayleigh_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.rayleigh_spectrum</span></code></a></p></td>
+<td><p>Calculate the Rayleigh <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.rayleigh_spectrogram</span></code></a></td>
-<td>Calculate the Rayleigh statistic spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="gwpy.timeseries.TimeSeries.rayleigh_spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.rayleigh_spectrogram</span></code></a></p></td>
+<td><p>Calculate the Rayleigh statistic spectrogram of this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -277,43 +278,43 @@ Available methods include:</p>
 <div class="section" id="filter-design">
 <span id="gwpy-filter-design"></span><h2>Filter design<a class="headerlink" href="#filter-design" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.signal</span></code> provides a number of filter design methods which, when combined with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">BodePlot</span></code> visualisation, can be used to create a number of common filters:</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.signal.filter_design.lowpass" title="gwpy.signal.filter_design.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowpass</span></code></a></td>
-<td>Design a low-pass filter for the given cutoff frequency</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.signal.filter_design.lowpass" title="gwpy.signal.filter_design.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowpass</span></code></a></p></td>
+<td><p>Design a low-pass filter for the given cutoff frequency</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.signal.filter_design.highpass" title="gwpy.signal.filter_design.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highpass</span></code></a></td>
-<td>Design a high-pass filter for the given cutoff frequency</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.signal.filter_design.highpass" title="gwpy.signal.filter_design.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highpass</span></code></a></p></td>
+<td><p>Design a high-pass filter for the given cutoff frequency</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.signal.filter_design.bandpass" title="gwpy.signal.filter_design.bandpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bandpass</span></code></a></td>
-<td>Design a band-pass filter for the given cutoff frequencies</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.signal.filter_design.bandpass" title="gwpy.signal.filter_design.bandpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bandpass</span></code></a></p></td>
+<td><p>Design a band-pass filter for the given cutoff frequencies</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.signal.filter_design.notch" title="gwpy.signal.filter_design.notch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notch</span></code></a></td>
-<td>Design a ZPK notch filter for the given frequency and sampling rate</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.signal.filter_design.notch" title="gwpy.signal.filter_design.notch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notch</span></code></a></p></td>
+<td><p>Design a ZPK notch filter for the given frequency and sampling rate</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.signal.filter_design.concatenate_zpks" title="gwpy.signal.filter_design.concatenate_zpks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concatenate_zpks</span></code></a></td>
-<td>Concatenate a list of zero-pole-gain (ZPK) filters</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.signal.filter_design.concatenate_zpks" title="gwpy.signal.filter_design.concatenate_zpks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concatenate_zpks</span></code></a></p></td>
+<td><p>Concatenate a list of zero-pole-gain (ZPK) filters</p></td>
 </tr>
 </tbody>
 </table>
 <p>Each of these will return filter coefficients that can be passed directly into <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zpk</span></code></a> (default for analogue filters) or <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a> (default for digital filters).</p>
 <p>For a worked example of how to filter LIGO data to discover a gravitational-wave signal, see the example <a class="reference internal" href="../examples/signal/gw150914.html#gwpy-example-signal-gw150914"><span class="std std-ref">Filtering a TimeSeries to detect gravitational waves</span></a>.</p>
 <p><strong>Cross-channel correlations:</strong></p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.coherence" title="gwpy.timeseries.TimeSeries.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.coherence</span></code></a></td>
-<td>Calculate the frequency-coherence between this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and another.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.coherence" title="gwpy.timeseries.TimeSeries.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.coherence</span></code></a></p></td>
+<td><p>Calculate the frequency-coherence between this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and another.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="gwpy.timeseries.TimeSeries.coherence_spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.coherence_spectrogram</span></code></a></td>
-<td>Calculate the coherence spectrogram between this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and other.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="gwpy.timeseries.TimeSeries.coherence_spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.coherence_spectrogram</span></code></a></p></td>
+<td><p>Calculate the coherence spectrogram between this <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and other.</p></td>
 </tr>
 </tbody>
 </table>
@@ -323,13 +324,11 @@ Available methods include:</p>
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="gwpy.signal.filter_design.bandpass">
-<code class="descclassname">filter_design.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/signal/filter_design.py#L500"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.bandpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>fhigh</em>, <em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/signal/filter_design.py#L500"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.bandpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a band-pass filter for the given cutoff frequencies</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>flow</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flow</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>lower corner frequency of pass band</p>
 </div></blockquote>
@@ -362,17 +361,15 @@ Available methods include:</p>
 <div><p>other keyword arguments are passed directly to
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">iirdesign()</span></code></a> or <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html#scipy.signal.firwin" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">firwin()</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filter</strong></p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>filter</strong></p>
+<blockquote>
 <div><p>the formatted filter. the output format for an IIR filter depends
 on the input arguments, default is a tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">(zeros,</span> <span class="pre">poles,</span> <span class="pre">gain)</span></code></p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>By default a digital filter is returned, meaning the zeros and poles
 are given in the Z-domain in units of radians/sample.</p>
@@ -388,21 +385,19 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-1.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/index-11.png" src="../_images/index-11.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.lowpass">
-<code class="descclassname">filter_design.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/signal/filter_design.py#L375"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.lowpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">lowpass</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/signal/filter_design.py#L375"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.lowpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a low-pass filter for the given cutoff frequency</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>corner frequency of low-pass filter (Hertz)</p>
 </div></blockquote>
@@ -431,17 +426,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <div><p>other keyword arguments are passed directly to
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">iirdesign()</span></code></a> or <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html#scipy.signal.firwin" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">firwin()</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filter</strong></p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>filter</strong></p>
+<blockquote>
 <div><p>the formatted filter. the output format for an IIR filter depends
 on the input arguments, default is a tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">(zeros,</span> <span class="pre">poles,</span> <span class="pre">gain)</span></code></p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>By default a digital filter is returned, meaning the zeros and poles
 are given in the Z-domain in units of radians/sample.</p>
@@ -457,21 +450,19 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-2.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/index-21.png" src="../_images/index-21.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.highpass">
-<code class="descclassname">filter_design.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/signal/filter_design.py#L437"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.highpass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">highpass</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>fstop=None</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/signal/filter_design.py#L437"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.highpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a high-pass filter for the given cutoff frequency</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>corner frequency of high-pass filter</p>
 </div></blockquote>
@@ -500,17 +491,15 @@ are given in the Z-domain in units of radians/sample.</p>
 <div><p>other keyword arguments are passed directly to
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">iirdesign()</span></code></a> or <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.firwin.html#scipy.signal.firwin" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">firwin()</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filter</strong></p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>filter</strong></p>
+<blockquote>
 <div><p>the formatted filter. the output format for an IIR filter depends
 on the input arguments, default is a tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">(zeros,</span> <span class="pre">poles,</span> <span class="pre">gain)</span></code></p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>By default a digital filter is returned, meaning the zeros and poles
 are given in the Z-domain in units of radians/sample.</p>
@@ -526,21 +515,19 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-3.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/index-31.png" src="../_images/index-31.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.notch">
-<code class="descclassname">filter_design.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/signal/filter_design.py#L569"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.notch" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">notch</code><span class="sig-paren">(</span><em>sample_rate</em>, <em>type='iir'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/signal/filter_design.py#L569"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.notch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Design a ZPK notch filter for the given frequency and sampling rate</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 <blockquote>
 <div><p>frequency (default in Hertz) at which to apply the notch</p>
 </div></blockquote>
@@ -557,21 +544,19 @@ filter will be applied</p>
 <blockquote>
 <div><p>other keyword arguments to pass to <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.iirdesign</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>zpk</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>zpk</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
 <div><p>the filter components in digital zero-pole-gain format</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.iirdesign</span></code></a></dt>
-<dd>for details on the IIR filter design method</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.iirdesign.html#scipy.signal.iirdesign" title="(in SciPy v1.2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.iirdesign</span></code></a></dt><dd><p>for details on the IIR filter design method</p>
+</dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -589,28 +574,26 @@ are given in the Z-domain in units of radians/sample.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-4.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/index-41.png" src="../_images/index-41.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.signal.filter_design.concatenate_zpks">
-<code class="descclassname">filter_design.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/signal/filter_design.py#L632"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">filter_design.</code><code class="descname">concatenate_zpks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/signal/filter_design.py#L632"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.signal.filter_design.concatenate_zpks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate a list of zero-pole-gain (ZPK) filters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*zpks</strong></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*zpks</strong></p>
 <blockquote>
 <div><p>one or more zero-pole-gain format, each one should be a 3-<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a>
 containing an array of zeros, an array of poles, and a gain <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>zeros</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>zeros</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
 <blockquote>
 <div><p>the concatenated array of zeros</p>
 </div></blockquote>
@@ -619,13 +602,11 @@ containing an array of zeros, an array of poles, and a gain <a class="reference 
 <div><p>the concatenated array of poles</p>
 </div></blockquote>
 <p><strong>gain</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
-<blockquote class="last">
+<blockquote>
 <div><p>the overall gain</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p>Create a lowpass and a highpass filter, and combine them:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.signal.filter_design</span> <span class="k">import</span> <span class="p">(</span>
@@ -641,8 +622,8 @@ containing an array of zeros, an array of poles, and a gain <a class="reference 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../signal/index-5.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/index-5.png" src="../_images/index-5.png" />
 </div>
 </dd></dl>
@@ -663,7 +644,7 @@ containing an array of zeros, an array of poles, and a gain <a class="reference 
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

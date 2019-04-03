@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Calculating event trigger rate &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Calculating event trigger rate &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
@@ -167,13 +168,11 @@ One can calculate the event rate of an <a class="reference internal" href="../ap
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">event_rate()</span></code> method:.</p>
 <dl class="method">
 <dt>
-<code class="descclassname">EventTable.</code><code class="descname">event_rate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/table/table.py#L356"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descclassname">EventTable.</code><code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stride</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stride</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>size (seconds) of each time bin</p>
 </div></blockquote>
@@ -191,22 +190,20 @@ This value will be rounded up to the nearest sample if needed.</p>
 <div><p>name of time-column to use when binning events, attempts
 are made to guess this</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rate</strong> : <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>rate</strong> : <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <blockquote>
 <div><p>a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> of events per second (Hz)</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
-<blockquote class="last">
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong></p>
+<blockquote>
 <div><p>if the <code class="docutils literal notranslate"><span class="pre">timecolumn</span></code> cannot be guessed from the table contents</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>For example, using the same data as before we can calculate and plot the
@@ -221,8 +218,8 @@ event rate on a 1-second stride:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../table/rate-1.png">png</a>)</p>
-<div class="figure">
+<p>()</p>
+<div class="figure align-center">
 <img alt="../_images/rate-1.png" src="../_images/rate-1.png" />
 </div>
 <p>This code is a snippet of the example <a class="reference internal" href="../examples/table/rate.html#gwpy-example-table-rate"><span class="std std-ref">Calculating (and plotting) rate versus time for an EventTable</span></a>.</p>
@@ -234,14 +231,12 @@ to calculate the event rate for multiple conditions on the same table.
 For this, we can use the <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.binned_event_rates" title="gwpy.table.EventTable.binned_event_rates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">binned_event_rates()</span></code></a> method:</p>
 <dl class="method">
 <dt>
-<code class="descclassname">EventTable.</code><code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/table/table.py#L398"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descclassname">EventTable.</code><code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a> over
 a number of bins.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stride</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stride</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
 <blockquote>
 <div><p>size (seconds) of each time bin</p>
 </div></blockquote>
@@ -259,15 +254,15 @@ is performed for each event.</p>
 <blockquote>
 <div><p>one of:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code>, <code class="docutils literal notranslate"><span class="pre">'&lt;='</span></code>, <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>, <code class="docutils literal notranslate"><span class="pre">'&gt;='</span></code>, <code class="docutils literal notranslate"><span class="pre">'=='</span></code>, <code class="docutils literal notranslate"><span class="pre">'!='</span></code>,
-for a standard mathematical operation,</li>
-<li><code class="docutils literal notranslate"><span class="pre">'in'</span></code> to use the list of bins as containing bin edges, or</li>
-<li>a callable function that takes compares an event value
-against the bin value and returns a boolean.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'&lt;'</span></code>, <code class="docutils literal notranslate"><span class="pre">'&lt;='</span></code>, <code class="docutils literal notranslate"><span class="pre">'&gt;'</span></code>, <code class="docutils literal notranslate"><span class="pre">'&gt;='</span></code>, <code class="docutils literal notranslate"><span class="pre">'=='</span></code>, <code class="docutils literal notranslate"><span class="pre">'!='</span></code>,
+for a standard mathematical operation,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'in'</span></code> to use the list of bins as containing bin edges, or</p></li>
+<li><p>a callable function that takes compares an event value
+against the bin value and returns a boolean.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If <code class="docutils literal notranslate"><span class="pre">bins</span></code> is given as a list of tuples, this argument
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bins</span></code> is given as a list of tuples, this argument
 is ignored.</p>
 </div>
 </div></blockquote>
@@ -284,17 +279,15 @@ This value will be rounded up to the nearest sample if needed.</p>
 <blockquote>
 <div><p>name of time-column to use when binning events</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rates</strong> : ~gwpy.timeseries.TimeSeriesDict`</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>rates</strong> : ~gwpy.timeseries.TimeSeriesDict`</p>
+<blockquote>
 <div><p>a dict of (bin, <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>) pairs describing a
 rate of events per second (Hz) for each of the bins.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>For example, in the following example, we calculate the rate of events with
@@ -307,13 +300,13 @@ signal-to-noise ratio (SNR) above some threshold, for the same table as above.</
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure" id="id1">
+<div class="figure align-center" id="id1">
 <img alt="../_images/rate-2_00.png" src="../_images/rate-2_00.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../table/rate-2_00.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../table/rate-2_00.png">png</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure" id="id2">
+<div class="figure align-center" id="id2">
 <img alt="../_images/rate-2_01.png" src="../_images/rate-2_01.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../table/rate-2_01.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../table/rate-2_01.png">png</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>This code is a snippet of the example on <a class="reference internal" href="../examples/table/rate_binned.html#gwpy-example-table-rate-binned"><span class="std std-ref">Plotting EventTable rate versus time for specific column bins</span></a>.</p>
 </div>
@@ -332,7 +325,7 @@ signal-to-noise ratio (SNR) above some threshold, for the same table as above.</
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

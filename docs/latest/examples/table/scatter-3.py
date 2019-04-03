@@ -1,7 +1,1 @@
-plot = events.plot('time', 'central_freq', color='snr', edgecolor='none', epoch=968654552)
-plot.set_xlim(968654552, 968654552+10)
-plot.set_ylabel('Frequency [Hz]')
-plot.set_yscale('log')
-plot.set_title('LIGO Hanford Observatory event triggers for GW100916')
-plot.add_colorbar(clim=[1, 5], label='Signal-to-noise ratio', cmap='hot_r')
-plot.show()
+events.add_column(events["mass1"] + events["mass2"], name="mtotal")

@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>1. Filtering a TimeSeries to detect gravitational waves &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>1. Filtering a TimeSeries to detect gravitational waves &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../env.html">Configuring GWpy from the environment</a></li>
@@ -134,7 +135,7 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">1. Filtering a <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> to detect gravitational waves</a></li>
+<li><a class="reference internal" href="#">1. Filtering a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> to detect gravitational waves</a></li>
 </ul>
 
 <div id="sourcelink">
@@ -192,8 +193,8 @@ at all frequencies</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="xref py py-mod docutils literal notranslate"><span class="pre">filter_design</span></code> methods return digital filters
+<p class="admonition-title">Note</p>
+<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">filter_design</span></code> methods return digital filters
 by default, so we apply them using <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.filter</span></code></a>. If we had
 analogue filters (perhaps by passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">analog=True</span></code> to the filter design
 method), the easiest application would be <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.zpk</span></code></a></p>
@@ -223,7 +224,7 @@ adding some code to prettify the figure:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../examples/signal/gw150914-7.png">png</a>)</p>
-<div class="figure">
+<div class="figure align-center">
 <img alt="../../_images/gw150914-7.png" src="../../_images/gw150914-7.png" />
 </div>
 <p>We see now a spike around 16 seconds into the data, so let’s zoom into
@@ -237,13 +238,13 @@ that time (and prettify):</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure" id="id1">
+<div class="figure align-center" id="id1">
 <img alt="../../_images/gw150914-8_00.png" src="../../_images/gw150914-8_00.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-8_00.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-8_00.png">png</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure" id="id2">
+<div class="figure align-center" id="id2">
 <img alt="../../_images/gw150914-8_01.png" src="../../_images/gw150914-8_01.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-8_01.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-8_01.png">png</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Congratulations, you have succesfully filtered LIGO data to uncover the
 first ever directly-detected gravitational wave signal, GW150914!
@@ -276,17 +277,17 @@ before comparing them, so we apply those corrections:</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure" id="id3">
+<div class="figure align-center" id="id3">
 <img alt="../../_images/gw150914-11_00.png" src="../../_images/gw150914-11_00.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_00.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_00.png">png</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure" id="id4">
+<div class="figure align-center" id="id4">
 <img alt="../../_images/gw150914-11_01.png" src="../../_images/gw150914-11_01.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_01.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_01.png">png</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure" id="id5">
+<div class="figure align-center" id="id5">
 <img alt="../../_images/gw150914-11_02.png" src="../../_images/gw150914-11_02.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_02.png">png</a>)</span></p>
+<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/signal/gw150914-11_02.png">png</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The above filtering is (almost) the same as what was applied to LIGO data
 to produce Figure 1 in
@@ -307,7 +308,7 @@ to produce Figure 1 in
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

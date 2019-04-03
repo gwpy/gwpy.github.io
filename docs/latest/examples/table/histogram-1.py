@@ -1,4 +1,6 @@
 from gwpy.table import EventTable
-events = EventTable.read(
-    'H1-LDAS_STRAIN-968654552-10.xml.gz', tablename='sngl_burst',
-    columns=['peak', 'snr'])
+events = EventTable.fetch_open_data(
+    "GWTC-1-confident",
+    columns=("mass1", "mass2"),
+)
+events.add_column(events["mass1"] + events["mass2"], name="mtotal")

@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Publishing a release &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Publishing a release &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
@@ -170,66 +171,64 @@
 <p>This page describes the steps required to author a release of GWpy.</p>
 <p>Notes:</p>
 <ul class="simple">
-<li>gwpy uses the <a class="reference external" href="https://github.com/nvie/gitflow">git flow</a> branching model
-for releases</li>
-<li>all release numbers must follow <a class="reference external" href="segmver.org">Semantic Versioning 2</a> and
+<li><p>gwpy uses the <a class="reference external" href="https://github.com/nvie/gitflow">git flow</a> branching model
+for releases</p></li>
+<li><p>all release numbers must follow <a class="reference external" href="segmver.org">Semantic Versioning 2</a> and
 include major, minor, and patch numbers, e.g. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> rather than
-<code class="docutils literal notranslate"><span class="pre">1.0</span></code> or just <code class="docutils literal notranslate"><span class="pre">1</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">1.0</span></code> or just <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
 </ul>
 <div class="section" id="step-by-step">
 <h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first"><strong>Create a release branch using git flow</strong></p>
+<li><p><strong>Create a release branch using git flow</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release start <span class="m">1</span>.0.0
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Update the copyright:</strong></p>
+<li><p><strong>Update the copyright:</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -c <span class="s2">&quot;from setup_utils import update_all_copyright; update_all_copyright(</span><span class="k">$(</span>date +%Y<span class="k">)</span><span class="s2">)&quot;</span>
 $ git commit -S . -m <span class="s2">&quot;Updated copyright for release&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>``publish`` the release branch</strong>, allowing CI to run, and others to contribute:</p>
+<li><p><strong>``publish`` the release branch</strong>, allowing CI to run, and others to contribute:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release publish <span class="m">1</span>.0.0
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Wait patiently for the continuous integration to finish</strong></p>
-</li>
-<li><p class="first"><strong>Announce the release</strong> and ask for final contributions</p>
-</li>
-<li><p class="first"><strong>Finalise the release and push</strong></p>
+<li><p><strong>Wait patiently for the continuous integration to finish</strong></p></li>
+<li><p><strong>Announce the release</strong> and ask for final contributions</p></li>
+<li><p><strong>Finalise the release and push</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release finish <span class="m">1</span>.0.0
 $ git push origin master
 $ git push origin --tags
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">flow</span> <span class="pre">release</span> <span class="pre">finish</span></code> command will open two prompts, one
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">flow</span> <span class="pre">release</span> <span class="pre">finish</span></code> command will open two prompts, one
 to merge the release branch into <code class="xref py py-obj docutils literal notranslate"><span class="pre">master</span></code>, just leave that as is. The
 second prompt is the tag message, please complete this to include the
 release notes for this release.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>If ypu want to GPG sign the merge commit and the tag:</p>
-<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit --amend --gpg-sign  <span class="c1"># sign merge commit</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit --amend --gpg-sign  <span class="c1"># sign merge commit</span>
 $ git tag --sign v1.0.0 --force  <span class="c1"># regenerate tag</span>
 </pre></div>
 </div>
 </div>
 </li>
-<li><p class="first"><strong>Draft a release on GitHub</strong></p>
+<li><p><strong>Draft a release on GitHub</strong></p>
 <ul class="simple">
-<li>Go to <a class="reference external" href="https://github.com/gwpy/gwpy/releases/new">https://github.com/gwpy/gwpy/releases/new</a></li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">v1.0.0</span></code> as the <em>Tag version</em></li>
-<li>Use 1.0.0 as the <em>Release title</em></li>
-<li>Copy the tag message into the text box to serve as release notes</li>
+<li><p>Go to <a class="reference external" href="https://github.com/gwpy/gwpy/releases/new">https://github.com/gwpy/gwpy/releases/new</a></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">v1.0.0</span></code> as the <em>Tag version</em></p></li>
+<li><p>Use 1.0.0 as the <em>Release title</em></p></li>
+<li><p>Copy the tag message into the text box to serve as release notes</p></li>
 </ul>
 </li>
-<li><p class="first"><strong>Publish the release documentation</strong></p>
+<li><p><strong>Publish the release documentation</strong></p>
 <p>This is done from the LDAS computing centre at Caltech:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/duncan.macleod/gwpy-nightly-build/
 $ bash release-build.sh <span class="m">1</span>.0.0
@@ -280,9 +279,9 @@ merge.</p>
 <div class="section" id="debian-rhel">
 <h3>Debian/RHEL<a class="headerlink" href="#debian-rhel" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Upload the source tarball to software.ligo.org</li>
-<li>Open a new request to <a class="reference external" href="https://git.ligo.org/sccb/requests/">sccb/requests</a>
-to announce the new release and request package build and deployment.</li>
+<li><p>Upload the source tarball to software.ligo.org</p></li>
+<li><p>Open a new request to <a class="reference external" href="https://git.ligo.org/sccb/requests/">sccb/requests</a>
+to announce the new release and request package build and deployment.</p></li>
 </ul>
 </div>
 </div>
@@ -301,7 +300,7 @@ to announce the new release and request package build and deployment.</li>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

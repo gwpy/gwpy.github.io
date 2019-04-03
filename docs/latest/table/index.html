@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tabular data &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Tabular data &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
@@ -135,7 +136,8 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Tabular data</a><ul>
-<li><a class="reference internal" href="#the-table-and-eventtable">The <code class="docutils literal notranslate"><span class="pre">Table</span></code> and <code class="docutils literal notranslate"><span class="pre">EventTable</span></code></a></li>
+<li><a class="reference internal" href="#the-eventtable">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></li>
+<li><a class="reference internal" href="#downloading-gwosc-catalogues">Downloading GWOSC catalogues</a></li>
 <li><a class="reference internal" href="#reading-writing-tables">Reading/writing tables</a></li>
 <li><a class="reference internal" href="#using-tables">Using tables</a></li>
 <li><a class="reference internal" href="#plotting-tables">Plotting tables</a></li>
@@ -161,51 +163,37 @@
       
   <div class="section" id="tabular-data">
 <span id="gwpy-table"></span><h1>Tabular data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">¶</a></h1>
-<p>Alongside the <a class="reference internal" href="../timeseries/index.html#gwpy-timeseries"><span class="std std-ref">timeseries</span></a> data produced continuously at the
-laboratories, a number of different sets of tabular data are generated, typically
-recording significant noise transients (glitches) or gravitational-wave events found
-in the data.</p>
-<div class="section" id="the-table-and-eventtable">
-<h2>The <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> and <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a><a class="headerlink" href="#the-table-and-eventtable" title="Permalink to this headline">¶</a></h2>
-<p>GWpy provides two classes for handling tabular data.</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.table.Table</span></code></a></td>
-<td>A class to represent tables of heterogeneous data.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.table.EventTable</span></code></a></td>
-<td>A container for a table of events</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> is just an import of the
-<a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#module-astropy.table" title="(in Astropy v3.1.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.table.Table</span></code></a>, provided for
-import convenience, see the Astropy documentation for full details on
-that (excellent) object).</p>
-</div>
-<p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> extends the functionality of the regular
-<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> with multi-file input routines, and utilities for
+<p>Significant events discovered in data from gravitational-wave observatories are
+stored in tabular datasets, typically describing astrophysical events, or
+noise transients (glitches).</p>
+<div class="section" id="the-eventtable">
+<h2>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a><a class="headerlink" href="#the-eventtable" title="Permalink to this headline">¶</a></h2>
+<p>GWpy extends the (excellent) <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#astropy-table" title="(in Astropy v3.1.2)"><span>Data Tables (astropy.table)</span></a> from <code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy</span></code> by providing
+the <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a>.</p>
+<p>This object extends the functionality of the regular <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>
+with enhanced I/O to support gravitational-wave data, and utilities for
 processing and plotting tables of events that contain GPS timestamps.</p>
-<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#astropy-table" title="(in Astropy v3.1.2)"><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Tables</span> <span class="pre">(astropy.table)</span></code></a> documentation for examples of how to create custom tables, and much more.
-The only thing to change if you want to use the <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> instead of the basic <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> is the import:</p>
+<p>See the <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#astropy-table" title="(in Astropy v3.1.2)"><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Tables</span> <span class="pre">(astropy.table)</span></code></a> documentation for examples of how to create
+custom tables, and much more.
+The only thing to change if you want to use the <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> instead of
+the basic <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> is the import:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="k">import</span> <span class="n">EventTable</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="downloading-gwosc-catalogues">
+<h2>Downloading GWOSC catalogues<a class="headerlink" href="#downloading-gwosc-catalogues" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 <div class="section" id="reading-writing-tables">
 <h2>Reading/writing tables<a class="headerlink" href="#reading-writing-tables" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="io.html">Reading and writing <code class="docutils literal notranslate"><span class="pre">Table</span></code> and <code class="docutils literal notranslate"><span class="pre">EventTable</span></code> objects</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Reading and writing <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> objects</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="io.html#multi-processed-file-reading">Multi-processed file reading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="io.html#ligo-lw-xml"><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io.html#coherence-waveburst-ascii-aka-events-txt">Coherence WaveBurst ASCII (aka <code class="docutils literal notranslate"><span class="pre">EVENTS.txt</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html#coherence-waveburst-ascii-aka-events-txt">Coherence WaveBurst ASCII (aka <code class="xref py py-obj docutils literal notranslate"><span class="pre">EVENTS.txt</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="io.html#root">ROOT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="io.html#pycbc-live-hdf5">PyCBC Live (HDF5)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="io.html#gwf">GWF</a></li>
@@ -240,17 +228,17 @@ The only thing to change if you want to use the <a class="reference internal" hr
 <div class="section" id="class-reference">
 <h2>Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <p>This reference includes the following <code class="xref py py-obj docutils literal notranslate"><span class="pre">class</span></code> entries:</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></td>
-<td>A class to represent tables of heterogeneous data.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p></td>
+<td><p>A class to represent tables of heterogeneous data.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></td>
-<td>A container for a table of events</td>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p></td>
+<td><p>A container for a table of events</p></td>
 </tr>
 </tbody>
 </table>
@@ -270,7 +258,7 @@ The only thing to change if you want to use the <a class="reference internal" hr
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

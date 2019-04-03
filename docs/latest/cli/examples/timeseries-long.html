@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Time-series of estimated distance sensitivity &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Time-series of estimated distance sensitivity &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../env.html">Configuring GWpy from the environment</a></li>
@@ -154,13 +155,13 @@
       
   <div class="section" id="time-series-of-estimated-distance-sensitivity">
 <span id="gwpy-cli-example-timeseries-long"></span><h1>Time-series of estimated distance sensitivity<a class="headerlink" href="#time-series-of-estimated-distance-sensitivity" title="Permalink to this headline">¶</a></h1>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>$ gwpy-plot timeseries \
-    --chan H1:DMT-SNSH_EFFECTIVE_RANGE_MPC.mean \
-    --chan L1:DMT-SNSH_EFFECTIVE_RANGE_MPC.mean \
-    --start &#39;August 17 2017&#39; \
-    --duration 1day \
-    --ylabel &#39;Angle-averaged range (Mpc)&#39; \
-    --suptitle &#39;Distance senstivity to BNS-like inspiral&#39; \
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ gwpy-plot timeseries <span class="se">\</span>
+    --chan H1:DMT-SNSH_EFFECTIVE_RANGE_MPC.mean <span class="se">\</span>
+    --chan L1:DMT-SNSH_EFFECTIVE_RANGE_MPC.mean <span class="se">\</span>
+    --start <span class="s1">&#39;August 17 2017&#39;</span> <span class="se">\</span>
+    --duration 1day <span class="se">\</span>
+    --ylabel <span class="s1">&#39;Angle-averaged range (Mpc)&#39;</span> <span class="se">\</span>
+    --suptitle <span class="s1">&#39;Distance senstivity to BNS-like inspiral&#39;</span> <span class="se">\</span>
     --interactive
 </pre></div>
 </div>
@@ -180,7 +181,7 @@
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

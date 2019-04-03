@@ -2,16 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>TimeSeriesList &#8212; GWpy 0.12.2+479.ga6d5c0d8 documentation</title>
+    <meta charset="utf-8" />
+    <title>TimeSeriesList &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/gwpy-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
@@ -69,21 +70,21 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
@@ -156,89 +157,85 @@
 <h1>TimeSeriesList<a class="headerlink" href="#timeserieslist" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.timeseries.TimeSeriesList">
-<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">TimeSeriesList</code><span class="sig-paren">(</span><em>*items</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/timeseries.py#L2120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">TimeSeriesList</code><span class="sig-paren">(</span><em>*items</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L2120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gwpy.timeseries.core.TimeSeriesBaseList</span></code></p>
 <p>Fancy list representing a list of <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <p>The <a class="reference internal" href="#gwpy.timeseries.TimeSeriesList" title="gwpy.timeseries.TimeSeriesList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesList</span></code></a> provides an easy way to collect and organise
 <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> for a single <code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code> over multiple segments.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*items</strong></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*items</strong></p>
 <blockquote>
 <div><p>any number of <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>list</strong></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>list</strong></p>
 <blockquote>
 <div><p>a new <a class="reference internal" href="#gwpy.timeseries.TimeSeriesList" title="gwpy.timeseries.TimeSeriesList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesList</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong></p>
-<blockquote class="last">
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>TypeError</strong></p>
+<blockquote>
 <div><p>if any elements are not <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Attributes Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.segments" title="gwpy.timeseries.TimeSeriesList.segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segments</span></code></a></td>
-<td>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">span</span></code> of each series in this list</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.segments" title="gwpy.timeseries.TimeSeriesList.segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segments</span></code></a></p></td>
+<td><p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">span</span></code> of each series in this list</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods Summary</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.append" title="gwpy.timeseries.TimeSeriesList.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(item)</td>
-<td>L.append(object) – append object to end</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.append" title="gwpy.timeseries.TimeSeriesList.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(item)</p></td>
+<td><p>Append object to the end of the list.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.coalesce" title="gwpy.timeseries.TimeSeriesList.coalesce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</td>
-<td>Merge contiguous elements of this list into single objects</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.coalesce" title="gwpy.timeseries.TimeSeriesList.coalesce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Merge contiguous elements of this list into single objects</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.copy" title="gwpy.timeseries.TimeSeriesList.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</td>
-<td>Return a copy of this list with each element copied to new memory</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.copy" title="gwpy.timeseries.TimeSeriesList.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>Return a copy of this list with each element copied to new memory</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.count" title="gwpy.timeseries.TimeSeriesList.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a>(value)</td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.count" title="gwpy.timeseries.TimeSeriesList.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a>($self, value, /)</p></td>
+<td><p>Return number of occurrences of value.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.extend" title="gwpy.timeseries.TimeSeriesList.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(item)</td>
-<td>L.extend(iterable) – extend list by appending elements from the iterable</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.extend" title="gwpy.timeseries.TimeSeriesList.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(item)</p></td>
+<td><p>Extend list by appending elements from the iterable.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.index" title="gwpy.timeseries.TimeSeriesList.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value,&nbsp;[start,&nbsp;[stop]])</td>
-<td>Raises ValueError if the value is not present.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.index" title="gwpy.timeseries.TimeSeriesList.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>($self, value[, start, stop])</p></td>
+<td><p>Return first index of value.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.insert" title="gwpy.timeseries.TimeSeriesList.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a></td>
-<td>L.insert(index, object) – insert object before index</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.insert" title="gwpy.timeseries.TimeSeriesList.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>($self, index, object, /)</p></td>
+<td><p>Insert object before index.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.join" title="gwpy.timeseries.TimeSeriesList.join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join</span></code></a>([pad,&nbsp;gap])</td>
-<td>Concatenate all of the elements of this list into a single object</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.join" title="gwpy.timeseries.TimeSeriesList.join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">join</span></code></a>([pad, gap])</p></td>
+<td><p>Concatenate all of the elements of this list into a single object</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.pop" title="gwpy.timeseries.TimeSeriesList.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>([index])</td>
-<td>Raises IndexError if list is empty or index is out of range.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.pop" title="gwpy.timeseries.TimeSeriesList.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>($self[, index])</p></td>
+<td><p>Remove and return item at index (default last).</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.remove" title="gwpy.timeseries.TimeSeriesList.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a></td>
-<td>L.remove(value) – remove first occurrence of value.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.remove" title="gwpy.timeseries.TimeSeriesList.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>($self, value, /)</p></td>
+<td><p>Remove first occurrence of value.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.reverse" title="gwpy.timeseries.TimeSeriesList.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a></td>
-<td>L.reverse() – reverse <em>IN PLACE</em></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.reverse" title="gwpy.timeseries.TimeSeriesList.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>($self, /)</p></td>
+<td><p>Reverse <em>IN PLACE</em>.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.sort" title="gwpy.timeseries.TimeSeriesList.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a></td>
-<td>L.sort(cmp=None, key=None, reverse=False) – stable sort <em>IN PLACE</em>; cmp(x, y) -&gt; -1, 0, 1</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeriesList.sort" title="gwpy.timeseries.TimeSeriesList.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>($self, /, *[, key, reverse])</p></td>
+<td><p>Stable sort <em>IN PLACE</em>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -252,55 +249,55 @@
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/core.py#L1544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.append(object) – append object to end</p>
+<code class="descname">append</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L1544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append object to the end of the list.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.coalesce">
-<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/core.py#L1557"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.coalesce" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coalesce</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L1557"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.coalesce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge contiguous elements of this list into single objects</p>
 <p>This method implicitly sorts and potentially shortens this list.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/core.py#L1630"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L1630"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of this list with each element copied to new memory</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.count">
-<code class="descname">count</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span> &#x2192; integer -- return number of occurrences of value<a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.count" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">count</code><span class="sig-paren">(</span><em>$self</em>, <em>value</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of occurrences of value.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.extend">
-<code class="descname">extend</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/core.py#L1552"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.extend" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.extend(iterable) – extend list by appending elements from the iterable</p>
+<code class="descname">extend</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L1552"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend list by appending elements from the iterable.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.index">
-<code class="descname">index</code><span class="sig-paren">(</span><em>value</em><span class="optional">[</span>, <em>start</em><span class="optional">[</span>, <em>stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; integer -- return first index of value.<a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raises ValueError if the value is not present.</p>
+<code class="descname">index</code><span class="sig-paren">(</span><em>$self</em>, <em>value</em>, <em>start=0</em>, <em>stop=sys.maxsize</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.insert(index, object) – insert object before index</p>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>$self</em>, <em>index</em>, <em>object</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert object before index.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.join">
-<code class="descname">join</code><span class="sig-paren">(</span><em>pad=None</em>, <em>gap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/core.py#L1585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.join" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join</code><span class="sig-paren">(</span><em>pad=None</em>, <em>gap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L1585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.join" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all of the elements of this list into a single object</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional, default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">0.0</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional, default: <code class="xref py py-obj docutils literal notranslate"><span class="pre">0.0</span></code></p>
 <blockquote>
 <div><p>value with which to pad gaps</p>
 </div></blockquote>
@@ -308,61 +305,59 @@
 <blockquote>
 <div><p>what to do if there are gaps in the data, one of</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">'raise'</span></code> - raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></li>
-<li><code class="docutils literal notranslate"><span class="pre">'ignore'</span></code> - remove gap and join data</li>
-<li><code class="docutils literal notranslate"><span class="pre">'pad'</span></code> - pad gap with zeros</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'raise'</span></code> - raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'ignore'</span></code> - remove gap and join data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'pad'</span></code> - pad gap with zeros</p></li>
 </ul>
 <p>If <code class="xref py py-obj docutils literal notranslate"><span class="pre">pad</span></code> is given and is not <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the default is <code class="docutils literal notranslate"><span class="pre">'pad'</span></code>,
 otherwise <code class="docutils literal notranslate"><span class="pre">'raise'</span></code>.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>series</strong> : <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.types.TimeSeriesBase</span></code> subclass</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>series</strong> : <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.types.TimeSeriesBase</span></code> subclass</p>
+<blockquote>
 <div><p>a single series containing all data from each entry in this list</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.append" title="gwpy.timeseries.TimeSeries.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.append</span></code></a></dt>
-<dd>for details on how the individual series are concatenated together</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.append" title="gwpy.timeseries.TimeSeries.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.append</span></code></a></dt><dd><p>for details on how the individual series are concatenated together</p>
+</dd>
 </dl>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><span class="optional">[</span><em>index</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; item -- remove and return item at index (default last).<a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.pop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Raises IndexError if list is empty or index is out of range.</p>
+<code class="descname">pop</code><span class="sig-paren">(</span><em>$self</em>, <em>index=-1</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return item at index (default last).</p>
+<p>Raises IndexError if list is empty or index is out of range.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.remove(value) – remove first occurrence of value.
-Raises ValueError if the value is not present.</p>
+<code class="descname">remove</code><span class="sig-paren">(</span><em>$self</em>, <em>value</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove first occurrence of value.</p>
+<p>Raises ValueError if the value is not present.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.reverse() – reverse <em>IN PLACE</em></p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><em>$self</em>, <em>/</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse <em>IN PLACE</em>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeriesList.sort">
-<code class="descname">sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.sort" title="Permalink to this definition">¶</a></dt>
-<dd><p>L.sort(cmp=None, key=None, reverse=False) – stable sort <em>IN PLACE</em>;
-cmp(x, y) -&gt; -1, 0, 1</p>
+<code class="descname">sort</code><span class="sig-paren">(</span><em>$self</em>, <em>/</em>, <em>*</em>, <em>key=None</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stable sort <em>IN PLACE</em>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="gwpy.timeseries.TimeSeriesList.EntryClass">
-<code class="descname">EntryClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a6d5c0d8cd79aa40b97cc1cbb239c3d481e296b8/gwpy/timeseries/timeseries.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.EntryClass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EntryClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeriesList.EntryClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 </dd></dl>
 
@@ -383,7 +378,7 @@ cmp(x, y) -&gt; -1, 0, 1</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
     </p>
   </div>
 </footer>

@@ -1,8 +1,6 @@
-plot = events.hist('snr', weights=1/10., logbins=True,
-                   bins=50, histtype='stepfilled')
+plot = events.hist('mtotal', bins=10, range=(0, 100), histtype='stepfilled')
 ax = plot.gca()
-ax.set_xlabel('Signal-to-noise ratio (SNR)')
-ax.set_ylabel('Rate [Hz]')
-ax.set_title('LHO event triggers for HW100916')
-ax.autoscale(axis='x', tight=True)
+ax.set_xlabel(r"Total mass [M$_{\odot}$]")
+ax.set_ylabel("Number of events")
+ax.set_title("GWTC-1-confident")
 plot.show()
