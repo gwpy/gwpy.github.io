@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>TimeSeries &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
+    <title>TimeSeries &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -157,7 +157,7 @@
 <h1>TimeSeries<a class="headerlink" href="#timeseries" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.timeseries.TimeSeries">
-<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">TimeSeries</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.timeseries.</code><code class="descname">TimeSeries</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gwpy.timeseries.core.TimeSeriesBase</span></code></p>
 <p>A time-domain data array.</p>
 <dl class="field-list">
@@ -235,7 +235,7 @@ with metadata copied from the starting <a class="reference internal" href="#gwpy
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-1.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-1.png" src="../_images/gwpy-timeseries-TimeSeries-1.png" />
 </div>
@@ -426,8 +426,14 @@ with metadata copied from the starting <a class="reference internal" href="#gwpy
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.conjugate" title="gwpy.timeseries.TimeSeries.conjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conjugate</span></code></a>()</p></td>
 <td><p>Return the complex conjugate, element-wise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.copy" title="gwpy.timeseries.TimeSeries.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>([order])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.convolve" title="gwpy.timeseries.TimeSeries.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convolve</span></code></a>(fir[, window])</p></td>
+<td><p>Convolve this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an FIR filter using the</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.copy" title="gwpy.timeseries.TimeSeries.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>([order])</p></td>
 <td><p>Return a copy of the array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.correlate" title="gwpy.timeseries.TimeSeries.correlate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">correlate</span></code></a>(mfilter[, window, detrend, …])</p></td>
+<td><p>Cross-correlate this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with another signal</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.crop" title="gwpy.timeseries.TimeSeries.crop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crop</span></code></a>([start, end, copy])</p></td>
 <td><p>Crop this series to the given x-axis extent.</p></td>
@@ -504,86 +510,92 @@ with metadata copied from the starting <a class="reference internal" href="#gwpy
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.from_pycbc" title="gwpy.timeseries.TimeSeries.from_pycbc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pycbc</span></code></a>(pycbcseries[, copy])</p></td>
 <td><p>Convert a <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="(in PyCBC vNone)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc.types.timeseries.TimeSeries</span></code></a> into a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(channel, start, end[, pad, scaled, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.gate" title="gwpy.timeseries.TimeSeries.gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gate</span></code></a>([tzero, tpad, whiten, threshold, …])</p></td>
+<td><p>Removes high amplitude peaks from data using inverse Planck window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(channel, start, end[, pad, scaled, …])</p></td>
 <td><p>Get data for this channel from frames or NDS</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.getfield" title="gwpy.timeseries.TimeSeries.getfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getfield</span></code></a>(dtype[, offset])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.getfield" title="gwpy.timeseries.TimeSeries.getfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getfield</span></code></a>(dtype[, offset])</p></td>
 <td><p>Returns a field of the given array as a certain type.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highpass</span></code></a>(frequency[, gpass, gstop, fstop, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highpass</span></code></a>(frequency[, gpass, gstop, fstop, …])</p></td>
 <td><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a high-pass filter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.inject" title="gwpy.timeseries.TimeSeries.inject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inject</span></code></a>(other)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.inject" title="gwpy.timeseries.TimeSeries.inject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inject</span></code></a>(other)</p></td>
 <td><p>Add two compatible <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code> along their shared x-axis values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.insert" title="gwpy.timeseries.TimeSeries.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(obj, values[, axis])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.insert" title="gwpy.timeseries.TimeSeries.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(obj, values[, axis])</p></td>
 <td><p>Insert values along the given axis before the given indices and return a new <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a> object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.is_compatible" title="gwpy.timeseries.TimeSeries.is_compatible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_compatible</span></code></a>(other)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.is_compatible" title="gwpy.timeseries.TimeSeries.is_compatible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_compatible</span></code></a>(other)</p></td>
 <td><p>Check whether this series and other have compatible metadata</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.is_contiguous" title="gwpy.timeseries.TimeSeries.is_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_contiguous</span></code></a>(other[, tol])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.is_contiguous" title="gwpy.timeseries.TimeSeries.is_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_contiguous</span></code></a>(other[, tol])</p></td>
 <td><p>Check whether other is contiguous with self.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.item" title="gwpy.timeseries.TimeSeries.item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">item</span></code></a>(*args)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.item" title="gwpy.timeseries.TimeSeries.item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">item</span></code></a>(*args)</p></td>
 <td><p>Copy an element of an array to a standard Python scalar and return it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.itemset" title="gwpy.timeseries.TimeSeries.itemset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemset</span></code></a>(*args)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.itemset" title="gwpy.timeseries.TimeSeries.itemset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itemset</span></code></a>(*args)</p></td>
 <td><p>Insert scalar into an array (scalar is cast to array’s dtype, if possible)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowpass</span></code></a>(frequency[, gpass, gstop, fstop, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.lowpass" title="gwpy.timeseries.TimeSeries.lowpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lowpass</span></code></a>(frequency[, gpass, gstop, fstop, …])</p></td>
 <td><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.max" title="gwpy.timeseries.TimeSeries.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max</span></code></a>([axis, out, keepdims])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.max" title="gwpy.timeseries.TimeSeries.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max</span></code></a>([axis, out, keepdims])</p></td>
 <td><p>Return the maximum along a given axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.mean" title="gwpy.timeseries.TimeSeries.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>([axis, dtype, out, keepdims])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.mean" title="gwpy.timeseries.TimeSeries.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>([axis, dtype, out, keepdims])</p></td>
 <td><p>Returns the average of the array elements along given axis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.median" title="gwpy.timeseries.TimeSeries.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a>([axis])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.median" title="gwpy.timeseries.TimeSeries.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a>([axis])</p></td>
 <td><p>Compute the median along the specified axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.min" title="gwpy.timeseries.TimeSeries.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min</span></code></a>([axis, out, keepdims])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.min" title="gwpy.timeseries.TimeSeries.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min</span></code></a>([axis, out, keepdims])</p></td>
 <td><p>Return the minimum along a given axis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.nansum" title="gwpy.timeseries.TimeSeries.nansum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nansum</span></code></a>([axis, out, keepdims])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.nansum" title="gwpy.timeseries.TimeSeries.nansum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nansum</span></code></a>([axis, out, keepdims])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.newbyteorder" title="gwpy.timeseries.TimeSeries.newbyteorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">newbyteorder</span></code></a>([new_order])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.newbyteorder" title="gwpy.timeseries.TimeSeries.newbyteorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">newbyteorder</span></code></a>([new_order])</p></td>
 <td><p>Return the array with the same data viewed with a different byte order.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.nonzero" title="gwpy.timeseries.TimeSeries.nonzero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonzero</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.nonzero" title="gwpy.timeseries.TimeSeries.nonzero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonzero</span></code></a>()</p></td>
 <td><p>Return the indices of the elements that are non-zero.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.notch" title="gwpy.timeseries.TimeSeries.notch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notch</span></code></a>(frequency[, type, filtfilt])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.notch" title="gwpy.timeseries.TimeSeries.notch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notch</span></code></a>(frequency[, type, filtfilt])</p></td>
 <td><p>Notch out a frequency in this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.override_unit" title="gwpy.timeseries.TimeSeries.override_unit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">override_unit</span></code></a>(unit[, parse_strict])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.override_unit" title="gwpy.timeseries.TimeSeries.override_unit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">override_unit</span></code></a>(unit[, parse_strict])</p></td>
 <td><p>Forcefully reset the unit of these data</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.pad" title="gwpy.timeseries.TimeSeries.pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pad</span></code></a>(pad_width, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.pad" title="gwpy.timeseries.TimeSeries.pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pad</span></code></a>(pad_width, **kwargs)</p></td>
 <td><p>Pad this series to a new size</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.partition" title="gwpy.timeseries.TimeSeries.partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition</span></code></a>(kth[, axis, kind, order])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.partition" title="gwpy.timeseries.TimeSeries.partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition</span></code></a>(kth[, axis, kind, order])</p></td>
 <td><p>Rearranges the elements in the array in such a way that the value of the element in kth position is in the position it would be in a sorted array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([method, figsize, xscale])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([method, figsize, xscale])</p></td>
 <td><p>Plot the data for this timeseries</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.prepend" title="gwpy.timeseries.TimeSeries.prepend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepend</span></code></a>(other[, inplace, pad, gap, resize])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.prepend" title="gwpy.timeseries.TimeSeries.prepend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepend</span></code></a>(other[, inplace, pad, gap, resize])</p></td>
 <td><p>Connect another series onto the start of the current one.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.prod" title="gwpy.timeseries.TimeSeries.prod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prod</span></code></a>([axis, dtype, out, keepdims])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.prod" title="gwpy.timeseries.TimeSeries.prod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prod</span></code></a>([axis, dtype, out, keepdims])</p></td>
 <td><p>Return the product of the array elements over the given axis</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">psd</span></code></a>([fftlength, overlap, window, method])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.psd" title="gwpy.timeseries.TimeSeries.psd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">psd</span></code></a>([fftlength, overlap, window, method])</p></td>
 <td><p>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.ptp" title="gwpy.timeseries.TimeSeries.ptp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ptp</span></code></a>([axis, out, keepdims])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.ptp" title="gwpy.timeseries.TimeSeries.ptp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ptp</span></code></a>([axis, out, keepdims])</p></td>
 <td><p>Peak to peak (maximum - minimum) value along a given axis.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.put" title="gwpy.timeseries.TimeSeries.put"><code class="xref py py-obj docutils literal notranslate"><span class="pre">put</span></code></a>(indices, values[, mode])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.put" title="gwpy.timeseries.TimeSeries.put"><code class="xref py py-obj docutils literal notranslate"><span class="pre">put</span></code></a>(indices, values[, mode])</p></td>
 <td><p>Set <code class="docutils literal notranslate"><span class="pre">a.flat[n]</span> <span class="pre">=</span> <span class="pre">values[n]</span></code> for all <code class="xref py py-obj docutils literal notranslate"><span class="pre">n</span></code> in indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.q_gram" title="gwpy.timeseries.TimeSeries.q_gram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">q_gram</span></code></a>([qrange, frange, mismatch, snrthresh])</p></td>
+<td><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> of the most significant tiles</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.q_transform" title="gwpy.timeseries.TimeSeries.q_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">q_transform</span></code></a>([qrange, frange, gps, search, …])</p></td>
 <td><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an interpolated high-resolution spectrogram</p></td>
@@ -672,46 +684,49 @@ with metadata copied from the starting <a class="reference internal" href="#gwpy
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.to_pycbc" title="gwpy.timeseries.TimeSeries.to_pycbc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pycbc</span></code></a>([copy])</p></td>
 <td><p>Convert this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> into a PyCBC <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="(in PyCBC vNone)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tobytes" title="gwpy.timeseries.TimeSeries.tobytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tobytes</span></code></a>([order])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.to_value" title="gwpy.timeseries.TimeSeries.to_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_value</span></code></a>([unit, equivalencies])</p></td>
+<td><p>The numerical value, possibly in a different unit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tobytes" title="gwpy.timeseries.TimeSeries.tobytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tobytes</span></code></a>([order])</p></td>
 <td><p>Construct Python bytes containing the raw data bytes in the array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tofile" title="gwpy.timeseries.TimeSeries.tofile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tofile</span></code></a>(fid[, sep, format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tofile" title="gwpy.timeseries.TimeSeries.tofile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tofile</span></code></a>(fid[, sep, format])</p></td>
 <td><p>Write array to a file as text or binary (default).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tolist" title="gwpy.timeseries.TimeSeries.tolist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tolist</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tolist" title="gwpy.timeseries.TimeSeries.tolist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tolist</span></code></a>()</p></td>
 <td><p>Return the array as a (possibly nested) list.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tostring" title="gwpy.timeseries.TimeSeries.tostring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tostring</span></code></a>([order])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.tostring" title="gwpy.timeseries.TimeSeries.tostring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tostring</span></code></a>([order])</p></td>
 <td><p>Construct Python bytes containing the raw data bytes in the array.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.trace" title="gwpy.timeseries.TimeSeries.trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace</span></code></a>([offset, axis1, axis2, dtype, out])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.trace" title="gwpy.timeseries.TimeSeries.trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace</span></code></a>([offset, axis1, axis2, dtype, out])</p></td>
 <td><p>Return the sum along diagonals of the array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.transpose" title="gwpy.timeseries.TimeSeries.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>(*axes)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.transpose" title="gwpy.timeseries.TimeSeries.transpose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpose</span></code></a>(*axes)</p></td>
 <td><p>Returns a view of the array with axes transposed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.update" title="gwpy.timeseries.TimeSeries.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(other[, inplace])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.update" title="gwpy.timeseries.TimeSeries.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(other[, inplace])</p></td>
 <td><p>Update this series by appending new data from an other and dropping the same amount of data off the start.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.value_at" title="gwpy.timeseries.TimeSeries.value_at"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value_at</span></code></a>(x)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.value_at" title="gwpy.timeseries.TimeSeries.value_at"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value_at</span></code></a>(x)</p></td>
 <td><p>Return the value of this <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code> at the given <a class="reference internal" href="#gwpy.timeseries.TimeSeries.xindex" title="gwpy.timeseries.TimeSeries.xindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xindex</span></code></a> value</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.var" title="gwpy.timeseries.TimeSeries.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a>([axis, dtype, out, ddof, keepdims])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.var" title="gwpy.timeseries.TimeSeries.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a>([axis, dtype, out, ddof, keepdims])</p></td>
 <td><p>Returns the variance of the array elements, along given axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.view" title="gwpy.timeseries.TimeSeries.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view</span></code></a>([dtype, type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.view" title="gwpy.timeseries.TimeSeries.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view</span></code></a>([dtype, type])</p></td>
 <td><p>New view of array with the same data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten</span></code></a>([fftlength, overlap, method, window, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten</span></code></a>([fftlength, overlap, method, window, …])</p></td>
 <td><p>Whiten this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using inverse spectrum truncation</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
 <td><p>Write this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to a file</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.zip" title="gwpy.timeseries.TimeSeries.zip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zip</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.zip" title="gwpy.timeseries.TimeSeries.zip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zip</span></code></a>()</p></td>
 <td><p>Zip the <a class="reference internal" href="#gwpy.timeseries.TimeSeries.xindex" title="gwpy.timeseries.TimeSeries.xindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xindex</span></code></a> and <a class="reference internal" href="#gwpy.timeseries.TimeSeries.value" title="gwpy.timeseries.TimeSeries.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a> arrays of this <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zpk</span></code></a>(zeros, poles, gain[, analog])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries.zpk" title="gwpy.timeseries.TimeSeries.zpk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zpk</span></code></a>(zeros, poles, gain[, analog])</p></td>
 <td><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</p></td>
 </tr>
 </tbody>
@@ -1379,7 +1394,7 @@ position in the next row.  As such, the strides for the array <code class="xref 
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_value</span></code></dt><dd><p>Get the numerical value in a given unit.</p>
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.to_value" title="gwpy.timeseries.TimeSeries.to_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_value</span></code></a></dt><dd><p>Get the numerical value in a given unit.</p>
 </dd>
 </dl>
 </div>
@@ -1432,7 +1447,7 @@ position in the next row.  As such, the strides for the array <code class="xref 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.abs">
-<code class="descname">abs</code><span class="sig-paren">(</span><em>x</em>, <em>/</em>, <em>out=None</em>, <em>*</em>, <em>where=True</em>, <em>casting='same_kind'</em>, <em>order='K'</em>, <em>dtype=None</em>, <em>subok=True</em><span class="optional">[</span>, <em>signature</em>, <em>extobj</em><span class="optional">]</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.abs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">abs</code><span class="sig-paren">(</span><em>x</em>, <em>/</em>, <em>out=None</em>, <em>*</em>, <em>where=True</em>, <em>casting='same_kind'</em>, <em>order='K'</em>, <em>dtype=None</em>, <em>subok=True</em><span class="optional">[</span>, <em>signature</em>, <em>extobj</em><span class="optional">]</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.abs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the absolute value element-wise.</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.abs</span></code> is a shorthand for this function.</p>
 <dl class="field-list">
@@ -1532,7 +1547,7 @@ This is a scalar if <code class="xref py py-obj docutils literal notranslate"><s
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em>, <em>pad=None</em>, <em>gap=None</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L666"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.append" title="Permalink to this definition">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em>, <em>pad=None</em>, <em>gap=None</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L666"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect another series onto the end of the current one.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1646,7 +1661,7 @@ put the new data in at the end, default: <a class="reference external" href="htt
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.asd">
-<code class="descname">asd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L305"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.asd" title="Permalink to this definition">¶</a></dt>
+<code class="descname">asd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L305"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.asd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1774,7 +1789,7 @@ was allowed even if the result was truncated.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.auto_coherence">
-<code class="descname">auto_coherence</code><span class="sig-paren">(</span><em>dt</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.auto_coherence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">auto_coherence</code><span class="sig-paren">(</span><em>dt</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.auto_coherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the frequency-coherence between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and a time-shifted copy of itself.</p>
 <p>The standard <a class="reference internal" href="#gwpy.timeseries.TimeSeries.coherence" title="gwpy.timeseries.TimeSeries.coherence"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.coherence()</span></code></a> is calculated between
@@ -1833,7 +1848,7 @@ with the other</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.average_fft">
-<code class="descname">average_fft</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>window=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.average_fft" title="Permalink to this definition">¶</a></dt>
+<code class="descname">average_fft</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>window=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.average_fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the averaged one-dimensional DFT of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>This method computes a number of FFTs of duration <code class="docutils literal notranslate"><span class="pre">fftlength</span></code>
 and <code class="docutils literal notranslate"><span class="pre">overlap</span></code> (both given in seconds), and returns the mean
@@ -1874,7 +1889,7 @@ metadata</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.bandpass">
-<code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L855"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.bandpass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L855"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.bandpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a band-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1999,7 +2014,7 @@ One of max or min must be given.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.coherence">
-<code class="descname">coherence</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.coherence" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coherence</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.coherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the frequency-coherence between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and another.</p>
 <dl class="field-list">
@@ -2055,7 +2070,7 @@ with the other</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.coherence_spectrogram">
-<code class="descname">coherence_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>nproc=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">coherence_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>nproc=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.coherence_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the coherence spectrogram between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and other.</p>
 <dl class="field-list">
@@ -2142,8 +2157,52 @@ input time-series.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.timeseries.TimeSeries.convolve">
+<code class="descname">convolve</code><span class="sig-paren">(</span><em>fir</em>, <em>window='hanning'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.convolve" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Convolve this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an FIR filter using the</dt><dd><p>overlap-save method</p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fir</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
+<blockquote>
+<div><p>the time domain filter to convolve with</p>
+</div></blockquote>
+<p><strong>window</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>window function to apply to boundaries, default: <code class="docutils literal notranslate"><span class="pre">'hanning'</span></code>
+see <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.get_window.html#scipy.signal.get_window" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.signal.get_window()</span></code></a> for details on acceptable
+formats</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> : <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>the result of the convolution</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.fftconvolve.html#scipy.signal.fftconvolve" title="(in SciPy v1.2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.fftconvolve</span></code></a></dt><dd><p>for details on the convolution scheme used here</p>
+</dd>
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.filter" title="gwpy.timeseries.TimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.filter</span></code></a></dt><dd><p>for an alternative method designed for short filters</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The output <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> is the same length and has the same timestamps
+as the input.</p>
+<p>Due to filter settle-in, a segment half the length of <code class="xref py py-obj docutils literal notranslate"><span class="pre">fir</span></code> will be
+corrupted at the left and right boundaries. To prevent spectral leakage
+these segments will be windowed before convolving.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of the array.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2189,8 +2248,80 @@ arguments.)</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.timeseries.TimeSeries.correlate">
+<code class="descname">correlate</code><span class="sig-paren">(</span><em>mfilter</em>, <em>window='hanning'</em>, <em>detrend='linear'</em>, <em>whiten=False</em>, <em>wduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1740"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.correlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cross-correlate this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with another signal</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mfilter</strong> : <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>the time domain signal to correlate with</p>
+</div></blockquote>
+<p><strong>window</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>window function to apply to timeseries prior to FFT,
+default: <code class="docutils literal notranslate"><span class="pre">'hanning'</span></code>
+see <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.get_window.html#scipy.signal.get_window" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.signal.get_window()</span></code></a> for details on acceptable
+formats</p>
+</div></blockquote>
+<p><strong>detrend</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>type of detrending to do before FFT (see <a class="reference internal" href="#gwpy.timeseries.TimeSeries.detrend" title="gwpy.timeseries.TimeSeries.detrend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detrend</span></code></a>
+for more details), default: <code class="docutils literal notranslate"><span class="pre">'linear'</span></code></p>
+</div></blockquote>
+<p><strong>whiten</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>boolean switch to enable (<a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or disable (<a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) data
+whitening, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+</div></blockquote>
+<p><strong>wduration</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>duration (in seconds) of the time-domain FIR whitening filter,
+only used if <code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten=True</span></code>, defaults to 2 seconds</p>
+</div></blockquote>
+<p><strong>highpass</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>highpass corner frequency (in Hz) of the FIR whitening filter,
+only used if <code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten=True</span></code>, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</div></blockquote>
+<p><strong>**asd_kw</strong></p>
+<blockquote>
+<div><p>keyword arguments to pass to <a class="reference internal" href="#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a> to generate
+an ASD, only used if <code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten=True</span></code></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>snr</strong> : <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>the correlated signal-to-noise ratio (SNR) timeseries</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.asd" title="gwpy.timeseries.TimeSeries.asd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.asd</span></code></a></dt><dd><p>for details on the ASD calculation</p>
+</dd>
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.convolve" title="gwpy.timeseries.TimeSeries.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.convolve</span></code></a></dt><dd><p>for details on convolution with the overlap-save method</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">window</span></code> argument is used in ASD estimation, whitening, and
+preventing spectral leakage in the output. It is not used to condition
+the matched-filter, which should be windowed before passing to this
+method.</p>
+<p>Due to filter settle-in, a segment half the length of <code class="xref py py-obj docutils literal notranslate"><span class="pre">mfilter</span></code> will be
+corrupted at the beginning and end of the output. See
+<a class="reference internal" href="#gwpy.timeseries.TimeSeries.convolve" title="gwpy.timeseries.TimeSeries.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convolve</span></code></a> for more details.</p>
+<p>The input and matched-filter will be detrended, and the output will be
+normalised so that the SNR measures number of standard deviations from
+the expected mean.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.crop">
-<code class="descname">crop</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L873"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.crop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">crop</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L873"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.crop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crop this series to the given x-axis extent.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2223,7 +2354,7 @@ be restricted to the <code class="xref py py-attr docutils literal notranslate">
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.csd">
-<code class="descname">csd</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.csd" title="Permalink to this definition">¶</a></dt>
+<code class="descname">csd</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.csd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the CSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for two <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2259,7 +2390,7 @@ formats</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.csd_spectrogram">
-<code class="descname">csd_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L707"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.csd_spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">csd_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L707"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.csd_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Calculate the cross spectral density spectrogram of this</dt><dd><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with ‘other’.</p>
 </dd>
@@ -2361,7 +2492,7 @@ to do so.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.demodulate">
-<code class="descname">demodulate</code><span class="sig-paren">(</span><em>f</em>, <em>stride=1</em>, <em>exp=False</em>, <em>deg=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.demodulate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">demodulate</code><span class="sig-paren">(</span><em>f</em>, <em>stride=1</em>, <em>exp=False</em>, <em>deg=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.demodulate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the average magnitude and phase of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 once per stride at a given frequency.</p>
 <dl class="field-list">
@@ -2420,7 +2551,7 @@ amplitude of the calibration line:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-3.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-3.png" src="../_images/gwpy-timeseries-TimeSeries-3.png" />
 </div>
@@ -2428,7 +2559,7 @@ amplitude of the calibration line:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.detrend">
-<code class="descname">detrend</code><span class="sig-paren">(</span><em>detrend='constant'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1830"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.detrend" title="Permalink to this definition">¶</a></dt>
+<code class="descname">detrend</code><span class="sig-paren">(</span><em>detrend='constant'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1830"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.detrend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove the trend from this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <p>This method just wraps <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.detrend.html#scipy.signal.detrend" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.signal.detrend()</span></code></a> to return
 an object of the same type as the input.</p>
@@ -2473,7 +2604,7 @@ a future version the read-only restriction will be removed.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.diff">
-<code class="descname">diff</code><span class="sig-paren">(</span><em>n=1</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.diff" title="Permalink to this definition">¶</a></dt>
+<code class="descname">diff</code><span class="sig-paren">(</span><em>n=1</em>, <em>axis=-1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the n-th order discrete difference along given axis.</p>
 <p>The first order difference is given by <code class="docutils literal notranslate"><span class="pre">out[n]</span> <span class="pre">=</span> <span class="pre">a[n+1]</span> <span class="pre">-</span> <span class="pre">a[n]</span></code> along
 the given axis, higher order differences are calculated by using <a class="reference internal" href="#gwpy.timeseries.TimeSeries.diff" title="gwpy.timeseries.TimeSeries.diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diff</span></code></a>
@@ -2553,7 +2684,7 @@ The array can be read back with pickle.load or numpy.load.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.dumps">
-<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.dumps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.dumps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the pickle of the array as a string.
 pickle.loads or numpy.loads will convert the string back to an array.</p>
 <dl class="field-list simple">
@@ -2572,7 +2703,7 @@ pickle.loads or numpy.loads will convert the string back to an array.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.fetch">
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>verify=False</em>, <em>pad=None</em>, <em>allow_tape=None</em>, <em>scaled=None</em>, <em>type=None</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L329"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fetch" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>host=None</em>, <em>port=None</em>, <em>verbose=False</em>, <em>connection=None</em>, <em>verify=False</em>, <em>pad=None</em>, <em>allow_tape=None</em>, <em>scaled=None</em>, <em>type=None</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L329"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fetch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch data from NDS</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2632,7 +2763,7 @@ prefix for the progress meter</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.fetch_open_data">
-<em class="property">classmethod </em><code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>ifo</em>, <em>start</em>, <em>end</em>, <em>sample_rate=4096</em>, <em>tag=None</em>, <em>version=None</em>, <em>format='hdf5'</em>, <em>host='https://www.gw-openscience.org'</em>, <em>verbose=False</em>, <em>cache=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fetch_open_data" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>ifo</em>, <em>start</em>, <em>end</em>, <em>sample_rate=4096</em>, <em>tag=None</em>, <em>version=None</em>, <em>format='hdf5'</em>, <em>host='https://www.gw-openscience.org'</em>, <em>verbose=False</em>, <em>cache=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fetch_open_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch open-access data from the LIGO Open Science Center</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2751,7 +2882,7 @@ To select both data sets and plot a comparison, for example:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-4.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-4.png" src="../_images/gwpy-timeseries-TimeSeries-4.png" />
 </div>
@@ -2759,7 +2890,7 @@ To select both data sets and plot a comparison, for example:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.fft">
-<code class="descname">fft</code><span class="sig-paren">(</span><em>nfft=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fft" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fft</code><span class="sig-paren">(</span><em>nfft=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the one-dimensional discrete Fourier transform of
 this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
@@ -2792,7 +2923,7 @@ correct.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.fftgram">
-<code class="descname">fftgram</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fftgram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fftgram</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.fftgram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Fourier-gram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>At every <code class="docutils literal notranslate"><span class="pre">stride</span></code>, a single, complex FFT is calculated.</p>
 <dl class="field-list">
@@ -2847,7 +2978,7 @@ see <a class="reference external" href="https://docs.scipy.org/doc/scipy/referen
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.filter">
-<code class="descname">filter</code><span class="sig-paren">(</span><em>*filt</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1005"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.filter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*filt</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1005"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an IIR or FIR filter</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2946,7 +3077,7 @@ off either end of the filtered data to remove filter-edge artefacts</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-5.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-5.png" src="../_images/gwpy-timeseries-TimeSeries-5.png" />
 </div>
@@ -2954,7 +3085,7 @@ off either end of the filtered data to remove filter-edge artefacts</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.find">
-<em class="property">classmethod </em><code class="descname">find</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>frametype=None</em>, <em>pad=None</em>, <em>scaled=None</em>, <em>dtype=None</em>, <em>nproc=1</em>, <em>verbose=False</em>, <em>**readargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L500"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.find" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">find</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>frametype=None</em>, <em>pad=None</em>, <em>scaled=None</em>, <em>dtype=None</em>, <em>nproc=1</em>, <em>verbose=False</em>, <em>**readargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L500"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find and read data from frames for a channel</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3017,7 +3148,7 @@ progress meter</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.flatten">
-<code class="descname">flatten</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L441"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.flatten" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flatten</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L441"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.flatten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of the array collapsed into one dimension.</p>
 <p>Any index information is removed as part of the flattening,
 and the result is returned as a <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a> array.</p>
@@ -3060,13 +3191,13 @@ The default is ‘C’.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.from_lal">
-<em class="property">classmethod </em><code class="descname">from_lal</code><span class="sig-paren">(</span><em>lalts</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L703"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_lal" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_lal</code><span class="sig-paren">(</span><em>lalts</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L703"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_lal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a new TimeSeries from a LAL TimeSeries of any type.</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.from_nds2_buffer">
-<em class="property">classmethod </em><code class="descname">from_nds2_buffer</code><span class="sig-paren">(</span><em>buffer_</em>, <em>scaled=None</em>, <em>copy=True</em>, <em>**metadata</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L650"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_nds2_buffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_nds2_buffer</code><span class="sig-paren">(</span><em>buffer_</em>, <em>scaled=None</em>, <em>copy=True</em>, <em>**metadata</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L650"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_nds2_buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a new series from an <code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2.buffer</span></code> object</p>
 <p><strong>Requires:</strong> <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client/doc/manual/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code></a></p>
 <dl class="field-list">
@@ -3102,7 +3233,7 @@ and the appropriate metadata</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.from_pycbc">
-<em class="property">classmethod </em><code class="descname">from_pycbc</code><span class="sig-paren">(</span><em>pycbcseries</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L741"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_pycbc" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_pycbc</code><span class="sig-paren">(</span><em>pycbcseries</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L741"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.from_pycbc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="(in PyCBC vNone)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycbc.types.timeseries.TimeSeries</span></code></a> into a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3124,9 +3255,80 @@ and the appropriate metadata</p>
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="gwpy.timeseries.TimeSeries.gate">
+<code class="descname">gate</code><span class="sig-paren">(</span><em>tzero=1.0</em>, <em>tpad=0.5</em>, <em>whiten=True</em>, <em>threshold=50.0</em>, <em>cluster_window=0.5</em>, <em>**whiten_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1581"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.gate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes high amplitude peaks from data using inverse Planck window.
+Points will be discovered automatically using a provided threshold
+and clustered within a provided time window.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tzero</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</p>
+<blockquote>
+<div><p>half-width time duration in which the time series is set to zero</p>
+</div></blockquote>
+<p><strong>tpad</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</p>
+<blockquote>
+<div><p>half-width time duration in which the Planck window is tapered</p>
+</div></blockquote>
+<p><strong>whiten</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if True, data will be whitened before gating points are discovered,
+use of this option is highly recommended</p>
+</div></blockquote>
+<p><strong>threshold</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>amplitude threshold, if the data exceeds this value a gating window
+will be placed</p>
+</div></blockquote>
+<p><strong>cluster_window</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>time duration over which gating points will be clustered</p>
+</div></blockquote>
+<p><strong>**whiten_kwargs</strong></p>
+<blockquote>
+<div><p>other keyword arguments that will be passed to the
+<a class="reference internal" href="#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.whiten</span></code></a> method if it is being used when discovering
+gating points</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> : <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
+<blockquote>
+<div><p>a copy of the original <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> that has had gating windows
+applied</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Read data into a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
+&gt;&gt;&gt; from gwpy.timeseries import TimeSeries
+&gt;&gt;&gt; data = TimeSeries.fetch_open_data(‘H1’, 1135148571, 1135148771)</p>
+<p>Apply gating using custom arguments
+&gt;&gt;&gt; gated = data.gate(tzero=1.0, tpad=1.0, threshold=10.0,</p>
+<blockquote>
+<div><p>fftlength=4, overlap=2, method=’median’)</p>
+</div></blockquote>
+<p>Plot the original data and the gated data, whiten both for
+visualization purposes
+&gt;&gt;&gt; overlay = data.whiten(4,2,method=’median’).plot(dpi=150,</p>
+<blockquote>
+<div><p>label=’Ungated’, color=’dodgerblue’,
+zorder=2)</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">overlay</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gated</span><span class="o">.</span><span class="n">whiten</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gated&#39;</span><span class="p">,</span>
+<span class="go">            color=&#39;orange&#39;, zorder=3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1135148661</span><span class="p">,</span> <span class="mi">1135148681</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">overlay</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.get">
-<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>pad=None</em>, <em>scaled=None</em>, <em>dtype=None</em>, <em>verbose=False</em>, <em>allow_tape=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L560"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.get" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>channel</em>, <em>start</em>, <em>end</em>, <em>pad=None</em>, <em>scaled=None</em>, <em>dtype=None</em>, <em>verbose=False</em>, <em>allow_tape=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L560"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get data for this channel from frames or NDS</p>
 <p>This method dynamically accesses either frames on disk, or a
 remote NDS2 server to find and return data for the given interval</p>
@@ -3244,7 +3446,7 @@ array for our view:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.highpass">
-<code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L755"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.highpass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L755"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.highpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a high-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3296,7 +3498,7 @@ array for our view:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.inject">
-<code class="descname">inject</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L978"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.inject" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inject</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L978"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.inject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add two compatible <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code> along their shared x-axis values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3387,7 +3589,7 @@ insertion does not occur in-place: a new quantity array is returned.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.is_compatible">
-<code class="descname">is_compatible</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L632"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.is_compatible" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_compatible</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L632"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.is_compatible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether this series and other have compatible metadata</p>
 <p>This method tests that the <code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span> <span class="pre">size</span></code>, and the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">unit</span></code> match.</p>
@@ -3395,7 +3597,7 @@ insertion does not occur in-place: a new quantity array is returned.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.is_contiguous">
-<code class="descname">is_contiguous</code><span class="sig-paren">(</span><em>other</em>, <em>tol=3.814697265625e-06</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L595"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.is_contiguous" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_contiguous</code><span class="sig-paren">(</span><em>other</em>, <em>tol=3.814697265625e-06</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L595"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.is_contiguous" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether other is contiguous with self.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3530,7 +3732,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.lowpass">
-<code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L805"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.lowpass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L805"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.lowpass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3610,7 +3812,7 @@ look-up at each loop iteration.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.median">
-<code class="descname">median</code><span class="sig-paren">(</span><em>axis=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.median" title="Permalink to this definition">¶</a></dt>
+<code class="descname">median</code><span class="sig-paren">(</span><em>axis=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.median" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the median along the specified axis.</p>
 <p>Returns the median of the array elements.</p>
 <dl class="field-list">
@@ -3774,7 +3976,7 @@ byte order.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.notch">
-<code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1857"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.notch" title="Permalink to this definition">¶</a></dt>
+<code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1857"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.notch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Notch out a frequency in this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3811,7 +4013,7 @@ byte order.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.override_unit">
-<code class="descname">override_unit</code><span class="sig-paren">(</span><em>unit</em>, <em>parse_strict='raise'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L418"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.override_unit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">override_unit</code><span class="sig-paren">(</span><em>unit</em>, <em>parse_strict='raise'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L418"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.override_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forcefully reset the unit of these data</p>
 <p>Use of this method is discouraged in favour of <a class="reference internal" href="#gwpy.timeseries.TimeSeries.to" title="gwpy.timeseries.TimeSeries.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to()</span></code></a>,
 which performs accurate conversions from one unit to another.
@@ -3840,7 +4042,7 @@ raise the underlying exception from <a class="reference external" href="http://d
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.pad">
-<code class="descname">pad</code><span class="sig-paren">(</span><em>pad_width</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L943"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.pad" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pad</code><span class="sig-paren">(</span><em>pad_width</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L943"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pad this series to a new size</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3940,7 +4142,7 @@ they come up in the dtype, to break ties.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>method='plot'</em>, <em>figsize=(12</em>, <em>4)</em>, <em>xscale='auto-gps'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L627"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>method='plot'</em>, <em>figsize=(12</em>, <em>4)</em>, <em>xscale='auto-gps'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L627"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the data for this timeseries</p>
 <dl class="field-list">
 <dt class="field-odd">Returns</dt>
@@ -3965,7 +4167,7 @@ they come up in the dtype, to break ties.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.prepend">
-<code class="descname">prepend</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em>, <em>pad=None</em>, <em>gap=None</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L811"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.prepend" title="Permalink to this definition">¶</a></dt>
+<code class="descname">prepend</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em>, <em>pad=None</em>, <em>gap=None</em>, <em>resize=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L811"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.prepend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect another series onto the start of the current one.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4033,7 +4235,7 @@ put the new data in at the end, default: <a class="reference external" href="htt
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.psd">
-<code class="descname">psd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.psd" title="Permalink to this definition">¶</a></dt>
+<code class="descname">psd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.psd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4108,8 +4310,63 @@ PSD-generation method</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="gwpy.timeseries.TimeSeries.q_gram">
+<code class="descname">q_gram</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>mismatch=0.2</em>, <em>snrthresh=5.5</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1887"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.q_gram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> of the most significant tiles</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>qrange</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">(low,</span> <span class="pre">high)</span></code> range of Qs to scan</p>
+</div></blockquote>
+<p><strong>frange</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">(low,</span> <span class="pre">high)</span></code> range of frequencies to scan</p>
+</div></blockquote>
+<p><strong>mismatch</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>maximum allowed fractional mismatch between neighbouring tiles</p>
+</div></blockquote>
+<p><strong>snrthresh</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</p>
+<blockquote>
+<div><p>lower inclusive threshold on individual tile SNR to keep in the
+table</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote>
+<div><p>other keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">QTiling.transform()</span></code>,
+including <code class="docutils literal notranslate"><span class="pre">'epoch'</span></code> and <code class="docutils literal notranslate"><span class="pre">'search'</span></code></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>qgram</strong> : <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></p>
+<blockquote>
+<div><p>a table of time-frequency tiles on the most significant <code class="xref py py-obj docutils literal notranslate"><span class="pre">QPlane</span></code></p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.q_transform" title="gwpy.timeseries.TimeSeries.q_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.q_transform</span></code></a></dt><dd><p>for a method to interpolate the raw Q-transform over a regularly gridded spectrogram</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.signal.qtransform</span></code></dt><dd><p>for code and documentation on how the Q-transform is implemented</p>
+</dd>
+<dt><a class="reference internal" href="gwpy.table.EventTable.html#gwpy.table.EventTable.tile" title="gwpy.table.EventTable.tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.table.EventTable.tile</span></code></a></dt><dd><p>to render this <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> as a collection of polygons</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Only tiles with signal energy greater than or equal to
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">snrthresh</span> <span class="pre">**</span> <span class="pre">2</span> <span class="pre">/</span> <span class="pre">2</span></code> will be stored in the output <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code>. The
+table columns are <code class="docutils literal notranslate"><span class="pre">'time'</span></code>, <code class="docutils literal notranslate"><span class="pre">'duration'</span></code>, <code class="docutils literal notranslate"><span class="pre">'frequency'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'bandwidth'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'energy'</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.q_transform">
-<code class="descname">q_transform</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>gps=None</em>, <em>search=0.5</em>, <em>tres='&lt;default&gt;'</em>, <em>fres='&lt;default&gt;'</em>, <em>logf=False</em>, <em>norm='median'</em>, <em>mismatch=0.2</em>, <em>outseg=None</em>, <em>whiten=True</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1942"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.q_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">q_transform</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>gps=None</em>, <em>search=0.5</em>, <em>tres='&lt;default&gt;'</em>, <em>fres='&lt;default&gt;'</em>, <em>logf=False</em>, <em>norm='median'</em>, <em>mismatch=0.2</em>, <em>outseg=None</em>, <em>whiten=True</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1942"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.q_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an
 interpolated high-resolution spectrogram</p>
 <p>By default, this method returns a high-resolution spectrogram in
@@ -4246,7 +4503,7 @@ centred on GPS time 0, with a sine-Gaussian pulse (‘glitch’) at
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-6.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-6.png" src="../_images/gwpy-timeseries-TimeSeries-6.png" />
 </div>
@@ -4270,7 +4527,7 @@ centred on GPS time 0, with a sine-Gaussian pulse (‘glitch’) at
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.rayleigh_spectrogram">
-<code class="descname">rayleigh_spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L665"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rayleigh_spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L665"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rayleigh_spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Rayleigh statistic spectrogram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4311,7 +4568,7 @@ input time-series.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.rayleigh_spectrum">
-<code class="descname">rayleigh_spectrum</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rayleigh_spectrum</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rayleigh_spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Rayleigh <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>The Rayleigh statistic is calculated as the ratio of the standard
 deviation and the mean of a number of periodograms.</p>
@@ -4339,7 +4596,7 @@ the relevant method.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.timeseries.TimeSeries.read">
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.read" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data into a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <p>Arguments and keywords depend on the output format, see the
 online documentation for full details for each format, the parameters
@@ -4464,7 +4721,7 @@ by default gaps will result in a <a class="reference external" href="https://doc
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.resample">
-<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em>, <em>window='hamming'</em>, <em>ftype='fir'</em>, <em>n=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L908"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.resample" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em>, <em>window='hamming'</em>, <em>ftype='fir'</em>, <em>n=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L908"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resample this Series to a new rate</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4615,7 +4872,7 @@ stored in memory), resized, and reshaped:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.rms">
-<code class="descname">rms</code><span class="sig-paren">(</span><em>stride=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rms" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rms</code><span class="sig-paren">(</span><em>stride=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.rms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the root-mean-square value of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 once per stride.</p>
 <dl class="field-list">
@@ -4792,7 +5049,7 @@ as the full name.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.shift">
-<code class="descname">shift</code><span class="sig-paren">(</span><em>delta</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L465"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.shift" title="Permalink to this definition">¶</a></dt>
+<code class="descname">shift</code><span class="sig-paren">(</span><em>delta</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L465"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.shift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shift this <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code> forward on the X-axis by <code class="docutils literal notranslate"><span class="pre">delta</span></code></p>
 <p>This modifies the series in-place.</p>
 <dl class="field-list">
@@ -4885,7 +5142,7 @@ structured array:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.spectral_variance">
-<code class="descname">spectral_variance</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>method='welch'</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>filter=None</em>, <em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L556"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectral_variance" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spectral_variance</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>method='welch'</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>filter=None</em>, <em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L556"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectral_variance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralVariance</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -4975,7 +5232,7 @@ read if <code class="docutils literal notranslate"><span class="pre">bins</span>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.spectrogram">
-<code class="descname">spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectrogram" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the average power spectrogram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 using the specified average spectrum method.</p>
 <p>Each time-bin of the output <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> is calculated by taking
@@ -5033,7 +5290,7 @@ input time-series.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.spectrogram2">
-<code class="descname">spectrogram2</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectrogram2" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spectrogram2</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.spectrogram2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the non-averaged power <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5119,7 +5376,7 @@ given <code class="xref py py-obj docutils literal notranslate"><span class="pre
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.step">
-<code class="descname">step</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">step</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a step plot of this series</p>
 </dd></dl>
 
@@ -5167,7 +5424,7 @@ given <code class="xref py py-obj docutils literal notranslate"><span class="pre
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.taper">
-<code class="descname">taper</code><span class="sig-paren">(</span><em>side='leftright'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.taper" title="Permalink to this definition">¶</a></dt>
+<code class="descname">taper</code><span class="sig-paren">(</span><em>side='leftright'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.taper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Taper the ends of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> smoothly to zero.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5215,7 +5472,7 @@ sinusoidal <a class="reference internal" href="#gwpy.timeseries.TimeSeries" titl
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-7.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-7.png" src="../_images/gwpy-timeseries-TimeSeries-7.png" />
 </div>
@@ -5247,7 +5504,7 @@ set globally or within a context.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_value</span></code></dt><dd><p>get the numerical value in a given unit.</p>
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.to_value" title="gwpy.timeseries.TimeSeries.to_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_value</span></code></a></dt><dd><p>get the numerical value in a given unit.</p>
 </dd>
 </dl>
 </div>
@@ -5255,13 +5512,13 @@ set globally or within a context.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.to_lal">
-<code class="descname">to_lal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.to_lal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_lal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.to_lal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> into a LAL TimeSeries.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.to_pycbc">
-<code class="descname">to_pycbc</code><span class="sig-paren">(</span><em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L761"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.to_pycbc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_pycbc</code><span class="sig-paren">(</span><em>copy=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L761"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.to_pycbc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> into a PyCBC
 <a class="reference external" href="http://pycbc.org/pycbc/latest/html/pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="(in PyCBC vNone)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
@@ -5278,6 +5535,44 @@ set globally or within a context.</p>
 </div></blockquote>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gwpy.timeseries.TimeSeries.to_value">
+<code class="descname">to_value</code><span class="sig-paren">(</span><em>unit=None</em>, <em>equivalencies=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.timeseries.TimeSeries.to_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>The numerical value, possibly in a different unit.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> : <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.UnitBase.html#astropy.units.UnitBase" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnitBase</span></code></a> instance or str, optional</p>
+<blockquote>
+<div><p>The unit in which the value should be given. If not given or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
+use the current unit.</p>
+</div></blockquote>
+<p><strong>equivalencies</strong> : list of equivalence pairs, optional</p>
+<blockquote>
+<div><p>A list of equivalence pairs to try if the units are not directly
+convertible (see <a class="reference external" href="http://docs.astropy.org/en/stable/units/equivalencies.html#unit-equivalencies" title="(in Astropy v3.1.2)"><span>Equivalencies</span></a>). If not provided or
+<code class="docutils literal notranslate"><span class="pre">[]</span></code>, class default equivalencies will be used (none for
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a>, but may be set for subclasses).
+If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, no equivalencies will be applied at all, not even any
+set globally or within a context.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>value</strong> : <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a> or scalar</p>
+<blockquote>
+<div><p>The value in the units specified. For arrays, this will be a view
+of the data if no unit conversion was necessary.</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#gwpy.timeseries.TimeSeries.to" title="gwpy.timeseries.TimeSeries.to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></a></dt><dd><p>Get a new instance in a different unit.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -5395,7 +5690,7 @@ Data items are converted to the nearest compatible Python type.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.tostring">
-<code class="descname">tostring</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/array.py#L275"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.tostring" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tostring</code><span class="sig-paren">(</span><em>order='C'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/array.py#L275"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.tostring" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct Python bytes containing the raw data bytes in the array.</p>
 <p>Constructs Python bytes showing a copy of the raw contents of
 data memory. The bytes object can be produced in either ‘C’ or ‘Fortran’,
@@ -5502,7 +5797,7 @@ intended simply as a “convenience” alternative to the tuple form)</p></li>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>other</em>, <em>inplace=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update this series by appending new data from an other
 and dropping the same amount of data off the start.</p>
 <p>This is a convenience method that just calls <code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code> with
@@ -5511,7 +5806,7 @@ and dropping the same amount of data off the start.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.value_at">
-<code class="descname">value_at</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.value_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">value_at</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.value_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the value of this <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code> at the given <a class="reference internal" href="#gwpy.timeseries.TimeSeries.xindex" title="gwpy.timeseries.TimeSeries.xindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xindex</span></code></a> value</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5642,7 +5937,7 @@ avoided on arrays defined by slices, transposes, fortran-ordering, etc.:</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.whiten">
-<code class="descname">whiten</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>method='welch'</em>, <em>window='hanning'</em>, <em>detrend='constant'</em>, <em>asd=None</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.whiten" title="Permalink to this definition">¶</a></dt>
+<code class="descname">whiten</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>method='welch'</em>, <em>window='hanning'</em>, <em>detrend='constant'</em>, <em>asd=None</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.whiten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whiten this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using inverse spectrum truncation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5733,7 +6028,7 @@ and unit variance.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/core.py#L312"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/core.py#L312"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to a file</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5807,7 +6102,7 @@ formats.</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.zip">
-<code class="descname">zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/types/series.py#L520"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.zip" title="Permalink to this definition">¶</a></dt>
+<code class="descname">zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/types/series.py#L520"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zip the <a class="reference internal" href="#gwpy.timeseries.TimeSeries.xindex" title="gwpy.timeseries.TimeSeries.xindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xindex</span></code></a> and <a class="reference internal" href="#gwpy.timeseries.TimeSeries.value" title="gwpy.timeseries.TimeSeries.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a> arrays of this <code class="xref py py-obj docutils literal notranslate"><span class="pre">Series</span></code></p>
 <dl class="field-list">
 <dt class="field-odd">Returns</dt>
@@ -5832,7 +6127,7 @@ series</p>
 
 <dl class="method">
 <dt id="gwpy.timeseries.TimeSeries.zpk">
-<code class="descname">zpk</code><span class="sig-paren">(</span><em>zeros</em>, <em>poles</em>, <em>gain</em>, <em>analog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L968"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.zpk" title="Permalink to this definition">¶</a></dt>
+<code class="descname">zpk</code><span class="sig-paren">(</span><em>zeros</em>, <em>poles</em>, <em>gain</em>, <em>analog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L968"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.zpk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5878,13 +6173,13 @@ will be converted in the Z-domain for digital filtering</p>
 
 <dl class="attribute">
 <dt id="gwpy.timeseries.TimeSeries.DictClass">
-<code class="descname">DictClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L2114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.DictClass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DictClass</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L2114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.DictClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a></p>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">asd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L305"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">asd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L305"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the ASD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -5931,7 +6226,7 @@ formats</p>
 
 <dl class="method">
 <dt>
-<code class="descname">auto_coherence</code><span class="sig-paren">(</span><em>dt</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1215"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">auto_coherence</code><span class="sig-paren">(</span><em>dt</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1215"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the frequency-coherence between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and a time-shifted copy of itself.</p>
 <p>The standard <a class="reference internal" href="#gwpy.timeseries.TimeSeries.coherence" title="gwpy.timeseries.TimeSeries.coherence"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.coherence()</span></code></a> is calculated between
@@ -5990,7 +6285,7 @@ with the other</p>
 
 <dl class="method">
 <dt>
-<code class="descname">average_fft</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>window=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L175"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">average_fft</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>window=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L175"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Compute the averaged one-dimensional DFT of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>This method computes a number of FFTs of duration <code class="docutils literal notranslate"><span class="pre">fftlength</span></code>
 and <code class="docutils literal notranslate"><span class="pre">overlap</span></code> (both given in seconds), and returns the mean
@@ -6031,7 +6326,7 @@ metadata</p>
 
 <dl class="method">
 <dt>
-<code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L855"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">bandpass</code><span class="sig-paren">(</span><em>flow</em>, <em>fhigh</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L855"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a band-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6087,7 +6382,7 @@ metadata</p>
 
 <dl class="method">
 <dt>
-<code class="descname">coherence</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1135"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">coherence</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1135"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the frequency-coherence between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and another.</p>
 <dl class="field-list">
@@ -6143,7 +6438,7 @@ with the other</p>
 
 <dl class="method">
 <dt>
-<code class="descname">coherence_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>nproc=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1273"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">coherence_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>nproc=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1273"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the coherence spectrogram between this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 and other.</p>
 <dl class="field-list">
@@ -6188,8 +6483,8 @@ input time-series.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gwpy.timeseries.TimeSeries.convolve">
-<code class="descname">convolve</code><span class="sig-paren">(</span><em>fir</em>, <em>window='hanning'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.convolve" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">convolve</code><span class="sig-paren">(</span><em>fir</em>, <em>window='hanning'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1674"><span class="viewcode-link">[source]</span></a></dt>
 <dd><dl class="simple">
 <dt>Convolve this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an FIR filter using the</dt><dd><p>overlap-save method</p>
 </dd>
@@ -6232,8 +6527,8 @@ these segments will be windowed before convolving.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gwpy.timeseries.TimeSeries.correlate">
-<code class="descname">correlate</code><span class="sig-paren">(</span><em>mfilter</em>, <em>window='hanning'</em>, <em>detrend='linear'</em>, <em>whiten=False</em>, <em>wduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1740"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.correlate" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">correlate</code><span class="sig-paren">(</span><em>mfilter</em>, <em>window='hanning'</em>, <em>detrend='linear'</em>, <em>whiten=False</em>, <em>wduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1740"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Cross-correlate this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with another signal</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6305,7 +6600,7 @@ the expected mean.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">csd</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L347"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">csd</code><span class="sig-paren">(</span><em>other</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L347"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the CSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for two <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6341,7 +6636,7 @@ formats</p>
 
 <dl class="method">
 <dt>
-<code class="descname">csd_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L707"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">csd_spectrogram</code><span class="sig-paren">(</span><em>other</em>, <em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L707"><span class="viewcode-link">[source]</span></a></dt>
 <dd><dl class="simple">
 <dt>Calculate the cross spectral density spectrogram of this</dt><dd><p><a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with ‘other’.</p>
 </dd>
@@ -6389,7 +6684,7 @@ two input time-series.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">demodulate</code><span class="sig-paren">(</span><em>f</em>, <em>stride=1</em>, <em>exp=False</em>, <em>deg=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1342"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">demodulate</code><span class="sig-paren">(</span><em>f</em>, <em>stride=1</em>, <em>exp=False</em>, <em>deg=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1342"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Compute the average magnitude and phase of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 once per stride at a given frequency.</p>
 <dl class="field-list">
@@ -6448,7 +6743,7 @@ amplitude of the calibration line:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-8.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-8.png" src="../_images/gwpy-timeseries-TimeSeries-8.png" />
 </div>
@@ -6456,7 +6751,7 @@ amplitude of the calibration line:</p>
 
 <dl class="method">
 <dt>
-<code class="descname">detrend</code><span class="sig-paren">(</span><em>detrend='constant'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1830"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">detrend</code><span class="sig-paren">(</span><em>detrend='constant'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1830"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Remove the trend from this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <p>This method just wraps <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.detrend.html#scipy.signal.detrend" title="(in SciPy v1.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.signal.detrend()</span></code></a> to return
 an object of the same type as the input.</p>
@@ -6485,7 +6780,7 @@ an object of the same type as the input.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">fft</code><span class="sig-paren">(</span><em>nfft=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L133"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">fft</code><span class="sig-paren">(</span><em>nfft=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L133"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Compute the one-dimensional discrete Fourier transform of
 this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
@@ -6518,7 +6813,7 @@ correct.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">fftgram</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L501"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">fftgram</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L501"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the Fourier-gram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>At every <code class="docutils literal notranslate"><span class="pre">stride</span></code>, a single, complex FFT is calculated.</p>
 <dl class="field-list">
@@ -6548,7 +6843,7 @@ see <a class="reference external" href="https://docs.scipy.org/doc/scipy/referen
 
 <dl class="method">
 <dt>
-<code class="descname">filter</code><span class="sig-paren">(</span><em>*filt</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1005"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*filt</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1005"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with an IIR or FIR filter</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6647,15 +6942,15 @@ off either end of the filtered data to remove filter-edge artefacts</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-9.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-9.png" src="../_images/gwpy-timeseries-TimeSeries-9.png" />
 </div>
 </dd></dl>
 
 <dl class="method">
-<dt id="gwpy.timeseries.TimeSeries.gate">
-<code class="descname">gate</code><span class="sig-paren">(</span><em>tzero=1.0</em>, <em>tpad=0.5</em>, <em>whiten=True</em>, <em>threshold=50.0</em>, <em>cluster_window=0.5</em>, <em>**whiten_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1581"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.gate" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">gate</code><span class="sig-paren">(</span><em>tzero=1.0</em>, <em>tpad=0.5</em>, <em>whiten=True</em>, <em>threshold=50.0</em>, <em>cluster_window=0.5</em>, <em>**whiten_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1581"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Removes high amplitude peaks from data using inverse Planck window.
 Points will be discovered automatically using a provided threshold
 and clustered within a provided time window.</p>
@@ -6726,7 +7021,7 @@ zorder=2)</p>
 
 <dl class="method">
 <dt>
-<code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L755"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">highpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L755"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a high-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6778,7 +7073,7 @@ zorder=2)</p>
 
 <dl class="method">
 <dt>
-<code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L805"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">lowpass</code><span class="sig-paren">(</span><em>frequency</em>, <em>gpass=2</em>, <em>gstop=30</em>, <em>fstop=None</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L805"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> with a Butterworth low-pass filter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6830,7 +7125,7 @@ zorder=2)</p>
 
 <dl class="method">
 <dt>
-<code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1857"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">notch</code><span class="sig-paren">(</span><em>frequency</em>, <em>type='iir'</em>, <em>filtfilt=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1857"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Notch out a frequency in this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6867,7 +7162,7 @@ zorder=2)</p>
 
 <dl class="method">
 <dt>
-<code class="descname">psd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L259"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">psd</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L259"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the PSD <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -6914,8 +7209,8 @@ PSD-generation method</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gwpy.timeseries.TimeSeries.q_gram">
-<code class="descname">q_gram</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>mismatch=0.2</em>, <em>snrthresh=5.5</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1887"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.timeseries.TimeSeries.q_gram" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">q_gram</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>mismatch=0.2</em>, <em>snrthresh=5.5</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1887"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> of the most significant tiles</p>
 <dl class="field-list">
@@ -6970,7 +7265,7 @@ table columns are <code class="docutils literal notranslate"><span class="pre">'
 
 <dl class="method">
 <dt>
-<code class="descname">q_transform</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>gps=None</em>, <em>search=0.5</em>, <em>tres='&lt;default&gt;'</em>, <em>fres='&lt;default&gt;'</em>, <em>logf=False</em>, <em>norm='median'</em>, <em>mismatch=0.2</em>, <em>outseg=None</em>, <em>whiten=True</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1942"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">q_transform</code><span class="sig-paren">(</span><em>qrange=(4</em>, <em>64)</em>, <em>frange=(0</em>, <em>inf)</em>, <em>gps=None</em>, <em>search=0.5</em>, <em>tres='&lt;default&gt;'</em>, <em>fres='&lt;default&gt;'</em>, <em>logf=False</em>, <em>norm='median'</em>, <em>mismatch=0.2</em>, <em>outseg=None</em>, <em>whiten=True</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**asd_kw</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1942"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Scan a <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using the multi-Q transform and return an
 interpolated high-resolution spectrogram</p>
 <p>By default, this method returns a high-resolution spectrogram in
@@ -7107,7 +7402,7 @@ centred on GPS time 0, with a sine-Gaussian pulse (‘glitch’) at
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-10.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-10.png" src="../_images/gwpy-timeseries-TimeSeries-10.png" />
 </div>
@@ -7115,7 +7410,7 @@ centred on GPS time 0, with a sine-Gaussian pulse (‘glitch’) at
 
 <dl class="method">
 <dt>
-<code class="descname">rayleigh_spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L665"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">rayleigh_spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=0</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L665"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the Rayleigh statistic spectrogram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7156,7 +7451,7 @@ input time-series.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">rayleigh_spectrum</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L637"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">rayleigh_spectrum</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L637"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the Rayleigh <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> for this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <p>The Rayleigh statistic is calculated as the ratio of the standard
 deviation and the mean of a number of periodograms.</p>
@@ -7184,7 +7479,7 @@ the relevant method.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em>, <em>window='hamming'</em>, <em>ftype='fir'</em>, <em>n=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L908"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">resample</code><span class="sig-paren">(</span><em>rate</em>, <em>window='hamming'</em>, <em>ftype='fir'</em>, <em>n=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L908"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Resample this Series to a new rate</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7220,7 +7515,7 @@ metadata</p>
 
 <dl class="method">
 <dt>
-<code class="descname">rms</code><span class="sig-paren">(</span><em>stride=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1313"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">rms</code><span class="sig-paren">(</span><em>stride=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1313"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the root-mean-square value of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 once per stride.</p>
 <dl class="field-list">
@@ -7241,7 +7536,7 @@ once per stride.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">spectral_variance</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>method='welch'</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>filter=None</em>, <em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L556"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">spectral_variance</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>method='welch'</em>, <em>window='hann'</em>, <em>nproc=1</em>, <em>filter=None</em>, <em>bins=None</em>, <em>low=None</em>, <em>high=None</em>, <em>nbins=500</em>, <em>log=False</em>, <em>norm=False</em>, <em>density=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L556"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralVariance</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7331,7 +7626,7 @@ read if <code class="docutils literal notranslate"><span class="pre">bins</span>
 
 <dl class="method">
 <dt>
-<code class="descname">spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L383"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">spectrogram</code><span class="sig-paren">(</span><em>stride</em>, <em>fftlength=None</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>method='welch'</em>, <em>nproc=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L383"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the average power spectrogram of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
 using the specified average spectrum method.</p>
 <p>Each time-bin of the output <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> is calculated by taking
@@ -7389,7 +7684,7 @@ input time-series.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">spectrogram2</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L447"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">spectrogram2</code><span class="sig-paren">(</span><em>fftlength</em>, <em>overlap=None</em>, <em>window='hann'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L447"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the non-averaged power <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7447,7 +7742,7 @@ given <code class="xref py py-obj docutils literal notranslate"><span class="pre
 
 <dl class="method">
 <dt>
-<code class="descname">taper</code><span class="sig-paren">(</span><em>side='leftright'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1417"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">taper</code><span class="sig-paren">(</span><em>side='leftright'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1417"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Taper the ends of this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> smoothly to zero.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7495,7 +7790,7 @@ sinusoidal <a class="reference internal" href="#gwpy.timeseries.TimeSeries" titl
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>()</p>
+<p>(<a class="reference external" href="../api/gwpy-timeseries-TimeSeries-11.png">png</a>)</p>
 <div class="figure align-center">
 <img alt="../_images/gwpy-timeseries-TimeSeries-11.png" src="../_images/gwpy-timeseries-TimeSeries-11.png" />
 </div>
@@ -7503,7 +7798,7 @@ sinusoidal <a class="reference internal" href="#gwpy.timeseries.TimeSeries" titl
 
 <dl class="method">
 <dt>
-<code class="descname">whiten</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>method='welch'</em>, <em>window='hanning'</em>, <em>detrend='constant'</em>, <em>asd=None</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L1484"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">whiten</code><span class="sig-paren">(</span><em>fftlength=None</em>, <em>overlap=0</em>, <em>method='welch'</em>, <em>window='hanning'</em>, <em>detrend='constant'</em>, <em>asd=None</em>, <em>fduration=2</em>, <em>highpass=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L1484"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Whiten this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> using inverse spectrum truncation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7594,7 +7889,7 @@ and unit variance.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">zpk</code><span class="sig-paren">(</span><em>zeros</em>, <em>poles</em>, <em>gain</em>, <em>analog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/timeseries/timeseries.py#L968"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">zpk</code><span class="sig-paren">(</span><em>zeros</em>, <em>poles</em>, <em>gain</em>, <em>analog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/timeseries/timeseries.py#L968"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Filter this <a class="reference internal" href="#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> by applying a zero-pole-gain filter</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -7655,7 +7950,7 @@ will be converted in the Z-domain for digital filtering</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
     </p>
   </div>
 </footer>

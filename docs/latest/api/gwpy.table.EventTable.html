@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>EventTable &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
+    <title>EventTable &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -157,7 +157,7 @@
 <h1>EventTable<a class="headerlink" href="#eventtable" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gwpy.table.EventTable">
-<em class="property">class </em><code class="descclassname">gwpy.table.</code><code class="descname">EventTable</code><span class="sig-paren">(</span><em>data=None</em>, <em>masked=None</em>, <em>names=None</em>, <em>dtype=None</em>, <em>meta=None</em>, <em>copy=True</em>, <em>rows=None</em>, <em>copy_indices=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gwpy.table.</code><code class="descname">EventTable</code><span class="sig-paren">(</span><em>data=None</em>, <em>masked=None</em>, <em>names=None</em>, <em>dtype=None</em>, <em>meta=None</em>, <em>copy=True</em>, <em>rows=None</em>, <em>copy_indices=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">astropy.table.table.Table</span></code></p>
 <p>A container for a table of events</p>
 <p>This differs from the basic <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.1.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> in two ways</p>
@@ -263,103 +263,106 @@ specifically time segments)</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.fetch" title="gwpy.table.EventTable.fetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch</span></code></a>(format_, *args, **kwargs)</p></td>
 <td><p>Fetch a table of events from a database</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.field" title="gwpy.table.EventTable.field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">field</span></code></a>(item)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_open_data</span></code></a>(catalog[, columns, …])</p></td>
+<td><p>Fetch events from an open-data catalogue hosted by GWOSC.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.field" title="gwpy.table.EventTable.field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">field</span></code></a>(item)</p></td>
 <td><p>Return column[item] for recarray compatibility.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.filled" title="gwpy.table.EventTable.filled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filled</span></code></a>([fill_value])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.filled" title="gwpy.table.EventTable.filled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filled</span></code></a>([fill_value])</p></td>
 <td><p>Return a copy of self, with masked values filled.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(*column_filters)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(*column_filters)</p></td>
 <td><p>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.from_pandas" title="gwpy.table.EventTable.from_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pandas</span></code></a>(dataframe)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.from_pandas" title="gwpy.table.EventTable.from_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pandas</span></code></a>(dataframe)</p></td>
 <td><p>Create a <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> from a <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> instance</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.get_column" title="gwpy.table.EventTable.get_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_column</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.get_column" title="gwpy.table.EventTable.get_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_column</span></code></a>(name)</p></td>
 <td><p>Return the <a class="reference internal" href="#gwpy.table.EventTable.Column" title="gwpy.table.EventTable.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Column</span></code></a> with the given name</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.group_by" title="gwpy.table.EventTable.group_by"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_by</span></code></a>(keys)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.group_by" title="gwpy.table.EventTable.group_by"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_by</span></code></a>(keys)</p></td>
 <td><p>Group this table by the specified <code class="docutils literal notranslate"><span class="pre">keys</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.hist" title="gwpy.table.EventTable.hist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hist</span></code></a>(column, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.hist" title="gwpy.table.EventTable.hist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hist</span></code></a>(column, **kwargs)</p></td>
 <td><p>Generate a <code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramPlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.index_column" title="gwpy.table.EventTable.index_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index_column</span></code></a>(name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.index_column" title="gwpy.table.EventTable.index_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index_column</span></code></a>(name)</p></td>
 <td><p>Return the positional index of column <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.index_mode" title="gwpy.table.EventTable.index_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index_mode</span></code></a>(mode)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.index_mode" title="gwpy.table.EventTable.index_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index_mode</span></code></a>(mode)</p></td>
 <td><p>Return a context manager for an indexing mode.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.insert_row" title="gwpy.table.EventTable.insert_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_row</span></code></a>(index[, vals, mask])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.insert_row" title="gwpy.table.EventTable.insert_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_row</span></code></a>(index[, vals, mask])</p></td>
 <td><p>Add a new row before the given <code class="docutils literal notranslate"><span class="pre">index</span></code> position in the table.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.itercols" title="gwpy.table.EventTable.itercols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itercols</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.itercols" title="gwpy.table.EventTable.itercols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">itercols</span></code></a>()</p></td>
 <td><p>Iterate over the columns of this table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.keep_columns" title="gwpy.table.EventTable.keep_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_columns</span></code></a>(names)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.keep_columns" title="gwpy.table.EventTable.keep_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_columns</span></code></a>(names)</p></td>
 <td><p>Keep only the columns specified (remove the others).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.keys" title="gwpy.table.EventTable.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.keys" title="gwpy.table.EventTable.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.more" title="gwpy.table.EventTable.more"><code class="xref py py-obj docutils literal notranslate"><span class="pre">more</span></code></a>([max_lines, max_width, show_name, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.more" title="gwpy.table.EventTable.more"><code class="xref py py-obj docutils literal notranslate"><span class="pre">more</span></code></a>([max_lines, max_width, show_name, …])</p></td>
 <td><p>Interactively browse table with a paging interface.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.pformat" title="gwpy.table.EventTable.pformat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pformat</span></code></a>([max_lines, max_width, show_name, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.pformat" title="gwpy.table.EventTable.pformat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pformat</span></code></a>([max_lines, max_width, show_name, …])</p></td>
 <td><p>Return a list of lines for the formatted string representation of the table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.plot" title="gwpy.table.EventTable.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(*args, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.plot" title="gwpy.table.EventTable.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(*args, **kwargs)</p></td>
 <td><p>DEPRECATED, use <a class="reference internal" href="#gwpy.table.EventTable.scatter" title="gwpy.table.EventTable.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.scatter</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.pprint" title="gwpy.table.EventTable.pprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pprint</span></code></a>([max_lines, max_width, show_name, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.pprint" title="gwpy.table.EventTable.pprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pprint</span></code></a>([max_lines, max_width, show_name, …])</p></td>
 <td><p>Print a formatted string representation of the table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source, *args, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source, *args, **kwargs)</p></td>
 <td><p>Read data into an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_column" title="gwpy.table.EventTable.remove_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_column</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_column" title="gwpy.table.EventTable.remove_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_column</span></code></a>(name)</p></td>
 <td><p>Remove a column from the table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_columns" title="gwpy.table.EventTable.remove_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_columns</span></code></a>(names)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_columns" title="gwpy.table.EventTable.remove_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_columns</span></code></a>(names)</p></td>
 <td><p>Remove several columns from the table.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_indices" title="gwpy.table.EventTable.remove_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_indices</span></code></a>(colname)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_indices" title="gwpy.table.EventTable.remove_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_indices</span></code></a>(colname)</p></td>
 <td><p>Remove all indices involving the given column.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_row" title="gwpy.table.EventTable.remove_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_row</span></code></a>(index)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_row" title="gwpy.table.EventTable.remove_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_row</span></code></a>(index)</p></td>
 <td><p>Remove a row from the table.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_rows" title="gwpy.table.EventTable.remove_rows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_rows</span></code></a>(row_specifier)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.remove_rows" title="gwpy.table.EventTable.remove_rows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_rows</span></code></a>(row_specifier)</p></td>
 <td><p>Remove rows from the table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.rename_column" title="gwpy.table.EventTable.rename_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_column</span></code></a>(name, new_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.rename_column" title="gwpy.table.EventTable.rename_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_column</span></code></a>(name, new_name)</p></td>
 <td><p>Rename a column.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.replace_column" title="gwpy.table.EventTable.replace_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_column</span></code></a>(name, col)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.replace_column" title="gwpy.table.EventTable.replace_column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_column</span></code></a>(name, col)</p></td>
 <td><p>Replace column <code class="docutils literal notranslate"><span class="pre">name</span></code> with the new <code class="docutils literal notranslate"><span class="pre">col</span></code> object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.reverse" title="gwpy.table.EventTable.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.reverse" title="gwpy.table.EventTable.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>()</p></td>
 <td><p>Reverse the row order of table rows.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.scatter" title="gwpy.table.EventTable.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter</span></code></a>(x, y, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.scatter" title="gwpy.table.EventTable.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter</span></code></a>(x, y, **kwargs)</p></td>
 <td><p>Make a scatter plot of column <code class="docutils literal notranslate"><span class="pre">x</span></code> vs column <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.show_in_browser" title="gwpy.table.EventTable.show_in_browser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_in_browser</span></code></a>([max_lines, jsviewer, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.show_in_browser" title="gwpy.table.EventTable.show_in_browser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_in_browser</span></code></a>([max_lines, jsviewer, …])</p></td>
 <td><p>Render the table in HTML and show it in a web browser.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.show_in_notebook" title="gwpy.table.EventTable.show_in_notebook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_in_notebook</span></code></a>([tableid, css, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.show_in_notebook" title="gwpy.table.EventTable.show_in_notebook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_in_notebook</span></code></a>([tableid, css, …])</p></td>
 <td><p>Render the table in HTML and show it in the IPython notebook.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.sort" title="gwpy.table.EventTable.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>([keys])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.sort" title="gwpy.table.EventTable.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>([keys])</p></td>
 <td><p>Sort the table according to one or more keys.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.tile" title="gwpy.table.EventTable.tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tile</span></code></a>(x, y, w, h, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.tile" title="gwpy.table.EventTable.tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tile</span></code></a>(x, y, w, h, **kwargs)</p></td>
 <td><p>Make a tile plot of this table.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.to_pandas" title="gwpy.table.EventTable.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pandas</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.to_pandas" title="gwpy.table.EventTable.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pandas</span></code></a>()</p></td>
 <td><p>Return a <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> instance</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
 <td><p>Write this table to a file</p></td>
 </tr>
 </tbody>
@@ -758,7 +761,7 @@ byte order of all columns (if any are non-native).</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.binned_event_rates">
-<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
+<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.binned_event_rates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a> over
 a number of bins.</p>
 <dl class="field-list">
@@ -882,7 +885,7 @@ deepcopied regardless of the value for <code class="docutils literal notranslate
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.event_rate">
-<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.event_rate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.event_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -922,7 +925,7 @@ are made to guess this</p>
 
 <dl class="classmethod">
 <dt id="gwpy.table.EventTable.fetch">
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch a table of events from a database</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -998,6 +1001,36 @@ data format, see the online documentation for more details</p>
 </div>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="gwpy.table.EventTable.fetch_open_data">
+<em class="property">classmethod </em><code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>catalog</em>, <em>columns=None</em>, <em>selection=None</em>, <em>host='https://www.gw-openscience.org'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch_open_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch events from an open-data catalogue hosted by GWOSC.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>catalog</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>the name of the catalog to fetch, e.g. <code class="docutils literal notranslate"><span class="pre">'GWTC-1-confident'</span></code></p>
+</div></blockquote>
+<p><strong>columns</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>the list of column names to read</p>
+</div></blockquote>
+<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>one or more column filters with which to downselect the
+returned events as they as read, e.g. <code class="docutils literal notranslate"><span class="pre">'mass1</span> <span class="pre">&lt;</span> <span class="pre">30'</span></code>;
+multiple selections should be connected by ‘ &amp;&amp; ‘, or given as
+a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, e.g. <code class="docutils literal notranslate"><span class="pre">'mchirp</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">&amp;&amp;</span> <span class="pre">distance</span> <span class="pre">&lt;</span> <span class="pre">500'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">['mchirp</span> <span class="pre">&lt;</span> <span class="pre">3',</span> <span class="pre">'distance</span> <span class="pre">&lt;</span> <span class="pre">500']</span></code></p>
+</div></blockquote>
+<p><strong>host</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>the open-data host to use</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="gwpy.table.EventTable.field">
 <code class="descname">field</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.EventTable.field" title="Permalink to this definition">¶</a></dt>
@@ -1030,7 +1063,7 @@ in the entire table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.filter">
-<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L673"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.filter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L673"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <p>Multiple column filters can be given, and will be applied
 concurrently</p>
@@ -1087,10 +1120,10 @@ rows with <code class="docutils literal notranslate"><span class="pre">snr</span
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.get_column">
-<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.get_column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.get_column" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the <a class="reference internal" href="#gwpy.table.EventTable.Column" title="gwpy.table.EventTable.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Column</span></code></a> with the given name</p>
 <p>This method is provided only for compatibility with the
-<a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw.table.Table-class.html" title="glue.ligolw.table.Table class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue.ligolw.table.Table</span></code></a>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ligo.lw.table.Table</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
@@ -1146,7 +1179,7 @@ according to <code class="docutils literal notranslate"><span class="pre">keys</
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.hist">
-<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.hist" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.hist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a <code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramPlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1471,7 +1504,7 @@ None.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEPRECATED, use <a class="reference internal" href="#gwpy.table.EventTable.scatter" title="gwpy.table.EventTable.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.scatter</span></code></a></p>
 </dd></dl>
 
@@ -1525,7 +1558,7 @@ columns.</p>
 
 <dl class="classmethod">
 <dt id="gwpy.table.EventTable.read">
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.read" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data into an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2164,7 +2197,7 @@ in place and there are no function arguments.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.scatter">
-<code class="descname">scatter</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L523"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.scatter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">scatter</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L523"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.scatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a scatter plot of column <code class="docutils literal notranslate"><span class="pre">x</span></code> vs column <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2357,7 +2390,7 @@ primary index of the Table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.tile">
-<code class="descname">tile</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>w</em>, <em>h</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.tile" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tile</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>w</em>, <em>h</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.tile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a tile plot of this table.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2432,7 +2465,7 @@ primary index of the Table.</p>
 
 <dl class="method">
 <dt id="gwpy.table.EventTable.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this table to a file</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2701,13 +2734,13 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 
 <dl class="attribute">
 <dt id="gwpy.table.EventTable.Column">
-<code class="descname">Column</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.Column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Column</code><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.Column" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">EventColumn</span></code></p>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">binned_event_rates</code><span class="sig-paren">(</span><em>stride</em>, <em>column</em>, <em>bins</em>, <em>operator='&gt;='</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate an event rate <a class="reference internal" href="gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a> over
 a number of bins.</p>
 <dl class="field-list">
@@ -2768,7 +2801,7 @@ rate of events per second (Hz) for each of the bins.</p>
 
 <dl class="method">
 <dt>
-<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">event_rate</code><span class="sig-paren">(</span><em>stride</em>, <em>start=None</em>, <em>end=None</em>, <em>timecolumn=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L78"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Calculate the rate <a class="reference internal" href="gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> for this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2808,7 +2841,7 @@ are made to guess this</p>
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L274"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">fetch</code><span class="sig-paren">(</span><em>format_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L274"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Fetch a table of events from a database</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2885,8 +2918,8 @@ data format, see the online documentation for more details</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="gwpy.table.EventTable.fetch_open_data">
-<em class="property">classmethod </em><code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>catalog</em>, <em>columns=None</em>, <em>selection=None</em>, <em>host='https://www.gw-openscience.org'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gwpy.table.EventTable.fetch_open_data" title="Permalink to this definition">¶</a></dt>
+<dt>
+<em class="property">classmethod </em><code class="descname">fetch_open_data</code><span class="sig-paren">(</span><em>catalog</em>, <em>columns=None</em>, <em>selection=None</em>, <em>host='https://www.gw-openscience.org'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L339"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Fetch events from an open-data catalogue hosted by GWOSC.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2916,7 +2949,7 @@ a <a class="reference external" href="https://docs.python.org/3/library/stdtypes
 
 <dl class="method">
 <dt>
-<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L673"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*column_filters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L673"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Apply one or more column slice filters to this <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <p>Multiple column filters can be given, and will be applied
 concurrently</p>
@@ -2953,10 +2986,10 @@ rows with <code class="docutils literal notranslate"><span class="pre">snr</span
 
 <dl class="method">
 <dt>
-<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L371"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">get_column</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L371"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Return the <a class="reference internal" href="#gwpy.table.EventTable.Column" title="gwpy.table.EventTable.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Column</span></code></a> with the given name</p>
 <p>This method is provided only for compatibility with the
-<a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw.table.Table-class.html" title="glue.ligolw.table.Table class at http://software.ligo.org/docs/glue/"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue.ligolw.table.Table</span></code></a>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ligo.lw.table.Table</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
@@ -2980,7 +3013,7 @@ rows with <code class="docutils literal notranslate"><span class="pre">snr</span
 
 <dl class="method">
 <dt>
-<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L637"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">hist</code><span class="sig-paren">(</span><em>column</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L637"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Generate a <code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramPlot</span></code> of this <a class="reference internal" href="gwpy.table.Table.html#gwpy.table.Table" title="gwpy.table.Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3020,13 +3053,13 @@ histogram, default: <code class="docutils literal notranslate"><span class="pre"
 
 <dl class="method">
 <dt>
-<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L515"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L515"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>DEPRECATED, use <a class="reference internal" href="#gwpy.table.EventTable.scatter" title="gwpy.table.EventTable.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.scatter</span></code></a></p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt>
-<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L189"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>source</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L189"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3378,7 +3411,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 
 <dl class="method">
 <dt>
-<code class="descname">scatter</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L523"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">scatter</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L523"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Make a scatter plot of column <code class="docutils literal notranslate"><span class="pre">x</span></code> vs column <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3421,7 +3454,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 
 <dl class="method">
 <dt>
-<code class="descname">tile</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>w</em>, <em>h</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L561"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">tile</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>w</em>, <em>h</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L561"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Make a tile plot of this table.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3472,7 +3505,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 
 <dl class="method">
 <dt>
-<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/a39e2081b954310f432214e47b6e3072741477ff/gwpy/table/table.py#L244"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>target</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/d9db333e24085e8c9ee1fa30355a1c6357d3af05/gwpy/table/table.py#L244"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Write this table to a file</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3756,7 +3789,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
     </p>
   </div>
 </footer>

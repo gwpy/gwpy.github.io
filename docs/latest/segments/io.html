@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Reading/writing segments and flags &#8212; GWpy 0.12.2+485.ga39e2081 documentation</title>
+    <title>Reading/writing segments and flags &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -184,10 +184,10 @@ As with other classes in GWpy, the <code class="docutils literal notranslate"><s
 </ul>
 <div class="section" id="ligo-lw-xml">
 <span id="gwpy-segments-io-ligolw"></span><h2><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Permalink to this headline">¶</a></h2>
-<p><strong>Additional dependencies:</strong> <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code></a></p>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a></p>
 <p>The LIGO Scientific Collaboration uses a custom scheme of XML in which to
-store tabular data, called the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> scheme.
-Complementing the scheme is a python library - <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code></a> - which
+store tabular data, called <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code>.
+Complementing the scheme is a python library - <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a> - which
 allows users to read and write all of the different types of tabular data
 produced by gravitational-wave searches.</p>
 <p>Segments are stored in <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format using a trio of tables:</p>
@@ -250,6 +250,18 @@ produced by gravitational-wave searches.</p>
 <p>Extra attributes can be written to the tables via the <code class="docutils literal notranslate"><span class="pre">attrs={}</span></code> keyword, all attributes are set for all three of the segment-related tables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;process_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code> library reads and writes files using an updated
+version of the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format compared to <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code></a> used to.
+GWpy should support both format versions natively when _reading_, but
+when _writing_ you may need to explicitly pass the
+<code class="docutils literal notranslate"><span class="pre">ilwdchar_compat=True</span></code> keyword in order to write using the old
+format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="n">ilwdchar_compat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="dataqualitydict">
@@ -332,7 +344,7 @@ produced by gravitational-wave searches.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
     </p>
   </div>
 </footer>
