@@ -21,13 +21,13 @@ detection GW150914, so we can reproduce `that result (bottom panel of figure 1)
 
 
 First, we need to download the `TimeSeries` record for the H1 strain
-measurement from `LOSC <//losc.ligo.org>`_:
+measurement from |GWOSC|_:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
@@ -35,9 +35,9 @@ measurement from `LOSC <//losc.ligo.org>`_:
 Next, we generate the `~TimeSeries.q_transform` of these data:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    qspecgram = data.q_transform(outseg=(1126259462.2, 1126259462.5))
 
@@ -50,8 +50,8 @@ Now, we can plot the resulting `~gwpy.spectrogram.Spectrogram`:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = qspecgram.plot(figsize=[8, 4])
    ax = plot.gca()

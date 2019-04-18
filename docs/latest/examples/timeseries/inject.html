@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>9. Inject a known signal into a TimeSeries &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
+    <title>9. Inject a known signal into a TimeSeries &#8212; GWpy 0.12.2+524.g4f96e206 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.12.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -168,10 +168,10 @@ noise, then inject a simulation of GW150914 into it at a known time.</p>
 <span class="n">noise</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16384</span><span class="p">),</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">16384</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then we can download a simulation of the GW150914 signal from LOSC:</p>
+<p>Then we can download a simulation of the GW150914 signal from GWOSC:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.utils.data</span> <span class="kn">import</span> <span class="n">get_readable_fileobj</span>
-<span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;https://losc.ligo.org/s/events/GW150914/P150914/&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/fig2-unfiltered-waveform-H.txt&#39;</span> <span class="o">%</span> <span class="n">source</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://www.gw-openscience.org/s/events/GW150914/P150914/&quot;</span>
+       <span class="s2">&quot;fig2-unfiltered-waveform-H.txt&quot;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">signal</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;txt&#39;</span><span class="p">)</span>
 <span class="n">signal</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>  <span class="c1"># make sure this intersects with noise time samples</span>

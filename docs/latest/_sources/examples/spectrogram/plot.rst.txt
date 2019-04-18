@@ -19,9 +19,9 @@ First, we import the `TimeSeries` and call
 data for the LIGO-Hanford interferometer
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.fetch_open_data(
@@ -32,9 +32,9 @@ Next, we can calculate a `~gwpy.spectrogram.Spectrogram` using the
 with a 1-second FFT and # .5-second overlap (50%):
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    specgram = data.spectrogram(2, fftlength=1, overlap=.5) ** (1/2.)
 
@@ -47,8 +47,8 @@ Finally, we can make a plot using the
 :meth:`~gwpy.spectrogram.Spectrogram.plot` method
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = specgram.imshow(norm='log', vmin=5e-24, vmax=1e-19)
    ax = plot.gca()

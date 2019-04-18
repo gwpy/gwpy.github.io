@@ -21,9 +21,9 @@ strain output of the LIGO-Hanford interferometer.
 First, we import the `TimeSeriesDict`
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeriesDict
 
@@ -32,9 +32,9 @@ and then :meth:`~TimeSeriesDict.get` the data for the strain output
 (``H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ``):
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    data = TimeSeriesDict.get(['H1:GDS-CALIB_STRAIN',
                               'H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ'],
@@ -47,17 +47,17 @@ We can then calculate the :meth:`~TimeSeries.coherence` of one
 transform length, with a 1-second (50%) overlap:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    coh = hoft.coherence(acc, fftlength=2, overlap=1)
 
 Finally, we can :meth:`~gwpy.frequencyseries.FrequencySeries.plot` the resulting data:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = coh.plot(
        xlabel='Frequency [Hz]', xscale='log',

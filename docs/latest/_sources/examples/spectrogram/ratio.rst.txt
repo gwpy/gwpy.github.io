@@ -24,9 +24,9 @@ Again, we import the `TimeSeries` and call
 data for the LIGO-Hanford interferometer
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.fetch_open_data(
@@ -37,9 +37,9 @@ Next, we can calculate a `~gwpy.spectrogram.Spectrogram` using the
 with a 1-second FFT and # .5-second overlap (50%):
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    specgram = data.spectrogram(2, fftlength=1, overlap=.5) ** (1/2.)
 
@@ -48,9 +48,9 @@ and can normalise it against the overall median ASD by calling the
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    normalised = specgram.ratio('median')
 
@@ -58,8 +58,8 @@ Finally, we can make a plot using the
 :meth:`~gwpy.spectrogram.Spectrogram.plot` method
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = normalised.plot(norm='log', vmin=.1, vmax=10, cmap='Spectral_r')
    ax = plot.gca()

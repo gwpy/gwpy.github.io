@@ -17,13 +17,13 @@ module to design a digital filter to cut out low and high frequency noise, as
 well as notch out fixed frequencies polluted by known artefacts.
 
 
-First we download the raw strain data from the LOSC public archive:
+First we download the raw strain data from the GWOSC public archive:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    hdata = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
@@ -36,9 +36,9 @@ high frequency content
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    from gwpy.signal import filter_design
    bp = filter_design.bandpass(50, 250, hdata.sample_rate)
@@ -49,9 +49,9 @@ for the first three harmonics of the 60 Hz AC mains power:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    notches = [filter_design.notch(line, hdata.sample_rate) for
               line in (60, 120, 180)]
@@ -60,9 +60,9 @@ and concatenate each of our filters together to create a single ZPK:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    zpk = filter_design.concatenate_zpks(bp, *notches)
 
@@ -72,9 +72,9 @@ at all frequencies
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    hfilt = hdata.filter(zpk, filtfilt=True)
 
@@ -93,9 +93,9 @@ We can discard those data using the :meth:`~TimeSeries.crop` method
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    hdata = hdata.crop(*hdata.span.contract(1))
    hfilt = hfilt.crop(*hfilt.span.contract(1))
@@ -105,8 +105,8 @@ adding some code to prettify the figure:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    from gwpy.plot import Plot
    plot = Plot(hdata, hfilt, figsize=[12, 6], separate=True, sharex=True,
@@ -125,8 +125,8 @@ that time (and prettify):
 
 
 .. plot::
+   :context: close-figs
    :include-source:
-   :context:
 
    plot = hfilt.plot(color='gwpy:ligo-hanford')
    ax = plot.gca()
@@ -145,9 +145,9 @@ First, we load the new data
 
 
 .. plot::
+   :context: close-figs
    :nofigs:
    :include-source:
-   :context:
 
    ldata = TimeSeries.fetch_open_data('L1', 1126259446, 1126259478)
    lfilt = ldata.filter(zpk, filtfilt=True)
@@ -159,9 +159,9 @@ before comparing them, so we apply those corrections:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    lfilt.shift('6.9ms')
    lfilt *= -1
@@ -170,8 +170,8 @@ and finally make a new plot with both detectors:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = Plot(figsize=[12, 4])
    ax = plot.gca()

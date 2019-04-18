@@ -22,9 +22,9 @@ Science Center:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    data = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
@@ -32,9 +32,9 @@ Science Center:
 and condition it by applying a highpass filter at 15 Hz
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    high = data.highpass(15)
 
@@ -47,9 +47,9 @@ of the data), then :meth:`~TimeSeries.crop` the data:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    psd = high.psd(4, 2)
    zoom = high.crop(1126259460, 1126259464)
@@ -62,9 +62,9 @@ For this we import :func:`pycbc.waveform.get_fd_waveform
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    from pycbc.waveform import get_fd_waveform
    hp, _ = get_fd_waveform(approximant="IMRPhenomD", mass1=40, mass2=32,
@@ -78,9 +78,9 @@ our template, the data, and the PSD:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    from pycbc.filter import matched_filter
    snr = matched_filter(hp, zoom.to_pycbc(), psd=psd.to_pycbc(),
@@ -98,8 +98,8 @@ our template, the data, and the PSD:
 We can plot the SNR `TimeSeries` around the region of interest:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = snrts.plot()
    ax = plot.gca()

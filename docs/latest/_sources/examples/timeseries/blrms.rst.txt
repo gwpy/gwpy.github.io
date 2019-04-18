@@ -14,18 +14,18 @@ should have had an impact on LIGO operations, I'd like to find out.
 First: we import the objects we need, one for getting the data:
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeriesDict
 
 and one for plotting the data:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    from gwpy.plot import Plot
 
@@ -35,9 +35,9 @@ We do this using string-replacement so we can substitute the interferometer
 prefix easily when we need to:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    channels = [
        '{ifo}:ISI-BS_ST1_SENSCOR_GND_STS_X_BLRMS_30M_100M.mean,s-trend',
@@ -49,9 +49,9 @@ At last we can :meth:`~TimeSeriesDict.get` 12 hours of data for each
 interferometer:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    lho = TimeSeriesDict.get([c.format(ifo='H1') for c in channels],
                             'Feb 13 2015 16:00', 'Feb 14 2015 04:00')
@@ -62,8 +62,8 @@ Next we can plot the data, with a separate `~gwpy.plot.Axes` for each
 instrument:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = Plot(lho, llo, figsize=(12, 6), sharex=True, yscale='log')
    ax1, ax2 = plot.axes

@@ -21,9 +21,9 @@ a LIGO_LW-format XML file containing a
 :class:`sngl_burst <ligo.lw.lsctables.SnglBurstTable>` table
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.table import EventTable
    events = EventTable.read('H1-LDAS_STRAIN-968654552-10.xml.gz',
@@ -38,9 +38,9 @@ Now we can use the :meth:`~EventTable.binned_event_rates` method to
 calculate the event rate in a number of bins of SNR.
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    rates = events.binned_event_rates(1, 'snr', [2, 3, 5, 8], operator='>=',
                                      start=968654552, end=968654562)
@@ -53,8 +53,8 @@ calculate the event rate in a number of bins of SNR.
 Finally, we can make a plot:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = rates.step()
    ax = plot.gca()

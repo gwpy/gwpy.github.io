@@ -31,9 +31,9 @@ Advanced LIGO's second observing run.
 First, we import the `TimeSeries` and :meth:`~TimeSeries.get` the data:
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    hoft = TimeSeries.get('L1:GDS-CALIB_STRAIN', 1172489751, 1172489815)
@@ -44,9 +44,9 @@ content and make a more faithful comparison between data streams.
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    whoft = hoft.whiten(8, 4)
    waux = aux.whiten(8, 4)
@@ -57,8 +57,8 @@ content and make a more faithful comparison between data streams.
 and plot the resulting normalised signal-to-noise ratio:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = snr.crop(1172489782.07, 1172489784.07).plot()
    plot.axes[0].set_epoch(1172489783.07)
@@ -73,8 +73,8 @@ It's now worth checking out the time-frequency morphology in both channels
 using :meth:`~TimeSeries.q_transform`:
 
 .. plot::
+   :context: close-figs
    :include-source:
-   :context:
 
    qhoft = whoft.q_transform(
        whiten=False,  # already white
@@ -95,8 +95,8 @@ using :meth:`~TimeSeries.q_transform`:
 and the same for the PSL channel:
 
 .. plot::
+   :context: close-figs
    :include-source:
-   :context:
 
    qaux = waux.q_transform(
        whiten=False,  # already white

@@ -21,9 +21,9 @@ a LIGO_LW-format XML file containing a
 :class:`sngl_burst <ligo.lw.lsctables.SnglBurstTable>` table
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.table import EventTable
    events = EventTable.read('H1-LDAS_STRAIN-968654552-10.xml.gz',
@@ -38,9 +38,9 @@ We can calculate the rate of events (in Hertz) using the
 :meth:`~EventTable.event_rate` method:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    rate = events.event_rate(1, start=968654552, end=968654562)
 
@@ -49,8 +49,8 @@ The :meth:`~EventTable.event_rate` method has returned a
 :meth:`~gwpy.timeseries.TimeSeries.step` method of that object:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = rate.step()
    ax = plot.gca()

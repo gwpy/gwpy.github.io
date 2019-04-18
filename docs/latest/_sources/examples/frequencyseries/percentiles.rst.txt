@@ -25,9 +25,9 @@ First, as always, we get the data using :meth:`TimeSeries.fetch_open_data`:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    hoft = TimeSeries.fetch_open_data('H1', 1187007040, 1187009088, tag='C00')
@@ -38,9 +38,9 @@ method:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    sg = hoft.spectrogram2(fftlength=4, overlap=2, window='hanning') ** (1/2.)
 
@@ -48,9 +48,9 @@ From this we can trivially extract the median, 5th and 95th percentiles:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    median = sg.percentile(50)
    low = sg.percentile(5)
@@ -61,8 +61,8 @@ display the 5th and 95th percentiles as a shaded region around the median:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    from gwpy.plot import Plot
    plot = Plot()

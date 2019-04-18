@@ -19,9 +19,9 @@ intereferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    gwdata = TimeSeries.fetch_open_data('L1', 'Dec 26 2015 03:37',
@@ -33,17 +33,17 @@ Next, we can calculate a Rayleigh statistic `Spectrogram` using the
 1-second overlap (50%):
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    rayleigh = gwdata.rayleigh_spectrogram(5, fftlength=2, overlap=1)
 
 and can make a plot using the :meth:`~Spectrogram.plot` method
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = rayleigh.plot(norm='log', vmin=0.25, vmax=4)
    ax = plot.gca()

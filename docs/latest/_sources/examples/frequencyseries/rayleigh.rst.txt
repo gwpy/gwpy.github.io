@@ -23,9 +23,9 @@ intereferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    gwdata = TimeSeries.fetch_open_data('L1', 'Dec 26 2015 03:37',
@@ -37,9 +37,9 @@ Next, we can calculate a Rayleigh statistic `FrequencySeries` using the
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    rayleigh = gwdata.rayleigh_spectrum(2, 1)
 
@@ -50,8 +50,8 @@ strain data and plot both on the same figure:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    from gwpy.plot import Plot
    plot = Plot(gwdata.asd(2, 1), rayleigh, geometry=(2, 1), sharex=True,

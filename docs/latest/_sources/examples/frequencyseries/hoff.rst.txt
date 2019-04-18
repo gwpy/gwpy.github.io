@@ -19,9 +19,9 @@ records:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    lho = TimeSeries.fetch_open_data('H1', 1126259446, 1126259478)
@@ -32,9 +32,9 @@ calculated the amplitude spectral density for each
 `~gwpy.timeseries.TimeSeries`:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    lhoasd = lho.asd(4, 2)
    lloasd = llo.asd(4, 2)
@@ -43,8 +43,8 @@ We can then :meth:`~FrequencySeries.plot` the spectra using the 'standard'
 colour scheme:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = lhoasd.plot(label='LIGO-Hanford', color='gwpy:ligo-hanford')
    ax = plot.gca()

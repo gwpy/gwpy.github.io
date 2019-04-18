@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Remote data access &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
+    <title>Remote data access &#8212; GWpy 0.12.2+524.g4f96e206 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data-discovery on the LIGO Data Grid" href="ldg.html" />
+    <link rel="next" title="Automatic data-discovery" href="datafind.html" />
     <link rel="prev" title="StateVectorDict" href="../api/gwpy.timeseries.StateVectorDict.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.12.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -107,7 +107,7 @@
     </a>
   </li>
   <li>
-    <a href="ldg.html" title="Next Chapter: Data-discovery on the LIGO Data Grid"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data-discover... &raquo;</span>
+    <a href="datafind.html" title="Next Chapter: Automatic data-discovery"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Automatic dat... &raquo;</span>
     </a>
   </li>
               
@@ -159,9 +159,10 @@
       
   <div class="section" id="remote-data-access">
 <span id="gwpy-timeseries-remote"></span><h1>Remote data access<a class="headerlink" href="#remote-data-access" title="Permalink to this headline">¶</a></h1>
-<p>The LIGO Laboratory archives instrumental data in GWF files hosted on the LIGO Data Grid (see <a class="reference internal" href="ldg.html#gwpy-timeseries-datafind"><span class="std std-ref">Data-discovery on the LIGO Data Grid</span></a> for more details), however, remote access tools have been developed to simplify loading data.
+<p>The LIGO Laboratory archives instrumental data in GWF files hosted on the LIGO Data Grid (see <a class="reference internal" href="datafind.html#gwpy-timeseries-datafind"><span class="std std-ref">Automatic data-discovery</span></a> for more details), however, remote access tools have been developed to simplify loading data.
 GWpy provides two methods for remote data access, one for public data releases, and another for authenticated access to the complete data archive:</p>
-<table class="docutils align-center">
+<table class="docutils align-left" id="timeseries-remote-access-methods">
+<caption><span class="caption-text">Methods for remote <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> data access in GWpy</span><a class="headerlink" href="#timeseries-remote-access-methods" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 49%" />
 <col style="width: 16%" />
@@ -241,7 +242,7 @@ If you don’t have an active kerberos credential at the time you run <a class="
 </pre></div>
 </div>
 <p>will return one hour of data from the vertical-ground-motion seismometer located near the ITMY vacuum enclosure at LIGO Livingston.</p>
-<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.get</span></code></a> method tries direct file access (using <a class="reference external" href="http://software.ligo.org/docs/glue/glue.datafind-module.html" title="glue.datafind module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.datafind</span></code></a> for file discovery) first, then falls back to using the Network Data Server (NDS2) for remote access.
+<p>The <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.get</span></code></a> method tries direct file access (using <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a> for file discovery) first, then falls back to using the Network Data Server (NDS2) for remote access.
 If you want to manually use NDS2 for remote access you can instead use the <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.fetch" title="gwpy.timeseries.TimeSeries.fetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.fetch</span></code></a> method.</p>
 </div>
 </div>

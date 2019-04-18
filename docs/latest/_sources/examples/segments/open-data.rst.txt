@@ -7,8 +7,9 @@
 Plotting observing segments for O1
 ##################################
 
-The data from the full Observing Run 1 (O1) have been released through the
-`LIGO Open Science Center <https://losc.ligo.org/detector_status/>`__ (LOSC).
+The data from the full
+`Observing Run 1 (O1) <https://www.gw-openscience.org/O1/>`__
+have been released by |GWOSC|_.
 
 This example demonstrates how to download segment information into a
 :class:`~gwpy.segments.DataQualityFlag`, and then plot them.
@@ -20,9 +21,9 @@ the segments for all of O1:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.segments import DataQualityFlag
    h1segs = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
@@ -32,8 +33,8 @@ We can then generate a plot of the times when LIGO-Hanford was operating:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = h1segs.plot(color='gwpy:ligo-hanford')
    plot.show()
@@ -43,9 +44,9 @@ only the segments from the first month of the run:
 
 
 .. plot::
+   :context: close-figs
    :nofigs:
    :include-source:
-   :context:
 
    h1month1 = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
                                               'Oct 12 2015')
@@ -58,8 +59,8 @@ interferometers were operating at the same time
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    l1month1 = DataQualityFlag.fetch_open_data('L1_DATA', 'Sep 12 2015',
                                               'Oct 12 2015')

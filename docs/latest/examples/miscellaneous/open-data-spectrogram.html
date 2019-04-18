@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2. Plotting a spectrogram of all open data for 1 day &#8212; GWpy 0.12.2+513.gd9db333e documentation</title>
+    <title>2. Plotting a spectrogram of all open data for 1 day &#8212; GWpy 0.12.2+524.g4f96e206 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.12.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -157,17 +157,18 @@
 <p>In order to study interferometer performance, it is common in LIGO to plot
 all of the data for a day, in order to determine trends, and see data-quality
 issues.</p>
-<p>This is done for the LIGO-Virgo detector network, with up-to-date plots
-<a class="reference external" href="https://losc.ligo.org/detector_status/">available from the LIGO Open Science Center</a> (LOSC).</p>
-<p>This example demonstrates how to download data segments from LOSC, then
+<p>This is done for the LIGO-Virgo detector network, with
+<a class="reference external" href="https://www.gw-openscience.org/detector_status/">up-to-date plots</a>
+available from The Gravitational-Wave Open Science Centre (GWOSC).</p>
+<p>This example demonstrates how to download data segments from GWOSC, then
 use those to build a day-timescale spectrogram plot of LIGO-Hanford strain
 data.</p>
 <div class="section" id="getting-the-segments">
 <h2>2.1. Getting the segments<a class="headerlink" href="#getting-the-segments" title="Permalink to this headline">¶</a></h2>
-<p>First, we need to fetch the Open Data timeline segments from LOSC.
+<p>First, we need to fetch the Open Data timeline segments from GWOSC.
 To do that we can call the <a class="reference internal" href="../../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.fetch_open_data" title="gwpy.segments.DataQualityFlag.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.fetch_open_data()</span></code></a> method
 using <code class="docutils literal notranslate"><span class="pre">'H1_DATA'</span></code> as the flag (for an explanation of what this means,
-read up on <a class="reference external" href="https://losc.ligo.org/S6/">The S6 Data Release</a>).</p>
+read up on <a class="reference external" href="https://www.gw-openscience.org/S6/">The S6 Data Release</a>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">DataQualityFlag</span>
 <span class="n">h1segs</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1_DATA&#39;</span><span class="p">,</span>
                                          <span class="s1">&#39;Sep 16 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep 17 2010&#39;</span><span class="p">)</span>
@@ -221,13 +222,9 @@ strain <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
-<img alt="../../_images/open-data-spectrogram-5_00.png" src="../../_images/open-data-spectrogram-5_00.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/miscellaneous/open-data-spectrogram-5_00.png">png</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
-<img alt="../../_images/open-data-spectrogram-5_01.png" src="../../_images/open-data-spectrogram-5_01.png" />
-<p class="caption"><span class="caption-text">(<a class="reference external" href="../../examples/miscellaneous/open-data-spectrogram-5_01.png">png</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p>(<a class="reference external" href="../../examples/miscellaneous/open-data-spectrogram-5.png">png</a>)</p>
+<div class="figure align-center">
+<img alt="../../_images/open-data-spectrogram-5.png" src="../../_images/open-data-spectrogram-5.png" />
 </div>
 </div>
 </div>

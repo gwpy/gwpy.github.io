@@ -17,9 +17,9 @@ First, we can download the ``'GWTC-1-confident'`` catalogue using
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.table import EventTable
    events = EventTable.fetch_open_data(
@@ -32,8 +32,8 @@ and (optionally) the colour:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = events.scatter("mass1", "mass2", color="E_rad")
    plot.colorbar(label="E_rad [{}]".format(r"M$_{\odot}$ c$^{2}$"))
@@ -45,17 +45,17 @@ from the component masses:
 
 
 .. plot::
+   :context: close-figs
    :nofigs:
    :include-source:
-   :context:
 
    events.add_column(events["mass1"] + events["mass2"], name="mtotal")
 
 and now can make a new scatter plot:
 
 .. plot::
+   :context:
    :include-source:
-   :context: close-figs
 
-   plot = events.scatter("distance", "mtotal")  
+   plot = events.scatter("distance", "mtotal")
    plot.show()

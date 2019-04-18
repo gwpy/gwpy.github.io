@@ -22,9 +22,9 @@ First, we prepare one second of Gaussian noise:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from numpy import random
    from gwpy.timeseries import TimeSeries
@@ -34,9 +34,9 @@ To inject a signal in the frequency domain, we need to take an FFT:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    noisefd = noise.fft()
 
@@ -45,9 +45,9 @@ We can now easily inject a loud sinusoid of unit amplitude at, say,
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    import numpy
    from gwpy.frequencyseries import FrequencySeries
@@ -59,8 +59,8 @@ domain:
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    from gwpy.plot import Plot
    plot = Plot(numpy.abs(noisefd), numpy.abs(injfd), separate=True,
@@ -72,10 +72,10 @@ injection back in the time domain:
 
 
 .. plot::
-   :include-source:
    :context: close-figs
+   :include-source:
 
-   inj = injfd.ifft()  
+   inj = injfd.ifft()
    plot = Plot(noise, inj, separate=True, sharex=True, sharey=True,
                figsize=(12, 6))
    plot.show()

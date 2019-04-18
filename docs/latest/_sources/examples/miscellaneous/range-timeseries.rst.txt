@@ -14,13 +14,14 @@ can plot the variation over time by looping over a power spectral density
 :class:`~gwpy.spectrogram.Spectrogram`.
 
 First, we need to load some data, for this we can use the
-`LOSC <https://losc.ligo.org>`_ public data around the GW150914 event:
+`public data <https://www.gw-openscience.org/catalog/>`__
+around the GW150914 event:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    h1 = TimeSeries.fetch_open_data('H1', 1126257414, 1126261510)
@@ -30,9 +31,9 @@ and then calculating the PSD spectrogram:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    h1spec = h1.spectrogram(30, fftlength=4)
    l1spec = l1.spectrogram(30, fftlength=4)
@@ -44,9 +45,9 @@ loop over each PSD bin in the spectrogram, calculating the
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    import numpy
    from gwpy.astro import inspiral_range
@@ -61,8 +62,8 @@ We can now easily plot the timeseries to see the variation in LIGO
 sensitivity over the hour or so including GW150914:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = h1range.plot(label='LIGO-Hanford', color='gwpy:ligo-hanford',
                        figsize=(12, 5))

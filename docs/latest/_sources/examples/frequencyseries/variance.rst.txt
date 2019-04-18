@@ -23,9 +23,9 @@ intereferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    llo = TimeSeries.fetch_open_data('L1', 1135136228, 1135140324, verbose=True)
@@ -37,9 +37,9 @@ at each ASD value:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    variance = llo.spectral_variance(5, fftlength=2, overlap=1, log=True,
                                     low=1e-24, high=1e-19, nbins=100)
@@ -48,8 +48,8 @@ We can then :meth:`~SpectralVariance.plot` the `SpectralVariance`
 
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = variance.plot(yscale='log', norm='log', vmin=.5, cmap='plasma')
    ax = plot.gca()

@@ -18,9 +18,9 @@ whitening to show the physical content of these data.
 First, we import the `TimeSeries` and :meth:`~TimeSeries.get` the data:
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import TimeSeries
    white = TimeSeries.get(
@@ -33,9 +33,9 @@ with five zeros at 100 Hz and five poles at 1 Hz (giving an overall DC
 gain of 10 :sup:`-10`:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    hp = white.highpass(4)
    displacement = hp.zpk([100]*5, [1]*5, 1e-10)
@@ -45,9 +45,9 @@ We can visualise the impact of the whitening by calculating the ASD
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    whiteasd = white.asd(8, 4)
    dispasd = displacement.asd(8, 4)
@@ -56,9 +56,9 @@ and plotting:
 
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    from gwpy.plot import Plot
    plot = Plot(whiteasd, dispasd, separate=True, sharex=True,
@@ -73,8 +73,8 @@ together.
 Finally, we prettify our plot with some limits, and some labels:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot.axes[0].set_ylabel('ASD [whitened]')
    plot.axes[1].set_ylabel(r'ASD [m/$\sqrt{\mathrm{Hz}}$]')

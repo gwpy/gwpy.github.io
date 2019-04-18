@@ -9,27 +9,27 @@ Plotting segments for a `StateVector`
 
 Confident detection of gravitational-wave signals is critically dependent
 on understanding the quality of the data searched.
-Alongside the strain *h(t)* data, the GW Open Science Center (GWOSC) also
+Alongside the strain *h(t)* data, |GWOSC|_ also
 releases a *Data Quality* :ref:`state vector <gwpy-statevector>`.
 We can use this to check on the quality of the data from the LIGO Livingston
-detector around `GW170817 <https://losc.ligo.org/events/GW170817/>`__.
+detector around GW170817.
 
 
 First, we can import the `StateVector` class:
 
 .. plot::
+   :context: reset
    :nofigs:
    :include-source:
-   :context: reset
 
    from gwpy.timeseries import StateVector
 
 and download the state information surrounding GW170817:
 
 .. plot::
+   :context:
    :nofigs:
    :include-source:
-   :context:
 
    data = StateVector.fetch_open_data('L1', 1187008882-100, 1187008882+100,
                                       verbose=True, tag='C00')
@@ -38,8 +38,8 @@ Finally, we make a :meth:`~StateVector.plot`, passing `insetlabels=True` to
 display the bit names inside the axes:
 
 .. plot::
-   :include-source:
    :context:
+   :include-source:
 
    plot = data.plot(insetlabels=True)
    ax = plot.gca()
