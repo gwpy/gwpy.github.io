@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Querying for catalogue events &#8212; GWpy 0.15.0+24.g221b9f1d documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reading and writing Table and EventTable objects" href="io.html" />
+    <link rel="prev" title="Tabular data" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Tabular data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tabular data</span>
+    </a>
+  </li>
+  <li>
+    <a href="io.html" title="Next Chapter: Reading and writing Table and EventTable objects"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Reading and w... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Querying for catalogue events</a><ul>
+<li><a class="reference internal" href="#simple-queries">Simple queries</a></li>
+<li><a class="reference internal" href="#filtered-queries">Filtered queries</a></li>
+<li><a class="reference internal" href="#indexing-by-event-name">Indexing by event name</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/table/gwosc.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="querying-for-catalogue-events">
+<span id="gwpy-table-gwosc"></span><h1>Querying for catalogue events<a class="headerlink" href="#querying-for-catalogue-events" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-queries">
+<span id="gwpy-table-gwosc-query"></span><h2>Simple queries<a class="headerlink" href="#simple-queries" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a> class comes with a <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fetch_open_data()</span></code></a>
+method that queries the Gravitational-Wave Open Science Center (GWOSC) database
+for events and their parameters associated with one of the catalogue event
+releases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more details on the GWOSC catalogues, see <a class="reference external" href="https://www.gw-openscience.org/catalog/">https://www.gw-openscience.org/catalog/</a>.</p>
+</div>
+<p>The simplest query just requires the catalogue name, and will return all parameters
+for all events in the catalogue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="k">import</span> <span class="n">EventTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">&quot;GWTC-1-confident&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">  name              E_rad                L_peak    ...      tc       utctime</span>
+<span class="go">         8.98755e+16 m2 solMass / s2 1e+56 erg / s ...</span>
+<span class="go">-------- --------------------------- ------------- ... ------------ ----------</span>
+<span class="go">GW150914                         3.1           3.6 ... 1126259462.4 09:50:45.4</span>
+<span class="go">GW151012                         1.5           3.2 ... 1128678900.4 09:54:43.4</span>
+<span class="go">GW151226                         1.0           3.4 ... 1135136350.6 03:38:53.6</span>
+<span class="go">GW170104                         2.2           3.3 ... 1167559936.6 10:11:58.6</span>
+<span class="go">GW170608                         0.9           3.5 ... 1180922494.5 02:01:16.5</span>
+<span class="go">GW170729                         4.8           4.2 ... 1185389807.3 18:56:29.3</span>
+<span class="go">GW170809                         2.7           3.5 ... 1186302519.8 08:28:21.8</span>
+<span class="go">GW170814                         2.7           3.7 ... 1186741861.5 10:30:43.5</span>
+<span class="go">GW170817                        0.04           0.1 ... 1187008882.4 12:41:04.4</span>
+<span class="go">GW170818                         2.7           3.4 ... 1187058327.1 02:25:09.1</span>
+<span class="go">GW170823                         3.3           3.6 ... 1187529256.5 13:13:58.5</span>
+</pre></div>
+</div>
+<p>The full list of available columns can be queried as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+<span class="go">&lt;EventTable length=11&gt;</span>
+<span class="go">   name     dtype              unit</span>
+<span class="go">---------- ------- ---------------------------</span>
+<span class="go">      name    str8</span>
+<span class="go">     E_rad float64 8.98755e+16 m2 solMass / s2</span>
+<span class="go">    L_peak float64               1e+56 erg / s</span>
+<span class="go">   a_final float64</span>
+<span class="go">   chi_eff float64</span>
+<span class="go">  distance float64                         Mpc</span>
+<span class="go">   far_cwb   str32                      1 / yr</span>
+<span class="go">far_gstlal float64                      1 / yr</span>
+<span class="go"> far_pycbc   str32                      1 / yr</span>
+<span class="go">     mass1 float64                     solMass</span>
+<span class="go">     mass2 float64                     solMass</span>
+<span class="go">    mchirp float64                     solMass</span>
+<span class="go">    mfinal float64                     solMass</span>
+<span class="go">  redshift float64</span>
+<span class="go">  sky_size float64                        deg2</span>
+<span class="go">   snr_cwb   str32</span>
+<span class="go">snr_gstlal float64</span>
+<span class="go"> snr_pycbc   str32</span>
+<span class="go">        tc float64</span>
+<span class="go">   utctime   str10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtered-queries">
+<span id="gwpy-table-gwosc-filter"></span><h2>Filtered queries<a class="headerlink" href="#filtered-queries" title="Permalink to this headline">¶</a></h2>
+<p>The columns returned can be selected using the <code class="docutils literal notranslate"><span class="pre">column</span></code> keyword,
+and mathematical selection filters can be applied on-the-fly
+using the <code class="docutils literal notranslate"><span class="pre">selection</span></code> keyword:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;GWTC-1-confident&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">selection</span><span class="o">=</span><span class="s2">&quot;mass1 &lt; 4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;mass1&quot;</span><span class="p">,</span> <span class="s2">&quot;mass2&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">  name    mass1   mass2  distance</span>
+<span class="go">         solMass solMass   Mpc</span>
+<span class="go">-------- ------- ------- --------</span>
+<span class="go">GW170817    1.46    1.27     40.0</span>
+</pre></div>
+</div>
+<p>For more information on filtering, see <a class="reference internal" href="filter.html#gwpy-table-filter"><span class="std std-ref">Filtering tables</span></a>.</p>
+<p>For some examples of visualising the catalogues, see
+<a class="reference internal" href="../examples/table/scatter.html#gwpy-example-table-scatter"><span class="std std-ref">Plotting an EventTable in a scatter</span></a> and <a class="reference internal" href="../examples/table/histogram.html#gwpy-example-table-histogram"><span class="std std-ref">Plotting an EventTable in a histogram</span></a>.</p>
+</div>
+<div class="section" id="indexing-by-event-name">
+<span id="gwpy-table-gwosc-index"></span><h2>Indexing by event name<a class="headerlink" href="#indexing-by-event-name" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> returned by <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fetch_open_data()</span></code></a> includes an
+index based on the <code class="docutils literal notranslate"><span class="pre">'name'</span></code> column, so you can directly access rows in the
+table based on their name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;GWTC-1-confident&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;utctime&quot;</span><span class="p">,</span> <span class="s2">&quot;mass1&quot;</span><span class="p">,</span> <span class="s2">&quot;mass2&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;GW170817&quot;</span><span class="p">])</span>
+<span class="go">  name    utctime    mass1   mass2  distance</span>
+<span class="go">                    solMass solMass   Mpc</span>
+<span class="go">-------- ---------- ------- ------- --------</span>
+<span class="go">GW170817 12:41:04.4    1.46    1.27     40.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
