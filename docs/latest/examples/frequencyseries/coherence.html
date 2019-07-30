@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>4. Calculating the coherence between two channels &#8212; GWpy 0.15.0+40.gfe342097 documentation</title>
+    <title>4. Calculating the coherence between two channels &#8212; GWpy 0.15.0+109.g72409aa9 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -170,9 +170,11 @@ strain output of the LIGO-Hanford interferometer.</p>
 <p>and then <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> the data for the strain output
 (<code class="docutils literal notranslate"><span class="pre">H1:GDS-CALIB_STRAIN</span></code>) and the PSL periscope accelerometer
 (<code class="docutils literal notranslate"><span class="pre">H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ</span></code>):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">,</span>
-                           <span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">],</span>
-                           <span class="mi">1126260017</span><span class="p">,</span> <span class="mi">1126260617</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">],</span>
+    <span class="mi">1126260017</span><span class="p">,</span>
+    <span class="mi">1126260617</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">hoft</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">]</span>
 <span class="n">acc</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">]</span>
 </pre></div>
@@ -183,7 +185,8 @@ transform length, with a 1-second (50%) overlap:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coh</span> <span class="o">=</span> <span class="n">hoft</span><span class="o">.</span><span class="n">coherence</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we can <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries.plot" title="gwpy.frequencyseries.FrequencySeries.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> the resulting data:</p>
+<p>Finally, we can <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries.plot" title="gwpy.frequencyseries.FrequencySeries.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a> the
+resulting data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">coh</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Coherence&#39;</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -192,7 +195,7 @@ transform length, with a 1-second (50%) overlap:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../examples/frequencyseries/coherence-4.png">png</a>)</p>
-<div class="figure align-center">
+<div class="figure align-default">
 <img alt="../../_images/coherence-4.png" src="../../_images/coherence-4.png" />
 </div>
 <p>We can clearly see the correlation between the periscope motion and the
@@ -214,7 +217,7 @@ reducing the coupling into the gravitational-wave strain output.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

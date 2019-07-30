@@ -1,9 +1,9 @@
-qaux = waux.q_transform(
+qhoft = whoft.q_transform(
     whiten=False,  # already white
     qrange=(4, 150),  # wider Q-transform range
     outseg=(1172489782.57, 1172489783.57),  # region of interest
 )
-plot = qaux.imshow(figsize=[8, 4])
+plot = qhoft.imshow(figsize=[8, 4])
 ax = plot.gca()
 ax.set_xscale('seconds')
 ax.set_yscale('log')

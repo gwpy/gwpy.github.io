@@ -1,4 +1,2 @@
-plot = snr.crop(1172489782.07, 1172489784.07).plot()
-plot.axes[0].set_epoch(1172489783.07)
-plot.axes[0].set_ylabel('Signal-to-noise ratio', fontsize=16)
-plot.show()
+mfilter = waux.crop(1172489782.57, 1172489783.57)
+snr = whoft.correlate(mfilter).abs()

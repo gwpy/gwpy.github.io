@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>4. Calculating the time-dependent coherence between two channels &#8212; GWpy 0.15.0+40.gfe342097 documentation</title>
+    <title>4. Calculating the time-dependent coherence between two channels &#8212; GWpy 0.15.0+109.g72409aa9 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -169,9 +169,11 @@ measure.</p>
 <p>and then <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict.html#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> the data for the strain output
 (<code class="docutils literal notranslate"><span class="pre">H1:GDS-CALIB_STRAIN</span></code>) and the PSL periscope accelerometer
 (<code class="docutils literal notranslate"><span class="pre">H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ</span></code>):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">,</span>
-                           <span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">],</span>
-                           <span class="mi">1126260017</span><span class="p">,</span> <span class="mi">1126260617</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">],</span>
+    <span class="mi">1126260017</span><span class="p">,</span>
+    <span class="mi">1126260617</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">hoft</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;H1:GDS-CALIB_STRAIN&#39;</span><span class="p">]</span>
 <span class="n">acc</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ&#39;</span><span class="p">]</span>
 </pre></div>
@@ -189,14 +191,16 @@ resulting data</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Coherence between PSL periscope motion and LIGO-Hanford strain data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s1">&#39;Coherence between PSL periscope motion and LIGO-Hanford strain data&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="s1">&#39;both&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Coherence&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../../examples/spectrogram/coherence-4.png">png</a>)</p>
-<div class="figure align-center">
+<div class="figure align-default">
 <img alt="../../_images/coherence-41.png" src="../../_images/coherence-41.png" />
 </div>
 </div>
@@ -214,7 +218,7 @@ resulting data</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

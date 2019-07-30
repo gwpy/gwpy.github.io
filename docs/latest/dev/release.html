@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Publishing a release &#8212; GWpy 0.15.0+40.gfe342097 documentation</title>
+    <title>Publishing a release &#8212; GWpy 0.15.0+109.g72409aa9 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -138,11 +138,11 @@
 <li><a class="reference internal" href="#">Publishing a release</a><ul>
 <li><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
 <li><a class="reference internal" href="#linked-updates">Linked updates</a><ul>
-<li><a class="reference internal" href="#pypi">PyPI</a></li>
 <li><a class="reference internal" href="#zenodo">Zenodo</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#distributing-the-new-release-package">Distributing the new release package</a><ul>
+<li><a class="reference internal" href="#pypi">PyPI</a></li>
 <li><a class="reference internal" href="#conda">Conda</a></li>
 <li><a class="reference internal" href="#debian-rhel">Debian/RHEL</a></li>
 </ul>
@@ -171,80 +171,76 @@
 <p>This page describes the steps required to author a release of GWpy.</p>
 <p>Notes:</p>
 <ul class="simple">
-<li><p>gwpy uses the <a class="reference external" href="https://github.com/nvie/gitflow">git flow</a> branching model
-for releases</p></li>
+<li><p>gwpy uses the
+<a class="reference external" href="https://www.bitsnbites.eu/a-stable-mainline-branching-model-for-git/">stable mainline</a>
+branching model for releases</p></li>
 <li><p>all release numbers must follow <a class="reference external" href="segmver.org">Semantic Versioning 2</a> and
-include major, minor, and patch numbers, e.g. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> rather than
+include major, minor, and patch numbers, e.g. <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> rather than
 <code class="docutils literal notranslate"><span class="pre">1.0</span></code> or just <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
 </ul>
 <div class="section" id="step-by-step">
 <h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p><strong>Create a release branch using git flow</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release start <span class="m">1</span>.0.0
+<li><p><strong>If this is a major, or minor release (as opposed to a bug-fix release), create a release branch</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b release/vX.Y
+</pre></div>
+</div>
+<p><strong>Or, if this is a bug-fix release, just check out that branch</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout release/vX.Y
 </pre></div>
 </div>
 </li>
-<li><p><strong>Update the copyright:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -c <span class="s2">&quot;from setup_utils import update_all_copyright; update_all_copyright(</span><span class="k">$(</span>date +%Y<span class="k">)</span><span class="s2">)&quot;</span>
-$ git commit -S . -m <span class="s2">&quot;Updated copyright for release&quot;</span>
+<li><p><strong>Bump versions and add changelog entries in OS packaging files:</strong></p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">/debian/changelog</span></code></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">/gwosc.spec</span></code></p></li>
+</ul>
+<p>and then <strong>commit those</strong></p>
+</li>
+<li><p><strong>Update the copyright</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from setup_utils import update_all_copyright; update_all_copyright(</span><span class="k">$(</span>date +%Y<span class="k">)</span><span class="s2">)&quot;</span>
+git commit -S -m <span class="s2">&quot;Updated copyright for release&quot;</span> .
 </pre></div>
 </div>
 </li>
-<li><p><strong>``publish`` the release branch</strong>, allowing CI to run, and others to contribute:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release publish <span class="m">1</span>.0.0
+<li><p><strong>Publish the release</strong>, allowing CI to run, and others to see it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push -u origin release/vX.Y
 </pre></div>
 </div>
 </li>
 <li><p><strong>Wait patiently for the continuous integration to finish</strong></p></li>
 <li><p><strong>Announce the release</strong> and ask for final contributions</p></li>
-<li><p><strong>Finalise the release and push</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git flow release finish <span class="m">1</span>.0.0
-$ git push origin master
-$ git push origin --tags
+<li><p><strong>Finalise the release and push</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git tag --sign vX.Y.Z
+git push --signed<span class="o">=</span><span class="k">if</span>-asked origin vX.Y.Z
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">flow</span> <span class="pre">release</span> <span class="pre">finish</span></code> command will open two prompts, one
-to merge the release branch into <code class="xref py py-obj docutils literal notranslate"><span class="pre">master</span></code>, just leave that as is. The
-second prompt is the tag message, please complete this to include the
-release notes for this release.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If ypu want to GPG sign the merge commit and the tag:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit --amend --gpg-sign  <span class="c1"># sign merge commit</span>
-$ git tag --sign v1.0.0 --force  <span class="c1"># regenerate tag</span>
-</pre></div>
-</div>
 </div>
 </li>
 <li><p><strong>Draft a release on GitHub</strong></p>
 <ul class="simple">
 <li><p>Go to <a class="reference external" href="https://github.com/gwpy/gwpy/releases/new">https://github.com/gwpy/gwpy/releases/new</a></p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">v1.0.0</span></code> as the <em>Tag version</em></p></li>
-<li><p>Use 1.0.0 as the <em>Release title</em></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code> as the <em>Tag version</em></p></li>
+<li><p>Use X.Y.Z as the <em>Release title</em></p></li>
 <li><p>Copy the tag message into the text box to serve as release notes</p></li>
 </ul>
 </li>
 <li><p><strong>Publish the release documentation</strong></p>
 <p>This is done from the LDAS computing centre at Caltech:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/duncan.macleod/gwpy-nightly-build/
-$ bash release-build.sh <span class="m">1</span>.0.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/duncan.macleod/gwpy-nightly-build/
+bash release-build.sh X.Y.Z
 </pre></div>
 </div>
-<p>Once that is complete (~20 minutes), a few manual updates must be made</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/duncan.macleod/gwpy-nightly-build/gwpy.github.io/docs
-$ unlink stable <span class="o">&amp;&amp;</span> ln -s <span class="m">1</span>.0.0 stable
-$ sed -i <span class="s1">&#39;s/0.9.9/1.0.0/g&#39;</span> index.html
+<p>Once that is complete (~20 minutes), a few manual updates must be made:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/duncan.macleod/gwpy-nightly-build/gwpy.github.io/docs
+unlink stable <span class="o">&amp;&amp;</span> ln -s X.Y.Z stable
+sed -i <span class="s1">&#39;s/0.9.9/X.Y.Z/g&#39;</span> index.html
 </pre></div>
 </div>
 <p>The final command should be modified to replace the previous release ID
 with the current one.</p>
 <p>Then:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit --gpg-sign --message<span class="o">=</span><span class="s2">&quot;1.0.0: release docs&quot;</span>
-$ git push  <span class="c1"># &lt;- this step needs an SSH key</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit --gpg-sign --message<span class="o">=</span><span class="s2">&quot;X.Y.Z: release docs&quot;</span>
+git push --signed<span class="o">=</span><span class="k">if</span>-asked  <span class="c1"># &lt;- this step needs an SSH key</span>
 </pre></div>
 </div>
 <p>It should take ~5 minutes for the release documentation to actually
@@ -254,12 +250,6 @@ appear on <a class="reference external" href="https://gwpy.github.io/docs/">http
 </div>
 <div class="section" id="linked-updates">
 <h2>Linked updates<a class="headerlink" href="#linked-updates" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pypi">
-<h3>PyPI<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
-<p>Finishing the release and pushing the tags to <code class="docutils literal notranslate"><span class="pre">origin</span></code> will trigger a new
-CI run on <a class="reference external" href="https://travis-ci.org">https://travis-ci.org</a>, which will automatically deploy the new
-release tarball to <a class="reference external" href="https://pypi.python.org">https://pypi.python.org</a> and publish the release there.</p>
-</div>
 <div class="section" id="zenodo">
 <h3>Zenodo<a class="headerlink" href="#zenodo" title="Permalink to this headline">¶</a></h3>
 <p>Creating a new release on GitHub will automatically trigger a new DOI on
@@ -268,7 +258,17 @@ release tarball to <a class="reference external" href="https://pypi.python.org">
 </div>
 <div class="section" id="distributing-the-new-release-package">
 <h2>Distributing the new release package<a class="headerlink" href="#distributing-the-new-release-package" title="Permalink to this headline">¶</a></h2>
-<p>Package distributions for Conda, Debian, and RHEL are done manually:</p>
+<p>Package distributions for PyPI, Conda, Debian, and RHEL are done manually:</p>
+<div class="section" id="pypi">
+<h3>PyPI<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
+<p>To create a new release on PyPI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf dist/
+python setup.py sdist bdist_wheel
+gpg --armor --detach-sign dist/gwpy-*.tar.gz
+twine upload dist/gwpy-*
+</pre></div>
+</div>
+</div>
 <div class="section" id="conda">
 <h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
 <p>Once the PyPI upload has completed, the conda-forge bot will automatically
@@ -300,7 +300,7 @@ to announce the new release and request package build and deployment.</p></li>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>

@@ -42,7 +42,6 @@ First, we import the `TimeSeries` and :meth:`~TimeSeries.get` the data:
 Next, we should `~TimeSeries.whiten` the data to enhance the higher-frequency
 content and make a more faithful comparison between data streams.
 
-
 .. plot::
    :context:
    :nofigs:
@@ -50,7 +49,14 @@ content and make a more faithful comparison between data streams.
 
    whoft = hoft.whiten(8, 4)
    waux = aux.whiten(8, 4)
-    # We can now cross-correlate these channels:
+
+We can now cross-correlate these channels:
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
    mfilter = waux.crop(1172489782.57, 1172489783.57)
    snr = whoft.correlate(mfilter).abs()
 

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Reading and writing frequency-domain data &#8212; GWpy 0.15.0+40.gfe342097 documentation</title>
+    <title>Reading and writing frequency-domain data &#8212; GWpy 0.15.0+109.g72409aa9 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -194,7 +194,7 @@ Those formats are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
 </div>
 <div class="section" id="writing">
 <h3>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
@@ -202,7 +202,7 @@ Those formats are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
 </div>
 </div>
 <div class="section" id="hdf5">
@@ -234,18 +234,74 @@ Those formats are:</p>
 </div>
 <div class="section" id="ligo-lw-xml">
 <span id="gwpy-frequencyseries-io-ligolw"></span><h2><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Permalink to this headline">¶</a></h2>
-<p><strong>Additional dependencies:</strong> <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code></a></p>
-<p>Alongside storing <a class="reference internal" href="../table/io.html#gwpy-table-io-ligolw"><span class="std std-ref">tabular data</span></a>, the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML format allows storing array data.</p>
+<p><strong>Additional dependencies:</strong> <code class="xref py py-mod docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></p>
+<p>Alongside storing <a class="reference internal" href="../table/io.html#gwpy-table-io-ligolw"><span class="std std-ref">tabular data</span></a>, the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code>
+XML format allows storing array data.
+These arrays are stored in <code class="docutils literal notranslate"><span class="pre">&lt;LIGO_LW&gt;</span></code> elements, which describe the metadata
+for an array (name, GPS epoch, instrument, etc.), which contain an
+<code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> element that contains the actual data values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on the format and the parsing library,
+see <a class="reference external" href="https://docs.ligo.org/kipp.cannon/python-ligo-lw/ligo.lw.array.html#module-ligo.lw.array" title="(in python-ligo-lw v1.6.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.array</span></code></a>.</p>
+</div>
 <div class="section" id="id3">
 <h3>Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>A <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> can be read from LIGO_LW XML by passing the file path and the <code class="docutils literal notranslate"><span class="pre">Name</span></code> of the containing <code class="docutils literal notranslate"><span class="pre">&lt;LIGO_LW&gt;</span></code> element:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;psd&#39;</span><span class="p">)</span>
+<p>To read a <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the file contains multiple <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> elements,
+you will have to provide additional keyword arguments to select which
+element to use:</p>
+<table class="docutils align-left" id="frequencyseries-read-ligolw-kwargs">
+<caption><span class="caption-text">Keyword arguments for <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries.read" title="gwpy.frequencyseries.FrequencySeries.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries.read</span></code></a> with <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format</span><a class="headerlink" href="#frequencyseries-read-ligolw-kwargs" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> element to read</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">epoch</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p>GPS value of the <code class="docutils literal notranslate"><span class="pre">&lt;Time&gt;</span></code> element that
+is the <em>sibling</em> of the desired
+<code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;Param</span> <span class="pre">Name&gt;</span></code></p></td>
+<td></td>
+<td></td>
+<td><p>Other kwargs can be given as the <code class="docutils literal notranslate"><span class="pre">Name</span></code>
+of a <code class="docutils literal notranslate"><span class="pre">&lt;Param&gt;</span></code> element that is the
+<em>sibling</em> of the desired <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code>,
+and its value</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;psd.xml.gz&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;psd.xml.gz&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">1241492407</span><span class="p">,</span> <span class="n">f0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">instrument</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h3>Writing<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Writing <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> to LIGO_LW XML files is not supported.</p>
+<p>Writing <a class="reference internal" href="../api/gwpy.frequencyseries.FrequencySeries.html#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> to <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML files is not supported, but a
+contribution that implements this would be welcomed.</p>
 </div>
 </div>
 </div>
@@ -263,7 +319,7 @@ Those formats are:</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
     </p>
   </div>
 </footer>
