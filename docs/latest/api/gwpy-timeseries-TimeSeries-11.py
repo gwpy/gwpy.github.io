@@ -1,14 +1,44 @@
-# To see the effect of the Planck-taper window, we can taper a
-# sinusoidal `TimeSeries` at both ends:
+# Heterodyning can be useful in analysing quasi-monochromatic signals
+# with a known phase evolution, such as continuous-wave signals
+# from rapidly rotating neutron stars. These sources radiate at a
+# frequency that slowly decreases over time, and is Doppler modulated
+# due to the Earth's rotational and orbital motion.
+
+# To see an example of heterodyning in action, we can simulate a signal
+# whose phase evolution is described by the frequency and its first
+# derivative with respect to time. We can download some O1 era
+# LIGO-Livingston data from GWOSC, inject the simulated signal, and
+# recover its amplitude.
+
+from gwpy.timeseries import TimeSeries
+data = TimeSeries.fetch_open_data('L1', 1131350417, 1131354017)
+
+# We now need to set the signal parameters, generate the expected
+# phase evolution, and create the signal:
 
 import numpy
-from gwpy.timeseries import TimeSeries
-t = numpy.linspace(0, 1, 2048)
-series = TimeSeries(numpy.cos(10.5*numpy.pi*t), times=t)
-tapered = series.taper()
+f0 = 123.456789  # signal frequency (Hz)
+fdot = -9.87654321e-7  # signal frequency derivative (Hz/s)
+fpeoch = 1131350417  # phase epoch
+amp = 1.5e-22  # signal amplitude
+phase0 = 0.4  # signal phase at the phase epoch
+times = data.times.value - fepoch
+phase = 2 * numpy.pi * (f0 * times + 0.5 * fdot * times**2)
+signal = TimeSeries(amp * numpy.cos(phase + phase0),
+                    sample_rate=data.sample_rate, t0=data.t0)
+data = data.inject(signal)
 
-# We can plot it to see how the ends now vary smoothly from 0 to 1:
+# To recover the signal, we can bandpass the injected data around the
+# signal frequency, then heterodyne using our phase model with a stride
+# of 60 seconds:
 
-from gwpy.plot import Plot
-plot = Plot(series, tapered, separate=True, sharex=True)
+filtdata = data.bandpass(f0 - 0.5, f0 + 0.5)
+het = filtdata.heterodyne(phase, stride=60, singlesided=True)
+
+# We can then plot signal amplitude over time (cropping the first two
+# minutes to remove the filter response):
+
+plot = het.crop(het.x0.value + 180).abs().plot()
+ax = plot.gca()
+ax.set_ylabel("Strain amplitude")
 plot.show()
