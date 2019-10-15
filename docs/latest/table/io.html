@@ -361,7 +361,7 @@ The analysis uses the ROOT framework for most data products, but also produces A
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">treename=None</span></code> is given (default), a single tree will be read if only one exists in the file, otherwise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> will be raised.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">treename=None</span></code> is given (default), a single tree will be read if only one exists in the file, otherwise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> will be raised.</p>
 <p>To specify the branches to read, use the <code class="docutils literal notranslate"><span class="pre">branches</span></code> keyword argument:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">,</span> <span class="n">branches</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">])</span>
 </pre></div>
@@ -404,7 +404,7 @@ Supported processed columns are:</p>
 </ul>
 <p>These can be specified without having to specify any of the input columns.</p>
 <p>Additionally, PyCBC HDF5 table Groups include extra datasets that aren’t part of the table, e.g. <code class="docutils literal notranslate"><span class="pre">'psd'</span></code>.
-These can be included in the returned <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.meta" title="gwpy.table.EventTable.meta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.meta</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> via the keyword <code class="docutils literal notranslate"><span class="pre">extended_metadata=True</span></code> (default), or excluded with <code class="docutils literal notranslate"><span class="pre">extended_metadata=False</span></code>).</p>
+These can be included in the returned <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.meta" title="gwpy.table.EventTable.meta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.meta</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> via the keyword <code class="docutils literal notranslate"><span class="pre">extended_metadata=True</span></code> (default), or excluded with <code class="docutils literal notranslate"><span class="pre">extended_metadata=False</span></code>).</p>
 </div>
 <div class="section" id="id7">
 <h3>Writing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
@@ -795,13 +795,13 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 <dd><p>Read data into an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
+<dd class="field-odd"><p><strong>source</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
 <blockquote>
 <div><p>Source of data, any of the following:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of single data file,</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of LAL-format cache file,</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of paths.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of single data file,</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> path of LAL-format cache file,</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of paths.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>*args</strong></p>
@@ -809,35 +809,35 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 <div><p>other positional arguments will be passed directly to the
 underlying reader method for the given format</p>
 </div></blockquote>
-<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
 <blockquote>
 <div><p>the format of the given source files; if not given, an attempt
 will be made to automatically identify the format</p>
 </div></blockquote>
-<p><strong>columns</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<p><strong>columns</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
 <blockquote>
 <div><p>the list of column names to read</p>
 </div></blockquote>
-<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<p><strong>selection</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
 <blockquote>
 <div><p>one or more column filters with which to downselect the
 returned table rows as they as read, e.g. <code class="docutils literal notranslate"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5'</span></code>;
 multiple selections should be connected by ‘ &amp;&amp; ‘, or given as
-a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, e.g. <code class="docutils literal notranslate"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5</span> <span class="pre">&amp;&amp;</span> <span class="pre">frequency</span> <span class="pre">&lt;</span> <span class="pre">1000'</span></code> or
+a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, e.g. <code class="docutils literal notranslate"><span class="pre">'snr</span> <span class="pre">&gt;</span> <span class="pre">5</span> <span class="pre">&amp;&amp;</span> <span class="pre">frequency</span> <span class="pre">&lt;</span> <span class="pre">1000'</span></code> or
 <code class="docutils literal notranslate"><span class="pre">['snr</span> <span class="pre">&gt;</span> <span class="pre">5',</span> <span class="pre">'frequency</span> <span class="pre">&lt;</span> <span class="pre">1000']</span></code></p>
 </div></blockquote>
-<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional, default: 1</p>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional, default: 1</p>
 <blockquote>
 <div><p>number of CPUs to use for parallel reading of multiple files</p>
 </div></blockquote>
-<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
 <blockquote>
-<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+<div><p>print a progress bar showing read status, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
 </div></blockquote>
 <p><strong>.. note::</strong></p>
 <blockquote>
 <div><p>Keyword arguments other than those listed here may be required
-depending on the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a></p>
+depending on the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a></p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -848,7 +848,7 @@ depending on the <a class="reference external" href="https://docs.python.org/3/l
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><p>astropy.io.registry.IORegistryError</p>
 <blockquote>
-<div><p>if the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a> cannot be automatically identified</p>
+<div><p>if the <a class="reference external" href="https://docs.python.org/3/library/functions.html#format" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a> cannot be automatically identified</p>
 </div></blockquote>
 <p>IndexError</p>
 <blockquote>
