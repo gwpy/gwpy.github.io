@@ -1,0 +1,79 @@
+.. _gwpy-example-frequencyseries-percentiles:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+.. currentmodule:: gwpy.timeseries
+
+Plotting an averaged ASD with percentiles.
+##########################################
+
+As we have seen in :ref:`gwpy-example-frequencyseries-hoff`, the Amplitude
+Spectral Density (ASD) is a key indicator of frequency-domain sensitivity for
+a gravitational-wave detector.
+
+However, the ASD doesn't allow you to see how much the sensitivity varies
+over time.
+One tool for that is the :ref:`spectrogram <gwpy-spectrogram>`, while another
+is simply to show percentiles of a number of ASD measurements.
+
+In this example we calculate the median ASD over 2048-seconds surrounding
+the GW178017 event, and also the 5th and 95th percentiles of the ASD, and
+plot them on a single figure.
+
+
+First, as always, we get the data using :meth:`TimeSeries.fetch_open_data`:
+
+
+.. plot::
+   :context: reset
+   :nofigs:
+   :include-source:
+
+   from gwpy.timeseries import TimeSeries
+   hoft = TimeSeries.fetch_open_data('H1', 1187007040, 1187009088, tag='C00')
+
+Next we calculate a :class:`~gwpy.spectrogram.Spectrogram` by calculating
+a number of ASDs, using the :meth:`~gwpy.timeseries.TimeSeries.spectrogram2`
+method:
+
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   sg = hoft.spectrogram2(fftlength=4, overlap=2, window='hanning') ** (1/2.)
+
+From this we can trivially extract the median, 5th and 95th percentiles:
+
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   median = sg.percentile(50)
+   low = sg.percentile(5)
+   high = sg.percentile(95)
+
+Finally, we can make plot, using :meth:`~gwpy.plot.Axes.plot_mmm` to
+display the 5th and 95th percentiles as a shaded region around the median:
+
+
+.. plot::
+   :context:
+   :include-source:
+
+   from gwpy.plot import Plot
+   plot = Plot()
+   ax = plot.gca(xscale='log', xlim=(10, 1500), xlabel='Frequency [Hz]',
+                 yscale='log', ylim=(3e-24, 2e-20),
+                 ylabel=r'Strain noise [1/$\sqrt{\mathrm{Hz}}$]')
+   ax.plot_mmm(median, low, high, color='gwpy:ligo-hanford')
+   ax.set_title('LIGO-Hanford strain noise variation around GW170817',
+                fontsize=16)
+   plot.show()
+
+Now we can see that the ASD varies by factors of a few across most of the
+frequency band, with notable exceptions, e.g. around the 60-Hz power line
+harmonics (60 Hz, 120 Hz, 180 Hz, ...) where the noise is very stable.

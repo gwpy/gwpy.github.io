@@ -1,0 +1,5 @@
+fig = pyplot.figure()
+ax = fig.gca()
+ax.plot(range(10), label='My data')
+ax.legend(handler_map=None)
+fig.show()
