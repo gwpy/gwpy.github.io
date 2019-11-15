@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 0.15.0+194.g8eba9311 documentation</title>
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 1.0.0+12.ge5086c5f documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -157,9 +157,14 @@
 <li><a class="reference internal" href="#id7">Writing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gwf">GWF</a><ul>
+<li><a class="reference internal" href="#snax-hdf5">SNAX (HDF5)</a><ul>
 <li><a class="reference internal" href="#id8">Reading</a></li>
 <li><a class="reference internal" href="#id9">Writing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gwf">GWF</a><ul>
+<li><a class="reference internal" href="#id10">Reading</a></li>
+<li><a class="reference internal" href="#id11">Writing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#available-file-formats">Available file formats</a></li>
@@ -411,12 +416,32 @@ These can be included in the returned <a class="reference internal" href="../api
 <p>Writing tables in PyCBC Live HDF5 format is not supported at this time.</p>
 </div>
 </div>
+<div class="section" id="snax-hdf5">
+<span id="gwpy-table-io-snax"></span><h2>SNAX (HDF5)<a class="headerlink" href="#snax-hdf5" title="Permalink to this headline">¶</a></h2>
+<p>The SNAX (Signal-based Noise Acquisition and eXtraction) analysis pipeline is a low-latency search for identifying glitches in h(t) and auxiliary channel data using glitch waveforms, operating in low-latency (online) and offline modes.
+This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users only) in HDF5 format containing regularly-sampled features; each channel in the table is recorded as a separate HDF5 Dataset.</p>
+<div class="section" id="id8">
+<h3>Reading<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>To read an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">snax</span></code> format HDF5 file, specify a <code class="docutils literal notranslate"><span class="pre">channel</span></code> and use the <code class="docutils literal notranslate"><span class="pre">format='hdf5.snax'</span></code> keyword:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H-GSTLAL_IDQ_FEATURES-1255853400-20.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;H1:CAL-DELTAL_EXTERNAL_DQ&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;hdf5.snax&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H-GSTLAL_IDQ_FEATURES-1255853400-20.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;H1:CAL-DELTAL_EXTERNAL_DQ&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;hdf5.snax&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>Writing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Writing tables in SNAX HDF5 format is not supported at this time.</p>
+</div>
+</div>
 <div class="section" id="gwf">
 <span id="gwpy-table-io-gwf"></span><h2>GWF<a class="headerlink" href="#gwf" title="Permalink to this headline">¶</a></h2>
 <p><strong>Additional dependencies:</strong> <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a></p>
 <p>The Gravitational-Wave Frame file format supports tabular data via <code class="docutils literal notranslate"><span class="pre">FrEvent</span></code> structures, which allow storage of arbitrary event information.</p>
-<div class="section" id="id8">
-<h3>Reading<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Reading<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>To read an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">GWF</span></code>-format file, specify the filename and the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the FrEvent structures to read:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;events.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;my-event-name&#39;</span><span class="p">)</span>
 </pre></div>
@@ -437,8 +462,8 @@ Column name      Description (from <a class="reference external" href="https://d
 <code class="docutils literal notranslate"><span class="pre">comment</span></code>      Descriptor of event
 —————  ————————————————————————————</p>
 </div>
-<div class="section" id="id9">
-<h3>Writing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Writing<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>Writing tables in GWF format is not supported at this time.</p>
 </div>
 </div>
@@ -791,7 +816,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 <p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.read</span></code></a> method can understand <em>all</em> of the above file formats (auto-identify is <strong>not</strong> inherited), and the following:</p>
 <dl class="method">
 <dt>
-<em class="property">classmethod </em><code class="sig-prename descclassname">EventTable.</code><code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/8eba93114dc007969f2783da0c1b7333d47feaa5/gwpy/table/table.py#L188"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">classmethod </em><code class="sig-prename descclassname">EventTable.</code><code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/e5086c5fccb5d2250564ecaca7ac8b76813a7637/gwpy/table/table.py#L188"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1051,8 +1076,8 @@ depending on the <a class="reference external" href="https://docs.python.org/3/l
 </tr>
 <tr class="row-odd"><td><p>gwf</p></td>
 <td><p>Yes</p></td>
-<td><p>No</p></td>
-<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>hdf5</p></td>
@@ -1067,103 +1092,109 @@ depending on the <a class="reference external" href="https://docs.python.org/3/l
 <td><p>Yes</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>ligolw</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>pandas.csv</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>pandas.fwf</p></td>
+<tr class="row-even"><td><p>hdf5.snax</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>pandas.html</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>pandas.json</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>root</p></td>
+<tr class="row-odd"><td><p>ligolw</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>root.cwb</p></td>
+<tr class="row-even"><td><p>pandas.csv</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pandas.fwf</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>root.omicron</p></td>
+<tr class="row-even"><td><p>pandas.html</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pandas.json</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>root</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>root.cwb</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>votable</p></td>
+<tr class="row-even"><td><p>root.omicron</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>votable</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>aastex</p></td>
+<tr class="row-even"><td><p>aastex</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>cds</p></td>
+<tr class="row-odd"><td><p>cds</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>csv</p></td>
+<tr class="row-even"><td><p>csv</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>daophot</p></td>
+<tr class="row-odd"><td><p>daophot</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>html</p></td>
+<tr class="row-even"><td><p>html</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>ipac</p></td>
+<tr class="row-odd"><td><p>ipac</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>latex</p></td>
+<tr class="row-even"><td><p>latex</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>rdb</p></td>
+<tr class="row-odd"><td><p>rdb</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
@@ -1191,7 +1222,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>

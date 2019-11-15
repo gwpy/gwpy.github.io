@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Table &#8212; GWpy 0.15.0+194.g8eba9311 documentation</title>
+    <title>Table &#8212; GWpy 1.0.0+12.ge5086c5f documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -160,12 +160,11 @@
 <em class="property">class </em><code class="sig-prename descclassname">gwpy.table.</code><code class="sig-name descname">Table</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">masked=None</em>, <em class="sig-param">names=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">meta=None</em>, <em class="sig-param">copy=True</em>, <em class="sig-param">rows=None</em>, <em class="sig-param">copy_indices=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.Table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A class to represent tables of heterogeneous data.</p>
-<p><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> provides a class for heterogeneous tabular data,
-making use of a <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a> structured array internally to store the data
-values.  A key enhancement provided by the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> class is
-the ability to easily modify the structure of the table by adding or
-removing columns, or adding new rows of data.  In addition table and column
-metadata are fully supported.</p>
+<p><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> provides a class for heterogeneous tabular data.
+A key enhancement provided by the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> class over
+e.g. a <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a> structured array is the ability to easily modify the
+structure of the table by adding or removing columns, or adding new
+rows of data.  In addition table and column metadata are fully supported.</p>
 <p><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> differs from <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.nddata.NDData.html#astropy.nddata.NDData" title="(in Astropy v3.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NDData</span></code></a> by the
 assumption that the input data consists of columns of homogeneous data,
 where each column has a unique identifier and may contain additional
@@ -2489,14 +2488,48 @@ reference.  Default is True.</p>
 <dl class="method">
 <dt id="gwpy.table.Table.MaskedColumn.data">
 <em class="property">property </em><code class="sig-name descname">data</code><a class="headerlink" href="#gwpy.table.Table.MaskedColumn.data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current data, as a view of the original
-underlying data.</p>
+<dd><p>Returns the underlying data, as a view of the masked array.</p>
+<p>If the underlying data is a subclass of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, it is
+returned as such.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]),</span> <span class="n">mask</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span>
+<span class="go">matrix([[1, 2],</span>
+<span class="go">        [3, 4]])</span>
+</pre></div>
+</div>
+<p>The type of the data can be accessed through the <code class="xref py py-attr docutils literal notranslate"><span class="pre">baseclass</span></code>
+attribute.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="gwpy.table.Table.MaskedColumn.fill_value">
 <em class="property">property </em><code class="sig-name descname">fill_value</code><a class="headerlink" href="#gwpy.table.Table.MaskedColumn.fill_value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filling value.</p>
+<dd><p>The filling value of the masked array is a scalar. When setting, None
+will set to a default based on the data type.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">get_fill_value</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">999999</span>
+<span class="go">999999</span>
+<span class="go">1e+20</span>
+<span class="go">(1e+20+0j)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">fill_value</span>
+<span class="go">-inf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">fill_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">fill_value</span>
+<span class="go">3.1415926535897931 # may vary</span>
+</pre></div>
+</div>
+<p>Reset to default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">fill_value</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">fill_value</span>
+<span class="go">1e+20</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -4346,7 +4379,7 @@ See the example below.</p>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>

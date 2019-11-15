@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Publishing a release &#8212; GWpy 0.15.0+194.g8eba9311 documentation</title>
+    <title>Publishing a release &#8212; GWpy 1.0.0+12.ge5086c5f documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -181,21 +181,10 @@ include major, minor, and patch numbers, e.g. <code class="docutils literal notr
 <div class="section" id="step-by-step">
 <h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p><strong>If this is a major, or minor release (as opposed to a bug-fix release), create a release branch</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b release/vX.Y
+<li><p><strong>If this is a bug-fix release, just check out that branch</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout release/X.Y.x
 </pre></div>
 </div>
-<p><strong>Or, if this is a bug-fix release, just check out that branch</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout release/vX.Y
-</pre></div>
-</div>
-</li>
-<li><p><strong>Bump versions and add changelog entries in OS packaging files:</strong></p>
-<ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">/debian/changelog</span></code></p></li>
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">/gwosc.spec</span></code></p></li>
-</ul>
-<p>and then <strong>commit those</strong></p>
 </li>
 <li><p><strong>Update the copyright</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from setup_utils import update_all_copyright; update_all_copyright(</span><span class="k">$(</span>date +%Y<span class="k">)</span><span class="s2">)&quot;</span>
@@ -204,14 +193,30 @@ git commit -S -m <span class="s2">&quot;Updated copyright for release&quot;</spa
 </div>
 </li>
 <li><p><strong>Publish the release</strong>, allowing CI to run, and others to see it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push -u origin release/vX.Y
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push -u origin master
 </pre></div>
 </div>
+<p>for major/minor releases, or</p>
+<p>for bug-fix releases</p>
 </li>
 <li><p><strong>Wait patiently for the continuous integration to finish</strong></p></li>
 <li><p><strong>Announce the release</strong> and ask for final contributions</p></li>
-<li><p><strong>Finalise the release and push</strong>:</p>
+<li><p><strong>Tag the release</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git tag --sign vX.Y.Z
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a maintenance branch</strong> (major/minor releases only):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch release/X.Y.x
+</pre></div>
+</div>
+</li>
+<li><p><strong>Publish everything</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># push maintenance branch</span>
+git push --signed<span class="o">=</span><span class="k">if</span>-asked origin release/X.Y.x
+<span class="c1"># push master branch</span>
+git push --signed<span class="o">=</span><span class="k">if</span>-asked origin master
+<span class="c1"># push new tag</span>
 git push --signed<span class="o">=</span><span class="k">if</span>-asked origin vX.Y.Z
 </pre></div>
 </div>
@@ -263,6 +268,7 @@ appear on <a class="reference external" href="https://gwpy.github.io/docs/">http
 <h3>PyPI<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
 <p>To create a new release on PyPI:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf dist/
+git checkout vX.Y.Z
 python setup.py sdist bdist_wheel
 gpg --armor --detach-sign dist/gwpy-*.tar.gz
 twine upload dist/gwpy-*
@@ -300,7 +306,7 @@ to announce the new release and request package build and deployment.</p></li>
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>
