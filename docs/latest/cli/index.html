@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Command line plotting with GWpy &#8212; GWpy 1.0.0+48.g7b90932b documentation</title>
+    <title>Command line plotting with GWpy &#8212; GWpy 1.0.0+68.g65dbfe77 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -176,13 +176,13 @@ GWpy to generate the plots based on web-form input from the user.</p>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;ACTION&gt;</span></code> is the type of plot to make.</p>
 <p>You can run <code class="docutils literal notranslate"><span class="pre">gwpy-plot</span> <span class="pre">--help</span></code> to list the plot types (‘actions’) you can use:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ gwpy-plot --help
-usage: gwpy-plot [-h] [-V]
+Usage: gwpy-plot [-h] [-V]
                  {timeseries,spectrum,spectrogram,coherence,coherencegram,qtransform}
                  ...
 
 Generate plots of GW observatory data using GWpy
 
-Help options:
+Options:
   -h, --help            show this help message and exit
   -V, --version         show program&#39;s version number and exit
 
@@ -194,9 +194,19 @@ Actions:
     spectrum            Plot the ASD spectrum of one or more time series
     spectrogram         Plot the spectrogram of a time series
     coherence           Plot coherence between a reference time series and one
-    coherencegram       Plot the coherence-spectrogram comparing two time
-                        series
+    coherencegram       Plot the coherence-spectrogram comparing two time series
     qtransform          Plot the Q-transform (Omega)
+
+Examples:
+
+    $ gwpy-plot timeseries --chan H1:GDS-CALIB_STRAIN --start 1126259457
+
+    $ gwpy-plot spectrum --chan H1:GDS-CALIB_STRAIN L1:GDS-CALIB_STRAIN --chan V1:Hrec_hoft_16384Hz --start 1187008866 --duration 32 --xmin 10 --xmax 4000
+
+    $ gwpy-plot coherencegram --chan H1:GDS-CALIB_STRAIN H1:PEM-CS_ACC_PSL_PERISCOPE_X_DQ --start 1126260017 --duration 600
+
+Written by Joseph Areeda &lt;joseph.areeda@ligo.org&gt;.
+Report bugs to https://github.com/gwpy/gwpy/issues/.
 </pre></div>
 </div>
 <p>To see the arguments and options for a given action, you can run, for example,
@@ -217,7 +227,7 @@ usage: gwpy-plot timeseries [-h] [-v] [-s] --chan CHAN [CHAN ...]
                             [--ylabel YLABEL] [--ymin YMIN] [--ymax YMAX]
                             [--yscale YSCALE | --logy]
 
-Help options:
+Options:
   -h, --help            show this help message and exit
 
 Verbosity options:
