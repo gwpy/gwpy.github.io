@@ -1,0 +1,41 @@
+.. _gwpy-example-table-histogram:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+.. currentmodule:: gwpy.table
+
+Plotting an `EventTable` in a histogram
+#######################################
+
+I would like to study the distribution of the GW events detected to date.
+
+
+First, we can download the ``'GWTC-1-confident'`` catalogue using
+:meth:`EventTable.fetch_open_data`:
+
+
+.. plot::
+   :context: reset
+   :nofigs:
+   :include-source:
+
+   from gwpy.table import EventTable
+   events = EventTable.fetch_open_data(
+       "GWTC-1-confident",
+       columns=("mass1", "mass2"),
+   )
+   events.add_column(events["mass1"] + events["mass2"], name="mtotal")
+
+and can generate a new `~gwpy.plot.Plot` using the
+:meth:`~EventTable.hist` method:
+
+.. plot::
+   :context:
+   :include-source:
+
+   plot = events.hist('mtotal', bins=10, range=(0, 100), histtype='stepfilled')
+   ax = plot.gca()
+   ax.set_xlabel(r"Total mass [M$_{\odot}$]")
+   ax.set_ylabel("Number of events")
+   ax.set_title("GWTC-1-confident")
+   plot.show()

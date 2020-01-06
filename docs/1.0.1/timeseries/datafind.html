@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Automatic data-discovery &#8212; GWpy 1.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reading and writing time-domain data" href="io.html" />
+    <link rel="prev" title="Remote data access" href="remote-access.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="remote-access.html" title="Previous Chapter: Remote data access"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Remote data access</span>
+    </a>
+  </li>
+  <li>
+    <a href="io.html" title="Next Chapter: Reading and writing time-domain data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Reading and w... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Automatic data-discovery</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#auto-discovery-of-data-using-timeseries-get">Auto-discovery of data using <code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a></li>
+<li><a class="reference internal" href="#available-datasets">Available datasets</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/timeseries/datafind.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="automatic-data-discovery">
+<span id="gwpy-timeseries-datafind"></span><h1>Automatic data-discovery<a class="headerlink" href="#automatic-data-discovery" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="gwpy-timeseries-datafind-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The LIGO Scientific Collaboration uses a service colloquially referred to as
+‘datafind’ to index and archive the locations of data files produced at the
+observatories, including those from other detectors (e.g. GEO600).
+The datafind service continually updates to provide information with a
+typical latency of 10 minutes, often much less.</p>
+<p>The <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a> package can be used to execute queries against the
+datafind server to discover the URLs of data files (typically <code class="docutils literal notranslate"><span class="pre">.gwf</span></code> format).
+See the documentation for that package for full details.</p>
+<p>Users who have access to the LIGO Data Grid – the shared computing infrastructure
+that supports internal collaboration data analysis – can use the local datafind
+server to query for local files that can be accessed directly.
+Other users, including those on the Open Science Grid, can use the server located
+at <code class="docutils literal notranslate"><span class="pre">datafind.ligo.org:443</span></code> to query for files archived under
+<a class="reference external" href="https://cvmfs.readthedocs.io">CVMFS</a>.</p>
+</div>
+<div class="section" id="auto-discovery-of-data-using-timeseries-get">
+<span id="gwpy-timeseries-datafind-discovery"></span><h2>Auto-discovery of data using <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a><a class="headerlink" href="#auto-discovery-of-data-using-timeseries-get" title="Permalink to this headline">¶</a></h2>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a></p>
+<p>To discover and read data automatically, use <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a>, and point
+it at a datafind <code class="docutils literal notranslate"><span class="pre">host</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;L1:GWOSC-4KHZ_R1_STRAIN&quot;</span><span class="p">,</span> <span class="mi">1187008880</span><span class="p">,</span> <span class="mi">1187008884</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">host</span><span class="o">=</span><span class="s2">&quot;datafind.ligo.org:443&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">TimeSeries([-5.98844033e-20, -6.34482794e-20, -6.31740522e-20,</span>
+<span class="go">            ...,  6.23573197e-20,  5.54748519e-20,</span>
+<span class="go">             5.91121781e-20]</span>
+<span class="go">           unit: dimensionless,</span>
+<span class="go">           t0: 1187008880.0 s,</span>
+<span class="go">           dt: 0.000244140625 s,</span>
+<span class="go">           name: L1:GWOSC-4KHZ_R1_STRAIN,</span>
+<span class="go">           channel: L1:GWOSC-4KHZ_R1_STRAIN)</span>
+</pre></div>
+</div>
+<p>This will execute the following series of steps:</p>
+<ul class="simple">
+<li><p>query datafind.ligo.org for the list of datasets it knows about</p></li>
+<li><p>for each dataset, determine whether <code class="docutils literal notranslate"><span class="pre">'L1:GWOSC-4KHZ_R1_STRAIN'</span></code> is
+contained within a representative file, and pick the most appropriate
+dataset (if multiple)</p></li>
+<li><p>query datafind.ligo.org again for the URLs of file paths for the matched
+dataset name</p></li>
+<li><p>read each required file and return the data</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the time of writing, all queries to datafind.ligo.org are restricted to
+persons with a valid LIGO.ORG RFC 3820 (X509) credential.</p>
+</div>
+<p>If any of those steps were to fail, <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> will automatically
+fall back to attempting to use <code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code> to access the data.</p>
+<p>By default, as described, this method will search through all available data to
+find the correct files to read, so this may take a while if the server has
+knowledge of a large number of different datasets.
+If you know the dataset name – the tag associated with files containing your
+data – you can pass that via the <code class="docutils literal notranslate"><span class="pre">frametype</span></code> keyword argument to
+significantly speed up the search:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;L1:GWOSC-4KHZ_R1_STRAIN&quot;</span><span class="p">,</span> <span class="s2">&quot;17 August 2017 12:42:02&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="s2">&quot;17 August 2017 12:42:06&quot;</span><span class="p">,</span> <span class="n">frametype</span><span class="o">=</span><span class="s2">&quot;L1_GWOSC_O2_4KHZ_R1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="available-datasets">
+<span id="gwpy-timeseries-datafind-datasets"></span><h2>Available datasets<a class="headerlink" href="#available-datasets" title="Permalink to this headline">¶</a></h2>
+<p>All data recorded by the current generation of detectors are identified
+by a dataset tag, which identifies which data are contained in a
+given <code class="docutils literal notranslate"><span class="pre">gwf</span></code> file.
+The following table is an incomplete, but probably OK, reference to which
+dataset (<code class="docutils literal notranslate"><span class="pre">frametype</span></code>) you want to use for file-based data access:</p>
+<table class="docutils align-left" id="gwdatafind-datasets">
+<caption><span class="caption-text">Datasets available with <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a></span><a class="headerlink" href="#gwdatafind-datasets" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset (frametype)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_R</span></code></p></td>
+<td><p>All auxiliary channels, stored at the native sampling
+rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_T</span></code></p></td>
+<td><p>Second trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_M</span></code></p></td>
+<td><p>Minute trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_HOFT_C00</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+real-time calibration pipeline</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_HOFT_CXY</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+off-line calibration pipeline at version <code class="docutils literal notranslate"><span class="pre">XY</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_GWOSC_O2_4KHZ_R1</span></code></p></td>
+<td><p>4k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">The Gravitational-Wave Open Science Centre (GWOSC)</a> for the O2 data release</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_GWOSC_O2_16KHZ_R1</span></code></p></td>
+<td><p>16k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">The Gravitational-Wave Open Science Centre (GWOSC)</a> for the O2 data release</p></td>
+</tr>
+</tbody>
+</table>
+<p>The above datasets refer to the <code class="docutils literal notranslate"><span class="pre">H1</span></code> (LIGO-Hanford) instrument, the same are
+available for LIGO-Livingston by substituting the <code class="docutils literal notranslate"><span class="pre">L1</span></code> prefix.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all datasets are available from all datafind servers.  Each LIGO Lab-operated
+computing centre has its own datafind server with a subset of the available
+datasets.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+specgram = data.spectrogram(2, fftlength=1, overlap=.5) ** (1/2.)
