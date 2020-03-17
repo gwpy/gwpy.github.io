@@ -1,4 +1,3 @@
-from __future__ import division
 import numpy
 from matplotlib import (pyplot, rcParams)
 from matplotlib.colors import to_hex
