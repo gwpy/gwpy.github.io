@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2. Plotting an EventTable in a histogram &#8212; GWpy 1.0.0+186.g495b6fa9 documentation</title>
+    <title>2. Plotting an EventTable in a histogram &#8212; GWpy 2.0.0+8.g509458c4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -13,8 +13,8 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -161,9 +161,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">EventTable</span>
 <span class="n">events</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
     <span class="s2">&quot;GWTC-1-confident&quot;</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;mass1&quot;</span><span class="p">,</span> <span class="s2">&quot;mass2&quot;</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;mass_1_source&quot;</span><span class="p">,</span> <span class="s2">&quot;mass_2_source&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="n">events</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="s2">&quot;mass1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">events</span><span class="p">[</span><span class="s2">&quot;mass2&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mtotal&quot;</span><span class="p">)</span>
+<span class="n">events</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span>
+    <span class="n">events</span><span class="p">[</span><span class="s2">&quot;mass_1_source&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">events</span><span class="p">[</span><span class="s2">&quot;mass_2_source&quot;</span><span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mtotal&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <p>and can generate a new <code class="xref py py-obj docutils literal notranslate"><span class="pre">Plot</span></code> using the

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Reading and writing time-domain data &#8212; GWpy 1.0.0+186.g495b6fa9 documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 2.0.0+8.g509458c4 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -13,8 +13,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
+    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -145,6 +145,7 @@
 <li><a class="reference internal" href="#id1">Reading</a></li>
 <li><a class="reference internal" href="#reading-multiple-channels">Reading multiple channels</a></li>
 <li><a class="reference internal" href="#id2">Writing</a></li>
+<li><a class="reference internal" href="#gwf-library-availability">GWF library availability</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#hdf5">HDF5</a><ul>
@@ -202,7 +203,7 @@ Those formats are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.19)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
 </div>
 <div class="section" id="writing">
 <h3>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
@@ -210,12 +211,12 @@ Those formats are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.19)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
 </div>
 </div>
 <div class="section" id="gravitational-wave-frames-gwf">
 <span id="gwpy-timeseries-io-gwf"></span><h2>Gravitational-wave frames (GWF)<a class="headerlink" href="#gravitational-wave-frames-gwf" title="Permalink to this headline">¶</a></h2>
-<p><strong>Additional dependencies:</strong>  <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> or <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lalframe</span></code></a></p>
+<p><strong>Additional dependencies:</strong>  <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> or <a class="reference external" href="http://lappweb.in2p3.fr/virgo/FrameL/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">framel</span></code></a> or <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lalframe</span></code></a></p>
 <p>The raw observatory data are archived in <code class="docutils literal notranslate"><span class="pre">.gwf</span></code> files, a custom binary format that efficiently stores the time streams and all necessary metadata, for more details about this particular data format, take a look at the specification document <a class="reference external" href="https://dcc.ligo.org/LIGO-T970130/public">LIGO-T970130</a>.</p>
 <div class="section" id="id1">
 <h3>Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -245,6 +246,11 @@ Those formats are:</p>
 </pre></div>
 </div>
 <p>Additionally, the following keyword arguments can be used:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These keyword arguments are only supported when using the
+<a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> GWF API.</p>
+</div>
 <table class="docutils align-left" id="timeseries-read-kwargs">
 <caption><span class="caption-text">Keyword arguments for <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.read</span></code></a></span><a class="headerlink" href="#timeseries-read-kwargs" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -302,6 +308,49 @@ optimises the reading operation.</p></td>
 </div>
 <p><strong>If the output file already exists it will be overwritten.</strong></p>
 </div>
+<div class="section" id="gwf-library-availability">
+<h3>GWF library availability<a class="headerlink" href="#gwf-library-availability" title="Permalink to this headline">¶</a></h3>
+<p>(Last we checked…) The three GWF library interfaces are available on
+the following platforms:</p>
+<table class="docutils align-left" id="gwf-library-platforms">
+<caption><span class="caption-text">GWF library availability by platform</span><a class="headerlink" href="#gwf-library-platforms" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 44%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Conda-forge package name</p></th>
+<th class="head"><p>Linux</p></th>
+<th class="head"><p>macOS</p></th>
+<th class="head"><p>Windows</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-ldas-tools-framecpp</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://lappweb.in2p3.fr/virgo/FrameL/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">framel</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-framel</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lalframe</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-lalframe</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="hdf5">
 <span id="gwpy-timeseries-io-hdf5"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
@@ -336,7 +385,7 @@ optimises the reading operation.</p></td>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.hdf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The output argument (<code class="docutils literal notranslate"><span class="pre">'output.hdf'</span></code>) can be a file path, an open <a class="reference external" href="http://docs.h5py.org/en/latest/high/file.html#h5py.File" title="(in h5py v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.File</span></code></a> object, or a <a class="reference external" href="http://docs.h5py.org/en/latest/high/group.html#h5py.Group" title="(in h5py v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.Group</span></code></a> object, to append data to an existing file.</p>
+<p>The output argument (<code class="docutils literal notranslate"><span class="pre">'output.hdf'</span></code>) can be a file path, an open <a class="reference external" href="https://docs.h5py.org/en/latest/high/file.html#h5py.File" title="(in h5py v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.File</span></code></a> object, or a <a class="reference external" href="https://docs.h5py.org/en/latest/high/group.html#h5py.Group" title="(in h5py v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.Group</span></code></a> object, to append data to an existing file.</p>
 <p>If the target file already exists, an <code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
 <p>To write a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to an existing file, use <code class="docutils literal notranslate"><span class="pre">append=True</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;output.hdf&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -376,7 +425,7 @@ keyword:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.4.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.5.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
 </div>
 <div class="section" id="id6">
 <h3>Writing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
@@ -384,7 +433,7 @@ keyword:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.write.html#scipy.io.wavfile.write" title="(in SciPy v1.4.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.write()</span></code></a> for keyword argument options.</p>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.write.html#scipy.io.wavfile.write" title="(in SciPy v1.5.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.write()</span></code></a> for keyword argument options.</p>
 </div>
 </div>
 </div>
