@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3. Plotting a spectrogram of all open data for 1 day &#8212; GWpy 2.0.0+8.g509458c4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
-    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -27,6 +24,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -150,10 +151,10 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="body col-md-9 content" role="main">
       
   <div class="section" id="plotting-a-spectrogram-of-all-open-data-for-1-day">
-<span id="gwpy-example-miscellaneous-open-data-spectrogram"></span><h1>3. Plotting a spectrogram of all open data for 1 day<a class="headerlink" href="#plotting-a-spectrogram-of-all-open-data-for-1-day" title="Permalink to this headline">¶</a></h1>
+<span id="gwpy-example-miscellaneous-open-data-spectrogram"></span><h1><span class="section-number">3. </span>Plotting a spectrogram of all open data for 1 day<a class="headerlink" href="#plotting-a-spectrogram-of-all-open-data-for-1-day" title="Permalink to this headline">¶</a></h1>
 <p>In order to study interferometer performance, it is common in LIGO to plot
 all of the data for a day, in order to determine trends, and see data-quality
 issues.</p>
@@ -164,7 +165,7 @@ available from The Gravitational-Wave Open Science Centre (GWOSC).</p>
 use those to build a day-timescale spectrogram plot of LIGO-Hanford strain
 data.</p>
 <div class="section" id="getting-the-segments">
-<h2>3.1. Getting the segments<a class="headerlink" href="#getting-the-segments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Getting the segments<a class="headerlink" href="#getting-the-segments" title="Permalink to this headline">¶</a></h2>
 <p>First, we need to fetch the Open Data timeline segments from GWOSC.
 To do that we can call the <a class="reference internal" href="../../api/gwpy.segments.DataQualityFlag.html#gwpy.segments.DataQualityFlag.fetch_open_data" title="gwpy.segments.DataQualityFlag.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.fetch_open_data()</span></code></a> method
 using <code class="docutils literal notranslate"><span class="pre">'H1_DATA'</span></code> as the flag (for an explanation of what this means,
@@ -187,19 +188,19 @@ read up on <a class="reference external" href="https://www.gw-openscience.org/S6
 majority of the day, with a few outages of ~30 minutes or so.</p>
 <p>We can use the <a class="reference external" href="https://docs.python.org/3/library/functions.html#abs" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">abs()</span></code></a> function to display the total amount of time
 spent taking data:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h1segs</span><span class="o">.</span><span class="n">active</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h1segs</span><span class="o">.</span><span class="n">active</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="working-with-strain-data">
-<h2>3.2. Working with strain data<a class="headerlink" href="#working-with-strain-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Working with strain data<a class="headerlink" href="#working-with-strain-data" title="Permalink to this headline">¶</a></h2>
 <p>Now, we can loop through the active segments of <code class="docutils literal notranslate"><span class="pre">'H1_DATA'</span></code> and fetch the
 strain <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> for each segment, calculating a
 <a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spectrogram</span></code></a> for each segment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="n">spectrograms</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">h1segs</span><span class="o">.</span><span class="n">active</span><span class="p">:</span>
-    <span class="n">h1strain</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">h1strain</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">specgram</span> <span class="o">=</span> <span class="n">h1strain</span><span class="o">.</span><span class="n">spectrogram</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
     <span class="n">spectrograms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">specgram</span><span class="p">)</span>
 </pre></div>
@@ -217,7 +218,7 @@ strain <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain data&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-23</span><span class="p">,</span> <span class="mf">1e-19</span><span class="p">),</span>
-            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain noise [1/$\sqrt{\mathrm{Hz}}$]&#39;</span><span class="p">)</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain noise [1/$\sqrt{\mathrm</span><span class="si">{Hz}</span><span class="s1">}$]&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">add_segments_bar</span><span class="p">(</span><span class="n">h1segs</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -242,7 +243,7 @@ strain <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
     </p>
   </div>
 </footer>

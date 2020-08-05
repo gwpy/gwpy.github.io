@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The StateTimeSeries and StateVector classes &#8212; GWpy 2.0.0+8.g509458c4 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/js/gwpy_https.js"></script>
-    <script type="text/javascript" src="../_static/js/copybutton.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/gwpy_https.js"></script>
+    <script src="../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -156,7 +157,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="body col-md-9 content" role="main">
       
   <div class="section" id="the-statetimeseries-and-statevector-classes">
 <span id="gwpy-statevector"></span><h1>The <a class="reference internal" href="../api/gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a> and <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a> classes<a class="headerlink" href="#the-statetimeseries-and-statevector-classes" title="Permalink to this headline">¶</a></h1>
@@ -184,7 +185,7 @@ In GWpy, these data are represented by special cases (<code class="xref py py-ob
 <h2>State time-series<a class="headerlink" href="#state-time-series" title="Permalink to this headline">¶</a></h2>
 <p>The example of a threshold on signal time-series is the core of a large amount of low-level data quality information, used in searches for gravitational waves, and detector characterisation, and is described by the <a class="reference internal" href="../api/gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a> object, a specific type of <code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code> containing only boolean values.</p>
 <p>These arrays can be generated from simple arrays of booleans, as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">StateTimeSeries</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateTimeSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">StateTimeSeries</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
 <span class="go">                            sample_rate=1, epoch=1064534416)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span>
@@ -197,7 +198,7 @@ In GWpy, these data are represented by special cases (<code class="xref py py-ob
 </pre></div>
 </div>
 <p>Alternatively, applying a standard mathematical comparison to a regular <code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code> will return a <a class="reference internal" href="../api/gwpy.timeseries.StateTimeSeries.html#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seisdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;L1:HPI-BS_BLRMS_Z_3_10&#39;</span><span class="p">,</span> <span class="mi">1064534416</span><span class="p">,</span> <span class="mi">1064538016</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seisdata</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;nm/s&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">highseismic</span> <span class="o">=</span> <span class="n">seisdata</span> <span class="o">&gt;</span> <span class="mi">400</span>
@@ -239,7 +240,7 @@ In GWpy, these data are represented by special cases (<code class="xref py py-ob
 </ul>
 <p>Additionally, the higher bits 5-15 were set ‘ON’ at all times, such that the word <code class="docutils literal notranslate"><span class="pre">0xffff</span></code> indicated ‘science mode’ operation of the instrument.</p>
 <p>This <a class="reference internal" href="../api/gwpy.timeseries.StateVector.html#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> can be read from the S6 frames as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="k">import</span> <span class="n">StateVector</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;H1:IFO-SV_STATE_VECTOR&#39;</span><span class="p">,</span> <span class="mi">968631675</span><span class="p">,</span> <span class="mi">968632275</span><span class="p">,</span>
 <span class="gp">... </span>                        <span class="p">[</span><span class="s1">&#39;science&#39;</span><span class="p">,</span> <span class="s1">&#39;conlog&#39;</span><span class="p">,</span> <span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;no injection&#39;</span><span class="p">,</span> <span class="s1">&#39;no excitation&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
@@ -307,7 +308,7 @@ In GWpy, these data are represented by special cases (<code class="xref py py-ob
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
     </p>
   </div>
 </footer>

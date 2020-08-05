@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3. Plotting an over-dense, short-duration Spectrogram &#8212; GWpy 2.0.0+8.g509458c4 documentation</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/js/gwpy_https.js"></script>
-    <script type="text/javascript" src="../../_static/js/copybutton.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -151,10 +152,10 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9 content">
+    <div class="body col-md-9 content" role="main">
       
   <div class="section" id="plotting-an-over-dense-short-duration-spectrogram">
-<span id="gwpy-example-spectrogram-spectrogram2"></span><h1>3. Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code><a class="headerlink" href="#plotting-an-over-dense-short-duration-spectrogram" title="Permalink to this headline">¶</a></h1>
+<span id="gwpy-example-spectrogram-spectrogram2"></span><h1><span class="section-number">3. </span>Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code><a class="headerlink" href="#plotting-an-over-dense-short-duration-spectrogram" title="Permalink to this headline">¶</a></h1>
 <p>The normal <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.spectrogram" title="gwpy.timeseries.TimeSeries.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectrogram</span></code></a> method uses non-overlapping intervals
 to calculate discrete PSDs for each stride. This is fine for long-duration
 data, but give poor resolution when studying short-duration phenomena.</p>
@@ -164,7 +165,7 @@ to produce a much more feature-rich output.</p>
 <p>To demonstrate this, we can download some data associated with the
 gravitational-wave event GW510914:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">lho</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259458</span><span class="p">,</span> <span class="mi">1126259467</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">lho</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="mi">1126259458</span><span class="p">,</span> <span class="mi">1126259467</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and can <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.highpass" title="gwpy.timeseries.TimeSeries.highpass"><code class="xref py py-meth docutils literal notranslate"><span class="pre">highpass()</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten"><code class="xref py py-meth docutils literal notranslate"><span class="pre">whiten()</span></code></a>
@@ -192,7 +193,7 @@ calculate our over-dense <a class="reference internal" href="../../api/gwpy.spec
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain data around GW150914&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1126259462</span><span class="p">,</span> <span class="mi">1126259463</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain ASD [1/$\sqrt{\mathrm{Hz}}$]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain ASD [1/$\sqrt{\mathrm</span><span class="si">{Hz}</span><span class="s1">}$]&#39;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -220,7 +221,7 @@ For more details on this signal, please see
     </p>
     <p>
         &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
     </p>
   </div>
 </footer>
