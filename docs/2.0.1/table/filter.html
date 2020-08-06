@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtering tables &#8212; GWpy 2.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/gwpy_https.js"></script>
+    <script src="../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calculating event trigger rate" href="rate.html" />
+    <link rel="prev" title="Reading and writing Table and EventTable objects" href="io.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code> classes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="io.html" title="Previous Chapter: Reading and writing Table and EventTable objects"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Reading and w...</span>
+    </a>
+  </li>
+  <li>
+    <a href="rate.html" title="Next Chapter: Calculating event trigger rate"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Calculating e... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Filtering tables</a><ul>
+<li><a class="reference internal" href="#simple-filters">Simple filters</a></li>
+<li><a class="reference internal" href="#filter-functions">Filter functions</a></li>
+<li><a class="reference internal" href="#using-multiple-filters">Using multiple filters</a></li>
+<li><a class="reference internal" href="#gotchas">Gotchas</a></li>
+<li><a class="reference internal" href="#built-in-filters">Built-in filters</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/table/filter.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="filtering-tables">
+<span id="gwpy-table-filter"></span><h1>Filtering tables<a class="headerlink" href="#filtering-tables" title="Permalink to this headline">¶</a></h1>
+<p>In order to perform detailed analysis of tabular data, it is useful to
+extract portions of a table based on some criteria, this is called filtering.
+The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> object comes with a <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter()</span></code></a> method
+that provides an intuitive interface to down-selecting rows in a table.</p>
+<p>To demonstrate, first we create a catalogue of gravitational-wave detections using data available from <a class="reference external" href="https://losc.ligo.org/">LOSC</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">EventTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;name      gps           m1      m2         snr   distance network</span>
+<span class="gp">... </span><span class="sd">       GW150914  1126259462.00 36.2    23.7       23.7  420      HL</span>
+<span class="gp">... </span><span class="sd">       LVT151012 1128678900.44 23      13         9.7   440      HL</span>
+<span class="gp">... </span><span class="sd">       GW151226  1135136350.65 14.2    7.5        13    880      HL</span>
+<span class="gp">... </span><span class="sd">       GW170104  1167559936.60 31.2    19.4       13    1000     HL</span>
+<span class="gp">... </span><span class="sd">       GW170814  1186741861.53 30.5    25.3       18    540      HLV&quot;&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="simple-filters">
+<h2>Simple filters<a class="headerlink" href="#simple-filters" title="Permalink to this headline">¶</a></h2>
+<p>We can then filter the table based on <code class="docutils literal notranslate"><span class="pre">snr</span></code>  to get the really loud events:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;snr &gt; 15&#39;</span><span class="p">))</span>
+<span class="go">  name        gps       m1   m2  snr</span>
+<span class="go">-------- ------------- ---- ---- ----</span>
+<span class="go">GW150914  1126259462.0 36.2 23.7 23.7</span>
+<span class="go">GW170814 1186741861.53 30.5 25.3 18.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-functions">
+<h2>Filter functions<a class="headerlink" href="#filter-functions" title="Permalink to this headline">¶</a></h2>
+<p>We can also filter the table to find those events from O1 by defining a
+custom filter function that compares to the start and end GPS times for O1
+(taken from the <a class="reference external" href="https://losc.ligo.org/data/#yellow_box">LOSC Data Usage Notes</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.time</span> <span class="kn">import</span> <span class="n">to_gps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o1start</span> <span class="o">=</span> <span class="n">to_gps</span><span class="p">(</span><span class="s2">&quot;Sep 2015&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o1end</span> <span class="o">=</span> <span class="n">to_gps</span><span class="p">(</span><span class="s2">&quot;Feb 2016&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">in_o1</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="n">column</span> <span class="o">&gt;=</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">column</span> <span class="o">&lt;</span> <span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span> <span class="n">in_o1</span><span class="p">,</span> <span class="p">(</span><span class="n">o1start</span><span class="p">,</span> <span class="n">o1end</span><span class="p">))))</span>
+<span class="go">   name        gps       m1   m2  snr  network</span>
+<span class="go">--------- ------------- ---- ---- ---- -------</span>
+<span class="go"> GW150914  1126259462.0 36.2 23.7 23.7      HL</span>
+<span class="go">LVT151012 1128678900.44 23.0 13.0  9.7      HL</span>
+<span class="go"> GW151226 1135136350.65 14.2  7.5 13.0      HL</span>
+</pre></div>
+</div>
+<p>The custom filter function could have been as complicated as we liked, as long
+as the two (and only two) input arguments were the column array for the
+relevant column, and the collection of other arguments to work with.</p>
+<p>Similarly, we could filter the catalogue to find only those events that include
+data from the Virgo observatory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="s1">&#39;network&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">endswith</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">)))</span>
+<span class="go">  name        gps       m1   m2  snr  network</span>
+<span class="go">-------- ------------- ---- ---- ---- -------</span>
+<span class="go">GW170814 1186741861.53 30.5 25.3 18.0     HLV</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-multiple-filters">
+<h2>Using multiple filters<a class="headerlink" href="#using-multiple-filters" title="Permalink to this headline">¶</a></h2>
+<p>Filters can be trivially chained (either in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> form, or functional form):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;snr &gt; 15&#39;</span><span class="p">,</span> <span class="s1">&#39;distance &gt; 5000&#39;</span><span class="p">))</span>
+<span class="go">  name        gps       m1   m2  snr  distance network</span>
+<span class="go">-------- ------------- ---- ---- ---- -------- -------</span>
+<span class="go">GW170814 1186741861.53 30.5 25.3 18.0      540     HLV</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gotchas">
+<h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h2>
+<p>The parser used to intrepet simple filters doesn’t recognised strings containing alpha-numeric characters as single words, meaning things like LIGO data channel names will get parsed incorrectly if not quoted.
+So, if in doubt, always pass a string in quotes; the quotes will get removed internally by the parser anyway. E.g., use <code class="docutils literal notranslate"><span class="pre">channel</span> <span class="pre">=</span> <span class="pre">&quot;X1:TEST&quot;</span></code> and not <code class="docutils literal notranslate"><span class="pre">channel</span> <span class="pre">=</span> <span class="pre">X1:TEST</span></code>.</p>
+</div>
+<div class="section" id="built-in-filters">
+<h2>Built-in filters<a class="headerlink" href="#built-in-filters" title="Permalink to this headline">¶</a></h2>
+<p>The GWpy package defines a small number of filter functions that implement
+standard filtering operations used in gravitational-wave data analysis:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">in_segmentlist</span></code>(column, segmentlist)</p></td>
+<td><p>Return the index of values lying inside the given segmentlist</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">not_in_segmentlist</span></code>(column, segmentlist)</p></td>
+<td><p>Return the index of values not lying inside the given segmentlist</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013, Duncan Macleod.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
