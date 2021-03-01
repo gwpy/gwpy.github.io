@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading and writing time-domain data &#8212; GWpy 2.0.0+35.g22ff70d8 documentation</title>
+    <title>Reading and writing time-domain data &#8212; GWpy 2.0.0+48.ge67e94cd documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -154,10 +154,13 @@
 <li><a class="reference internal" href="#id4">Writing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#hdf5-gwosc">HDF5 (GWOSC)</a></li>
-<li><a class="reference internal" href="#wav">WAV</a><ul>
+<li><a class="reference internal" href="#hdf5-gwosc">HDF5 (GWOSC)</a><ul>
 <li><a class="reference internal" href="#id5">Reading</a></li>
-<li><a class="reference internal" href="#id6">Writing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wav">WAV</a><ul>
+<li><a class="reference internal" href="#id6">Reading</a></li>
+<li><a class="reference internal" href="#id7">Writing</a></li>
 </ul>
 </li>
 </ul>
@@ -402,6 +405,8 @@ the following platforms:</p>
 <span id="gwpy-timeseries-io-hdf5-gwosc"></span><h2>HDF5 (GWOSC)<a class="headerlink" href="#hdf5-gwosc" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.gw-openscience.org/">The Gravitational-Wave Open Science Centre (GWOSC)</a> write data in HDF5 using a custom schema that is incompatible
 with <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5'</span></code>.</p>
+<div class="section" id="id5">
+<h3>Reading<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>GWpy can read data from GWOSC (LOSC) HDF5 files using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5.losc'</span></code>
 keyword:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H-H1_GWOSC_16KHZ_R1-1187056280-4096.hdf5&#39;</span><span class="p">,</span>
@@ -413,6 +418,7 @@ keyword:</p>
 <code class="docutils literal notranslate"><span class="pre">/quality/simple</span></code>.</p>
 <p>As with regular HDF5, the <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading.</p>
 </div>
+</div>
 <div class="section" id="wav">
 <span id="gwpy-timeseries-io-wav"></span><h2>WAV<a class="headerlink" href="#wav" title="Permalink to this headline">¶</a></h2>
 <p>Any <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> can be written to / read from a WAV file using <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.read()</span></code></a>:</p>
@@ -420,16 +426,16 @@ keyword:</p>
 <p class="admonition-title">Warning</p>
 <p>No metadata are stored in the WAV file except the sampling rate, so any units or GPS timing information are lost when converting to/from WAV.</p>
 </div>
-<div class="section" id="id5">
-<h3>Reading<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Reading<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>To read a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> from WAV:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
 </div>
-<div class="section" id="id6">
-<h3>Writing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Writing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>To write a <a class="reference internal" href="../api/gwpy.timeseries.TimeSeries.html#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to WAV:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;data.wav&#39;</span><span class="p">)</span>
 </pre></div>
