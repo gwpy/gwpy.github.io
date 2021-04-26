@@ -17,3 +17,10 @@ plt.show()
 xx = x + 1j * x[:, np.newaxis]
 plt.imshow(np.abs(xx), extent=[-10, 10, -10, 10], cmap='gray')
 plt.show()
+
+# The `abs` function can be used as a shorthand for ``np.absolute`` on
+# ndarrays.
+
+x = np.array([-1.2, 1.2])
+abs(x)
+# array([1.2, 1.2])

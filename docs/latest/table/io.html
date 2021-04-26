@@ -3,17 +3,17 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 2.0.0+64.g3a740c92 documentation</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 2.0.1.dev97+g9fc547cf documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/js/gwpy_https.js"></script>
     <script src="../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -43,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -475,7 +475,7 @@ Column name      Description (from <a class="reference external" href="https://d
 <p>For a full list of available file formats, see the documentation for the <a class="reference internal" href="../api/gwpy.table.Table.html#gwpy.table.Table.read" title="gwpy.table.Table.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table.read</span></code></a> method:</p>
 <dl class="py method">
 <dt>
-<code class="sig-prename descclassname">Table.</code><code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span></dt>
+<code class="sig-prename descclassname"><span class="pre">Table.</span></code><code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Read and parse a data table and return as a Table.</p>
 <p>This function provides the Table interface to the astropy unified I/O
 layer.  This allows easily reading a file in many supported data formats
@@ -491,7 +491,7 @@ using syntax such as:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">list_formats</span><span class="p">()</span>  <span class="c1"># Print list of available formats</span>
 </pre></div>
 </div>
-<p>See also: <a class="reference external" href="http://docs.astropy.org/en/stable/io/unified.html">http://docs.astropy.org/en/stable/io/unified.html</a></p>
+<p>See also: <a class="reference external" href="https://docs.astropy.org/en/stable/io/unified.html">https://docs.astropy.org/en/stable/io/unified.html</a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>*args</strong> : tuple, optional</p>
@@ -502,6 +502,14 @@ first argument is typically the input filename.</p>
 <p><strong>format</strong> : str</p>
 <blockquote>
 <div><p>File format specifier.</p>
+</div></blockquote>
+<p><strong>units</strong> : list, dict, optional</p>
+<blockquote>
+<div><p>List or dict of units to apply to columns</p>
+</div></blockquote>
+<p><strong>descriptions</strong> : list, dict, optional</p>
+<blockquote>
+<div><p>List or dict of descriptions to apply to columns</p>
 </div></blockquote>
 <p><strong>**kwargs</strong> : dict, optional</p>
 <blockquote>
@@ -819,7 +827,7 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 <p>The <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.read</span></code></a> method can understand <em>all</em> of the above file formats (auto-identify is <strong>not</strong> inherited), and the following:</p>
 <dl class="py method">
 <dt>
-<em class="property">classmethod </em><code class="sig-prename descclassname">EventTable.</code><code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/3a740c920b78001495eccd417ae5f1fd2ad789e4/gwpy/table/table.py#L186"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-prename descclassname"><span class="pre">EventTable.</span></code><code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/9fc547cf/gwpy/table/table.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Read data into an <a class="reference internal" href="../api/gwpy.table.EventTable.html#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1224,8 +1232,8 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
       
     </p>
     <p>
-        &copy; Copyright 2013, Duncan Macleod.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+        &copy; Copyright 2013,2017-2021 Cardiff University and 2013-2017 Lousiana State University.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>
