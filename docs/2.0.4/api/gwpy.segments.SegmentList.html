@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SegmentList &#8212; GWpy 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/gwpy_https.js"></script>
+    <script src="../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SegmentListDict" href="gwpy.segments.SegmentListDict.html" />
+    <link rel="prev" title="Segment" href="gwpy.segments.Segment.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GWpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Contents <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">What is GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">How do I install GWpy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing.html">Citing GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/index.html">Time-domain data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signal/index.html">Signal processing</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../segments/index.html">Data-quality segments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code> classes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table/index.html">Tabular data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Command line plotting with GWpy</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Times and timestamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../astro/index.html">Astrophysical modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env.html">Configuring GWpy from the environment</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/release.html">Publishing a release</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GWpy examples</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="gwpy.segments.Segment.html" title="Previous Chapter: Segment"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Segment</span>
+    </a>
+  </li>
+  <li>
+    <a href="gwpy.segments.SegmentListDict.html" title="Next Chapter: SegmentListDict"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">SegmentListDict &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">SegmentList</a></li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/api/gwpy.segments.SegmentList.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="segmentlist">
+<h1>SegmentList<a class="headerlink" href="#segmentlist" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="gwpy.segments.SegmentList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gwpy.segments.</span></code><code class="sig-name descname"><span class="pre">SegmentList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/segments/segments.py#L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a></p>
+<p>The <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> provides additional methods that assist in the
+manipulation of lists of <a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a>. In particular,
+arithmetic operations such as union and intersection are provided.
+Unlike the <a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>, the <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> is closed under all supported
+arithmetic operations.</p>
+<p>All standard Python sequence-like operations are supported, like
+slicing, iteration and so on, but the arithmetic and other methods
+in this class generally expect the <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to be in what is
+refered to as a “coalesced” state - consisting solely of disjoint
+<a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a> listed in ascending order. Using the standard Python
+sequence-like operations, a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> can be easily constructed
+that is not in this state;  for example by simply appending a
+<a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a> to the end of the list that overlaps some other <a class="reference internal" href="gwpy.segments.Segment.html#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>
+already in the list. The class provides a <a class="reference internal" href="#gwpy.segments.SegmentList.coalesce" title="gwpy.segments.SegmentList.coalesce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">coalesce()</span></code></a>
+method that can be called to put it in the coalesced state. Following
+application of the coalesce method, all arithmetic operations will
+function reliably. All arithmetic methods themselves return
+coalesced results, so there is never a need to call the coalesce
+method when manipulating a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> exclusively via the
+arithmetic operators.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">|=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[Segment(-10, -5), Segment(5, 10), Segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[Segment(-infinity, -10), Segment(-5, 5), Segment(10, 20),</span>
+<span class="go"> Segment(30, infinity)]</span>
+</pre></div>
+</div>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.append" title="gwpy.segments.SegmentList.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(object, /)</p></td>
+<td><p>Append object to the end of the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.clear" title="gwpy.segments.SegmentList.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>(/)</p></td>
+<td><p>Remove all items from list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.coalesce" title="gwpy.segments.SegmentList.coalesce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.contract" title="gwpy.segments.SegmentList.contract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contract</span></code></a></p></td>
+<td><p>Execute the .contract() method on each segment in the list and coalesce the result.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.copy" title="gwpy.segments.SegmentList.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>(/)</p></td>
+<td><p>Return a shallow copy of the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.count" title="gwpy.segments.SegmentList.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a>(value, /)</p></td>
+<td><p>Return number of occurrences of value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.extend" title="gwpy.segments.SegmentList.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(iterable, /)</p></td>
+<td><p>Extend list by appending elements from the iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.extent" title="gwpy.segments.SegmentList.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<td><p>Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.find" title="gwpy.segments.SegmentList.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></p></td>
+<td><p>Return the smallest i such that i is the index of an element that wholly contains item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.index" title="gwpy.segments.SegmentList.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value[, start, stop])</p></td>
+<td><p>Return first index of value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.insert" title="gwpy.segments.SegmentList.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(index, object, /)</p></td>
+<td><p>Insert object before index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.intersects" title="gwpy.segments.SegmentList.intersects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
+<td><p>Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.intersects_segment" title="gwpy.segments.SegmentList.intersects_segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects_segment</span></code></a></p></td>
+<td><p>Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.pop" title="gwpy.segments.SegmentList.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>([index])</p></td>
+<td><p>Remove and return item at index (default last).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.protract" title="gwpy.segments.SegmentList.protract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">protract</span></code></a></p></td>
+<td><p>Execute the .protract() method on each segment in the list and coalesce the result.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.read" title="gwpy.segments.SegmentList.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source[, format, coalesce])</p></td>
+<td><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.remove" title="gwpy.segments.SegmentList.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(value, /)</p></td>
+<td><p>Remove first occurrence of value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.reverse" title="gwpy.segments.SegmentList.reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>(/)</p></td>
+<td><p>Reverse <em>IN PLACE</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.shift" title="gwpy.segments.SegmentList.shift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift</span></code></a></p></td>
+<td><p>Execute the .shift() method on each segment in the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.sort" title="gwpy.segments.SegmentList.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>(*[, key, reverse])</p></td>
+<td><p>Sort the list in ascending order and return None.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.to_table" title="gwpy.segments.SegmentList.to_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_table</span></code></a>()</p></td>
+<td><p>Convert this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v4.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.value_slice_to_index" title="gwpy.segments.SegmentList.value_slice_to_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value_slice_to_index</span></code></a></p></td>
+<td><p>Convert the slice s from a slice of values to a slice of indexes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.write" title="gwpy.segments.SegmentList.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<td><p>Write this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a file</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.append">
+<code class="sig-name descname"><span class="pre">append</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append object to the end of the list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.clear">
+<code class="sig-name descname"><span class="pre">clear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all items from list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.coalesce">
+<code class="sig-name descname"><span class="pre">coalesce</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/segments/segments.py#L140"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.contract">
+<code class="sig-name descname"><span class="pre">contract</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .contract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.copy">
+<code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.count">
+<code class="sig-name descname"><span class="pre">count</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of occurrences of value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.extend">
+<code class="sig-name descname"><span class="pre">extend</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend list by appending elements from the iterable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.extent">
+<code class="sig-name descname"><span class="pre">extent</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/utils/decorators.py#L105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.  Does not require the segmentlist to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.find">
+<code class="sig-name descname"><span class="pre">find</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest i such that i is the index of an element that wholly contains item.  Raises ValueError if no such element exists.  Does not require the segmentlist to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.index">
+<code class="sig-name descname"><span class="pre">index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.maxsize</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.insert">
+<code class="sig-name descname"><span class="pre">insert</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert object before index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.intersects">
+<code class="sig-name descname"><span class="pre">intersects</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.  The algorithm is O(n), but faster than explicit calculation of the intersection, i.e. by testing bool(self &amp; other).  Requires both lists to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.intersects_segment">
+<code class="sig-name descname"><span class="pre">intersects_segment</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.intersects_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.  The algorithm is O(log n).  Requires the list to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.pop">
+<code class="sig-name descname"><span class="pre">pop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return item at index (default last).</p>
+<p>Raises IndexError if list is empty or index is out of range.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.protract">
+<code class="sig-name descname"><span class="pre">protract</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.protract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .protract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.read">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coalesce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/segments/segments.py#L166"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>path of file to read</p>
+</div></blockquote>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</div></blockquote>
+<p><strong>coalesce</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> coalesce the segment list before returning,
+otherwise return exactly as contained in file(s).</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote>
+<div><p>other keyword arguments depend on the format, see the online
+documentation for details (<a class="reference internal" href="../segments/io.html#gwpy-segments-io"><span class="std std-ref">Reading/writing segments and flags</span></a>)</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>segmentlist</strong> : <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> active and known segments read from file.</p>
+</div></blockquote>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>IndexError</p>
+<blockquote>
+<div><p>if <code class="docutils literal notranslate"><span class="pre">source</span></code> is an empty list</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>segwizard</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.remove">
+<code class="sig-name descname"><span class="pre">remove</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove first occurrence of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.reverse">
+<code class="sig-name descname"><span class="pre">reverse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse <em>IN PLACE</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.shift">
+<code class="sig-name descname"><span class="pre">shift</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .shift() method on each segment in the list.  The algorithm is O(n) and does not require the list to be coalesced nor does it coalesce the list.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.sort">
+<code class="sig-name descname"><span class="pre">sort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the list in ascending order and return None.</p>
+<p>The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
+order of two equal elements is maintained).</p>
+<p>If a key function is given, apply it once to each list item and sort them,
+ascending or descending, according to their function values.</p>
+<p>The reverse flag can be set to sort in descending order.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.to_table">
+<code class="sig-name descname"><span class="pre">to_table</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/segments/segments.py#L147"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.to_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v4.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>The resulting <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code> has four columns: <a class="reference internal" href="#gwpy.segments.SegmentList.index" title="gwpy.segments.SegmentList.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code>, and
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">duration</span></code>, corresponding to the zero-counted list index, GPS start
+and end times, and total duration in seconds, respectively.</p>
+<p>This method exists mainly to provide a way to write <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+objects in comma-separated value (CSV) format, via the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.value_slice_to_index">
+<code class="sig-name descname"><span class="pre">value_slice_to_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.value_slice_to_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the slice s from a slice of values to a slice of indexes.  self must be coalesced, the operation is O(log n).  This is used to extract from a segmentlist the segments that span a given range of values, and is useful in reducing operation counts when many repeated operations are required within a limited range of values.</p>
+<p>NOTE:  the definition of the transformation is important, and some care might be needed to use this tool properly.  The start and stop values of the slice are transformed independently.  The start value is mapped to the index of the first segment whose upper bound is greater than start, meaning the first segment spanning values greater than or equal to the value of start.  The stop value is mapped to 1 + the index of the last segment whose lower bound is less than stop, meaning the last segment spanning values less than the value of stop.  This can lead to unexpected behaviour if value slices whose upper and lower bounds are identical are transformed to index slices.  For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="go">slice(1, 1, None)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="go">slice(1, 2, None)</span>
+<span class="go">Both value slices are zero-length, but one has yielded a zero-length (null) index slice, while the other has not.  The two value slices start at 5 and 6 respectively.  Both starting values lie within segment 1, and in both cases the start value has been mapped to index 1, as expected.  The first slice ends at 5, meaning it expresses the idea of a range of values upto but not including 5, which corresponds to segments upto *but not including* index 1, and so that stop value has been mapped to an index slice upper bound of 1.  The second slice ends at 6, and the range of values upto but not including 6 corresponds to segment indexes upto but not including 2, which is what we see that bound has been mapped to.</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">[segment(-10, -5), segment(5, 10), segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">25</span><span class="p">))]</span>
+<span class="go">[segment(5, 10), segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">))]</span>
+<span class="go">[segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">))]</span>
+<span class="go">[segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]</span>
+<span class="go">[segment(-10, -5), segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span>
+<span class="go">[segment(-10, -5)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))]</span>
+<span class="go">[segment(5, 10), segment(20, 30)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gwpy.segments.SegmentList.write">
+<code class="sig-name descname"><span class="pre">write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/gwpy/gwpy/tree/v2.0.4/gwpy/segments/segments.py#L211"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a file</p>
+<p>Arguments and keywords depend on the output format, see the
+online documentation for full details for each format.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>output filename</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>segwizard</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013,2017-2021 Cardiff University and 2013-2017 Lousiana State University.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
