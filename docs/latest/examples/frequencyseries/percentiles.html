@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Plotting an averaged ASD with percentiles. &#8212; GWpy 2.0.1.dev112+g3b9a698d documentation</title>
+    <title>3. Plotting an averaged ASD with percentiles. &#8212; GWpy 2.0.1.dev117+ga3da7ce7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -187,9 +187,11 @@ method:</p>
 display the 5th and 95th percentiles as a shaded region around the median:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.plot</span> <span class="kn">import</span> <span class="n">Plot</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">,</span>
-              <span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">3e-24</span><span class="p">,</span> <span class="mf">2e-20</span><span class="p">),</span>
-              <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain noise [1/$\sqrt{\mathrm</span><span class="si">{Hz}</span><span class="s1">}$]&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span>
+    <span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">,</span>
+    <span class="n">yscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">3e-24</span><span class="p">,</span> <span class="mf">2e-20</span><span class="p">),</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Strain noise [1/$\sqrt{\mathrm</span><span class="si">{Hz}</span><span class="s1">}$]&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot_mmm</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gwpy:ligo-hanford&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LIGO-Hanford strain noise variation around GW170817&#39;</span><span class="p">,</span>
              <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
