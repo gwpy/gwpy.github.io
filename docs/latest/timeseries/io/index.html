@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="333">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Reading and writing time series data &#8212; GWpy  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Accessing Open Data from GWOSC" href="../opendata/" />
+    <link rel="prev" title="Time Series data" href="../" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=deep-orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#timeseries/io" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../" title="GWpy  documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../../_static/favicon.png" height="26"
+                   alt="GWpy documentation logo">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">GWpy </span>
+          <span class="md-header-nav__topic"> Reading and writing time series data </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search/" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../versions.json",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../" class="md-tabs__link">Time Series data</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../" title="GWpy documentation" class="md-nav__button md-logo">
+      
+        <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../"
+       title="GWpy documentation">GWpy </a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../../overview/" class="md-nav__link">What is GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../install/" class="md-nav__link">How do I install GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../citing/" class="md-nav__link">Citing GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data structures</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../" class="md-nav__link">Time Series data</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrum/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrogram/" class="md-nav__link">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../statevector/" class="md-nav__link">State vectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../segments/" class="md-nav__link">Data-quality segments</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../table/" class="md-nav__link">Data tables</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data manipulation</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../signal/" class="md-nav__link">Signal processing</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Visualising data</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../plot/" class="md-nav__link">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../cli/" class="md-nav__link">Command line plotting with GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Other utilities</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../detector/channel/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../time/" class="md-nav__link">Times and timestamps</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../astro/" class="md-nav__link">Astrophysical modelling</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../env/" class="md-nav__link">Configuring GWpy from the environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Examples</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/timeseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/signal/" class="md-nav__link">Signal processing examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/frequencyseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/spectrogram/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/segments/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/table/" class="md-nav__link">Tabular data examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/miscellaneous/" class="md-nav__link">Miscellaneous examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Developer notes</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../dev/release/" class="md-nav__link">Publishing a release</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#timeseries-io--page-root" class="md-nav__link">Reading and writing time series data</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#automatic-discovery-of-gw-detector-data" class="md-nav__link">Automatic discovery of GW detector data</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#gw-detector-data" class="md-nav__link">GW detector data</a>
+        </li>
+        <li class="md-nav__item"><a href="#data-discovery-methods" class="md-nav__link">Data discovery methods</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#built-in-file-formats" class="md-nav__link">Built-in file formats</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#ascii" class="md-nav__link">ASCII</a>
+        </li>
+        <li class="md-nav__item"><a href="#gwf" class="md-nav__link">GWF</a>
+        </li>
+        <li class="md-nav__item"><a href="#hdf5" class="md-nav__link">HDF5</a>
+        </li>
+        <li class="md-nav__item"><a href="#hdf5-gwosc" class="md-nav__link">HDF5 (GWOSC)</a>
+        </li>
+        <li class="md-nav__item"><a href="#wav" class="md-nav__link">WAV</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/timeseries/io.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="reading-and-writing-time-series-data">
+<span id="gwpy-timeseries-io"></span><h1 id="timeseries-io--page-root">Reading and writing time series data<a class="headerlink" href="#timeseries-io--page-root" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object includes <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods to enable reading from and writing to files
+respectively.
+For example, to read from an ASCII file containing time and amplitude columns:</p>
+<div class="highlight-python notranslate" id="gwpy-timeseries-io-example"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'my-data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.read()</span></code></a> will attempt to automatically identify the file
+format based on the file extension and/or the contents of the file, however,
+the <code class="docutils literal notranslate"><span class="pre">format</span></code> keyword argument can be used to manually identify the input
+file-format.</p>
+<p>The <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.write" title="gwpy.timeseries.TimeSeries.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods take
+different arguments and keywords based on the input/output file format,
+see <a class="reference internal" href="#gwpy-timeseries-io-formats"><span class="std std-ref">Built-in file formats</span></a> for details on reading/writing for
+each of the built-in formats.</p>
+<section id="automatic-discovery-of-gw-detector-data">
+<span id="gwpy-timeseries-io-discovery"></span><h2 id="automatic-discovery-of-gw-detector-data">Automatic discovery of GW detector data<a class="headerlink" href="#automatic-discovery-of-gw-detector-data" title="Permalink to this headline">¶</a></h2>
+<section id="gw-detector-data">
+<h3 id="gw-detector-data">GW detector data<a class="headerlink" href="#gw-detector-data" title="Permalink to this headline">¶</a></h3>
+<p>Gravitational-wave detector data, including all engineering diagnostic data
+as well as the calibrated ‘strain’ data that are searched for GW signals,
+are archived in <a class="reference internal" href="#gwpy-timeseries-io-gwf"><span class="std std-ref">GWF</span></a> files stored at the
+relevant observatory.
+These data are available locally to authenticated users of the associated
+computing centres (typically collaboration members), but are also
+distributed using <a class="reference external" href="https://cvmfs.readthedocs.io/">CVMFS</a> and are available remotely using <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client/doc/manual/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code></a>.
+Access to these data is restricted to active collaboration members.</p>
+<p>Additionally <a class="reference external" href="https://www.gw-openscience.org/">The Gravitational-Wave Open Science Centre (GWOSC)</a> hosts publicly-accessible ‘open’ data, with <em>event</em>
+datasets made available at the same time as the relevant result publication
+and typically including ~1 hour of data around each published event detection,
+and <em>bulk</em> datasets with the entire observing run data available roughly
+18 months after the end of the run.</p>
+<p>GWOSC also hosts the <a class="reference external" href="https://www.gw-openscience.org/auxiliary/GW170814/">Auxiliary Channel Three Hour Release</a>, providing public access to
+environmental sensor data around <a class="reference external" href="https://www.ligo.org/science/Publication-GW170814/">GW170814</a>.
+These data are freely accessible using <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client/doc/manual/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code></a>.</p>
+</section>
+<section id="data-discovery-methods">
+<h3 id="data-discovery-methods">Data discovery methods<a class="headerlink" href="#data-discovery-methods" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../opendata/">Accessing Open Data from GWOSC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../opendata/#the-gravitational-wave-open-science-center">The Gravitational-Wave Open Science Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opendata/#timeseries-fetch-open-data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.fetch_open_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../opendata/#accessing-data-from-the-auxiliary-channel-three-hour-release">Accessing data from the Auxiliary Channel Three-hour Release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafind/">Automatic data-discovery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datafind/#timeseries-get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datafind/#how-it-works">How it works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datafind/#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datafind/#proprietary-datasets">Proprietary datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datafind/#ligo-trend-data">LIGO trend data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datafind/#timeseriesdict-get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeriesDict.get()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="built-in-file-formats">
+<span id="gwpy-timeseries-io-formats"></span><h2 id="built-in-file-formats">Built-in file formats<a class="headerlink" href="#built-in-file-formats" title="Permalink to this headline">¶</a></h2>
+<section id="ascii">
+<span id="gwpy-timeseries-io-ascii"></span><h3 id="ascii">ASCII<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h3>
+<p>GWpy supports writing <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> (and <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a>) data to ASCII in a two-column <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code> format.</p>
+<section id="reading">
+<h4 id="reading">Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h4>
+<p>To read a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> from ASCII:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.21)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
+</section>
+<section id="writing">
+<h4 id="writing">Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h4>
+<p>To write a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to ASCII:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.21)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
+</section>
+</section>
+<section id="gwf">
+<span id="gwpy-timeseries-io-gwf"></span><h3 id="gwf">GWF<a class="headerlink" href="#gwf" title="Permalink to this headline">¶</a></h3>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> or <a class="reference external" href="http://lappweb.in2p3.fr/virgo/FrameL/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">framel</span></code></a> or <a class="reference external" href="http://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lalframe</span></code></a></p>
+<p>The raw observatory data are archived in <code class="docutils literal notranslate"><span class="pre">.gwf</span></code> files, a custom binary format that efficiently stores the time streams and all necessary metadata, for more details about this particular data format, take a look at the specification document <a class="reference external" href="https://dcc.ligo.org/LIGO-T970130/public">LIGO-T970130</a>.</p>
+<section id="id1">
+<h4 id="id1">Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To read data from a GWF file, pass the input file path (or paths) and the name of the data channel to read:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.gwf'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">HLV-HW100916-968654552-1.gwf</span></code> file is included with the GWpy source under <a class="reference external" href="https://github.com/gwpy/gwpy/tree/master/gwpy/testing/data">/gwpy/testing/data/</a>.</p>
+</div>
+<p>Reading a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> uses the same syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'my-state-data.gwf'</span><span class="p">,</span> <span class="s1">'L1:GWO-STATE_VECTOR'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Multiple files can be read by passing a list of files:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">],</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When reading multiple files, the <code class="docutils literal notranslate"><span class="pre">nproc</span></code> keyword argument can be used to distribute the reading over multiple CPUs, which should make it faster:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">file3</span><span class="p">,</span> <span class="n">file4</span><span class="p">],</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">,</span> <span class="n">nproc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above command will separate the input list of 4 file paths into two sets of 2 files, combining the results into a single <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> before returning.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.gwf'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">968654552.5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654553</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, the following keyword arguments can be used:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These keyword arguments are only supported when using the
+<a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> GWF API.</p>
+</div>
+<table id="timeseries-read-kwargs">
+<caption><span class="caption-text">Keyword arguments for <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries.read</span></code></a></span><a class="headerlink" href="#timeseries-read-kwargs" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 62%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scaled</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p></td>
+<td><p>Apply ADC calibration when reading</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> of channel types
+(<code class="docutils literal notranslate"><span class="pre">'ADC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Proc'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'Sim'</span></code>) for
+each channel to be read. This option
+optimises the reading operation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reading-multiple-channels">
+<h4 id="reading-multiple-channels">Reading multiple channels<a class="headerlink" href="#reading-multiple-channels" title="Permalink to this headline">¶</a></h4>
+<p>To read multiple channels from one or more GWF files (rather than opening and closing the files multiple times), use the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a> or <a class="reference internal" href="../../api/gwpy.timeseries.StateVectorDict/#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVectorDict</span></code></a> classes, and pass a list of data channel names:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.gwf'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'H1:LDAS-STRAIN'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this case the <code class="docutils literal notranslate"><span class="pre">resample</span></code> and <code class="docutils literal notranslate"><span class="pre">dtype</span></code> keywords can be given as a single value used for all data channels, or a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> mapping an argument for each data channel name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.gwf'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'H1:LDAS-STRAIN'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">],</span>
+<span class="gp">... </span>                           <span class="n">resample</span><span class="o">=</span><span class="p">{</span><span class="s1">'H1:LDAS-STRAIN'</span><span class="p">:</span> <span class="mi">2048</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The above example will resample only the <code class="docutils literal notranslate"><span class="pre">'H1:LDAS-STRAIN'</span></code> <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and will not modify that for <code class="docutils literal notranslate"><span class="pre">'L1:LDAS-STRAIN'</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A mix of <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> objects can be read by using only <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a> class, and casting the returned data to a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> using <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.view" title="gwpy.timeseries.TimeSeries.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">view()</span></code></a>.</p>
+</div>
+</section>
+<section id="id2">
+<h4 id="id2">Writing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>To write data held in any of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.timeseries</span></code> classes to a GWF file, simply use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.gwf'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>If the output file already exists it will be overwritten.</strong></p>
+</section>
+<section id="gwf-library-availability">
+<h4 id="gwf-library-availability">GWF library availability<a class="headerlink" href="#gwf-library-availability" title="Permalink to this headline">¶</a></h4>
+<p>(Last we checked…) The three GWF library interfaces are available on
+the following platforms:</p>
+<table id="gwf-library-platforms">
+<caption><span class="caption-text">GWF library availability by platform</span><a class="headerlink" href="#gwf-library-platforms" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%"/>
+<col style="width: 44%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 10%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Conda-forge package name</p></th>
+<th class="head"><p>Linux</p></th>
+<th class="head"><p>macOS</p></th>
+<th class="head"><p>Windows</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-ldas-tools-framecpp</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://lappweb.in2p3.fr/virgo/FrameL/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">framel</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-framel</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://software.ligo.org/docs/lalsuite/lalframe/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lalframe</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python-lalframe</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="hdf5">
+<span id="gwpy-timeseries-io-hdf5"></span><h3 id="hdf5">HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h3>
+<p>GWpy allows storing data in HDF5 format files, using a custom specification for storage of metadata.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To read GWOSC data from HDF5, please see
+<a class="reference internal" href="#gwpy-timeseries-io-hdf5-gwosc"><span class="std std-ref">HDF5 (GWOSC)</span></a>.</p>
+</div>
+<section id="id3">
+<h4 id="id3">Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>To read <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> or <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> data held in HDF5 files pass the filename (or filenames) or the source, and the path of the data inside the HDF5 file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.hdf'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As with GWF, the <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword arguments can be used to downselect data to a specific <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.hdf'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">968654552.5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">968654553</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Analogously to GWF, you can read multiple <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> from an HDF5 file via <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict.read" title="gwpy.timeseries.TimeSeriesDict.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeriesDict.read()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.hdf'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, all matching datasets in the file will be read, to restrict the output, specify the names of the datasets you want:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HLV-HW100916-968654552-1.hdf'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'H1:LDAS-STRAIN'</span><span class="p">,</span> <span class="s1">'L1:LDAS-STRAIN'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h4 id="id4">Writing<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Data held in a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict,</span> <span class="pre">`StateVector</span></code>, or <a class="reference internal" href="../../api/gwpy.timeseries.StateVectorDict/#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVectorDict</span></code></a> can be written to an HDF5 file via:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.hdf'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output argument (<code class="docutils literal notranslate"><span class="pre">'output.hdf'</span></code>) can be a file path, an open <a class="reference external" href="https://docs.h5py.org/en/latest/high/file.html#h5py.File" title="(in h5py v3.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.File</span></code></a> object, or a <a class="reference external" href="https://docs.h5py.org/en/latest/high/group.html#h5py.Group" title="(in h5py v3.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">h5py.Group</span></code></a> object, to append data to an existing file.</p>
+<p>If the target file already exists, an <code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>To write a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to an existing file, use <code class="docutils literal notranslate"><span class="pre">append=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.hdf'</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To replace an existing dataset in an existing file, while preserving other data, use <em>both</em> <code class="docutils literal notranslate"><span class="pre">append=True</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.hdf'</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hdf5-gwosc">
+<span id="gwpy-timeseries-io-hdf5-gwosc"></span><h3 id="hdf5-gwosc">HDF5 (GWOSC)<a class="headerlink" href="#hdf5-gwosc" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> write data in HDF5 using a custom schema that is incompatible
+with <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5'</span></code>.</p>
+<section id="id5">
+<h4 id="id5">Reading<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>GWpy can read data from GWOSC HDF5 files using the <code class="xref py py-obj docutils literal notranslate"><span class="pre">format='hdf5.gwosc'</span></code>
+keyword:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">"H-H1_GWOSC_16KHZ_R1-1187056280-4096.hdf5"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">"hdf5.gwosc"</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.read()</span></code></a> will return the contents of the
+<code class="docutils literal notranslate"><span class="pre">/strain/Strain</span></code> dataset, while <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector.read" title="gwpy.timeseries.StateVector.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StateVector.read()</span></code></a> will return those
+of <code class="docutils literal notranslate"><span class="pre">/quality/simple</span></code>.</p>
+<p>As with regular HDF5, the <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword arguments can be used
+to downselect data to a specific <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> time segment when reading.</p>
+</section>
+</section>
+<section id="wav">
+<span id="gwpy-timeseries-io-wav"></span><h3 id="wav">WAV<a class="headerlink" href="#wav" title="Permalink to this headline">¶</a></h3>
+<p>Any <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> can be written to / read from a WAV file using <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.read" title="gwpy.timeseries.TimeSeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.read()</span></code></a>:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No metadata are stored in the WAV file except the sampling rate, so any units or GPS timing information are lost when converting to/from WAV.</p>
+</div>
+<section id="id6">
+<h4 id="id6">Reading<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>To read a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> from WAV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data.wav'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.io.wavfile.read.html#scipy.io.wavfile.read" title="(in SciPy v1.7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.read()</span></code></a> for any keyword argument options.</p>
+</section>
+<section id="id7">
+<h4 id="id7">Writing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>To write a <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> to WAV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'data.wav'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.io.wavfile.write.html#scipy.io.wavfile.write" title="(in SciPy v1.7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.wavfile.write()</span></code></a> for keyword argument options.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../" title="Time Series data"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Time Series data </span>
+              </div>
+            </a>
+          
+          
+            <a href="../opendata/" title="Accessing Open Data from GWOSC"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Accessing Open Data from GWOSC </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

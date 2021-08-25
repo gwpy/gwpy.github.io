@@ -1,6 +1,6 @@
 # Demodulation is useful when trying to examine steady sinusoidal
 # signals we know to be contained within data. For instance,
-# we can download some data from LOSC to look at trends of the
+# we can download some data from GWOSC to look at trends of the
 # amplitude and phase of LIGO Livingston's calibration line at 331.3 Hz:
 
 from gwpy.timeseries import TimeSeries

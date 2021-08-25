@@ -1,188 +1,520 @@
+
 <!DOCTYPE html>
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spectrogram examples &#8212; GWpy 2.0.1.dev185+gb5f79110 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="333">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Spectrogram examples &#8212; GWpy  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/css/gwpy-sphinx.css"></script>
     <script src="../../_static/js/gwpy_https.js"></script>
     <script src="../../_static/js/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. Plotting a Spectrogram" href="plot.html" />
-    <link rel="prev" title="7. Inject a known signal into a FrequencySeries" href="../frequencyseries/inject.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="1. Plotting a Spectrogram" href="plot/" />
+    <link rel="prev" title="7. Inject a known signal into a FrequencySeries" href="../frequencyseries/inject/" />
+  
+   
 
-  </head><body>
-
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../../index.html">
-          GWpy</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=deep-orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#examples/spectrogram/index" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../" title="GWpy  documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../../_static/favicon.png" height="26"
+                   alt="GWpy documentation logo">
+          
+        </a>
       </div>
-
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
-            
-                <li><a href="../index.html">Examples</a></li>
-            
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="../../index.html">Contents <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is GWpy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">How do I install GWpy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing GWpy</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../timeseries/index.html">Time-domain data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../signal/index.html">Signal processing</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../segments/index.html">Data-quality segments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../timeseries/statevector.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code> classes</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrum/index.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spectrogram/index.html">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../table/index.html">Tabular data</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../plot/index.html">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">Command line plotting with GWpy</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../detector/channel.html">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Times and timestamps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../astro/index.html">Astrophysical modelling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../env.html">Configuring GWpy from the environment</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../dev/release.html">Publishing a release</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">GWpy examples</a></li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="../frequencyseries/inject.html" title="Previous Chapter: 7. Inject a known signal into a FrequencySeries"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 7. Inject a k...</span>
-    </a>
-  </li>
-  <li>
-    <a href="plot.html" title="Next Chapter: 1. Plotting a Spectrogram"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">1. Plotting a... &raquo;</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-          </ul>
-
-          
-            
-<form class="navbar-form navbar-right" action="../../search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-          
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">GWpy </span>
+          <span class="md-header-nav__topic"> Spectrogram examples </span>
         </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search/" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
     </div>
   </div>
-
-<div class="container">
-  <div class="row">
-      <div class="col-md-3">
-        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a></li>
-</ul>
-
-<div id="sourcelink">
-  <a href="../../_sources/examples/spectrogram/index.rst.txt"
-     rel="nofollow">Source</a>
 </div>
-<form action="../../search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
+
       </div>
-    <div class="body col-md-9 content" role="main">
       
-  <div class="section" id="spectrogram-examples">
-<h1><a class="reference internal" href="../../api/gwpy.spectrogram.Spectrogram.html#gwpy.spectrogram.Spectrogram" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a> examples<a class="headerlink" href="#spectrogram-examples" title="Permalink to this headline">¶</a></h1>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../versions.json",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../" title="GWpy documentation" class="md-nav__button md-logo">
+      
+        <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../"
+       title="GWpy documentation">GWpy </a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../../overview/" class="md-nav__link">What is GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../install/" class="md-nav__link">How do I install GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../citing/" class="md-nav__link">Citing GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data structures</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/" class="md-nav__link">Time Series data</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrum/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrogram/" class="md-nav__link">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/statevector/" class="md-nav__link">State vectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../segments/" class="md-nav__link">Data-quality segments</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../table/" class="md-nav__link">Data tables</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data manipulation</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../signal/" class="md-nav__link">Signal processing</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Visualising data</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../plot/" class="md-nav__link">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../cli/" class="md-nav__link">Command line plotting with GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Other utilities</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../detector/channel/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../time/" class="md-nav__link">Times and timestamps</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../astro/" class="md-nav__link">Astrophysical modelling</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../env/" class="md-nav__link">Configuring GWpy from the environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Examples</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../timeseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../signal/" class="md-nav__link">Signal processing examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../frequencyseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/examples/spectrogram/index.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../segments/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../table/" class="md-nav__link">Tabular data examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../miscellaneous/" class="md-nav__link">Miscellaneous examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Developer notes</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../dev/release/" class="md-nav__link">Publishing a release</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/examples/spectrogram/index.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="spectrogram-examples">
+<h1 id="examples-spectrogram-index--page-root"><a class="reference internal" href="#examples-spectrogram-index--page-root" title="gwpy.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a> examples<a class="headerlink" href="#examples-spectrogram-index--page-root" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="plot.html">1. Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="ratio.html">2. Plotting a normalised <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="spectrogram2.html">3. Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="coherence.html">4. Calculating the time-dependent coherence between two channels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rayleigh.html">5. Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of the Rayleigh statistic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot/">1. Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratio/">2. Plotting a normalised <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrogram2/">3. Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="coherence/">4. Calculating the time-dependent coherence between two channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rayleigh/">5. Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of the Rayleigh statistic</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../frequencyseries/inject/" title="7. Inject a known signal into a FrequencySeries"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> <span class="section-number">7. </span>Inject a known signal into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> </span>
+              </div>
+            </a>
+          
+          
+            <a href="plot/" title="1. Plotting a Spectrogram"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> <span class="section-number">1. </span>Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
     </div>
-      
-  </div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-    </p>
-    <p>
-        &copy; Copyright 2013,2017-2021 Cardiff University and 2013-2017 Lousiana State University.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
-    </p>
-  </div>
-</footer>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
   </body>
 </html>
