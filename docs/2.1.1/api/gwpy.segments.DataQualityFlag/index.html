@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="333">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>DataQualityFlag &#8212; GWpy 2.1.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="DataQualityDict" href="../gwpy.segments.DataQualityDict/" />
+    <link rel="prev" title="Generating data-quality flags by thresholding" href="../../segments/thresholding/" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=deep-orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#api/gwpy.segments.DataQualityFlag" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../" title="GWpy 2.1.1 documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../../_static/favicon.png" height="26"
+                   alt="GWpy 2.1.1 documentation logo">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">GWpy 2.1.1</span>
+          <span class="md-header-nav__topic"> DataQualityFlag </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search/" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../../versions.json",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../segments/" class="md-tabs__link">Data-quality segments</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../" title="GWpy 2.1.1 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../"
+       title="GWpy 2.1.1 documentation">GWpy 2.1.1</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../../overview/" class="md-nav__link">What is GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../install/" class="md-nav__link">How do I install GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../citing/" class="md-nav__link">Citing GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data structures</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/" class="md-nav__link">Time Series data</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrum/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrogram/" class="md-nav__link">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/statevector/" class="md-nav__link">State vectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../segments/" class="md-nav__link">Data-quality segments</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../table/" class="md-nav__link">Data tables</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data manipulation</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../signal/" class="md-nav__link">Signal processing</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Visualising data</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../plot/" class="md-nav__link">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../cli/" class="md-nav__link">Command line plotting with GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Other utilities</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../detector/channel/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../time/" class="md-nav__link">Times and timestamps</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../astro/" class="md-nav__link">Astrophysical modelling</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../env/" class="md-nav__link">Configuring GWpy from the environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Examples</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/timeseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/signal/" class="md-nav__link">Signal processing examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/frequencyseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/spectrogram/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/segments/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/table/" class="md-nav__link">Tabular data examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/miscellaneous/" class="md-nav__link">Miscellaneous examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Developer notes</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../dev/release/" class="md-nav__link">Publishing a release</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/api/gwpy.segments.DataQualityFlag.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="dataqualityflag">
+<h1 id="api-gwpy-segments-dataqualityflag--page-root">DataQualityFlag<a class="headerlink" href="#api-gwpy-segments-dataqualityflag--page-root" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gwpy.segments.</span></span><span class="sig-name descname"><span class="pre">DataQualityFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isgood</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L111-L1036"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A representation of a named set of segments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>The name of this flag.
+This should be of the form {ifo}:{tag}:{version}, e.g.
+‘H1:DMT-SCIENCE:1’. Use <a class="reference internal" href="#gwpy.segments.DataQualityFlag.label" title="gwpy.segments.DataQualityFlag.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a> for human-readable names.</p>
+</div></blockquote>
+<p><strong>active</strong> : <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>, optional</p>
+<blockquote>
+<div><p>A list of active segments for this flag</p>
+</div></blockquote>
+<p><strong>known</strong> : <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>, optional</p>
+<blockquote>
+<div><p>A list of known segments for this flag</p>
+</div></blockquote>
+<p><strong>label</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>Human-readable name for this flag, e.g. <code class="docutils literal notranslate"><span class="pre">'Science-mode'</span></code></p>
+</div></blockquote>
+<p><strong>category</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</p>
+<blockquote>
+<div><p>Veto category for this flag.</p>
+</div></blockquote>
+<p><strong>description</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>Human-readable description of why this flag was created.</p>
+</div></blockquote>
+<p><strong>isgood</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>Do active segments mean the IFO was in a good state?</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Attributes Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a></p></td>
+<td><p>The set of segments during which this flag was active.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.category" title="gwpy.segments.DataQualityFlag.category"><code class="xref py py-obj docutils literal notranslate"><span class="pre">category</span></code></a></p></td>
+<td><p>Veto category for this flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.description" title="gwpy.segments.DataQualityFlag.description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">description</span></code></a></p></td>
+<td><p>Description of why/how this flag was generated.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.extent" title="gwpy.segments.DataQualityFlag.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<td><p>The single GPS <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code> enclosing segment of this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.ifo" title="gwpy.segments.DataQualityFlag.ifo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ifo</span></code></a></p></td>
+<td><p>The interferometer associated with this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.isgood" title="gwpy.segments.DataQualityFlag.isgood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isgood</span></code></a></p></td>
+<td><p>Whether <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments mean the instrument was in a good state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a></p></td>
+<td><p>The set of segments during which this flag was known, and its state was well defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.label" title="gwpy.segments.DataQualityFlag.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a></p></td>
+<td><p>A human-readable label for this flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.livetime" title="gwpy.segments.DataQualityFlag.livetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">livetime</span></code></a></p></td>
+<td><p>Amount of time this flag was <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>The name associated with this flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padding</span></code></a></p></td>
+<td><p>[start, end) padding for this flag's active segments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.regular" title="gwpy.segments.DataQualityFlag.regular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regular</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments are a proper subset of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.tag" title="gwpy.segments.DataQualityFlag.tag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tag</span></code></a></p></td>
+<td><p>The tag (name) associated with this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.texname" title="gwpy.segments.DataQualityFlag.texname"><code class="xref py py-obj docutils literal notranslate"><span class="pre">texname</span></code></a></p></td>
+<td><p>Name of this flag in LaTeX printable format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.version" title="gwpy.segments.DataQualityFlag.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a></p></td>
+<td><p>The version number of this flag.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.coalesce" title="gwpy.segments.DataQualityFlag.coalesce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Coalesce the segments for this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.contract" title="gwpy.segments.DataQualityFlag.contract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contract</span></code></a>(x)</p></td>
+<td><p>Contract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> by <code class="docutils literal notranslate"><span class="pre">x</span></code> seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.copy" title="gwpy.segments.DataQualityFlag.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>Build an exact copy of this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.fetch_open_data" title="gwpy.segments.DataQualityFlag.fetch_open_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_open_data</span></code></a>(flag, start, end, **kwargs)</p></td>
+<td><p>Fetch Open Data timeline segments into a flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.from_veto_def" title="gwpy.segments.DataQualityFlag.from_veto_def"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_veto_def</span></code></a>(veto)</p></td>
+<td><p>Define a <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> from a <code class="xref py py-obj docutils literal notranslate"><span class="pre">VetoDef</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.pad" title="gwpy.segments.DataQualityFlag.pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pad</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Apply a padding to each segment in this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.plot" title="gwpy.segments.DataQualityFlag.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([figsize, xscale])</p></td>
+<td><p>Plot this flag on a segments projection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.populate" title="gwpy.segments.DataQualityFlag.populate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">populate</span></code></a>([source, segments, pad])</p></td>
+<td><p>Query the segment database for this flag's active segments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.protract" title="gwpy.segments.DataQualityFlag.protract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">protract</span></code></a>(x)</p></td>
+<td><p>Protract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> by <code class="docutils literal notranslate"><span class="pre">x</span></code> seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(flag, *args, **kwargs)</p></td>
+<td><p>Query for segments of a given flag</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_dqsegdb" title="gwpy.segments.DataQualityFlag.query_dqsegdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_dqsegdb</span></code></a>(flag, *args, **kwargs)</p></td>
+<td><p>Query the advanced LIGO DQSegDB for the given flag</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_segdb" title="gwpy.segments.DataQualityFlag.query_segdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_segdb</span></code></a>(flag, *args, **kwargs)</p></td>
+<td><p>Query the initial LIGO segment database for the given flag</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.read" title="gwpy.segments.DataQualityFlag.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source, *args, **kwargs)</p></td>
+<td><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.round" title="gwpy.segments.DataQualityFlag.round"><code class="xref py py-obj docutils literal notranslate"><span class="pre">round</span></code></a>([contract])</p></td>
+<td><p>Round this flag to integer segments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.write" title="gwpy.segments.DataQualityFlag.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<td><p>Write this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> to file</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.active">
+<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of segments during which this flag was
+active.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Veto category for this flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description of why/how this flag was generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.extent">
+<span class="sig-name descname"><span class="pre">extent</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The single GPS <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code> enclosing segment of this
+<a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.ifo">
+<span class="sig-name descname"><span class="pre">ifo</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.ifo" title="Permalink to this definition">¶</a></dt>
+<dd><p>The interferometer associated with this flag.</p>
+<p>This should be a single uppercase letter and a single number,
+e.g. <code class="docutils literal notranslate"><span class="pre">'H1'</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.isgood">
+<span class="sig-name descname"><span class="pre">isgood</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.isgood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments mean the instrument was in a good state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.known">
+<span class="sig-name descname"><span class="pre">known</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.known" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of segments during which this flag was
+known, and its state was well defined.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>A human-readable label for this flag.</p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">'Science-mode'</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.livetime">
+<span class="sig-name descname"><span class="pre">livetime</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.livetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amount of time this flag was <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name associated with this flag.</p>
+<p>This normally takes the form {ifo}:{tag}:{version}. If found,
+each component is stored separately the associated attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.padding">
+<span class="sig-name descname"><span class="pre">padding</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>[start, end) padding for this flag’s active segments.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.regular">
+<span class="sig-name descname"><span class="pre">regular</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.regular" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments are a proper subset of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tag (name) associated with this flag.</p>
+<p>This should take the form <code class="docutils literal notranslate"><span class="pre">'AAA-BBB_CCC_DDD'</span></code>, i.e. where
+each component is an uppercase acronym of alphanumeric
+characters only, e.g. <code class="docutils literal notranslate"><span class="pre">'DCH-IMC_BAD_CALIBRATION'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">'DMT-SCIENCE'</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.texname">
+<span class="sig-name descname"><span class="pre">texname</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.texname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of this flag in LaTeX printable format.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#gwpy.segments.DataQualityFlag.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The version number of this flag.</p>
+<p>Each flag in the segment database is stored with a version
+integer, with each successive version representing a more
+accurate dataset for its known segments than any previous.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.coalesce">
+<span class="sig-name descname"><span class="pre">coalesce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L827-L849"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.coalesce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coalesce the segments for this flag.</p>
+<p>This method does two things:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList.coalesce" title="gwpy.segments.SegmentList.coalesce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesces</span></code></a> the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and
+<a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists</p></li>
+<li><p>forces the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments to be a proper subset of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a>
+segments</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this operations is performed in-place.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+<blockquote>
+<div><p>a view of this flag, not a copy.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.contract">
+<span class="sig-name descname"><span class="pre">contract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L712-L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> by <code class="docutils literal notranslate"><span class="pre">x</span></code> seconds.</p>
+<p>This method adds <code class="docutils literal notranslate"><span class="pre">x</span></code> to each segment’s lower bound, and subtracts
+<code class="docutils literal notranslate"><span class="pre">x</span></code> from the upper bound.</p>
+<p>The <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal notranslate"><span class="pre">active</span></code></a> <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> is modified
+in place.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>number of seconds by which to contract each <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L882-L890"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build an exact copy of this flag.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>flag2</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>a copy of the original flag, but with a fresh memory address.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.fetch_open_data">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">fetch_open_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L521-L570"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.fetch_open_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch Open Data timeline segments into a flag.</p>
+<dl>
+<dt>flag<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>the name of the flag to query</p>
+</dd>
+<dt>start<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>the GPS start time (or parseable date string) to query</p>
+</dd>
+<dt>end<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>the GPS end time (or parseable date string) to query</p>
+</dd>
+<dt>verbose<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>show verbose download progress, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+</dd>
+<dt>timeout<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>timeout for download (seconds)</p>
+</dd>
+<dt>host<span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>URL of GWOSC host, default: <code class="docutils literal notranslate"><span class="pre">'https://gw-openscience.org'</span></code></p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>flag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>a new flag with <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segments filled from Open Data</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">DataQualityFlag</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">DataQualityFlag</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">'H1_DATA'</span><span class="p">,</span> <span class="s1">'Jan 1 2010'</span><span class="p">,</span>
+<span class="gp">... </span>                                      <span class="s1">'Jan 2 2010'</span><span class="p">))</span>
+<span class="go">&lt;DataQualityFlag('H1:DATA',</span>
+<span class="go">                 known=[[946339215 ... 946425615)],</span>
+<span class="go">                 active=[[946340946 ... 946351800)</span>
+<span class="go">                         [946356479 ... 946360620)</span>
+<span class="go">                         [946362652 ... 946369150)</span>
+<span class="go">                         [946372854 ... 946382630)</span>
+<span class="go">                         [946395595 ... 946396751)</span>
+<span class="go">                         [946400173 ... 946404977)</span>
+<span class="go">                         [946412312 ... 946413577)</span>
+<span class="go">                         [946415770 ... 946422986)],</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.from_veto_def">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_veto_def</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">veto</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L639-L656"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.from_veto_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define a <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> from a <code class="xref py py-obj docutils literal notranslate"><span class="pre">VetoDef</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>veto</strong> : <code class="xref py py-class docutils literal notranslate"><span class="pre">VetoDef</span></code></p>
+<blockquote>
+<div><p>veto definition to convert from</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.pad">
+<span class="sig-name descname"><span class="pre">pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L747-L793"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a padding to each segment in this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<p>This method either takes no arguments, in which case the value of
+the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding"><code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code></a> attribute will be used,
+or two values representing the padding for the start and end of
+each segment.</p>
+<p>For both the <code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code> paddings, a positive value means
+pad forward in time, so that a positive <code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code> pad or negative
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code> padding will contract a segment at one or both ends,
+and vice-versa.</p>
+<p>This method will apply the same padding to both the
+<a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> lists,
+but will not <a class="reference internal" href="#gwpy.segments.DataQualityFlag.coalesce" title="gwpy.segments.DataQualityFlag.coalesce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">coalesce()</span></code></a> the result.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>start</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>padding to apply to the start of the each segment</p>
+</div></blockquote>
+<p><strong>end</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>padding to apply to the end of each segment</p>
+</div></blockquote>
+<p><strong>inplace</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+<blockquote>
+<div><p>modify this object in-place, default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, i.e. return
+a copy of the original object with padded segments</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>paddedflag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>a view of the modified flag</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(12,</span> <span class="pre">4)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto-gps'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L892-L928"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot this flag on a segments projection.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong></p>
+<blockquote>
+<div><p>all keyword arguments are passed to the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Plot</span></code> constructor.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>figure</strong> : <a class="reference external" href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.4.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Figure</span></code></a></p>
+<blockquote>
+<div><p>the newly created figure, with populated Axes.</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="(in Matplotlib v3.4.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.figure</span></code></a></dt><dd><p>for documentation of keyword arguments used to create the figure</p>
+</dd>
+<dt><a class="reference external" href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.add_subplot" title="(in Matplotlib v3.4.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.add_subplot</span></code></a></dt><dd><p>for documentation of keyword arguments used to create the axes</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.plot.SegmentAxes.plot_segmentlist</span></code></dt><dd><p>for documentation of keyword arguments used in rendering the data</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.populate">
+<span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'http://segments.ldas.cit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L667-L710"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.populate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the segment database for this flag’s active segments.</p>
+<p>This method assumes all of the metadata for each flag have been
+filled. Minimally, the following attributes must be filled</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>The name associated with this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a></p></td>
+<td><p>The set of segments during which this flag was known, and its state was well defined.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Segments will be fetched from the database, with any
+<a class="reference internal" href="#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding"><code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code></a> added on-the-fly.</p>
+<p>This <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> will be modified in-place.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>source of segments for this flag. This must be
+either a URL for a segment database or a path to a file on disk.</p>
+</div></blockquote>
+<p><strong>segments</strong> : <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>, optional</p>
+<blockquote>
+<div><p>a list of segments during which to query, if not given,
+existing known segments for this flag will be used.</p>
+</div></blockquote>
+<p><strong>pad</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p>
+<blockquote>
+<div><p>apply the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padding</span></code></a> associated with this
+flag, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong></p>
+<blockquote>
+<div><p>any other keyword arguments to be passed to
+<a class="reference internal" href="#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.query()</span></code></a> or <a class="reference internal" href="#gwpy.segments.DataQualityFlag.read" title="gwpy.segments.DataQualityFlag.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.read()</span></code></a>.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>a reference to this flag</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.protract">
+<span class="sig-name descname"><span class="pre">protract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L729-L745"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.protract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protract each of the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> by <code class="docutils literal notranslate"><span class="pre">x</span></code> seconds.</p>
+<p>This method subtracts <code class="docutils literal notranslate"><span class="pre">x</span></code> from each segment’s lower bound,
+and adds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the upper bound, while maintaining that each
+<a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a> stays within the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> bounds.</p>
+<p>The <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-attr docutils literal notranslate"><span class="pre">active</span></code></a> <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> is modified
+in place.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>number of seconds by which to protact each <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.query">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L364-L402"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for segments of a given flag</p>
+<p>This method intelligently selects the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_segdb" title="gwpy.segments.DataQualityFlag.query_segdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_segdb</span></code></a>
+or the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_dqsegdb" title="gwpy.segments.DataQualityFlag.query_dqsegdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_dqsegdb</span></code></a> methods based on the
+<code class="docutils literal notranslate"><span class="pre">url</span></code> kwarg given.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>The name of the flag for which to query</p>
+</div></blockquote>
+<p><strong>*args</strong></p>
+<blockquote>
+<div><p>Either, two <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>-like numbers indicating the
+GPS [start, stop) interval, or a <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+defining a number of summary segments</p>
+</div></blockquote>
+<p><strong>url</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>URL of the segment database, defaults to
+<code class="docutils literal notranslate"><span class="pre">$DEFAULT_SEGMENT_SERVER</span></code> environment variable, or
+<code class="docutils literal notranslate"><span class="pre">'https://segments.ligo.org'</span></code></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>flag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>A new <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>, with the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> lists
+filled appropriately.</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_segdb" title="gwpy.segments.DataQualityFlag.query_segdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag.query_segdb</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#gwpy.segments.DataQualityFlag.query_dqsegdb" title="gwpy.segments.DataQualityFlag.query_dqsegdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag.query_dqsegdb</span></code></a></dt><dd><p>for details on the actual query engine, and documentation of other keyword arguments appropriate for each query</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.query_dqsegdb">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">query_dqsegdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L453-L519"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.query_dqsegdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the advanced LIGO DQSegDB for the given flag</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>The name of the flag for which to query</p>
+</div></blockquote>
+<p><strong>*args</strong></p>
+<blockquote>
+<div><p>Either, two <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>-like numbers indicating the
+GPS [start, stop) interval, or a <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+defining a number of summary segments</p>
+</div></blockquote>
+<p><strong>url</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>URL of the segment database, defaults to
+<code class="docutils literal notranslate"><span class="pre">$DEFAULT_SEGMENT_SERVER</span></code> environment variable, or
+<code class="docutils literal notranslate"><span class="pre">'https://segments.ligo.org'</span></code></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>flag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>A new <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>, with the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> lists
+filled appropriately.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.query_segdb">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">query_segdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L404-L451"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.query_segdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the initial LIGO segment database for the given flag</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>The name of the flag for which to query</p>
+</div></blockquote>
+<p><strong>*args</strong></p>
+<blockquote>
+<div><p>Either, two <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>-like numbers indicating the
+GPS [start, stop) interval, or a <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+defining a number of summary segments</p>
+</div></blockquote>
+<p><strong>url</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>URL of the segment database, defaults to
+<code class="docutils literal notranslate"><span class="pre">$DEFAULT_SEGMENT_SERVER</span></code> environment variable, or
+<code class="docutils literal notranslate"><span class="pre">'https://segments.ligo.org'</span></code></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>flag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>A new <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>, with the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> lists
+filled appropriately.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.read">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L572-L637"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<blockquote>
+<div><p>path of file to read</p>
+</div></blockquote>
+<p><strong>name</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>name of flag to read from file, otherwise read all segments.</p>
+</div></blockquote>
+<p><strong>format</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</p>
+<blockquote>
+<div><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</div></blockquote>
+<p><strong>coltype</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+<blockquote>
+<div><p>datatype to force for segment times, only valid for
+<code class="docutils literal notranslate"><span class="pre">format='segwizard'</span></code>.</p>
+</div></blockquote>
+<p><strong>strict</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p>
+<blockquote>
+<div><p>require segment start and stop times match printed duration,
+only valid for <code class="docutils literal notranslate"><span class="pre">format='segwizard'</span></code>.</p>
+</div></blockquote>
+<p><strong>coalesce</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> coalesce the all segment lists before returning,
+otherwise return exactly as contained in file(s).</p>
+</div></blockquote>
+<p><strong>nproc</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional, default: 1</p>
+<blockquote>
+<div><p>number of CPUs to use for parallel reading of multiple files</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p>
+<blockquote>
+<div><p>print a progress bar showing read status</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dqflag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>formatted <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> containing the active and known
+segments read from file.</p>
+</div></blockquote>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>IndexError</p>
+<blockquote>
+<div><p>if <code class="docutils literal notranslate"><span class="pre">source</span></code> is an empty list</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table>
+<colgroup>
+<col style="width: 21%"/>
+<col style="width: 14%"/>
+<col style="width: 18%"/>
+<col style="width: 46%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>json</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>ligolw</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.round">
+<span class="sig-name descname"><span class="pre">round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contract</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L795-L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round this flag to integer segments.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</p>
+<blockquote>
+<div><p>if <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> (default) expand each segment to the containing
+integer boundaries, otherwise contract each segment to the
+contained boundaries</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>roundedflag</strong> : <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p>
+<blockquote>
+<div><p>A copy of the original flag with the <a class="reference internal" href="#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> and <a class="reference internal" href="#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known"><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> segments
+padded out to integer boundaries.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.DataQualityFlag.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v2.1.1/gwpy/segments/flag.py#L660-L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityFlag.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this <a class="reference internal" href="#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> to file</p>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table>
+<colgroup>
+<col style="width: 21%"/>
+<col style="width: 14%"/>
+<col style="width: 18%"/>
+<col style="width: 46%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>json</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>ligolw</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+</dd></dl>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../../segments/thresholding/" title="Generating data-quality flags by thresholding"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Generating data-quality flags by thresholding </span>
+              </div>
+            </a>
+          
+          
+            <a href="../gwpy.segments.DataQualityDict/" title="DataQualityDict"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> DataQualityDict </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
