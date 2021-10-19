@@ -516,7 +516,7 @@ amount.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extent_all" title="gwpy.segments.SegmentListDict.extent_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent_all</span></code></a>()</p></td>
 <td><p>Return the result of running .extent() on the union of all lists in the dictionary.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extract_common" title="gwpy.segments.SegmentListDict.extract_common"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_common</span></code></a>(keys)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extract_common" title="gwpy.segments.SegmentListDict.extract_common"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_common</span></code></a>(keys[, n])</p></td>
 <td><p>Return a new segmentlistdict containing only those segmentlists associated with the keys in keys, with each set to their mutual intersection.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.find" title="gwpy.segments.SegmentListDict.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(item)</p></td>
@@ -575,6 +575,9 @@ amount.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.values" title="gwpy.segments.SegmentListDict.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.vote" title="gwpy.segments.SegmentListDict.vote"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vote</span></code></a>(keys, n)</p></td>
+<td><p>Return the intervals when n or more of the segment lists identified by keys are on.</p></td>
 </tr>
 </tbody>
 </table>
@@ -669,11 +672,16 @@ lists in the dictionary.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="gwpy.segments.SegmentListDict.extract_common">
-<span class="sig-name descname"><span class="pre">extract_common</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extract_common" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">extract_common</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extract_common" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new segmentlistdict containing only those
 segmentlists associated with the keys in keys, with each
 set to their mutual intersection.  The offsets are
-preserved.</p>
+preserved.  If n is not None then instead of their mutual
+intersection, compute the intervals in which n or more of
+the segmentlists named in keys intersect.  n = len(keys) is
+equivalent to n = None.  If keys contains repeated entries,
+those segmentlists are still only considered once for the
+purpose of counting n.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="gwpy.segments.SegmentListDict.find">
@@ -705,6 +713,8 @@ is raised.</p>
 <span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.intersection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the intersection of the segmentlists associated with
 the keys in keys.</p>
+<p>See also .vote().  This method is equivalent to .vote(keys,
+len(keys)) with keys uniquified.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="gwpy.segments.SegmentListDict.intersects">
@@ -820,6 +830,14 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
 <dt class="sig sig-object py" id="gwpy.segments.SegmentListDict.values">
 <span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">values</span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gwpy.segments.SegmentListDict.vote">
+<span class="sig-name descname"><span class="pre">vote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.vote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intervals when n or more of the segment lists
+identified by keys are on.  Each segment list casts as many
+votes as the number of times it appears in keys.</p>
+<p>See also .intersection().</p>
+</dd></dl>
 </dd></dl>
 </section>
 
