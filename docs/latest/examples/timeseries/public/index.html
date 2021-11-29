@@ -47,14 +47,14 @@
   
   
   
-    <title>1. Plotting public LIGO data &#8212; GWpy 2.1.1.dev41+g473689b8 documentation</title>
+    <title>1. Accessing and visualising public GW detector data &#8212; GWpy 2.1.1.dev62+gd55c8e6e documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/gwpy-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -90,11 +90,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../../" title="GWpy 2.1.1.dev41+g473689b8 documentation"
+        <a href="../../../" title="GWpy 2.1.1.dev62+gd55c8e6e documentation"
            class="md-header-nav__button md-logo">
           
               <img src="../../../_static/favicon.png" height="26"
-                   alt="GWpy 2.1.1.dev41+g473689b8 documentation logo">
+                   alt="GWpy 2.1.1.dev62+gd55c8e6e documentation logo">
           
         </a>
       </div>
@@ -104,7 +104,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">GWpy dev</span>
-          <span class="md-header-nav__topic"> 1. Plotting public LIGO data </span>
+          <span class="md-header-nav__topic"> 1. Accessing and visualising public GW detector data </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../../" title="GWpy 2.1.1.dev41+g473689b8 documentation" class="md-nav__button md-logo">
+    <a href="../../../" title="GWpy 2.1.1.dev62+gd55c8e6e documentation" class="md-nav__button md-logo">
       
         <img src="../../../_static/favicon.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../../"
-       title="GWpy 2.1.1.dev41+g473689b8 documentation">GWpy dev</a>
+       title="GWpy 2.1.1.dev62+gd55c8e6e documentation">GWpy dev</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
@@ -441,35 +441,50 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <section id="plotting-public-ligo-data">
-<span id="gwpy-example-timeseries-public"></span><h1 id="examples-timeseries-public--page-root"><span class="section-number">1. </span>Plotting public LIGO data<a class="headerlink" href="#examples-timeseries-public--page-root" title="Permalink to this headline">¶</a></h1>
-<p>I would like to study the gravitational wave strain time-series around the
-time of an interesting simulated signal during the last science run (S6).</p>
-<p>These data are public, so we can load them directly from the web.</p>
-<p>The <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object has a <a class="reference external" href="https://docs.python.org/3/library/functions.html#classmethod" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classmethod</span></code></a> dedicated to fetching open-access
-data hosted by the LIGO Open Science Center, so we can just import that
-object</p>
+  <section id="accessing-and-visualising-public-gw-detector-data">
+<span id="gwpy-example-timeseries-public"></span><h1 id="examples-timeseries-public--page-root"><span class="section-number">1. </span>Accessing and visualising public GW detector data<a class="headerlink" href="#examples-timeseries-public--page-root" title="Permalink to this headline">¶</a></h1>
+<p>Data from the current generation gravitational wave detectors are published
+by The Gravitational-Wave Open Science Centre (GWOSC) and freely available to the public.
+In this example we demonstrate how to identify times of a published
+GW detection event, and to download and visualise detector data.</p>
+<p>Firstly, we can use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwosc</span></code> Python package to query for the
+time of the first gravitational-wave detection GW150914:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwosc.datasets</span> <span class="kn">import</span> <span class="n">event_gps</span>
+<span class="n">gps</span> <span class="o">=</span> <span class="n">event_gps</span><span class="p">(</span><span class="s2">"GW150914"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GWpy’s <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> class provides an interface to the public GWOSC
+data in the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fetch_open_data()</span></code></a> method; to use it we
+need to first import the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
 </pre></div>
 </div>
-<p>then call the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_open_data</span></code></a> method, passing it the prefix
-for the interferometer we want (‘L1’), and the GPS start and stop times of
-our query:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">'L1'</span><span class="p">,</span> <span class="mi">968654552</span><span class="p">,</span> <span class="mi">968654562</span><span class="p">)</span>
+<p>then call the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fetch_open_data()</span></code></a> method, passing it the
+prefix for the interferometer we want (<code class="xref py py-obj docutils literal notranslate"><span class="pre">'L1'</span></code> here for LIGO-Livingston),
+and the GPS start and stop times of our query (based around the GPS time
+for GW150914):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s1">'L1'</span><span class="p">,</span> <span class="n">gps</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">gps</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and then we can make a plot:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">'LIGO Livingston Observatory data for HW100916'</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s1">'Strain amplitude'</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"LIGO Livingston Observatory data for GW150914"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Strain amplitude"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"gwpy:ligo-livingston"</span><span class="p">,</span>
+    <span class="n">epoch</span><span class="o">=</span><span class="n">gps</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference external" href="../../examples/timeseries/public-3.png">png</a>)</p>
+<p>(<a class="reference external" href="../../examples/timeseries/public-4.png">png</a>)</p>
 <figure class="align-default">
-<img alt="../../../_images/public-3.png" class="plot-directive" src="../../../_images/public-3.png"/>
+<img alt="../../../_images/public-4.png" class="plot-directive" src="../../../_images/public-4.png"/>
 </figure>
+<p>We can’t see anything that looks like a gravitational wave signal in these
+data, the amplitude is dominated by low-frequency detector noise.
+Further filtering is required to be able to identify the GW150914 event
+here, see <a class="reference internal" href="../../signal/gw150914/#gwpy-example-signal-gw150914"><span class="std std-ref">Filtering a TimeSeries to detect gravitational waves</span></a> for a more in-depth example of
+extracting signals from noise.</p>
 </section>
 
 
@@ -519,7 +534,7 @@ our query:</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
