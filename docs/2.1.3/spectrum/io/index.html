@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="333">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Reading and writing frequency-domain data &#8212; GWpy 2.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Filtering frequency-domain data" href="../filtering/" />
+    <link rel="prev" title="The FrequencySeries class" href="../" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=deep-orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#spectrum/io" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../" title="GWpy 2.1.3 documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../../_static/favicon.png" height="26"
+                   alt="GWpy 2.1.3 documentation logo">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">GWpy 2.1.3</span>
+          <span class="md-header-nav__topic"> Reading and writing frequency-domain data </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search/" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../../versions.json",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../" class="md-tabs__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../" title="GWpy 2.1.3 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../"
+       title="GWpy 2.1.3 documentation">GWpy 2.1.3</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../../overview/" class="md-nav__link">What is GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../install/" class="md-nav__link">How do I install GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../citing/" class="md-nav__link">Citing GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data structures</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/" class="md-nav__link">Time Series data</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrogram/" class="md-nav__link">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../timeseries/statevector/" class="md-nav__link">State vectors</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../segments/" class="md-nav__link">Data-quality segments</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../table/" class="md-nav__link">Data tables</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data manipulation</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../signal/" class="md-nav__link">Signal processing</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Visualising data</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../plot/" class="md-nav__link">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../cli/" class="md-nav__link">Command line plotting with GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Other utilities</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../detector/channel/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../time/" class="md-nav__link">Times and timestamps</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../astro/" class="md-nav__link">Astrophysical modelling</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../env/" class="md-nav__link">Configuring GWpy from the environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Examples</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/timeseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/signal/" class="md-nav__link">Signal processing examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/frequencyseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/spectrogram/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/segments/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/table/" class="md-nav__link">Tabular data examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/miscellaneous/" class="md-nav__link">Miscellaneous examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Developer notes</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../dev/release/" class="md-nav__link">Publishing a release</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#spectrum-io--page-root" class="md-nav__link">Reading and writing frequency-domain data</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#ascii" class="md-nav__link">ASCII</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#reading" class="md-nav__link">Reading</a>
+        </li>
+        <li class="md-nav__item"><a href="#writing" class="md-nav__link">Writing</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#hdf5" class="md-nav__link">HDF5</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Reading</a>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">Writing</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#ligo-lw-xml" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Reading</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">Writing</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/spectrum/io.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="reading-and-writing-frequency-domain-data">
+<span id="gwpy-frequencyseries-io"></span><h1 id="spectrum-io--page-root">Reading and writing frequency-domain data<a class="headerlink" href="#spectrum-io--page-root" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> object includes <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries.read" title="gwpy.frequencyseries.FrequencySeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries.write" title="gwpy.frequencyseries.FrequencySeries.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods to enable reading from and writing to files respectively.
+For example, to read from an ASCII file containing frequency and amplitude columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'my-data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> keyword argument can be used to manually identify the input file-format, but is not required where the file extension is sufficiently well understood.</p>
+<p>The <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries.read" title="gwpy.frequencyseries.FrequencySeries.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries.write" title="gwpy.frequencyseries.FrequencySeries.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods take different arguments and keywords based on the input/output file format, see the following sections for details on reading/writing for each of the built-in formats.
+Those formats are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#gwpy-frequencyseries-io-ascii"><span class="std std-ref">ASCII</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-frequencyseries-io-hdf5"><span class="std std-ref">HDF5</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-frequencyseries-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a></p></li>
+</ul>
+<section id="ascii">
+<span id="gwpy-frequencyseries-io-ascii"></span><h2 id="ascii">ASCII<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h2>
+<p>GWpy supports writing <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> data to ASCII in a two-column <code class="docutils literal notranslate"><span class="pre">frequency</span></code> and <code class="docutils literal notranslate"><span class="pre">amplitude</span></code> format.</p>
+<section id="reading">
+<h3 id="reading">Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h3>
+<p>To read a <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> from ASCII:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.21)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a> for keyword argument options.</p>
+</section>
+<section id="writing">
+<h3 id="writing">Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<p>To write a <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> to ASCII:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'data.txt'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.savetxt.html#numpy.savetxt" title="(in NumPy v1.21)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code></a> for keyword argument options.</p>
+</section>
+</section>
+<section id="hdf5">
+<span id="gwpy-frequencyseries-io-hdf5"></span><h2 id="hdf5">HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h2>
+<p>GWpy allows storing data in HDF5 format files, using a custom specification for storage of metadata.</p>
+<section id="id1">
+<h3 id="id1">Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To read <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> data held in HDF5 files pass the filename (or filenames) or the source, and the path of the data inside the HDF5 file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data.h5'</span><span class="p">,</span> <span class="s1">'psd'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3 id="id2">Writing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Data held in a <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> can be written to an HDF5 file via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.hdf'</span><span class="p">,</span> <span class="s1">'psd'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the target file already exists, an <code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code> will be raised, use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>To add a <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> to an existing file, use <code class="docutils literal notranslate"><span class="pre">append=True</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.h5'</span><span class="p">,</span> <span class="s1">'psd2'</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To replace an dataset in an existing file, while preserving other data, use <em>both</em> <code class="docutils literal notranslate"><span class="pre">append=True</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'output.h5'</span><span class="p">,</span> <span class="s1">'psd'</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ligo-lw-xml">
+<span id="gwpy-frequencyseries-io-ligolw"></span><h2 id="ligo-lw-xml"><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Permalink to this headline">¶</a></h2>
+<p><strong>Additional dependencies:</strong> <code class="xref py py-mod docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></p>
+<p>Alongside storing <a class="reference internal" href="../../table/io/#gwpy-table-io-ligolw"><span class="std std-ref">tabular data</span></a>, the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code>
+XML format allows storing array data.
+These arrays are stored in <code class="docutils literal notranslate"><span class="pre">&lt;LIGO_LW&gt;</span></code> elements, which describe the metadata
+for an array (name, GPS epoch, instrument, etc.), which contain an
+<code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> element that contains the actual data values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on the format and the parsing library,
+see <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.array</span></code>.</p>
+</div>
+<section id="id3">
+<h3 id="id3">Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>To read a <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'data.xml'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the file contains multiple <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> elements,
+you will have to provide additional keyword arguments to select which
+element to use:</p>
+<table id="frequencyseries-read-ligolw-kwargs">
+<caption><span class="caption-text">Keyword arguments for <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries.read" title="gwpy.frequencyseries.FrequencySeries.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries.read</span></code></a> with <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format</span><a class="headerlink" href="#frequencyseries-read-ligolw-kwargs" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 23%"/>
+<col style="width: 9%"/>
+<col style="width: 12%"/>
+<col style="width: 56%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code> element to read</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">epoch</span></code></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></td>
+<td><p>GPS value of the <code class="docutils literal notranslate"><span class="pre">&lt;Time&gt;</span></code> element that
+is the <em>sibling</em> of the desired
+<code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;Param</span> <span class="pre">Name&gt;</span></code></p></td>
+<td></td>
+<td></td>
+<td><p>Other kwargs can be given as the <code class="docutils literal notranslate"><span class="pre">Name</span></code>
+of a <code class="docutils literal notranslate"><span class="pre">&lt;Param&gt;</span></code> element that is the
+<em>sibling</em> of the desired <code class="docutils literal notranslate"><span class="pre">&lt;Array&gt;</span></code>,
+and its value</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"psd.xml.gz"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"H1"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"psd.xml.gz"</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="mi">1241492407</span><span class="p">,</span> <span class="n">f0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">instrument</span><span class="o">=</span><span class="s2">"H1"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3 id="id4">Writing<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Writing <a class="reference internal" href="../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> to <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML files is not supported, but a
+contribution that implements this would be welcomed.</p>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../" title="The FrequencySeries class"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class </span>
+              </div>
+            </a>
+          
+          
+            <a href="../filtering/" title="Filtering frequency-domain data"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Filtering frequency-domain data </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
