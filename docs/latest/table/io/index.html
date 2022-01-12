@@ -47,7 +47,7 @@
   
   
   
-    <title>Reading and writing Table and EventTable objects &#8212; GWpy 2.1.1.dev85+g82becd78 documentation</title>
+    <title>Reading and writing Table and EventTable objects &#8212; GWpy 2.1.1.dev91+g153bc993 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -90,11 +90,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../" title="GWpy 2.1.1.dev85+g82becd78 documentation"
+        <a href="../../" title="GWpy 2.1.1.dev91+g153bc993 documentation"
            class="md-header-nav__button md-logo">
           
               <img src="../../_static/favicon.png" height="26"
-                   alt="GWpy 2.1.1.dev85+g82becd78 documentation logo">
+                   alt="GWpy 2.1.1.dev91+g153bc993 documentation logo">
           
         </a>
       </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../" title="GWpy 2.1.1.dev85+g82becd78 documentation" class="md-nav__button md-logo">
+    <a href="../../" title="GWpy 2.1.1.dev91+g153bc993 documentation" class="md-nav__button md-logo">
       
         <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../../"
-       title="GWpy 2.1.1.dev85+g82becd78 documentation">GWpy dev</a>
+       title="GWpy 2.1.1.dev91+g153bc993 documentation">GWpy dev</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
@@ -438,6 +438,14 @@
         </li></ul>
             </nav>
         </li>
+        <li class="md-nav__item"><a href="#accessing-gravityspy-events" class="md-nav__link">Accessing GravitySpy events</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#full-database-queries" class="md-nav__link">Full database queries</a>
+        </li>
+        <li class="md-nav__item"><a href="#similarity-searches" class="md-nav__link">Similarity searches</a>
+        </li></ul>
+            </nav>
+        </li>
         <li class="md-nav__item"><a href="#built-in-file-formats" class="md-nav__link">Built-in file formats</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#multi-processed-file-reading" class="md-nav__link">Multi-processed file reading</a>
@@ -498,7 +506,7 @@ the <code class="docutils literal notranslate"><span class="pre">format</span></
 file-format.</p>
 <p>The <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods take
 different arguments and keywords based on the input/output file format,
-see <a class="reference internal" href="#gwpy-table-io-formats"><span class="std std-ref">Built-in file formats</span></a> for details on reading/writing for
+see <a class="reference internal" href="#gwpy-table-io-formats"><span class="std std-ref">Accessing GravitySpy events</span></a> for details on reading/writing for
 each of the built-in formats.</p>
 <section id="accessing-open-data-event-catalogues">
 <span id="gwpy-table-gwosc"></span><h2 id="accessing-open-data-event-catalogues">Accessing Open Data event catalogues<a class="headerlink" href="#accessing-open-data-event-catalogues" title="Permalink to this headline">¶</a></h2>
@@ -513,7 +521,7 @@ to download data for the relevant catalogue.</p>
 <p>The simplest query just requires the catalogue name, and will return all parameters
 for all events in the catalogue:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data">
-<div class="code-block-caption"><span class="caption-text">Fetching the GWTC-2 catalogue using <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.fetch_open_data()</span></code></a> (output correct as of Jan 08, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Fetching the GWTC-2 catalogue using <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.fetch_open_data()</span></code></a> (output correct as of Jan 12, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">EventTable</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">"GWTC-2"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
@@ -564,7 +572,7 @@ for all events in the catalogue:</p>
 </div>
 <p>The full list of available columns can be queried as follows:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-info">
-<div class="code-block-caption"><span class="caption-text">Printing the columns of an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> (output correct as of Jan 08, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-info" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Printing the columns of an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> (output correct as of Jan 12, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-info" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
 <span class="go">&lt;EventTable masked=True length=39&gt;</span>
 <span class="go">              name                dtype    unit            description</span>
@@ -585,7 +593,7 @@ for all events in the catalogue:</p>
 and mathematical selection filters can be applied on-the-fly
 using the <code class="docutils literal notranslate"><span class="pre">selection</span></code> keyword:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-filtered">
-<div class="code-block-caption"><span class="caption-text">Downloading a sub-set of a catalogue from GWOSC (output correct as of Jan 08, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-filtered" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Downloading a sub-set of a catalogue from GWOSC (output correct as of Jan 12, 2022)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-filtered" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">"GWTC-2"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">selection</span><span class="o">=</span><span class="s2">"mass_1_source &lt; 4"</span><span class="p">,</span>
@@ -605,8 +613,55 @@ using the <code class="docutils literal notranslate"><span class="pre">selection
 </div>
 </section>
 </section>
+<section id="accessing-gravityspy-events">
+<span id="gwpy-table-io-formats"></span><h2 id="accessing-gravityspy-events">Accessing GravitySpy events<a class="headerlink" href="#accessing-gravityspy-events" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://gravityspy.org">Gravity Spy</a> is a citizen-science project that enables the public to
+characterize and classify glitches in IGWN detector data.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">GravitySpyTable</span></code> subclass of <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a> provides
+methods to query GravitySpy for various tables of classified events.</p>
+<section id="full-database-queries">
+<h3 id="full-database-queries">Full database queries<a class="headerlink" href="#full-database-queries" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">GravitySpyTable.fetch()</span></code> method (inherited directly from
+<a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch" title="gwpy.table.EventTable.fetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a>) enables querying the Gravity Spy database
+directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">GravitySpyTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blips</span> <span class="o">=</span> <span class="n">GravitySpyTable</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">"gravityspy"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"glitches"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">selection</span><span class="o">=</span><span class="s2">"Label=Blip"</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Login credentials are required to support this query.
+IGWN members with LIGO.ORG credentials can find the required
+credentials at <a class="reference external" href="https://secrets.ligo.org/secrets/144/">https://secrets.ligo.org/secrets/144/</a>.</p>
+</div>
+</section>
+<section id="similarity-searches">
+<h3 id="similarity-searches">Similarity searches<a class="headerlink" href="#similarity-searches" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">GravitySpyTable.search()</span></code> method enables performing a
+<a class="reference external" href="https://gravityspytools.ciera.northwestern.edu/search/">Similarity Search</a>
+given the ID of a Gravity Spy event:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">GravitySpyTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">similar</span> <span class="o">=</span> <span class="n">GravitySpyTable</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"8FHTgA8MEu"</span><span class="p">,</span> <span class="n">howmany</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">similar</span><span class="p">)</span>
+<span class="go">ifo  peak_frequency  links_subjects ml_label searchedID ...</span>
+<span class="go">--- ---------------- -------------- -------- ---------- ...</span>
+<span class="go"> H1 84.4759674072266      5740011.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1   128.8896484375     20892636.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 73.4049224853516     20892632.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 75.5168914794922     20892526.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 144.991333007812      8644242.0 Scratchy 8FHTgA8MEu ...</span>
+</pre></div>
+</div>
+<p>This has download 5 similarly <em>Scratchy</em> glitches from the LIGO-Hanford
+(<code class="xref py py-obj docutils literal notranslate"><span class="pre">'H1'</span></code>) and LIGO-Livingston (<code class="xref py py-obj docutils literal notranslate"><span class="pre">'L1'</span></code>) observatories.</p>
+</section>
+</section>
 <section id="built-in-file-formats">
-<span id="gwpy-table-io-formats"></span><h2 id="built-in-file-formats">Built-in file formats<a class="headerlink" href="#built-in-file-formats" title="Permalink to this headline">¶</a></h2>
+<h2 id="built-in-file-formats">Built-in file formats<a class="headerlink" href="#built-in-file-formats" title="Permalink to this headline">¶</a></h2>
 <p>GWpy extends the Astropy functionality with readers for the following file
 formats:</p>
 <ul class="simple">
