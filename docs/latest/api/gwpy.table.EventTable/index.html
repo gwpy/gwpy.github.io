@@ -53,8 +53,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -1778,10 +1778,9 @@ row (e.g. <code class="docutils literal notranslate"><span class="pre">row['col0
 <dd><p>Keep only the columns specified (remove the others).</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>names</strong> : list</p>
+<dd class="field-odd"><p><strong>names</strong> : str or iterable of str</p>
 <blockquote>
-<div><p>A list containing the names of the columns to keep. All other
-columns will be removed.</p>
+<div><p>The columns to keep. All other columns will be removed.</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1797,8 +1796,7 @@ columns will be removed.</p>
 <span class="go">  3 0.3   z</span>
 </pre></div>
 </div>
-<p>Specifying only a single column name keeps only this column.
-Keep only column ‘a’ of the table:</p>
+<p>Keep only column ‘a’ of the table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">keep_columns</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="go"> a</span>
@@ -1808,8 +1806,7 @@ Keep only column ‘a’ of the table:</p>
 <span class="go">  3</span>
 </pre></div>
 </div>
-<p>Specifying a list of column names is keeps is also possible.
-Keep columns ‘a’ and ‘c’ of the table:</p>
+<p>Keep columns ‘a’ and ‘c’ of the table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],[</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="s1">'z'</span><span class="p">]],</span>
 <span class="gp">... </span>          <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">keep_columns</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">])</span>
@@ -2571,9 +2568,9 @@ name (e.g. <code class="docutils literal notranslate"><span class="pre">ascii.aa
 <dd><p>Remove several columns from the table.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>names</strong> : list</p>
+<dd class="field-odd"><p><strong>names</strong> : str or iterable of str</p>
 <blockquote>
-<div><p>A list containing the names of the columns to remove</p>
+<div><p>Names of the columns to remove</p>
 </div></blockquote>
 </dd>
 </dl>
