@@ -124,7 +124,7 @@ To read data from a GWF file, pass the input file path (or paths) and the name o
 
 .. note::
 
-   The ``HLV-HW100916-968654552-1.gwf`` file is included with the GWpy source under `/gwpy/testing/data/ <https://github.com/gwpy/gwpy/tree/master/gwpy/testing/data>`_.
+   The ``HLV-HW100916-968654552-1.gwf`` file is included with the GWpy source under `/gwpy/testing/data/ <https://github.com/gwpy/gwpy/tree/main/gwpy/testing/data>`_.
 
 Reading a `StateVector` uses the same syntax:
 
@@ -181,15 +181,6 @@ To read multiple channels from one or more GWF files (rather than opening and cl
 .. code-block:: python
 
    >>> data = TimeSeriesDict.read('HLV-HW100916-968654552-1.gwf', ['H1:LDAS-STRAIN', 'L1:LDAS-STRAIN'])
-
-In this case the ``resample`` and ``dtype`` keywords can be given as a single value used for all data channels, or a `dict` mapping an argument for each data channel name:
-
-.. code-block:: python
-
-   >>> data = TimeSeriesDict.read('HLV-HW100916-968654552-1.gwf', ['H1:LDAS-STRAIN', 'L1:LDAS-STRAIN'],
-   ...                            resample={'H1:LDAS-STRAIN': 2048})
-
-The above example will resample only the ``'H1:LDAS-STRAIN'`` `TimeSeries` and will not modify that for ``'L1:LDAS-STRAIN'``.
 
 .. note::
 
