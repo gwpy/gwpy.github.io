@@ -1,0 +1,71 @@
+.. _gwpy-example-segments-open-data:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+.. currentmodule:: gwpy.segments
+
+Plotting observing segments for O1
+##################################
+
+The data from the full
+`Observing Run 1 (O1) <https://www.gw-openscience.org/O1/>`__
+have been released by |GWOSC|_.
+
+This example demonstrates how to download segment information into a
+:class:`~gwpy.segments.DataQualityFlag`, and then plot them.
+
+All we need to do is import the `DataQualityFlag` object, and then call
+the :meth:`DataQualityFlag.fetch_open_data` method to query for, and download
+the segments for all of O1:
+
+
+.. plot::
+   :context: reset
+   :nofigs:
+   :include-source:
+
+   from gwpy.segments import DataQualityFlag
+   h1segs = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
+                                            'Jan 19 2016')
+
+We can then generate a plot of the times when LIGO-Hanford was operating:
+
+
+.. plot::
+   :context:
+   :include-source:
+
+   plot = h1segs.plot(color='gwpy:ligo-hanford')
+   plot.show()
+
+That's a lot of segments. We can pare-down the list a little to display
+only the segments from the first month of the run:
+
+
+.. plot::
+   :context: close-figs
+   :nofigs:
+   :include-source:
+
+   h1month1 = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
+                                              'Oct 12 2015')
+
+We can also download the LIGO-Livingston segments from the same period
+and display them alongside, as well as those segments during which both
+interferometers were operating at the same time
+(see :ref:`gwpy-segments-intersection` for more details on this use of the
+``&`` operator):
+
+
+.. plot::
+   :context:
+   :include-source:
+
+   l1month1 = DataQualityFlag.fetch_open_data('L1_DATA', 'Sep 12 2015',
+                                              'Oct 12 2015')
+   bothon = h1month1 & l1month1
+   plot = h1month1.plot()
+   ax = plot.gca()
+   ax.plot(l1month1)
+   ax.plot(bothon, label='Both')
+   plot.show()

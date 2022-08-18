@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="333">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>State vectors &#8212; GWpy 2.1.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/copybutton.js"></script>
+    <script src="../../_static/js/gwpy_https.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="StateVector" href="../../api/gwpy.timeseries.StateVector/" />
+    <link rel="prev" title="Spectrogram" href="../../api/gwpy.spectrogram.Spectrogram/" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=deep-orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#timeseries/statevector" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../" title="GWpy 2.1.4 documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="../../_static/favicon.png" height="26"
+                   alt="GWpy 2.1.4 documentation logo">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">GWpy 2.1.4</span>
+          <span class="md-header-nav__topic"> State vectors </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search/" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../../versions.json",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../" title="GWpy 2.1.4 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../_static/favicon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../"
+       title="GWpy 2.1.4 documentation">GWpy 2.1.4</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="../../overview/" class="md-nav__link">What is GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../install/" class="md-nav__link">How do I install GWpy?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../citing/" class="md-nav__link">Citing GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data structures</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../" class="md-nav__link">Time Series data</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrum/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../spectrogram/" class="md-nav__link">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> State vectors </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">State vectors</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#timeseries-statevector--page-root" class="md-nav__link">State vectors</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#the-statetimeseries" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#multi-bit-state-vectors" class="md-nav__link">Multi-bit state-vectors</a>
+        </li>
+        <li class="md-nav__item"><a href="#plotting-a-statevector" class="md-nav__link">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#associated-classes" class="md-nav__link">Associated classes</a>
+        </li>
+        <li class="md-nav__item"><a href="#reference-api" class="md-nav__link">Reference/API</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/timeseries/statevector.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../segments/" class="md-nav__link">Data-quality segments</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../table/" class="md-nav__link">Data tables</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Data manipulation</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../signal/" class="md-nav__link">Signal processing</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Visualising data</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../plot/" class="md-nav__link">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../cli/" class="md-nav__link">Command line plotting with GWpy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Other utilities</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../detector/channel/" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../time/" class="md-nav__link">Times and timestamps</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../astro/" class="md-nav__link">Astrophysical modelling</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../env/" class="md-nav__link">Configuring GWpy from the environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Examples</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/timeseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/signal/" class="md-nav__link">Signal processing examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/frequencyseries/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/spectrogram/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/segments/" class="md-nav__link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/table/" class="md-nav__link">Tabular data examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../examples/miscellaneous/" class="md-nav__link">Miscellaneous examples</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Developer notes</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../dev/release/" class="md-nav__link">Publishing a release</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#timeseries-statevector--page-root" class="md-nav__link">State vectors</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#the-statetimeseries" class="md-nav__link">The <code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#multi-bit-state-vectors" class="md-nav__link">Multi-bit state-vectors</a>
+        </li>
+        <li class="md-nav__item"><a href="#plotting-a-statevector" class="md-nav__link">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#associated-classes" class="md-nav__link">Associated classes</a>
+        </li>
+        <li class="md-nav__item"><a href="#reference-api" class="md-nav__link">Reference/API</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/timeseries/statevector.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="state-vectors">
+<span id="gwpy-statevector"></span><h1 id="timeseries-statevector--page-root">State vectors<a class="headerlink" href="#timeseries-statevector--page-root" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="p">(</span><span class="n">StateTimeSeries</span><span class="p">,</span> <span class="n">StateVector</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A large quantity of important data from gravitational-wave detectors
+can be distilled into simple boolean (<a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>) statements
+informing something about the state of the instrument at a given time.
+These statements can be used to identify times during which a particular
+control system was active, or when the signal in a seismometer was above
+an alarming threshold, for example.
+In GWpy, these data are represented by special cases (<code class="xref py py-obj docutils literal notranslate"><span class="pre">sub-classes</span></code>) of
+the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object:</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a></p></td>
+<td><p>Boolean array representing a good/bad state determination</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a></p></td>
+<td><p>Binary array representing good/bad state determinations of some data.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="the-statetimeseries">
+<h2 id="the-statetimeseries">The <a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a><a class="headerlink" href="#the-statetimeseries" title="Permalink to this headline">¶</a></h2>
+<p>The example of a threshold on signal time-series is the core of a large
+amount of low-level data quality information, used in searches for
+gravitational waves, and detector characterisation, and is described by the
+<a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a> object, a specific type of <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>
+containing only boolean values.</p>
+<p>These arrays can be generated from simple arrays of booleans, as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateTimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">StateTimeSeries</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">sample_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">epoch</span><span class="o">=</span><span class="mi">1064534416</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="go">StateTimeSeries([ True,  True, False, False, False,  True, False]</span>
+<span class="go">                unit: dimensionless,</span>
+<span class="go">                t0: 1064534416.0 s,</span>
+<span class="go">                dt: 1.0 s,</span>
+<span class="go">                name: None,</span>
+<span class="go">                channel: None)</span>
+</pre></div>
+</div>
+<p>Alternatively, applying a standard mathematical comparison to a regular
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> will return a <a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">laserpower</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">"H1:IMC-PWR_IN_OUT_DQ"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="mi">1186741850</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="mi">1186741870</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">host</span><span class="o">=</span><span class="s2">"losc-nds.ligo.org"</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">29.2</span> <span class="o">&gt;</span> <span class="n">laserpower</span><span class="o">.</span><span class="n">unit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">above_29_2</span> <span class="o">=</span> <span class="n">laserpower</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">above_2915</span><span class="p">)</span>
+<span class="go">StateTimeSeries([False, False, False, ..., False, False, False]</span>
+<span class="go">                unit: dimensionless,</span>
+<span class="go">                t0: 1186741850.0 s,</span>
+<span class="go">                dt: 0.00048828125 s,</span>
+<span class="go">                name: H1:IMC-PWR_IN_OUT_DQ &gt; 29.2 NONE,</span>
+<span class="go">                channel: H1:IMC-PWR_IN_OUT_DQ)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a> includes a handy
+<a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries.to_dqflag" title="gwpy.timeseries.StateTimeSeries.to_dqflag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StateTimeSeries.to_dqflag()</span></code></a> method to convert the boolean array
+into a <a class="reference internal" href="../../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>, where the <code class="docutils literal notranslate"><span class="pre">active</span></code>
+segments represent times of <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">above_29_2</span><span class="o">.</span><span class="n">to_dqflag</span><span class="p">(</span><span class="nb">round</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag('H1:IMC-PWR_IN_OUT_DQ &gt; 29.2 NONE',</span>
+<span class="go">                 known=[[1186741850.0 ... 1186741870.0)]</span>
+<span class="go">                 active=[[1186741854.0 ... 1186741856.0)</span>
+<span class="go">                         [1186741859.0 ... 1186741861.0)</span>
+<span class="go">                         [1186741865.0 ... 1186741867.0)]</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-round-true admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">round=True</span></code></p>
+<p>Here we included the keyword <code class="docutils literal notranslate"><span class="pre">round=True</span></code> to pad out <code class="docutils literal notranslate"><span class="pre">active</span></code>
+segments to be at least one second long.
+The usage in this example is purely demonstrative, but is used regularly
+when constructing <em>data quality flags</em> for excising bad data from
+analyses, mainly because integer segments are easier to deal with.</p>
+</div>
+</section>
+<section id="multi-bit-state-vectors">
+<h2 id="multi-bit-state-vectors">Multi-bit state-vectors<a class="headerlink" href="#multi-bit-state-vectors" title="Permalink to this headline">¶</a></h2>
+<p>While the <a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a> represents a single <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>/<a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>
+statement about the state of a system, the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a> gives a
+grouping of these, representing a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Bit_array">bit array</a> where each bit
+represents a single <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>/<a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> (on/off) binary state in a system.
+This provides a compact representation of a complex system, with utility
+methods to transform and visualise the myriad states.</p>
+<p>Each <a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> data release includes a bit vector that describes the
+data-quality states of the detector.</p>
+<div class="admonition-gwosc-data-usage-notes admonition">
+<p class="admonition-title">GWOSC data usage notes</p>
+<p>Refer to the GWOSC
+<a class="reference external" href="https://www.gw-openscience.org/yellow_box/">data usage notes</a>
+page for details of the various bits (states) in the state vectors.</p>
+</div>
+<p>To demonstate, we can download the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> associated with
+<a class="reference external" href="https://www.ligo.org/science/Publication-NSBHDiscovery/">GW200105</a>, the first detection of a mixed black hole/neutron star
+binary system:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwosc.datasets</span> <span class="kn">import</span> <span class="n">event_gps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">StateVector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gps</span> <span class="o">=</span> <span class="n">event_gps</span><span class="p">(</span><span class="s2">"GW200105_162426"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gw200105_state</span> <span class="o">=</span> <span class="n">StateVector</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">"L1"</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gw200105_state</span><span class="p">)</span>
+<span class="go">StateVector([127, 127, 127, ..., 127, 127, 127]</span>
+<span class="go">            unit: dimensionless,</span>
+<span class="go">            t0: 1262275684.0 s,</span>
+<span class="go">            dt: 1.0 s,</span>
+<span class="go">            name: Data quality,</span>
+<span class="go">            channel: None,</span>
+<span class="go">            bits: Bits(0: Passes DATA test</span>
+<span class="go">                        1: Passes CBC_CAT1 test</span>
+<span class="go">                        2: Passes CBC_CAT2 test</span>
+<span class="go">                        3: Passes CBC_CAT3 test</span>
+<span class="go">                        4: Passes BURST_CAT1 test</span>
+<span class="go">                        5: Passes BURST_CAT2 test</span>
+<span class="go">                        6: Passes BURST_CAT3 test,</span>
+<span class="go">                        channel=None,</span>
+<span class="go">                        epoch=1262274636.0))</span>
+</pre></div>
+</div>
+<p>As can be seen, the list of <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector.bits" title="gwpy.timeseries.StateVector.bits"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bits</span></code></a> is represented
+through the <code class="xref py py-class docutils literal notranslate"><span class="pre">BitMask</span></code> class, recording the bits as a list with
+some metdata about their purpose.</p>
+<p>The <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> fetched in the above example can then be parsed into a
+series of <a class="reference internal" href="../../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> objects, recording the
+active segments for that bit in the vector:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flags</span> <span class="o">=</span> <span class="n">gw200105_state</span><span class="o">.</span><span class="n">to_dqflags</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">flags</span><span class="p">[</span><span class="s2">"Passes BURST_CAT3 test"</span><span class="p">])</span>
+<span class="go">&lt;DataQualityFlag('Passes BURST_CAT3 test',</span>
+<span class="go">                 known=[[1262275684.0 ... 1262277684.0)]</span>
+<span class="go">                 active=[[1262275684.0 ... 1262276525.0)</span>
+<span class="go">                         [1262276527.0 ... 1262277684.0)]</span>
+<span class="go">                 description=None)&gt;</span>
+</pre></div>
+</div>
+<p>Here we can see that there are two active segments for the
+<em>Passes BURST_CAT3 test</em> bit, indicating that there is a short interval
+(2 seconds in this case) where the <code class="docutils literal notranslate"><span class="pre">BURST_CAT3</span></code> data quality check failed.</p>
+</section>
+<section id="plotting-a-statevector">
+<h2 id="plotting-a-statevector">Plotting a <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a><a class="headerlink" href="#plotting-a-statevector" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a> can be trivially plotted in two ways,
+specified by the <code class="docutils literal notranslate"><span class="pre">format</span></code> keyword argument of the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a>
+method:</p>
+<table id="statevector-plot-kwargs">
+<caption><span class="caption-text">Keyword arguments for <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector.plot" title="gwpy.timeseries.StateVector.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector.plot</span></code></a></span><a class="headerlink" href="#statevector-plot-kwargs" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 21%"/>
+<col style="width: 79%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'segments'</span></code></p></td>
+<td><p>A bit-wise representation of each bit in the vector (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'timeseries'</span></code></p></td>
+<td><p>A standard time-series representation</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">gw200105_state</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">insetlabels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/statevector-3.png">png</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/statevector-31.png" class="plot-directive" src="../../_images/statevector-31.png"/>
+</figure>
+<p>In this figure the black vertical lines (actually very dark green) show
+visually the short interval where both the <code class="docutils literal notranslate"><span class="pre">BURST_CAT2</span></code> and
+<code class="docutils literal notranslate"><span class="pre">BURST_CAT3</span></code> data-quality checks failed, just over 2 minutes prior to
+the GW200102 event detection.</p>
+<div class="admonition-bit-labelling admonition">
+<p class="admonition-title">Bit labelling</p>
+<p>For a <code class="docutils literal notranslate"><span class="pre">format='segments'</span></code> display, the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector.bits" title="gwpy.timeseries.StateVector.bits"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bits</span></code></a>
+attribute of the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> is used to identify and label each
+of the binary bits in the vector.</p>
+</div>
+<div class="admonition-insetlabels admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">insetlabels</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">insetlabels=True</span></code> keyword was given to display the bit labels
+inside the axes (otherwise they would be cut off the side of the figure).</p>
+</div>
+</section>
+<section id="associated-classes">
+<h2 id="associated-classes">Associated classes<a class="headerlink" href="#associated-classes" title="Permalink to this headline">¶</a></h2>
+<p>Alongside the <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateVector</span></code></a> class, <code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.timeseries</span></code> provides a
+<a class="reference internal" href="../../api/gwpy.timeseries.StateVectorDict/#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateVectorDict</span></code></a> for handling collections of bit-vector data
+(mainly to enable reading and writing multiple <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> in one operation).</p>
+</section>
+<section id="reference-api">
+<h2 id="reference-api">Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<p>The above documentation references the following objects:</p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a></p></td>
+<td><p>Binary array representing good/bad state determinations of some data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/gwpy.timeseries.StateTimeSeries/#gwpy.timeseries.StateTimeSeries" title="gwpy.timeseries.StateTimeSeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateTimeSeries</span></code></a></p></td>
+<td><p>Boolean array representing a good/bad state determination</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/gwpy.timeseries.StateVectorDict/#gwpy.timeseries.StateVectorDict" title="gwpy.timeseries.StateVectorDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVectorDict</span></code></a></p></td>
+<td><p>Ordered key-value mapping of named <a class="reference internal" href="../../api/gwpy.timeseries.StateVector/#gwpy.timeseries.StateVector" title="gwpy.timeseries.StateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a> objects</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../../api/gwpy.spectrogram.Spectrogram/" title="Spectrogram"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Spectrogram </span>
+              </div>
+            </a>
+          
+          
+            <a href="../../api/gwpy.timeseries.StateVector/" title="StateVector"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> StateVector </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
