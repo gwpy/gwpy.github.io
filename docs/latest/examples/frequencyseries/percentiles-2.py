@@ -1,1 +1,0 @@
-sg = hoft.spectrogram2(fftlength=4, overlap=2, window='hanning') ** (1/2.)

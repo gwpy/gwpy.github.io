@@ -1,1 +1,0 @@
-from gwpy.timeseries import TimeSeriesDict

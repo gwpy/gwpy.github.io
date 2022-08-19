@@ -1,1 +1,0 @@
-data = TimeSeries.fetch_open_data('L1', 968654552, 968654562)

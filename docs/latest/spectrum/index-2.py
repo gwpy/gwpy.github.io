@@ -1,6 +1,0 @@
-plot = spectrum.plot()
-ax = plot.gca()
-ax.set_xlim(40, 4000)
-ax.set_ylabel(r'GW strain ASD [strain$/\sqrt{\mathrm{Hz}}$]')
-ax.set_ylim(1e-23, 3e-20)
-plot.show()

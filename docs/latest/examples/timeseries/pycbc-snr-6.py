@@ -1,7 +1,0 @@
-plot = snrts.plot()
-ax = plot.gca()
-ax.set_xlim(1126259461, 1126259463)
-ax.set_epoch(1126259462.427)
-ax.set_ylabel('Signal-to-noise ratio (SNR)')
-ax.set_title('LIGO-Hanford signal-correlation for GW150914')
-plot.show()

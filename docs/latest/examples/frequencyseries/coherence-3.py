@@ -1,1 +1,0 @@
-coh = hoft.coherence(acc, fftlength=2, overlap=1)

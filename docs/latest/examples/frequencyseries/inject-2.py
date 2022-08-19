@@ -1,1 +1,0 @@
-noisefd = noise.fft()

@@ -1,6 +1,0 @@
-plot = specgram.plot(norm='log', vmin=1e-23, vmax=1e-19)
-ax = plot.gca()
-ax.set_ylim(40, 4000)
-ax.set_yscale('log')
-ax.colorbar(label='GW strain ASD [strain/$\sqrt{\mathrm{Hz}}$]')
-plot.show()

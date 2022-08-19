@@ -1,1 +1,0 @@
-normalised = specgram.ratio('median')

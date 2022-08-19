@@ -1,6 +1,0 @@
-plot.axes[0].set_ylabel('ASD [whitened]')
-plot.axes[1].set_ylabel(r'ASD [m/$\sqrt{\mathrm{Hz}}$]')
-plot.axes[1].set_xlabel('Frequency [Hz]')
-plot.axes[1].set_ylim(1e-20, 1e-15)
-plot.axes[1].set_xlim(5, 4000)
-plot.show()

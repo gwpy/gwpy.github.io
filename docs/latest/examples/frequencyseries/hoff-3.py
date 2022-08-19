@@ -1,7 +1,0 @@
-plot = lhoasd.plot(label='LIGO-Hanford', color='gwpy:ligo-hanford')
-ax = plot.gca()
-ax.plot(lloasd, label='LIGO-Livingston', color='gwpy:ligo-livingston')
-ax.set_xlim(10, 2000)
-ax.set_ylim(5e-24, 1e-21)
-ax.legend(frameon=False, bbox_to_anchor=(1., 1.), loc='lower right', ncol=2)
-plot.show()

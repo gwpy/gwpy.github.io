@@ -1,1 +1,0 @@
-data = noise.inject(signal)

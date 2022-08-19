@@ -1,1 +1,0 @@
-coh = hoft.coherence_spectrogram(acc, 10, fftlength=.5, overlap=.25)

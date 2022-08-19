@@ -1,1 +1,0 @@
-rayleigh = gwdata.rayleigh_spectrum(2, 1)

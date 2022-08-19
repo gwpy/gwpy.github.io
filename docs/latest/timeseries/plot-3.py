@@ -1,6 +1,0 @@
-ax = plot.gca()
-ax.set_ylabel('Gravitational-wave amplitude [strain]')
-ax.set_epoch(1126259462)
-ax.set_title('LIGO-Livingston strain data around GW150914')
-ax.axvline(1126259462, color='orange', linestyle='--')
-plot.refresh()

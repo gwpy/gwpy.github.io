@@ -1,7 +1,0 @@
-plot = hfilt.plot(color='gwpy:ligo-hanford')
-ax = plot.gca()
-ax.set_title('LIGO-Hanford strain data around GW150914')
-ax.set_ylabel('Amplitude [strain]')
-ax.set_xlim(1126259462, 1126259462.6)
-ax.set_xscale('seconds', epoch=1126259462)
-plot.show()
