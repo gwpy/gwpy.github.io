@@ -1,0 +1,1240 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>Automatic data-discovery - GWpy 3.0.0 documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../_static/stylesheets/main.95d89437.min.css">
+      
+        
+        <link rel="stylesheet" href="../../_static/stylesheets/palette.ae371752.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/google_fonts.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="GWpy 3.0.0 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.0 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.0 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automatic data-discovery
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="GWpy 3.0.0 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.0 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.0 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segments/" class="md-nav__link">
+        <span class="md-ellipsis">Data-<wbr>quality segments</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table/" class="md-nav__link">
+        <span class="md-ellipsis">Data tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/timeseries/datafind.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="automatic-data-discovery"><span id="gwpy-timeseries-datafind"></span>Automatic data-discovery<a class="headerlink" href="#automatic-data-discovery" title="Permalink to this headline">¶</a></h1>
+<p id="gwpy-timeseries-datafind-intro">The <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data (Python method) — Fetch open-access data from the LIGO Open Science Center"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.fetch_open_data()</span></code></a> method is only able to download
+GW strain data from those datasets exposed through the <a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> API;
+this notably does not include the <a class="reference external" href="https://www.gw-openscience.org/auxiliary/GW170814/">Auxiliary Channel Three Hour Release</a>, or strain data
+for any events or observing runs not yet published.</p>
+<p>In addition, the GW strain data make up only a tiny fraction of the ‘raw’
+output of a gravitational-wave detector, which includes in excess of
+100,000 different ‘channels’ (data streams) from sensors and digital control
+systems that are used to operate the interferometer and diagnose measure
+performance.</p>
+<p>The full data set for each detector is archived at the relevant observatory
+and is made freely available to all registered collaboration members.
+A discovery service called <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a> is provided at each location to
+simplify discovering the file(s) that contain the data of interest for any
+research.</p>
+<p>These data are also made available remotely using <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client/doc/manual/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code></a>, which enables
+sending data directly over a network to any location.
+This is used for both the full proprietary data (which requires an
+authorisation credential to access) and also the <a class="reference external" href="https://www.gw-openscience.org/auxiliary/GW170814/">Auxiliary Channel Three Hour Release</a>
+(which is freely available).</p>
+<h2 id="timeseries-get"><span id="gwpy-timeseries-get"></span><a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a><a class="headerlink" href="#timeseries-get" title="Permalink to this headline">¶</a></h2>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://ldas-jobs.ligo.caltech.edu/~emaros/share/doc/ldas-tools/framecpp/html/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LDAStools.frameCPP</span></code></a> or <a class="reference external" href="https://www.lsc-group.phys.uwm.edu/daswg/projects/nds-client/doc/manual/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nds2</span></code></a></p>
+<p>GWpy provides the <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> method as a one-stop interface
+to all automatically-discoverable data hosted locally at an IGWN
+computing centre, or available remotely.</p>
+<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h3>
+<p>Without any customisation, <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> will attempt to locate
+data ‘by any means necessary’; in practice that is</p>
+<ul class="simple">
+<li><p>if the <code class="docutils literal notranslate"><span class="pre">GWDATAFIND_SERVER</span></code> environment variable (or legacy
+<code class="docutils literal notranslate"><span class="pre">LIGO_DATAFIND_SERVER</span></code> variable) points to a server URL,
+use <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a> to identify which data set includes
+the channel(s) requested, then locate the files for that data set,
+and then read them,</p></li>
+<li><p>if that doesn’t work (for any reason), loop through the NDS2 servers
+identified in the <code class="docutils literal notranslate"><span class="pre">NDSSERVER</span></code> environment variable to see if they
+have the data – if the <code class="docutils literal notranslate"><span class="pre">NDSSERVER</span></code> variable isn’t set, guess
+which NDS2 server(s) to use based on the interferometer whose data was
+requested.</p></li>
+</ul>
+<div class="admonition-regarding-channel-names admonition">
+<p class="admonition-title">Regarding channel names</p>
+<p>To use <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a>, you need to know the full name of the
+data channel you want, which is often not obvious.
+The <a class="reference external" href="https://www.gw-openscience.org/auxiliary/GW170814/">Auxiliary Channel Three Hour Release</a> includes a link to a full listing of all
+included channels.
+For the full proprietary data set, the IGWN Detector
+Characterisation working group maintains a record of the most relevant
+channels for studying a given interferometer subsystem.</p>
+</div>
+<h3 id="example"><span id="gwpy-timeseries-get-example"></span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>For example, to channel that records the power incident on the
+input mode cleaner (IMC) at LIGO-Hanford, is called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">H1</span><span class="p">:</span><span class="n">IMC</span><span class="o">-</span><span class="n">PWR_IN_OUT_DQ</span>
+</code></pre></div>
+</div>
+<p>and we can use <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> to ‘get’ the data for that
+channel by specifying the special GWOSC NDS2 server url using the
+<code class="docutils literal notranslate"><span class="pre">host</span></code> keyword:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwosc.datasets</span> <span class="kn">import</span> <span class="n">event_gps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gps</span> <span class="o">=</span> <span class="n">event_gps</span><span class="p">(</span><span class="s2">&quot;GW170814&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H1:IMC-PWR_IN_OUT_DQ&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;losc-nds.ligo.org&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Power [W]&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/datafind-1.png">png</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/datafind-1.png" class="plot-directive" src="../../_images/datafind-1.png" />
+</figure>
+<h2 id="proprietary-datasets"><span id="gwpy-timeseries-datafind-datasets"></span>Proprietary datasets<a class="headerlink" href="#proprietary-datasets" title="Permalink to this headline">¶</a></h2>
+<p>All data archived at an IGWN computing centre are identified by a data
+set ‘tag’, which identifies which data are contained in a given <code class="docutils literal notranslate"><span class="pre">gwf</span></code>
+file(s).
+By default, as described, <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> will search through all
+available data to find the correct files to read, so this may take a
+while if the server has knowledge of a large number of different datasets.
+If you know the dataset name – the tag associated with files containing your
+data – you can pass that via the <code class="docutils literal notranslate"><span class="pre">frametype</span></code> keyword argument to
+significantly speed up the search.</p>
+<p>The following table is an incomplete, but probably OK, reference to which
+dataset (<code class="docutils literal notranslate"><span class="pre">frametype</span></code>) you want to use for file-based data access:</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="77a27281-def4-44ad-91ab-0977290c46d1" name="e26d1a0d-1c36-42dd-89e7-e20304cd9dc9" type="radio">
+</input><label class="tabbed-label" for="77a27281-def4-44ad-91ab-0977290c46d1">
+GEO-600</label><div class="tabbed-content docutils">
+<table class="docutils data align-default" id="gwdatafind-datasets-geo600">
+<caption><span class="caption-text">GEO-600 datasets available with <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a></span><a class="headerlink" href="#gwdatafind-datasets-geo600" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset (frametype)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G1_RDS_C01_L3</span></code></p></td>
+<td><p>The GEO-600 data, including calibrated strain <em>h(t)</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="3a45565e-0bcd-423b-8f18-f55eb8622444" name="e26d1a0d-1c36-42dd-89e7-e20304cd9dc9" type="radio">
+</input><label class="tabbed-label" for="3a45565e-0bcd-423b-8f18-f55eb8622444">
+LIGO-Hanford</label><div class="tabbed-content docutils">
+<table class="docutils data align-default" id="gwdatafind-datasets-ligo-hanford">
+<caption><span class="caption-text">LIGO-Hanford datasets available with <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a></span><a class="headerlink" href="#gwdatafind-datasets-ligo-hanford" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset (frametype)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_R</span></code></p></td>
+<td><p>All auxiliary channels, stored at the native sampling
+rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_T</span></code></p></td>
+<td><p>Second trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_M</span></code></p></td>
+<td><p>Minute trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_HOFT_C00</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+real-time calibration pipeline</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_HOFT_CXY</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+off-line calibration pipeline at version <code class="docutils literal notranslate"><span class="pre">XY</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H1_GWOSC_O2_4KHZ_R1</span></code></p></td>
+<td><p>4k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H1_GWOSC_O2_16KHZ_R1</span></code></p></td>
+<td><p>16k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="da5a8661-c6df-4d83-b31d-189ed6f81ecf" name="e26d1a0d-1c36-42dd-89e7-e20304cd9dc9" type="radio">
+</input><label class="tabbed-label" for="da5a8661-c6df-4d83-b31d-189ed6f81ecf">
+LIGO-Livingston</label><div class="tabbed-content docutils">
+<table class="docutils data align-default" id="gwdatafind-datasets-ligo-livingston">
+<caption><span class="caption-text">LIGO-Livingston datasets available with <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a></span><a class="headerlink" href="#gwdatafind-datasets-ligo-livingston" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset (frametype)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L1_R</span></code></p></td>
+<td><p>All auxiliary channels, stored at the native sampling
+rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L1_T</span></code></p></td>
+<td><p>Second trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L1_M</span></code></p></td>
+<td><p>Minute trends of all channels, including
+<code class="docutils literal notranslate"><span class="pre">.mean</span></code>, <code class="docutils literal notranslate"><span class="pre">.min</span></code>, and <code class="docutils literal notranslate"><span class="pre">.max</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L1_HOFT_C00</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+real-time calibration pipeline</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L1_HOFT_CXY</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata generated using the
+off-line calibration pipeline at version <code class="docutils literal notranslate"><span class="pre">XY</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L1_GWOSC_O2_4KHZ_R1</span></code></p></td>
+<td><p>4k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L1_GWOSC_O2_16KHZ_R1</span></code></p></td>
+<td><p>16k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="076abcef-18d1-4041-a282-ddc06ae9e70f" name="e26d1a0d-1c36-42dd-89e7-e20304cd9dc9" type="radio">
+</input><label class="tabbed-label" for="076abcef-18d1-4041-a282-ddc06ae9e70f">
+Virgo</label><div class="tabbed-content docutils">
+<table class="docutils data align-default" id="gwdatafind-datasets-virgo">
+<caption><span class="caption-text">Virgo datasets available with <a class="reference external" href="https://gwdatafind.readthedocs.io"><a class="reference external" href="https://gwdatafind.readthedocs.io/en/stable/index.html#module-gwdatafind" title="(in gwdatafind)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwdatafind</span></code></a></a></span><a class="headerlink" href="#gwdatafind-datasets-virgo" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset (frametype)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">raw</span></code></p></td>
+<td><p>All auxiliary channels, stored at the native sampling
+rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V1O2Repro1A</span></code></p></td>
+<td><p>Strain <em>h(t)</em> and metadata for Observing run 3
+(<code class="docutils literal notranslate"><span class="pre">O3</span></code>) generated off-line using version <code class="docutils literal notranslate"><span class="pre">1A</span></code>
+calibration; replace <code class="docutils literal notranslate"><span class="pre">O2</span></code> and <code class="docutils literal notranslate"><span class="pre">1A</span></code> as appropriate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V1_GWOSC_O2_4KHZ_R1</span></code></p></td>
+<td><p>4k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V1_GWOSC_O2_16KHZ_R1</span></code></p></td>
+<td><p>16k Hz Strain <em>h(t)</em> and metadata as released by
+<a class="reference external" href="https://www.gw-openscience.org/">GWOSC</a> for the O2 data release</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="admonition-not-all-datasets-are-available-everywhere admonition">
+<p class="admonition-title">Not all datasets are available everywhere</p>
+<p>Not all datasets are available from all datafind servers.  Each LIGO Lab-operated
+computing centre has its own datafind server with a subset of the available
+datasets.</p>
+</div>
+<h2 id="ligo-trend-data"><span id="gwpy-timeseries-datafind-trends"></span>LIGO trend data<a class="headerlink" href="#ligo-trend-data" title="Permalink to this headline">¶</a></h2>
+<p>The LIGO observatories produce second- and minute- trends of all channels
+automatically, and store them in the <code class="docutils literal notranslate"><span class="pre">{H,L}1_T</span></code> (second) and <code class="docutils literal notranslate"><span class="pre">{H,L}1_M</span></code>
+(minute) datasets.
+However, <strong>the channels in each trend type have the same names</strong>, so
+<a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> doesn’t know how to distinguish between the two
+different trends when given only the channel name.</p>
+<p>To get around this you can directly specify (e.g.) <code class="docutils literal notranslate"><span class="pre">frametype=&quot;H1_T&quot;</span></code>
+(for the LIGO-Hanford second trends) in your <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a>
+method call, or you can use a suffix in the channel name:</p>
+<table class="docutils data align-default" id="gwpy-timeseries-datafind-trend-types">
+<caption><span class="caption-text">Channel name suffices for LIGO trends</span><a class="headerlink" href="#gwpy-timeseries-datafind-trend-types" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 35%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Trend type</p></th>
+<th class="head"><p>Dataset</p></th>
+<th class="head"><p>Suffix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>second</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{H,L}1_T</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">,s-trend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>minute</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{H,L}1_M</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">,m-trend</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;L1:IMC-PWR_IN_OUT_DQ.mean,s-trend&quot;</span><span class="p">,</span> <span class="mi">1186741850</span><span class="p">,</span> <span class="mi">1186741870</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>will specifically access the second trends of power incident on the
+LIGO-Livingston IMC.</p>
+<h2 id="timeseriesdict-get"><a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get (Python method) — Retrieve data for multiple channels from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeriesDict.get()</span></code></a><a class="headerlink" href="#timeseriesdict-get" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get()</span></code></a> can only retrieve data for a single channel at a time.
+Looping over a list of names to get data for many channels can be very slow,
+as each individual call will have to discover and read/download the data for
+each channel individually.
+The <a class="reference internal" href="../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get (Python method) — Retrieve data for multiple channels from frames or NDS"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeriesDict.get()</span></code></a> method enables retrieval of multiple channels
+in a single call, for a single <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop)</span></code> time interval, greatly
+reducing the I/O overhead.</p>
+<p>To access data for multiple channels in this way, just pass a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of names
+rather than a single name.
+In this example we download the second trend (average) of ground motion in
+the 0.03Hz-0.1Hz range at two locations of the LIGO-Hanford observatory:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This example uses proprietary data that are only available to members
+of the LIGO Scientific Collaboration and its partners.</p>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeriesDict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;H1:ISI-GND_STS_ITMY_Z_BLRMS_30M_100M.rms,s-trend&quot;</span><span class="p">,</span>
+<span class="gp">... </span>     <span class="s2">&quot;H1:ISI-GND_STS_ETMY_Z_BLRMS_30M_100M.rms,s-trend&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;July 22 2021 12:00&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;July 22 2021 14:00&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Ground motion [nm/s]&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>(<a class="reference external" href="../timeseries/datafind-2.png">png</a>)</p>
+<figure class="align-default">
+<img alt="../../_images/datafind-2.png" class="plot-directive" src="../../_images/datafind-2.png" />
+</figure>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../opendata/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Accessing Open Data from GWOSC" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Accessing Open Data from GWOSC
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../plot/" class="md-footer__link md-footer__link--next" aria-label="Next: Plotting time-domain data" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Plotting time-domain data
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+    
+      <script src="../../_static/javascripts/bundle.309d5c42.min.js"></script>
+    
+  </body>
+</html>
