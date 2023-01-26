@@ -35,8 +35,8 @@
         <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.fa3fbbd75cfdd7cef.min.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -1116,14 +1116,14 @@ that provides an intuitive interface to down-selecting rows in a table.</p>
 </code></pre></div>
 </div>
 <h2 id="simple-filters">Simple filters<a class="headerlink" href="#simple-filters" title="Permalink to this headline">¶</a></h2>
-<p>The simplest <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> filter is a <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> statement that provides
+<p>The simplest <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> filter is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> statement that provides
 a mathematical operation for a column and a threshold.
 With the above GWTC-2 events, we can use the filter
 <code class="docutils literal notranslate"><span class="pre">&quot;network_matched_filter_snr</span> <span class="pre">&gt;</span> <span class="pre">15&quot;</span></code> to pick out those events with
 high signal power:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-filter-statement-example">
 <div class="code-block-caption highlight"><span class="caption-text filename">
-Filtering an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> using a <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> definition<a class="headerlink" href="#gwpy-table-filter-statement-example" title="Permalink to this code">¶</a></span></div>
+Filtering an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> using a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> definition<a class="headerlink" href="#gwpy-table-filter-statement-example" title="Permalink to this code">¶</a></span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;network_matched_filter_snr &gt; 15&quot;</span><span class="p">))</span>
 <span class="go">       name        chi_eff_upper ...     GPS      final_mass_source_upper</span>
 <span class="go">                                 ...                      solMass</span>
@@ -1141,16 +1141,16 @@ Filtering an <a class="reference internal" href="../../api/gwpy.table.EventTable
 takes in two arguments - the first being the column slice of the input table,
 the second can be whatever you want - and returns a boolean array.
 The <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter (Python method) — Apply one or more column slice filters to this EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.filter()</span></code></a> method is then called passing in a filter
-3-<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> with these elements</p>
+3-<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> with these elements</p>
 <ol class="arabic simple">
-<li><p>the column name (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) or a tuple of names</p></li>
+<li><p>the column name (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) or a tuple of names</p></li>
 <li><p>the function to call</p></li>
 <li><p>the other argument(s) for the function (normally a single value, or a
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> of arguments)</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of arguments)</p></li>
 </ol>
 <p>If a single column name is given as the first tuple element, the function will
 receive a single <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Column.html#astropy.table.Column" title="(in Astropy v5.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Column</span></code></a> as the input.
-If a <code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> of names is given, the input will be a slice of the original table
+If a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of names is given, the input will be a slice of the original table
 containing only the named columns.</p>
 <p>Using the same <code class="docutils literal notranslate"><span class="pre">events</span></code> table we can define a function to include only
 those events in the first six months of 2019:</p>
@@ -1203,7 +1203,7 @@ Filtering an <a class="reference internal" href="../../api/gwpy.table.EventTable
 </div>
 </div>
 <h2 id="using-multiple-filters">Using multiple filters<a class="headerlink" href="#using-multiple-filters" title="Permalink to this headline">¶</a></h2>
-<p>Filters can be chained (either in <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> form, or functional form):</p>
+<p>Filters can be chained (either in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> form, or functional form):</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-filter-chaining">
 <div class="code-block-caption highlight"><span class="caption-text filename">
 Chaining multiple filters with <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.filter" title="gwpy.table.EventTable.filter (Python method) — Apply one or more column slice filters to this EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.filter()</span></code></a><a class="headerlink" href="#gwpy-table-filter-chaining" title="Permalink to this code">¶</a></span></div>
