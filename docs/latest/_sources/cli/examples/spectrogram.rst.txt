@@ -5,14 +5,17 @@ Simple spectrogram
 ##################
 
 
+This example shows a :ref:`spectrogram <gwpy-spectrogram>` of the strain
+data from LIGO-Hanford around the time of GW150914.
 
-.. code:: sh
+.. code-block:: shell
 
-   $ gwpy-plot spectrogram \
-       --chan H1:GDS-CALIB_STRAIN \
-       --start 1126259446 \
+   gwpy-plot spectrogram \
+       --gwosc \
+       --ifo H1 \
+       --start 1264316116 \
        --duration 32 \
-       --epoch 1126259462 \
+       --epoch 1264316116.4 \
        --ymax 4000 \
        --interactive
 
@@ -24,4 +27,4 @@ Simple spectrogram
    :include-source: false
 
    from gwpy.cli.gwpy_plot import main as gwpy_plot
-   gwpy_plot(['spectrogram', '--chan', 'H1:GDS-CALIB_STRAIN', '--start', '1126259446', '--duration', '32', '--epoch', '1126259462', '--ymax', '4000', '--interactive'])
+   gwpy_plot(['spectrogram', '--gwosc', '--ifo', 'H1', '--start', '1264316116', '--duration', '32', '--epoch', '1264316116.4', '--ymax', '4000', '--interactive'])

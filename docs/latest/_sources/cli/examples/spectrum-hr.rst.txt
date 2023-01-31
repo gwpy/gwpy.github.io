@@ -5,12 +5,16 @@ High-resolution spectrum
 ########################
 
 
+This example shows a high-resolution spectrum (power spectral density) of
+the strain data from LIGO-Livingston around GW200129_065458
+(see |GWTC-3l|_ for full details).
 
-.. code:: sh
+.. code-block:: shell
 
-   $ gwpy-plot spectrum \
-       --chan L1:GDS-CALIB_STRAIN \
-       --start 1126258950 \
+   gwpy-plot spectrum \
+       --gwosc \
+       --ifo L1 \
+       --start 1264315518 \
        --duration 1024 \
        --secpfft 64 \
        --xmin 10 \
@@ -25,4 +29,4 @@ High-resolution spectrum
    :include-source: false
 
    from gwpy.cli.gwpy_plot import main as gwpy_plot
-   gwpy_plot(['spectrum', '--chan', 'L1:GDS-CALIB_STRAIN', '--start', '1126258950', '--duration', '1024', '--secpfft', '64', '--xmin', '10', '--xmax', '4000', '--interactive'])
+   gwpy_plot(['spectrum', '--gwosc', '--ifo', 'L1', '--start', '1264315518', '--duration', '1024', '--secpfft', '64', '--xmin', '10', '--xmax', '4000', '--interactive'])

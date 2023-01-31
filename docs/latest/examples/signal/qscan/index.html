@@ -13,7 +13,7 @@
     
     
       
-        <title>2. Compute the raw Q-transform of a TimeSeries - GWpy 3.0.1.dev36+g2a793c47 documentation</title>
+        <title>2. Compute the raw Q-transform of a TimeSeries - GWpy 3.0.1.dev56+gde229916 documentation</title>
       
     
     
@@ -81,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../" title="GWpy 3.0.1.dev36+g2a793c47 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.1.dev36+g2a793c47 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.0.1.dev56+gde229916 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.1.dev56+gde229916 documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -91,7 +91,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            GWpy 3.0.1.dev36+g2a793c47 documentation
+            GWpy 3.0.1.dev56+gde229916 documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -200,10 +200,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../" title="GWpy 3.0.1.dev36+g2a793c47 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.1.dev36+g2a793c47 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.0.1.dev56+gde229916 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.1.dev56+gde229916 documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
-    GWpy 3.0.1.dev36+g2a793c47 documentation
+    GWpy 3.0.1.dev56+gde229916 documentation
   </label>
   
     <div class="md-nav__source">
@@ -919,8 +919,11 @@ from <a class="reference external" href="https://www.gw-openscience.org/">GWOSC<
 <p>We can Q-transform these data and scan over time-frequency planes to
 find the one with the most significant tile near the time of merger:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gwpy.segments</span> <span class="kn">import</span> <span class="n">Segment</span>
-<span class="n">search</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">(</span><span class="n">gps</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gps</span><span class="o">+</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="n">qgram</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">q_gram</span><span class="p">(</span><span class="n">qrange</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">,</span> <span class="n">mismatch</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">qgram</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">q_gram</span><span class="p">(</span>
+    <span class="n">qrange</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
+    <span class="n">search</span><span class="o">=</span><span class="n">Segment</span><span class="p">(</span><span class="n">gps</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gps</span><span class="o">+</span><span class="mf">0.25</span><span class="p">),</span>
+    <span class="n">mismatch</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="note admonition">
@@ -931,11 +934,13 @@ can be done with <a class="reference internal" href="../../../api/gwpy.timeserie
 </div>
 <p>Finally, we can plot the loudest time-frequency plane, focusing on a
 specific window around the merger time:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">get_cmap</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">qgram</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="s1">&#39;bandwidth&#39;</span><span class="p">,</span>
-                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-                  <span class="n">edgecolor</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">plot</span> <span class="o">=</span> <span class="n">qgram</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;frequency&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;duration&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bandwidth&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">gps</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">gps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -944,9 +949,10 @@ specific window around the merger time:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normalized energy&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">cmap</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colormaps</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;viridis&#39;</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normalized energy&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">cmap</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># colour background to the bottom of the map</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </div>
@@ -957,7 +963,7 @@ specific window around the merger time:</p>
 <p>Here we can clearly see the trace of a binary neutron star merger, sweeping
 up in frequency through a loud saturation glitch in the foreground.
 For more details on this result, please see
-<a class="reference external" href="https://www.gw-openscience.org/catalog/GWTC-1-confident/single/GW170817/">https://www.gw-openscience.org/catalog/GWTC-1-confident/single/GW170817/</a>.</p>
+the ‘Science Summary’ for <a class="reference external" href="https://www.ligo.org/science/Publication-GW170817BNS/">GW170817</a>.</p>
 
 
 
