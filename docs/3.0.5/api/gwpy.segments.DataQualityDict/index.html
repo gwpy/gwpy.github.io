@@ -1,0 +1,2523 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>DataQualityDict - GWpy 3.0.5 documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.9dcb20399d0097661.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gwpy.segments.DataQualityDict" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DataQualityDict
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/"><span class="md-ellipsis">Data-<wbr>quality segments</span></a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data-quality segments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data-<wbr>quality segments</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segments/#working-with-segments" class="md-nav__link">
+        <span class="md-ellipsis">Working with segments</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/#reference-api"><span class="md-ellipsis">Reference/API</span></a>
+          
+            <label for="__nav_4_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference/API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reference/API</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.DataQualityFlag/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Flag</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs." class="md-ellipsis">gwpy.<wbr>segments.<wbr>Data<wbr>Quality<wbr>Dict</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.DataQualityDict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.clear (Python method) — !! processed by numpydoc !!" class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.coalesce (Python method) — Coalesce all segments lists in this DataQualityDict." class="md-ellipsis">coalesce</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="coalesce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.coalesce-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.copy (Python method) — Build a copy of this dictionary." class="md-ellipsis">copy</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="copy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.from_ligolw_tables (Python method) — Build a DataQualityDict from a set of LIGO_LW segment tables" class="md-ellipsis">from_<wbr>ligolw_<wbr>tables</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_ligolw_tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.from_veto_definer_file (Python method) — Read a DataQualityDict from a LIGO_LW XML VetoDefinerTable." class="md-ellipsis">from_<wbr>veto_<wbr>definer_<wbr>file</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_veto_definer_file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.fromkeys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.fromkeys (Python method) — Create a new ordered dictionary with keys from iterable and values set to value." class="md-ellipsis">fromkeys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.get" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.get (Python method) — Return the value for key if key is in the dictionary, else default." class="md-ellipsis">get</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.intersection" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.intersection (Python method) — Return the intersection of all flags in this dict" class="md-ellipsis">intersection</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="intersection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.intersection-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.items" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.items (Python method) — !! processed by numpydoc !!" class="md-ellipsis">items</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.keys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.keys (Python method) — !! processed by numpydoc !!" class="md-ellipsis">keys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.move_to_end" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.move_to_end (Python method) — Move an existing element to the end (or beginning if last is false)." class="md-ellipsis">move_<wbr>to_<wbr>end</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.plot (Python method) — Plot this flag on a segments projection." class="md-ellipsis">plot</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.pop (Python method) — value.  If key is not found, d is returned if given, otherwise KeyError is raised." class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.popitem" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.popitem (Python method) — Remove and return a (key, value) pair from the dictionary." class="md-ellipsis">popitem</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.populate (Python method) — Query the segment database for each flag&#39;s active segments." class="md-ellipsis">populate</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="populate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.query (Python method) — Query the advanced LIGO DQSegDB for a list of flags." class="md-ellipsis">query</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.query_dqsegdb (Python method) — Query the advanced LIGO DQSegDB for a list of flags." class="md-ellipsis">query_<wbr>dqsegdb</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="query_dqsegdb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.read (Python method) — Read segments from file into a DataQualityDict" class="md-ellipsis">read</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.setdefault" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary." class="md-ellipsis">setdefault</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.to_ligolw_tables (Python method) — Convert this DataQualityDict into a trio of LIGO_LW segment tables" class="md-ellipsis">to_<wbr>ligolw_<wbr>tables</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="to_ligolw_tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.union" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.union (Python method) — Return the union of all flags in this dict" class="md-ellipsis">union</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.union-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.update" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]" class="md-ellipsis">update</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.values" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.values (Python method) — !! processed by numpydoc !!" class="md-ellipsis">values</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.write" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.write (Python method) — Write this DataQualityDict to file" class="md-ellipsis">write</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.Segment/" class="md-nav__link">
+        <span class="md-ellipsis">Segment</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.SegmentList/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.SegmentListDict/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table/" class="md-nav__link">
+        <span class="md-ellipsis">Data tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs." class="md-ellipsis">gwpy.<wbr>segments.<wbr>Data<wbr>Quality<wbr>Dict</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.DataQualityDict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.clear (Python method) — !! processed by numpydoc !!" class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.coalesce (Python method) — Coalesce all segments lists in this DataQualityDict." class="md-ellipsis">coalesce</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="coalesce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.coalesce-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.copy (Python method) — Build a copy of this dictionary." class="md-ellipsis">copy</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="copy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.copy-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.from_ligolw_tables (Python method) — Build a DataQualityDict from a set of LIGO_LW segment tables" class="md-ellipsis">from_<wbr>ligolw_<wbr>tables</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_ligolw_tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_ligolw_tables-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.from_veto_definer_file (Python method) — Read a DataQualityDict from a LIGO_LW XML VetoDefinerTable." class="md-ellipsis">from_<wbr>veto_<wbr>definer_<wbr>file</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_veto_definer_file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.from_veto_definer_file-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.fromkeys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.fromkeys (Python method) — Create a new ordered dictionary with keys from iterable and values set to value." class="md-ellipsis">fromkeys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.get" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.get (Python method) — Return the value for key if key is in the dictionary, else default." class="md-ellipsis">get</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.intersection" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.intersection (Python method) — Return the intersection of all flags in this dict" class="md-ellipsis">intersection</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="intersection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.intersection-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.items" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.items (Python method) — !! processed by numpydoc !!" class="md-ellipsis">items</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.keys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.keys (Python method) — !! processed by numpydoc !!" class="md-ellipsis">keys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.move_to_end" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.move_to_end (Python method) — Move an existing element to the end (or beginning if last is false)." class="md-ellipsis">move_<wbr>to_<wbr>end</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.plot (Python method) — Plot this flag on a segments projection." class="md-ellipsis">plot</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.plot-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.pop (Python method) — value.  If key is not found, d is returned if given, otherwise KeyError is raised." class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.popitem" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.popitem (Python method) — Remove and return a (key, value) pair from the dictionary." class="md-ellipsis">popitem</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.populate (Python method) — Query the segment database for each flag&#39;s active segments." class="md-ellipsis">populate</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="populate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.populate-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.query (Python method) — Query the advanced LIGO DQSegDB for a list of flags." class="md-ellipsis">query</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.query_dqsegdb (Python method) — Query the advanced LIGO DQSegDB for a list of flags." class="md-ellipsis">query_<wbr>dqsegdb</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="query_dqsegdb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.query_dqsegdb-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.read (Python method) — Read segments from file into a DataQualityDict" class="md-ellipsis">read</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.read-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.setdefault" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary." class="md-ellipsis">setdefault</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.to_ligolw_tables (Python method) — Convert this DataQualityDict into a trio of LIGO_LW segment tables" class="md-ellipsis">to_<wbr>ligolw_<wbr>tables</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="to_ligolw_tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.to_ligolw_tables-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.union" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.union (Python method) — Return the union of all flags in this dict" class="md-ellipsis">union</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.union-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.update" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]" class="md-ellipsis">update</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.values" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.values (Python method) — !! processed by numpydoc !!" class="md-ellipsis">values</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.DataQualityDict.write" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.DataQualityDict.write (Python method) — Write this DataQualityDict to file" class="md-ellipsis">write</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/api/gwpy.segments.DataQualityDict.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="dataqualitydict">DataQualityDict<a class="headerlink" href="#dataqualitydict" title="Permalink to this headline">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gwpy.segments.</span></span><span class="sig-name descname"><span class="pre">DataQualityDict</span></span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L966-L1615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrderedDict</span></code></a> of (key, <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>) pairs.</p>
+<p>Since the <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> is an <code class="xref py py-obj docutils literal notranslate"><span class="pre">OrderedDict</span></code>, all iterations over
+its elements retain the order in which they were inserted.</p>
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.clear" title="gwpy.segments.DataQualityDict.clear (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.coalesce" title="gwpy.segments.DataQualityDict.coalesce (Python method) — Coalesce all segments lists in this DataQualityDict."><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Coalesce all segments lists in this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.copy" title="gwpy.segments.DataQualityDict.copy (Python method) — Build a copy of this dictionary."><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>([deep])</p></td>
+<td><p>Build a copy of this dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.from_ligolw_tables" title="gwpy.segments.DataQualityDict.from_ligolw_tables (Python method) — Build a DataQualityDict from a set of LIGO_LW segment tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ligolw_tables</span></code></a>(segmentdeftable, ...[, ...])</p></td>
+<td><p>Build a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> from a set of LIGO_LW segment tables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.from_veto_definer_file" title="gwpy.segments.DataQualityDict.from_veto_definer_file (Python method) — Read a DataQualityDict from a LIGO_LW XML VetoDefinerTable."><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_veto_definer_file</span></code></a>(fp[, start, end, ...])</p></td>
+<td><p>Read a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> from a LIGO_LW XML VetoDefinerTable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.fromkeys" title="gwpy.segments.DataQualityDict.fromkeys (Python method) — Create a new ordered dictionary with keys from iterable and values set to value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code></a>(/, iterable[, value])</p></td>
+<td><p>Create a new ordered dictionary with keys from iterable and values set to value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.get" title="gwpy.segments.DataQualityDict.get (Python method) — Return the value for key if key is in the dictionary, else default."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(key[, default])</p></td>
+<td><p>Return the value for key if key is in the dictionary, else default.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.intersection" title="gwpy.segments.DataQualityDict.intersection (Python method) — Return the intersection of all flags in this dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersection</span></code></a>()</p></td>
+<td><p>Return the intersection of all flags in this dict</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.items" title="gwpy.segments.DataQualityDict.items (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.keys" title="gwpy.segments.DataQualityDict.keys (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.move_to_end" title="gwpy.segments.DataQualityDict.move_to_end (Python method) — Move an existing element to the end (or beginning if last is false)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_to_end</span></code></a>(/, key[, last])</p></td>
+<td><p>Move an existing element to the end (or beginning if last is false).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.plot" title="gwpy.segments.DataQualityDict.plot (Python method) — Plot this flag on a segments projection."><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([label])</p></td>
+<td><p>Plot this flag on a segments projection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.pop" title="gwpy.segments.DataQualityDict.pop (Python method) — value.  If key is not found, d is returned if given, otherwise KeyError is raised."><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>(k[,d])</p></td>
+<td><p>value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.popitem" title="gwpy.segments.DataQualityDict.popitem (Python method) — Remove and return a (key, value) pair from the dictionary."><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a>(/[, last])</p></td>
+<td><p>Remove and return a (key, value) pair from the dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.populate" title="gwpy.segments.DataQualityDict.populate (Python method) — Query the segment database for each flag's active segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">populate</span></code></a>([source, segments, pad, on_error])</p></td>
+<td><p>Query the segment database for each flag's active segments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.query" title="gwpy.segments.DataQualityDict.query (Python method) — Query the advanced LIGO DQSegDB for a list of flags."><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(flags, *args, **kwargs)</p></td>
+<td><p>Query the advanced LIGO DQSegDB for a list of flags.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.query_dqsegdb" title="gwpy.segments.DataQualityDict.query_dqsegdb (Python method) — Query the advanced LIGO DQSegDB for a list of flags."><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_dqsegdb</span></code></a>(flags, *args, **kwargs)</p></td>
+<td><p>Query the advanced LIGO DQSegDB for a list of flags.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.read" title="gwpy.segments.DataQualityDict.read (Python method) — Read segments from file into a DataQualityDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source[, names, format])</p></td>
+<td><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.setdefault" title="gwpy.segments.DataQualityDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary."><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a>(/, key[, default])</p></td>
+<td><p>Insert key with a value of default if key is not in the dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.to_ligolw_tables" title="gwpy.segments.DataQualityDict.to_ligolw_tables (Python method) — Convert this DataQualityDict into a trio of LIGO_LW segment tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_ligolw_tables</span></code></a>(**attrs)</p></td>
+<td><p>Convert this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> into a trio of LIGO_LW segment tables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.union" title="gwpy.segments.DataQualityDict.union (Python method) — Return the union of all flags in this dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">union</span></code></a>()</p></td>
+<td><p>Return the union of all flags in this dict</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.update" title="gwpy.segments.DataQualityDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>([E, ]**F)</p></td>
+<td><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.values" title="gwpy.segments.DataQualityDict.values (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.DataQualityDict.write" title="gwpy.segments.DataQualityDict.write (Python method) — Write this DataQualityDict to file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<td><p>Write this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> to file</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">None.</span>&#160; <span class="pre">Remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">od.</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.coalesce">
+<span class="sig-name descname"><span class="pre">coalesce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1366-L1378"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.coalesce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coalesce all segments lists in this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a>.</p>
+<p><strong>This method modifies this object in-place.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.coalesce-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.coalesce-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>self</dt><dd><p>a view of this flag, not a copy.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1463-L1479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a copy of this dictionary.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.copy-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.copy-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>deep</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></span></dt><dd><p>perform a deep copy of the original dictionary with a fresh
+memory address</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.copy-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.copy-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>flag2</strong><span class="classifier"><a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></span></dt><dd><p>a copy of the original dictionary</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="gwpy.segments.DataQualityDict.from_ligolw_tables">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_ligolw_tables</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">segmentdeftable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">segmentsumtable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">segmenttable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">names=None</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">gpstype=&lt;class</span> <span class="pre">'lal.LIGOTimeGPS'&gt;</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">on_missing='error'</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1195-L1281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.from_ligolw_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> from a set of LIGO_LW segment tables</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.from_ligolw_tables-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.from_ligolw_tables-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>segmentdeftable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentDefTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment_definer</span></code> table to read</p>
+</dd>
+<dt><strong>segmentsumtable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentSumTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment_summary</span></code> table to read</p>
+</dd>
+<dt><strong>segmenttable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment</span></code> table to read</p>
+</dd>
+<dt><strong>names</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>a list of flag names to read, defaults to returning all</p>
+</dd>
+<dt><strong>gpstype</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></a>, optional</span></dt><dd><p>class to use for GPS times in returned objects, can be a function
+to convert GPS time to something else, default is
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">LIGOTimeGPS</span></code></p>
+</dd>
+<dt><strong>on_missing</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>action to take when a one or more <code class="docutils literal notranslate"><span class="pre">names</span></code> are not found in
+the <code class="docutils literal notranslate"><span class="pre">segment_definer</span></code> table, one of</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'ignore'</span></code> : do nothing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'warn'</span></code> : print a warning</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error'</span></code> : raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.from_ligolw_tables-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.from_ligolw_tables-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>dqdict</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>a dict of <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> objects populated from the LIGO_LW
+tables</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="gwpy.segments.DataQualityDict.from_veto_definer_file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_veto_definer_file</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">fp</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">ifo</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;ligolw&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1123-L1193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.from_veto_definer_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> from a LIGO_LW XML VetoDefinerTable.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.from_veto_definer_file-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.from_veto_definer_file-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>fp</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>path of veto definer file to read</p>
+</dd>
+<dt><strong>start</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>GPS start time at which to restrict returned flags</p>
+</dd>
+<dt><strong>end</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LIGOTimeGPS</span></code>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>GPS end time at which to restrict returned flags</p>
+</dd>
+<dt><strong>ifo</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>interferometer prefix whose flags you want to read</p>
+</dd>
+<dt><strong>format</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>format of file to read, currently only ‘ligolw’ is supported</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.from_veto_definer_file-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.from_veto_definer_file-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>flags</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> of flags parsed from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">veto_def_table</span></code>
+of the input file.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method does not automatically <a class="reference internal" href="#gwpy.segments.DataQualityDict.populate" title="gwpy.segments.DataQualityDict.populate (Python method) — Query the segment database for each flag's active segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">populate</span></code></a>
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code> segment list of any flags, a separate call should
+be made for that as follows</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">flags</span> <span class="o">=</span> <span class="n">DataQualityDict</span><span class="o">.</span><span class="n">from_veto_definer_file</span><span class="p">(</span><span class="s1">&#39;/path/to/file.xml&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flags</span><span class="o">.</span><span class="n">populate</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.fromkeys">
+<span class="sig-name descname"><span class="pre">fromkeys</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value=None</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.DataQualityDict.fromkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new ordered dictionary with keys from iterable and values set to value.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.DataQualityDict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value for key if key is in the dictionary, else default.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.intersection">
+<span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1553-L1564"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection of all flags in this dict</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.intersection-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.intersection-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>intersection</strong><span class="classifier"><a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></span></dt><dd><p>a new <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> who’s active and known segments
+are the intersection of those of the values of this dict</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">items</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">keys</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.move_to_end">
+<span class="sig-name descname"><span class="pre">move_to_end</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">last=True</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.DataQualityDict.move_to_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move an existing element to the end (or beginning if last is false).</p>
+<p>Raise KeyError if the element does not exist.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;key&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1566-L1615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot this flag on a segments projection.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.plot-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.plot-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>label</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>Labelling system to use, or fixed label for all flags,
+special values include</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'key'</span></code>: use the key of the <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'name'</span></code>: use the <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name (Python attribute) — The name associated with this flag."><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> of the flag</p></li>
+</ul>
+<p>If anything else, that fixed label will be used for all lines.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>all keyword arguments are passed to the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Plot</span></code> constructor.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.plot-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.plot-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>figure</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Figure</span></code></a></span></dt><dd><p>the newly created figure, with populated Axes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="seealso admonition">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="(in Matplotlib v3.7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.figure</span></code></a></dt><dd><p>for documentation of keyword arguments used to create the figure</p>
+</dd>
+<dt><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_subplot" title="(in Matplotlib v3.7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.add_subplot</span></code></a></dt><dd><p>for documentation of keyword arguments used to create the axes</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">gwpy.plot.SegmentAxes.plot_segmentlist</span></code></dt><dd><p>for documentation of keyword arguments used in rendering the data</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">k</span></span></em></span><span class="optional">[</span><span class="sig-param-decl">, <em class="sig-param"><span class="n"><span class="pre">d</span></span></em></span><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">v,</span> <span class="pre">remove</span> <span class="pre">specified</span> <span class="pre">key</span> <span class="pre">and</span> <span class="pre">return</span> <span class="pre">the</span> <span class="pre">corresponding</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>value.  If key is not found, d is returned if given, otherwise KeyError
+is raised.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.popitem">
+<span class="sig-name descname"><span class="pre">popitem</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">last=True</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.DataQualityDict.popitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return a (key, value) pair from the dictionary.</p>
+<p>Pairs are returned in LIFO order if last is true or FIFO order if false.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="gwpy.segments.DataQualityDict.populate">
+<span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;http://segments.ldas.cit&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;raise&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1380-L1461"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.populate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the segment database for each flag’s active segments.</p>
+<p>This method assumes all of the metadata for each flag have been
+filled. Minimally, the following attributes must be filled</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name (Python attribute) — The name associated with this flag."><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>The name associated with this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a></p></td>
+<td><p>The set of segments during which this flag was known, and its state was well defined.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Segments will be fetched from the database, with any
+<a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding (Python attribute) — [start, end) padding for this flag's active segments."><code class="xref py py-attr docutils literal notranslate"><span class="pre">padding</span></code></a> added on-the-fly.</p>
+<p>Entries in this dict will be modified in-place.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.populate-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.populate-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>source of segments for this flag. This must be
+either a URL for a segment database or a path to a file on disk.</p>
+</dd>
+<dt><strong>segments</strong><span class="classifier"><a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>, optional</span></dt><dd><p>a list of known segments during which to query, if not given,
+existing known segments for flags will be used.</p>
+</dd>
+<dt><strong>pad</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></span></dt><dd><p>apply the <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.padding" title="gwpy.segments.DataQualityFlag.padding (Python attribute) — [start, end) padding for this flag's active segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">padding</span></code></a> associated with each
+flag, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p>
+</dd>
+<dt><strong>on_error</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>how to handle an error querying for one flag, one of</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'raise'</span></code> (default): raise the Exception</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'warn'</span></code>: print a warning</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'ignore'</span></code>: move onto the next flag as if nothing happened</p></li>
+</ul>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>any other keyword arguments to be passed to
+<a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query (Python method) — Query the advanced LIGO DQSegDB for the given flag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.query()</span></code></a> or <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.read" title="gwpy.segments.DataQualityFlag.read (Python method) — Read segments from file into a DataQualityFlag."><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.read()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.populate-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.populate-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>self</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>a reference to the modified DataQualityDict</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.query">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L976-L1044"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the advanced LIGO DQSegDB for a list of flags.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.query-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.query-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>flags</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code></span></dt><dd><p>A list of flag names for which to query.</p>
+</dd>
+<dt><strong>*args</strong></dt><dd><p>Either, two <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>-like numbers indicating the
+GPS [start, stop) interval, or a <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+defining a number of summary segments.</p>
+</dd>
+<dt><strong>on_error</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>how to handle an error querying for one flag, one of</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'raise'</span></code> (default): raise the Exception</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'warn'</span></code>: print a warning</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'ignore'</span></code>: move onto the next flag as if nothing happened</p></li>
+</ul>
+</dd>
+<dt><strong>url</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>URL of the segment database, defaults to
+<code class="docutils literal notranslate"><span class="pre">$DEFAULT_SEGMENT_SERVER</span></code> environment variable, or
+<code class="docutils literal notranslate"><span class="pre">'https://segments.ligo.org'</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.query-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.query-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>flagdict</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>An ordered <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> of (name, <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>)
+pairs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.query_dqsegdb">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_dqsegdb</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L976-L1044"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.query_dqsegdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the advanced LIGO DQSegDB for a list of flags.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.query_dqsegdb-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.query_dqsegdb-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>flags</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code></span></dt><dd><p>A list of flag names for which to query.</p>
+</dd>
+<dt><strong>*args</strong></dt><dd><p>Either, two <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>-like numbers indicating the
+GPS [start, stop) interval, or a <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+defining a number of summary segments.</p>
+</dd>
+<dt><strong>on_error</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>how to handle an error querying for one flag, one of</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'raise'</span></code> (default): raise the Exception</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'warn'</span></code>: print a warning</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">'ignore'</span></code>: move onto the next flag as if nothing happened</p></li>
+</ul>
+</dd>
+<dt><strong>url</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>URL of the segment database, defaults to
+<code class="docutils literal notranslate"><span class="pre">$DEFAULT_SEGMENT_SERVER</span></code> environment variable, or
+<code class="docutils literal notranslate"><span class="pre">'https://segments.ligo.org'</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.query_dqsegdb-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.query_dqsegdb-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>flagdict</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>An ordered <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> of (name, <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>)
+pairs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1049-L1121"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.read-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.read-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>path of file to read</p>
+</dd>
+<dt><strong>format</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</dd>
+<dt><strong>names</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, optional, default: read all names found</span></dt><dd><p>list of names to read, by default all names are read separately.</p>
+</dd>
+<dt><strong>coalesce</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> coalesce the all segment lists before returning,
+otherwise return exactly as contained in file(s).</p>
+</dd>
+<dt><strong>nproc</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional, default: 1</span></dt><dd><p>number of CPUs to use for parallel reading of multiple files</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional, default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></span></dt><dd><p>print a progress bar showing read status</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.read-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.read-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>flagdict</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></span></dt><dd><p>a new <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> of <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> entries with
+<code class="docutils literal notranslate"><span class="pre">active</span></code> and <code class="docutils literal notranslate"><span class="pre">known</span></code> segments seeded from the XML tables
+in the given file.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>ligolw</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.setdefault">
+<span class="sig-name descname"><span class="pre">setdefault</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default=None</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.DataQualityDict.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert key with a value of default if key is not in the dictionary.</p>
+<p>Return the value for key if key is in the dictionary, else default.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.to_ligolw_tables">
+<span class="sig-name descname"><span class="pre">to_ligolw_tables</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attrs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1283-L1355"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.to_ligolw_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> into a trio of LIGO_LW segment tables</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.to_ligolw_tables-parameters">Parameters<a class="headerlink" href="#gwpy.segments.DataQualityDict.to_ligolw_tables-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**attrs</strong></dt><dd><p>other attributes to add to all rows in all tables
+(e.g. <code class="docutils literal notranslate"><span class="pre">'process_id'</span></code>)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.DataQualityDict.to_ligolw_tables-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.to_ligolw_tables-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>segmentdeftable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentDefTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment_definer</span></code> table</p>
+</dd>
+<dt><strong>segmentsumtable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentSumTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment_summary</span></code> table</p>
+</dd>
+<dt><strong>segmenttable</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentTable</span></code></span></dt><dd><p>the <code class="docutils literal notranslate"><span class="pre">segment</span></code> table</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1540-L1551"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.union" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the union of all flags in this dict</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.DataQualityDict.union-returns">Returns<a class="headerlink" href="#gwpy.segments.DataQualityDict.union-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>union</strong><span class="classifier"><a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></span></dt><dd><p>a new <a class="reference internal" href="../gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> who’s active and known segments
+are the union of those of the values of this dict</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="optional">[</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, </span><span class="optional">]</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">**F</span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">None.</span>&#160; <span class="pre">Update</span> <span class="pre">D</span> <span class="pre">from</span> <span class="pre">dict/iterable</span> <span class="pre">E</span> <span class="pre">and</span> <span class="pre">F.</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
+If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
+In either case, this is followed by: for k in F:  D[k] = F[k]</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">values</span></span></span></span><a class="headerlink" href="#gwpy.segments.DataQualityDict.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.DataQualityDict.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/flag.py#L1359-L1364"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.DataQualityDict.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this <a class="reference internal" href="#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a> to file</p>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>ligolw</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../gwpy.segments.DataQualityFlag/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DataQualityFlag" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              DataQualityFlag
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../gwpy.segments.Segment/" class="md-footer__link md-footer__link--next" aria-label="Next: Segment" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Segment
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+    
+  </body>
+</html>

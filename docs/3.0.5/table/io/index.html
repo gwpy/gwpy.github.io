@@ -1,0 +1,2000 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>Reading and writing Table and EventTable objects - GWpy 3.0.5 documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.9dcb20399d0097661.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#accessing-open-data-event-catalogues" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reading and writing Table and EventTable objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segments/" class="md-nav__link">
+        <span class="md-ellipsis">Data-<wbr>quality segments</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../"><span class="md-ellipsis">Data tables</span></a>
+          
+            <label for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data tables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data tables</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6_1" type="checkbox" id="__nav_4_6_1" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../#reading-writing-tables"><span class="md-ellipsis">Reading/writing tables</span></a>
+          
+            <label for="__nav_4_6_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reading/writing tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reading/writing tables</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Reading and writing Table and Event<wbr>Table objects</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Reading and writing Table and Event<wbr>Table objects</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Reading and writing Table and Event<wbr>Table objects</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-open-data-event-catalogues" class="md-nav__link">
+    <span class="md-ellipsis">Accessing Open Data event catalogues</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing Open Data event catalogues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-queries" class="md-nav__link">
+    <span class="md-ellipsis">Simple queries</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtered-queries" class="md-nav__link">
+    <span class="md-ellipsis">Filtered queries</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-gravityspy-events" class="md-nav__link">
+    <span class="md-ellipsis">Accessing Gravity<wbr>Spy events</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing GravitySpy events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-database-queries" class="md-nav__link">
+    <span class="md-ellipsis">Full database queries</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#similarity-searches" class="md-nav__link">
+    <span class="md-ellipsis">Similarity searches</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-file-formats" class="md-nav__link">
+    <span class="md-ellipsis">Built-<wbr>in file formats</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in file formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-processed-file-reading" class="md-nav__link">
+    <span class="md-ellipsis">Multi-<wbr>processed file reading</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ligo-lw-xml" class="md-nav__link">
+    <span class="md-ellipsis">LIGO_<wbr>LW XML</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coherence-waveburst-ascii-aka-events-txt" class="md-nav__link">
+    <span class="md-ellipsis">Coherence Wave<wbr>Burst ASCII <wbr>(aka EVENTS.<wbr>txt)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    <span class="md-ellipsis">ROOT</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pycbc-live-hdf5" class="md-nav__link">
+    <span class="md-ellipsis">Py<wbr>CBC Live <wbr>(HDF5)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gstlal-ligo-lw-xml" class="md-nav__link">
+    <span class="md-ellipsis">Gst<wbr>LAL <wbr>(LIGO_<wbr>LW XML)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snax-hdf5" class="md-nav__link">
+    <span class="md-ellipsis">SNAX <wbr>(HDF5)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwf" class="md-nav__link">
+    <span class="md-ellipsis">GWF</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../#using-tables" class="md-nav__link">
+        <span class="md-ellipsis">Using tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../#plotting-tables" class="md-nav__link">
+        <span class="md-ellipsis">Plotting tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../#class-reference" class="md-nav__link">
+        <span class="md-ellipsis">Class reference</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Reading and writing Table and Event<wbr>Table objects</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-open-data-event-catalogues" class="md-nav__link">
+    <span class="md-ellipsis">Accessing Open Data event catalogues</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing Open Data event catalogues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-queries" class="md-nav__link">
+    <span class="md-ellipsis">Simple queries</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtered-queries" class="md-nav__link">
+    <span class="md-ellipsis">Filtered queries</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-gravityspy-events" class="md-nav__link">
+    <span class="md-ellipsis">Accessing Gravity<wbr>Spy events</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing GravitySpy events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-database-queries" class="md-nav__link">
+    <span class="md-ellipsis">Full database queries</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#similarity-searches" class="md-nav__link">
+    <span class="md-ellipsis">Similarity searches</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-file-formats" class="md-nav__link">
+    <span class="md-ellipsis">Built-<wbr>in file formats</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in file formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-processed-file-reading" class="md-nav__link">
+    <span class="md-ellipsis">Multi-<wbr>processed file reading</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ligo-lw-xml" class="md-nav__link">
+    <span class="md-ellipsis">LIGO_<wbr>LW XML</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coherence-waveburst-ascii-aka-events-txt" class="md-nav__link">
+    <span class="md-ellipsis">Coherence Wave<wbr>Burst ASCII <wbr>(aka EVENTS.<wbr>txt)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    <span class="md-ellipsis">ROOT</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pycbc-live-hdf5" class="md-nav__link">
+    <span class="md-ellipsis">Py<wbr>CBC Live <wbr>(HDF5)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gstlal-ligo-lw-xml" class="md-nav__link">
+    <span class="md-ellipsis">Gst<wbr>LAL <wbr>(LIGO_<wbr>LW XML)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snax-hdf5" class="md-nav__link">
+    <span class="md-ellipsis">SNAX <wbr>(HDF5)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwf" class="md-nav__link">
+    <span class="md-ellipsis">GWF</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/table/io.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="reading-and-writing-table-and-eventtable-objects"><span id="gwpy-table-io"></span>Reading and writing <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v5.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> and <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a> objects<a class="headerlink" href="#reading-and-writing-table-and-eventtable-objects" title="Permalink to this headline">¶</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This document complements the upstream Astropy documentation on
+reading/writing <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v5.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> objects, please refer to
+<a class="reference external" href="https://docs.astropy.org/en/stable/table/io.html#read-write-tables" title="(in Astropy v5.4)"><code class="docutils literal notranslate"><span class="pre">Reading</span> <span class="pre">and</span> <span class="pre">Writing</span> <span class="pre">Table</span> <span class="pre">Objects</span></code></a>.</p>
+</div>
+<p>Astropy provides an excellent <a class="reference external" href="https://docs.astropy.org/en/stable/io/unified.html#table-io" title="(in Astropy v5.4)"><code class="xref any docutils literal notranslate"><span class="pre">unified</span> <span class="pre">input/output</span></code></a>
+system for the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v5.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> object, and GWpy extends upon that to
+include common gravitational-wave file types, as well as providing
+event-specific input/output registrations for event data.
+In the most general case you can read a table of data as follows:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-example">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from an ASCII file<a class="headerlink" href="#gwpy-table-io-example" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">EventTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;mydata.txt&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read (Python method) — Read data into an EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.read()</span></code></a> will attempt to automatically identify the file
+format based on the file extension and/or the contents of the file, however,
+the <code class="docutils literal notranslate"><span class="pre">format</span></code> keyword argument can be used to manually identify the input
+file-format.</p>
+<p>The <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read (Python method) — Read data into an EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write (Python method) — Write this table to a file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods take
+different arguments and keywords based on the input/output file format,
+see <a class="reference internal" href="#gwpy-table-io-formats"><span class="std std-ref">Accessing GravitySpy events</span></a> for details on reading/writing for
+each of the built-in formats.</p>
+<h2 id="accessing-open-data-event-catalogues"><span id="gwpy-table-gwosc"></span>Accessing Open Data event catalogues<a class="headerlink" href="#accessing-open-data-event-catalogues" title="Permalink to this headline">¶</a></h2>
+<p>The Gravitational-Wave Open Science Centre (GWOSC) publishes the Gravitational-Wave Transient Event Catalogues (GWTCs),
+allowing public access to tables of gravitational wave events and their
+parameters.</p>
+<p>GWpy’s <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a> class comes with a
+<a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data (Python method) — Fetch events from an open-data catalogue hosted by GWOSC."><code class="xref py py-meth docutils literal notranslate"><span class="pre">fetch_open_data()</span></code></a> method that queries the GWOSC database
+to download data for the relevant catalogue.</p>
+<h3 id="simple-queries"><span id="gwpy-table-gwosc-query"></span>Simple queries<a class="headerlink" href="#simple-queries" title="Permalink to this headline">¶</a></h3>
+<p>The simplest query just requires the catalogue name, and will return all parameters
+for all events in the catalogue:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Fetching the GWTC-2 catalogue using <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data (Python method) — Fetch events from an open-data catalogue hosted by GWOSC."><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.fetch_open_data()</span></code></a> (output correct as of Jun 02, 2023)<a class="headerlink" href="#gwpy-table-io-fetch-open-data" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">EventTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">&quot;GWTC-2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
+<span class="go">       name        final_mass_source_lower ... mass_2_source_upper mass_1_source_upper</span>
+<span class="go">                                           ...</span>
+<span class="go">------------------ ----------------------- ... ------------------- -------------------</span>
+<span class="go">GW190408_181802-v1                    -2.8 ...                 3.3                 5.1</span>
+<span class="go">       GW190412-v3                    -3.8 ...                 1.6                 4.7</span>
+<span class="go">GW190413_052954-v1                    -9.2 ...                 7.3                12.6</span>
+<span class="go">GW190413_134308-v1                   -11.4 ...                11.7                13.5</span>
+<span class="go">GW190421_213856-v1                    -8.7 ...                 8.0                10.4</span>
+<span class="go">GW190424_180648-v1                   -10.1 ...                 7.6                11.1</span>
+<span class="go">       GW190425-v2                    None ...                 0.3                 0.6</span>
+<span class="go">GW190426_152155-v1                    None ...                 0.8                 3.9</span>
+<span class="go">GW190503_185404-v1                    -7.7 ...                 7.7                 9.2</span>
+<span class="go">GW190512_180714-v1                    -3.5 ...                 3.6                 5.3</span>
+<span class="go">GW190513_205428-v1                    -5.8 ...                 7.7                 9.5</span>
+<span class="go">GW190514_065416-v1                   -10.4 ...                 9.3                14.7</span>
+<span class="go">GW190517_055101-v1                    -8.9 ...                 7.0                11.7</span>
+<span class="go">GW190519_153544-v1                   -13.8 ...                11.0                10.7</span>
+<span class="go">       GW190521-v3                   -22.4 ...                22.7                28.7</span>
+<span class="go">GW190521_074359-v1                    -4.4 ...                 5.4                 5.9</span>
+<span class="go">GW190527_092055-v1                    -9.3 ...                10.5                16.4</span>
+<span class="go">GW190602_175927-v1                   -14.9 ...                14.3                15.7</span>
+<span class="go">GW190620_030421-v1                   -12.1 ...                12.2                16.0</span>
+<span class="go">GW190630_185205-v1                    -4.6 ...                 5.2                 6.9</span>
+<span class="go">GW190701_203306-v1                    -8.9 ...                 8.7                11.8</span>
+<span class="go">GW190706_222641-v1                   -13.5 ...                14.6                14.6</span>
+<span class="go">GW190707_093326-v1                    -1.3 ...                 1.4                 3.3</span>
+<span class="go">GW190708_232457-v1                    -1.8 ...                 2.0                 4.7</span>
+<span class="go">GW190719_215514-v1                   -10.2 ...                 9.0                18.0</span>
+<span class="go">GW190720_000836-v1                    -2.2 ...                 2.3                 6.7</span>
+<span class="go">GW190727_060333-v1                    -7.5 ...                 7.1                 9.5</span>
+<span class="go">GW190728_064510-v1                    -1.3 ...                 1.7                 7.2</span>
+<span class="go">GW190731_140936-v1                   -10.8 ...                 9.7                12.2</span>
+<span class="go">GW190803_022701-v1                    -8.5 ...                 7.8                10.6</span>
+<span class="go">       GW190814-v2                    -0.9 ...                0.08                 1.1</span>
+<span class="go">GW190828_063405-v1                    -4.3 ...                 4.6                 5.8</span>
+<span class="go">GW190828_065509-v1                    -4.5 ...                 3.6                 7.0</span>
+<span class="go">GW190909_114149-v1                   -16.8 ...                13.4                52.7</span>
+<span class="go">GW190910_112807-v1                    -8.6 ...                 6.3                 7.6</span>
+<span class="go">GW190915_235702-v1                    -6.0 ...                 5.6                 9.5</span>
+<span class="go">GW190924_021846-v1                    -1.0 ...                 1.4                 7.0</span>
+<span class="go">GW190929_012149-v1                   -25.3 ...                19.3                33.0</span>
+<span class="go">GW190930_133541-v1                    -1.5 ...                 1.7                12.4</span>
+</code></pre></div>
+</div>
+</div>
+<p>The full list of available columns can be queried as follows:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-info">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Printing the columns of an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> (output correct as of Jun 02, 2023)<a class="headerlink" href="#gwpy-table-io-fetch-open-data-info" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+<span class="go">&lt;EventTable masked=True length=39&gt;</span>
+<span class="go">              name                dtype    unit            description</span>
+<span class="go">-------------------------------- ------- ------- --------------------------------</span>
+<span class="go">                            name   str18</span>
+<span class="go">         final_mass_source_lower  object                  final_mass_source_lower</span>
+<span class="go">         chirp_mass_source_lower float64                  chirp_mass_source_lower</span>
+<span class="go">         total_mass_source_upper float64                  total_mass_source_upper</span>
+<span class="go">                chirp_mass_lower float64                         chirp_mass_lower</span>
+<span class="go">...</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition">
+<p class="admonition-title">GWOSC catalogues</p>
+<p>For more details on the GWOSC catalogues, see <a class="reference external" href="https://gwosc.org/eventapi/html/">https://gwosc.org/eventapi/html/</a>.</p>
+</div>
+<h3 id="filtered-queries"><span id="gwpy-table-gwosc-filter"></span>Filtered queries<a class="headerlink" href="#filtered-queries" title="Permalink to this headline">¶</a></h3>
+<p>The columns returned can be selected using the <code class="docutils literal notranslate"><span class="pre">column</span></code> keyword,
+and mathematical selection filters can be applied on-the-fly
+using the <code class="docutils literal notranslate"><span class="pre">selection</span></code> keyword:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-filtered">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Downloading a sub-set of a catalogue from GWOSC (output correct as of Jun 02, 2023)<a class="headerlink" href="#gwpy-table-io-fetch-open-data-filtered" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;GWTC-2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">selection</span><span class="o">=</span><span class="s2">&quot;mass_1_source &lt; 4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;mass_1_source&quot;</span><span class="p">,</span> <span class="s2">&quot;mass_2_source&quot;</span><span class="p">,</span> <span class="s2">&quot;luminosity_distance&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">    name    mass_1_source mass_2_source luminosity_distance</span>
+<span class="go">               solMass       solMass            Mpc</span>
+<span class="go">----------- ------------- ------------- -------------------</span>
+<span class="go">GW190425-v2           2.0           1.4               160.0</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition">
+<p class="admonition-title">More on filtering an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></p>
+<p>For more information on filtering, see <a class="reference internal" href="../filter/#gwpy-table-filter"><span class="std std-ref">Filtering tables</span></a>.</p>
+</div>
+<h2 id="accessing-gravityspy-events"><span id="gwpy-table-io-formats"></span>Accessing GravitySpy events<a class="headerlink" href="#accessing-gravityspy-events" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://gravityspy.org">Gravity Spy</a> is a citizen-science project that enables the public to
+characterize and classify glitches in IGWN detector data.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">GravitySpyTable</span></code> subclass of <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code></a> provides
+methods to query GravitySpy for various tables of classified events.</p>
+<h3 id="full-database-queries">Full database queries<a class="headerlink" href="#full-database-queries" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">GravitySpyTable.fetch()</span></code> method (inherited directly from
+<a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch" title="gwpy.table.EventTable.fetch (Python method) — Fetch a table of events from a database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a>) enables querying the Gravity Spy database
+directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">GravitySpyTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blips</span> <span class="o">=</span> <span class="n">GravitySpyTable</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;gravityspy&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;glitches&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">selection</span><span class="o">=</span><span class="s2">&quot;Label=Blip&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Login credentials are required to support this query.
+IGWN members with LIGO.ORG credentials can find the required
+credentials at <a class="reference external" href="https://secrets.ligo.org/secrets/144/">https://secrets.ligo.org/secrets/144/</a>.</p>
+</div>
+<h3 id="similarity-searches">Similarity searches<a class="headerlink" href="#similarity-searches" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">GravitySpyTable.search()</span></code> method enables performing a
+<a class="reference external" href="https://gravityspytools.ciera.northwestern.edu/search/">Similarity Search</a>
+given the ID of a Gravity Spy event:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gwpy.table</span> <span class="kn">import</span> <span class="n">GravitySpyTable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">similar</span> <span class="o">=</span> <span class="n">GravitySpyTable</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;8FHTgA8MEu&quot;</span><span class="p">,</span> <span class="n">howmany</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">similar</span><span class="p">)</span>
+<span class="go">ifo  peak_frequency  links_subjects ml_label searchedID ...</span>
+<span class="go">--- ---------------- -------------- -------- ---------- ...</span>
+<span class="go"> H1 84.4759674072266      5740011.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1   128.8896484375     20892636.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 73.4049224853516     20892632.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 75.5168914794922     20892526.0 Scratchy 8FHTgA8MEu ...</span>
+<span class="go"> L1 144.991333007812      8644242.0 Scratchy 8FHTgA8MEu ...</span>
+</code></pre></div>
+</div>
+<p>This has download 5 similarly <em>Scratchy</em> glitches from the LIGO-Hanford
+(<code class="xref py py-obj docutils literal notranslate"><span class="pre">'H1'</span></code>) and LIGO-Livingston (<code class="xref py py-obj docutils literal notranslate"><span class="pre">'L1'</span></code>) observatories.</p>
+<h2 id="built-in-file-formats">Built-in file formats<a class="headerlink" href="#built-in-file-formats" title="Permalink to this headline">¶</a></h2>
+<p>GWpy extends the Astropy functionality with readers for the following file
+formats:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#gwpy-table-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-table-io-ascii-cwb"><span class="std std-ref">Coherence WaveBurst ASCII (aka EVENTS.txt)</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-table-io-root"><span class="std std-ref">ROOT</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-table-io-pycbc-live"><span class="std std-ref">PyCBC Live (HDF5)</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-table-io-gstlal"><span class="std std-ref">GstLAL (LIGO_LW XML)</span></a></p></li>
+<li><p><a class="reference internal" href="#gwpy-table-io-gwf"><span class="std std-ref">GWF</span></a></p></li>
+</ul>
+<p>Each of the sub-sections below outlines how to read and write in these
+file formats, include the custom keyword arguments to pass to
+<a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read (Python method) — Read data into an EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.read()</span></code></a> and <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.write" title="gwpy.table.EventTable.write (Python method) — Write this table to a file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.write()</span></code></a>.</p>
+<div class="admonition">
+<p class="admonition-title">Listing all available formats</p>
+<p>To list all available formats, consult the documentation for
+<a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read (Python method) — Read data into an EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.read()</span></code></a>.</p>
+</div>
+<h3 id="multi-processed-file-reading">Multi-processed file reading<a class="headerlink" href="#multi-processed-file-reading" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.read" title="gwpy.table.EventTable.read (Python method) — Read data into an EventTable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.read()</span></code></a> method accepts the <code class="docutils literal notranslate"><span class="pre">nproc</span></code>
+keyword argument, allowing multi-processed reading of lists of files.
+This argument can be used with any file-format, not just those defined below,
+but is <strong>not</strong> backported to for use with <code class="xref py py-meth docutils literal notranslate"><span class="pre">Table.read()</span></code>.</p>
+<h3 id="ligo-lw-xml"><span id="gwpy-table-io-ligolw"></span><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Permalink to this headline">¶</a></h3>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a></p>
+<p>The LIGO Scientific Collaboration uses a custom scheme of XML in which to
+store tabular data, called <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code>.
+Complementing the scheme is a python library - <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a> - which
+allows users to read and write all of the different types of tabular data
+produced by gravitational-wave searches.</p>
+<p>Reading and writing tables in <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML format is supported with
+<code class="docutils literal notranslate"><span class="pre">format='ligolw',</span> <span class="pre">tablename=&lt;tablename&gt;'</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;tablename&gt;</span></code> can be
+any of the supported LSC table names (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.lsctables</span></code>).</p>
+<h4 id="reading">Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h4>
+<p>When reading, the <code class="docutils literal notranslate"><span class="pre">tablename</span></code> keyword argument should be given to identify
+the table in the file, as follows:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-tablename">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.<a class="headerlink" href="#gwpy-table-io-ligolw-tablename" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;H1-LDAS_STRAIN-968654552-10.xml.gz&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>The result should be something similar to this:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-output">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Result of reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.<a class="headerlink" href="#gwpy-table-io-ligolw-output" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">ifo peak_time peak_time_ns start_time ... confidence chisq chisq_dof bandwidth</span>
+<span class="go">--- --------- ------------ ---------- ... ---------- ----- --------- ---------</span>
+<span class="go"> H1 968654557    783203126  968654557 ...  16.811825   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    781250001  968654557 ...  16.816761   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    779296876  968654557 ...  16.696106   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    777343751  968654557 ...  16.739489   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    775390626  968654557 ...  16.802326   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    773437501  968654557 ...   16.30731   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    771484376  968654557 ...  16.307253   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    769531251  968654557 ...   16.35647   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    767578126  968654557 ...  16.561176   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    765625001  968654557 ...  16.393112   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    763671876  968654557 ...  16.404041   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    761718751  968654557 ...  16.405825   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    759765626  968654557 ...  16.715092   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    757812501  968654557 ...  17.512749   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    755859376  968654557 ...  17.347675   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    753906251  968654557 ...  17.077478   0.0     512.0     256.0</span>
+<span class="go"> H1 968654557    751953126  968654557 ...  16.742907   0.0     512.0     256.0</span>
+<span class="go">...       ...          ...        ... ...        ...   ...       ...       ...</span>
+<span class="go"> H1 968654560    342773438  968654559 ...  11.029792   0.0      16.0       8.0</span>
+<span class="go"> H1 968654559    280273438  968654558 ...  12.363036   0.0      16.0       8.0</span>
+<span class="go"> H1 968654559    217773438  968654558 ...  13.985101   0.0      16.0       8.0</span>
+<span class="go"> H1 968654559    155273438  968654558 ...  14.662391   0.0      16.0       8.0</span>
+<span class="go"> H1 968654559     92773438  968654558 ...  15.864924   0.0      16.0       8.0</span>
+<span class="go"> H1 968654559     30273438  968654558 ...  16.321821   0.0      16.0       8.0</span>
+<span class="go"> H1 968654558    967773438  968654558 ...  16.975931   0.0      16.0       8.0</span>
+<span class="go"> H1 968654558    905273438  968654558 ...  19.160393   0.0      16.0       8.0</span>
+<span class="go"> H1 968654560    811523438  968654560 ...  11.270205   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    686523438  968654560 ...  15.839205   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    561523438  968654560 ...  15.944695   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    436523438  968654559 ...  14.384432   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    311523438  968654559 ...  14.465309   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    186523438  968654559 ...  13.045853   0.0       8.0       4.0</span>
+<span class="go"> H1 968654560    561523438  968654560 ...  11.636543   0.0       4.0       4.0</span>
+<span class="go"> H1 968654560    436523438  968654560 ...  15.344837   0.0       4.0       4.0</span>
+<span class="go"> H1 968654560    311523438  968654560 ...  11.367717   0.0       4.0       4.0</span>
+<span class="go">Length = 2052 rows</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition">
+<p class="admonition-title">Single-table files</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tablename</span></code> keyword can be omitted if there is only a single table
+in the file.</p>
+</div>
+<p>To restrict the columns returned in the new <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a>, use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">columns</span></code>
+keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-columns">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.<a class="headerlink" href="#gwpy-table-io-ligolw-columns" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;peak_time&quot;</span><span class="p">,</span> <span class="s2">&quot;peak_time_ns&quot;</span><span class="p">,</span> <span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;peak_frequency&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>Many LIGO_LW table objects (as defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.lsctables</span></code>) include
+utility functions to create new columns by combining others,
+e.g. to calculate the Q of a sine-Gaussian pulse from the duration and
+central frequency.
+These ‘columns’ can be requested directly, providing the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ligo.lw.table.Table</span></code> representation of the data has a
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_</span></code> method for that name:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-get-columns">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading <code class="docutils literal notranslate"><span class="pre">get_</span></code> columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.<a class="headerlink" href="#gwpy-table-io-ligolw-get-columns" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="s2">&quot;central_freq&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>When reading a processed column in this manner, all required input columns
+for a processed column must be included in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">columns</span></code> keyword list.
+To exclude these columns from the returned data, use the
+<code class="docutils literal notranslate"><span class="pre">ligolw_columns=</span></code> keyword to specify the columns required to provide
+the output columns:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">ligolw_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="s2">&quot;central_freq&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>By default, the returned <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> uses the dtypes returned by the
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">ligol.lw</span></code> library, and functions therein, which often end up as
+<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.object_" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.object_</span></code></a> arrays in the table.
+To force all columns to have real <a class="reference external" href="https://numpy.org/doc/stable/reference/index.html#module-numpy" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a> data types, use the
+<code class="docutils literal notranslate"><span class="pre">use_numpy_dtypes=True</span></code> keyword, which will cast (known) custom object
+types to a standard <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>, e.g:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligo-lw-use-numpy-dtypes">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Example of using <code class="docutils literal notranslate"><span class="pre">use_numpy_dtypes=True</span></code> when reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.<a class="headerlink" href="#gwpy-table-io-ligo-lw-use-numpy-dtypes" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;peak&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">ligolw_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;peak_time&quot;</span><span class="p">,</span> <span class="s2">&quot;peak_time_ns&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;peak&quot;</span><span class="p">]))</span>
+<span class="go">&lt;type &#39;lal.LIGOTimeGPS&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;peak&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">ligolw_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;peak_time&quot;</span><span class="p">,</span> <span class="s2">&quot;peak_time_ns&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">use_numpy_dtypes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;peak&quot;</span><span class="p">]))</span>
+<span class="go">&lt;type &#39;numpy.float64&#39;&gt;</span>
+</code></pre></div>
+</div>
+</div>
+<h4 id="writing">Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h4>
+<p>A table can be written as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ligolw&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> isn’t the only scheme of XML, the <code class="docutils literal notranslate"><span class="pre">format</span></code> keyword is
+required for all <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table.write()</span></code> operations.</p>
+<p>If the target file already exists, an <code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code> will be
+raised, use <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to force a new file to be written.</p>
+<p>To write a table to an existing file, use <code class="docutils literal notranslate"><span class="pre">append=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ligolw&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>To replace an existing table of the given type in an existing file, while
+preserving other tables, use <em>both</em> <code class="docutils literal notranslate"><span class="pre">append=True</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.xml&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ligolw&#39;</span><span class="p">,</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;sngl_burst&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code> library reads and writes files using an updated
+version of the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format compared to <a class="reference external" href="http://software.ligo.org/docs/glue/glue.ligolw-module.html" title="glue.ligolw module at http://software.ligo.org/docs/glue/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code></a> used to.
+GWpy should support both format versions natively when _reading_, but
+only supports writing using the updated format.</p>
+</div>
+<h3 id="coherence-waveburst-ascii-aka-events-txt"><span id="gwpy-table-io-ascii-cwb"></span>Coherence WaveBurst ASCII (aka <code class="xref py py-obj docutils literal notranslate"><span class="pre">EVENTS.txt</span></code>)<a class="headerlink" href="#coherence-waveburst-ascii-aka-events-txt" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gwburst.gitlab.io/documentation/latest/html/">coherent WaveBurst (cWB)</a> is an analysis pipeline is used to detect generic gravitational-wave
+bursts, without using a signal model to restrict the analysis, and runs in
+both low-latency (online) and offline modes over current GWO data.
+The analysis uses the ROOT framework for most data products, but also
+produces ASCII data in a custom format commonly written in a file called
+<code class="docutils literal notranslate"><span class="pre">EVENTS.txt</span></code>.</p>
+<h4 id="id1">Reading<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To read a cWB ASCII file:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-cwb-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from cWB-format ASCII.<a class="headerlink" href="#gwpy-table-io-cwb-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;EVENTS.txt&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.cwb&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>See the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.io.ascii.read.html#astropy.io.ascii.read" title="(in Astropy v5.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">astropy.io.ascii.read()</span></code></a> documentation for full details on
+keyword arguments when reading <code class="docutils literal notranslate"><span class="pre">ascii.cwb</span></code> files.</p>
+<h4 id="id2">Writing<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>To write a table using the cWB ASCII format:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-cwb-write">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Writing an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> to a cWB-format ASCII file.<a class="headerlink" href="#gwpy-table-io-cwb-write" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;EVENTS.txt&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.cwb&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>[the output file name is not required to be <code class="docutils literal notranslate"><span class="pre">'EVENTS.txt'</span></code>, this is
+simply the convention used in the cWB analysis.]</p>
+<h3 id="root"><span id="gwpy-table-io-root"></span>ROOT<a class="headerlink" href="#root" title="Permalink to this headline">¶</a></h3>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://uproot.readthedocs.io/"><a class="reference external" href="https://uproot.readthedocs.io/en/stable/uproot.html#module-uproot" title="(in Uproot)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uproot</span></code></a></a></p>
+<h4 id="id3">Reading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>To read a <a class="reference external" href="https://root.cern.ch/">ROOT</a> tree into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code>
+(or <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a>), specify the relevant tree via the <code class="docutils literal notranslate"><span class="pre">treename</span></code>
+keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-root-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a ROOT file.<a class="headerlink" href="#gwpy-table-io-root-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;my-data.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">treename=None</span></code> is given (default), a single tree will be read if only one exists in the file, otherwise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> will be raised.</p>
+<p>Any other keyword arguments will be passed directly to <code class="xref py py-meth docutils literal notranslate"><span class="pre">uproot.tree.TTreeMethods.arrays()</span></code>.</p>
+<h4 id="id5">Writing<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>To write a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code> as a ROOT tree:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-root-write">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Writing an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> to a ROOT file.<a class="headerlink" href="#gwpy-table-io-root-write" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.root&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>As with reading, the <code class="docutils literal notranslate"><span class="pre">treename</span></code> keyword argument can be used to specify
+the tree, the default is <code class="docutils literal notranslate"><span class="pre">treename='tree'</span></code>.</p>
+<p>By default, an existing file with an existing tree of the given name will be
+appended to, to overwrite use the <code class="docutils literal notranslate"><span class="pre">mode='recreate'</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-root-write-mode">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Writing an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> over an existing tree in a ROOT file.<a class="headerlink" href="#gwpy-table-io-root-write-mode" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;new-table.root&#39;</span><span class="p">,</span> <span class="n">treename</span><span class="o">=</span><span class="s1">&#39;triggers&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;recreate&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>Any other keyword arguments will be passed directly to <code class="xref py py-class docutils literal notranslate"><span class="pre">uproot.newtree</span></code>.</p>
+<h3 id="pycbc-live-hdf5"><span id="gwpy-table-io-pycbc-live"></span>PyCBC Live (HDF5)<a class="headerlink" href="#pycbc-live-hdf5" title="Permalink to this headline">¶</a></h3>
+<p>PyCBC Live is a low-latency search for gravitational waves from compact
+binary coalescences, built from the <a class="reference external" href="https://pycbc.org/">PyCBC</a> analysis package.
+This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users
+only) in HDF5 format, containing tables of events; each column in the table
+is recorded as a separate HDF5 Dataset.</p>
+<h4 id="identifying">Identifying<a class="headerlink" href="#identifying" title="Permalink to this headline">¶</a></h4>
+<p>PyCBC Live HDF5 files are identified automatically if the file is identified
+as an HDF5 file (see <code class="xref py py-func docutils literal notranslate"><span class="pre">astropy.io.misc.hdf5.is_hdf5()</span></code>) <strong>and</strong> the
+file _name_ matches the following regular expression:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>([A-Z][0-9])+-Live-[0-9.]+-[0-9.]+.(h5|hdf|hdf5)
+</code></pre></div>
+</div>
+<p>e.g.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>H1-Live-1234567890-4.h5
+</code></pre></div>
+</div>
+<p>If the format cannot be auto-identifed (because the filename doesn’t match the
+above regular expression), the format can be specified via</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5.pycbc_live&quot;</span>
+</code></pre></div>
+</div>
+<h4 id="id6">Reading<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>To read an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">pycbc_live</span></code> format HDF5 file:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-pycbc-live-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a PyCBC-Live HDF5 file.<a class="headerlink" href="#gwpy-table-io-pycbc-live-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;H1-Live-1234567890-4.h5&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-pycbc-live-read-columns">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from PyCBC-Live HDF5.<a class="headerlink" href="#gwpy-table-io-pycbc-live-read-columns" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1-MY_DATA-1234567890-4.h5&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5.pycbc_live&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">,</span> <span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;chisq&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>Similarly to the <a class="reference internal" href="#gwpy-table-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a> format, some processed columns
+can be specified that are not included in the HDF5 files, but are created
+on-the-fly.
+Supported processed columns are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mchirp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new_snr</span></code></p></li>
+</ul>
+<p>These can be specified without having to specify any of the input columns.</p>
+<p>Additionally, PyCBC HDF5 table Groups include extra datasets that aren’t
+part of the table, e.g. <code class="docutils literal notranslate"><span class="pre">'psd'</span></code>.
+These can be included in the returned <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.meta" title="gwpy.table.EventTable.meta (Python attribute) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable.meta</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> via the
+keyword <code class="docutils literal notranslate"><span class="pre">extended_metadata=True</span></code> (default), or excluded with
+<code class="docutils literal notranslate"><span class="pre">extended_metadata=False</span></code>.</p>
+<h4 id="id7">Writing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>Writing tables in PyCBC Live HDF5 format is not supported at this time.</p>
+<h3 id="gstlal-ligo-lw-xml"><span id="gwpy-table-io-gstlal"></span>GstLAL (<code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML)<a class="headerlink" href="#gstlal-ligo-lw-xml" title="Permalink to this headline">¶</a></h3>
+<p>GstLAL is a low-latency search for gravitational waves from compact
+binary coalescences, built using <a href="#id17"><span class="problematic" id="id18">|GStreamer|_</span></a> elements and tools from the
+<a class="reference internal" href="../../external/lalsuite/#gwpy-external-lalsuite"><span class="std std-ref">LALSuite</span></a> library.
+This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users
+only) in <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML format, containing tables of events.</p>
+<h4 id="id8">Reading<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>To read an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">gstlal</span></code> format <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML file, use the
+<code class="docutils literal notranslate"><span class="pre">format='ligolw.gstlal'</span></code> keyword:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-gstlal-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a GstLAL <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML file.<a class="headerlink" href="#gwpy-table-io-gstlal-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;H1L1-GstLAL-1234567890-4.xml.gz&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;ligolw.gstlal&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>GstLAL <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML files contain information about triggers from each detector separately
+as well as from a combination of detectors.
+Accessing these different sets of information can be done using the <code class="docutils literal notranslate"><span class="pre">triggers</span></code> keyword.
+By default, information about triggers from each detector separately is read in.
+This is equivalent to using <code class="docutils literal notranslate"><span class="pre">triggers='sngl'</span></code>.
+To instead read information about triggers from multiple detectors, you can instead use
+the <code class="docutils literal notranslate"><span class="pre">triggers='coinc'</span></code> keyword:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-gstlal-read-coinc-table">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading coincident triggers into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> GstLAL <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML HDF5.<a class="headerlink" href="#gwpy-table-io-gstlal-read-coinc-table" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1L1-GstLAL-1234567890-4.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;gstlal.gstlal&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">triggers</span><span class="o">=</span><span class="s1">&#39;coinc&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-gstlal-read-columns">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> GstLAL <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML HDF5.<a class="headerlink" href="#gwpy-table-io-gstlal-read-columns" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H1L1-GstLAL-1234567890-4.xml.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;gstlal.gstlal&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">,</span> <span class="s2">&quot;snr&quot;</span><span class="p">,</span> <span class="s2">&quot;chisq&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>Similarly to the <a class="reference internal" href="#gwpy-table-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a> format, some processed columns
+can be specified that are not included in the XML files, but are created
+on-the-fly.
+In addition to processed columns support by <a class="reference internal" href="#gwpy-table-io-ligolw"><span class="std std-ref">LIGO_LW XML</span></a>,
+the additional supported processed columns are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mchirp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">snr_chi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chi_snr</span></code></p></li>
+</ul>
+<p>These can be specified without having to specify any of the input columns.</p>
+<h4 id="id9">Writing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>Writing tables in GstLAL <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML format is not supported at this time.</p>
+<h3 id="snax-hdf5"><span id="gwpy-table-io-snax"></span>SNAX (HDF5)<a class="headerlink" href="#snax-hdf5" title="Permalink to this headline">¶</a></h3>
+<p>The SNAX (Signal-based Noise Acquisition and eXtraction) analysis pipeline
+is a low-latency search for identifying glitches in h(t) and auxiliary
+channel data using glitch waveforms, operating in low-latency (online)
+and offline modes.
+This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users
+only) in HDF5 format containing regularly-sampled features; each channel in
+the table is recorded as a separate HDF5 Dataset.</p>
+<h4 id="id10">Reading<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>To read an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">snax</span></code> format HDF5 file,
+use the <code class="docutils literal notranslate"><span class="pre">format='hdf5.snax'</span></code> keyword:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-snax-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a SNAX-format HDF5 file.<a class="headerlink" href="#gwpy-table-io-snax-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;H-SNAX_FEATURES-1255853400-20.h5&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5.snax&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>By default, all channels contained in the file are read in.
+To restrict the returned channels, use the <code class="docutils literal notranslate"><span class="pre">channels</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-snax-read-channels">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific channels into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a SNAX-format HDF5 file.<a class="headerlink" href="#gwpy-table-io-snax-read-channels" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H-SNAX_FEATURES-1255853400-20.h5&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5.snax&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">channels</span><span class="o">=</span><span class="s2">&quot;H1:CAL-DELTAL_EXTERNAL_DQ&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from SNAX-format HDF5.<a class="headerlink" href="#id11" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;H-GSTLAL_IDQ_FEATURES-1255853400-20.h5&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5.snax&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;snr&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<h4 id="id12">Writing<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>Writing tables in SNAX HDF5 format is not supported at this time.</p>
+<h3 id="gwf"><span id="gwpy-table-io-gwf"></span>GWF<a class="headerlink" href="#gwf" title="Permalink to this headline">¶</a></h3>
+<p><strong>Additional dependencies:</strong> <a class="reference internal" href="../../external/framecpp/#gwpy-external-framecpp"><span class="std std-ref">FrameCPP</span></a></p>
+<p>The Gravitational-Wave Frame file format supports tabular data via
+<code class="docutils literal notranslate"><span class="pre">FrEvent</span></code> structures, which allow storage of arbitrary event information.</p>
+<h4 id="id13">Reading<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>To read an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from a <code class="docutils literal notranslate"><span class="pre">GWF</span></code>-format file, specify the filename and
+the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the <code class="docutils literal notranslate"><span class="pre">FrEvent</span></code> structures to read:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-gwf-read">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from GWF.<a class="headerlink" href="#gwpy-table-io-gwf-read" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;events.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;my-event-name&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>To restrict the returned columns, use the <code class="docutils literal notranslate"><span class="pre">columns</span></code> keyword argument:</p>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-gwf-read-columns">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Reading specific columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable (Python class) — A container for a table of events."><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from GWF.<a class="headerlink" href="#gwpy-table-io-gwf-read-columns" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;events.gwf&#39;</span><span class="p">,</span> <span class="s1">&#39;my-event-name&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;amplitude&#39;</span><span class="p">])</span>
+</code></pre></div>
+</div>
+</div>
+<p>All <code class="docutils literal notranslate"><span class="pre">FrEvent</span></code> structures contain the following columns, any other
+columns are use-specific:</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Description (from <a class="reference external" href="https://dcc.ligo.org/LIGO-T970130/public">LIGO-T970130</a>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>Reference time of event, as defined by the search algorithm</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">amplitude</span></code></p></td>
+<td><p>Continuous output amplitude returned by event</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probability</span></code></p></td>
+<td><p>Likelihood estimate of event, if available (probability = -1 if cannot be estimated)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timeBefore</span></code></p></td>
+<td><p>Signal duration before reference time (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timeAfter</span></code></p></td>
+<td><p>Signal duration after reference time (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">comment</span></code></p></td>
+<td><p>Descriptor of event</p></td>
+</tr>
+</tbody>
+</table>
+<h4 id="id14">Writing<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>Writing tables in GWF format is not supported at this time.</p>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data tables" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Data tables
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../filter/" class="md-footer__link md-footer__link--next" aria-label="Next: Filtering tables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Filtering tables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,1654 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+    
+    
+      
+        <title>Data-quality segments - GWpy 3.0.5 documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.9dcb20399d0097661.min.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-segment-and-segmentlist-classes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="GWpy 3.0.5 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data-quality segments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="GWpy 3.0.5 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timeseries/statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__current-nested md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="#"><span class="md-ellipsis">Data-<wbr>quality segments</span></a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data-quality segments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data-<wbr>quality segments</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_1" type="checkbox" id="__nav_4_5_1" >
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="#working-with-segments"><span class="md-ellipsis">Working with segments</span></a>
+          
+            <label for="__nav_4_5_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Working with segments" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Working with segments</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dqsegdb/" class="md-nav__link">
+        <span class="md-ellipsis">The Segment Database</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io/" class="md-nav__link">
+        <span class="md-ellipsis">Reading/writing segments and flags</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="thresholding/" class="md-nav__link">
+        <span class="md-ellipsis">Generating data-<wbr>quality flags by thresholding</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" >
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="#reference-api"><span class="md-ellipsis">Reference/API</span></a>
+          
+            <label for="__nav_4_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference/API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reference/API</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/gwpy.segments.DataQualityFlag/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Flag</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/gwpy.segments.DataQualityDict/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/gwpy.segments.Segment/" class="md-nav__link">
+        <span class="md-ellipsis">Segment</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/gwpy.segments.SegmentList/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/gwpy.segments.SegmentListDict/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+      
+    <li class="md-nav__item md-nav__item--active md-nav__current-toc">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Data-<wbr>quality segments</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Data-<wbr>quality segments</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Data-<wbr>quality segments</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-segment-and-segmentlist-classes" class="md-nav__link">
+    <span class="md-ellipsis">The Segment and Segment<wbr>List classes</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataqualityflag-class" class="md-nav__link">
+    <span class="md-ellipsis">The Data<wbr>Quality<wbr>Flag class</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-dataqualityflags" class="md-nav__link">
+    <span class="md-ellipsis">Combining Data<wbr>Quality<wbr>Flags</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining DataQualityFlags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intersection" class="md-nav__link">
+    <span class="md-ellipsis">Intersection <wbr>(&amp;)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">Union <wbr>(|)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">Subtraction <wbr>(-<wbr>)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">Addition <wbr>(+)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversion" class="md-nav__link">
+    <span class="md-ellipsis">Inversion <wbr>(~)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclusive-or" class="md-nav__link">
+    <span class="md-ellipsis">Exclusive OR <wbr>(^)</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataqualitydict" class="md-nav__link">
+    <span class="md-ellipsis">The Data<wbr>Quality<wbr>Dict</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-segments" class="md-nav__link">
+    <span class="md-ellipsis">Working with segments</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with segments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="dqsegdb/" class="md-nav__link">
+    <span class="md-ellipsis">The Segment Database</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="io/" class="md-nav__link">
+    <span class="md-ellipsis">Reading/writing segments and flags</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="thresholding/" class="md-nav__link">
+    <span class="md-ellipsis">Generating data-<wbr>quality flags by thresholding</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-api" class="md-nav__link">
+    <span class="md-ellipsis">Reference/API</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference/API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="../api/gwpy.segments.DataQualityFlag/" class="md-nav__link">
+    <span class="md-ellipsis">Data<wbr>Quality<wbr>Flag</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="../api/gwpy.segments.DataQualityDict/" class="md-nav__link">
+    <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="../api/gwpy.segments.Segment/" class="md-nav__link">
+    <span class="md-ellipsis">Segment</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="../api/gwpy.segments.SegmentList/" class="md-nav__link">
+    <span class="md-ellipsis">Segment<wbr>List</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="../api/gwpy.segments.SegmentListDict/" class="md-nav__link">
+    <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../table/" class="md-nav__link">
+        <span class="md-ellipsis">Data tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Data-<wbr>quality segments</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-segment-and-segmentlist-classes" class="md-nav__link">
+    <span class="md-ellipsis">The Segment and Segment<wbr>List classes</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataqualityflag-class" class="md-nav__link">
+    <span class="md-ellipsis">The Data<wbr>Quality<wbr>Flag class</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-dataqualityflags" class="md-nav__link">
+    <span class="md-ellipsis">Combining Data<wbr>Quality<wbr>Flags</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining DataQualityFlags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intersection" class="md-nav__link">
+    <span class="md-ellipsis">Intersection <wbr>(&amp;)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">Union <wbr>(|)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    <span class="md-ellipsis">Subtraction <wbr>(-<wbr>)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    <span class="md-ellipsis">Addition <wbr>(+)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversion" class="md-nav__link">
+    <span class="md-ellipsis">Inversion <wbr>(~)</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclusive-or" class="md-nav__link">
+    <span class="md-ellipsis">Exclusive OR <wbr>(^)</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dataqualitydict" class="md-nav__link">
+    <span class="md-ellipsis">The Data<wbr>Quality<wbr>Dict</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-segments" class="md-nav__link">
+    <span class="md-ellipsis">Working with segments</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-api" class="md-nav__link">
+    <span class="md-ellipsis">Reference/API</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/segments/index.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="data-quality-segments"><span id="gwpy-segments"></span>Data-quality segments<a class="headerlink" href="#data-quality-segments" title="Permalink to this headline">¶</a></h1>
+<p>In order to successfully search data for gravitational-wave signals, precise
+records of when each observatory was operating, and in which configuration,
+are kept to enable search teams to pick the best data to analyse.</p>
+<p>Time segments are recorded denoting when each observatory was taking
+observation-quality data and when the calibration was nominal, as well as
+during times of possible problems - electronics glitches or severe weather,
+for example.</p>
+<p>The international collaboration operates using the GPS time standard
+(seconds since the GPS epoch of midnight on January 6th 1980), and records
+such times as semi-open GPS <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code> segments.</p>
+<h2 id="the-segment-and-segmentlist-classes">The <a class="reference internal" href="../api/gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segment</span></code></a> and <a class="reference internal" href="../api/gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentList</span></code></a> classes<a class="headerlink" href="#the-segment-and-segmentlist-classes" title="Permalink to this headline">¶</a></h2>
+<p>GWpy provides a number of classes for generating and manipulating such
+segments, enhancing the functionality provided by the (excellent)
+<a class="reference external" href="https://lscsoft.docs.ligo.org/ligo-segments/index.html#module-ligo.segments" title="(in ligo-segments)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.segments</span></code></a> package.
+All credits for their usefulness go to the authors of that package.</p>
+<p>These basic objects are as follows:</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a></p></td>
+<td><p>A tuple defining a semi-open interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p></td>
+<td><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="../api/gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>While these objects are key to representing core data segments,
+they are usually applied to analyses of data as a <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>.</p>
+<h2 id="the-dataqualityflag-class">The <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-class docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> class<a class="headerlink" href="#the-dataqualityflag-class" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> is an annotated set of segments that indicate something
+about instrumental operation.
+Each flag is defined by applying some algorithm on data and generating a
+<a class="reference internal" href="../api/gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-class docutils literal notranslate"><span class="pre">SegmentList</span></code></a> that indicates some good or bad condition has been met
+during those times.
+For example, the times during which the LIGO interferometers are operating
+under observing conditions are recorded as the ‘<em>analysis-ready</em>’ flag, which
+is used by data analysis groups to define periods of data over which to search
+for gravitational-wave signals.
+Conversely, high seismic noise around the observatory buildings is recorded
+in a data-quality flag used by those groups to veto periods of analysis as
+a result of sub-standard data.</p>
+<p>Each <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a> has some key attributes:</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name (Python attribute) — The name associated with this flag."><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>The name associated with this flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a></p></td>
+<td><p>The set of segments during which this flag was known, and its state was well defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a></p></td>
+<td><p>The set of segments during which this flag was active.</p></td>
+</tr>
+</tbody>
+</table>
+<p>By convention, the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.name" title="gwpy.segments.DataQualityFlag.name (Python attribute) — The name associated with this flag."><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> is typically constructed of
+three colon-separated components: the
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.ifo" title="gwpy.segments.DataQualityFlag.ifo (Python attribute) — The interferometer associated with this flag."><code class="xref py py-attr docutils literal notranslate"><span class="pre">ifo</span></code></a>,
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.tag" title="gwpy.segments.DataQualityFlag.tag (Python attribute) — The tag (name) associated with this flag."><code class="xref py py-attr docutils literal notranslate"><span class="pre">tag</span></code></a>, and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.version" title="gwpy.segments.DataQualityFlag.version (Python attribute) — The version number of this flag."><code class="xref py py-attr docutils literal notranslate"><span class="pre">version</span></code></a>,
+e.g. <code class="docutils literal notranslate"><span class="pre">L1:DMT-ANALYSIS_READY:1</span></code>.</p>
+<h2 id="combining-dataqualityflags">Combining <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>s<a class="headerlink" href="#combining-dataqualityflags" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>s can be combined in a number of ways, using the standard python operators, e.g. <code class="xref py py-obj docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">|</span></code>.</p>
+<h3 id="intersection"><span id="gwpy-segments-intersection"></span>Intersection (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>)<a class="headerlink" href="#intersection" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span>
+</code></pre></div>
+</div>
+<p>returns the intersection of both the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="p">(</span><span class="n">known</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)],</span> <span class="n">active</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">DataQualityFlag</span><span class="p">(</span><span class="n">known</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)],</span> <span class="n">active</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 12)],</span>
+<span class="go">                 active=[[3 ... 5)</span>
+<span class="go">                         [10 ... 12)],</span>
+<span class="go">                 description=None)&gt;</span>
+</code></pre></div>
+</div>
+<p>This new flag represents times when both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> were known and
+when both were active.</p>
+<h3 id="union"><span id="gwpy-segments-union"></span>Union (<code class="docutils literal notranslate"><span class="pre">|</span></code>)<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>
+</code></pre></div>
+</div>
+<p>returns the union of both the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> and
+<a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">              known=[[0 ... 15)],</span>
+<span class="go">              active=[[1 ... 7)</span>
+<span class="go">                      [10 ... 12)],</span>
+<span class="go">              description=None)&gt;</span>
+</code></pre></div>
+</div>
+<p>This new flag represents times when either <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">b</span></code> were known and when
+either was active.</p>
+<h3 id="subtraction"><span id="gwpy-segments-sub"></span>Subtraction (<code class="docutils literal notranslate"><span class="pre">-</span></code>)<a class="headerlink" href="#subtraction" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</code></pre></div>
+</div>
+<p>returns the union of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> segments, and the difference
+of the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 12)],</span>
+<span class="go">                 active=[[1 ... 3)],</span>
+<span class="go">                 description=None)&gt;</span>
+</code></pre></div>
+</div>
+<p>The new flag represents times when both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> were <em>known</em>, but only <code class="docutils literal notranslate"><span class="pre">a</span></code> was active.</p>
+<h3 id="addition"><span id="gwpy-segments-add"></span>Addition (<code class="docutils literal notranslate"><span class="pre">+</span></code>)<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+</div>
+<p>This operation is the same as <a class="reference internal" href="#gwpy-segments-union"><span class="std std-ref">Union (|)</span></a>.</p>
+<h3 id="inversion">Inversion (<code class="docutils literal notranslate"><span class="pre">~</span></code>)<a class="headerlink" href="#inversion" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="o">~</span><span class="n">a</span>
+</code></pre></div>
+</div>
+<p>returns the same <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> segments, and the complement <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">                 known=[[0 ... 5)</span>
+<span class="go">                        [10 ... 15)],</span>
+<span class="go">                 active=[[0 ... 1)</span>
+<span class="go">                         [12 ... 15)],</span>
+<span class="go">                 description=None)&gt;</span>
+</code></pre></div>
+</div>
+<p>The new flag represents times when the state of <code class="docutils literal notranslate"><span class="pre">a</span></code> was known, but it was not active.</p>
+<h3 id="exclusive-or">Exclusive OR (<code class="docutils literal notranslate"><span class="pre">^</span></code>)<a class="headerlink" href="#exclusive-or" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span>
+</code></pre></div>
+</div>
+<p>returns the intersection of <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.known" title="gwpy.segments.DataQualityFlag.known (Python attribute) — The set of segments during which this flag was known, and its state was well defined."><code class="xref py py-obj docutils literal notranslate"><span class="pre">known</span></code></a> segments and the exclusive OR of <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.active" title="gwpy.segments.DataQualityFlag.active (Python attribute) — The set of segments during which this flag was active."><code class="xref py py-obj docutils literal notranslate"><span class="pre">active</span></code></a> segment lists, e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">&lt;DataQualityFlag(No name,</span>
+<span class="go">             known=[[0 ... 5)</span>
+<span class="go">                    [10 ... 12)],</span>
+<span class="go">             active=[[1 ... 3)</span>
+<span class="go">                     [5 ... 7)],</span>
+<span class="go">             description=None)&gt;</span>
+</code></pre></div>
+</div>
+<p>The new flag represents times when the state of both <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are known, but exactly one of the flags was active.</p>
+<h2 id="the-dataqualitydict">The <a class="reference internal" href="../api/gwpy.segments.DataQualityDict/#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a><a class="headerlink" href="#the-dataqualitydict" title="Permalink to this headline">¶</a></h2>
+<p>Groups of <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlags</span></code></a> can be collected into a <a class="reference internal" href="../api/gwpy.segments.DataQualityDict/#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a>, a simple extension of the <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrderedDict</span></code></a> with methods for operating on a group of flags in bulk.</p>
+<p>The most immediate utility of this group class is a bulk query of the segment database, using the <a class="reference internal" href="../api/gwpy.segments.DataQualityDict/#gwpy.segments.DataQualityDict.query" title="gwpy.segments.DataQualityDict.query (Python method) — Query the advanced LIGO DQSegDB for a list of flags."><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityDict.query()</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/functions.html#classmethod" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classmethod</span></code></a>.
+This method is what is actually called by the <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag.query" title="gwpy.segments.DataQualityFlag.query (Python method) — Query the advanced LIGO DQSegDB for the given flag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataQualityFlag.query()</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/functions.html#classmethod" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">classmethod</span></code></a> anyway.</p>
+<h2 id="working-with-segments">Working with segments<a class="headerlink" href="#working-with-segments" title="Permalink to this headline">¶</a></h2>
+<p>Reading/writing and querying segments:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dqsegdb/">The Segment Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io/">Reading/writing segments and flags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="io/#ligo-lw-xml"><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io/#hdf5">HDF5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io/#json">JSON</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Generating segments from data:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="thresholding/">Generating data-quality flags by thresholding</a></li>
+</ul>
+</div>
+<h2 id="reference-api">Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<p>This reference includes the following <code class="xref py py-obj docutils literal notranslate"><span class="pre">class</span></code> entries:</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a></p></td>
+<td><p>A representation of a named set of segments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.segments.DataQualityDict/#gwpy.segments.DataQualityDict" title="gwpy.segments.DataQualityDict (Python class) — An OrderedDict of (key, DataQualityFlag) pairs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityDict</span></code></a></p></td>
+<td><p>An <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrderedDict</span></code></a> of (key, <a class="reference internal" href="../api/gwpy.segments.DataQualityFlag/#gwpy.segments.DataQualityFlag" title="gwpy.segments.DataQualityFlag (Python class) — A representation of a named set of segments."><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataQualityFlag</span></code></a>) pairs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a></p></td>
+<td><p>A tuple defining a semi-open interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p></td>
+<td><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="../api/gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/gwpy.segments.SegmentListDict/#gwpy.segments.SegmentListDict" title="gwpy.segments.SegmentListDict (Python class) — A dict of SegmentLists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentListDict</span></code></a></p></td>
+<td><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> of <a class="reference internal" href="../api/gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentLists</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../api/gwpy.timeseries.StateVectorDict/" class="md-footer__link md-footer__link--prev" aria-label="Previous: StateVectorDict" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              StateVectorDict
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="dqsegdb/" class="md-footer__link md-footer__link--next" aria-label="Next: The Segment Database" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              The Segment Database
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+    
+  </body>
+</html>

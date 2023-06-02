@@ -1,0 +1,2004 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>SegmentListDict - GWpy 3.0.5 documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.9dcb20399d0097661.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gwpy.segments.SegmentListDict" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.5 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SegmentListDict
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="GWpy 3.0.5 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.5 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.5 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/"><span class="md-ellipsis">Data-<wbr>quality segments</span></a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data-quality segments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data-<wbr>quality segments</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segments/#working-with-segments" class="md-nav__link">
+        <span class="md-ellipsis">Working with segments</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/#reference-api"><span class="md-ellipsis">Reference/API</span></a>
+          
+            <label for="__nav_4_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference/API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reference/API</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.DataQualityFlag/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Flag</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.DataQualityDict/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.Segment/" class="md-nav__link">
+        <span class="md-ellipsis">Segment</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.SegmentList/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.SegmentListDict (Python class) — A dict of SegmentLists" class="md-ellipsis">gwpy.<wbr>segments.<wbr>Segment<wbr>List<wbr>Dict</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.SegmentListDict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.all_intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.all_intersects (Python method) — Returns True if each segmentlist in self intersects the corresponding segmentlist in other;  returns False if this is not the case or if self is empty." class="md-ellipsis">all_<wbr>intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.all_intersects_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.all_intersects_all (Python method) — Returns True if self and other have the same keys, and each segmentlist intersects the corresponding segmentlist in the other;  returns False if this is not the case or if either dictionary is empty." class="md-ellipsis">all_<wbr>intersects_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.clear (Python method) — !! processed by numpydoc !!" class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.coalesce (Python method) — Run .coalesce() on all segmentlists." class="md-ellipsis">coalesce</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.contract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.contract (Python method) — Run .contract(x) on all segmentlists." class="md-ellipsis">contract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.copy (Python method) — Return a copy of the segmentlistdict object.  The return value is a new object with a new offsets attribute, with references to the original keys, and shallow copies of the segment lists.  Modifications made to the offset dictionary or segmentlists in the object returned by this method will not affect the original, but without using much memory until such modifications are made.  If the optional keys argument is not None, then should be an iterable of keys and only those segmentlists will be copied (KeyError is raised if any of those keys are not in the segmentlistdict)." class="md-ellipsis">copy</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extend" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extend (Python method) — Appends the segmentlists from other to the corresponding segmentlists in self, adding new segmentslists to self as needed." class="md-ellipsis">extend</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extent" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extent (Python method) — Return a dictionary of the results of running .extent() on each of the segmentlists." class="md-ellipsis">extent</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extent_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extent_all (Python method) — Return the result of running .extent() on the union of all lists in the dictionary." class="md-ellipsis">extent_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extract_common" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extract_common (Python method) — Return a new segmentlistdict containing only those segmentlists associated with the keys in keys, with each set to their mutual intersection.  The offsets are preserved.  If n is not None then instead of their mutual intersection, compute the intervals in which n or more of the segmentlists named in keys intersect.  n = len(keys) is equivalent to n = None.  If keys contains repeated entries, those segmentlists are still only considered once for the purpose of counting n." class="md-ellipsis">extract_<wbr>common</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.find" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.find (Python method) — Return a dictionary of the results of running .find() on each of the segmentlists." class="md-ellipsis">find</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.fromkeys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.fromkeys (Python method) — Create a new dictionary with keys from iterable and values set to value." class="md-ellipsis">fromkeys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.get" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.get (Python method) — Return the value for key if key is in the dictionary, else default." class="md-ellipsis">get</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersection" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersection (Python method) — Return the intersection of the segmentlists associated with the keys in keys." class="md-ellipsis">intersection</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects (Python method) — Returns True if there exists a segmentlist in self that intersects the corresponding segmentlist in other;  returns False otherwise." class="md-ellipsis">intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects_all (Python method) — Returns True if each segmentlist in other intersects the corresponding segmentlist in self;  returns False if this is not the case, or if other is empty." class="md-ellipsis">intersects_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects_segment" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects_segment (Python method) — Returns True if any segmentlist in self intersects the segment, otherwise returns False." class="md-ellipsis">intersects_<wbr>segment</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.is_coincident" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.is_coincident (Python method) — Return True if any segment in any list in self intersects any segment in any list in other.  If the optional keys argument is not None, then it should be an iterable of keys and only segment lists for those keys will be considered in the test (instead of raising KeyError, keys not present in both segment list dictionaries will be ignored).  If keys is None (the default) then all segment lists are considered." class="md-ellipsis">is_<wbr>coincident</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.items" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.items (Python method) — !! processed by numpydoc !!" class="md-ellipsis">items</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.keys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.keys (Python method) — !! processed by numpydoc !!" class="md-ellipsis">keys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.keys_at" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.keys_at (Python method) — Return a list of the keys for the segment lists that contain x." class="md-ellipsis">keys_<wbr>at</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.map" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.map (Python method) — Return a dictionary of the results of func applied to each of the segmentlist objects in self." class="md-ellipsis">map</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.pop (Python method) — If key is not found, default is returned if given, otherwise KeyError is raised" class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.popitem" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.popitem (Python method) — Remove and return a (key, value) pair as a 2-tuple." class="md-ellipsis">popitem</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.protract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.protract (Python method) — Run .protract(x) on all segmentlists." class="md-ellipsis">protract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.setdefault" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary." class="md-ellipsis">setdefault</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.union" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.union (Python method) — Return the union of the segmentlists associated with the keys in keys." class="md-ellipsis">union</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.update" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]" class="md-ellipsis">update</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.values" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.values (Python method) — !! processed by numpydoc !!" class="md-ellipsis">values</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.vote" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.vote (Python method) — Return the intervals when n or more of the segment lists identified by keys are on.  Each segment list casts as many votes as the number of times it appears in keys." class="md-ellipsis">vote</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table/" class="md-nav__link">
+        <span class="md-ellipsis">Data tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.SegmentListDict (Python class) — A dict of SegmentLists" class="md-ellipsis">gwpy.<wbr>segments.<wbr>Segment<wbr>List<wbr>Dict</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.SegmentListDict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.all_intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.all_intersects (Python method) — Returns True if each segmentlist in self intersects the corresponding segmentlist in other;  returns False if this is not the case or if self is empty." class="md-ellipsis">all_<wbr>intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.all_intersects_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.all_intersects_all (Python method) — Returns True if self and other have the same keys, and each segmentlist intersects the corresponding segmentlist in the other;  returns False if this is not the case or if either dictionary is empty." class="md-ellipsis">all_<wbr>intersects_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.clear (Python method) — !! processed by numpydoc !!" class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.coalesce (Python method) — Run .coalesce() on all segmentlists." class="md-ellipsis">coalesce</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.contract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.contract (Python method) — Run .contract(x) on all segmentlists." class="md-ellipsis">contract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.copy (Python method) — Return a copy of the segmentlistdict object.  The return value is a new object with a new offsets attribute, with references to the original keys, and shallow copies of the segment lists.  Modifications made to the offset dictionary or segmentlists in the object returned by this method will not affect the original, but without using much memory until such modifications are made.  If the optional keys argument is not None, then should be an iterable of keys and only those segmentlists will be copied (KeyError is raised if any of those keys are not in the segmentlistdict)." class="md-ellipsis">copy</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extend" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extend (Python method) — Appends the segmentlists from other to the corresponding segmentlists in self, adding new segmentslists to self as needed." class="md-ellipsis">extend</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extent" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extent (Python method) — Return a dictionary of the results of running .extent() on each of the segmentlists." class="md-ellipsis">extent</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extent_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extent_all (Python method) — Return the result of running .extent() on the union of all lists in the dictionary." class="md-ellipsis">extent_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.extract_common" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.extract_common (Python method) — Return a new segmentlistdict containing only those segmentlists associated with the keys in keys, with each set to their mutual intersection.  The offsets are preserved.  If n is not None then instead of their mutual intersection, compute the intervals in which n or more of the segmentlists named in keys intersect.  n = len(keys) is equivalent to n = None.  If keys contains repeated entries, those segmentlists are still only considered once for the purpose of counting n." class="md-ellipsis">extract_<wbr>common</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.find" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.find (Python method) — Return a dictionary of the results of running .find() on each of the segmentlists." class="md-ellipsis">find</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.fromkeys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.fromkeys (Python method) — Create a new dictionary with keys from iterable and values set to value." class="md-ellipsis">fromkeys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.get" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.get (Python method) — Return the value for key if key is in the dictionary, else default." class="md-ellipsis">get</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersection" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersection (Python method) — Return the intersection of the segmentlists associated with the keys in keys." class="md-ellipsis">intersection</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects (Python method) — Returns True if there exists a segmentlist in self that intersects the corresponding segmentlist in other;  returns False otherwise." class="md-ellipsis">intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects_all" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects_all (Python method) — Returns True if each segmentlist in other intersects the corresponding segmentlist in self;  returns False if this is not the case, or if other is empty." class="md-ellipsis">intersects_<wbr>all</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.intersects_segment" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.intersects_segment (Python method) — Returns True if any segmentlist in self intersects the segment, otherwise returns False." class="md-ellipsis">intersects_<wbr>segment</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.is_coincident" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.is_coincident (Python method) — Return True if any segment in any list in self intersects any segment in any list in other.  If the optional keys argument is not None, then it should be an iterable of keys and only segment lists for those keys will be considered in the test (instead of raising KeyError, keys not present in both segment list dictionaries will be ignored).  If keys is None (the default) then all segment lists are considered." class="md-ellipsis">is_<wbr>coincident</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.items" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.items (Python method) — !! processed by numpydoc !!" class="md-ellipsis">items</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.keys" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.keys (Python method) — !! processed by numpydoc !!" class="md-ellipsis">keys</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.keys_at" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.keys_at (Python method) — Return a list of the keys for the segment lists that contain x." class="md-ellipsis">keys_<wbr>at</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.map" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.map (Python method) — Return a dictionary of the results of func applied to each of the segmentlist objects in self." class="md-ellipsis">map</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.pop (Python method) — If key is not found, default is returned if given, otherwise KeyError is raised" class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.popitem" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.popitem (Python method) — Remove and return a (key, value) pair as a 2-tuple." class="md-ellipsis">popitem</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.protract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.protract (Python method) — Run .protract(x) on all segmentlists." class="md-ellipsis">protract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.setdefault" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary." class="md-ellipsis">setdefault</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.union" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.union (Python method) — Return the union of the segmentlists associated with the keys in keys." class="md-ellipsis">union</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.update" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]" class="md-ellipsis">update</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.values" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.values (Python method) — !! processed by numpydoc !!" class="md-ellipsis">values</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentListDict.vote" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentListDict.vote (Python method) — Return the intervals when n or more of the segment lists identified by keys are on.  Each segment list casts as many votes as the number of times it appears in keys." class="md-ellipsis">vote</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/api/gwpy.segments.SegmentListDict.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="segmentlistdict">SegmentListDict<a class="headerlink" href="#segmentlistdict" title="Permalink to this headline">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gwpy.segments.</span></span><span class="sig-name descname"><span class="pre">SegmentListDict</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.5/gwpy/segments/segments.py#L227-L267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentListDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a> of <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentLists</span></code></a></p>
+<p>This class implements a standard mapping interface, with additional
+features added to assist with the manipulation of a collection of
+<a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> objects. In particular, methods for taking unions and
+intersections of the lists in the dictionary are available, as well
+as the ability to record and apply numeric offsets to the
+boundaries of the <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a> in each list.</p>
+<p>The numeric offsets are stored in the “offsets” attribute, which
+itself is a dictionary, associating a number with each key in the
+main dictionary. Assigning to one of the entries of the offsets
+attribute has the effect of shifting the corresponding <a class="reference internal" href="../gwpy.segments.SegmentList/#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+from its original position (not its current position) by the given
+amount.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">SegmentListDict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">{&#39;H1&#39;: [Segment(0, 10)]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">offsets</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">{&#39;H1&#39;: [Segment(6.0, 16.0)]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">{&#39;H1&#39;: [Segment(0.0, 10.0)]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">intersection</span><span class="p">([</span><span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">])</span>
+<span class="go">[Segment(5, 10.0)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">offsets</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">intersection</span><span class="p">([</span><span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">])</span>
+<span class="go">[Segment(6.0, 15)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">extract_common</span><span class="p">([</span><span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">{&#39;H2&#39;: [Segment(6.0, 15)], &#39;H1&#39;: [Segment(0.0, 9.0)]}</span>
+</code></pre></div>
+</div>
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.all_intersects" title="gwpy.segments.SegmentListDict.all_intersects (Python method) — Returns True if each segmentlist in self intersects the corresponding segmentlist in other;  returns False if this is not the case or if self is empty."><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_intersects</span></code></a>(other)</p></td>
+<td><p>Returns True if each segmentlist in self intersects the corresponding segmentlist in other;  returns False if this is not the case or if self is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.all_intersects_all" title="gwpy.segments.SegmentListDict.all_intersects_all (Python method) — Returns True if self and other have the same keys, and each segmentlist intersects the corresponding segmentlist in the other;  returns False if this is not the case or if either dictionary is empty."><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_intersects_all</span></code></a>(other)</p></td>
+<td><p>Returns True if self and other have the same keys, and each segmentlist intersects the corresponding segmentlist in the other;  returns False if this is not the case or if either dictionary is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.clear" title="gwpy.segments.SegmentListDict.clear (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.coalesce" title="gwpy.segments.SegmentListDict.coalesce (Python method) — Run .coalesce() on all segmentlists."><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Run .coalesce() on all segmentlists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.contract" title="gwpy.segments.SegmentListDict.contract (Python method) — Run .contract(x) on all segmentlists."><code class="xref py py-obj docutils literal notranslate"><span class="pre">contract</span></code></a>(x)</p></td>
+<td><p>Run .contract(x) on all segmentlists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.copy" title="gwpy.segments.SegmentListDict.copy (Python method) — Return a copy of the segmentlistdict object.  The return value is a new object with a new offsets attribute, with references to the original keys, and shallow copies of the segment lists.  Modifications made to the offset dictionary or segmentlists in the object returned by this method will not affect the original, but without using much memory until such modifications are made.  If the optional keys argument is not None, then should be an iterable of keys and only those segmentlists will be copied (KeyError is raised if any of those keys are not in the segmentlistdict)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>([keys])</p></td>
+<td><p>Return a copy of the segmentlistdict object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extend" title="gwpy.segments.SegmentListDict.extend (Python method) — Appends the segmentlists from other to the corresponding segmentlists in self, adding new segmentslists to self as needed."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(other)</p></td>
+<td><p>Appends the segmentlists from other to the corresponding segmentlists in self, adding new segmentslists to self as needed.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extent" title="gwpy.segments.SegmentListDict.extent (Python method) — Return a dictionary of the results of running .extent() on each of the segmentlists."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a>()</p></td>
+<td><p>Return a dictionary of the results of running .extent() on each of the segmentlists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extent_all" title="gwpy.segments.SegmentListDict.extent_all (Python method) — Return the result of running .extent() on the union of all lists in the dictionary."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent_all</span></code></a>()</p></td>
+<td><p>Return the result of running .extent() on the union of all lists in the dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.extract_common" title="gwpy.segments.SegmentListDict.extract_common (Python method) — Return a new segmentlistdict containing only those segmentlists associated with the keys in keys, with each set to their mutual intersection.  The offsets are preserved.  If n is not None then instead of their mutual intersection, compute the intervals in which n or more of the segmentlists named in keys intersect.  n = len(keys) is equivalent to n = None.  If keys contains repeated entries, those segmentlists are still only considered once for the purpose of counting n."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_common</span></code></a>(keys[, n])</p></td>
+<td><p>Return a new segmentlistdict containing only those segmentlists associated with the keys in keys, with each set to their mutual intersection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.find" title="gwpy.segments.SegmentListDict.find (Python method) — Return a dictionary of the results of running .find() on each of the segmentlists."><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(item)</p></td>
+<td><p>Return a dictionary of the results of running .find() on each of the segmentlists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.fromkeys" title="gwpy.segments.SegmentListDict.fromkeys (Python method) — Create a new dictionary with keys from iterable and values set to value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromkeys</span></code></a>(iterable[, value])</p></td>
+<td><p>Create a new dictionary with keys from iterable and values set to value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.get" title="gwpy.segments.SegmentListDict.get (Python method) — Return the value for key if key is in the dictionary, else default."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(key[, default])</p></td>
+<td><p>Return the value for key if key is in the dictionary, else default.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.intersection" title="gwpy.segments.SegmentListDict.intersection (Python method) — Return the intersection of the segmentlists associated with the keys in keys."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersection</span></code></a>(keys)</p></td>
+<td><p>Return the intersection of the segmentlists associated with the keys in keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.intersects" title="gwpy.segments.SegmentListDict.intersects (Python method) — Returns True if there exists a segmentlist in self that intersects the corresponding segmentlist in other;  returns False otherwise."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a>(other)</p></td>
+<td><p>Returns True if there exists a segmentlist in self that intersects the corresponding segmentlist in other;  returns False otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.intersects_all" title="gwpy.segments.SegmentListDict.intersects_all (Python method) — Returns True if each segmentlist in other intersects the corresponding segmentlist in self;  returns False if this is not the case, or if other is empty."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects_all</span></code></a>(other)</p></td>
+<td><p>Returns True if each segmentlist in other intersects the corresponding segmentlist in self;  returns False if this is not the case, or if other is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.intersects_segment" title="gwpy.segments.SegmentListDict.intersects_segment (Python method) — Returns True if any segmentlist in self intersects the segment, otherwise returns False."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects_segment</span></code></a>(seg)</p></td>
+<td><p>Returns True if any segmentlist in self intersects the segment, otherwise returns False.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.is_coincident" title="gwpy.segments.SegmentListDict.is_coincident (Python method) — Return True if any segment in any list in self intersects any segment in any list in other.  If the optional keys argument is not None, then it should be an iterable of keys and only segment lists for those keys will be considered in the test (instead of raising KeyError, keys not present in both segment list dictionaries will be ignored).  If keys is None (the default) then all segment lists are considered."><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_coincident</span></code></a>(other[, keys])</p></td>
+<td><p>Return True if any segment in any list in self intersects any segment in any list in other.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.items" title="gwpy.segments.SegmentListDict.items (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.keys" title="gwpy.segments.SegmentListDict.keys (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.keys_at" title="gwpy.segments.SegmentListDict.keys_at (Python method) — Return a list of the keys for the segment lists that contain x."><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys_at</span></code></a>(x)</p></td>
+<td><p>Return a list of the keys for the segment lists that contain x.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.map" title="gwpy.segments.SegmentListDict.map (Python method) — Return a dictionary of the results of func applied to each of the segmentlist objects in self."><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a>(func)</p></td>
+<td><p>Return a dictionary of the results of func applied to each of the segmentlist objects in self.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.pop" title="gwpy.segments.SegmentListDict.pop (Python method) — If key is not found, default is returned if given, otherwise KeyError is raised"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>(key[, default])</p></td>
+<td><p>If key is not found, default is returned if given, otherwise KeyError is raised</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.popitem" title="gwpy.segments.SegmentListDict.popitem (Python method) — Remove and return a (key, value) pair as a 2-tuple."><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a>(/)</p></td>
+<td><p>Remove and return a (key, value) pair as a 2-tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.protract" title="gwpy.segments.SegmentListDict.protract (Python method) — Run .protract(x) on all segmentlists."><code class="xref py py-obj docutils literal notranslate"><span class="pre">protract</span></code></a>(x)</p></td>
+<td><p>Run .protract(x) on all segmentlists.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.setdefault" title="gwpy.segments.SegmentListDict.setdefault (Python method) — Insert key with a value of default if key is not in the dictionary."><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a>(key[, default])</p></td>
+<td><p>Insert key with a value of default if key is not in the dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.union" title="gwpy.segments.SegmentListDict.union (Python method) — Return the union of the segmentlists associated with the keys in keys."><code class="xref py py-obj docutils literal notranslate"><span class="pre">union</span></code></a>(keys)</p></td>
+<td><p>Return the union of the segmentlists associated with the keys in keys.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.update" title="gwpy.segments.SegmentListDict.update (Python method) — If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>([E, ]**F)</p></td>
+<td><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k] If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v In either case, this is followed by: for k in F:  D[k] = F[k]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.values" title="gwpy.segments.SegmentListDict.values (Python method) — !! processed by numpydoc !!"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentListDict.vote" title="gwpy.segments.SegmentListDict.vote (Python method) — Return the intervals when n or more of the segment lists identified by keys are on.  Each segment list casts as many votes as the number of times it appears in keys."><code class="xref py py-obj docutils literal notranslate"><span class="pre">vote</span></code></a>(keys, n)</p></td>
+<td><p>Return the intervals when n or more of the segment lists identified by keys are on.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.all_intersects">
+<span class="sig-name descname"><span class="pre">all_intersects</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.all_intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if each segmentlist in self intersects the
+corresponding segmentlist in other;  returns False
+if this is not the case or if self is empty.</p>
+<p>See also:</p>
+<p>.intersects, .intersects_all(), .all_intersects_all()</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.all_intersects_all">
+<span class="sig-name descname"><span class="pre">all_intersects_all</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.all_intersects_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if self and other have the same keys, and each
+segmentlist intersects the corresponding segmentlist in the
+other;  returns False if this is not the case or if either
+dictionary is empty.</p>
+<p>See also:</p>
+<p>.intersects(), .all_intersects(), .intersects_all()</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">None.</span>&#160; <span class="pre">Remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">D.</span></span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.coalesce">
+<span class="sig-name descname"><span class="pre">coalesce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.coalesce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run .coalesce() on all segmentlists.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.contract">
+<span class="sig-name descname"><span class="pre">contract</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">x</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run .contract(x) on all segmentlists.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the segmentlistdict object.  The return
+value is a new object with a new offsets attribute, with
+references to the original keys, and shallow copies of the
+segment lists.  Modifications made to the offset dictionary
+or segmentlists in the object returned by this method will
+not affect the original, but without using much memory
+until such modifications are made.  If the optional keys
+argument is not None, then should be an iterable of keys
+and only those segmentlists will be copied (KeyError is
+raised if any of those keys are not in the
+segmentlistdict).</p>
+<p>More details.  There are two “built-in” ways to create a
+copy of a segmentlist object.  The first is to initialize a
+new object from an existing one with</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">old</span> <span class="o">=</span> <span class="n">segmentlistdict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new</span> <span class="o">=</span> <span class="n">segmentlistdict</span><span class="p">(</span><span class="n">old</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>This creates a copy of the dictionary, but not of its
+contents.  That is, this creates new with references to the
+segmentlists in old, therefore changes to the segmentlists
+in either new or old are reflected in both.  The second
+method is</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">new</span> <span class="o">=</span> <span class="n">old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>This creates a copy of the dictionary and of the
+segmentlists, but with references to the segment objects in
+the original segmentlists.  Since segments are immutable,
+this effectively creates a completely independent working
+copy but without the memory cost of a full duplication of
+the data.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends the segmentlists from other to the corresponding
+segmentlists in self, adding new segmentslists to self as
+needed.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.extent">
+<span class="sig-name descname"><span class="pre">extent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of the results of running .extent() on
+each of the segmentlists.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.extent_all">
+<span class="sig-name descname"><span class="pre">extent_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extent_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the result of running .extent() on the union of all
+lists in the dictionary.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.extract_common">
+<span class="sig-name descname"><span class="pre">extract_common</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.extract_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new segmentlistdict containing only those
+segmentlists associated with the keys in keys, with each
+set to their mutual intersection.  The offsets are
+preserved.  If n is not None then instead of their mutual
+intersection, compute the intervals in which n or more of
+the segmentlists named in keys intersect.  n = len(keys) is
+equivalent to n = None.  If keys contains repeated entries,
+those segmentlists are still only considered once for the
+purpose of counting n.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">item</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of the results of running .find() on
+each of the segmentlists.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlistdict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;H2&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</code></pre></div>
+</div>
+<p>NOTE:  all segmentlists must contain the item or KeyError
+is raised.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.fromkeys">
+<span class="sig-name descname"><span class="pre">fromkeys</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.fromkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new dictionary with keys from iterable and values set to value.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value for key if key is in the dictionary, else default.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.intersection">
+<span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection of the segmentlists associated with
+the keys in keys.</p>
+<p>See also .vote().  This method is equivalent to .vote(keys,
+len(keys)) with keys uniquified.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.intersects">
+<span class="sig-name descname"><span class="pre">intersects</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if there exists a segmentlist in self that
+intersects the corresponding segmentlist in other;  returns
+False otherwise.</p>
+<p>See also:</p>
+<p>.intersects_all(), .all_intersects(), .all_intersects_all()</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.intersects_all">
+<span class="sig-name descname"><span class="pre">intersects_all</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.intersects_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if each segmentlist in other intersects the
+corresponding segmentlist in self;  returns False
+if this is not the case, or if other is empty.</p>
+<p>See also:</p>
+<p>.intersects(), .all_intersects(), .all_intersects_all()</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.intersects_segment">
+<span class="sig-name descname"><span class="pre">intersects_segment</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">seg</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.intersects_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if any segmentlist in self intersects the
+segment, otherwise returns False.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.is_coincident">
+<span class="sig-name descname"><span class="pre">is_coincident</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.is_coincident" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if any segment in any list in self intersects
+any segment in any list in other.  If the optional keys
+argument is not None, then it should be an iterable of keys
+and only segment lists for those keys will be considered in
+the test (instead of raising KeyError, keys not present in
+both segment list dictionaries will be ignored).  If keys
+is None (the default) then all segment lists are
+considered.</p>
+<p>This method is equivalent to the intersects() method, but
+without requiring the keys of the intersecting segment
+lists to match.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">items</span></span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">keys</span></span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.keys_at">
+<span class="sig-name descname"><span class="pre">keys_at</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">x</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.keys_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the keys for the segment lists that
+contain x.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlistdict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">keys_at</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="go">[&#39;H2&#39;]</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">func</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of the results of func applied to each
+of the segmentlist objects in self.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlistdict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;H2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="mi">12</span> <span class="ow">in</span> <span class="n">l</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;H2&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default=&lt;unrepresentable&gt;</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>If key is not found, default is returned if given, otherwise KeyError is raised</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.popitem">
+<span class="sig-name descname"><span class="pre">popitem</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.popitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return a (key, value) pair as a 2-tuple.</p>
+<p>Pairs are returned in LIFO (last-in, first-out) order.
+Raises KeyError if the dict is empty.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.protract">
+<span class="sig-name descname"><span class="pre">protract</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">x</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.protract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run .protract(x) on all segmentlists.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.setdefault">
+<span class="sig-name descname"><span class="pre">setdefault</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert key with a value of default if key is not in the dictionary.</p>
+<p>Return the value for key if key is in the dictionary, else default.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.union" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the union of the segmentlists associated with the
+keys in keys.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="optional">[</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, </span><span class="optional">]</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">**F</span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">None.</span>&#160; <span class="pre">Update</span> <span class="pre">D</span> <span class="pre">from</span> <span class="pre">dict/iterable</span> <span class="pre">E</span> <span class="pre">and</span> <span class="pre">F.</span></span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
+If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
+In either case, this is followed by: for k in F:  D[k] = F[k]</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">values</span></span></span></span><a class="headerlink" href="#gwpy.segments.SegmentListDict.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentListDict.vote">
+<span class="sig-name descname"><span class="pre">vote</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">n</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentListDict.vote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intervals when n or more of the segment lists
+identified by keys are on.  Each segment list casts as many
+votes as the number of times it appears in keys.</p>
+<p>See also .intersection().</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../gwpy.segments.SegmentList/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SegmentList" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              SegmentList
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../table/" class="md-footer__link md-footer__link--next" aria-label="Next: Data tables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Data tables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+    
+  </body>
+</html>
