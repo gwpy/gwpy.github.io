@@ -1,0 +1,32 @@
+.. _gwpy-cli-example-spectrogram-norm:
+
+######################
+Normalised spectrogram
+######################
+
+
+This example shows a normalised :ref:`spectrogram <gwpy-spectrogram>` of
+the strain data from LIGO-Hanford around the time of GW150914.
+
+.. code-block:: shell
+
+   gwpy-plot spectrogram \
+       --gwosc \
+       --ifo L1 \
+       --start 1264315518 \
+       --duration 1024 \
+       --norm \
+       --cmap Spectral_r \
+       --imin .25 \
+       --imax 4 \
+       --interactive
+
+.. plot::
+   :align: center
+   :alt: Normalised spectrogram
+   :context: reset
+   :format: python
+   :include-source: false
+
+   from gwpy.cli.gwpy_plot import main as gwpy_plot
+   gwpy_plot(['spectrogram', '--gwosc', '--ifo', 'L1', '--start', '1264315518', '--duration', '1024', '--norm', '--cmap', 'Spectral_r', '--imin', '.25', '--imax', '4', '--interactive'])

@@ -1,0 +1,1974 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>SegmentList - GWpy 3.0.7 documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.79d3faa9841bcddc6.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.7cc0733e1ecec06834f8a270f43fc6ad.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gwpy.segments.SegmentList" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="GWpy 3.0.7 documentation" class="md-header__button md-logo" aria-label="GWpy 3.0.7 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GWpy 3.0.7 documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SegmentList
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="GWpy 3.0.7 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.0.7 documentation" data-md-component="logo">
+      <img src="../../_static/favicon.png" alt="logo">
+    </a>
+    GWpy 3.0.7 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GWpy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        <span class="md-ellipsis">What is GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        <span class="md-ellipsis">How do I install GWpy?</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../citing/" class="md-nav__link">
+        <span class="md-ellipsis">Citing GWpy</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          <span class="md-ellipsis">Data structures</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data structures</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time Series data</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrum/" class="md-nav__link">
+        <span class="md-ellipsis">The Frequency<wbr>Series class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">The Spectrogram</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timeseries/statevector/" class="md-nav__link">
+        <span class="md-ellipsis">State vectors</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/"><span class="md-ellipsis">Data-<wbr>quality segments</span></a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data-quality segments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data-<wbr>quality segments</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segments/#working-with-segments" class="md-nav__link">
+        <span class="md-ellipsis">Working with segments</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_2" type="checkbox" id="__nav_4_5_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../segments/#reference-api"><span class="md-ellipsis">Reference/API</span></a>
+          
+            <label for="__nav_4_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference/API" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reference/API</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.DataQualityFlag/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Flag</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.DataQualityDict/" class="md-nav__link">
+        <span class="md-ellipsis">Data<wbr>Quality<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.Segment/" class="md-nav__link">
+        <span class="md-ellipsis">Segment</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Segment<wbr>List</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Segment<wbr>List</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Segment<wbr>List</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.SegmentList (Python class) — A list of Segments" class="md-ellipsis">gwpy.<wbr>segments.<wbr>Segment<wbr>List</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.SegmentList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.append" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.append (Python method) — Append object to the end of the list." class="md-ellipsis">append</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.clear (Python method) — Remove all items from list." class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.coalesce (Python method) — Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n)." class="md-ellipsis">coalesce</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.contract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.contract (Python method) — Execute the .contract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place." class="md-ellipsis">contract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.copy (Python method) — Return a shallow copy of the list." class="md-ellipsis">copy</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.count" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.count (Python method) — Return number of occurrences of value." class="md-ellipsis">count</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.extend" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.extend (Python method) — Extend list by appending elements from the iterable." class="md-ellipsis">extend</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.extent" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.extent (Python method) — Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.  Does not require the segmentlist to be coalesced." class="md-ellipsis">extent</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.find" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.find (Python method) — Return the smallest i such that i is the index of an element that wholly contains item.  Raises ValueError if no such element exists.  Does not require the segmentlist to be coalesced." class="md-ellipsis">find</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.index" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.index (Python method) — Return first index of value." class="md-ellipsis">index</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.insert" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.insert (Python method) — Insert object before index." class="md-ellipsis">insert</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.intersects (Python method) — Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.  The algorithm is O(n), but faster than explicit calculation of the intersection, i.e. by testing bool(self &amp; other).  Requires both lists to be coalesced." class="md-ellipsis">intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.intersects_segment" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.intersects_segment (Python method) — Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.  The algorithm is O(log n).  Requires the list to be coalesced." class="md-ellipsis">intersects_<wbr>segment</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.pop (Python method) — Remove and return item at index (default last)." class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.protract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.protract (Python method) — Execute the .protract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place." class="md-ellipsis">protract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.read (Python method) — Read segments from file into a SegmentList" class="md-ellipsis">read</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.remove" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.remove (Python method) — Remove first occurrence of value." class="md-ellipsis">remove</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.reverse" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.reverse (Python method) — Reverse IN PLACE." class="md-ellipsis">reverse</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.shift" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.shift (Python method) — Execute the .shift() method on each segment in the list.  The algorithm is O(n) and does not require the list to be coalesced nor does it coalesce the list.  Segmentlist is modified in place." class="md-ellipsis">shift</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.sort" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.sort (Python method) — Sort the list in ascending order and return None." class="md-ellipsis">sort</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.to_table" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.to_table (Python method) — Convert this SegmentList to a Table" class="md-ellipsis">to_<wbr>table</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.value_slice_to_index" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.value_slice_to_index (Python method) — Convert the slice s from a slice of values to a slice of indexes.  self must be coalesced, the operation is O(log n).  This is used to extract from a segmentlist the segments that span a given range of values, and is useful in reducing operation counts when many repeated operations are required within a limited range of values." class="md-ellipsis">value_<wbr>slice_<wbr>to_<wbr>index</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.write" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.write (Python method) — Write this SegmentList to a file" class="md-ellipsis">write</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="write">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.write-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gwpy.segments.SegmentListDict/" class="md-nav__link">
+        <span class="md-ellipsis">Segment<wbr>List<wbr>Dict</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table/" class="md-nav__link">
+        <span class="md-ellipsis">Data tables</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          <span class="md-ellipsis">Data manipulation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Data manipulation</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          <span class="md-ellipsis">Visualising data</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualising data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Visualising data</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/" class="md-nav__link">
+        <span class="md-ellipsis">Plotting in GWpy <wbr>(gwpy.<wbr>plot)</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        <span class="md-ellipsis">Command line plotting with GWpy</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          <span class="md-ellipsis">Other utilities</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other utilities" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Other utilities</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detector/channel/" class="md-nav__link">
+        <span class="md-ellipsis">The Channel class</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time/" class="md-nav__link">
+        <span class="md-ellipsis">Times and timestamps</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astro/" class="md-nav__link">
+        <span class="md-ellipsis">Astrophysical modelling</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/" class="md-nav__link">
+        <span class="md-ellipsis">Configuring GWpy from the environment</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          <span class="md-ellipsis">Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/timeseries/" class="md-nav__link">
+        <span class="md-ellipsis">Time<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/signal/" class="md-nav__link">
+        <span class="md-ellipsis">Signal processing examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/frequencyseries/" class="md-nav__link">
+        <span class="md-ellipsis">Frequency<wbr>Series examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/spectrogram/" class="md-nav__link">
+        <span class="md-ellipsis">Spectrogram examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/segments/" class="md-nav__link">
+        <span class="md-ellipsis">Segments examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/table/" class="md-nav__link">
+        <span class="md-ellipsis">Tabular data examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/miscellaneous/" class="md-nav__link">
+        <span class="md-ellipsis">Miscellaneous examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          <span class="md-ellipsis">Developer notes</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Developer notes</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/release/" class="md-nav__link">
+        <span class="md-ellipsis">Publishing a release</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Segment<wbr>List</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="gwpy.segments.SegmentList (Python class) — A list of Segments" class="md-ellipsis">gwpy.<wbr>segments.<wbr>Segment<wbr>List</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwpy.segments.SegmentList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.append" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.append (Python method) — Append object to the end of the list." class="md-ellipsis">append</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.clear" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.clear (Python method) — Remove all items from list." class="md-ellipsis">clear</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.coalesce" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.coalesce (Python method) — Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n)." class="md-ellipsis">coalesce</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.contract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.contract (Python method) — Execute the .contract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place." class="md-ellipsis">contract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.copy" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.copy (Python method) — Return a shallow copy of the list." class="md-ellipsis">copy</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.count" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.count (Python method) — Return number of occurrences of value." class="md-ellipsis">count</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.extend" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.extend (Python method) — Extend list by appending elements from the iterable." class="md-ellipsis">extend</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.extent" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.extent (Python method) — Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.  Does not require the segmentlist to be coalesced." class="md-ellipsis">extent</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.find" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.find (Python method) — Return the smallest i such that i is the index of an element that wholly contains item.  Raises ValueError if no such element exists.  Does not require the segmentlist to be coalesced." class="md-ellipsis">find</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.index" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.index (Python method) — Return first index of value." class="md-ellipsis">index</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.insert" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.insert (Python method) — Insert object before index." class="md-ellipsis">insert</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.intersects" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.intersects (Python method) — Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.  The algorithm is O(n), but faster than explicit calculation of the intersection, i.e. by testing bool(self &amp; other).  Requires both lists to be coalesced." class="md-ellipsis">intersects</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.intersects_segment" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.intersects_segment (Python method) — Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.  The algorithm is O(log n).  Requires the list to be coalesced." class="md-ellipsis">intersects_<wbr>segment</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.pop" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.pop (Python method) — Remove and return item at index (default last)." class="md-ellipsis">pop</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.protract" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.protract (Python method) — Execute the .protract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place." class="md-ellipsis">protract</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.read (Python method) — Read segments from file into a SegmentList" class="md-ellipsis">read</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.read-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.remove" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.remove (Python method) — Remove first occurrence of value." class="md-ellipsis">remove</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.reverse" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.reverse (Python method) — Reverse IN PLACE." class="md-ellipsis">reverse</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.shift" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.shift (Python method) — Execute the .shift() method on each segment in the list.  The algorithm is O(n) and does not require the list to be coalesced nor does it coalesce the list.  Segmentlist is modified in place." class="md-ellipsis">shift</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.sort" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.sort (Python method) — Sort the list in ascending order and return None." class="md-ellipsis">sort</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.to_table" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.to_table (Python method) — Convert this SegmentList to a Table" class="md-ellipsis">to_<wbr>table</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.value_slice_to_index" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.value_slice_to_index (Python method) — Convert the slice s from a slice of values to a slice of indexes.  self must be coalesced, the operation is O(log n).  This is used to extract from a segmentlist the segments that span a given range of values, and is useful in reducing operation counts when many repeated operations are required within a limited range of values." class="md-ellipsis">value_<wbr>slice_<wbr>to_<wbr>index</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.write" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="gwpy.segments.SegmentList.write (Python method) — Write this SegmentList to a file" class="md-ellipsis">write</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="write">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwpy.segments.SegmentList.write-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/gwpy/gwpy/blob/main/docs/api/gwpy.segments.SegmentList.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+<h1 id="segmentlist">SegmentList<a class="headerlink" href="#segmentlist" title="Permalink to this headline">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gwpy.segments.</span></span><span class="sig-name descname"><span class="pre">SegmentList</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.7/gwpy/segments/segments.py#L91-L224"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a></p>
+<p>The <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> provides additional methods that assist in the
+manipulation of lists of <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a>. In particular,
+arithmetic operations such as union and intersection are provided.
+Unlike the <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>, the <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> is closed under all supported
+arithmetic operations.</p>
+<p>All standard Python sequence-like operations are supported, like
+slicing, iteration and so on, but the arithmetic and other methods
+in this class generally expect the <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to be in what is
+refered to as a “coalesced” state - consisting solely of disjoint
+<a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code></a> listed in ascending order. Using the standard Python
+sequence-like operations, a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> can be easily constructed
+that is not in this state;  for example by simply appending a
+<a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a> to the end of the list that overlaps some other <a class="reference internal" href="../gwpy.segments.Segment/#gwpy.segments.Segment" title="gwpy.segments.Segment (Python class) — A tuple defining a semi-open interval [start, end)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>
+already in the list. The class provides a <a class="reference internal" href="#gwpy.segments.SegmentList.coalesce" title="gwpy.segments.SegmentList.coalesce (Python method) — Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n)."><code class="xref py py-meth docutils literal notranslate"><span class="pre">coalesce()</span></code></a>
+method that can be called to put it in the coalesced state. Following
+application of the coalesce method, all arithmetic operations will
+function reliably. All arithmetic methods themselves return
+coalesced results, so there is never a need to call the coalesce
+method when manipulating a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> exclusively via the
+arithmetic operators.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">|=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-=</span> <span class="n">SegmentList</span><span class="p">([</span><span class="n">Segment</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[Segment(-10, -5), Segment(5, 10), Segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[Segment(-infinity, -10), Segment(-5, 5), Segment(10, 20),</span>
+<span class="go"> Segment(30, infinity)]</span>
+</code></pre></div>
+</div>
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils data align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.append" title="gwpy.segments.SegmentList.append (Python method) — Append object to the end of the list."><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(object, /)</p></td>
+<td><p>Append object to the end of the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.clear" title="gwpy.segments.SegmentList.clear (Python method) — Remove all items from list."><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>(/)</p></td>
+<td><p>Remove all items from list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.coalesce" title="gwpy.segments.SegmentList.coalesce (Python method) — Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">coalesce</span></code></a>()</p></td>
+<td><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.contract" title="gwpy.segments.SegmentList.contract (Python method) — Execute the .contract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place."><code class="xref py py-obj docutils literal notranslate"><span class="pre">contract</span></code></a></p></td>
+<td><p>Execute the .contract() method on each segment in the list and coalesce the result.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.copy" title="gwpy.segments.SegmentList.copy (Python method) — Return a shallow copy of the list."><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>(/)</p></td>
+<td><p>Return a shallow copy of the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.count" title="gwpy.segments.SegmentList.count (Python method) — Return number of occurrences of value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a>(value, /)</p></td>
+<td><p>Return number of occurrences of value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.extend" title="gwpy.segments.SegmentList.extend (Python method) — Extend list by appending elements from the iterable."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(iterable, /)</p></td>
+<td><p>Extend list by appending elements from the iterable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.extent" title="gwpy.segments.SegmentList.extent (Python method) — Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.  Does not require the segmentlist to be coalesced."><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<td><p>Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.find" title="gwpy.segments.SegmentList.find (Python method) — Return the smallest i such that i is the index of an element that wholly contains item.  Raises ValueError if no such element exists.  Does not require the segmentlist to be coalesced."><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a></p></td>
+<td><p>Return the smallest i such that i is the index of an element that wholly contains item.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.index" title="gwpy.segments.SegmentList.index (Python method) — Return first index of value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value[, start, stop])</p></td>
+<td><p>Return first index of value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.insert" title="gwpy.segments.SegmentList.insert (Python method) — Insert object before index."><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(index, object, /)</p></td>
+<td><p>Insert object before index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.intersects" title="gwpy.segments.SegmentList.intersects (Python method) — Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.  The algorithm is O(n), but faster than explicit calculation of the intersection, i.e. by testing bool(self &amp; other).  Requires both lists to be coalesced."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects</span></code></a></p></td>
+<td><p>Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.intersects_segment" title="gwpy.segments.SegmentList.intersects_segment (Python method) — Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.  The algorithm is O(log n).  Requires the list to be coalesced."><code class="xref py py-obj docutils literal notranslate"><span class="pre">intersects_segment</span></code></a></p></td>
+<td><p>Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.pop" title="gwpy.segments.SegmentList.pop (Python method) — Remove and return item at index (default last)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>([index])</p></td>
+<td><p>Remove and return item at index (default last).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.protract" title="gwpy.segments.SegmentList.protract (Python method) — Execute the .protract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place."><code class="xref py py-obj docutils literal notranslate"><span class="pre">protract</span></code></a></p></td>
+<td><p>Execute the .protract() method on each segment in the list and coalesce the result.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.read" title="gwpy.segments.SegmentList.read (Python method) — Read segments from file into a SegmentList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(source[, format, coalesce])</p></td>
+<td><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.remove" title="gwpy.segments.SegmentList.remove (Python method) — Remove first occurrence of value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(value, /)</p></td>
+<td><p>Remove first occurrence of value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.reverse" title="gwpy.segments.SegmentList.reverse (Python method) — Reverse IN PLACE."><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code></a>(/)</p></td>
+<td><p>Reverse <em>IN PLACE</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.shift" title="gwpy.segments.SegmentList.shift (Python method) — Execute the .shift() method on each segment in the list.  The algorithm is O(n) and does not require the list to be coalesced nor does it coalesce the list.  Segmentlist is modified in place."><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift</span></code></a></p></td>
+<td><p>Execute the .shift() method on each segment in the list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.sort" title="gwpy.segments.SegmentList.sort (Python method) — Sort the list in ascending order and return None."><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>(*[, key, reverse])</p></td>
+<td><p>Sort the list in ascending order and return None.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.to_table" title="gwpy.segments.SegmentList.to_table (Python method) — Convert this SegmentList to a Table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_table</span></code></a>()</p></td>
+<td><p>Convert this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.value_slice_to_index" title="gwpy.segments.SegmentList.value_slice_to_index (Python method) — Convert the slice s from a slice of values to a slice of indexes.  self must be coalesced, the operation is O(log n).  This is used to extract from a segmentlist the segments that span a given range of values, and is useful in reducing operation counts when many repeated operations are required within a limited range of values."><code class="xref py py-obj docutils literal notranslate"><span class="pre">value_slice_to_index</span></code></a></p></td>
+<td><p>Convert the slice s from a slice of values to a slice of indexes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gwpy.segments.SegmentList.write" title="gwpy.segments.SegmentList.write (Python method) — Write this SegmentList to a file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(target, *args, **kwargs)</p></td>
+<td><p>Write this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a file</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append object to the end of the list.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all items from list.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.coalesce">
+<span class="sig-name descname"><span class="pre">coalesce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.7/gwpy/segments/segments.py#L140-L144"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.coalesce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the elements of a list into ascending order, and merge continuous segments into single segments.  This operation is O(n log n).</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.contract">
+<span class="sig-name descname"><span class="pre">contract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.contract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .contract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the list.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of occurrences of value.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend list by appending elements from the iterable.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.extent">
+<span class="sig-name descname"><span class="pre">extent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the segment whose end-points denote the maximum and minimum extent of the segmentlist.  Does not require the segmentlist to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest i such that i is the index of an element that wholly contains item.  Raises ValueError if no such element exists.  Does not require the segmentlist to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">0</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert object before index.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.intersects">
+<span class="sig-name descname"><span class="pre">intersects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the intersection of self and the segmentlist other is not the null set, otherwise returns False.  The algorithm is O(n), but faster than explicit calculation of the intersection, i.e. by testing bool(self &amp; other).  Requires both lists to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.intersects_segment">
+<span class="sig-name descname"><span class="pre">intersects_segment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.intersects_segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the intersection of self and the segment other is not the null set, otherwise returns False.  The algorithm is O(log n).  Requires the list to be coalesced.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="o">-</span> <span class="mi">1</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove and return item at index (default last).</p>
+<p>Raises IndexError if list is empty or index is out of range.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.protract">
+<span class="sig-name descname"><span class="pre">protract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.protract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .protract() method on each segment in the list and coalesce the result.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">coalesce</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.7/gwpy/segments/segments.py#L166-L209"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read segments from file into a <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.SegmentList.read-parameters">Parameters<a class="headerlink" href="#gwpy.segments.SegmentList.read-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>filename</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>path of file to read</p>
+</dd>
+<dt><strong>format</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>source format identifier. If not given, the format will be
+detected if possible. See below for list of acceptable
+formats.</p>
+</dd>
+<dt><strong>coalesce</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> coalesce the segment list before returning,
+otherwise return exactly as contained in file(s).</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>other keyword arguments depend on the format, see the online
+documentation for details (<a class="reference internal" href="../../segments/io/#gwpy-segments-io"><span class="std std-ref">Reading/writing segments and flags</span></a>)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="gwpy.segments.SegmentList.read-returns">Returns<a class="headerlink" href="#gwpy.segments.SegmentList.read-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><dl>
+<dt><strong>segmentlist</strong><span class="classifier"><a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a></span></dt><dd><p><a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> active and known segments read from file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd" id="gwpy.segments.SegmentList.read-raises">Raises<a class="headerlink" href="#gwpy.segments.SegmentList.read-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>IndexError</dt><dd><p>if <code class="docutils literal notranslate"><span class="pre">source</span></code> is an empty list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>segwizard</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove first occurrence of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">/</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse <em>IN PLACE</em>.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.shift">
+<span class="sig-name descname"><span class="pre">shift</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the .shift() method on each segment in the list.  The algorithm is O(n) and does not require the list to be coalesced nor does it coalesce the list.  Segmentlist is modified in place.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the list in ascending order and return None.</p>
+<p>The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
+order of two equal elements is maintained).</p>
+<p>If a key function is given, apply it once to each list item and sort them,
+ascending or descending, according to their function values.</p>
+<p>The reverse flag can be set to sort in descending order.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.to_table">
+<span class="sig-name descname"><span class="pre">to_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.7/gwpy/segments/segments.py#L147-L162"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.to_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>The resulting <code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code> has four columns: <a class="reference internal" href="#gwpy.segments.SegmentList.index" title="gwpy.segments.SegmentList.index (Python method) — Return first index of value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">end</span></code>, and
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">duration</span></code>, corresponding to the zero-counted list index, GPS start
+and end times, and total duration in seconds, respectively.</p>
+<p>This method exists mainly to provide a way to write <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a>
+objects in comma-separated value (CSV) format, via the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> method.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.value_slice_to_index">
+<span class="sig-name descname"><span class="pre">value_slice_to_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.segments.SegmentList.value_slice_to_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the slice s from a slice of values to a slice of indexes.  self must be coalesced, the operation is O(log n).  This is used to extract from a segmentlist the segments that span a given range of values, and is useful in reducing operation counts when many repeated operations are required within a limited range of values.</p>
+<p>NOTE:  the definition of the transformation is important, and some care might be needed to use this tool properly.  The start and stop values of the slice are transformed independently.  The start value is mapped to the index of the first segment whose upper bound is greater than start, meaning the first segment spanning values greater than or equal to the value of start.  The stop value is mapped to 1 + the index of the last segment whose lower bound is less than stop, meaning the last segment spanning values less than the value of stop.  This can lead to unexpected behaviour if value slices whose upper and lower bounds are identical are transformed to index slices.  For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="go">slice(1, 1, None)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="go">slice(1, 2, None)</span>
+<span class="go">Both value slices are zero-length, but one has yielded a zero-length (null) index slice, while the other has not.  The two value slices start at 5 and 6 respectively.  Both starting values lie within segment 1, and in both cases the start value has been mapped to index 1, as expected.  The first slice ends at 5, meaning it expresses the idea of a range of values upto but not including 5, which corresponds to segments upto *but not including* index 1, and so that stop value has been mapped to an index slice upper bound of 1.  The second slice ends at 6, and the range of values upto but not including 6 corresponds to segment indexes upto but not including 2, which is what we see that bound has been mapped to.</span>
+</code></pre></div>
+</div>
+<p>Examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">segment</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">[segment(-10, -5), segment(5, 10), segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">25</span><span class="p">))]</span>
+<span class="go">[segment(5, 10), segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">))]</span>
+<span class="go">[segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">))]</span>
+<span class="go">[segment(20, 30)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]</span>
+<span class="go">[segment(-10, -5), segment(5, 10)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">18</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">))]</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span>
+<span class="go">[segment(-10, -5)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value_slice_to_index</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))]</span>
+<span class="go">[segment(5, 10), segment(20, 30)]</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="gwpy.segments.SegmentList.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/gwpy/gwpy/tree/v3.0.7/gwpy/segments/segments.py#L211-L224"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.segments.SegmentList.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write this <a class="reference internal" href="#gwpy.segments.SegmentList" title="gwpy.segments.SegmentList (Python class) — A list of Segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SegmentList</span></code></a> to a file</p>
+<p>Arguments and keywords depend on the output format, see the
+online documentation for full details for each format.</p>
+<dl class="field-list">
+<dt class="field-odd" id="gwpy.segments.SegmentList.write-parameters">Parameters<a class="headerlink" href="#gwpy.segments.SegmentList.write-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl>
+<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>output filename</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The available built-in formats are:</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Read</p></th>
+<th class="head"><p>Write</p></th>
+<th class="head"><p>Auto-identify</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hdf5</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>segwizard</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../gwpy.segments.Segment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Segment" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Segment
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../gwpy.segments.SegmentListDict/" class="md-footer__link md-footer__link--next" aria-label="Next: SegmentListDict" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              SegmentListDict
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.5.0.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+    
+  </body>
+</html>
