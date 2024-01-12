@@ -1,0 +1,31 @@
+.. _gwpy-cli-example-spectrum-three-ifo:
+
+###################################
+Spectrum with three interferometers
+###################################
+
+
+This example shows the spectrum (power spectral density) of strain
+data for the three active detectors around GW200129_065458
+(see |GWTC-3l|_ for full details).
+
+.. code-block:: shell
+
+   gwpy-plot spectrum \
+       --chan H1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01 L1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01 V1:Hrec_hoft_16384Hz \
+       --start 1264316100 \
+       --duration 32 \
+       --xmin 10 \
+       --xmax 4000 \
+       --title "GW detector sensitivity around GW200129_065458" \
+       --interactive
+
+.. plot::
+   :align: center
+   :alt: Spectrum with three interferometers
+   :context: reset
+   :format: python
+   :include-source: false
+
+   from gwpy.cli.gwpy_plot import main as gwpy_plot
+   gwpy_plot(['spectrum', '--chan', 'H1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01', 'L1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01', 'V1:Hrec_hoft_16384Hz', '--start', '1264316100', '--duration', '32', '--xmin', '10', '--xmax', '4000', '--title', 'GW detector sensitivity around GW200129_065458', '--interactive'])
