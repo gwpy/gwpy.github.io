@@ -12,12 +12,13 @@ data for the three active detectors around GW200129_065458
 .. code-block:: shell
 
    gwpy-plot spectrum \
-       --chan H1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01 L1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01 V1:Hrec_hoft_16384Hz \
+       --gwosc \
+       --ifo H1 L1 V1 \
        --start 1264316100 \
        --duration 32 \
        --xmin 10 \
        --xmax 4000 \
-       --title "GW detector sensitivity around GW200129_065458" \
+       --suptitle "GW detector sensitivity around GW200129_065458" \
        --interactive
 
 .. plot::
@@ -28,4 +29,4 @@ data for the three active detectors around GW200129_065458
    :include-source: false
 
    from gwpy.cli.gwpy_plot import main as gwpy_plot
-   gwpy_plot(['spectrum', '--chan', 'H1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01', 'L1:DCS-CALIB_STRAIN_CLEAN_SUB60HZ_C01', 'V1:Hrec_hoft_16384Hz', '--start', '1264316100', '--duration', '32', '--xmin', '10', '--xmax', '4000', '--title', 'GW detector sensitivity around GW200129_065458', '--interactive'])
+   gwpy_plot(['spectrum', '--gwosc', '--ifo', 'H1', 'L1', 'V1', '--start', '1264316100', '--duration', '32', '--xmin', '10', '--xmax', '4000', '--suptitle', 'GW detector sensitivity around GW200129_065458', '--interactive'])
