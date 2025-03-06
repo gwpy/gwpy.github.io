@@ -25,8 +25,8 @@ the segments for all of O1:
    :include-source:
 
    from gwpy.segments import DataQualityFlag
-   h1segs = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
-                                            'Jan 19 2016')
+   h1segs = DataQualityFlag.fetch_open_data("H1_DATA", "Sep 12 2015",
+                                            "Jan 19 2016")
 
 We can then generate a plot of the times when LIGO-Hanford was operating:
 
@@ -35,7 +35,7 @@ We can then generate a plot of the times when LIGO-Hanford was operating:
    :context:
    :include-source:
 
-   plot = h1segs.plot(color='gwpy:ligo-hanford')
+   plot = h1segs.plot(color="gwpy:ligo-hanford")
    plot.show()
 
 That's a lot of segments. We can pare-down the list a little to display
@@ -47,8 +47,8 @@ only the segments from the first month of the run:
    :nofigs:
    :include-source:
 
-   h1month1 = DataQualityFlag.fetch_open_data('H1_DATA', 'Sep 12 2015',
-                                              'Oct 12 2015')
+   h1month1 = DataQualityFlag.fetch_open_data("H1_DATA", "Sep 12 2015",
+                                              "Oct 12 2015")
 
 We can also download the LIGO-Livingston segments from the same period
 and display them alongside, as well as those segments during which both
@@ -61,11 +61,11 @@ interferometers were operating at the same time
    :context:
    :include-source:
 
-   l1month1 = DataQualityFlag.fetch_open_data('L1_DATA', 'Sep 12 2015',
-                                              'Oct 12 2015')
+   l1month1 = DataQualityFlag.fetch_open_data("L1_DATA", "Sep 12 2015",
+                                              "Oct 12 2015")
    bothon = h1month1 & l1month1
    plot = h1month1.plot()
    ax = plot.gca()
    ax.plot(l1month1)
-   ax.plot(bothon, label='Both')
+   ax.plot(bothon, label="Both")
    plot.show()

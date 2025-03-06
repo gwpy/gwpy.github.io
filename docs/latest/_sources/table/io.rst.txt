@@ -138,8 +138,8 @@ Filtered queries
 ================
 
 The columns returned can be selected using the ``column`` keyword,
-and mathematical selection filters can be applied on-the-fly
-using the ``selection`` keyword:
+and mathematical condition filters can be applied on-the-fly
+using the ``where`` keyword:
 
 .. code-block:: python
    :name: gwpy-table-io-fetch_open_data-filtered
@@ -147,7 +147,7 @@ using the ``selection`` keyword:
 
    >>> t = EventTable.fetch_open_data(
    ...     "GWTC-2",
-   ...     selection="mass_1_source < 4",
+   ...     where="mass_1_source < 4",
    ...     columns=["name", "mass_1_source", "mass_2_source", "luminosity_distance"],
    ... )
    >>> print(t)
@@ -183,9 +183,9 @@ directly:
 
    >>> from gwpy.table import GravitySpyTable
    >>> blips = GravitySpyTable.fetch(
-   ...     "gravityspy",
-   ...     "glitches",
-   ...     selection="Label=Blip",
+   ...     source="gravityspy",
+   ...     tablename="glitches",
+   ...     where="Label=Blip",
    ... )
 
 .. warning::
@@ -621,9 +621,8 @@ Writing tables in PyCBC Live HDF5 format is not supported at this time.
 GstLAL (``LIGO_LW`` XML)
 ========================
 
-GstLAL is a low-latency search for gravitational waves from compact
-binary coalescences, built using |GStreamer|_ elements and tools from the
-:ref:`gwpy-external-lalsuite` library.
+|GstLAL|_ is a low-latency search for gravitational waves from compact
+binary coalescences.
 This search writes files on the LIGO Data Grid (LIGO.ORG-authenticated users
 only) in ``LIGO_LW`` XML format, containing tables of events.
 
@@ -777,7 +776,7 @@ All ``FrEvent`` structures contain the following columns, any other
 columns are use-specific:
 
 ===============  ====================================================================================
-Column name      Description (from |GWFSpec|_)
+Column name      Description (from |LIGO-T970130|_)
 ===============  ====================================================================================
 ``time``         Reference time of event, as defined by the search algorithm
 ``amplitude``    Continuous output amplitude returned by event

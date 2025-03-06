@@ -14,7 +14,7 @@ time-frequency spectrogram where we calculate the Rayleigh statistic for
 each time bin.
 
 To demonstate this, we can load some data from the LIGO Livingston
-intereferometer around the time of the GW151226 gravitational wave detection:
+interferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
@@ -23,8 +23,8 @@ intereferometer around the time of the GW151226 gravitational wave detection:
    :include-source:
 
    from gwpy.timeseries import TimeSeries
-   gwdata = TimeSeries.fetch_open_data('L1', 'Dec 26 2015 03:37',
-                                       'Dec 26 2015 03:47', verbose=True)
+   gwdata = TimeSeries.fetch_open_data("L1", "Dec 26 2015 03:37",
+                                       "Dec 26 2015 03:47", verbose=True)
 
 Next, we can calculate a Rayleigh statistic `Spectrogram` using the
 :meth:`~gwpy.timeseries.TimeSeries.rayleigh_spectrogram` method of the
@@ -44,10 +44,10 @@ and can make a plot using the :meth:`~Spectrogram.plot` method
    :context:
    :include-source:
 
-   plot = rayleigh.plot(norm='log', vmin=0.25, vmax=4)
+   plot = rayleigh.plot(norm="log", vmin=0.25, vmax=4)
    ax = plot.gca()
-   ax.set_yscale('log')
+   ax.set_yscale("log")
    ax.set_ylim(30, 1500)
-   ax.set_title('Sensitivity of LIGO-Livingston around GW151226')
-   ax.colorbar(cmap='coolwarm', label='Rayleigh statistic')
+   ax.set_title("Sensitivity of LIGO-Livingston around GW151226")
+   ax.colorbar(cmap="coolwarm", label="Rayleigh statistic")
    plot.show()

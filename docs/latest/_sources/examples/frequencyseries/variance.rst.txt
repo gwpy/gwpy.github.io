@@ -14,11 +14,11 @@ can wash out transient noise (as is often desired).
 
 The `SpectralVariance` histogram provide by `gwpy.frequencyseries` allows
 us to look at the spectral sensitivity in a different manner, displaying
-which frequencies sit at which amplitude _most_ of the time, but also
+which frequencies sit at which amplitude *most* of the time, but also
 highlighting excursions from normal behaviour.
 
 To demonstate this, we can load some data from the LIGO Livingston
-intereferometer around the time of the GW151226 gravitational wave detection:
+interferometer around the time of the GW151226 gravitational wave detection:
 
 
 .. plot::
@@ -27,7 +27,7 @@ intereferometer around the time of the GW151226 gravitational wave detection:
    :include-source:
 
    from gwpy.timeseries import TimeSeries
-   llo = TimeSeries.fetch_open_data('L1', 1135136228, 1135140324, verbose=True)
+   llo = TimeSeries.fetch_open_data("L1", 1135136228, 1135140324, verbose=True)
 
 We can then call the :meth:`~gwpy.timeseries.TimeSeries.spectral_variance`
 method of the ``llo`` `~gwpy.timeseries.TimeSeries` by calculating an ASD
@@ -50,14 +50,14 @@ We can then :meth:`~SpectralVariance.plot` the `SpectralVariance`
    :context:
    :include-source:
 
-   plot = variance.plot(yscale='log', norm='log', vmin=.5, cmap='plasma')
+   plot = variance.plot(yscale="log", norm="log", vmin=.5, cmap="plasma")
    ax = plot.gca()
    ax.grid()
    ax.set_xlim(20, 1500)
    ax.set_ylim(1e-24, 1e-20)
-   ax.set_xlabel('Frequency [Hz]')
-   ax.set_ylabel(r'[strain/$\sqrt{\mathrm{Hz}}$]')
-   ax.set_title('LIGO-Livingston sensitivity variance')
+   ax.set_xlabel("Frequency [Hz]")
+   ax.set_ylabel(r"[strain/$\sqrt{\mathrm{Hz}}$]")
+   ax.set_title("LIGO-Livingston sensitivity variance")
    plot.show()
 
 From this we see that in general the sensitivity varies a few parts in

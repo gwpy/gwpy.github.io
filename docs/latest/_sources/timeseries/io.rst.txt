@@ -45,7 +45,8 @@ are archived in :ref:`GWF <gwpy-timeseries-io-gwf>` files stored at the
 relevant observatory.
 These data are available locally to authenticated users of the associated
 computing centres (typically collaboration members), but are also
-distributed using |CVMFS|_ and are available remotely using :ref:`gwpy-external-nds2`.
+distributed as part of |OSDFl|_ and are available remotely using
+:ref:`gwpy-external-nds2`.
 Access to these data is restricted to active collaboration members.
 
 Additionally |GWOSCl|_ hosts publicly-accessible 'open' data, with *event*
@@ -111,7 +112,7 @@ GWF
 
 **Additional dependencies:**  :ref:`gwpy-external-framecpp` or :ref:`gwpy-external-framel` or :ref:`gwpy-external-lalframe`
 
-The raw observatory data are archived in ``.gwf`` files, a custom binary format that efficiently stores the time streams and all necessary metadata, for more details about this particular data format, take a look at the specification document |GWFSpec|_.
+The raw observatory data are archived in ``.gwf`` files, a custom binary format that efficiently stores the time streams and all necessary metadata, for more details about this particular data format, take a look at the specification document |LIGO-T970130|_.
 
 GWF library availability
 ------------------------
@@ -209,6 +210,24 @@ To write data held in any of the :mod:`gwpy.timeseries` classes to a GWF file, s
    >>> data.write('output.gwf')
 
 **If the output file already exists it will be overwritten.**
+
+.. note::
+
+    When writing a timeseries to a GWF, the :attr:`TimeSeries.name`
+    property is used for the `name` variable of the GWF data structures
+    (`FrProcData` and `FrVect`).
+    So, if you want to write a file and then read it back in, you must ensure
+    that the :attr:`~TimeSeries.name` property is correctly assigned, e.g:
+
+    .. code-block:: python
+
+        >>> channel = "L1:CHANNEL_NAME"
+        >>> output_file = "output.gwf"
+        >>> data = TimeSeries([1, 2, 3])
+        >>> data.name = channel
+        >>> data.write(output_file)
+        >>> data = TimeSeries.read(output_file, channel)
+
 
 .. _gwpy-timeseries-io-hdf5:
 
