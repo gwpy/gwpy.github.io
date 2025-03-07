@@ -1,0 +1,83 @@
+.. _gwpy-example-frequencyseries-transfer_function:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+.. currentmodule:: gwpy.timeseries
+
+Plotting a transfer function
+############################
+
+I would like to study how a signal transfers from one part of the
+interferometer to another.
+
+Specifically, it is interesting to measure the amplitude transfer of
+ground motion through the HEPI system.
+
+
+
+.. plot::
+   :context: reset
+   :nofigs:
+   :include-source:
+
+   if __name__ == '__main__':
+       from matplotlib import pyplot
+       pyplot.ion()
+
+Before anything else, we import the objects we will need:
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   from gwpy.time import tconvert
+   from gwpy.timeseries import TimeSeriesDict
+   from gwpy.plot import BodePlot
+
+and set the times of our query, and the channels we want:
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   start = tconvert('May 27 2014 04:00')
+   end = start + 1800
+   gndchannel = 'L1:ISI-GND_STS_ITMY_Z_DQ'
+   hpichannel = 'L1:HPI-ITMY_BLND_L4C_Z_IN1_DQ'
+
+We can call the :meth:`~TimeSeriesDict.get` method of the `TimeSeriesDict`
+to retrieve all data in a single operation:
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   data = TimeSeriesDict.get([gndchannel, hpichannel], start, end, verbose=True)
+   gnd = data[gndchannel]
+   hpi = data[hpichannel]
+
+The transfer function between time series is easily computed with the
+:meth:`~TimeSeries.transfer_function` method:
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   tf = gnd.transfer_function(hpi, 100, 50)
+
+The `~gwpy.plot.BodePlot` knows how to separate a complex-valued
+`~gwpy.frequencyseries.FrequencySeries` into magnitude and phase:
+
+.. plot::
+   :context:
+   :include-source:
+
+   plot = BodePlot(tf)
+   plot.maxes.set_title(
+       r'L1 ITMY ground $\rightarrow$ HPI transfer function')
+   plot.maxes.set_ylim(-55, 50)
+   plot.show()

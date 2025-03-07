@@ -1,0 +1,28 @@
+.. _gwpy-cli-example-spectrum-simple:
+
+###############
+Simple spectrum
+###############
+
+
+This example shows a simple spectrum (power spectral density) of strain
+data from the LIGO-Livingston detector around the time of GW200129_065458
+(see |GWTC-3l|_ for full details).
+
+.. code-block:: shell
+
+   gwpy-plot spectrum \
+       --chan L1:GDS-CALIB_STRAIN \
+       --start 1264316100 \
+       --duration 32 \
+       --interactive
+
+.. plot::
+   :align: center
+   :alt: Simple spectrum
+   :context: reset
+   :format: python
+   :include-source: false
+
+   from gwpy.cli.gwpy_plot import main as gwpy_plot
+   gwpy_plot(['spectrum', '--chan', 'L1:GDS-CALIB_STRAIN', '--start', '1264316100', '--duration', '32', '--interactive'])

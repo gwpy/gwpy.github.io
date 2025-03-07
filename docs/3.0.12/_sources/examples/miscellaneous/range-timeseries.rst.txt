@@ -1,0 +1,62 @@
+.. _gwpy-example-miscellaneous-range-timeseries:
+
+.. sectionauthor:: Duncan Macleod <duncan.macleod@ligo.org>
+
+Generating an inspiral range timeseries
+#######################################
+
+One standard figure-of-merit for the sensitivity of a gravitational-wave
+detector is the distance to which a binary neutron star (BNS) inspiral
+with two 1.4 solar mass components would be detected with a signal-to-noise
+ratio (SNR) of 8. We can estimate this using
+:func:`gwpy.astro.range_timeseries` directly from the strain readout for
+a detector.
+
+First, we need to load some data. We can `fetch` the
+`public data <https://gwosc.org/catalog/>`__
+around the GW170817 BNS merger:
+
+
+.. plot::
+   :context: reset
+   :nofigs:
+   :include-source:
+
+   from gwpy.timeseries import TimeSeries
+   h1 = TimeSeries.fetch_open_data('H1', 1187006834, 1187010930)
+   l1 = TimeSeries.fetch_open_data('L1', 1187006834, 1187010930)
+
+Then, we can measure the inspiral range directly:
+
+
+.. plot::
+   :context:
+   :nofigs:
+   :include-source:
+
+   from gwpy.astro import range_timeseries
+   h1range = range_timeseries(h1, 30, fftlength=4, fmin=10)
+   l1range = range_timeseries(l1, 30, fftlength=4, fmin=10)
+
+We can now plot these trends to see the variation in LIGO
+sensitivity over an hour or so surrounding GW170817:
+
+
+.. plot::
+   :context:
+   :include-source:
+
+   plot = h1range.plot(
+       label='LIGO-Hanford', color='gwpy:ligo-hanford', figsize=(12, 5))
+   ax = plot.gca()
+   ax.plot(l1range, label='LIGO-Livingston', color='gwpy:ligo-livingston')
+   ax.set_ylabel('Angle-averaged sensitive distance [Mpc]')
+   ax.set_title('LIGO sensitivity to BNS around GW170817')
+   ax.set_epoch(1187008882)  # <- set 0 on plot to GW170817
+   ax.legend()
+   plot.show()
+
+Note, the extreme dip in LIGO-Livingston's sensitivity near GW170817
+is caused by a loud, transient noise event, see `Phys. Rev. Lett.
+vol. 119, p. 161101 <http://doi.org/10.1103/PhysRevLett.119.161101>`_
+for more information.
