@@ -20,7 +20,7 @@
     
     
       
-        <title>5. Plotting a transfer function - GWpy 3.1.0.dev703+g10572c84 documentation</title>
+        <title>5. Plotting a transfer function - GWpy 3.1.0.dev710+gaec5d25c documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../" title="GWpy 3.1.0.dev703+g10572c84 documentation" class="md-header__button md-logo" aria-label="GWpy 3.1.0.dev703+g10572c84 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-header__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -97,7 +97,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            GWpy 3.1.0.dev703+g10572c84 documentation
+            GWpy 3.1.0.dev710+gaec5d25c documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -218,10 +218,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../" title="GWpy 3.1.0.dev703+g10572c84 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.1.0.dev703+g10572c84 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-nav__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
-    GWpy 3.1.0.dev703+g10572c84 documentation
+    GWpy 3.1.0.dev710+gaec5d25c documentation
   </label>
   
     <div class="md-nav__source">
@@ -1349,15 +1349,15 @@
   
 
 <h1 id="plotting-a-transfer-function"><span id="gwpy-example-frequencyseries-transfer-function"></span><span class="section-number">5. </span>Plotting a transfer function<a class="headerlink" href="#plotting-a-transfer-function" title="Link to this heading">¶</a></h1>
-<p>I would like to study how a signal transfers from one part of the
-interferometer to another.</p>
-<p>Specifically, it is interesting to measure the amplitude transfer of
-ground motion through the HEPI system.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
-    <span class="n">pyplot</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-</code></pre></div>
-</div>
+<p>In this example we demonstrate how to calculate the transfer function
+between two <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> signals.</p>
+<p>All ground-based gravitational wave observatories would be unable to
+operate if they did not employ sophisticated ground-motion suppression
+technology to prevent vibrations from the local (or remote) environment
+from transferring through to optical components.</p>
+<p>The impact of the seismic isolation system can be seen by calculating
+the transfer function between the ground motion at the laboratory
+and that of the optical suspension points.</p>
 <p>Before anything else, we import the objects we will need:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">tconvert</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.timeseries</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeriesDict</span>
@@ -1365,37 +1365,47 @@ ground motion through the HEPI system.</p>
 </code></pre></div>
 </div>
 <p>and set the times of our query, and the channels we want:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">start</span> <span class="o">=</span> <span class="n">tconvert</span><span class="p">(</span><span class="s2">&quot;May 27 2014 04:00&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">start</span> <span class="o">=</span> <span class="n">tconvert</span><span class="p">(</span><span class="s2">&quot;August 14 2017 10:25&quot;</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1800</span>
-<span class="n">gndchannel</span> <span class="o">=</span> <span class="s2">&quot;L1:ISI-GND_STS_ITMY_Z_DQ&quot;</span>
-<span class="n">hpichannel</span> <span class="o">=</span> <span class="s2">&quot;L1:HPI-ITMY_BLND_L4C_Z_IN1_DQ&quot;</span>
+<span class="n">gndchannel</span> <span class="o">=</span> <span class="s2">&quot;L1:ISI-GND_STS_ITMY_Y_DQ&quot;</span>
+<span class="n">suschannel</span> <span class="o">=</span> <span class="s2">&quot;L1:ISI-ITMY_SUSPOINT_ITMY_EUL_L_DQ&quot;</span>
 </code></pre></div>
 </div>
 <p>We can call the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict.get" title="gwpy.timeseries.TimeSeriesDict.get (Python method) — Retrieve data for multiple channels from any data source."><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> method of the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeriesDict/#gwpy.timeseries.TimeSeriesDict" title="gwpy.timeseries.TimeSeriesDict (Python class) — Ordered key-value mapping of named TimeSeries objects."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeriesDict</span></code></a>
 to retrieve all data in a single operation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="n">gndchannel</span><span class="p">,</span> <span class="n">hpichannel</span><span class="p">],</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeriesDict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">gndchannel</span><span class="p">,</span> <span class="n">suschannel</span><span class="p">],</span>
+    <span class="n">start</span><span class="p">,</span>
+    <span class="n">end</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;nds.gwosc.org&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">gnd</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">gndchannel</span><span class="p">]</span>
-<span class="n">hpi</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">hpichannel</span><span class="p">]</span>
+<span class="n">sus</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">suschannel</span><span class="p">]</span>
 </code></pre></div>
 </div>
 <p>The transfer function between time series is easily computed with the
 <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.transfer_function" title="gwpy.timeseries.TimeSeries.transfer_function (Python method) — Calculate the transfer function between this TimeSeries and another."><code class="xref py py-meth docutils literal notranslate"><span class="pre">transfer_function()</span></code></a> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">tf</span> <span class="o">=</span> <span class="n">gnd</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="n">hpi</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">tf</span> <span class="o">=</span> <span class="n">gnd</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="n">sus</span><span class="p">,</span> <span class="n">fftlength</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">BodePlot</span></code> knows how to separate a complex-valued
 <a class="reference internal" href="../../../api/gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries (Python class) — A data array holding some metadata to represent a frequency series."><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a> into magnitude and phase:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">plot</span> <span class="o">=</span> <span class="n">BodePlot</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
-    <span class="sa">r</span><span class="s2">&quot;L1 ITMY ground $\rightarrow$ HPI transfer function&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">55</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s2">&quot;L1 ITMY ground $\rightarrow$ SUS transfer function&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">maxes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">5e-2</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../../_downloads/acd575f5e4423a2b6f547e38ab321353/transfer_function-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<p>(<a class="reference download internal" download="" href="../../../_downloads/70b94bf9ae045160896006ff3f8500f0/transfer_function-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
 <figure class="align-default">
-<img alt="../../../_images/transfer_function-6.png" class="plot-directive" src="../../../_images/transfer_function-6.png" />
+<img alt="../../../_images/transfer_function-5.png" class="plot-directive" src="../../../_images/transfer_function-5.png" />
 </figure>
+<p>This example demonstrates the impressive noise suppression of the LIGO
+seismic isolation system. For more details, please see
+<a class="reference external" href="https://www.ligo.caltech.edu/page/vibration-isolation">https://www.ligo.caltech.edu/page/vibration-isolation</a>.</p>
 
 
 

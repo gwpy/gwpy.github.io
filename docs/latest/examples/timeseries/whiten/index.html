@@ -10,7 +10,7 @@
       
       
       
-        <link rel="prev" href="../filter/">
+        <link rel="prev" href="../public/">
       
       
         <link rel="next" href="../correlate/">
@@ -20,7 +20,7 @@
     
     
       
-        <title>3. Whitening a TimeSeries - GWpy 3.1.0.dev703+g10572c84 documentation</title>
+        <title>2. Whitening a TimeSeries - GWpy 3.1.0.dev710+gaec5d25c documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../" title="GWpy 3.1.0.dev703+g10572c84 documentation" class="md-header__button md-logo" aria-label="GWpy 3.1.0.dev703+g10572c84 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-header__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -97,13 +97,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            GWpy 3.1.0.dev703+g10572c84 documentation
+            GWpy 3.1.0.dev710+gaec5d25c documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. Whitening a TimeSeries
+              2. Whitening a TimeSeries
             
           </span>
         </div>
@@ -218,10 +218,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../" title="GWpy 3.1.0.dev703+g10572c84 documentation" class="md-nav__button md-logo" aria-label="GWpy 3.1.0.dev703+g10572c84 documentation" data-md-component="logo">
+    <a href="../../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-nav__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
       <img src="../../../_static/favicon.png" alt="logo">
     </a>
-    GWpy 3.1.0.dev703+g10572c84 documentation
+    GWpy 3.1.0.dev710+gaec5d25c documentation
   </label>
   
     <div class="md-nav__source">
@@ -933,30 +933,6 @@
                 
   
   
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../filter/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Filtering a Time<wbr>Series with a ZPK filter
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
     
@@ -1396,35 +1372,37 @@
   
   
 
-<h1 id="whitening-a-timeseries"><span id="gwpy-example-timeseries-whiten"></span><span class="section-number">3. </span>Whitening a <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#whitening-a-timeseries" title="Link to this heading">¶</a></h1>
-<div class="warning admonition">
-<p class="admonition-title">Warning</p>
-<p>This example requires LIGO.ORG credentials for data access.</p>
-</div>
+<h1 id="whitening-a-timeseries"><span id="gwpy-example-timeseries-whiten"></span><span class="section-number">2. </span>Whitening a <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a><a class="headerlink" href="#whitening-a-timeseries" title="Link to this heading">¶</a></h1>
 <p>Most data recorded from a gravitational-wave interferometer carry information
 across a wide band of frequencies, typically up to a few kiloHertz, but
 often it is the case that the low-frequency amplitude dwarfs that of the
-high-frequency content, making discerning high-frequency features difficult.</p>
+high-frequency content, making discerning high-frequency features difficult.
+This is especially true of the LIGO differential arm strain measurement,
+which encodes any gravitational wave signals that are present.</p>
 <p>We employ a technique called ‘whitening’ to normalize the power at all
 frequencies so that excess power at any frequency is more obvious.</p>
-<p>We demonstrate below with an auxiliary signal recording transmitted power
-in one of the interferometer arms, which recorded two large glitches with
-a frequency of around 5-50Hz.</p>
-<p>First, we import the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> and <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.get" title="gwpy.timeseries.TimeSeries.get (Python method) — Get data for this channel."><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> the data:</p>
+<p>We demonstrate below the LIGO-Livingston gravitational-wave strain
+measurement signal around <a href="#id7"><span class="problematic" id="id8">|GW200129_065458|_</span></a>, the loudest signal as yet
+detected by LIGO.</p>
+<p>First, we use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">gwosc</span></code> Python client to get the GPS time of the
+event:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gwosc.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">event_gps</span>
+<span class="n">gps</span> <span class="o">=</span> <span class="n">event_gps</span><span class="p">(</span><span class="s2">&quot;GW200129_065458&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Then we can import the <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> object and fetch the strain data using
+<a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.fetch_open_data" title="gwpy.timeseries.TimeSeries.fetch_open_data (Python method) — Fetch open-access data from GWOSC."><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.fetch_open_data()</span></code></a> in a window around that event:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.timeseries</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;H1:ASC-Y_TR_A_NSUM_OUT_DQ&quot;</span><span class="p">,</span> <span class="mi">1123084671</span><span class="p">,</span> <span class="mi">1123084703</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">&quot;L1&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">64</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">64</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<p>Now, we can <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten (Python method) — Whiten this TimeSeries using inverse spectrum truncation."><code class="xref py py-obj docutils literal notranslate"><span class="pre">whiten</span></code></a> the data to enhance the higher-frequency
-content</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">white</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">whiten</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<p>and can <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot (Python method) — Plot the data for this timeseries."><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a> both the original and whitened data</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">white</span><span class="p">,</span> <span class="n">separate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y-arm power [counts]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Whitened amplitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<p>To demonstrate the relative power across the frequency band, we can
+quickly estimate an Amplitude Spectral Density (ASD) for these data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">asd</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">asd</span><span class="p">(</span><span class="n">fftlength</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">asd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Strain ASD [$1/</span><span class="se">\\</span><span class="s2">sqrt</span><span class="si">{Hz}</span><span class="s2">$]&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </div>
@@ -1432,11 +1410,53 @@ content</p>
 <figure class="align-default">
 <img alt="../../../_images/whiten-3.png" class="plot-directive" src="../../../_images/whiten-3.png" />
 </figure>
-<p>Here we see two large spikes that are completely undetected in the raw
-<a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries" title="gwpy.timeseries.TimeSeries (Python class) — A time-domain data array."><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a>, but are very obvious in the whitened data. We can also see
-tapering effects at the boundaries as the whitening filter settles in,
-meaning that the first and last ~second of data are corrupted and should
-be discarded before further processing.</p>
+<p>The ASD clearly shows the dominance in amplitude of the lowest frequency
+components of the data, where the seismic noise around the observatory
+is most impactful.
+We can now <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.whiten" title="gwpy.timeseries.TimeSeries.whiten (Python method) — Whiten this TimeSeries using inverse spectrum truncation."><code class="xref py py-meth docutils literal notranslate"><span class="pre">whiten()</span></code></a> the data to to normalise the
+amplitudes across the frequency range:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">white</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">whiten</span><span class="p">(</span><span class="n">fftlength</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>and can <a class="reference internal" href="../../../api/gwpy.timeseries.TimeSeries/#gwpy.timeseries.TimeSeries.plot" title="gwpy.timeseries.TimeSeries.plot (Python method) — Plot the data for this timeseries."><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a> both the original and whitened data around the
+event time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">white</span><span class="p">,</span>
+    <span class="n">separate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">epoch</span><span class="o">=</span><span class="n">gps</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">gps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Strain amplitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Whitened strain amplitude&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../../_downloads/e7e8a0e61ea1fa43c5ec51714f22481a/whiten-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../../_images/whiten-5.png" class="plot-directive" src="../../../_images/whiten-5.png" />
+</figure>
+<p>The top figure is dominated by the low-frequency noise, whereas the
+whitened data below highlights a few spikes in the data at higher
+frequencies.</p>
+<p>We can zoom in very close around the event time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="n">plot</span> <span class="o">=</span> <span class="n">white</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">gps</span> <span class="o">-</span> <span class="mf">.1</span><span class="p">,</span> <span class="n">gps</span> <span class="o">+</span> <span class="mf">.1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Whitened strain amplitude&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../../_downloads/6c635585331eb2442b4f9ad9f998e6a7/whiten-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../../_images/whiten-6.png" class="plot-directive" src="../../../_images/whiten-6.png" />
+</figure>
+<p>Here, centred around time 0.03 is the clear signature of a binary black hole
+merger, <a href="#id9"><span class="problematic" id="id10">|GW200129_065458|_</span></a>.
+This signal is completely hidden in the unfiltered data, but the simple act
+of whitening has exposed the loudest gravitational-wave event ever detected!</p>
 
 
 
