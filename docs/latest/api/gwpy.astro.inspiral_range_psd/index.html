@@ -1,1465 +1,485 @@
-
-
 <!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="range_timeseries" href="../gwpy.astro.range_timeseries/" /><link rel="prev" title="inspiral_range" href="../gwpy.astro.inspiral_range/" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>inspiral_range_psd - GWpy dev</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css?v=9acbc504" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/solid.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/brands.min.css" />
     
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="prev" href="../gwpy.astro.inspiral_range/">
-      
-      
-        <link rel="next" href="../../env/">
-      
-      
-      <link rel="icon" href="../../_static/favicon.png">
     
-    
-      
-        <title>inspiral_range_psd - GWpy 3.1.0.dev710+gaec5d25c documentation</title>
-      
-    
-    
-      
-        
-      
-      
 
 
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-content: #29435f;
+  --color-brand-primary: #29435f;
+  --color-brand-visited: #29435f;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #ededed;
+  --color-brand-primary: #ededed;
+  --color-brand-visited: #ededed;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-content: #ededed;
+  --color-brand-primary: #ededed;
+  --color-brand-visited: #ededed;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
     
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
     
-      
-    
-    
-      
-        
-        
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.8bc14be58eddc636f.min.css?v=68780cc0" />
-        <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-        <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-        <link rel="stylesheet" type="text/css" href="../../_static/css/gwpy-sphinx.css?v=136ea0cf" />
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
 
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#gwpy.astro.inspiral_range_psd" class="md-skip">
-          Skip to content
-        </a>
-      
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-    <div data-md-component="announce">
-      
+    <div class="header-center">
+      <a href="../../"><div class="brand">GWpy dev</div></a>
     </div>
-    
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
-        
-      </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-header__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
-      <img src="../../_static/favicon.png" alt="logo">
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            GWpy 3.1.0.dev710+gaec5d25c documentation
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              inspiral_range_psd
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
       </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
     </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/favicon.png" alt="Logo"/>
   </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search/" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/">What is GWpy?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../install/">How do I install GWpy?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How do I install GWpy?</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../external/framecpp/">FrameCPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../external/framel/">FrameL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../external/lalsuite/">LALSuite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../external/nds2/">NDS2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/">Citing GWpy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data structures</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../timeseries/">Time Series data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Time Series data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../timeseries/io/">Reading and writing time series data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../timeseries/plot/">Plotting time-domain data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.TimeSeries/">TimeSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.TimeSeriesDict/">TimeSeriesDict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.TimeSeriesList/">TimeSeriesList</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../spectrum/">The <code class="xref py py-class docutils literal notranslate"><span class="pre">FrequencySeries</span></code> class</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of The FrequencySeries class</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../spectrum/io/">Reading and writing frequency-domain data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../spectrum/filtering/">Filtering frequency-domain data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/">FrequencySeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.frequencyseries.SpectralVariance/">SpectralVariance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../spectrogram/">The <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of The Spectrogram</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../spectrum/filtering/">Filtering frequency-domain data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.spectrogram.Spectrogram/">Spectrogram</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../timeseries/statevector/">State vectors</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of State vectors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.StateVector/">StateVector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.StateTimeSeries/">StateTimeSeries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.timeseries.StateVectorDict/">StateVectorDict</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../segments/">Data-quality segments</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Data-quality segments</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../segments/dqsegdb/">The Segment Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../segments/io/">Reading/writing segments and flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../segments/thresholding/">Generating data-quality flags by thresholding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.segments.DataQualityFlag/">DataQualityFlag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.segments.DataQualityDict/">DataQualityDict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.segments.Segment/">Segment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.segments.SegmentList/">SegmentList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.segments.SegmentListDict/">SegmentListDict</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../table/">Data tables</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Data tables</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../table/io/">Reading and writing <code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">EventTable</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table/filter/">Filtering tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table/rate/">Calculating event trigger rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table/plot/">Plotting tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../table/histogram/">Data table histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.table.EventTable/">EventTable</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data manipulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../signal/">Signal processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visualising data</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../plot/">Plotting in GWpy (<code class="xref py py-mod docutils literal notranslate"><span class="pre">gwpy.plot</span></code>)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Plotting in GWpy (gwpy.plot)</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/gps/">Plotting GPS time scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/colorbars/">Colorbars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/legend/">Custom legends in GWpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/log/">Log scales in GWpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/colors/">The Gravitational-Wave Observatory colour scheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plot/filter/">Visualising filters (<code class="xref py py-class docutils literal notranslate"><span class="pre">BodePlot</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cli/">Command line plotting with GWpy</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Command line plotting with GWpy</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-timeseries-filter/">Filtered timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrum-hr/">High-resolution spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrogram-norm/">Normalised spectrogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-coherence/">Simple coherence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-coherencegram/">Simple coherence spectrogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrogram/">Simple spectrogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrum-simple/">Simple spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-timeseries-simple/">Simple timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrum-times/">Spectrum at two times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-spectrum-three-ifo/">Spectrum with three interferometers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cli/examples/gwpy-plot-timeseries-long/">Time-series of input laser power</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other utilities</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../detector/channel/">The <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/">Times and timestamps</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../astro/">Astrophysical modelling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Astrophysical modelling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.astro.burst_range/">burst_range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.astro.burst_range_spectrum/">burst_range_spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.astro.inspiral_range/">inspiral_range</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">inspiral_range_psd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.astro.range_timeseries/">range_timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gwpy.astro.range_spectrogram/">range_spectrogram</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../env/">Configuring GWpy from the environment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/">Examples gallery</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Examples gallery</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/frequencyseries/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of FrequencySeries examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/hoff/">Calculate and plot a <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/coherence/">Calculate the coherence between two channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/variance/">Generating a <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralVariance</span></code> histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/inject-fs/">Inject a signal into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/rayleigh/">Plotting a Rayleigh-statistic <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/percentiles/">Plotting an averaged ASD with percentiles.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/frequencyseries/transfer_function/">Transfer function</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/miscellaneous/">Miscellaneous examples</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Miscellaneous examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/miscellaneous/range-spectrogram/">Estimating the spectral contribution to inspiral range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/miscellaneous/range-timeseries/">Generating an inspiral range timeseries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/miscellaneous/open-data-spectrogram/">Plotting a spectrogram of all open data for many hours</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/segments/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Segments examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/segments/open-data/">Plotting observing segments for O1</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/signal/">Signal processing examples</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Signal processing examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/signal/gw150914/">Filtering a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> to detect gravitational waves</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/spectrogram/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Spectrogram examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/spectrogram/coherencegram/">Calculating the time-dependent coherence between two channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/spectrogram/plot/">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/spectrogram/rayleighgram/">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of the Rayleigh statistic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/spectrogram/ratio/">Plotting a normalised <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/spectrogram/spectrogram2/">Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/table/">Tabular data examples</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of Tabular data examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/table/rate/">Calculating (and plotting) rate versus time for an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/table/rate_binned/">Plotting <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> rate versus time for specific column bins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/table/tiles/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> as 2-d tiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/table/histogram/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> in a histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/table/scatter/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> in a scatter</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../examples/timeseries/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of TimeSeries examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/public/">Accessing and visualising public GW detector data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/pycbc-snr/">Calculating the SNR associated with an astrophysical signal model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/blrms/">Comparing seismic trends between LIGO sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/qscan/">Generate the Q-transform of a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/inject/">Inject a known signal into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/statevector/">Plotting segments for a <code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/timeseries/whiten/">Whitening a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/timeseries/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of TimeSeries examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/public/">Accessing and visualising public GW detector data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/pycbc-snr/">Calculating the SNR associated with an astrophysical signal model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/blrms/">Comparing seismic trends between LIGO sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/qscan/">Generate the Q-transform of a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/inject/">Inject a known signal into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/statevector/">Plotting segments for a <code class="xref py py-obj docutils literal notranslate"><span class="pre">StateVector</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/timeseries/whiten/">Whitening a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/signal/">Signal processing examples</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of Signal processing examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/signal/gw150914/">Filtering a <code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeSeries</span></code> to detect gravitational waves</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/frequencyseries/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of FrequencySeries examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/hoff/">Calculate and plot a <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/coherence/">Calculate the coherence between two channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/variance/">Generating a <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectralVariance</span></code> histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/inject-fs/">Inject a signal into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/rayleigh/">Plotting a Rayleigh-statistic <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrum</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/percentiles/">Plotting an averaged ASD with percentiles.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/frequencyseries/transfer_function/">Transfer function</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/spectrogram/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><div class="visually-hidden">Toggle navigation of Spectrogram examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/spectrogram/coherencegram/">Calculating the time-dependent coherence between two channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/spectrogram/plot/">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/spectrogram/rayleighgram/">Plotting a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code> of the Rayleigh statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/spectrogram/ratio/">Plotting a normalised <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/spectrogram/spectrogram2/">Plotting an over-dense, short-duration <code class="xref py py-obj docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/segments/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segments</span></code> examples</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><div class="visually-hidden">Toggle navigation of Segments examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/segments/open-data/">Plotting observing segments for O1</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/table/">Tabular data examples</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle navigation of Tabular data examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/table/rate/">Calculating (and plotting) rate versus time for an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/table/rate_binned/">Plotting <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> rate versus time for specific column bins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/table/tiles/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> as 2-d tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/table/histogram/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> in a histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/table/scatter/">Plotting an <code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code> in a scatter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/miscellaneous/">Miscellaneous examples</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of Miscellaneous examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/miscellaneous/range-spectrogram/">Estimating the spectral contribution to inspiral range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/miscellaneous/range-timeseries/">Generating an inspiral range timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/miscellaneous/open-data-spectrogram/">Plotting a spectrogram of all open data for many hours</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/release/">Publishing a release</a></li>
+</ul>
+
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://gitlab.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GWpy
-  </div>
-</a>
+</div>
+
       </div>
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
       
-      
-      
-      
-        
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../" title="GWpy 3.1.0.dev710+gaec5d25c documentation" class="md-nav__button md-logo" aria-label="GWpy 3.1.0.dev710+gaec5d25c documentation" data-md-component="logo">
-      <img src="../../_static/favicon.png" alt="logo">
-    </a>
-    GWpy 3.1.0.dev710+gaec5d25c documentation
-  </label>
-  
-    <div class="md-nav__source">
-      <a href="https://gitlab.com/gwpy/gwpy" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GWpy
-  </div>
-</a>
     </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    What is GWpy?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../install/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    How do I install GWpy?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../citing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Citing GWpy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Data structures
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Data structures
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../timeseries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Time Series data
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../spectrum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    The Frequency<wbr>Series class
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../spectrogram/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    The Spectrogram
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../timeseries/statevector/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    State vectors
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../segments/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Data-<wbr>quality segments
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../table/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Data tables
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Data manipulation
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Data manipulation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../signal/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Signal processing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Visualising data
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            Visualising data
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../plot/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Plotting in GWpy <wbr>(gwpy.<wbr>plot)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cli/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Command line plotting with GWpy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Other utilities
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            Other utilities
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../detector/channel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    The Channel class
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../time/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Times and timestamps
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../astro/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Astrophysical modelling
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/api/gwpy.astro.inspiral_range_psd.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
           </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            Astrophysical modelling
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../astro/#sensitive-distance" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Sensitive distance
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            Sensitive distance
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gwpy.astro.burst_range/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    burst_<wbr>range
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gwpy.astro.burst_range_spectrum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    burst_<wbr>range_<wbr>spectrum
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gwpy.astro.inspiral_range/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    inspiral_<wbr>range
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    inspiral_<wbr>range_<wbr>psd
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="#" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    inspiral_<wbr>range_<wbr>psd
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      inspiral_<wbr>range_<wbr>psd
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd" class="md-nav__link">
-    
-      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
-    
-    <span class="md-ellipsis">
-      <span title="gwpy.astro.inspiral_range_psd (Python function) — Calculate the cosmology-corrected inspiral sensitive distance PSD.">gwpy.<wbr>astro.<wbr>inspiral_<wbr>range_<wbr>psd</span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gwpy.astro.inspiral_range_psd">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd-parameters" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd-returns" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../env/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuring GWpy from the environment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Examples
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            Examples
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/timeseries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Time<wbr>Series examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/signal/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Signal processing examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/frequencyseries/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Frequency<wbr>Series examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/spectrogram/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Spectrogram examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/segments/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Segments examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/table/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tabular data examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/miscellaneous/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Miscellaneous examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Developer notes
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            Developer notes
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dev/release/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Publishing a release
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      inspiral_<wbr>range_<wbr>psd
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd" class="md-nav__link">
-    
-      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
-    
-    <span class="md-ellipsis">
-      <span title="gwpy.astro.inspiral_range_psd (Python function) — Calculate the cosmology-corrected inspiral sensitive distance PSD.">gwpy.<wbr>astro.<wbr>inspiral_<wbr>range_<wbr>psd</span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="gwpy.astro.inspiral_range_psd">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd-parameters" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gwpy.astro.inspiral_range_psd-returns" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset" role="main">
-                  
-
-
-
-  
-  
-
-<h1 id="inspiral-range-psd">inspiral_range_psd<a class="headerlink" href="#inspiral-range-psd" title="Link to this heading">¶</a></h1>
-<dl class="py function objdesc">
-<dt class="sig sig-object highlight sig-wrap py" id="gwpy.astro.inspiral_range_psd">
-<span class="sig-prename descclassname"><span class="pre">gwpy.astro.</span></span><span class="sig-name descname"><span class="pre">inspiral_range_psd</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.psd (Python parameter)"><span class="n"><span class="pre">psd</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.frequencyseries.FrequencySeries (Python class)"><span class="pre">FrequencySeries</span></a></span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.snr (Python parameter)"><span class="n"><span class="pre">snr</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">8</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.mass1 (Python parameter)"><span class="n"><span class="pre">mass1</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="mf">1.4</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.mass2 (Python parameter)"><span class="n"><span class="pre">mass2</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="mf">1.4</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.horizon (Python parameter)"><span class="n"><span class="pre">horizon</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#gwpy.astro.inspiral_range_psd" title="gwpy.astro.inspiral_range_psd.kwargs (Python parameter)"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.frequencyseries.FrequencySeries (Python class)"><span class="pre">FrequencySeries</span></a></span></span></span><a class="reference external" href="https://gitlab.com/gwpy/gwpy/-/tree/aec5d25c/gwpy/astro/range.py#L315-L415"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.astro.inspiral_range_psd" title="Link to this definition">¶</a></dt>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="inspiral-range-psd">
+<h1>inspiral_range_psd<a class="headerlink" href="#inspiral-range-psd" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="gwpy.astro.inspiral_range_psd">
+<span class="sig-prename descclassname"><span class="pre">gwpy.astro.</span></span><span class="sig-name descname"><span class="pre">inspiral_range_psd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.frequencyseries.FrequencySeries"><span class="pre">FrequencySeries</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.frequencyseries.FrequencySeries"><span class="pre">FrequencySeries</span></a></span></span><a class="reference external" href="https://gitlab.com/gwpy/gwpy/blob/2b69488fd39bfb1ddb3ce93fe55ebcb4261fa7af/gwpy/astro/range.py#L315-L415"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gwpy.astro.inspiral_range_psd" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the cosmology-corrected inspiral sensitive distance PSD.</p>
 <p>This method returns the power spectral density (in <code class="docutils literal notranslate"><span class="pre">Mpc**2</span> <span class="pre">/</span> <span class="pre">Hz</span></code>) to
 which a compact binary inspiral with the given component masses would
@@ -1467,9 +487,9 @@ be detectable given the instrumental PSD. The calculation is defined in
 Belczynski et. al (2014):</p>
 <p><a class="reference external" href="https://dx.doi.org/10.1088/0004-637x/789/2/120">https://dx.doi.org/10.1088/0004-637x/789/2/120</a></p>
 <dl class="field-list">
-<dt class="field-odd" id="gwpy.astro.inspiral_range_psd-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#gwpy.astro.inspiral_range_psd-parameters" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>psd</strong><span class="classifier"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries (Python class) — A data array holding some metadata to represent a frequency series."><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></span></dt><dd><p>The instrumental power-spectral-density data.</p>
+<dt><strong>psd</strong><span class="classifier"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></span></dt><dd><p>The instrumental power-spectral-density data.</p>
 </dd>
 <dt><strong>snr</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>The signal-to-noise ratio for which to calculate range.</p>
 </dd>
@@ -1486,14 +506,14 @@ return the angle-averaged comoving distance.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="gwpy.astro.inspiral_range_psd-returns">Returns<span class="colon">:</span><a class="headerlink" href="#gwpy.astro.inspiral_range_psd-returns" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>rspec</strong><span class="classifier"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries (Python class) — A data array holding some metadata to represent a frequency series."><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></span></dt><dd><p>The calculated inspiral sensitivity PSD [Mpc^2 / Hz].</p>
+<dt><strong>rspec</strong><span class="classifier"><a class="reference internal" href="../gwpy.frequencyseries.FrequencySeries/#gwpy.frequencyseries.FrequencySeries" title="gwpy.frequencyseries.FrequencySeries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FrequencySeries</span></code></a></span></dt><dd><p>The calculated inspiral sensitivity PSD [Mpc^2 / Hz].</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<div class="seealso admonition">
+<div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensemon_range_psd</span></code></dt><dd><p>For the method based on LIGO-T030276, also known as LIGO SenseMonitor.</p>
@@ -1504,68 +524,85 @@ return the angle-averaged comoving distance.</p>
 </div>
 </dd></dl>
 
+</section>
 
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../gwpy.astro.range_timeseries/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">range_timeseries</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../gwpy.astro.inspiral_range/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
                 
-              </article>
+                <div class="title">inspiral_range</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025 Cardiff University
             </div>
-          
-          
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link fa-brands fa-gitlab" href="https://gitlab.com/gwpy/gwpy" aria-label="GitLab"></a>
+              
+            </div>
+          </div>
         </div>
         
-      </main>
-      
-        <footer class="md-footer">
-  
-  
-  
-  <div class="md-footer-meta md-typeset">
-    
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2013, 2017-2021 Cardiff University and 2013-2017 Lousiana State University.
-        
+      </footer>
     </div>
-  
-    Created using
-    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    8.2.3.
-     and
-    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
-  
-</div>
+    <aside class="toc-drawer">
       
-    </div>
-    
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">inspiral_range_psd</a><ul>
+<li><a class="reference internal" href="#gwpy.astro.inspiral_range_psd"><code class="docutils literal notranslate"><span class="pre">inspiral_range_psd()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
   </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": "../versions.json"}}</script>
-    
-      
-        <script src="../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
-    
-  </body>
+</div><script src="../../_static/documentation_options.js?v=f48ccf44"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=8b66024b"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
 </html>
