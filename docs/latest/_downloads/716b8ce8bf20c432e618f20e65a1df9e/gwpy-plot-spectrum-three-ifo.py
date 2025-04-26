@@ -16,7 +16,7 @@ data for the three active detectors around GW200129_065458
         --start 1264316100 \\
         --duration 32 \\
         --xmin 10 \\
-        --xmax 4000 \\
+        --xmax 1600 \\
         --suptitle "GW detector sensitivity around GW200129_065458" \\
         --interactive
 """
@@ -32,7 +32,7 @@ main([
     '--start', '1264316100',
     '--duration', '32',
     '--xmin', '10',
-    '--xmax', '4000',
+    '--xmax', '1600',
     '--suptitle', 'GW detector sensitivity around GW200129_065458',
     '--interactive',
 ])

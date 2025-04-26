@@ -17,7 +17,7 @@ the strain data from LIGO-Livingston around GW200129_065458
         --duration 1024 \\
         --secpfft 64 \\
         --xmin 10 \\
-        --xmax 4000 \\
+        --xmax 1600 \\
         --interactive
 """
 
@@ -33,6 +33,6 @@ main([
     '--duration', '1024',
     '--secpfft', '64',
     '--xmin', '10',
-    '--xmax', '4000',
+    '--xmax', '1600',
     '--interactive',
 ])

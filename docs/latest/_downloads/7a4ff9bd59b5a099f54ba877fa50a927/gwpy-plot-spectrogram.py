@@ -15,7 +15,7 @@ data from LIGO-Hanford around the time of GW150914.
         --start 1264316116 \\
         --duration 32 \\
         --epoch 1264316116.4 \\
-        --ymax 4000 \\
+        --ymax 1600 \\
         --interactive
 """
 
@@ -30,6 +30,6 @@ main([
     '--start', '1264316116',
     '--duration', '32',
     '--epoch', '1264316116.4',
-    '--ymax', '4000',
+    '--ymax', '1600',
     '--interactive',
 ])
