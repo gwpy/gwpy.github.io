@@ -516,7 +516,7 @@ to download data for the relevant catalogue.</p>
 <p>The simplest query just requires the catalogue name, and will return all parameters
 for all events in the catalogue:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data">
-<div class="code-block-caption"><span class="caption-text">Fetching the GWTC-2 catalogue using <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.fetch_open_data()</span></code></a> (output correct as of Apr 30, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Fetching the GWTC-2 catalogue using <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable.fetch_open_data" title="gwpy.table.EventTable.fetch_open_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EventTable.fetch_open_data()</span></code></a> (output correct as of May 02, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gwpy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventTable</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">events</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span><span class="s2">&quot;GWTC-2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
@@ -567,7 +567,7 @@ for all events in the catalogue:</p>
 </div>
 <p>The full list of available columns can be queried as follows:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-info">
-<div class="code-block-caption"><span class="caption-text">Printing the columns of an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> (output correct as of Apr 30, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-info" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Printing the columns of an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> (output correct as of May 02, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-info" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
 <span class="go">&lt;EventTable masked=True length=39&gt;</span>
 <span class="go">              name                dtype    unit            description</span>
@@ -592,7 +592,7 @@ for all events in the catalogue:</p>
 and mathematical condition filters can be applied on-the-fly
 using the <code class="docutils literal notranslate"><span class="pre">where</span></code> keyword:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-fetch-open-data-filtered">
-<div class="code-block-caption"><span class="caption-text">Downloading a sub-set of a catalogue from GWOSC (output correct as of Apr 30, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-filtered" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">Downloading a sub-set of a catalogue from GWOSC (output correct as of May 02, 2025)</span><a class="headerlink" href="#gwpy-table-io-fetch-open-data-filtered" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">fetch_open_data</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;GWTC-2&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">where</span><span class="o">=</span><span class="s2">&quot;mass_1_source &lt; 4&quot;</span><span class="p">,</span>
@@ -688,15 +688,15 @@ but is <strong>not</strong> backported to for use with <code class="xref py py-m
 </section>
 <section id="ligo-lw-xml">
 <span id="gwpy-table-io-ligolw"></span><h3><code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML<a class="headerlink" href="#ligo-lw-xml" title="Link to this heading">¶</a></h3>
-<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a></p>
+<p><strong>Additional dependencies:</strong> <a class="reference external" href="https://igwn-ligolw.readthedocs.io/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">igwn-ligolw</span></code></a></p>
 <p>The LIGO Scientific Collaboration uses a custom scheme of XML in which to
 store tabular data, called <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code>.
-Complementing the scheme is a python library - <a class="reference external" href="https://git.ligo.org/kipp.cannon/python-ligo-lw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code></a> - which
+Complementing the scheme is a python library - <a class="reference external" href="https://igwn-ligolw.readthedocs.io/"><code class="xref py py-obj docutils literal notranslate"><span class="pre">igwn-ligolw</span></code></a> - which
 allows users to read and write all of the different types of tabular data
 produced by gravitational-wave searches.</p>
 <p>Reading and writing tables in <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML format is supported with
 <code class="docutils literal notranslate"><span class="pre">format='ligolw',</span> <span class="pre">tablename=&lt;tablename&gt;'</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;tablename&gt;</span></code> can be
-any of the supported LSC table names (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.lsctables</span></code>).</p>
+any of the supported LSC table names (see <a class="reference external" href="https://igwn-ligolw.readthedocs.io/en/stable/lsctables/#module-igwn_ligolw.lsctables" title="(in igwn-ligolw v2.0.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">igwn_ligolw.lsctables</span></code></a>).</p>
 <section id="reading">
 <h4>Reading<a class="headerlink" href="#reading" title="Link to this heading">¶</a></h4>
 <p>When reading, the <code class="docutils literal notranslate"><span class="pre">tablename</span></code> keyword argument should be given to identify
@@ -769,12 +769,12 @@ keyword argument:</p>
 </pre></div>
 </div>
 </div>
-<p>Many LIGO_LW table objects (as defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">ligo.lw.lsctables</span></code>) include
+<p>Many LIGO_LW table objects (as defined in <a class="reference external" href="https://igwn-ligolw.readthedocs.io/en/stable/lsctables/#module-igwn_ligolw.lsctables" title="(in igwn-ligolw v2.0.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">igwn_ligolw.lsctables</span></code></a>) include
 utility functions to create new columns by combining others,
 e.g. to calculate the Q of a sine-Gaussian pulse from the duration and
 central frequency.
 These ‘columns’ can be requested directly, providing the
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ligo.lw.table.Table</span></code> representation of the data has a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">igwn_ligolw.table.Table</span></code> representation of the data has a
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_</span></code> method for that name:</p>
 <div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-get-columns">
 <div class="code-block-caption"><span class="caption-text">Reading <code class="docutils literal notranslate"><span class="pre">get_</span></code> columns into an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.</span><a class="headerlink" href="#gwpy-table-io-ligolw-get-columns" title="Link to this code">¶</a></div>
@@ -808,8 +808,8 @@ the output columns:</p>
 To force all columns to have real <a class="reference external" href="https://numpy.org/doc/stable/reference/index.html#module-numpy" title="(in NumPy v2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy</span></code></a> data types, use the
 <code class="docutils literal notranslate"><span class="pre">use_numpy_dtypes=True</span></code> keyword, which will cast (known) custom object
 types to a standard <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>, e.g:</p>
-<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligo-lw-use-numpy-dtypes">
-<div class="code-block-caption"><span class="caption-text">Example of using <code class="docutils literal notranslate"><span class="pre">use_numpy_dtypes=True</span></code> when reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.</span><a class="headerlink" href="#gwpy-table-io-ligo-lw-use-numpy-dtypes" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="gwpy-table-io-ligolw-use-numpy-dtypes">
+<div class="code-block-caption"><span class="caption-text">Example of using <code class="docutils literal notranslate"><span class="pre">use_numpy_dtypes=True</span></code> when reading an <a class="reference internal" href="../../api/gwpy.table.EventTable/#gwpy.table.EventTable" title="gwpy.table.EventTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventTable</span></code></a> from <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> XML.</span><a class="headerlink" href="#gwpy-table-io-ligolw-use-numpy-dtypes" title="Link to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">EventTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;H1-LDAS_STRAIN-968654552-10.xml.gz&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">tablename</span><span class="o">=</span><span class="s2">&quot;sngl_burst&quot;</span><span class="p">,</span>
@@ -850,7 +850,7 @@ preserving other tables, use <em>both</em> <code class="docutils literal notrans
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">python-ligo-lw</span></code> library reads and writes files using an updated
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">igwn-ligolw</span></code> library reads and writes files using an updated
 version of the <code class="docutils literal notranslate"><span class="pre">LIGO_LW</span></code> format compared to <code class="xref py py-mod docutils literal notranslate"><span class="pre">glue.ligolw</span></code> used to.
 GWpy should support both format versions natively when _reading_, but
 only supports writing using the updated format.</p>
@@ -1256,7 +1256,7 @@ columns are use-specific:</p>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=aa74bd0d"></script>
+</div><script src="../../_static/documentation_options.js?v=16a12aa4"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
