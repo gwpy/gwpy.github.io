@@ -1681,6 +1681,9 @@ sorted by row according to <code class="docutils literal notranslate"><span clas
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The underlying sorting algorithm is guaranteed stable, meaning that the
+original table order is preserved within each group.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2661,7 +2664,7 @@ default value:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gwpy.table.EventTable.show_in_browser">
-<span class="sig-name descname"><span class="pre">show_in_browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jsviewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jskwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'use_local_files':</span> <span class="pre">True}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'display</span> <span class="pre">compact'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_row_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'idx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.EventTable.show_in_browser" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">show_in_browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jsviewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jskwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'use_local_files':</span> <span class="pre">False}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'display</span> <span class="pre">compact'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_row_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'idx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gwpy.table.EventTable.show_in_browser" title="Link to this definition">¶</a></dt>
 <dd><div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 6.1: </span>We are planning on deprecating show_in_browser in the future.
             If you are actively using this method, please let us know
@@ -2678,7 +2681,11 @@ no row limit.</p>
 </dd>
 <dt><strong>jsviewer</strong><span class="classifier">bool</span></dt><dd><p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, prepends some javascript headers so that the table is
 rendered as a <a class="reference external" href="https://datatables.net">DataTables</a> data table.
-This allows in-browser searching &amp; sorting.</p>
+This allows in-browser searching &amp; sorting, but requires a
+connection to the internet to load the necessary javascript
+libraries from a CDN. Working offline may work in limited
+circumstances, if the browser has cached the necessary libraries
+from a previous use of this method.</p>
 </dd>
 <dt><strong>browser</strong><span class="classifier">str</span></dt><dd><p>Any legal browser name, e.g. <code class="docutils literal notranslate"><span class="pre">'firefox'</span></code>, <code class="docutils literal notranslate"><span class="pre">'chrome'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'safari'</span></code> (for mac, you may need to use <code class="docutils literal notranslate"><span class="pre">'open</span> <span class="pre">-a</span>
@@ -2686,8 +2693,8 @@ This allows in-browser searching &amp; sorting.</p>
 <code class="docutils literal notranslate"><span class="pre">'default'</span></code>, will use the system default browser.</p>
 </dd>
 <dt><strong>jskwargs</strong><span class="classifier">dict</span></dt><dd><p>Passed to the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.table.JSViewer.html#astropy.table.JSViewer" title="(in Astropy v7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.table.JSViewer</span></code></a> init. Defaults to
-<code class="docutils literal notranslate"><span class="pre">{'use_local_files':</span> <span class="pre">True}</span></code> which means that the JavaScript
-libraries will be served from local copies.</p>
+<code class="docutils literal notranslate"><span class="pre">{'use_local_files':</span> <span class="pre">False}</span></code> which means that the JavaScript
+libraries will be loaded from a CDN.</p>
 </dd>
 <dt><strong>tableid</strong><span class="classifier">str or None</span></dt><dd><p>An html ID tag for the table.  Default is <code class="docutils literal notranslate"><span class="pre">table{id}</span></code>, where id
 is the unique integer id of the table object, id(self).</p>
